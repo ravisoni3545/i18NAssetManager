@@ -31,7 +31,7 @@ define(["text!templates/navigation.html", "backbone","app", "SecurityUtil"],func
 		    	app.homeView.setElement($('#maincontainer')).render();
 		    },*/
 		    
-		    showSearchPage : function() {
+/*		    showSearchPage : function() {
 		    	this.clearOrganizationData();
 		    	if(!app.searchView){
 		    		 app.searchView=new searchView();
@@ -41,7 +41,7 @@ define(["text!templates/navigation.html", "backbone","app", "SecurityUtil"],func
 		    clearOrganizationData : function() {
 		    	app.vendorCompanyModel = null;
 		     	app.vendorId = null;
-		    }
+		    }*/
  		    
 		    
 	});

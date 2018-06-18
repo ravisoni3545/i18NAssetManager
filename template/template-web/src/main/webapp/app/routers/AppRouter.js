@@ -14,10 +14,10 @@ define([ "app", "views/loginView", "views/homeView", "views/headerView",
 				},
 				routes : {
 					"logout":"logout",
-					"search":"vendor"
+					"search":"searchLabel"
 				},
 
-				vendor : function() {
+				searchLabel : function() {
 					
 					if(!app.homeView){
 						app.homeView=new homeview();

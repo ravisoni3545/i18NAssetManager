@@ -1,0 +1,27 @@
+		<table id="labelDataTableMain"
+			class="table table-striped table-bordered table-advance table-hover tablegreen">
+			<thead>
+				<tr>
+					<th></th>
+					<th>Key</th>
+					<th>Locale</th>
+					<th>Value</th>
+					<th>Description</th>
+				</tr>
+			</thead>
+			<tbody>
+				<%console.log("test");
+				console.log(labelModel); 
+				 _.each(labelModel, function( obj ){
+				%>
+				<tr>
+					<td></td>
+					<td><%- obj.key %></td>
+					<td><%- obj.localeId %></td>
+					<td><%- obj.value %></td>
+					<td><%- obj.description %></td>
+				</tr>
+				<% }); %>
+			</tbody>
+
+		</table>
