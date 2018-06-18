@@ -1,0 +1,502 @@
+<div id="editImageDetailsModalDiv"></div>
+<div class="modal fade" id="createFolderModal" tabindex="-1" role="basic" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                </button>
+                <h4 class="modal-title">
+                   <i class="fa fa-plus"> </i> Create Folder</h4>
+            </div>
+            <div class="modal-body">
+             <form id="createFolderForm" method="post" action='<%-apilink%>' enctype="multipart/form-data"  novalidate="novalidate" autocomplete="on" class="form-horizontal">
+              <div class="alert alert-danger display-hide" id="createFolderFormError">
+              <button class="close" data-close="alert" onclick="$(this).parent().hide();return false;"></button>
+              You have some form errors. Please check below.
+            </div>
+            <div style="margin-top: 10px; display: none;" class="alert alert-danger display-hide" id="genericCreateFolderError">
+                        <button class="close" data-close="alert" onclick="$(this).parent().hide();return false;"></button>
+                         Please submit all required (<span style="background:white"class="required"> * </span>) fields. 
+                      <br>
+                      
+               </div>
+             <div class="row">
+              <div class="form-group" style="margin-left:5px; margin-right:5px">
+                <div class="col-md-6">
+                <label class="control-label" style="text-align: left;">
+                    Folder Name <span class="required">* </span>
+                </label>
+                <input id="createFolderName" name="description" type="text" class="form-control" >
+               </div>
+              
+             </div>
+             
+           </div>
+
+            
+
+             <div class = 'row'>
+              <div class="form-group">
+                <div class="col-md-6">
+            
+            <input style="display: none" name="object" id="objectCreate" value="<%-object%>"></input>
+            <input style="display: none" name="objectId" id="objectIdCreate" value="<%-objectId%>"></input>
+            <input style="display: none" name="parentId" id="parentIdCreate" value="<%-parentId%>"></input>
+
+            <input style="display: none" name="propertyId" id="propertyIdCreate" value="<%-propertyId%>"></input>
+               </div>
+
+              </div>
+             </div>
+
+             <div class = 'row'>
+              <div class="form-group">
+                <div class="col-md-6">
+
+
+                <label class="control-label" style="text-align: left;">
+                    Files  <span class="required">* </span>
+                </label>
+               <input id="createFolderFiles" name="files" multiple type="file" accept="image/*"></input>
+               </div>
+
+              </div>
+             </div>
+
+                        
+                 <div display="none" id="responseCreate">
+                    <input style='display:none' id="createFolderSubmit" name="uploadGenericPhotosBtn" type="submit" value='upload' class="btn blue">
+
+                 </div>
+
+                
+          </form>
+      </br>
+
+           </div>
+                <div class="modal-footer">
+                    <button name='cancelPButton' type="button"  class="btn default" data-dismiss="modal">
+                        CANCEL</button>
+                    <button id='createFolderBtn' name="createFolderBtn" type="button" class="btn blue" >
+                        CREATE</button>
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+
+
+
+
+
+<div class="modal fade" id="editFolderModal" tabindex="-1" role="basic" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                </button>
+                <h4 class="modal-title">
+                   <i class="fa fa-pencil"> </i> Edit Folder</h4>
+            </div>
+            <div class="modal-body">
+             <form novalidate="novalidate" id="editFolderForm" autocomplete="on" class="form-horizontal">
+              <div class="alert alert-danger display-hide" id="editFoldernameFormError">
+              <button class="close" data-close="alert" onclick="$(this).parent().hide();return false;"></button>
+              You have some form errors. Please check below.
+            </div>
+             <div class="row">
+              <div class="form-group" style="margin-left:5px; margin-right:5px">
+                <div class="col-md-6">
+                <label class="control-label" style="text-align: left;">
+                    Folder Name <span class="required">* </span>
+                </label>
+                <input id="editFolderName" name="folderName" type="text" class="form-control" value='test Edit Folder'>
+               </div>
+              
+             </div>
+             
+           </div>
+                
+          </form>
+      </br>
+
+           </div>
+                <div class="modal-footer">
+                    <button type="button"  class="btn default" data-dismiss="modal">
+                        CANCEL</button>
+                    <button name="editFolderBtn" type="button" class="btn blue" >
+                        Save</button>
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+
+
+
+
+
+
+
+
+<div class="modal fade" id="uploadPhotosModal" tabindex="-1" role="basic" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                </button>
+                <h4 class="modal-title">
+                   <i class="fa fa-plus"> </i> Upload Photos</h4>
+            </div>
+            <div class="modal-body">
+
+          <form method="post" action='<%-apilink%>' enctype="multipart/form-data"  novalidate="novalidate" id="uploadPhotosForm" autocomplete="on" class="form-horizontal">
+              <div class="alert alert-danger display-hide" id="uploadPhotoFormError">
+              <button class="close" data-close="alert" onclick="$(this).parent().hide();return false;"></button>
+              You have some form errors. Please check below.
+            </div>
+            
+
+             <div class = 'row'>
+              <div class="form-group">
+                <div class="col-md-6">
+                  <% if(hasPhotos === false){
+                  %>
+                    <input style="display: none" name="description" id="folderDescription" value="<%=defaultFolderName%>"></input>
+                  <% } else{%>
+                     <input style="display: none" name="description" id="folderDescription" value="<%=initialFolderName%>"></input>
+                  <% } %>
+
+            <input style="display: none" name="object" id="object" value="<%-object%>"></input>
+            <input style="display: none" name="objectId" id="objectId" value="<%-objectId%>"></input>
+            <input style="display: none" name="parentId" id="parentId" value="<%-parentId%>"></input>
+
+            <input style="display: none" name="propertyId" id="propertyId" value="<%-propertyId%>"></input>
+        </br>
+    
+                <label class="control-label" style="text-align: left;">
+                    Files
+                </label>
+               <input id="uploadPhotoFiles" name="files" multiple type="file" accept="image/*"></input>
+               </div>
+
+              </div>
+             </div>
+                        
+                 <div display="none" id="response">
+                    <input style='display:none' id="uploadPhotosSubmit" name="uploadGenericPhotosBtn" type="submit" value='upload' class="btn blue">
+
+                 </div>
+                                           </form>
+
+                
+      </br>
+      </div>
+
+                <div class="modal-footer">
+                    <button type="button" name='cancelPButton' class="btn default" data-dismiss="modal">
+                        CANCEL</button>
+                    <button id="startUploadButton" name="uploadGenericPhotosBtn" type="button" class="btn blue">Upload</button>
+     
+                </div>
+
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+</div>
+</div>
+
+
+
+
+
+
+
+
+
+    <div class="modal fade" id="deleteFolderConfirmationModal" tabindex="-1" role="dialog"
+        aria-hidden="true">
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                    </button>
+                    <h4 class="modal-title">
+                        <i class="fa fa-trash-o"></i> Delete Folder</h4>
+                </div>
+                <div class="modal-body">
+                    <p>
+                        Are you sure you want to delete this Folder? All photos inside of it will be deleted</p>
+                </div>
+                <div class="modal-footer">
+                    <button name="deleteFolderConfirm" type="button" class="btn blue" data-dismiss="modal">
+                        Yes</button>
+                    <button type="button" class="btn default" data-dismiss="modal">
+                        No</button>
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+
+      <div class="modal fade" id="deleteAllFoldersConfirmationModal" tabindex="-1" role="dialog"
+        aria-hidden="true">
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                    </button>
+                    <h4 class="modal-title">
+                        <i class="fa fa-trash-o"></i> Delete All?</h4>
+                </div>
+                <div class="modal-body">
+                    <p>
+                        Are you sure you want to delete all Photos? All photos and folders will be deleted.</p>
+                </div>
+                <div class="modal-footer">
+                    <button name="deleteAllFoldersConfirm" type="button" class="btn blue" data-dismiss="modal">
+                        Yes</button>
+                    <button type="button" class="btn default" data-dismiss="modal">
+                        No</button>
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+
+
+
+
+<div class="ptbody">
+    <div id='filter'>
+      
+      <!--<a id='createFolder' style="margin-left: 15px" href="#createFolderModal" data-toggle="modal" class='btn sm blue pull-right'><i class='fa fa-plus'></i> Create Folder</a> <a id='uploadPhotos' href="#uploadPhotosModal" data-toggle="modal" class='btn sm green pull-right'><i class='fa fa-plus'></i> Upload Photos</a> 
+    </br>
+    </br> 
+   <label id='titleToggle' style="float: right;color: #333">Show Folder Titles <i title=""></i> <input name="showTitles" id="showTitles" type="checkbox" > </label> 
+    </br>
+    </br>-->
+   
+  <% if(length > 1){
+      if(!modifiedFolderId){ %> 
+        <button name='filterButton' class= 'all active'> All</button>
+  <% } else{ %>
+        <button name='filterButton' class= 'all'> All</button>
+  <%
+      }
+    } 
+
+    if(!hasPhotos) { %>
+        <button name='filterButton' class ='<%=defaultFolderShortName%> active'><%=defaultFolderName%></button>
+    <% 
+      }
+    _.each(folders, function(v){
+      var shortname = v.folderDescription.replace(/\s+/g, '');
+      console.log('shortname: ' + shortname);
+        if(shortname !== '')
+          {
+      %> 
+         <%if(v.folderDescription === initialFolderName && length === 1){%>
+               <button name='filterButton' folder-id='<%=v.photoFolderId%>'class ='<%=shortname%> active' ><%=v.folderDescription%> </button>
+
+         <%} else {
+          if(v.photoFolderId === modifiedFolderId){%>
+                <button name='filterButton' folder-id='<%=v.photoFolderId%>' class ='<%=shortname%> active'><%=v.folderDescription%> </button>
+            <%} else{%>
+          <button name='filterButton' folder-id='<%=v.photoFolderId%>' class ='<%=shortname%> '><%=v.folderDescription%> </button>
+        <%  } 
+              }
+          } 
+      });
+    %>
+
+     <!-- 
+      <button class='all active'>All</button>
+      <button class='waterheater'>Water Heater</button>
+      <button class='garagedoor'>Garage Door</button>
+      <button class='shower'>Shower</button>
+      <button class='test'>Test</button> -->
+  
+  </div>
+
+  <div id='posts'>
+
+  <% 
+    _.each(folders, function(v){
+      var shortname = v.folderDescription.replace(/\s+/g, '');
+  %>  
+    <div class="post foldertitle hidden">
+     <div class='post-content'>
+      <h2 title='<%=shortname%>' name='foldertitle'><%=v.folderDescription%></h2>
+     </div>
+    </div>
+    <% 
+        
+      _.each(v.photos, function(vv){
+     %>  
+
+      <div class='post <%=shortname%>'><img src='<%=vv.mediumLink%>'/>
+        <div class='post-content'>
+          <p> <%=vv.description%> </p>
+          <a class='aimg'data-toggle='modal' folder-id='<%=v.photoFolderId%>' photo-id='<%=vv.photoId%>' photo-src='<%=vv.mediumLink%>' folder-name='<%=v.folderDescription%>' photo-description='<%=vv.description%>'>View more</a>
+        </div>
+      </div>
+
+     <%
+      });
+     %>    
+
+  <%
+    });
+
+    if(length === 1 || !hasPhotos){
+  %> 
+
+  <div style='background: #4cae4c' class="post uploadPhotos">
+      <div class="post-content">
+        <h2><i class='fa fa-plus '></i> Upload Photos</h2>
+        <p><i class='fa fa-plus'></i> Upload photos to selected folder.</p>
+        <a href="#uploadPhotosModal" data-toggle="modal"></a>
+      </div>
+    </div>
+
+   <% if(hasPhotos){ %>
+
+
+     <div style="background: #d84a38" class="post deleteFolder">
+      <div class="post-content">
+        <h2><i class='fa fa-trash-o font25'></i> Delete Folder</h2>
+        <p><i class='fa fa-trash-o font'></i> Delete folder and all it's contents.</p>
+        <a href="#deleteFolderConfirmationModal" data-toggle="modal"></a>
+      </div>
+    </div>
+
+
+    <%
+      }
+     } else{ %>
+
+      <div style='background: #4cae4c' class="post uploadPhotos hidden">
+      <div class="post-content">
+        <h2><i class='fa fa-plus '></i> Upload Photos</h2>
+        <p><i class='fa fa-plus'></i> Upload photos to the selected folder.</p>
+        <a href="#uploadPhotosModal" data-toggle="modal"></a>
+      </div>
+    </div>
+
+     <div style="background: #d84a38" class="post deleteFolder hidden">
+      <div class="post-content">
+        <h2><i class='fa fa-trash-o font25'></i> Delete Folder</h2>
+        <p><i class='fa fa-trash-o font'></i> Delete folder and all it's contents.</p>
+        <a href="#deleteFolderConfirmationModal" data-toggle="modal"></a>
+      </div>
+    </div>
+
+    <%}%>
+
+  <div id='createFolder' style='background: #2196F3' class="post">
+      <div class="post-content">
+        <h2><i class='fa fa-plus '></i> Add Folder</h2>
+        <p><i class='fa fa-plus'></i>Add a new folder.</p>
+        <a href="#createFolderModal" data-toggle="modal"></a>
+     </div>
+    </div>
+
+
+
+
+    <!-- <div class="post foldertitle hidden">
+     <div class='post-content'>
+      <h2 title='waterheater' name='foldertitle'>Water Heater</h2>
+      </div>
+    </div>
+    <div data-toggle='modal' class='post waterheater '><img class="thisclass" src='http://www.waterdamageout.com/blog/wp-content/uploads/2012/03/Broken-water-heater.jpg'/>
+      <div class='post-content'>
+        <p>The water heater is leaking all over.</p>
+        <a class='aimg'data-toggle='modal' image-id='XXXX-323423-asdl;fkja' image-src='http://www.waterdamageout.com/blog/wp-content/uploads/2012/03/Broken-water-heater.jpg' image-name='Leaking Water Heater' image-description='The water heater is leaking all over.' image-type='Rehab'>View more</a> </div>
+    </div>
+    <div data-toggle='modal'class='post waterheater '><img src='http://a1plumbinginc.com/wp-content/uploads/2012/11/Water-Heater.jpg'/>
+      <div class='post-content'>
+        <p>Water heater fixed.</p>
+        <a class='aimg' image-type='Rehab' image-name='Fixed Water Heater' image-description='Water heater fixed.' image-src='http://a1plumbinginc.com/wp-content/uploads/2012/11/Water-Heater.jpg' data-toggle='modal' >View more</a>
+      </div>
+    </div>
+    <div class="post foldertitle hidden">
+      <div class='post-content'>
+     <h2 title='garagedoor' name='foldertitle'>Garage Door</h2>
+     </div>
+    </div>
+    <div data-toggle='modal' class='post garagedoor '><img src='http://www.valpak.com/img/bpp/FirstResponseBrokenGarageDoor.jpg'/>
+      <div class='post-content'>
+        <p>The previous tenant accidently had the car in reverse...</p>
+        <a class='aimg'image-type='Rehab'data-toggle='modal' image-name='Broken Garage Door' image-description='The previous tenant accidently had the car in reverse instead of Drive.' image-src='http://www.valpak.com/img/bpp/FirstResponseBrokenGarageDoor.jpg' >View more</a> </div>
+      </div>
+    <div data-toggle='modal' class='post garagedoor '><img src='http://ddjkm7nmu27lx.cloudfront.net/109308928/cover/54f399884b7182.82998035.jpg'/>
+      <div class='post-content'>
+        <p>Garage door fixed.</p>
+        <a class='aimg'image-type='Rehab'data-toggle='modal' image-name='Fixed Garage Door' image-description='Garage door fixed.' image-src='http://ddjkm7nmu27lx.cloudfront.net/109308928/cover/54f399884b7182.82998035.jpg' >View more</a> </div>
+    </div>
+    <div class="post foldertitle hidden">
+        <div class='post-content'>
+      <h2 title='shower' name='foldertitle'>Shower</h2>
+      </div>
+    </div>
+    <div data-toggle='modal' class='post shower '><img src='http://media-cdn.tripadvisor.com/media/photo-s/01/8b/2a/0a/broken-shower-head-which.jpg'/>
+      <div class='post-content'>
+        <p>Shower head leaking</p>
+        <a class='aimg' image-type='Rehab'data-toggle='modal' image-name='Shower Head' image-description='Shower head leaking' image-src='http://media-cdn.tripadvisor.com/media/photo-s/01/8b/2a/0a/broken-shower-head-which.jpg'>View more</a> </div>
+    </div>
+    
+    <div class='post shower'><img src='http://s3-production.bobvila.com/articles/wp-content/uploads/2013/07/shower-head.jpg'/>
+      <div class='post-content'>
+        <p>Shower head fixed</p>
+        <a class='aimg' image-type='Rehab' data-toggle='modal' image-name='Shower Head 2' image-description='shower head fixed.' image-src='http://s3-production.bobvila.com/articles/wp-content/uploads/2013/07/shower-head.jpg'>View more</a> </div>
+    </div> 
+
+    <div style='background: #4cae4c' class="post uploadPhotos">
+      <div class="post-content">
+        <h2><i class='fa fa-plus font25'></i> Upload Photo(s)</h2>
+        <p><i class='fa fa-plus'></i> Upload a single photo with description, or a batch of photos.</p>
+        <a href="#uploadPhotosModal" data-toggle="modal"></a>
+      </div>
+    </div>
+  
+    <div  id='editFolder' style='background: #2196F3' class="post hidden">
+      <div class="post-content">
+        <h2><i class='fa fa-pencil font25'></i> Edit Folder</h2>
+        <p><i class='fa fa-pencil'></i>Edit the folder name.</p>
+        <a href="#editFolderModal" data-toggle="modal"></a>
+      </div>
+    </div>
+
+    <div style='background: #2196F3' class="post">
+      <div class="post-content">
+        <h2><i class='fa fa-plus font25'></i> Add Folder</h2>
+        <p><i class='fa fa-plus'></i>Add a new folder.</p>
+        <a href="#createFolderModal" data-toggle="modal"></a>
+     </div>
+    </div>
+
+    <div style="background: #d84a38" class="post deleteFolder hidden">
+      <div class="post-content">
+        <h2><i class='fa fa-trash-o font25'></i> Delete Folder</h2>
+        <p><i class='fa fa-trash-o font'></i> Delete folder and all it's contents.</p>
+        <a href="#deleteFolderConfirmationModal" data-toggle="modal"></a>
+      </div>
+    </div>
+
+    <div style="background: #d84a38" class="post">
+      <div class="post-content">
+        <h2><i class='fa fa-trash-o font25'></i> Delete All Photos</h2>
+        <p><i class='fa fa-trash-o font'></i> Delete all folders and photos.</p>
+        <a href="#deleteAllFoldersConfirmationModal" data-toggle="modal"></a>
+     </div>
+    </div> -->
+
+  </div>
+</div>

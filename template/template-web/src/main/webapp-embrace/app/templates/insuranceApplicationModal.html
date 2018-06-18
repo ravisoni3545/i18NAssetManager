@@ -1,0 +1,405 @@
+<div class="modal fade bs-modal-lg" id="INSURANCE_APPLICATION_POPUP_1"
+	tabindex="-1" role="basic" aria-hidden="true">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button aria-hidden="true" data-dismiss="modal" class="close"
+					type="button"></button>
+				<h3 class="modal-title">Insurance Application</h3>
+			</div>
+			<div class="modal-body clearfix">
+
+				<div class="form-horizontal">
+					<div class="col-md-6">
+						<div class="form-group clearfix">
+							<label class="control-label col-md-5">Investor Name:</label>
+							<div class="col-md-6">
+								<p class="form-control-static"><%- popupData.investorName %></p>
+							</div>
+						</div>
+					</div>
+					<!--/span-->
+					<div class="col-md-6">
+						<div class="form-group clearfix">
+							<label class="control-label col-md-5">Property Address:</label>
+							<div class="col-md-7">
+								<p class="form-control-static"><%-
+									popupData.fullPropertyAddress %></p>
+							</div>
+						</div>
+					</div>
+					<!--/span-->
+					<div class="col-md-6">
+						<div class="form-group clearfix">
+							<label class="control-label col-md-5">Lender:</label>
+							<div class="col-md-6">
+								<p class="form-control-static">
+									<%- popupData.lenderOrgName %><br> <%- popupData.name %><br>
+									<%- popupData.phone %><br> <a style="cursor: pointer">
+										<%- popupData.email %></a>
+
+								</p>
+							</div>
+						</div>
+					</div>
+
+					<div class="col-md-12 marg_top20">
+						<div class="portlet box light-grey">
+							<div class="portlet-title">
+								<div class="caption">Quote</div>
+
+							</div>
+							<div class="portlet-body">
+								<div class="form-horizontal">
+									<div class="form-body">
+										<h3 class="form-section marg_top5">Insurance Info</h3>
+										<!-- Start left section -->
+										<div class="row">
+
+											<div class="col-md-6">
+												<div class="form-group">
+													<label class="col-md-4 control-label pad_leftright0">Insurance
+														Type</label>
+													<div class="col-md-7 pad_right0 margin-bottom-10">
+														<% if(popupData.propInsuranceResponse!=null){%>
+														<p class="form-control-static"><%-
+															popupData.propInsuranceResponse.insuranceType %></p>
+														<% } %>
+
+													</div>
+												</div>
+											</div>
+											<div class="col-md-6">
+												<div class="form-group">
+													<label class="col-md-4 control-label pad_leftright0">Vacant Policy</label>
+													<div class="col-md-7 pad_right0 margin-bottom-10">
+														<% if(popupData.propInsuranceResponse!=null){%>
+															<p class="form-control-static">
+																<% if(popupData.propInsuranceResponse.vacantPolicy == "Y") { %>
+																	Yes
+																<% } else { %>
+																	No
+																<% } %>
+															</p>
+														<% } %>
+													</div>
+												</div>
+											</div>
+										</div>
+
+										<div class="row">
+											<div class="col-md-6">
+												<div class="form-group">
+													<label class="col-md-4 control-label pad_leftright0">Insurance
+														Provider</label>
+													<div class="col-md-7 pad_right0 margin-bottom-10">
+														<% if(popupData.propInsuranceResponse!=null){%>
+														<p class="form-control-static"><%-
+															popupData.propInsuranceResponse.insuranceProvider %></p>
+														<% } %>
+													</div>
+												</div>
+											</div>
+											<div class="col-md-6"></div>
+										</div>
+										<div class="row">
+											<div class="col-md-6">
+												<div class="form-group">
+													<label class="col-md-4 control-label pad_leftright0">Yearly
+														Premimum</label>
+													<div class="col-md-7 pad_right0 margin-bottom-10">
+														<% if(popupData.propInsuranceResponse!=null && popupData.propInsuranceResponse.yearlyPremium!=null){%>
+														<p class="form-control-static amount"><%-
+															popupData.propInsuranceResponse.yearlyPremium %></p>
+														<% } else {%><p class="form-control-static amount">0</p>
+														<% } %>
+													</div>
+												</div>
+											</div>
+											<div class="col-md-6"></div>
+										</div>
+										<div class="row">
+											<div class="col-md-6">
+												<div class="form-group">
+													<label class="col-md-4 control-label pad_leftright0">Deductible</label>
+													<div class="col-md-7 pad_right0 margin-bottom-10">
+														<% if(popupData.propInsuranceResponse!=null){%>
+															
+															<% if(popupData.propInsuranceResponse.isDeductiblePercentage=='N' && 
+															popupData.propInsuranceResponse.deductible!=null){%>
+															<p class="form-control-static amount"><%-
+																popupData.propInsuranceResponse.deductible %></p>
+															<%}else if(popupData.propInsuranceResponse.isPercentage=='N' && 
+															popupData.propInsuranceResponse.deductible==null) {%>
+																<p class="form-control-static amount">0</p>
+															<%}else if(popupData.propInsuranceResponse.isDeductiblePercentage=='Y' && 
+															popupData.propInsuranceResponse.deductible!=null){%>
+															<p class="form-control-static"><%-
+																popupData.propInsuranceResponse.deductible %>%</p>
+															<%}else if(popupData.propInsuranceResponse.isDeductiblePercentage=='Y' && 
+															popupData.propInsuranceResponse.deductible==null){%>
+															<p class="form-control-static">0%</p>
+															<%}%>	
+														<% } else {%><p class="form-control-static amount">0</p>
+														<% } %>
+													</div>
+												</div>
+											</div>
+											<div class="col-md-6">
+												<div class="form-group">
+													<label class="col-md-4 control-label pad_leftright0">
+														Wind and Hail </label>
+													<div class="col-md-7 pad_right0 margin-bottom-10">
+														<% if(popupData.propInsuranceResponse!=null){%>
+															
+															<% if(popupData.propInsuranceResponse.isWindAndHailPercentage=='N' && 
+															popupData.propInsuranceResponse.windAndHail!=null){%>
+															<p class="form-control-static amount"><%-
+																popupData.propInsuranceResponse.windAndHail %></p>
+															<%}else if(popupData.propInsuranceResponse.isWindAndHailPercentage=='N' && 
+															popupData.propInsuranceResponse.windAndHail==null){%>
+																<p class="form-control-static amount">0</p>
+															<%}else if(popupData.propInsuranceResponse.isWindAndHailPercentage=='Y' && 
+															popupData.propInsuranceResponse.windAndHail!=null){%>
+															<p class="form-control-static"><%-
+																popupData.propInsuranceResponse.windAndHail %>%</p>
+															<%}else if(popupData.propInsuranceResponse.isWindAndHailPercentage=='Y' && 
+															popupData.propInsuranceResponse.windAndHail==null){%>
+															<p class="form-control-static">0%</p>
+															<%}%>	
+														<% } else {%><p class="form-control-static amount">0</p>
+														<% } %>
+													</div>
+												</div>
+											</div>
+										</div>
+										<h3 class="form-section marg_top5">Coverage</h3>
+
+										<div class="row">
+											<div class="col-md-6">
+												<div class="form-group">
+													<label class="col-md-4 control-label pad_leftright0">Dwelling</label>
+													<div class="col-md-7 pad_right0 margin-bottom-10">
+														<% if(popupData.propInsuranceResponse!=null && popupData.propInsuranceResponse.dwelling!=null){%>
+														<p class="form-control-static amount"><%-
+															popupData.propInsuranceResponse.dwelling %></p>
+														<% } else {%><p class="form-control-static amount">0</p>
+														<% } %>
+													</div>
+												</div>
+											</div>
+
+											<div class="col-md-6">
+												<div class="form-group">
+													<label class="col-md-4 control-label pad_leftright0">Other
+														Structures</label>
+													<div class="col-md-7 pad_right0 margin-bottom-10">
+														<% if(popupData.propInsuranceResponse!=null && popupData.propInsuranceResponse.otherStructures!=null){%>
+														<p class="form-control-static amount"><%-
+															popupData.propInsuranceResponse.otherStructures %></p>
+														<% } else {%><p class="form-control-static amount">0</p>
+														<% } %>
+													</div>
+												</div>
+											</div>
+
+										</div>
+										<div class="row">
+											<div class="col-md-6">
+												<div class="form-group">
+													<label class="col-md-4 control-label pad_leftright0">Personal
+														Property</label>
+													<div class="col-md-7 pad_right0 margin-bottom-10">
+														<% if(popupData.propInsuranceResponse!=null && popupData.propInsuranceResponse.personalProperty!=null){%>
+														<p class="form-control-static amount"><%-
+															popupData.propInsuranceResponse.personalProperty %></p>
+														<% } else {%><p class="form-control-static amount">0</p>
+														<% } %>
+													</div>
+												</div>
+											</div>
+
+											<div class="col-md-6">
+												<div class="form-group">
+													<label class="col-md-4 control-label pad_leftright0">Loss
+														of Use</label>
+													<div class="col-md-7 pad_right0 margin-bottom-10">
+														<% if(popupData.propInsuranceResponse!=null && popupData.propInsuranceResponse.lossOfUse!=null){%>
+														<p class="form-control-static amount"><%-
+															popupData.propInsuranceResponse.lossOfUse %></p>
+														<% } else {%><p class="form-control-static amount">0</p>
+														<% } %>
+													</div>
+												</div>
+											</div>
+
+										</div>
+										<div class="row">
+											<div class="col-md-6">
+												<div class="form-group">
+													<label class="col-md-4 control-label pad_leftright0">Premises
+														Liability</label>
+													<div class="col-md-7 pad_right0 margin-bottom-10">
+														<% if(popupData.propInsuranceResponse!=null && popupData.propInsuranceResponse.premisesLiability!=null){%>
+														<p class="form-control-static amount"><%-
+															popupData.propInsuranceResponse.premisesLiability %></p>
+														<% } else {%><p class="form-control-static amount">0</p>
+														<% } %>
+													</div>
+												</div>
+											</div>
+											<div class="col-md-6">
+
+												<div class="form-group">
+													<label class="col-md-4 control-label pad_leftright0">Medical
+														Payment</label>
+													<div class="col-md-7 pad_right0 margin-bottom-10">
+														<% if(popupData.propInsuranceResponse!=null && popupData.propInsuranceResponse.medicalPayment!=null){%>
+														<p class="form-control-static amount"><%-
+															popupData.propInsuranceResponse.medicalPayment %></p>
+														<% } else {%><p class="form-control-static">No Coverage</p><% } %>
+													</div>
+												</div>
+
+
+											</div>
+										</div>
+
+
+
+									</div>
+
+								</div>
+
+
+							</div>
+
+
+						</div>
+					</div>
+					<div class="clearfix"></div>
+					<div class="col-md-12">
+						<!-- BEGIN PORTLET-->
+						<div class="portlet box light-grey">
+							<div class="portlet-title">
+								<div class="caption">
+									<i class="fa fa-reorder"></i>Upload following 5 documents
+								</div>
+
+							</div>
+							<div class="portlet-body form">
+								<!-- BEGIN FORM-->
+								<form class="form-horizontal form-bordered" method="post"
+									id="INSURANCE_APPLICATION_POPUP_1_FORM"
+									enctype="multipart/form-data">
+									<div style="display: none;">
+										<input type="hidden" name="object"
+											value="<%- popupData.object %>"> <input type="hidden"
+											name="objectId" value="<%- popupData.objectId %>"> <input
+											type="hidden" name="taskKey" value="<%- popupData.taskKey %>">
+										<input type="hidden" name="propertyInsuranceId"
+											value="<%- popupData.propertyInsuranceId %>">
+									</div>
+									<div class="form-body">
+										<div class="form-group">
+											<label class="control-label col-md-3"><i
+												class="fa fa-file marg_right5"></i>Certificate of Issuance</label>
+											<div class="col-md-9">
+												<input type="file" name="insuranceCertificateDocs"
+													class="form-control" multiple style="padding-bottom: 40px;border: 1px solid transparent;">
+											</div>
+										</div>
+										<div class="form-group">
+											<label class="control-label col-md-3"><i
+												class="fa fa-file marg_right5"></i> Evidence of Insurance</label>
+											<div class="col-md-9">
+												<input type="file" name="insuranceEvidenceDocs" multiple
+													class="form-control" style="padding-bottom: 40px;border: 1px solid transparent;">
+
+											</div>
+										</div>
+										<div class="form-group">
+											<label class="control-label col-md-3"><i
+												class="fa fa-file marg_right5"></i> Insurance Declaration</label>
+											<div class="col-md-9">
+												<input type="file" name="insuranceDeclarationDocs" multiple
+													class="form-control" style="padding-bottom: 40px;border: 1px solid transparent;">
+
+											</div>
+										</div>
+										<div class="form-group">
+											<label class="control-label col-md-3"><i
+												class="fa fa-file marg_right5"></i>Insurance Application<span class="required">* </span></label>
+											<div class="col-md-9">
+												<input type="file" name="insuranceApplicationDocs" multiple
+													class="form-control" style="padding-bottom: 40px;border: 1px solid transparent;">
+
+											</div>
+										</div>
+										<div class="form-group last">
+											<label class="control-label col-md-3"><i
+												class="fa fa-file marg_right5"></i>Invoice</label>
+											<div class="col-md-9">
+												<input type="file" name="insuranceInvoiceDocs" multiple
+													class="form-control" style="padding-bottom: 40px;border: 1px solid transparent;">
+
+											</div>
+										</div>
+									</div>
+									<div class="clearfix"></div>
+
+									<div class="col-md-12 margin-bottom-15">
+
+
+										<div class="form-group">
+											<label class="control-label margin-bottom-15"> <i
+												class="fa fa-comment-o "></i> Comments
+											</label><br>
+
+											<textarea class="form-control" name="comments"></textarea>
+										</div>
+
+
+									</div>
+
+								</form>
+								<!-- END FORM-->
+							</div>
+						</div>
+						<!-- END PORTLET-->
+					</div>
+
+
+
+					<!-- <div class="clearfix"></div>
+
+					<div class="col-md-12 margin-bottom-15">
+
+
+						<div class="form-group">
+							<label class="control-label margin-bottom-15"> <i
+								class="fa fa-comment-o "></i> Comments
+							</label><br>
+
+							<textarea class="form-control" name="comments"></textarea>
+						</div>
+
+
+					</div> -->
+
+				</div>
+			</div>
+			<div class="modal-footer">
+				<button class="btn blue" id="insuranceAppSubmitButton"
+					type="button">Save</button>
+				<button data-dismiss="modal" class="btn default" type="button">
+					Cancel</button>
+			</div>
+
+		</div>
+
+	</div>
+	<!-- /.modal-content -->
+
+	<!-- /.modal-dialog -->
+</div>

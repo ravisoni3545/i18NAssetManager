@@ -1,0 +1,107 @@
+<div class="modal fade" id="deletePhotoConfirmationModal" tabindex="-1" role="dialog"
+        aria-hidden="true">
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                    </button>
+                    <h4 class="modal-title">
+                        <i class="fa fa-trash-o"></i> Delete Photo</h4>
+                </div>
+                <div class="modal-body">
+                    <p>
+                        Are you sure you want to delete this Photo?</p>
+                </div>
+                <div class="modal-footer">
+                    <button name="deleteConfirm" type="button" class="btn blue" data-dismiss="modal">
+                        Yes</button>
+                    <button type="button" class="btn default" data-dismiss="modal">
+                        No</button>
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+<div class="col-md-offset-3 col-lg-7">
+                                                  
+<button name="addFilesBtn" class="btn green fileinput-button">
+    <i class="fa fa-plus"></i>
+    <span>
+        Add files...
+    </span>
+</button>
+</br>
+</br>
+
+  <div id="fileuploadbox" class="form-group uploadDocDiv" display="none">
+    <form method="post" action="<%-otherInfo.apilink%>"enctype="multipart/form-data"  id="uploadForm" >
+
+            <input style="display: none" name="propertyId" id="propertyId" value="<%-otherInfo.propertyId%>"></input>
+            <input id="files" name="files" multiple type="file">
+        </br>
+             <input name="startUploadBtn" class="btn blue" type="submit" value="Upload">
+        </span>
+    </form>
+    </div>
+    <div display="none" id="response"></div>
+
+    
+<!-- The global file processing state -->
+<br>
+<br>
+
+                                        
+<table role="presentation" class="table table-striped clearfix">
+    <tbody class="files">
+        <% 
+                $.each(thePhotos.photoLinks, function(k,v){
+            %>          
+        <tr>
+            <td>
+               <span class="preview  thumbnail">
+                   <a src="<%-v.thumbnailLink%>"  download="<%-v.title%>"><img src="<%-v.thumbnailLink%>"></a> 
+                </span>
+            </td>
+            
+            <td>
+             <p class="name">
+                 <a href="<%-v.originalLink%>"  download="<%-v.originalLink%>" ><%=v.originalLink%></a>
+            </p>
+
+            </td>
+            
+            <td>
+                 <button href="#deletePhotoConfirmationModal" data-toggle="modal" class="btn btn-danger delete" photo-id="<%-v.photoid%>" name="deleteBtn">
+                <i class="fa fa-trash-o"></i>
+                <span>Delete</span>
+                </button>
+
+            </td>
+        </tr>
+    <%
+
+        });
+
+            %>
+        </tbody>
+    </table>
+                                        
+<div class="panel panel-success">
+<div class="panel-heading">
+    <h3 class="panel-title">Notes</h3>
+</div>
+<div class="panel-body">
+    <ul>
+        <li>
+            Make sure to "Make Pre-Select Property" on the <b>Details</b> tab before starting to upload photos
+        </li>
+        <li>
+            Only image files (<strong>JPG/JPEG, GIF, PNG</strong>) are allowed for photos.
+        </li>
+        <li>
+            Upload video links and documents using their respective tabs.
+        </li>
+    </ul>
+</div>
+</div>

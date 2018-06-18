@@ -1,0 +1,37 @@
+<div>
+	<h4 class="margin-bottom-15 borb">
+		<i class="fa fa-dollar pull-left marg_top5"></i>Financial Information
+	</h4>
+
+	<div id="financial-view" class="financialtoggle">
+		<div class="row margin-bottom-25">
+			<div class="col-md-3">
+				<!-- <div class="summ-view"> -->
+				<strong>Purchase Price</strong><br>
+				<%if(investmentResponse.purchasePrice){%> <span class="amount">
+					<%=investmentResponse.purchasePrice%> </span> <%}%>
+				<!-- </div> -->
+			</div>
+			<div class="col-md-3">
+				<strong>Preliminary Rehab Estimate</strong><br>
+				<%if(rehabData.propertyResponse.preliminaryRehabEstimate){%> <span
+					class="amount">
+					<%=rehabData.propertyResponse.preliminaryRehabEstimate%> </span> <%}%>
+			</div>
+			<div class="col-md-3">
+				<strong>Approved Rehab Budget</strong><br>
+				<%if(rehabData.approvedRehabBudget ){%> <span class="amount">
+					<%= rehabData.approvedRehabBudget %> </span> <%}%>
+			</div>
+			<div class="col-md-3">
+				<strong>Actual Rehab Cost</strong><br>
+				<%if(rehabData.actualRehabCost){%> <span class="amount">
+					<%=rehabData.actualRehabCost%> </span> <%}%>
+			</div>
+		</div>
+		<div class="row margin-bottom-25">
+			<div class="col-md-3" id="investorDepositDiv"></div>
+		</div>
+	</div>
+
+</div>

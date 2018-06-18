@@ -1,0 +1,288 @@
+<div id="alertFailure" class="alert alert-danger display-hide">
+	<button class="close" data-close="alert" onclick="$(this).parent().hide();return false;"></button>
+	<text>Error in deleting contact.</text>
+</div>
+<div id="alertFailureVendor" class="alert alert-danger display-hide">
+	<button class="close" data-close="alert" onclick="$(this).parent().hide();return false;"></button>
+	<text>Vendor contact must be deleted from Vendor Profile.</text>
+</div>
+<div class="tab-pane" id="tab_6_7">
+    <div class="addbtnposition pull-right margin-bottom-10">
+        <!-- <input id="add_selected" class="btn green" type="button" value="Add selected properties to the recommended list"> -->
+        <a href="#contact-form1" id="addPopUp" data-toggle="modal" class="textcolorwhite btn green"><i title="Add New Contact" data-toggle="tooltip" class="fa fa-plus hopNameTooltip"></i> </a>
+    </div>
+
+
+
+	<div class="panel-group accordion table-responsive" id="accordion3">
+		<table
+			class="table table-striped table-bordered table-advance table-hover tablegreen">
+			<thead>
+				<tr>
+					<th>Type</th>
+					<th>Name</th>
+					<th>Email</th>
+					<th>Phone No.</th>
+					<th>SSN</th>
+					<th>Date of Birth</th>
+					<th>Actions</th>
+
+					</th>
+				</tr>
+			</thead>
+			<tbody>
+				<% _.each(contactModels, function( model ){ %>
+
+							<tr>
+								<td><%- model.attributes.contactType %></td>
+								<td>
+									<% if(model.attributes.companyName) { %>
+									<%- model.attributes.contactName + ' (' + model.attributes.companyName +')'%>
+									<% } else { %>
+									<%- model.attributes.contactName %>
+									<% } %>
+								</td>
+
+								<td><%- model.attributes.email %></td>
+
+								<td>
+									<% if(model.attributes.phoneHome) { %>
+									<%- model.attributes.phoneHome %>
+									<% } else { %>
+									<%- model.attributes.phoneMobile %>
+									<% } %>
+								</td>
+								<td>
+									<% if(model.attributes.ssn) { %>
+									<%- model.attributes.ssn %>
+									<% } %>
+								</td>
+								<td>
+									<% if(model.attributes.dateOfbirth) { %>
+									<%- model.attributes.dateOfbirth %>
+									<% } %>
+								</td>
+								<td>
+									<% if(model.attributes.isEditable=='Yes') { %>
+									<!-- <a href="#contact-form1" data-toggle="modal" class="config"
+							title="Add a Contact"> --> <a class="edit_blue editContact"
+									style="cursor: pointer" title="Edit"
+									data-contactid="<%- model.attributes.contactId %>"><i
+										class="fa fa-edit"
+										data-contactid="<%- model.attributes.contactId %>"></i> </a> <a
+									href="#form-delete1" data-toggle="modal"
+									class="delete_red deleteContact" title="Delete"
+									data-contactid="<%- model.attributes.contactId %>"><i
+										class="fa fa-trash-o"
+										data-contactid="<%- model.attributes.contactId %>"> </i></a>
+									<% }  %>
+								</td>
+							</tr>
+
+							<% }); %>
+
+
+			</tbody>
+		</table>
+	</div>
+</div>
+
+<div class="modal fade" id="contact-form1" tabindex="-1" role="dialog"
+	aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<form class="form-horizontal" id="contactForm">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal"
+						aria-hidden="true"></button>
+					<div class="col-md-3" style="padding-right: 0px;">
+						<h4 class="modal-title">Add a Contact</h4>
+					</div>
+
+					<div class="col-md-4" style="padding-left: 0px;">
+						<!-- <select class="bs-select form-control" id="contactType">
+					<option value="stco">Select Type</option>
+					<option value="Primary Contact">Primary Contact</option>
+					
+					<option value="Billing Contact">Billing Contact</option>
+					<option value="Legal Contact">Legal Contact</option>
+					<option value="Technical Contact">Technical Contact</option>
+					<option value="After Hour Contact">After Hour Contact</option>
+					</select> -->
+						<div id="status"></div>
+					</div>
+
+					<div id="primaryco" class="col-md-5" style="display: block;">
+						<!-- <input type="checkbox"> 
+                                                                            Create User Account?  -->
+					</div>
+					<div id="billingco" class="col-md-5" style="display: none;">
+						<input id="copyPrimaryContact" type="checkbox"> Same as
+						Primary Contact?
+
+					</div>
+					<!-- <div id="selectco"></div>
+				<div id="legalco"></div>
+				<div id="technicalco"></div>
+				<div id="afterho"></div> -->
+
+
+
+
+					<div class="clearfix"></div>
+
+				</div>
+				<div class="modal-body">
+					<!-- start form -->
+
+					<div class="row">
+						<div class="col-md-12">
+
+							<!-- start primary contact -->
+							<div>
+								<!-- BEGIN SAMPLE TABLE PORTLET-->
+
+
+
+								<div class="form-body">
+									<div id="formAlertFailure" class="alert alert-danger display-hide">
+										<button class="close" data-close="alert"></button>
+										You have some form errors. Please check below.
+									</div>
+									<div class="alert alert-success display-hide">
+										<button class="close" data-close="alert"></button>
+										Your form validation is successful!
+									</div>
+									<div class="clearfix"></div>
+									<!-- start optional fields 2 -->
+									<div>
+										<div class="col-md-5">
+											<div class="form-group">
+												<label class="control-label"> Contact Name <span
+													class="required">* </span>
+												</label> <input name="contactName" data-required="1"
+													class="form-control" type="text">
+											</div>
+											<div class="form-group">
+												<label class="control-label"> Address 1 </label> <input
+													name="address1" data-required="2" class="form-control"
+													type="text">
+											</div>
+											<div class="form-group">
+												<label class="control-label"> Address 2 </label> <input
+													name="address2" class="form-control" type="text">
+											</div>
+											<div class="form-group">
+												<label class="control-label"> City </label> <input
+													name="city" data-required="3" class="form-control"
+													type="text">
+											</div>
+											<div class="form-group">
+												<label class="control-label"> State </label>
+												<div id="states"></div>
+											</div>
+											<div class="form-group dob">
+												<label class="control-label">Date of Birth</label>
+												<div class="input-group input-medium date date-picker"
+													data-date="12-02-2012" data-date-format="mm-dd-yyyy"
+													data-date-viewmode="years">
+													<input class="form-control" readonly="" name="dateOfbirth"
+														type="text"> <span class="input-group-btn">
+														<button class="btn default" type="button">
+															<i class="fa fa-calendar"></i>
+														</button>
+													</span>
+												</div>
+											</div>
+											<div class="clearfix"></div>
+
+										</div>
+										<div class="col-md-2"></div>
+										<div class="col-md-5">
+
+											<div class="form-group">
+												<label class="control-label"> Postal Code </label> <input
+													name="postalCode" data-required="5" class="form-control"
+													type="text">
+											</div>
+
+											<div class="form-group">
+												<label class="control-label"> Email <span
+													class="required">* </span>
+												</label> <input name="email" data-required="6" class="form-control"
+													type="text">
+											</div>
+											<div class="form-group">
+												<label class="control-label"> Phone Number 1 <span
+													class="required">* </span>
+												</label> <input name="phoneHome" data-required="6"
+													class="form-control" type="text">
+											</div>
+											<div class="form-group">
+												<label class="control-label"> Phone Number 2 </label> <input
+													name="phoneWork" data-required="6" class="form-control"
+													type="text">
+											</div>
+											<div class="form-group">
+												<label class="control-label"> Fax </label> <input name="fax"
+													data-required="6" class="form-control" type="text">
+											</div>
+											<div class="form-group ssn">
+												<label class="control-label">SSN </label><br> <input
+													type="text" class="form-control" name="ssn">
+											</div>
+
+										</div>
+										<div class="clearfix"></div>
+
+									</div>
+									<!-- end optional fields 2-->
+								</div>
+								<div class="clearfix"></div>
+
+
+
+
+
+								<!-- END SAMPLE TABLE PORTLET-->
+							</div>
+							<!-- end primary contact -->
+
+
+						</div>
+					</div>
+
+					<!-- end form -->
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn blue" id="addContact">
+						Add</button>
+					<button type="button" class="btn default" data-dismiss="modal">
+						Close</button>
+				</div>
+			</form>
+		</div>
+		<!-- /.modal-content -->
+	</div>
+	<!-- /.modal-dialog -->
+</div>
+<div class="modal fade bs-modal-sm" id="form-delete1" tabindex="-1"
+	role="dialog" aria-hidden="true">
+	<div class="modal-dialog modal-sm">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal"
+					aria-hidden="true"></button>
+				<h4 class="modal-title">Delete</h4>
+			</div>
+			<div class="modal-body">Are you sure want to delete this?</div>
+			<div class="modal-footer">
+				<button type="button" class="btn blue" id="confirmDeleteContact">Yes</button>
+				<button type="button" class="btn default" data-dismiss="modal">No</button>
+			</div>
+		</div>
+		<!-- /.modal-content -->
+	</div>
+	<!-- /.modal-dialog -->
+</div>
+<div id="edit-contact"></div>

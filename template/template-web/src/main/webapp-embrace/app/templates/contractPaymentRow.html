@@ -1,0 +1,32 @@
+<tr name="contractPaymentRow">
+	<td width="25%"><select class="form-control" name="feeType"> <%
+			_(feeType).each(function(type) { %>
+			<option value="<%= type.id %>"><%= type.codeDisplay%></option> <% });
+			%>
+	</select></td>
+	<td width="25%"><select class="form-control"
+		onchange="showinputs1(this.value)" name="paymentType"> <%
+			_(paymentType).each(function(payment) { %>
+			<option value="<%= payment.id %>"><%= payment.codeDisplay%></option>
+			<% }); %>
+	</select></td>
+	<td width="23%">
+		<span id="inputfee1" class="input-group">
+			<span class="input-group-addon"><i class="fa fa-dollar"></i></span>
+			<input type="text"
+				class="form-control currencyTable" name="flatFee">
+			</span>
+			<span name="flatFeeErrorMessage" style="color:red;">
+		</span>
+	</td>
+	<td width="22%">
+		<span id="percent1"> <input type="text"
+				class="form-control" name="percentage" disabled>
+		</span>
+		<span name="percentageErrorMessage" style="color:red;">
+		</span>
+	</td>
+	<td width="5%" class="pad_top16"><a data-toggle="modal" class="delete_red"
+		title="Delete" name="deletePaymentRow"> <i class="fa fa-trash-o"></i>
+	</a></td>
+</tr>

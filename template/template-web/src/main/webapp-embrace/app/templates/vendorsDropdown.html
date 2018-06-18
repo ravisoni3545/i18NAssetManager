@@ -1,0 +1,10 @@
+<select name="<%=name%>" class="form-control" id="<%=id%>">
+		<%if(addBlankFirstOption){%>
+			<option value=""></option>
+		<%}%>
+		<%_(vendors).each(function(vendor) { %>
+			<option value="<%= vendor.orgId %>">
+				<%= vendor.orgName%>
+			</option>
+		<% }); %>
+</select>

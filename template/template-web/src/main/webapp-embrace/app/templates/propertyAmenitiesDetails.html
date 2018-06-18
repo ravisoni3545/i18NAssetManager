@@ -1,0 +1,116 @@
+<div class="portlet box grey">
+	<div class="portlet-title">
+        <div class="caption">
+            <i class="fa fa-cogs"></i>Amenities
+        </div>
+    </div>
+</div>
+<div id="amenitiesErrorMessage" class="alert alert-danger display-hide">
+		<button class="close" data-close="alert" onclick="$(this).parent().hide();return false;"></button>
+		<text></text>
+</div>
+<form id="amenitiesForm">
+		<div class="col-md-6">
+		    <div class="form-group">
+				<label class="control-label" style="text-align: left;">
+				Cooling:</label>
+				<input class="form-control" type="text"
+				name="airCondition" value="<%- theData.propertyDetails.airCondition %>">
+			</div>
+	    </div>
+	    <div class="col-md-6">
+		    <div class="form-group">
+				<label class="control-label" style="text-align: left;">
+				Central Air Wall Unit:</label>
+				<input class="form-control" type="text"
+				name="centralairWallunit" value="<%- theData.propertyDetails.centralairWallunit %>">
+			</div>
+	    </div>
+	    <div class="col-md-6">
+		    <div class="form-group">
+				<label class="control-label" style="text-align: left;">
+				Heating:</label>
+				<input class="form-control" type="text"
+				name="heating" value="<%- theData.propertyDetails.heating %>">
+			</div>
+	    </div>
+	    <div class="col-md-6">
+		    <div class="form-group">
+				<label class="control-label" style="text-align: left;">
+				Roof:</label>
+				<input class="form-control" type="text"
+				name="roof" value="<%- theData.propertyDetails.roof %>">
+			</div>
+	    </div>
+	    <div class="col-md-6">
+		    <div class="form-group">
+				<label class="control-label" style="text-align: left;">
+				Pool:</label>
+				<input class="form-control" type="text"
+				name="pool" value="<%- theData.propertyDetails.pool %>">
+			</div>
+	    </div>
+	    <div class="col-md-6">
+		    <div class="form-group">
+				<label class="control-label" style="text-align: left;">
+				Exterior:</label>
+				<input class="form-control" type="text"
+				name="exterior" value="<%- theData.propertyDetails.exterior %>">
+			</div>
+	    </div>
+	    
+	    <div class="col-md-6">
+		    <div class="form-group">
+				<label class="control-label" style="text-align: left;">
+				Parking Spaces:</label>
+				<input class="form-control" type="text"
+				name="parkingSpaces" value="<%- theData.propertyDetails.parkingSpaces %>">
+			</div>
+	    </div>
+	    <div class="col-md-6">
+		    <div class="form-group">
+				<label class="control-label" style="text-align: left;">
+				Flooring:</label>
+				<input class="form-control" type="text"
+				name="flooring" value="<%- theData.propertyDetails.flooring %>">
+			</div>
+	    </div>
+
+         <div class="col-md-6">
+		    <div class="form-group">
+				<label class="control-label" style="text-align: left;">
+				Parking Spaces Type:</label>
+				<input class="form-control" type="text"
+				name="parkingSpacestype" value="<%- theData.propertyDetails.parkingSpacestype %>">
+			</div>
+	    </div>
+	    <div class="col-md-6">
+		    <div class="form-group">
+				<label class="control-label" style="text-align: left;">
+				Amenities:</label>
+				<input class="form-control" type="text"
+				name="amenities" value="<%- theData.propertyDetails.amenities %>">
+			</div>
+	    </div>                  
+
+		<div class="col-md-6">
+		    <div class="form-group">
+				<label class="control-label" style="text-align: left;">
+				View:</label>
+				<input class="form-control" type="text"
+				name="view" value="<%- theData.propertyDetails.view %>">
+			</div>
+	    </div>
+	    <div class="col-md-6">
+	    </div> 
+</form>
+	     <div class="col-md-12">   
+			 <div class="col-md-2">
+			 </div>  
+			<div class="form-group col-md-8">
+				<button type="button" name="cancelBtn" class="btn default">
+					CANCEL</button>
+				<button type="button" id="saveAmenitiesModalBtn" class="btn blue">
+					<i class="fa fa-check"></i>SAVE</button>
+			</div>
+		</div>

@@ -1,0 +1,183 @@
+<div class="modal-dialog">
+		<div class="modal-content">
+			<form  method="post" id="editInsuranceForm"  enctype="multipart/form-data" class="form-horizontal"> 
+                                                         
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal"
+							aria-hidden="true"></button>
+						<h4 class="modal-title">Edit Insurance Information</h4>
+					</div>
+					<div class="modal-body">
+						<!-- form start -->
+	
+						<div class="form-body">
+							<div class="alert alert-danger display-hide">
+								<button class="close" data-close="alert"></button>
+								You have some form errors. Please check below.
+							</div>
+							<div class="alert alert-success display-hide">
+								<button class="close" data-close="alert"></button>
+								Your form validation is successful!
+							</div>
+							<div class="col-md-5">
+								<div class="form-group">
+									<label class="control-label"> Insurance Type <span
+										class="required">* </span>
+									</label> <select class="form-control" name="insuranceType">
+									 <%_(codes).each(function(code) { %>
+										<option value="<%= code.id %>"
+												<% if(code.id==insuranceModel.attributes.tblcodeList.id){ %>
+														selected="selected"
+													<%}%>
+											>
+											<%= code.codeDisplay%>
+										</option>
+										<% }); %>
+									</select>
+								</div>
+								<div class="form-group">
+									<label class="control-label"> Coverage Amount <span
+										class="required">* </span>
+									</label>
+									<div class="input-group col-md-12" style="padding-right:35px;">
+                                		<span class="input-group-addon"><i class="fa fa-dollar"></i></span> 
+										<input name="coverageAmountUsdString" data-required="6" class="form-control currency"
+										style="margin-right: 159px;"	type="text" value="<%- insuranceModel.attributes.coverageAmountUsdString %>">
+                            		</div>
+									
+								</div>
+
+								<div class="form-group">
+	                                <label class="control-label">
+	                                    Insurance Expiration Date
+	                                </label>
+	                                <div class="input-group date date-picker" data-date="" data-date-format="mm-dd-yyyy"
+	                                    data-date-viewmode="years">
+	                                    <input class="form-control" readonly="" type="text" name="expirationDate" value="<%- insuranceModel.attributes.expirationDateString%>">
+	                                    <span class="input-group-btn">
+	                                        <button class="btn default" type="button">
+	                                            <i class="fa fa-calendar"></i>
+	                                        </button>
+	                                    </span>
+	                                </div>
+								 </div>
+	
+								<div class="form-group last">
+									<label class="control-label"> States Covered</label> <select
+										id="selects1_samples113" class="form-control select2" multiple="multiple" name="statesCovered">
+										<optgroup label="">
+											<% _(states).each(function(state) { %>
+											<option value="<%= state.code %>"
+												<% if( _.indexOf( addedState,state.name)>-1){ %>
+													selected="selected"
+												<%}%>
+											><%= state.name %></option>
+											<% }); %>
+										</optgroup>
+									</select>
+								</div>
+							</div>
+							<div class="col-md-2"></div>
+							<div class="col-md-5">
+								<div class="form-group">
+									<label class="control-label"> Insured By <span
+										class="required">* </span>
+									</label>
+									 <input name="insuranceProvider" data-required="6" class="form-control"
+										type="text" value="<%- insuranceModel.attributes.insuranceProvider %>">
+								</div>
+								<div class="form-group">
+	                                <label class="control-label">
+	                                    Insurance Effective Date
+	                                </label>
+	                                <div class="input-group date date-picker" data-date="" data-date-format="mm-dd-yyyy"
+	                                    data-date-viewmode="years">
+	                                    <input class="form-control" readonly="" type="text" name="dateOfIssue" value="<%- insuranceModel.attributes.dateOfIssueString%>">
+	                                    <span class="input-group-btn">
+	                                        <button class="btn default" type="button">
+	                                            <i class="fa fa-calendar"></i>
+	                                        </button>
+	                                    </span>
+	                                </div>
+								 </div>
+								<div class="form-group">
+									<label class="control-label" id="editfileLabel"> Upload Insurance Document
+										<span class="required">* </span>
+									</label> 
+										<input name="insuranceFiles"  type="file" class="form-control" style="padding-top: 15px;
+                                                                        padding-bottom: 50px;" id="insuranceFiles">
+								</div>
+							</div>
+	
+							<div class="clearfix"></div>
+	
+							<h4 class="modal-title margin-bottom-15">Insurance Company Contact</h4>
+							<div class="col-md-5">
+								<div class="form-group">
+									<label class="control-label"> Name </label> 
+									<input type="text"
+										name="contactName" class="form-control" value="<%- insuranceModel.attributes.tblcontact.firstName %>">
+								</div>
+								<div class="form-group">
+									<label class="control-label"> City </label> <input type="text"
+										name="contactCity" class="form-control" value="<%- insuranceModel.attributes.tblcontact.city %>">
+								</div>
+								<div class="form-group">
+									<label class="control-label"> Zip </label> <input type="text"
+										name="contactZip" class="form-control" value="<%- insuranceModel.attributes.tblcontact.postalCode %>">
+								</div>
+								<div class="form-group">
+									<label class="control-label"> Email </label> <input type="text"
+										name="contactEmail" class="form-control" value="<%- insuranceModel.attributes.tblcontact.email %>">
+								</div>
+	
+							</div>
+	
+							<div class="col-md-2"></div>
+	
+	
+							<div class="col-md-5">
+								<div class="form-group">
+									<label class="control-label"> Address</label> <input
+										name="contactAddress" class="form-control" type="text" value="<%- insuranceModel.attributes.tblcontact.address1 %>">
+								</div>
+								<div class="form-group">
+									<label class="control-label"> State</label> 
+									<select name="contactState" data-required="4" class="form-control">
+										<% _(states).each(function(state) { %>
+												<option value="<%= state.name %>"
+													<% if(state.name==insuranceModel.attributes.tblcontact.state){ %>
+													selected="selected"
+												<%}%>
+												>
+												<%= state.name %></option>
+											<% }); %>	
+									</select>
+								</div>
+								<div class="form-group">
+									<label class="control-label"> Phone</label> <input type="text"
+										name="contactPhone" class="form-control"  value="<%- insuranceModel.attributes.tblcontact.phoneWork %>">
+								</div>
+								<div class="form-group">
+									<label class="control-label"> Fax</label> <input type="text"
+										name="contactFax" class="form-control" value="<%- insuranceModel.attributes.tblcontact.fax %>">
+								</div>
+	
+							</div>
+	
+						</div>
+	
+						<div class="clearfix"></div>
+	
+						<!-- form end -->
+					</div>
+					<div class="modal-footer">
+                    <button type="button" class="btn blue"  id="editInsuranceButton">
+                        Save</button>
+                    <button type="button" class="btn default" data-dismiss="modal">
+                        Close</button>
+                </div> 
+			</form>
+		</div>
+		<!-- /.modal-content -->
+	</div>

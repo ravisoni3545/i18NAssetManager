@@ -1,0 +1,162 @@
+<tr>
+	<td class="hiddenRow" colspan="6">
+		<div id="rightbidagg_1" class="accordian-body collapse">
+			<div class="clearfix well" style="margin-bottom: 0;">
+				<table class="table table-bordered table-advance table-hover">
+					<thead>
+						<tr>
+							<th>Offer Details</th>
+							<th>Offer Amount</th>
+							<th>Upload Agreement</th>
+							<th>Comments</th>
+						</tr>
+					</thead>
+					<tbody id="bidOfferBody">
+						<% var i=0; %> <% _.each(offers, function( offerObj ){ %> <% i++;
+						%>
+						<tr>
+
+							<td><input type="hidden" name="offerId"
+								value="<%= offerObj.offerId %>"> Offer <%= i %></td>
+							<td><%= offerObj.offerAmount %></td>
+
+							<td>
+								<form class="rightbid-form-with-doc" method="post"
+									enctype="multipart/form-data">
+										<% if(!offerObj.embraceEnvelopeId) { %>
+									<input type="file" class="form-control"
+										style="padding-bottom: 40px;" name="rightBidAgreement">
+										<% } %>
+									<div class="marg_top20">
+										<input type="hidden" name="object" value="<%= object %>"> <input
+											type="hidden" name="objectId" value="<%= objectId %>"> <input type="hidden"
+											name="offerId" value="<%= offerObj.offerId %>">
+											<input type="hidden" name="docType" value="Plain PA">
+										<div class="docusignEnvelopeArea">
+<!-- Start Docusign envelope --------------------------------------------------------------------------------------------------------------------->
+										<% if(offerObj.embraceEnvelopeId) { %>
+<fieldset>
+	<legend>Docusign Envelope
+		<button type="button" style="display: inline; padding-bottom: 4px;"
+			class="btn launchManagementConsole pull-right"
+			data-envelopeId="<%-offerObj.embraceEnvelopeId%>">
+			<i class="fa fa-briefcase marg_right5"></i>Management Console
+		</button>
+	</legend>
+	<table
+		class="table table-striped table-bordered table-advance table-hover">
+		<thead>
+			<tr>
+				<th>Status</th>
+				<th>Actions</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>
+					<span class="envelopeStatus"><%-offerObj.envelopeStatus%></span>
+					<button type="button" title="Refresh Status"
+						class="btn updateEnvelopeInfoButton pull-right"
+						data-envelopeId="<%-offerObj.embraceEnvelopeId%>">
+						<i class="fa fa-refresh marg_right5"></i>
+					</button>
+				</td>
+				<td><% if(offerObj.envelopeStatus=='created') { %>
+						<button type="button"
+							class="btn green tagAndSendEnvelopeButton"
+							data-envelopeId="<%-offerObj.embraceEnvelopeId%>">
+							<i class="fa fa-tags marg_right5"></i>Tag & Send
+						</button>
+					<% } else if(offerObj.envelopeStatus=='in process') { %>
+						<button type="button"
+							class="btn green sendRecipientLinkButton"
+							data-envelopeId="<%-offerObj.embraceEnvelopeId%>">
+							<i class="fa fa-share marg_right5"></i>Send Recipient Link
+						</button>
+					<% } else if(offerObj.envelopeStatus=='sent') { %>
+						<button type="button"
+							class="btn sendRecipientLinkButton"
+							data-envelopeId="<%-offerObj.embraceEnvelopeId%>">
+							<i class="fa fa-share marg_right5"></i>Send For Signature
+						</button>
+						<% if(offerObj.envelopeLastSent) { %>
+							<div style="font-size: small;color: gray;">Last sent on <%-offerObj.envelopeLastSent%></div>
+						<% } %>
+					<% } else if(offerObj.envelopeStatus=='locked') { %>
+						<button type="button"
+							class="btn launchManagementConsole"
+							data-envelopeId="<%-offerObj.embraceEnvelopeId%>">
+							<i class="fa fa-briefcase marg_right5"></i>Unlock Envelope
+						</button>
+					<% } %>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	<div class='envelopeMessage'></div>
+</fieldset>
+<% } else { %>
+	<button type="button" class="btn green createEnvelopeButton pull-right" disabled>
+		<i class="fa fa-file marg_right5"></i>Upload to DocuSign
+	</button>
+	<!-- 				<a href="http://www.apple.com" data-featherlight="iframe">Tag & Send Document for Signature</a> -->
+	<div class="envelopeMessage  pull-right"
+		style="line-height: 25px; margin-right: 5px;"></div>
+<% } %>
+ <!-- option lightbox start -->
+
+										
+<!-- End Docusign envelope ----------------------------------------------------------------------------------------------------------------------------->
+										
+										</div>
+									</div>
+								</form>
+							</td>
+							<td><div>
+									<div class="form-group">
+										<label class="control-label"> Comments </label> <br>
+										<textarea class="form-control" name="comments"
+											placeholder="Type your comments here..."></textarea>
+									</div>
+								</div></td>
+						</tr>
+						<% }); %>
+
+					</tbody>
+					<tfoot>
+					</tfoot>
+				</table>
+
+
+
+				<div class="form-group col-md-8"
+					data-targetaction="<%= targetAction %>">
+					<button class="btn default cancelToggleBtnClass" type="button">
+						CANCEL</button>
+					<button class="btn blue saveToggleBtnClass" type="button">SAVE</button>
+				</div>
+
+			</div>
+		</div>
+	</td>
+</tr>
+<div class="modal fade bs-modal-sm" id="optionCloseTagAndSend" tabindex="-1" role="dialog" aria-hidden="true">
+	<div class="modal-dialog modal-sm">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+				<h4 class="modal-title">Delete</h4>
+			</div>
+			<div class="modal-body">
+				  Make sure you have completed adding tags and sending the envelope. Incomplete envelopes will go in locked state.
+				  Are you sure you want to close this?
+			</div>
+			<div class="modal-footer">
+				<button id="closeTagAndSendConfirmationButton" type="button" class="btn blue">Yes</button>
+				<button id="closeTagAndSendDeclineButton" type="button" class="btn default" data-dismiss="modal">No</button>
+			</div>
+		</div>
+		<!-- /.modal-content -->
+	</div>
+	<!-- /.modal-dialog -->
+</div>

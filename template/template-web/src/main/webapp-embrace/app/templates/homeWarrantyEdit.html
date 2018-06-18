@@ -1,0 +1,90 @@
+<div class="modal fade with-popover" id="HOME_WARRANTY_EDIT_POPUP" tabindex="-1"
+	role="basic" aria-hidden="true">
+	<div class="modal-dialog modal-md">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal"
+					aria-hidden="true"></button>
+				<h4 class="modal-title">Home Warranty</h4>
+			</div>
+			<div class="modal-body">
+				<form id="homeWarrantyEditForm" method="post" enctype="multipart/form-data">
+					<div class="col-md-12">
+						<div class="col-md-6">
+							<div class="form-group">
+								<label class="control-label">Company Name  <span class="required">* </span></label>
+								<div class="input-group">
+									<input class="form-control text-left" placeholder=""
+										type="text" name="homeWarrantyCompanyName" style="width: 240px;" value="<%- warrantyData.homeWarrantyCompanyName%>">
+								</div>
+							</div>
+						</div>
+
+						<div class="col-md-6">
+							<div class="form-group">
+								<label class="control-label">Policy Number <span class="required">* </span></label>
+								<div class="input-group">
+									<input class="form-control text-left" placeholder=""
+										type="text" name="policyNumber" style="width: 240px;" value="<%- warrantyData.policyNumber%>">
+								</div>
+							</div>
+						</div>
+					</div>
+
+
+					<div class="col-md-12">
+						<div class="form-group col-md-6">
+							<label class="control-label" style="text-align: left;">
+								Valid From <span class="required">* </span> </label>
+							<div class="input-group input-medium date date-picker"
+								data-date="" data-date-format="mm-dd-yyyy"
+								data-date-viewmode="years">
+								<input class="form-control" readonly="" placeholder=""
+									type="text" id="validFromDate" name="validFromDate" value="<%- warrantyData.validFromDate%>"> <span
+									class="input-group-btn">
+									<button class="btn default" type="button">
+										<i class="fa fa-calendar"></i>
+									</button>
+								</span>
+							</div>
+						</div>
+						<div class="form-group col-md-6">
+							<label class="control-label" style="text-align: left;">
+								Valid To  <span class="required">* </span></label>
+							<div class="input-group input-medium date date-picker unrestricted"
+								data-date="" data-date-format="mm-dd-yyyy"
+								data-date-viewmode="years">
+								<input class="form-control" readonly="" placeholder=""
+									type="text" id="validToDate" name="validToDate" value="<%- warrantyData.validToDate%>"> <span
+									class="input-group-btn">
+									<button class="btn default" type="button">
+										<i class="fa fa-calendar"></i>
+									</button>
+								</span>
+							</div>
+						</div>
+					</div>
+
+					<div class="col-md-12">
+						<div class="form-group col-md-6">
+							<label class="control-label"> Upload Document
+								<span id="documentLabel"></span>
+								<a class="margin-right-10 fa fa-paperclip font14 showDocumentTooltip_2 assetHeaderToolTip" style="cursor: pointer;" data-object="49" data-objectid="<%- investmentId%>" data-taskkey_1="HOME_WARRANTY" data-html="true" data-show="true"></a>
+							</label><br> 
+							<input name="warrantyDocument" class="form-control" type="file" style="padding-bottom: 40px;">
+						</div>
+					</div>
+
+					<div class="clearfix"></div>
+				</form>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn blue" id="homeWarrantyEditSave">SAVE</button>
+				<button type="button" id="cancelButton" class="btn default" data-dismiss="modal">CANCEL</button>
+			</div>
+		</div>
+		<!-- /.modal-content -->
+	</div>
+	<!-- /.modal-dialog -->
+</div>
+<!-- end terms rate lightbox -->

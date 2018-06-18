@@ -1,0 +1,184 @@
+<% if(popupData.embraceEnvelopeId) { %>
+<fieldset>
+	<legend>Docusign Envelope
+		<button type="button" style="display: inline; padding-bottom: 4px;"
+			class="btn launchManagementConsole pull-right"
+			data-envelopeId="<%-popupData.embraceEnvelopeId%>">
+			<i class="fa fa-briefcase marg_right5"></i>Management Console
+		</button>
+	</legend>
+	<table
+		class="table table-striped table-bordered table-advance table-hover">
+		<thead>
+			<tr>
+				<th>Status</th>
+				<th>Actions</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>
+					<span class="envelopeStatus"><%-popupData.envelopeStatus%></span>
+					<button type="button" title="Refresh Status"
+						class="btn updateEnvelopeInfoButton pull-right"
+						data-envelopeId="<%-popupData.embraceEnvelopeId%>">
+						<i class="fa fa-refresh marg_right5"></i>
+					</button>
+				</td>
+				<td><% if(!popupData.docusignEnvelopeRecipients) {
+						   if(popupData.envelopeStatus=='created') { %>
+							<button type="button"
+								class="btn green tagAndSendEnvelopeButton"
+								data-envelopeId="<%-popupData.embraceEnvelopeId%>">
+								<i class="fa fa-tags marg_right5"></i>Tag & Send
+							</button>
+						<% } else if(popupData.envelopeStatus=='in process') { %>
+							<button type="button"
+								class="btn green sendRecipientLinkButton"
+								data-envelopeId="<%-popupData.embraceEnvelopeId%>">
+								<i class="fa fa-share marg_right5"></i>Send Recipient Link
+							</button>
+						<% } else if(popupData.envelopeStatus=='sent') { %>
+							<button type="button"
+								class="btn sendRecipientLinkButton"
+								data-envelopeId="<%-popupData.embraceEnvelopeId%>">
+								<i class="fa fa-share marg_right5"></i>Send For Signature
+							</button>
+							<% if(popupData.envelopeLastSent) { %>
+								<div style="font-size: small;color: gray;">Last sent on <%-popupData.envelopeLastSent%></div>
+							<% } %>
+						<% } else if(popupData.envelopeStatus=='locked') { %>
+							<button type="button"
+								class="btn launchManagementConsole"
+								data-envelopeId="<%-popupData.embraceEnvelopeId%>">
+								<i class="fa fa-briefcase marg_right5"></i>Unlock Envelope
+							</button>
+					<% 	   } 
+						} else { 
+							var reviewed=false; 
+							var previouslySigned= true;%>
+							<table style="border: 0px; width: 100%; padding: 5px;" class="table">
+							<%_(popupData.docusignEnvelopeRecipients).each(function(recipient) { %>
+							  <tr>
+							  <% if(recipient.role=='ILM') { %>
+									<td><label><%-recipient.name%></label></td>
+									<td><%-recipient.status%></td>
+									<td>
+										<%if(recipient.status=='sent' || recipient.status=='delivered') { %>
+											<% if(recipient.userId==popupData.app.sessionModel.attributes.userId) { %>
+												<button type="button"
+													class="btn green reviewPALinkButton" style="float:right;"
+													data-envelopeId="<%-popupData.embraceEnvelopeId%>" data-recipientLink="<%-recipient.recipientUrl%>">
+													<i class="fa fa-share fa-file-text-o"></i>Review & Approve PA
+												</button>
+											<%} else {%>
+												Pending ILM Review..
+											<%}%>		
+										<% } else if(recipient.status=='completed' || recipient.status=='signed') {
+											reviewed=true; %>
+											<% console.log(recipient.userId);
+												console.log(popupData.app);
+												if(recipient.userId==popupData.app.sessionModel.attributes.userId) { %>
+												<button type="button"
+													class="btn green viewPALinkButton" style="float:right;"
+													data-envelopeId="<%-popupData.embraceEnvelopeId%>" data-recipientLink="<%-recipient.recipientUrl%>">
+													<i class="fa fa-share fa-file-text-o"></i>View PA
+												</button>
+											<%} else {%>
+												<i class="fa fa-check marg_right5"></i>
+											<%}
+										} %>
+									</td>
+							  <% } else { %>
+							  		<td><label><%-recipient.name%></label></td>
+									<td><%-recipient.status%></td>
+									<td>
+										<% if(recipient.status=='created' && reviewed && previouslySigned) { 
+											previouslySigned = false; %>
+											<button type="button"
+												class="btn sendRecipientLinkButton" style="float:right;"
+												data-envelopeId="<%-popupData.embraceEnvelopeId%>">
+												<i class="fa fa-share marg_right5"></i>Send For Signature
+											</button>
+										<% } else if(recipient.status=='completed' || recipient.status=='signed') {
+											previouslySigned = true; %>
+											<i class="fa fa-check marg_right5"></i>
+										<% } else if(recipient.status=='sent' || recipient.status=='delivered') {
+											previouslySigned = false; %>
+											<button type="button"
+												class="btn sendRecipientLinkButton" style="float:right;"
+												data-envelopeId="<%-popupData.embraceEnvelopeId%>">
+												<i class="fa fa-share marg_right5"></i>Resend For Signature
+											</button>
+										<% } else if(!previouslySigned) {
+											previouslySigned = false; %>
+											Waiting..
+										<% } %>
+									</td>
+							  <% } %>
+							  </tr>
+						 <% }); %>
+						 </table>
+					<%	} %>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	<div class='envelopeMessage'></div>
+</fieldset>
+<% } else { %>
+	<button type="button" class="btn green createEnvelopeButton pull-right"
+		data-documenttaskkey="<%- popupData.documentTaskKey %>"
+		data-envelopetaskkey="<%- popupData.envelopeTaskKey %>"
+		data-object="<%- popupData.object %>"
+		data-objectid="<%- popupData.objectId %>"
+		data-docs="<%- popupData.documentTypes %>">
+		<i class="fa fa-file marg_right5"></i>Upload for Investor Signature
+	</button>
+	<!-- 				<a href="http://www.apple.com" data-featherlight="iframe">Tag & Send Document for Signature</a> -->
+	<div class="envelopeMessage  pull-right"
+		style="line-height: 25px; margin-right: 5px;"></div>
+<% } %>
+ <!-- option lightbox start -->
+<div class="modal fade bs-modal-sm" id="optionCloseTagAndSend" tabindex="-1" role="dialog" aria-hidden="true">
+	<div class="modal-dialog modal-sm">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+				<h4 class="modal-title">Confirm</h4>
+			</div>
+			<div class="modal-body">
+				  Make sure you have completed adding tags and sending the envelope. Incomplete envelopes will go in locked state.
+				  Are you sure you want to close this?
+			</div>
+			<div class="modal-footer">
+				<button id="closeTagAndSendConfirmationButton" type="button" class="btn blue">Yes</button>
+				<button id="closeTagAndSendDeclineButton" type="button" class="btn default" data-dismiss="modal">No</button>
+			</div>
+		</div>
+		<!-- /.modal-content -->
+	</div>
+	<!-- /.modal-dialog -->
+</div>
+<!-- option lightbox end -->
+<!-- option lightbox start -->
+<div class="modal fade bs-modal-sm" id="optionTagAndSend" tabindex="-1" role="dialog" aria-hidden="true">
+	<div class="modal-dialog modal-sm">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+				<h4 class="modal-title">Confirm</h4>
+			</div>
+			<div class="modal-body">
+				  Envelope created successfully. Do you want to add signature tags now?
+			</div>
+			<div class="modal-footer">
+				<button id="tagAndSendConfirmationButton" type="button" class="btn blue">Yes</button>
+				<button id="tagAndSendDeclineButton" type="button" class="btn default" data-dismiss="modal">Later</button>
+			</div>
+		</div>
+		<!-- /.modal-content -->
+	</div>
+	<!-- /.modal-dialog -->
+</div>
+<!-- option lightbox end -->

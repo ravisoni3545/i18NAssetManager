@@ -1,0 +1,87 @@
+<div class="modal fade bs-modal-sm with-popover" id="HU_IMPOUND_POPUP_1"
+	tabindex="-1" role="basic" aria-hidden="true">
+	<div class="modal-dialog modal-sm">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal"
+					aria-hidden="true"></button>
+				<h4 class="modal-title" id="modalTitle"></h4>
+			</div>
+			<div class="modal-body"
+				style="margin-left: 10px; margin-right: 10px;">
+				<form class="milestone-form" method="post" id="">
+					<input type="hidden" id="object" name="object"> <input
+						type="hidden" id="objectId" name="objectId"> <input
+						type="hidden" id="taskKey" name="taskKey">
+
+					<!--  -->
+					<div class="form-group" >
+                                <label class="control-label"> HU Tax Impound? </label>
+                                <div class="radio-list form-control">
+                                    <label class="radio-inline" style="padding-left: 0px !important;"> <span><input type="radio" id="optionsRadiosY" name="isTaxImpound" value="Y"></span> Yes
+                                    </label> 
+                                     <label class="radio-inline active" style="padding-left: 0px !important;"> <span><input checked="" id="optionsRadiosN" type="radio" value="N" name="isTaxImpound"></span> No
+                                    </label>
+                                </div>
+                     </div>
+                     <div class="form-group" >
+                                <label class="control-label"> HU Insurance Impound? </label>
+                                <div class="radio-list form-control">
+                                    <label class="radio-inline" style="padding-left: 0px !important;"> <span><input type="radio" id="optionsRadiosY" name="isInsuranceImpound" value="Y"></span> Yes
+                                    </label> 
+                                     <label class="radio-inline active" style="padding-left: 0px !important;"> <span><input checked="" id="optionsRadiosN" type="radio" value="N" name="isInsuranceImpound"></span> No
+                                    </label>
+                                </div>
+                     </div>
+                     <div class="form-group" >
+                                <label class="control-label"> HU HOA Impound? </label>
+                                <div class="radio-list form-control">
+                                    <label class="radio-inline" style="padding-left: 0px !important;"> <span><input type="radio" id="optionsRadiosY" name="isHOAImpound" value="Y"></span> Yes
+                                    </label> 
+                                     <label class="radio-inline active" style="padding-left: 0px !important;"> <span><input checked="" id="optionsRadiosN" type="radio" value="N" name="isHOAImpound"></span> No
+                                    </label>
+                                </div>
+                     </div>
+
+					<!--  -->
+					
+					<div class="form-group">
+						<label class="control-label" style="text-align: left;">
+							Completion Date <span class="required">* </span>
+						</label>
+						<div class="input-group input-medium date date-picker"
+							data-date="" data-date-format="mm-dd-yyyy"
+							data-date-viewmode="years" data-date-autoclose="true">
+							<input class="form-control" readonly="" placeholder=""
+								type="text" id="endDate" name="endDate"> <span
+								class="input-group-btn">
+								<button class="btn default" type="button">
+									<i class="fa fa-calendar"></i>
+								</button>
+							</span>
+						</div>
+					</div>
+
+					<div class="form-group">
+						<label class="control-label"> Comments <a
+							class="fa fa-comments-o pull-right showMessageTooltip"
+							style="cursor: pointer; font-size: 14px;" data-html="true"
+							data-show="true"> <i>Show past comments</i>
+						</a>
+						</label><br>
+
+						<textarea class="form-control" style="height: 80px;" name="comments" id="comments"></textarea>
+					</div>
+				</form>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn blue"
+					id="milestonePopupSubmitButton">SAVE</button>
+				<button type="button" id="cancelButton" class="btn default"
+					data-dismiss="modal">CANCEL</button>
+			</div>
+		</div>
+		<!-- /.modal-content -->
+	</div>
+	<!-- /.modal-dialog -->
+</div>

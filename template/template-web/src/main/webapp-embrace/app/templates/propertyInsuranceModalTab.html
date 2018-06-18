@@ -1,0 +1,491 @@
+<div class="ins_tab_general tab-pane insuranceNavTab active">
+    <div class="form-horizontal">
+        <div class="marg_top10">
+
+        <form class="form-horizontal" method="post" enctype="multipart/form-data">
+        <!-- <form class="form-horizontal" name="save-quote-form" method="post" 
+        enctype="multipart/form-data"> -->
+        <input type="hidden" id="object" name="object" /> <input type="hidden"
+        id="objectId" name="objectId" /> <input type="hidden" id="propertyInsuranceId"
+        name="propertyInsuranceId" />
+        <div class="form-body">
+            <div id="formFailure" class="alert alert-danger display-hide">
+                <button class="close" data-close="alert"></button>
+                <text id="textValue"></text>
+            </div>
+            <div class="alert alert-success display-hide">
+                <button class="close" data-close="alert"></button>
+                Successfully saved Property Insurance Details.
+            </div>
+            <!-- Start left section -->
+            <div class="row">
+
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="col-md-4 control-label pad_leftright0">Insurance Type<span class="required">*</span></label>
+                        <div class="col-md-7 pad_right0 margin-bottom-10">
+                            <div class="InsuranceTypeDD"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+					<div class="form-group">
+                         <label class="col-md-4 control-label" style="padding-right:0px;">Vacant Policy</label>
+                         <div class="radio-list col-md-6" style="padding-left: 35px">
+		                    <label class="radio-inline" style="padding-left: 0px!important;">
+		                        <input name="vacantPolicy" id="vacantPolicyY" value="Y" type="radio" 
+		                        <%if(singleData.vacantPolicy=='Y'){%>
+                        		checked="true"<%}%>> Yes
+		                    </label>&nbsp;&nbsp;&nbsp;
+		                    <label class="radio-inline" style="padding-right:10px">
+		                        <input name="vacantPolicy" id="vacantPolicyN" value="N" type="radio" 
+		                        <%if(singleData.vacantPolicy==null){%>checked="true"<%}else if(singleData.vacantPolicy=='N'){%>
+                        		checked="true"<%}%>>
+		                         No</label>
+						 </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6"> <div class="form-group">
+                    <label class="col-md-4 control-label pad_leftright0">Insurance Carrier<span class="required">*</span></label>
+                    <div class="col-md-7 pad_right0 margin-bottom-10">
+                        <select class="bs-select form-control" name="insuranceProvider">
+                            <optgroup label="Insurance Providers">
+
+                                <% _(insuranceOrgList).each(function(org) { %>
+                                <option value="<%= org.orgId%>"><%=org.orgName %></option>
+                                <% }); %>
+
+                            </optgroup>
+                            <optgroup label="Add New">
+                                <option value="addNewInsuranceVendor">Add new</option>
+                            </optgroup>
+
+                        </select>
+                    </div>
+                    </div>
+                </div>
+                <div class="col-md-6"> 
+                    <div class="form-group">
+                        <label class="col-md-4 control-label pad_leftright0">Add New</label>
+                        <div class="col-md-7 pad_right0 margin-bottom-10">
+                            <input type="text" placeholder="" disabled="" name="newInsuranceVendor" class="form-control text-right">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+               <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group address-div">
+                        <label class="col-md-4 control-label pad_leftright0">Address <span class="required">*</span>
+                        	<span class="viewsdiv1">
+                        		<a style="cursor: pointer;" class="showAddressDiv"	title="View Address Details"><i class="fa fa-plus-circle"></i></a>
+							</span>
+							<span class="display-none hidesdiv1">
+								<a	style="cursor: pointer;" class="hideAddressDiv" title="Hide Address Details"><i class="fa fa-minus-circle"></i></a>
+							</span>
+						</label>
+                        <div class="col-md-7 pad_right0">
+                         <textarea   placeholder="" readonly="readonly" class="form-control text-right  existingaddress" style="cursor: pointer;"></textarea>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-6"></div>
+               
+            </div>
+            
+            <div class="col-md-12 hidesdiv1 display-none" style="background-color: rgba(134, 134, 134, 0.0901961);">
+            <div class="row">
+            <div class="col-md-1"></div>
+                <div class="col-md-5">
+                    <div class="form-group showExistingAddress">
+                        <label class="col-md-5 control-label pad_leftright0">Address 1<span class="required">*</span></label>
+                        <div class="col-md-7 pad_right0 margin-bottom-10">
+                            <input type="text" name="insVendorAddress1" placeholder="" class="form-control text-right" value="<%-singleData.insVendorAddress1%>" >
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-5">
+                    <div class="form-group showExistingAddress">
+                        <label class="col-md-5 control-label pad_leftright0">Address 2</label>
+                        <div class="col-md-7 pad_right0 margin-bottom-10">
+                            <input type="text" name="insVendorAddress2" placeholder="" class="form-control text-right" value="<%-singleData.insVendorAddress2%>" >
+                        </div>
+                    </div>
+                </div>
+                </div>
+            
+                 <div class="row">
+                 <div class="col-md-1"></div>
+                       <div class="col-md-5 showExistingAddress">
+                          <div class="form-group">
+                             <label class="col-md-5 control-label pad_leftright0">City</label>
+                               <div class="col-md-7 pad_right0 margin-bottom-10">
+                                 <input type="text" name="insVendorcity" placeholder="" class="form-control text-right" value="<%-singleData.insVendorcity%>">
+                               </div>
+                         </div>
+                     </div>
+         
+           <div class="col-md-5 showExistingAddress">
+              <div class="form-group">
+                <label class="col-md-5 control-label pad_leftright0">State</label>
+                   <div class="col-md-7 pad_right0 margin-bottom-10">                
+                         <div class="state"  ></div>
+                  </div>
+             </div>
+         
+         </div>
+       </div>
+           <div class="row">
+           <div class="col-md-1"></div>
+              <div class="col-md-5 showExistingAddress">
+                    <div class="form-group">
+                        <label class="col-md-5 control-label pad_leftright0">Postal Code</label>
+                        <div class="col-md-7 pad_right0 margin-bottom-10">
+                            <input type="text" name="insVendorpostalcode" placeholder="" class="form-control text-right" value="<%-singleData.insVendorpostalcode%>" >
+                        </div>
+                    </div>
+              </div>
+              
+               
+       </div>
+       </div>
+             
+          
+            <div class="row">
+            
+              <div class="col-md-6">
+                    
+                    <div class="form-group">
+                        <label class="col-md-4 control-label pad_leftright0">Phone</label>
+                        <div class="col-md-7 pad_right0 margin-bottom-10">
+                            <input type="text" name="insVendorPhone" placeholder="" class="form-control text-right" value="<%-singleData.insVendorPhone%>">
+                        </div>
+                    </div>
+                </div>
+            
+                <div class="col-md-6">
+                    
+                </div>
+              
+            </div>
+            
+            <div class="row">
+            
+            <div class="col-md-6">
+            <div class="form-group">
+                        <label class="col-md-4 control-label pad_leftright0">URL</label>
+                        <div class="col-md-7 pad_right0 margin-bottom-10">
+                            <input type="url" name="insVendorUrl" placeholder="" class="form-control text-right" value="<%-singleData.insVendorUrl%>">
+                        </div>
+                    </div>
+            
+            
+            </div>
+            
+            
+            </div>
+
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="col-md-4 control-label pad_leftright0">Policy #</label>
+                        <div class="col-md-7 pad_right0 margin-bottom-10">
+                            <input type="text" name="insPolicyNo" placeholder="" class="form-control text-right" value="<%-singleData.insPolicyNo%>">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+
+                </div>
+
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="col-md-4 control-label pad_leftright0">Policy Start Date<span class="required">*</span></label>
+                        <div class="col-md-7 pad_right0 margin-bottom-10">
+                            <div data-date-viewmode="years" data-date-format="mm-dd-yyyy" class="input-group input-medium date date-picker margin-bottom-10">
+                                <input type="text" name="insPolicyStartDate" readonly="" class="form-control" value="<%-singleData.insPolicyStartDate%>">
+                                <span class="input-group-btn">
+                                    <button type="button" class="btn default">
+                                        <i class="fa fa-calendar"></i>
+                                    </button>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="col-md-4 control-label pad_leftright0">End Date</label>
+                        <div class="col-md-7 pad_right0 margin-bottom-10">
+                            <div data-date-viewmode="years" data-date-format="mm-dd-yyyy" class="input-group input-medium date date-picker margin-bottom-10">
+                                <input type="text" name="insPolicyEndDate" readonly="" class="form-control" value="<%-singleData.insPolicyEndDate%>">
+                                <span class="input-group-btn">
+                                    <button type="button" class="btn default">
+                                        <i class="fa fa-calendar"></i>
+                                    </button>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="col-md-4 control-label pad_leftright0">Premium<span class="required">*</span></label>
+                        <div class="col-md-7 pad_right0 margin-bottom-10">
+                            <input type="text" name="premium" class="form-control text-right currencyInsurance" value="<%-singleData.premium%>">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+
+                    <div class="form-group hide">
+                        <label class="col-md-4 control-label pad_leftright0">Frequency<span class="required">*</span></label>
+                        <div class="col-md-7 pad_right0 margin-bottom-10">
+                            <select class="form-control">
+                                <option>Yearly</option>
+                                <option>Monthly</option>
+
+                            </select>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+            <div class="row">
+            	<div class="col-md-6">
+                    <div class="form-group">
+                         <label class="col-md-4 control-label" style="padding-right:0px;">Deductible Type</label>
+                         <div class="radio-list col-md-6" style="padding-left: 35px">
+		                    <label class="radio-inline" style="padding-right:10px">
+		                        <input name="isDeductiblePercentage" id="isDeductiblePercentageN" value="N" type="radio" 
+		                        <%if(singleData.isDeductiblePercentage==null){%>checked="true"<%}else if(singleData.isDeductiblePercentage=='N'){%>
+                        		checked="true"<%}%>>
+		                        Amount</label>&nbsp;&nbsp;&nbsp;
+		                    <label class="radio-inline" style="padding-left: 0px!important;">
+		                        <input name="isDeductiblePercentage" id="isDeductiblePercentageY" value="Y" type="radio" 
+		                        <%if(singleData.isDeductiblePercentage=='Y'){%>
+                        		checked="true"<%}%>>Percentage
+		                    </label>
+						 </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                         <label class="col-md-4 control-label" style="padding-right:0px;">Wind and Hail Type</label>
+                         <div class="radio-list col-md-6" style="padding-left: 35px;">
+		                    <label class="radio-inline" style="padding-right:10px">
+		                        <input name="isWindAndHailPercentage" id="isWindAndHailPercentageN" value="N" type="radio" 
+		                        <%if(singleData.isWindAndHailPercentage==null){%>checked="true"<%}else if(singleData.isWindAndHailPercentage=='N'){%>
+                        		checked="true"<%}%>>
+		                        Amount</label>&nbsp;&nbsp;&nbsp;
+		                    <label class="radio-inline" style="padding-left: 0px!important;">
+		                        <input name="isWindAndHailPercentage" id="isWindAndHailPercentageY" value="Y" type="radio" 
+		                        <%if(singleData.isWindAndHailPercentage=='Y'){%>
+                        		checked="true"<%}%>>Percentage
+		                    </label>
+						 </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="col-md-4 control-label pad_leftright0">Deductible<span class="required">*</span></label>
+                        <div class="col-md-7 pad_right0 margin-bottom-10"  id="deductibleAmountDiv" style="display: none;">
+                            <input type="text" name="deductibleAmount" class="form-control text-right currencyInsurance" value="<%-singleData.deductible%>">
+                        </div>
+                      	<div class="col-md-7 pad_right0 margin-bottom-10" id="deductiblePercentageDiv" >
+                      		<div class="input-group"> 
+								<input type="text" name="deductiblePercentage" class="form-control text-right" value="<%-singleData.deductible%>">
+								<span class="input-group-addon"><i class="fa">%</i></span>
+							 </div> 
+						</div>
+						<div class="col-md-4"></div>
+						<div class="col-md-7 pull-left margin-bottom-20" id="deductibleErrDiv" style="display: none;color: #b94a48;">This field is required</div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+
+                    <div class="form-group">
+                        <label class="col-md-4 control-label pad_leftright0">Wind and Hail</label>
+                        <div class="col-md-7 pad_right0 margin-bottom-10"  id="windAndHailAmountDiv" style="display: none;">
+                            <input type="text" name="windAndHailAmount" class="form-control text-right currencyInsurance" value="<%-singleData.windAndHail%>">
+                        </div>
+                      	<div class="col-md-7 pad_right0 margin-bottom-10" id="windAndHailPercentageDiv" >
+                      		<div class="input-group"> 
+								<input type="text" name="windAndHailPercentage" class="form-control text-right" value="<%-singleData.windAndHail%>">
+								<span class="input-group-addon"><i class="fa">%</i></span>
+							 </div> 
+						</div>
+                    </div>
+
+
+                </div>
+            </div>
+
+            <h3 class="form-section marg_top5">Coverage</h3>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="col-md-4 control-label pad_leftright0">Dwelling</label>
+                        <div class="col-md-7 pad_right0 margin-bottom-10">
+                            <input type="text" name="dwelling" class="form-control text-right currencyInsurance" value="<%-singleData.dwelling%>">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="col-md-4 control-label pad_leftright0">Other Structures</label>
+                        <div class="col-md-7 pad_right0 margin-bottom-10">
+                            <input type="text" name="otherStructures" class="form-control text-right currencyInsurance" value="<%-singleData.otherStructures%>">
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="col-md-4 control-label pad_leftright0">Personal Property</label>
+                        <div class="col-md-7 pad_right0 margin-bottom-10">
+                            <input type="text" name="personalProperty" class="form-control text-right currencyInsurance" value="<%-singleData.personalProperty%>">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="col-md-4 control-label pad_leftright0">Loss of Use</label>
+                        <div class="col-md-7 pad_right0 margin-bottom-10">
+                            <input type="text" name="lossOfUse" class="form-control text-right currencyInsurance" value="<%-singleData.lossOfUse%>">
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="col-md-4 control-label pad_leftright0">Premises Liability</label>
+                        <div class="col-md-7 pad_right0 margin-bottom-10">
+                            <input type="text" name="premisesLiability" class="form-control text-right currencyInsurance" value="<%-singleData.premisesLiability%>">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+
+                    <div class="form-group">
+                        <label class="col-md-4 control-label pad_leftright0">Medical Payment</label>
+                        <div class="col-md-7 pad_right0 margin-bottom-10">
+                            <input type="text" name="medicalPayment" class="form-control text-right currencyInsurance" value="<%-singleData.medicalPayment%>">
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="col-md-4 control-label pad_leftright0">Upload Policy Details</label>
+                        <a class="fa fa-paperclip pull-right showDocumentTooltip_2"
+                            style="cursor: pointer; font-size: 16px;" data-object="<%=singleData.essentials.objectCodeListId%>" data-objectid="<%=singleData.essentials.objectId%>" data-subobject="<%=singleData.essentials.subObject%>" data-subobjectid="<%=singleData.propertyInsuranceId%>"
+                            data-html="true" data-show="true"> </a>
+                        <div class="col-md-7 pad_right0 margin-bottom-10">
+                            <input type="file" name="insurancePolicyDocuments" class="form-control" multiple="" style="padding-bottom:40px;">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+
+                </div>
+            </div>
+
+        
+
+            <div class="clearfix"></div>
+
+            <div class="col-md-12 margin-bottom-15">
+                <div class="form-group">
+                    <label class="control-label margin-bottom-15">
+                        <i class="fa fa-comment-o "></i>  Comments<a
+                            class="fa fa-comments-o pull-right showMessageTooltip_2"
+                            style="cursor: pointer; font-size: 14px;" data-object="<%=singleData.essentials.objectCodeListId%>" data-objectid="<%=singleData.essentials.objectId%>" data-subobject="<%=singleData.essentials.subObject%>" data-subobjectid="<%=singleData.propertyInsuranceId%>"
+                            data-html="true" data-show="true"> <i>Show past comments</i>
+                        </a>
+                    </label><br>
+
+                    <textarea class="form-control" name="comments"></textarea>
+                </div>
+            </div>
+
+        </div>
+
+        </form>
+
+        <button type="button" class="addNewPayment btn blue margin-bottom-15">
+            Add New Payment</button>
+            <div class="portlet box light-grey" style="margin-bottom: 0;">
+                <div class="portlet-title">
+                    <div class="caption">
+                        <i class="fa fa-clock-o"></i>Payment History
+                    </div>
+
+                </div>
+                <div class="portlet-body">
+                    <div class="table-responsive">
+                        <table id="paymentTable" style="table-layout:fixed; width:100%; min-width: 900px;" class="table order-list ins-table table-striped table-bordered table-advance">
+                            <thead>
+                                <tr>
+                                    <th style="width:11%;">
+                                         <span class="control-label">Coverage Start<span class="required">*</span></span>
+                                    </th>
+                                    <th style="width:11%;">
+                                        <span class="control-label">Coverage End<span class="required">*</span></span>
+                                    </th>
+                                    <th style="width:11%;">
+                                        Payment Due Date
+                                    </th>
+                                    <th style="width:11%;">
+                                        Payment Date
+                                    </th>
+                                    <th style="width:13%">
+                                        <span class="control-label">Payment Amount<span class="required">*</span></span>
+                                    </th>
+                                    <th style="width:14%">
+                                        <span class="control-label">Status<span class="required">*</span></span>
+                                    </th>
+                                    <th style="width:15%">Paid By </th>
+                                    <th style="width:11%">Reference No</th>
+                                    <th style="width:3%;"></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+
+                            </tbody>
+
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <button class="btn blue savePropertyInsurance" style="margin-top: 15px;/*margin-left: 55em;*/" type="button">
+                Save</button>
+
+        </div>       
+    </div>
+</div>

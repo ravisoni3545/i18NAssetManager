@@ -1,0 +1,230 @@
+<div class="tab-pane active" id="tab_6_1">
+<!--<div class="addbtnposition pull-right margin-bottom-10">
+    <a href="#financial-form" data-toggle="modal"
+        id="showFinancialForm"
+        class="btn green"><i data-toggle="tooltip"  title="Add New Financial" class="fa fa-plus hopNameTooltip"></i> </a>
+</div>-->
+	<div class="panel-group accordion table-responsive" id="accordion3">
+		<table id="financialDataTableMain"
+			class="table table-striped table-bordered table-advance table-hover tablegreen">
+			<thead>
+				<tr>
+					<th>Transaction Type</th>
+					<th>Account Type</th>
+					<th>Account</th>
+					<th>Description</th>
+					<th>Debit</th>
+					<th>Credit</th>
+					<th>Transaction Date</th>
+					<th>Property Unit</th>
+					<th>Added By</th>
+					<th>Actions
+					</th>
+				</tr>
+			</thead>
+			<tbody>
+				<% _.each(financialModels.transactions, function( obj ){ %>
+				<tr>
+					<td><%- obj.transactionType %></td>
+					<td><%- obj.accountType %></td>
+					<td><%- obj.account %></td>
+					<td><%- obj.description %></td>  <!-- <% if(obj.negative==true){ %>
+					<td class="textcolorred amount" style="text-align: right;">(<%-
+						obj.amount %>)</td> <%} else{%>
+					<td class="amount" style="text-align: right;"><%- obj.amount
+						%></td> <% } %> -->
+					<td class="amount" style="text-align: right;"><%- obj.drAmount %></td>	
+					<td class="amount" style="text-align: right;"><%- obj.crAmount %></td>	
+					<td><%- obj.transactionDate %></td>
+					<td><%- obj.subObjectName %></td>
+					<td><%- obj.addedBy %></td>
+					<td><a name="editFinancialData"
+						entryId="<%- obj.entryId %>" data-toggle="modal" class="edit_blue"
+						style="cursor: pointer" title="Edit"><i class="fa fa-edit"></i></a>
+						
+						<a class="margin-right-10 fa fa-paperclip font14 showDocumentTooltip_2" style="cursor: pointer;" 
+						data-object="<%=object%>" data-objectid="<%=objectId%>" 
+						data-subobject="<%=obj.subObject%>" data-subobjectid="<%=obj.entryId%>" data-html="true" data-show="true">
+                		</a>
+                		
+                		<!-- <a name="uploadFinancialDocOld" entryId="<%- obj.entryId %>" data-toggle="modal" data-toggle="tooltip"  title="Add New Document" 
+      					class="btn green hopNameTooltip"><i class="fa fa-plus"></i> </a> -->
+      					
+      					<!-- <a href="#document-form1" name="uploadFinancialDoc" subObjectId="<%- obj.entryId %>" data-toggle="modal" data-toggle="tooltip"  title="Add New Document" 
+      					class="btn green hopNameTooltip"><i class="fa fa-plus"></i></a> -->
+      					
+					</td>
+				</tr>
+				<% }); %>
+			</tbody>
+			<% if(financialModels.transactions.length>0){ %>
+			<tfoot>
+				<tr>
+					<th></th>
+					<th></th>
+					<th></th>
+					<th>TOTAL</th>
+					<th class="amount" style="text-align: right;"><%=financialModels.totalDrAmount %></th>
+					<th class="amount" style="text-align: right;"><%=financialModels.totalCrAmount %></th>
+					<th></th>
+					<th></th>
+					<th></th>
+					<th></th>
+				</tr>
+			</tfoot>
+			<% } %>
+
+		</table>
+		
+<div id="documentsUploadDiv"></div>	
+<!-- add new financials -->
+		<div class="modal fade bs-modal-lg" id="financial-form" tabindex="-1"
+			role="basic" aria-hidden="true">
+			<div class="modal-dialog modal-lg">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal"
+							aria-hidden="true"></button>
+						<h4 class="modal-title">Financial Transaction Details</h4>
+					</div>
+					<!-- Modal body start -->
+					<div class="modal-body table-responsive">
+						
+							<div class="alert alert-danger" id="errorMsg" style="display:none">
+								<button class="close" data-close="alert"></button>
+								Credit and debit total is not equal. Please correct your entries and submit
+								the form again.
+							</div>
+							<div id="operationErrorPopup" class="alert alert-danger display-hide">
+								<button class="close" data-close="alert"></button>
+								<text>Error in performing operation.</text>
+							</div>
+						
+						<div class="form-group col-md-3" style="padding-left: 0px;">
+							<label class="control-label"> Transaction Type </label>
+
+							<div id="transactionTypeDD"></div>
+						</div>
+						<div class="form-group col-md-3">
+							<label class="control-label"> Transaction Date </label>
+
+							<div class="input-group input-medium date date-picker"
+								data-date="" data-date-format="mm-dd-yyyy"
+								data-date-viewmode="years">
+								<input class="form-control" placeholder="" type="text"
+									style="width: 140px;" id="transactionDate"
+									name="transactionDate"> <span class="input-group-btn"
+									style="float: left;">
+									<button class="btn default" type="button">
+										<i class="fa fa-calendar"></i>
+									</button>
+								</span>
+							</div>
+						</div>
+						<div class="form-group col-md-3" style="padding-left: 0px;">
+							<label class="control-label"> Property Unit </label>
+							<div id="unitDropdown"></div>
+						</div>
+						<div class="clearfix"></div>
+
+						<div class="form-group col-md-9 row" style="padding-right: 0px;">
+							<label class="control-label" style="text-align: left;">
+								Description </label> <input type="text" class="form-control"
+								id="description" name="description">
+
+						</div>
+						<div class="clearfix"></div>
+
+						<div class="form-group col-md-3" style="padding-left: 0px;">
+							<label class="control-label"> &nbsp;</label><br>
+
+
+							<div class="radio-list  col-md-12" style="margin-left: 6px">
+								<label class="radio-inline"> <input name="payType"
+									id="payerRadio" value="" type="radio"> Payer
+								</label> <label class="radio-inline" style=""> <input
+									name="payType" id="payeeRadio" value="" type="radio">
+									Payee
+								</label>
+							</div>
+
+						</div>
+
+						<div class="form-group col-md-3">
+							<label class="control-label payershow" style="display: block">
+								Payer </label> <label class="control-label payeeshow"
+								style="display: none"> Payee </label>
+
+							<div id="payerDD"></div>
+						</div>
+
+						<div class="form-group col-md-3">
+							<label class="control-label"> Payment Method </label>
+
+							<div id="paymentMethodDD"></div>
+						</div>
+
+
+
+
+
+
+						<div class="form-group col-md-3 ref1" id="referenceNumber"
+							style="padding-right: 0px; display: none;">
+							<label class="control-label"> Ref# </label> <input type="text"
+								class="form-control" name="reference">
+						</div>
+
+						<div class="table-responsive">
+							<table
+								class="table table-striped table-bordered table-advance table-hover tablegreen">
+								<thead>
+									<tr>
+										<th width="17%">Type</th>
+										<th width="17%">Account</th>
+										<th width="16%">Description</th>
+										<th width="18%">Transaction Date</th>
+										<th width="16%">Debit</th>
+										<th width="16%">Credit</th>
+									</tr>
+								</thead>
+								<tbody id="financialDataTable">
+
+								</tbody>
+								<tr>
+									<td class="text-right">Total</td>
+									<td>&nbsp;</td>
+									<td>&nbsp;</td>
+									<td>&nbsp;</td>
+									<td class="text-right"><span> <input type="text"
+											name='result' readonly="readonly" value=''
+											id="totalDebitAmountCreate" class="form-control amount"></span></td>
+									<td class="text-right"><span> <input type="text"
+											class="form-control amount" readonly="readonly"
+											id="totalCreditAmountCreate"></span></td>
+
+								</tr>
+							</table>
+						</div>
+					</div>
+					<!-- Modal body end -->
+					<div class="modal-footer">
+						<button type="button" class="btn blue" id="addFinancialRow">ADD
+							NEW</button>
+						<button type="button" class="btn blue" id="saveFinancialData">SAVE</button>
+						<button type="button" class="btn default" data-dismiss="modal">
+							CANCEL</button>
+
+					</div>
+				</div>
+				<!-- /.modal-content -->
+			</div>
+			<!-- /.modal-dialog -->
+		</div>
+
+		<div id="edit-financial-form"></div>
+		<!-- end add financial lightbox -->
+		
+		<div id="financialDocumentDiv"></div>
+	</div>
+</div>

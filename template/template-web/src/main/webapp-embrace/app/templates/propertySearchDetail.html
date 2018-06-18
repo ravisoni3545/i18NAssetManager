@@ -1,0 +1,254 @@
+<div class="page-content">
+               
+                <!-- BEGIN PAGE HEADING-->
+                <div class="dash-header">
+                    <div class="">
+                        <h3 class="page-title">
+                            <i class="fa fa-home pull-left"></i>Property Details
+                        </h3>
+                    </div>
+                </div>
+        <!-- END PAGE HEADING-->
+              <div class="member-search clearfix margin-top-10">
+                    <div class="col-sm-12 col-md-5 col-lg-3">
+                        <img style="margin-bottom:12px"src="<%- theProperty.mediumLink %>" height="86" width="300" class="pull-left marg_right35 img-responsive">
+
+                          <div class="col-md-16" >
+                       <div id="propertyTags"></div>
+                      </div>
+                        </div>
+
+
+                  <div class="col-sm-12 col-md-7 col-lg-9 font15 pull-left">
+                   <div class="borb clearfix">
+                   <div class="col-md-7">
+                       <h4 class="marg_top0 margin-bottom-10" style="color:#428BCA;">
+                        <span id="propertyAddressSpan"> <%- (theProperty)?theProperty.propertyFullAddress:"" %> </span>
+                       </h4>
+                       <p class="font13 margin-bottom-5"><span id="otherSpan"><%- (theProperty)?theProperty.otherInfo:"" %></span></p>
+                       <p><a class="btn btn-primary btn-sm ippropertypage" style="cursor: pointer;" data-objectid="<%- (theProperty)?theProperty.propertyDetailPageUrl:"" %>" target="blank" data-toggle="tooltip" title="InvestorPortal Property Detail Page">Investor View</a></p>
+                    <!--   <ul>
+                           <li style="list-style-type: none;" class="font18"></li>
+                           <li style="list-style-type: none;"></li>
+                           <li style="list-style-type: none;"></li>
+                       </ul>-->
+                       </div>
+                       <% if(theListing && theListing != null){ %>
+                       		<div class="col-md-5 font14">
+			                       <% if( theListing.salecompsPdfURL &&  theListing.salecompsPdfURL != null){ %>
+				                       <a href="<%-theListing.salecompsPdfURL%>" target="_blank" title="Click to view Sale Comps">Sale Comps <img src="assets/img/pdf-icon.png" ></a>&nbsp&nbsp
+				                     <% } %>
+			                     
+			                     <% if( theListing.leasecompsPDFURL && theListing.leasecompsPDFURL != null){ %>
+			                     		<a href="<%-theListing.leasecompsPDFURL%>" target="_blank" title="Click to view Lease Comps">Lease Comps <img src="assets/img/pdf-icon.png"></a>   
+			                       <% } %>
+	                       </div>
+                       
+                       
+                       <% } %>
+                       
+                   </div>
+
+                    <div class="col-md-12 font13 marg_top10">
+                    
+                    <div class="row">
+                    <div class="col-md-4">
+                    <strong style="color: #428BCA;">Property Information</strong></br>
+	                    <strong>Price: </strong><span id="priceSpan"><%- (theProperty && theProperty.propertyDetails)?accounting.formatMoney(theProperty.propertyDetails.askingPrice,"$",0):""%></span></br>
+	                    <strong>Rent: </strong><span id="rentSpan"><%- (theProperty && theProperty.propertyDetails)?accounting.formatMoney(theProperty.propertyDetails.leasedRent,"$",0):""%> </span></br>
+	                    <strong>Property Sale Type: </strong> <span><%- (theProperty)?theProperty.propSaleType:""%> </span></br>
+	                    <strong>Tenanted Property: </strong><span id="tenantedSpan" ><%-(theProperty && theProperty.tenantedProperty)?"Y" :"N"%></span></br>
+	                    <strong>Property Display ID: </strong><span><%- (theProperty && theProperty.propertyInfo)?theProperty.propertyInfo.propertyDisplayId:"" %></span>
+                    </div>
+                    <div class="col-md-4">
+                     <strong style="color: #428BCA;">Property Status</strong></br>
+	                    <strong>Status: </strong><span><%- (theProperty)?theProperty.propertyStatus:"" %></span></br>
+	                    <strong>MLS Status: </strong><span><%- (theProperty)?theProperty.mlsStatus:"" %></span>
+	                    <input type='hidden' name='mlsStatusVal' id='mlsStatusVal' value='<%- (theProperty)?theProperty.mlsStatusId:"" %>'>
+                    	<% if(viewpermissions.PropertyMLSStatusEdit) { %>
+							<a style="cursor: pointer"  id="mlsstatus-edit"><i class="fa fa-edit"></i></a>
+						<% } %>
+						</br>
+	                    <strong>HU Status: </strong><span><%- (theProperty)?theProperty.huStatus:"" %></span>
+	                        	<input type='hidden' name='huStatusVal' id='huStatusVal' value='<%- (theProperty)?theProperty.huStatusId:"" %>'>
+	                        	<% if(isAdmin ||(viewpermissions.huPropertyStatusEdit && theProperty.isHuStatusEditable)) { %>
+									<a style="cursor: pointer"  id="hustatus-edit"><i class="fa fa-edit"></i></a>
+								<% } %>
+						</br><strong>Financial Calculation: </strong><span id="finRecalculationStatus">
+						<% if(theProperty && theProperty.recalculationPending){ %>
+	                       	<strong style="color: red;">PENDING</strong>
+	                       	<%}else{%>
+	                         <strong style="color: #428BCA;">UP TO DATE</strong>
+	                         <%}%></span>
+                    </div>
+                    <div class="col-md-4">
+                    <strong style="color: #428BCA;">Bid Information</strong></br>
+                    	<strong>Bid Range: </strong><span id='bidRangeSpan'><%-(theProperty && theProperty.propertyDetails)?accounting.formatMoney(theProperty.propertyDetails.minBid,"$",2)+"-"+accounting.formatMoney(theProperty.propertyDetails.maxBid,"$",2) :""%></span></br>
+                    	<strong>Rent Range: </strong><span><%-(theProperty && theProperty.propertyDetails)?accounting.formatMoney(theProperty.propertyDetails.rentFrom,"$",2)+"-"+accounting.formatMoney(theProperty.propertyDetails.rentTo,"$",2) :""%></span>
+                    </div>
+                    </div>
+                    <div class="row marg_top20">
+	                    <div class="col-md-4">
+	                    	<strong style="color: #428BCA;">Listing Information</strong></br>
+		                    <strong>Status: </strong><span> <%- (theListing)?theListing.listingStatus:""%></span></br>
+		                    <strong>Days on market: </strong><span><%- (theListing && theListing.listingDetails)?theListing.listingDetails.cdom:""%></span></br>
+		                    <strong>Listed on: </strong><span><%-(theListing)?theListing.listedOn:""%></span></br>
+		                    <strong>MLS: </strong><span>
+	                       	<% if(viewpermissions.propertyDetailMlsLink && theListing.mlsLink != null){ %>
+	                       	<a href="<%- theListing.mlsLink%>" target="_blank"><%-theListing.listingDetails?  theListing.listingDetails.mlsNumber:""%></a>
+	                       	<%}else{%>
+	                         <%-theListing.listingDetails?  theListing.listingDetails.mlsNumber:""%>
+	                         <%}%>
+	                       	</span>
+	                    </div>
+	                    <div class="col-md-8">
+	                     	<strong style="color: #428BCA;">Hil & Other Info</strong></br>
+		                    <strong>Hil: </strong><span><%- (theProperty && theProperty.propertyInfo)?theProperty.propertyInfo.hil:"" %></br>
+		                    <strong>Source: </strong><span><%- (theProperty && theProperty.propertyInfo)?theProperty.propertyInfo.propertySource:"" %></span></br>
+		                    <strong>Date Added to Inventory: </strong> <span><%- theProperty.createdDate %> </span>
+	                    </div>
+                      
+
+                    </div>
+            	</div>
+                  </div>
+
+            </div>
+
+	<!--		<div class="row">
+                    <table width="100%">
+                        <tbody>
+                        <tr>
+                            <td><br></td>
+                        </tr> 
+                            <tr>
+                                <td><h4>Investment:  <span class= "darkfontcolor"><%- (theListing && theListing.listingInfo)?accounting.formatMoney(theListing.listingInfo.financedInvestment,"$",0):""%></span></h4></td>
+                                <td><h4>&nbsp;&nbsp;Cashflow:  <span class= "darkfontcolor"><%- (theListing && theListing.listingInfo)?accounting.formatMoney(theListing.listingInfo.annualNetCashflow,"$",0):""%></span></h4></td>
+                                <td><h4>&nbsp;&nbsp;Loan Pay Down:  <span class= "darkfontcolor"><%- (theListing && theListing.listingInfo)?accounting.formatMoney(theListing.listingInfo.downPaymentAmount,"$",0):""%></span></h4></td>
+                                <td><h4>&nbsp;&nbsp;Yeild:  <span class= "darkfontcolor"><%- (theListing && theListing.listingInfo)?accounting.formatNumber(theListing.listingInfo.financedReturn,2):""%>%</span></h4></td>
+                                <td><h4>&nbsp;&nbsp;Appreciation:  <span class= "darkfontcolor"><%- (theListing && theListing.listingInfo)?accounting.formatNumber(theListing.listingInfo.appreciationRate,2):""%>%</span></h4></td>
+                            </tr>
+                            <tr>
+                                                      
+                            </tr>
+                            <tr>
+                               
+
+
+                            </tr>
+                        </tbody>
+                    </table>        
+            </div>	 -->
+    
+            <!--<div class="clearfix"></div>-->
+	<div class="alert alert-success display-hide" id="propertyInfoSuccessMessage">
+		<button class="close" data-close="alert" onclick="$(this).parent().hide();return false;"></button>
+		<text></text>
+	</div>
+              <div class="panel">
+                <div class="panel-body">
+                       <!-- Tab Start -->
+                          <div class="tabbable-custom">
+                            <ul class="nav nav-tabs1">
+                              <li class="active" name="propertyInfoNav" ><a style="cursor: pointer;" id="propertyInfo" data-toggle="tab"><i class="fa fa-home pull-left font14 marg_top4"> </i>Property Information </a></li>
+                              <!--- <li class="" name="propertyInfoNav" ><a style="cursor: pointer;" id="proeprtyLocation" data-toggle="tab"><i class="fa fa-map-marker pull-left font14 marg_top4"> </i>Location </a></li> -->
+                              <li class="" name="propertyInfoNav" ><a style="cursor: pointer;" id="propertyFinancials"  data-toggle="tab"><i class="fa fa-money pull-left font14 marg_top4"> </i>Financials </a></li>
+                              <!-- <li class="" name="propertyInfoNav"><a style="cursor: pointer;" id="propertyComps"  data-toggle="tab"><i class="fa fa-building-o pull-left font14 marg_top4"> </i>Comps </a></li> -->
+                              <li  class="" name="propertyInfoNav"><a style="cursor: pointer;" id="propertyPhotos" data-toggle="tab"><i class="fa fa-picture-o pull-left font14 marg_top4"> </i>Photos </a></li>
+                              <li  class="" name="propertyInfoNav"><a style="cursor: pointer;" id="propertyWishlists" data-toggle="tab"><i class="fa fa-bars pull-left font14 marg_top4"> </i>Wishlists </a></li>
+                              <li  class="" name="propertyInfoNav"><a style="cursor: pointer;" id="propertyDocuments" data-toggle="tab"><i class="fa fa-file-text pull-left font14 marg_top4"> </i>Documents </a></li>
+                              <li  class="" name="propertyInfoNav"><a style="cursor: pointer;" id="rehabEstimator" data-toggle="tab"><i class="fa fa-legal pull-left font14 marg_top4"> </i>Rehab Estimator </a></li>
+                              <li  class="" name="propertyInfoNav"><a style="cursor: pointer;" id="propertyMessages" data-toggle="tab"><i class="fa fa-envelope pull-left font14 marg_top4"> </i>Messages </a></li>
+                            </ul>
+                    
+                            <div class="tab-content" style="margin-top:-1px;">
+                              <div class="tab-pane active" id="propertyInfoTab" name="propertyInfoTab">
+                              </div>
+                              <div class="tab-pane" id="proeprtyLocationTab" name="propertyInfoTab">
+                              </div>
+                              <div class="tab-pane" id="investorInvestmentDetailsTab" name="propertyInfoTab">
+                              </div>
+                              <div class="tab-pane" id="propertyFinancialsTab" name="propertyInfoTab">
+                              </div>
+                              <div class="tab-pane" id="propertyCompsTab" name="propertyInfoTab">
+                              </div>
+                              <div class="tab-pane" id="propertyPhotosTab" name="propertyInfoTab">
+                              </div>
+                              <div class="tab-pane" id="propertyWishlistsTab" name="propertyInfoTab">
+                              </div>
+                              <div class="tab-pane" id="propertyDocumentsTab" name="propertyInfoTab">
+                              </div>
+                              <div class="tab-pane" id="rehabEstimatorTab" name="propertyInfoTab">
+                              </div>
+                              <div class="tab-pane" id="propertyMessagesTab" name="propertyInfoTab">
+                              </div>
+                            </div>
+                        </div>  
+                </div>
+              </div>
+</div>
+<div class="modal fade" id="huStatusEdit" tabindex="-1" role="basic"
+	aria-hidden="true">
+	<div class="modal-dialog modal-sm">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal"
+					aria-hidden="true"></button>
+				<h4 class="modal-title">HU Status</h4>
+			</div>
+			
+			<div class="modal-body">
+					<form class="statusHuUpdateForm  control-label">
+							<label class="control-label"> HU Status </label><br>
+							<div id="huStatusEditDiv"></div>
+									<div class="form-group">
+										<label class="control-label"> Comments <span class="required">* </span></label><br>
+										<textarea class="form-control" style="height: 80px;" name="comments" id="comments"></textarea>
+									</div>
+					</form>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn blue" id="save-hu-status">
+					SAVE</button>
+				<button type="button" class="btn default" data-dismiss="modal">
+					CANCEL</button>
+			</div>
+			
+		</div>
+		<!-- /.modal-content -->
+	</div>
+	<!-- /.modal-dialog -->
+</div>
+
+<div class="modal fade" id="mlsStatusEdit" tabindex="-1" role="basic"
+aria-hidden="true">
+<div class="modal-dialog modal-sm">
+	<div class="modal-content">
+		<div class="modal-header">
+			<button type="button" class="close" data-dismiss="modal"
+				aria-hidden="true"></button>
+			<h4 class="modal-title">MLS Status</h4>
+		</div>
+		<div class="modal-body">
+			<form class="statusMlsUpdateForm  control-label">
+					<label class="control-label"> MLS Status </label><br>
+					<div id="mlsStatusEditDiv"></div>
+					<div class="form-group">
+					<label class="control-label"> Comments <span class="required">* </span></label><br>
+					<textarea class="form-control" style="height: 80px;" name="comments" id="comments"></textarea>
+				</div>
+			</form>
+		</div>
+		<div class="modal-footer">
+			<button type="button" class="btn blue" id="save-mls-status">
+				SAVE</button>
+			<button type="button" class="btn default" data-dismiss="modal">
+				CANCEL</button>
+		</div>
+		
+	</div>
+	<!-- /.modal-content -->
+</div>
+<!-- /.modal-dialog -->
+</div>
+

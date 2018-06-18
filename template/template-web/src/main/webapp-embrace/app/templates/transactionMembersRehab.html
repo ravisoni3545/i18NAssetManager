@@ -1,0 +1,102 @@
+<div>
+<h4 class="margin-bottom-15 borb">
+	<i class="fa fa-users pull-left marg_top5"></i>Transaction Members <!-- <a
+		style="cursor: pointer"  id="transmem-edit" ><i class="fa fa-edit"></i></a> -->
+</h4>
+<div id="transMemsSuccessMsg" class="alert alert-success display-hide">
+	<button class="close" data-close="alert" onclick="$(this).parent().hide();return false;"></button>
+	<text>Successfully saved the transaction member</text>
+</div>
+<div id="transMemsFailureMsg" class="alert alert-danger display-hide">
+	<button class="close" data-close="alert" onclick="$(this).parent().hide();return false;"></button>
+	<text>Failed to save the transaction member</text>
+</div>
+
+<!-- trans members view start -->
+<div id="trans-mem-view" class="transmemtoggle margin-bottom-20">
+	<div class="row" style="margin-bottom:-10px;">
+	<% var count=1 %>
+	<% _.each(transactionMemberResponse, function( singleData){ %>
+	<% if(singleData.roleName!='Solution Specialist' ||singleData.roleName!='Investor Relations Specialist'){ %>
+	<div class="col-md-3">
+		
+			<strong><%= singleData.roleName%>
+		<% if(singleData.roleName=='Rehab Coordinator'||singleData.roleName=='Junior Rehab Coordinator'){ %>
+			<a
+		style="cursor: pointer"  id="transmem-edit" data-roleName='<%-singleData.roleName%>' 
+		data-processRoleId='<%-singleData.processRoleId%>' data-userId='<%-singleData.userId%>' data-show='true'><i class="fa fa-edit"></i></a>
+		<% } %>
+		</strong><br>
+	<div class="transactionMemberSection">
+			<div class="dash-list-style">
+
+				<ul>
+					<li><span class="sale-info">
+							<%if(singleData.imageUrl) { %> <img alt=""
+								src="<%= singleData.imageUrl %>" width="29"
+								height="29" class="marg_right5"> <%} else {%> <img
+								alt="" src="assets/img/user1.png" width="29" height="29" />
+							<%}%> <%=singleData.userName%> <i
+							class="fa fa-img-up"></i>
+					</span></li>
+
+				</ul>
+
+			</div>
+		 </div>
+		 <div class="rehabUserDropdown dash-list-style"></div>
+		</div>
+		<% } %>
+		<% if(count%4==0) {%>
+			<div class="clearfix"></div>
+			<% } %>
+			<% count++ %>
+	<% }); %>
+	<!--  -->
+	<div class="col-md-3">
+		
+			<strong>Seller Agent</strong><br>
+	<div class="transactionMemberSection">
+			<div class="dash-list-style">
+
+				<ul>
+					<li><span class="sale-info">
+							 <%=sellerAgentInfo.agentName%> <i
+							class="fa fa-img-up"></i>
+					</span></li>
+
+				</ul>
+
+			</div>
+		 </div>
+	</div>
+	<!--  -->
+	<!--  -->
+	<div class="col-md-3">
+		
+			<strong>Rehab Vendor
+			<a
+		style="cursor: pointer"  id="rehabVendorEdit"><i class="fa fa-edit"></i></a>
+			</strong><br>
+	<div class="transactionMemberSection">
+			<div class="dash-list-style">
+
+				<ul>
+					<li><span class="sale-info">
+							 <%=rehabVendorName%> <i
+							class="fa fa-img-up"></i>
+					</span></li>
+
+				</ul>
+
+			</div>
+		 </div>
+	</div>
+	<!--  -->		
+	</div>	
+
+</div>
+<!-- trans members view end -->
+
+<!-- trans members edit start -->
+

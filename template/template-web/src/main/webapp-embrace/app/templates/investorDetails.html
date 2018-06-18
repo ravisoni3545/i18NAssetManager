@@ -1,0 +1,897 @@
+
+<!-- Investor Details tab start -->
+<!-- <div class="tab-pane active" id="InvestorDetailsTab"> -->
+	<div class="panel-group accordion" id="accordion3">
+
+		<table
+			class="table table-striped table-bordered table-advance table-hover tablegreen hideviewtable1">
+			<thead>
+				<tr>
+					<th colspan="4" class="font18"><i class="fa fa-cogs"></i>
+						Investor Details <a id="showEditInvestorDetails"
+			data-id="<%= investorDetails.investorId %>"
+			class="btn blue btn-xs pull-right hideviewtable1">Edit</a></th>
+
+
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td><strong>First Name</strong><br> <%-
+						investorDetails.firstName %></td>
+					<td><strong>Last Name</strong><br> <%-
+						investorDetails.lastName %></td>
+					<td><strong>Gender</strong><br> <%-
+						investorDetails.gender %></td>
+					<td><strong>Date of Birth</strong><br> <%-
+						investorDetails.dateOfBirth %></td>
+
+				</tr>
+
+				<tr>
+					<td><strong>Email</strong><br> <%-
+						investorDetails.email %></td>
+					<td><strong>Language Preference</strong><br> <%-
+						investorDetails.language_Preferrence %></td>
+					<td><strong>Currency</strong><br><%-
+						investorDetails.currency %></td>
+					<!-- <td><strong>Locked</strong><br> Yes</td>-->
+					<td><strong>Active</strong><br><%-
+						investorDetails.isActive %></td>
+
+				</tr>
+
+				<tr>
+
+					<td><strong>Created</strong><br> <%-
+						investorDetails.dateCreated%>
+						<%if(investorDetails.createdBy){%><%='By '+
+						investorDetails.createdBy%><%}%></td>
+					<td><strong>Last Modified </strong><br> <%-
+						investorDetails.dateModified%>
+						<%if(investorDetails.modifiedBy){%><%='By '+
+						investorDetails.modifiedBy%><%}%></td>
+					<td><strong>SSN</strong><br><%-
+						investorDetails.ssn %></td>
+					<td><strong>Investor Profession</strong><br><%-
+						investorDetails.investorProfession %></td>
+
+				</tr>
+				
+				<tr>
+				<td><strong>Marital Status</strong><br><%-
+						investorDetails.maritalStatus %></td>
+					<td colspan="3" align="right"> 
+						<!-- start right form --> <a id="resetInvPassword"
+						data-id="<%= investorDetails.email %>"
+						class="blue btn">Reset Password</a> <!-- end right form -->
+					</td>
+				</tr>
+
+			</tbody>
+
+		</table>
+		
+			<table
+		class="table table-striped table-bordered table-advance table-hover margin-top-20 tablegreen viewaddressdetailsform1">
+		<thead>
+			<tr>
+				<th colspan="4" class="font18"><i class="fa fa-cogs"></i> Home
+					Address</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td><strong>Address 1</strong><br> <%-
+					investorDetails.address1Home %></td>
+				<td><strong>Address 2</strong><br> <%-
+					investorDetails.address2Home %></td>
+				<td><strong>City</strong><br> <%-
+					investorDetails.cityHome %></td>
+				<td><strong>State</strong><br> <%-
+					investorDetails.stateHome %></td>
+			</tr>
+			<tr>
+				<td><strong>Postal Code</strong><br> <%-
+					investorDetails.postalcodeHome %></td>
+				<td><strong>Country</strong><br> <%-
+					investorDetails.countryHome %></td>
+				<td><strong>Home Phone </strong><br> <%-
+					investorDetails.homePhone %></td>
+				<td><strong>Home E-mail</strong><br> <%-
+					investorDetails.homeEmail %></td>
+
+			</tr>
+			<tr>
+				<td><strong>Mobile Phone</strong><br> <%-
+					investorDetails.mobilePhone %></td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+
+			</tr>
+		</tbody>
+
+	</table>
+	<table
+		class="table table-striped table-bordered table-advance table-hover margin-top-20 tablegreen viewaddressdetailsform1">
+		<thead>
+			<tr>
+				<th colspan="4" class="font18"><i class="fa fa-cogs"></i> Work
+					Address</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td><strong>Address 1</strong><br> <%-
+					investorDetails.address1Work %></td>
+				<td><strong>Address 2</strong><br> <%-
+					investorDetails.address2Work %></td>
+				<td><strong>City</strong><br> <%-
+					investorDetails.cityWork %></td>
+				<td><strong>State</strong><br> <%-
+					investorDetails.stateWork %></td>
+			</tr>
+			<tr>
+				<td><strong>Postal Code</strong><br> <%-
+					investorDetails.postalcodeWork %></td>
+				<td><strong>Country</strong><br> <%-
+					investorDetails.countryWork %></td>
+				<td><strong>Work Phone </strong><br> <%-
+					investorDetails.workPhone %></td>
+				<td><strong>Work E-mail</strong><br> <%-
+					investorDetails.workEmail %></td>
+
+			</tr>
+			<tr>
+				<td><strong>Preferred Mail Communication</strong><br> <%-
+					investorDetails.preferredMailCommunication %></td>
+				<td><strong>Preferred Email Address</strong><br> <%-
+					investorDetails.preferredEmailAddress %></td>
+				<td><strong>Preferred Contact Phone</strong><br> <%-
+					investorDetails.preferredContactPhone %></td>
+				<td>&nbsp;</td>
+			</tr>
+		</tbody>
+	</table>
+
+		<table
+			class="table table-striped table-bordered table-advance table-hover margin-top-20 tablegreen hideviewtable1">
+			<thead>
+				<tr>
+					<th colspan="2" class="font18"><i class="fa fa-cogs"></i>
+						Challenge Questions</th>
+
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td><strong>Question 1</strong><br><%-
+						investorDetails.challengeQuestion1 %></td>
+					<td><strong>Response 1</strong><br><%-
+						investorDetails.response1 %></td>
+
+
+				</tr>
+
+				<tr>
+					<td><strong>Question 2</strong><br><%-
+						investorDetails.challengeQuestion2 %></td>
+					<td><strong>Response 2</strong><br> <%-
+						investorDetails.response2 %></td>
+
+				</tr>
+
+
+
+			</tbody>
+
+		</table>
+
+
+		<table
+			class="table table-striped table-bordered table-advance table-hover margin-top-20 tablegreen hideviewtable1">
+			<thead>
+				<tr>
+					<th colspan="2" class="font18"><i class="fa fa-cogs"></i>
+						Social Networking</th>
+
+
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td><strong>Facebook ID</strong><br> <%-
+						investorDetails.facebookId %></td>
+					<td><strong>Twitter ID</strong><br> <%-
+						investorDetails.twitterId %></td>
+
+
+				</tr>
+
+				<tr>
+					<td><strong>Linked-In ID</strong><br> <%-
+						investorDetails.linkedInId %></td>
+					<td><strong>Google Plus ID</strong><br> <%-
+						investorDetails.googlePlusId %></td>
+
+				</tr>
+
+
+
+			</tbody>
+
+		</table>
+
+		
+
+
+
+		<form novalidate="novalidate" action="#" id="formInvestorDetails"
+			class="form-horizontal hideform1" style="display: none;">
+
+			<div>
+				<!-- START INVESTOR PROFILE FORM-->
+				<div class="portlet box light-grey">
+					<div class="portlet-title">
+						<div class="caption">
+							<i class="fa fa-cogs"></i>Investor Details
+						</div>
+					</div>
+
+
+					<div class="portlet-body">
+						<!-- form start -->
+
+						<div class="form-body">
+
+							<!-- start left form -->
+							<div class="col-md-4 form-group">
+								<label class="control-label">First Name</label> <input
+									class="form-control" type="text" name="firstName"
+									value="<%- investorDetails.firstName %>">
+							</div>
+							<!-- end left form -->
+
+							<div class="col-md-2"></div>
+
+							<!-- start right form -->
+							<div class="col-md-4 form-group">
+								<label class="control-label">Last Name</label> <input
+									class="form-control" type="text" name="lastName"
+									value="<%- investorDetails.lastName %>">
+							</div>
+							<!-- start right form -->
+
+							<div class="clearfix"></div>
+							<div class="clearfix"></div>
+
+							<!-- start left form -->
+							<div class="col-md-4 form-group">
+								<label class="control-label">Gender </label><br>
+
+								<div class="radio-list">
+									<label class="radio-inline"> <input
+										name="gender"  value="Male"
+										type="radio"<%if(investorDetails.gender=="Male"){%>checked="true"<%}%>
+										> Male
+									</label> <label class="radio-inline"
+										style="padding-left: 0px !important;"> <input
+										name="gender"  value="Female"
+										type="radio"<%if(investorDetails.gender=="Female"){%>checked="true"<%}%>
+										> Female
+									</label>
+								</div>
+
+
+							</div>
+							<!-- end left form -->
+
+							<div class="col-md-2"></div>
+
+							<!-- start left form -->
+							<div class="col-md-4 form-group">
+								<label class="control-label">Email </label><br> <input
+									type="text" class="form-control" name="email"
+									value="<%- investorDetails.email %>">
+							</div>
+							<!-- end left form -->
+
+
+							<div class="clearfix"></div>
+							<!-- <div class="col-md-2"></div> -->
+							
+							<!-- start right form -->
+							<div class="col-md-4 form-group dob">
+								<label class="control-label">Date of Birth</label>
+								<div class="input-group input-medium date date-picker"
+									data-date="12-02-2012" data-date-format="mm-dd-yyyy"
+									data-date-viewmode="years">
+									<input class="form-control" readonly="" name="dateOfBirth"
+										value="<%- investorDetails.dateOfBirth %>" 
+										type="text"> <span class="input-group-btn">
+										<button class="btn default" type="button">
+											<i class="fa fa-calendar"></i>
+										</button>
+									</span>
+								</div>
+							</div>
+							<!-- start right form -->
+							<div class="col-md-2"></div>
+							<div class="col-md-4 form-group ssn">
+								<label class="control-label">SSN </label><br> <input
+									type="text" class="form-control" name="ssn"
+									value="<%= investorDetails.ssn %>"
+									>
+							</div>
+							
+
+							<div class="clearfix"></div>
+
+							<!-- start right form -->
+							<div class="col-md-4 form-group">
+								<label class="control-label">Investor Profession</label><br>
+								<input type="text" class="form-control"  name="investorProfession"
+								 value="<%- investorDetails.investorProfession %>">
+							</div>
+							<!-- end right form -->
+
+							<div class="col-md-2"></div>
+							
+
+							<!-- <div class="col-md-2"></div> -->
+
+							<!-- start left form -->
+							<div class="col-md-4 form-group">
+								<label class="control-label">Currency </label><br> 
+								<select class="form-control" name="currency">
+									<option value="" <%if(investorDetails.currency==""){%> selected <%}%>
+									>select</option>
+									<option value="USD" <%if(investorDetails.currency=="USD"){%> selected <%}%>
+									>USD</option>
+								</select>
+							</div>
+							<!-- end left form -->
+
+
+							<!-- <div class="clearfix"></div> -->
+
+							<!--<div class="col-md-2"></div>
+							
+							 <div class="col-md-4 form-group">
+								<label class="control-label">Solution Specialist </label><br> 
+									<select class="form-control" id="saleUserId" name="saleUserId">
+										<option value="" selected="selected">Select</option>
+										<%	_(solutionSpecialists).each(function(solutionSpecialist) { %>
+										<option value="<%= solutionSpecialist.userId %>"
+											<% if(solutionSpecialist.userId==investorDetails.saleUserId){ %>
+													selected="selected"
+												<%}%>
+											><%= solutionSpecialist.userName%></option> 
+										<%}); %>
+									</select>
+							</div> -->
+							<div class="col-md-2"></div>
+							<div class="col-md-4 form-group">
+								<label class="control-label">Marital Status</label><br>
+								<input type="text" class="form-control"  name="maritalStatus"
+								 value="<%- investorDetails.maritalStatus %>">
+							</div>
+							
+							<!-- start left form -->
+							<!-- <div class="col-md-4 form-group">
+													<label class="control-label">Locked </label><br> Yes <a
+														href="#" class="marg_left30">Unlock</a>
+												</div> -->
+							<!-- end left form -->
+
+							<div class="clearfix"></div>
+
+							<!-- start left form -->
+							<div class="col-md-4 form-group">
+								<label class="control-label">Created </label><br> <%-
+								investorDetails.dateCreated%>
+								<%if(investorDetails.createdBy){%><%='By '+
+								investorDetails.createdBy%><%}%>
+
+							</div>
+							<!-- end left form -->
+
+							<div class="col-md-2"></div>
+
+							<!-- start right form -->
+							<div class="col-md-4 form-group">
+								<label class="control-label">Last Modified </label><br> <%-
+								investorDetails.dateModified%>
+								<%if(investorDetails.modifiedBy){%><%='By '+
+								investorDetails.modifiedBy%><%}%>
+
+							</div>
+							<!-- end right form -->
+							
+							<!-- <div class="col-md-1"></div> -->
+							
+							<div class="col-md-4 form-group">
+								<label class="control-label">Active </label><br>
+								 <input	class="form-control" name="isActive"
+									type="hidden" value="<%- investorDetails.isActive %>">
+								<div id="status1" <% if(investorDetails.isActive=="No"){%>style="display:none;" <%}%> >
+								 Yes <a id="deActivate" class="marg_left30">Deactivate</a>
+								</div>
+								<div id="status2" <% if(investorDetails.isActive=="Yes"){%>style="display:none;" <%}%> >
+								 No <a  id="activate" class="marg_left30">Activate</a>
+								</div>
+							</div>
+
+							<div class="col-md-2"></div>
+							<!-- <div class="clearfix"></div> -->
+							<!--///						 -->
+						
+							<!-- end left form -->
+							<!-- start left form -->
+							<div class="col-md-4 form-group">
+								<label class="control-label">Language Preference </label><br>
+								<input type="text" class="form-control"  name="language_Preferrence"
+								 value="<%- investorDetails.language_Preferrence %>">
+							</div>
+							<!-- end left form -->
+
+
+							<!-- <div class="clearfix"></div> -->
+							<div class="col-md-2"></div>
+
+
+							<div class="clearfix"></div>
+							<!-- ///  					 -->
+
+							<!-- start left form -->
+							<div class="col-md-6 form-group">&nbsp;</div>
+							<!-- end left form -->
+
+
+
+
+
+							<div class="clearfix"></div>
+
+
+						</div>
+
+
+						<!-- form end -->
+
+					</div>
+				</div>
+				<!-- END INVESTOR PROFILE FORM-->
+			</div>
+
+<div class="portlet box light-grey">
+				<div class="portlet-title">
+					<div class="caption">
+						<i class="fa fa-cogs"></i>Home Address
+					</div>
+				</div>
+				<div class="portlet-body">
+					<!-- form start -->
+					<div class="form-body">
+						<!-- start left form -->
+						<div class="col-md-4 form-group">
+							<label class="control-label">Address 1</label> <input
+								class="form-control" type="text" name="address1Home"
+								value="<%- investorDetails.address1Home %>">
+						</div>
+						<!-- end left form -->
+
+						<div class="col-md-2"></div>
+
+						<!-- start right form -->
+						<div class="col-md-4 form-group">
+							<label class="control-label">Address 2</label> <input
+								class="form-control" type="text" name="address2Home"
+								value="<%- investorDetails.address2Home %>">
+						</div>
+						<!-- start right form -->
+
+						<div class="clearfix"></div>
+
+
+						<!-- start left form -->
+						<div class="col-md-4 form-group">
+							<label class="control-label">City</label> <input
+								class="form-control" type="text" name="cityHome"
+								value="<%- investorDetails.cityHome %>">
+						</div>
+						<!-- end left form -->
+
+						<div class="col-md-2"></div>
+
+						<!-- start right form -->
+						<div class="col-md-4 form-group">
+							<label class="control-label">State</label> 
+							<div id="stateHome"></div>
+						</div>
+						<!-- start right form -->
+
+						<div class="clearfix"></div>
+
+
+						<!-- start left form -->
+						<div class="col-md-4 form-group">
+							<label class="control-label">Postal Code</label> <input
+								class="form-control" type="text" name="postalcodeHome"
+								value="<%- investorDetails.postalcodeHome %>">
+						</div>
+						<!-- end left form -->
+
+						<div class="col-md-2"></div>
+
+						<!-- start right form -->
+						<div class="col-md-4 form-group">
+							<label class="control-label">Country</label> <input
+								class="form-control" type="text" name="countryHome"
+								value="<%- investorDetails.countryHome %>">
+						</div>
+						<!-- start right form -->
+
+						<div class="clearfix"></div>
+
+
+						<!-- start left form -->
+						<div class="col-md-4 form-group">
+							<label class="control-label">Home Phone </label> <input
+								class="form-control" type="text" name="homePhone"
+								value="<%- investorDetails.homePhone %>">
+						</div>
+						<!-- end left form -->
+
+						<div class="col-md-2"></div>
+
+						<!-- start right form -->
+						<div class="col-md-4 form-group">
+							<label class="control-label">Home E-mail</label> <input
+								class="form-control" type="text" name="homeEmail"
+								value="<%- investorDetails.homeEmail %>">
+						</div>
+						<!-- start right form -->
+
+						<div class="clearfix"></div>
+
+						<!-- start right form -->
+						<div class="col-md-4 form-group">
+							<label class="control-label">Mobile Phone</label> <input
+								class="form-control" type="text" name="mobilePhone"
+								value="<%- investorDetails.mobilePhone %>">
+						</div>
+						<!-- start right form -->
+
+
+
+					</div>
+					<div class="clearfix"></div>
+
+
+					<!-- form end -->
+
+				</div>
+			</div>
+			<!-- END  CONTACT FORM-->
+
+			<!-- BEGIN WORK ADDRESS FORM-->
+			<div class="portlet box light-grey">
+				<div class="portlet-title">
+					<div class="caption">
+						<i class="fa fa-cogs"></i>Work Address
+					</div>
+
+				</div>
+
+
+				<div class="portlet-body">
+					<!-- form start -->
+
+					<div class="form-body">
+
+						<!-- start left form -->
+						<div class="col-md-4 form-group">
+							<label class="control-label">Address 1</label> <input
+								class="form-control" type="text" name="address1Work"
+								value="<%- investorDetails.address1Work %>">
+						</div>
+						<!-- end left form -->
+
+						<div class="col-md-2"></div>
+
+						<!-- start right form -->
+						<div class="col-md-4 form-group">
+							<label class="control-label">Address 2</label> <input
+								class="form-control" type="text" name="address2Work"
+								value="<%- investorDetails.address2Work %>">
+						</div>
+						<!-- start right form -->
+
+						<div class="clearfix"></div>
+
+
+						<!-- start left form -->
+						<div class="col-md-4 form-group">
+							<label class="control-label">City</label> <input
+								class="form-control" type="text" name="cityWork"
+								value="<%- investorDetails.cityWork %>">
+						</div>
+						<!-- end left form -->
+
+						<div class="col-md-2"></div>
+
+						<!-- start right form -->
+						<div class="col-md-4 form-group">
+							<label class="control-label">State</label> 
+							<div id="stateWork"></div>
+						</div>
+						<!-- start right form -->
+
+						<div class="clearfix"></div>
+
+
+						<!-- start left form -->
+						<div class="col-md-4 form-group">
+							<label class="control-label">Postal Code</label> <input
+								class="form-control" type="text" name="postalcodeWork"
+								value="<%- investorDetails.postalcodeWork %>">
+						</div>
+						<!-- end left form -->
+
+						<div class="col-md-2"></div>
+
+						<!-- start right form -->
+						<div class="col-md-4 form-group">
+							<label class="control-label">Country</label> <input
+								class="form-control" type="text" name="countryWork"
+								value="<%- investorDetails.countryWork %>">
+						</div>
+						<!-- start right form -->
+
+						<div class="clearfix"></div>
+
+
+						<!-- start left form -->
+						<div class="col-md-4 form-group">
+							<label class="control-label">Work Phone </label> <input
+								class="form-control" type="text" name="workPhone"
+								value="<%- investorDetails.workPhone %>">
+						</div>
+						<!-- end left form -->
+
+						<div class="col-md-2"></div>
+
+						<!-- start right form -->
+						<div class="col-md-4 form-group">
+							<label class="control-label">Work E-mail</label> <input
+								class="form-control" type="text" name="workEmail"
+								value="<%- investorDetails.workEmail %>">
+						</div>
+						<!-- start right form -->
+
+						<div class="clearfix"></div>
+
+
+						<!-- start left form -->
+						<div class="col-md-4 form-group">
+							<label class="control-label">Preferred Mail Communication
+							</label>
+							<div class="radio-list">
+								<label class="radio-inline"> <input 
+									name="preferredMailCommunication" value="Yes"  type="radio"
+									<%if(investorDetails.preferredMailCommunication=="Yes"){%>checked="true"<%}%> >
+									Yes
+								</label> <label class="radio-inline"
+									style="padding-left: 0px !important;"> <input
+									name="preferredMailCommunication"  value="No" type="radio"
+									<%if(investorDetails.preferredMailCommunication=="No"){%>checked="true"<%}%> > 
+									No
+								</label>
+							</div>
+						</div>
+						<!-- end left form -->
+
+						<div class="col-md-2"></div>
+
+						<!-- start right form -->
+						<div class="col-md-4 form-group">
+							<label class="control-label">Preferred E-mail Address</label>
+							<div class="radio-list">
+								<label class="radio-inline"> <input 
+									name="preferredEmailAddress"  value="Yes" type="radio"
+									<%if(investorDetails.preferredEmailAddress=="Yes"){%>checked="true"<%}%> >
+									Yes
+								</label> <label class="radio-inline"
+									style="padding-left: 0px !important;"> <input
+									name="preferredEmailAddress" value="No" type="radio"
+									<%if(investorDetails.preferredEmailAddress=="No"){%>checked="true"<%}%> > 
+									No
+								</label>
+							</div>
+						</div>
+						<!-- start right form -->
+
+						<div class="clearfix"></div>
+
+						<!-- start right form -->
+						<div class="col-md-4 form-group">
+							<label class="control-label">Preferred Contact Phone</label>
+							<div class="radio-list">
+								<label class="radio-inline"> <input 
+									name="preferredContactPhone" value="Yes" type="radio"
+									<%if(investorDetails.preferredContactPhone=="Yes"){%>checked="true"<%}%> >
+									Yes
+								</label> <label class="radio-inline"
+									style="padding-left: 0px !important;"> <input
+									name="preferredContactPhone" value="No" type="radio"
+									<%if(investorDetails.preferredContactPhone=="No"){%>checked="true"<%}%> > 
+									No
+								</label>
+							</div>
+						</div>
+						<!-- start right form -->
+
+
+					</div>
+					<div class="clearfix"></div>
+
+
+					<!-- form end -->
+
+				</div>
+			</div>
+			<!-- END WORK ADDRESS FORM -->
+
+
+			<div>
+				<!-- START CHALLENGE QUESTION -->
+				<div class="portlet box light-grey">
+					<div class="portlet-title">
+						<div class="caption">
+							<i class="fa fa-cogs"></i>Challenge Questions
+						</div>
+
+					</div>
+					<div class="portlet-body">
+						<!-- form start -->
+
+						<div class="form-body">
+
+							<!-- start left form -->
+							<div class="col-md-4 form-group">
+								<label class="control-label">Question 1</label> <input
+									class="form-control" type="text" name="challengeQuestion1"
+										value="<%- investorDetails.challengeQuestion1 %>">
+							</div>
+							<!-- end left form -->
+
+							<div class="col-md-2"></div>
+
+							<!-- start right form -->
+							<div class="col-md-4 form-group">
+								<label class="control-label">Response 1</label> <input
+									class="form-control" type="text" name="response1"
+									value="<%- investorDetails.response1 %>">
+							</div>
+							<!-- start right form -->
+
+							<div class="clearfix"></div>
+
+
+							<!-- start left form -->
+							<div class="col-md-4 form-group">
+								<label class="control-label">Question 2</label> <input
+									class="form-control" type="text" name="challengeQuestion2"
+									value="<%- investorDetails.challengeQuestion2 %>">
+							</div>
+							<!-- end left form -->
+
+							<div class="col-md-2"></div>
+
+							<!-- start right form -->
+							<div class="col-md-4 form-group">
+								<label class="control-label">Response 2</label> <input
+									class="form-control" type="text" name="response2"
+									value="<%- investorDetails.response2 %>">
+							</div>
+							<!-- start right form -->
+
+							<div class="clearfix"></div>
+
+
+						</div>
+
+
+						<!-- form end -->
+
+					</div>
+				</div>
+				<!-- END CHALLENGE QUESTION -->
+			</div>
+
+			<!-- START SOCIAL NETWORKING -->
+			<div>
+				<div class="portlet box light-grey">
+					<div class="portlet-title">
+						<div class="caption">
+							<i class="fa fa-cogs"></i>Social Networking
+
+						</div>
+
+					</div>
+					<div class="portlet-body">
+						<!-- form start -->
+
+						<div class="form-body">
+
+							<!-- start left form -->
+							<div class="col-md-4 form-group">
+								<label class="control-label">Facebook ID</label> <input
+									class="form-control" type="text" name="facebookId"
+									value="<%- investorDetails.facebookId %>">
+							</div>
+							<!-- end left form -->
+
+							<div class="col-md-2"></div>
+
+							<!-- start right form -->
+							<div class="col-md-4 form-group">
+								<label class="control-label">Twitter ID</label> <input
+									class="form-control" type="text" name="twitterId"
+									value="<%- investorDetails.twitterId %>">
+							</div>
+							<!-- start right form -->
+
+							<div class="clearfix"></div>
+
+
+							<!-- start left form -->
+							<div class="col-md-4 form-group">
+								<label class="control-label">Linked-In ID</label> <input
+									class="form-control" type="text" name="linkedInId"
+									value="<%- investorDetails.linkedInId %>">
+							</div>
+							<!-- end left form -->
+
+							<div class="col-md-2"></div>
+
+							<!-- start right form -->
+							<div class="col-md-4 form-group">
+								<label class="control-label">Google Plus ID</label> <input
+									class="form-control" type="text" name="googlePlusId"
+									value="<%- investorDetails.googlePlusId %>" >
+							</div>
+							<!-- start right form -->
+
+							<div class="clearfix"></div>
+
+
+						</div>
+
+
+						<!-- form end -->
+
+					</div>
+				</div>
+			</div>
+			<!-- END  SOCIAL NETWORKING-->
+
+
+			<div class="form-actions fluid">
+				<div align="center">
+					<a style="cursor:pointer;" id="editInvestorDetails"
+						class="btn blue"> Save</a> <a
+						style="cursor:pointer;" id="cancelEditInvestorDetails"
+						class="btn default"> Cancel</a>
+				</div>
+			</div>
+
+		</form>
+		<!--  end vendor information -->
+
+
+	</div>
+<!-- </div> -->
+<!-- Investor Details tab end -->

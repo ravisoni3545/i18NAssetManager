@@ -1,0 +1,99 @@
+<div class="modal fade with-popover" id="OPTION_FEE_POPUP_1"
+	tabindex="-1" role="basic" aria-hidden="true">
+	<div class="modal-dialog modal-sm">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal"
+					aria-hidden="true"></button>
+				<h4 class="modal-title" id="modalTitle"></h4>
+			</div>
+			<div class="modal-body">
+				<form class="milestone-form" method="post" id="">
+					<input type="hidden" id="object" name="object"> <input
+						type="hidden" id="objectId" name="objectId"> <input
+						type="hidden" id="taskKey" name="taskKey">
+
+					<!-- <div class="col-md-12"> -->
+						<!-- <div class="col-md-6"> -->
+							
+						<div class="form-group">
+								<label class="control-label pad_right0">Option
+									Fee<span class="required">* </span></label>
+									<div class="input-group">
+										<span class="input-group-addon"><i class="fa fa-dollar"></i></span>
+										<input class="form-control text-left currency" placeholder=""
+											type="text" name="optionFee">
+									</div>
+						</div>
+							
+							
+							<div class="form-group">
+								<label class="control-label" style="text-align: left;">
+									Completion Date <span class="required">* </span>
+								</label>
+								<div class="input-group input-medium date date-picker"
+									data-date="" data-date-format="mm-dd-yyyy"
+									data-date-viewmode="years" data-date-autoclose="true">
+									<input class="form-control" readonly="" placeholder=""
+										type="text" id="endDate" name="endDate"> <span
+										class="input-group-btn">
+										<button class="btn default" type="button">
+											<i class="fa fa-calendar"></i>
+										</button>
+									</span>
+								</div>
+							</div>
+						<!-- </div> -->
+
+						<div class="form-group">
+							<label class="control-label"> Upload <span
+								id="documentLabel"></span>
+								<span class="required" style="display: none;" id="milestoneDocRequired">* </span>
+							</label> <a class="fa fa-paperclip pull-right showDocumentTooltip"
+								style="cursor: pointer; font-size: 16px;" data-html="true"
+								data-show="true"> </a> 
+								<br>
+								<div id="milestoneDocRequiredMsg" style="display: none;color: red;">This field is mandatory</div>
+								<input name="document"
+								class="form-control" type="file" style="padding-bottom: 40px;"
+								id="document">
+<!-- 								
+								<span id="displayToInvestorMessage">
+									<label class="control-label">Display to Investor <input
+										id="isDisplayToInvestorMessage" type="checkbox"
+										name="isDisplayToInvestorMessage" class="">
+									</label>
+								</span> -->
+						</div>
+						
+						<!-- <div class="clearfix"></div> -->
+						
+						
+						<div class="form-group">
+							<label class="control-label"> Comments <a
+								class="fa fa-comments-o pull-right showMessageTooltip"
+								style="cursor: pointer; font-size: 14px;" data-html="true"
+								data-show="true"> <i>Show past comments</i>
+							</a>
+							</label> 
+							
+							<br>
+	
+							<textarea class="form-control" 
+								placeholder="" name="comments" id="comments"></textarea>
+						</div>
+					<!-- </div> -->
+					<div class="clearfix"></div>
+				</form>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn blue"
+					id="milestonePopupSubmitButton">SAVE</button>
+				<button type="button" id="cancelButton" class="btn default"
+					data-dismiss="modal">CANCEL</button>
+			</div>
+		</div>
+		<!-- /.modal-content -->
+	</div>
+	<!-- /.modal-dialog -->
+</div>

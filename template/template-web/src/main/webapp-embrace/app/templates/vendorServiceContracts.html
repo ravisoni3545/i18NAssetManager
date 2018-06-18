@@ -1,0 +1,424 @@
+<!-- BEGIN SAMPLE TABLE PORTLET-->
+<div class="portlet box light-grey" id="contractPortlet">
+	<div class="portlet-title">
+		<div class="caption">
+			<i class="fa fa-cogs"></i>Contract
+		</div>
+		<div class="tools">
+			<a href="#add-contract-form1" data-toggle="modal" class="config"
+				title="Add Contract" id="addContractLink"> 
+			</a>
+			<a href="javascript:;" id="reloadContractLink"
+				class="reload" title="Refresh">
+			</a>
+		</div>
+	</div>
+	<div class="portlet-body" id="contractPortletBody">					
+		<% if(_(vendorServiceContracts).size() > 0) { %>
+		<table class="table table-hover">
+			<thead>
+				<tr>
+					<th>Contract Type</th>
+					<th>Signed</th>
+					<th>Effective</th>
+					<th>Termination</th>
+					<th>Payment Terms</th>
+					<th></th>
+				</tr>
+			</thead>
+			<tbody>
+				<% _(vendorServiceContracts).each(function(contract) { %>
+					<tr>
+						<td>
+							<%if(contract.documentId) {%>
+								<a href="vendor/contract/download/<%=contract.contractId%>" target="_blank"
+								style="margin-left: 10px;"><%=serviceName%></a>
+							<%} else {%>
+								<div style="margin-left: 10px;"><%=serviceName%></div>
+							<%} %>
+						</td>
+						<td><%=contract.dateSigned%></td>
+						<td><%=contract.effectiveDate%></td>
+						<td><%=contract.expirationDate%></td>
+						<td><%=contract.paymentterms.length%> Payment Term(s)
+							<div class="tools" style="display: inline-block;">
+								<a href=" " data-toggle="modal" class="config"
+									title="Update Payment Terms"  data-recordid="<%=contract.contractId%>" name="addContractPaymentModal"> 
+									<i class="fa fa-edit" data-recordid="<%=contract.contractId%>"></i> 
+								</a>
+							</div>
+						</td>
+						<td>
+							<a href="#update-contract-form1" class="edit_blue"
+							title="Edit" id="editContractLink"><i class="fa fa-edit" data-recordid="<%=contract.contractId%>"></i> </a> 
+							<a href="#optionDeleteContract" data-toggle="modal" class="delete_red"
+							title="Delete" id="deleteContractLink"><i class="fa fa-trash-o" data-recordid="<%=contract.contractId%>"></i></a>
+						</td>
+					</tr>
+				<% }); %>
+			</tbody>
+		</table>
+		<% } else { %>
+			<div style="text-align: center;">No records found.</div>
+		<% } %>
+	</div>
+</div>
+<!-- END SAMPLE TABLE PORTLET-->
+
+<!-- contract lightbox start -->
+<div class="modal fade" id="add-contract-form1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog">
+    	<div class="modal-content">
+    	<form class="form-horizontal" method="post" id="addContractForm"  
+                                                         enctype="multipart/form-data">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                </button>
+                <h4 class="modal-title">
+                    Add Contract</h4>
+            </div>
+            <div class="modal-body" style="padding:35px;">
+                <div class="row">
+                	<input type="hidden" id="orgId" name="orgId" value="<%=orgId%>">
+                	<input type="hidden" id="serviceId" name="serviceId" value="<%=serviceId%>">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="control-label">
+                                Date Signed<span class="required">* </span>
+                            </label>
+                            <div class="input-group input-medium date  dateSigned" data-date="" data-date-format="mm-dd-yyyy"
+                                data-date-viewmode="years">
+                                <input class="form-control" readonly="" placeholder="" type="text" name="dateSigned">
+                                <span class="input-group-btn">
+                                    <button class="btn default" type="button">
+                                        <i class="fa fa-calendar"></i>
+                                    </button>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="clearfix">
+                    </div>
+                    <!-- start left 1 -->
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="control-label">
+                                Effective Date<span class="required">* </span>
+                            </label>
+                            <div class="input-group input-medium date effectiveDate" data-date="" data-date-format="mm-dd-yyyy"
+                                data-date-viewmode="years" >
+                                <input class="form-control" placeholder="" readonly="" type="text" name="effectiveDate">
+                                <span class="input-group-btn">
+                                    <button class="btn default" type="button">
+                                        <i class="fa fa-calendar"></i>
+                                    </button>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- end left 1 -->
+                    <!-- start right 1 -->
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="control-label">
+                                Termination Date
+                            </label>
+                            <div class="input-group input-medium date expirationDate" data-date="" data-date-format="mm-dd-yyyy"
+                                data-date-viewmode="years" id="expirationDate">
+                                <input class="form-control" placeholder="" readonly="" type="text" name="expirationDate">
+                                <span class="input-group-btn">
+                                    <button class="btn default" type="button">
+                                        <i class="fa fa-calendar"></i>
+                                    </button>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- end right 1 -->
+                    <div class="clearfix">
+                    </div>
+                    
+                    
+                   
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label class="control-label">
+                                Comments
+                            </label>
+                            <textarea class="form-control" name="comments" maxlength='250'></textarea>
+                        </div>
+                    </div>
+                    <!-- <div class="col-md-3">
+                        <div class="form-group">
+                            <label class="control-label">
+                                Signed Contract
+                            </label>
+                            <br>
+                            <a href="javascript:void(0);">View</a>
+                        </div>
+                    </div> -->
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label class="control-label">
+                                Upload File
+                            </label>
+                            <br>
+                            <input name="contractFiles" multiple="" type="file">
+                        </div>
+                    </div>
+                </div>
+            </div>
+           <div class="modal-footer">
+			<button type="button" class="btn blue" id="addContractButton">Save</button>
+			<button type="button" class="btn default" id="closeAddContractModal">Close</button>
+		</div>
+		</form>  
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+<!-- /.modal -->
+<!-- contract lightbox end -->
+
+<!-- contract lightbox start -->
+<div class="modal fade" id="update-contract-form1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog">
+    	<div class="modal-content">
+    	<form class="form-horizontal" method="post" id="updateContractForm"  
+                                                         enctype="multipart/form-data">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                </button>
+                <h4 class="modal-title">
+                    Edit Contract</h4>
+            </div>
+            <div class="modal-body" style="padding:35px;">
+                <div class="row">
+                	<input type="hidden" id="orgId" name="orgId" value="<%=orgId%>">
+                	<input type="hidden" id="contractId" name="contractId" value="">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="control-label">
+                                Date Signed<span class="required">* </span>
+                            </label>
+                            <div class="input-group input-medium date dateSigned" data-date="" data-date-format="mm-dd-yyyy"
+                                data-date-viewmode="years" id="updateDateSigned">
+                                <input class="form-control" readonly="" placeholder="" type="text" name="dateSigned">
+                                <span class="input-group-btn">
+                                    <button class="btn default" type="button">
+                                        <i class="fa fa-calendar"></i>
+                                    </button>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="clearfix">
+                    </div>
+                    <!-- start left 1 -->
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="control-label">
+                                Effective Date<span class="required">* </span>
+                            </label>
+                            <div class="input-group input-medium date effectiveDate" data-date="" data-date-format="mm-dd-yyyy"
+                                data-date-viewmode="years" id="updateEffectiveDate">
+                                <input class="form-control" placeholder="" readonly="" type="text" name="effectiveDate">
+                                <span class="input-group-btn">
+                                    <button class="btn default" type="button">
+                                        <i class="fa fa-calendar"></i>
+                                    </button>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- end left 1 -->
+                    <!-- start right 1 -->
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="control-label">
+                                Termination Date
+                            </label>
+                            <div class="input-group input-medium date expirationDate" data-date="" data-date-format="mm-dd-yyyy"
+                                data-date-viewmode="years" id="updateExpirationDate">
+                                <input class="form-control" placeholder="" readonly="" type="text" name="expirationDate">
+                                <span class="input-group-btn">
+                                    <button class="btn default" type="button">
+                                        <i class="fa fa-calendar"></i>
+                                    </button>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- end right 1 -->
+                    <div class="clearfix">
+                    </div>
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label class="control-label">
+                                Comments
+                            </label>
+                            <textarea class="form-control" name="comments" maxlength='250'></textarea>
+                        </div>
+                    </div>
+                    <!-- <div class="col-md-3">
+                        <div class="form-group">
+                            <label class="control-label">
+                                Signed Contract
+                            </label>
+                            <br>
+                            <a href="javascript:void(0);">View</a>
+                        </div>
+                    </div> -->
+                    <div class="col-md-3">
+                        <div class="form-group">
+                        	<div id="existingDocument">
+                        	</div>
+                            <label class="control-label">
+                                Upload New File
+                            </label>
+                            <br>
+                            <input name="contractFiles" multiple="" type="file">
+                        </div>
+                    </div>
+                </div>
+            </div>
+           <div class="modal-footer">
+			<button type="button" class="btn blue" id="updateContractButton">Save</button>
+			<button type="button" class="btn default" data-dismiss="modal">Close</button>
+		</div>
+		</form>  
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+<!-- /.modal -->
+<!-- contract lightbox end -->
+
+
+<!-- option delete lightbox start -->
+<div class="modal fade bs-modal-sm" id="optionDeleteContract" tabindex="-1" role="dialog" aria-hidden="true">
+	<div class="modal-dialog modal-sm">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+				<h4 class="modal-title">Delete</h4>
+			</div>
+			<div class="modal-body">
+				  Are you sure you want to delete this?
+			</div>
+			<div class="modal-footer">
+				<button id="deleteContractConfirmationButton" type="button" class="btn blue">Yes</button>
+				<button type="button" class="btn default" data-dismiss="modal">No</button>
+			</div>
+		</div>
+		<!-- /.modal-content -->
+	</div>
+	<!-- /.modal-dialog -->
+</div>
+<!-- option delete lightbox end -->
+
+
+<!--ADD CONTRACT PAYMENT FORM  -->
+
+<div class="modal fade" id="add-contract-payment" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+        aria-hidden="true"">
+	<div class="modal-dialog" style="width: 75%;">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal"
+						aria-hidden="true"></button>
+					<h4 class="modal-title">Contract Payment Terms</h4>
+			  	</div>
+			  	<div class="modal-body">
+			  		<form id="paymentAlertsForm">
+				  		<div id="alertSavePaymentTermsFailure" class="alert alert-danger display-hide">
+							<button class="close" data-close="alert" onclick="$(this).parent().hide();return false;"></button>
+							Error in saving payment terms for contract.
+						</div>
+						<div id="alertSavePaymentTermsSuccess" class="alert alert-success display-hide">
+							<button class="close" data-close="alert" onclick="$(this).parent().hide();return false;"></button>
+							Successfully saved payment terms for contract.
+						</div>
+						<div id="alertDeletePaymentTermsFailure" class="alert alert-danger display-hide">
+							<button class="close" data-close="alert" onclick="$(this).parent().hide();return false;"></button>
+							Error in deleting payment term for contract.
+						</div>
+						<div id="alertDeletePaymentTermsSuccess" class="alert alert-success display-hide">
+							<button class="close" data-close="alert" onclick="$(this).parent().hide();return false;"></button>
+							Successfully deleted payment term for contract.
+						</div>
+					</form>
+					<div class="col-md-12">
+						<div class="table-scrollable">
+							<div class="col-md-5"><h5 class="modal-title"><b>Existing Payment Terms</b></h5></div>
+							<div id="existingpaymentTerm">
+								
+							</div>
+							<div class="clearfix">
+                  			</div>
+                  			<div id="newpaymentTerm" style="display:none;">
+                  				<div class="col-md-5" id="newPaymentHeading"><h5 class="modal-title"><b>New Payment Terms</b></h5></div>
+								<div class="col-md-12">
+		                  			<table id="contactPaymentTermTableParent"
+										class="table table-striped table-bordered table-advance table-hover">
+										<thead>
+											<tr>
+												<th>Fee Type</th>
+												<th>Payment Type</th>
+												<th>Flat Fee</th>
+												<th>Percentage</th>
+												<th></th>
+											</tr>
+										</thead>
+										<tbody id="contactPaymentTermTable">
+				
+										</tbody>
+									</table>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-12">
+						<button type="button" class="btn btn-xs blue pull-right"
+							id="addPaymentRow">Add New</button>
+					</div>
+				</div>
+				<div class="clearfix">
+                  </div>
+			<div class="modal-footer">
+				<button type="button" class="btn blue" id="addcontractPaymentTerm"
+					data-recordid=" ">Submit</button>
+				<button type="button" class="btn default" data-dismiss="modal">
+					Close</button>
+			</div>
+		</div>
+	</div>	    
+</div>
+                    
+ <!-- ADD CONTRACT PAYMENT END -->
+ 
+ <!-- option delete lightbox start -->
+<div class="modal fade bs-modal-sm" id="optionDeleteContractPayment" tabindex="-1" role="dialog" aria-hidden="true">
+	<div class="modal-dialog modal-sm">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+				<h4 class="modal-title">Delete</h4>
+			</div>
+			<div class="modal-body">
+				  Are you sure you want to delete this?
+			</div>
+			<div class="modal-footer">
+				<button id="deleteContractPaymentConfirmationButton" type="button" class="btn blue">Yes</button>
+				<button type="button" class="btn default" data-dismiss="modal">No</button>
+			</div>
+		</div>
+		<!-- /.modal-content -->
+	</div>
+	<!-- /.modal-dialog -->
+</div>
+<!-- option delete lightbox end -->

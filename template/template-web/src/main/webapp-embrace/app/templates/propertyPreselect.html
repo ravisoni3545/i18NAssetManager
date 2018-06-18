@@ -1,0 +1,160 @@
+<!-- BEGIN CONTENT -->
+<div class="page-content-wrapper">
+	<div class="page-content">
+        
+      
+		
+		<!-- BEGIN PAGE HEADING-->
+		<div class="row">
+			<div id="alertFailure" class="alert alert-danger display-hide">
+				<button class="close" data-close="alert"></button>
+				Error in fetching details.
+			</div>
+<!-- 			<div id="formSuccess" class="alert alert-success display-hide">
+				<button class="close" data-close="alert"></button>
+				Your form validation is successful!
+			</div> -->
+			<div class="col-md-12">
+				<!-- BEGIN PAGE TITLE & BREADCRUMB-->
+                
+        
+                     <!-- BEGIN PAGE HEADING-->
+                <div class="row">
+                    <div class="col-md-12">
+                        <h3 class="page-title">
+                            <i class="fa fa-tasks pull-left font25 marg_top10"></i>Designate as Preselect
+                        </h3>
+                    </div>
+                </div>
+        <!-- END PAGE HEADING-->
+              <div class="row">
+                    <div class="col-md-7">
+                        <img src="<%- theProperty.thumbnailLink %>" height="86" width="110" class="pull-left marg_right35">
+                        <br>
+                        <ul>
+                            <li style="list-style-type: circle;" class="font18"><%- (theProperty)?theProperty.propertyFullAddress:"" %></li>
+                            <li style="list-style-type: circle;"><%- (theProperty)?theProperty.otherInfo:"" %></li>
+                            <li style="list-style-type: circle;"><a class="ippropertypage" style="cursor: pointer;" data-objectid="<%- (theProperty)?theProperty.propertyDetailPageUrl:"" %>" target="blank" data-toggle="tooltip" title="InvestorPortal Property Detail Page">Investor View</a></li>
+                        </ul>
+                    </div>			
+                    <div class="col-md-5 " style="border-left: 1px solid #CCCCCC;">
+                        <table style="width:100%;">
+                    <tr>
+                        <td><strong>Status: </strong><span class= "darkfontcolor"><%- (theProperty)?theProperty.propertyStatus:"" %></span></td>
+                    </tr>
+                    <tr>
+               	    	<td><br></td>
+                		</tr>
+                           
+                    <tr>
+                        
+                        <td colspan="3">Listing info: <div align="left">Status: <span class="darkfontcolor"> <%- (theListing)?theListing.listingStatus:""%></span>,  Days on market: <span class="darkfontcolor"><%- (theListing && theListing.listingInfo)?theListing.listingInfo.cdom:""%></span></div></td>
+                      
+                    </tr>
+                            
+                    <tr>
+                        <td colspan="3"> <div align="left">Date added: <span class="darkfontcolor"><%-(theListing && theListing.listingInfo)?theListing.listingInfo.listedOn:""%></span>, MLS:<span class="darkfontcolor"><a href="<%-theListing.mlsLink%>" target='_blank'><%- (theListing && theListing.listingInfo)?theListing.listingInfo.mlsNumber:"" %></a></span></div></td>
+
+
+                    </tr>
+                            <tr><td><br></td>
+                            </tr>
+                           
+                    <tr>
+                        <td>Price: <span class= "darkfontcolor"><%- (theProperty && theProperty.propertyInfo)?accounting.formatMoney(theProperty.propertyInfo.purchasePrice,"$",0):""%></span></td>
+                        
+                        <td>&nbsp; </td>
+                         
+                    </tr>
+                            <tr>
+                            <td>Rent:  <span class= "darkfontcolor"><%- (theProperty && theProperty.propertyInfo)?accounting.formatMoney(theProperty.propertyInfo.leasedRent,"$",0):""%> </span> </td>
+                            <td>&nbsp;</td>
+
+                            </tr>
+
+                </table>
+                        
+                       
+            	</div>	
+
+
+            </div><br>
+<br>
+			<div class="row">
+                    <table width="100%">
+                        <tbody>
+                        <tr>
+                            <td><br></td>
+                        </tr> 
+                            <tr>
+                                <td><h4>Investment:  <span class= "darkfontcolor"><%- (theListing && theListing.listingInfo)?accounting.formatMoney(theListing.listingInfo.financedInvestment,"$",0):""%></span></h4></td>
+                                <td><h4>&nbsp;&nbsp;Cashflow:  <span class= "darkfontcolor"><%- (theListing && theListing.listingInfo)?accounting.formatMoney(theListing.listingInfo.annualNetCashflow,"$",0):""%></span></h4></td>
+                                <td><h4>&nbsp;&nbsp;Down payment:  <span class= "darkfontcolor"><%- (theListing && theListing.listingInfo)?accounting.formatMoney(theListing.listingInfo.downPaymentAmount,"$",0):""%></span></h4></td>
+                                <td><h4>&nbsp;&nbsp;Yield:  <span class= "darkfontcolor"><%- (theListing && theListing.listingInfo)?accounting.formatNumber(theListing.listingInfo.financedReturn,2):""%>%</span></h4></td>
+                                <td><h4>&nbsp;&nbsp;Appreciation:  <span class= "darkfontcolor"><%- (theListing && theListing.listingInfo)?accounting.formatNumber(theListing.listingInfo.appreciationRate,2):""%>%</span></h4></td>
+                            </tr>
+                            <tr>
+                                                      
+                            </tr>
+                            <tr>
+                               
+
+
+                            </tr>
+                        </tbody>
+                    </table>        
+            </div>	
+                
+				<div id="resetPasswordSuccess"	class="alert alert-success display-hide">
+					<button class="close" data-close="alert"></button>
+					<text>Email with new password has been sent.</text>
+				</div>
+				<div id="resetPasswordError" class="alert alert-danger display-hide">
+					<button class="close" data-close="alert"></button>
+					<text>Error in sending password reset email.</text>
+				</div>
+				<!-- END PAGE TITLE & BREADCRUMB-->
+			</div>
+		</div>
+ 		
+		<div class="row">
+			<div class="col-md-12 marg_top25">
+			 <!-- Tab Start -->
+		         <div class="tabbable">
+						<ul class="nav nav-tabs1">
+							<li class="active" id="preselectDetails" name="preselectInfoNav" ><a style="cursor: pointer;"  data-toggle="tab"><i
+									class="fa fa-tasks pull-left font14 marg_top4"> </i> Details </a></li>
+                                    <% if(!isHUselect){%>
+            							<li name="" ><a ><i
+            									class="fa fa-picture-o pull-left font14 marg_top4"> </i>Photos </a></li>
+            							<li name=""><a  ><i
+            									class="fa fa-video-camera pull-left font14 marg_top4"> </i>Videos </a></li>
+            							<li name=""><a  ><i
+            								class="fa fa-film pull-left font14 marg_top4"> </i>Pixeet </a></li>
+		
+                            <%}else{%>
+                                        <li name="preselectInfoNav" ><a style="cursor: pointer;" id="preselectPhotos"  data-toggle="tab"><i
+                                                class="fa fa-picture-o pull-left font14 marg_top4"> </i>Photos </a></li>
+                                        <li name="preselectInfoNav"><a style="cursor: pointer;" id="preselectVideos"  data-toggle="tab"><i
+                                                class="fa fa-video-camera pull-left font14 marg_top4"> </i>Videos </a></li>
+                                        <li name="preselectInfoNav"><a style="cursor: pointer;" id="preselectPixeet" data-toggle="tab"><i
+                                            class="fa fa-film pull-left font14 marg_top4"> </i>Pixeet </a></li>
+                            <% }%>
+						</ul>
+		
+						<div class="tab-content" style="width: 100%; margin-top: 20px;">
+		                     <div class="tab-pane active" id="preselectDetailsTab" name="preselectInfoTab">
+							 </div>
+							 <div class="tab-pane" id="preselectPhotosTab" name="preselectInfoTab">
+							 </div>
+							 <div class="tab-pane" id="preselectVideosTab" name="preselectInfoTab">
+							 </div>
+							 <div class="tab-pane" id="preselectPixeetTab" name="preselectInfoTab">
+							 </div>
+		                </div>
+				</div>	
+		    </div>
+	    </div>	
+	</div>
+</div>
+<!-- END CONTENT -->

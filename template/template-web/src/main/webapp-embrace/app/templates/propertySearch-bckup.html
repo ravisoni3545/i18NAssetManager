@@ -1,0 +1,368 @@
+<div class="page-content">
+                <!-- BEGIN SAMPLE PORTLET CONFIGURATION MODAL FORM-->
+                <div class="modal fade" id="portlet-config" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+                    aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                                </button>
+                                <h4 class="modal-title">
+                                    Modal title</h4>
+                            </div>
+                            <div class="modal-body">
+                                Widget settings form goes here
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn blue">
+                                    Save changes</button>
+                                <button type="button" class="btn default" data-dismiss="modal">
+                                    Close</button>
+                            </div>
+                        </div>
+                        <!-- /.modal-content -->
+                    </div>
+                    <!-- /.modal-dialog -->
+                </div>
+                <!-- /.modal -->
+                <!-- END SAMPLE PORTLET CONFIGURATION MODAL FORM-->
+                <!-- BEGIN PAGE HEADING-->
+                <div class="dash-header">
+                    <div class="">
+                        <h3 class="page-title">
+                            <i class="fa fa-search pull-left"></i>Search/View
+                        </h3>
+                    </div>
+                </div>
+                <!-- END PAGE HEADING-->
+                <!-- Start Search section -->
+                <div class="row">
+				
+				
+				
+                    <div class="col-md-12">
+                        <!-- Start Editable Search section -->
+						<div class="member-search ">
+						<div class="row display-none" id="searchadvanced2" style="padding-left:15px; padding-right:15px;">
+							<div class="col-md-12 showhidesearch" >
+						<a href="javascript:void(0);" onClick="hideformdiv2();">Click to expand the search panel <i class="fa fa-angle-down btn bg-dark pad3_top_bot pad7_right_left"></i></a>
+						</div>
+						</div>
+						
+                        <div class="row" id="searchadvanced1">
+                            <form novalidate="novalidate" id="search_form">
+							
+							<!-- start section -->
+                           <div class="clearfix">
+
+                            <div class="margin-bottom-15 marg_top15">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="col-md-4 control-label6 texalignright">Financing</label>
+                                        <div class="btn-group marg_left10" data-toggle="buttons">
+                                            <label class="btn btn-default active">
+                                            <input class="toggle" name="financingType" id="style1" value="financed" checked="checked" type="radio">
+                                                financed </label>
+                                            <label class="btn btn-default ">
+                                            <input class="toggle" name="financingType" id="style2" value="cash" type="radio">
+                                            Cash </label>                              
+                                        </div>
+                                    </div>
+                                    
+                                </div>
+                                <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label class="col-md-4 control-label6 texalignright">Style <i title="" data-original-title="" data-content="This is your risk profile based on the answers provided by you." data-placement="left" data-trigger="hover" class="fa fa-question-circle popovers"></i></label>
+                                            <div class="btn-group marg_left12" data-toggle="buttons">
+                                                <label class="btn btn-default leftradius">
+                                                <input class="toggle" name="classA" id="classA" value="A" type="checkbox">
+                                                A </label>
+                                                <label class="btn btn-default">
+                                                <input class="toggle" name="classB" id="classB" value="B" type="checkbox">
+                                                B</label>
+                                                <label class="btn btn-default rightradius ">
+                                                <input class="toggle" name="classC" id="classC" value="C" type="checkbox">
+                                                C</label>
+                                        </div>
+                                    </div>
+                                   
+                                </div>
+                            </div>
+						
+                            <div class="row margin-bottom-15">
+                                <div class="col-md-12">
+                                    <div class="col-md-6">
+                                        
+                                        <div class="row">
+                                            <div class="form-group">
+                                            <label class="col-md-4 control-label6 texalignright">Investment Amount</label>
+                                            <div class="col-md-3">
+                                                <input placeholder="From" name="investmentPrice1" id="price1" value="" class="form-control srch" type="text">
+                                            </div>
+                                            <div class="col-md-3">
+                                                <input placeholder="To" name="investmentPrice2" id="price2" value="" class="form-control srch" type="text">
+                                            </div>
+                                            </div>
+                                        </div>
+    									
+    									<div class="clearfix marg_top10"></div>
+    									
+                                        <div class="row">
+                                            <div class="form-group">
+                                            <label class="col-md-4 control-label6 texalignright">Monthly Cash-flow</label>
+                                            <div class="col-md-3">
+                                                <input placeholder="From" name="cashFlow1" id="cashflow1" value="" class="form-control srch" type="text">
+                                            </div>
+                                            <div class="col-md-3">
+                                                <input placeholder="To" name="cashFlow2" id="cashflow2" value="" class="form-control srch" type="text">
+                                            </div>
+                                        </div>
+                                        </div>
+    									
+    									<div class="clearfix marg_top10"></div>
+                                        <div class="row">
+                                            <div class="form-group">
+                                            <label class="col-md-4 control-label6 texalignright">Year Built</label>
+                                            <div class="col-md-3">
+                                                <input placeholder="From" name="yearBuilt1" id="year1" value="" class="form-control srch" type="text">
+                                            </div>
+                                            <div class="col-md-3">
+                                                <input placeholder="To" name="yearBuilt2" id="year2" value="" class="form-control srch" type="text">
+                                            </div>
+                                        </div>
+                                        </div>
+    									<div class="clearfix marg_top10"></div>
+                                        <div class="row">
+                                            <div class="form-group">
+                                                <label class="col-md-4 control-label6 texalignright">Return % </label>
+                                                <div class="col-md-3">
+                                                    <input name="returnVal" id="returnval" value="" style="width: 100px;" class="form-control srch" type="text">
+                                                </div>
+                                            </div>
+                                        </div>
+    									
+    									<div class="clearfix marg_top10"></div>
+                                        <div class="row">
+                                            <div class="form-group">
+                                                <label class="col-md-4 control-label6 texalignright">Appreciation %</label>
+                                                <div class="col-md-3">
+                                                    <input name="appreciationVal" id="appreciation" value="" style="width: 100px;" class="form-control srch" type="text">
+                                                </div>
+                                            </div>
+    									
+                                        </div>
+    									
+    									<div class="clearfix marg_top10"></div>
+    									
+    									<div class="row">
+                                            <div class="form-group marg_left100">
+                                                <label class="col-md-3 control-label6 texalignright"></label>
+                                                <div class="col-md-7">
+	    										<div>
+	    										<label class="marg_top10"><input name="showNotAvail" id="showNotAvail" value="true" class="srch" type="checkbox" style="height:13px;margin-right:9px;"> Show Not Available <i title="" data-original-title="" data-content="Show Not Available" data-placement="top" data-trigger="hover" class="fa fa-question-circle popovers tooltips"></i>  </label>
+                                                    </div>
+                                                <div>
+	                                            <label class=" marg_top10"><input name="hotPropOnly" id="hotPropOnly" value="true" class="srch" type="checkbox" style="height:13px;margin-right:9px;"> Show Hot Properties Only <i title="" data-original-title="" data-content="Show Hot Properties Only" data-placement="top" data-trigger="hover" class="fa fa-question-circle popovers tooltips"></i> </label>
+												</div>
+												<div>
+	                                            <label class=" marg_top10"> <input name="showSDIRAOnly" id="showSDIRAOnly" value="true" class="srch" type="checkbox" style="height:13px;margin-right:9px;"> Shown SDIRA Only <i title="" data-original-title="" data-content="Shown SDIRA Only" data-placement="top" data-trigger="hover" class="fa fa-question-circle popovers tooltips"></i> </label>
+	                                            </div>
+	                                            <div>
+	                                            <label class=" marg_top10"> <input name="preSelectOnly" id="preSelectOnly" value="true" class="srch" type="checkbox" style="height:13px;margin-right:9px;">Show Pre-select Only <i title="" data-original-title="" data-content="Show Pre-select Properties Only" data-placement="top" data-trigger="hover" class="fa fa-question-circle popovers tooltips"></i> </label>
+	                                            <label class=" marg_top10"> <input name="onInvestorPortalOnly" id="onInvestorPortalOnly" value="true" class="srch" type="checkbox" style="height:13px;margin-left:23px"> Shown On Investor Portal <i title="" data-original-title="" data-content="Shown Only Properties that are shown On Investor Portal" data-placement="top" data-trigger="hover" class="fa fa-question-circle popovers tooltips"></i></label>
+	                                            </div>
+                                                </div>
+                                            </div>
+                                        </div>
+    									<div class="clearfix marg_top15"></div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div clas="row">
+                                            <div class="form-group">
+                                                <label class="col-md-4 control-label6 texalignright">Zone <i title="" data-original-title="" data-content="Location Zone Value" data-placement="top" data-trigger="hover" class="fa fa-question-circle popovers"></i></label>
+                                                <div class="col-md-6">
+                                                    <input name="propertyZone" id="zone" value="" class="form-control srch" type="text">
+                                                </div>
+                                            </div>
+                                        </div>
+    									
+    									<div class="clearfix marg_top10"></div>
+                                        <div clas="row">
+                                            <div class="form-group">
+                                                <label class="col-md-4 control-label6 texalignright">Source <i title="" data-original-title="" data-content="Property Source" data-placement="top" data-trigger="hover" class="fa fa-question-circle popovers"></i></label>
+                                                <div class="col-md-6">
+                                                    <input name="propertySource" id="psource" value="" class="form-control srch" type="text">
+                                                </div>
+                                            </div>
+                                        </div>
+    									<div class="clearfix marg_top10"></div>
+                                        <div clas="row">
+                                            <div class="form-group">
+                                                <label class="col-md-4 control-label6 texalignright">Address <i title="" data-original-title="" data-content="Address" data-placement="top" data-trigger="hover" class="fa fa-question-circle popovers"></i></label>
+                                                <div class="col-md-6">
+                                                    <input name="propertyAddress" id="address" value="" class="form-control srch" type="text">
+                                                </div>
+                                            </div>
+                                        </div>
+    									<div class="clearfix marg_top10"></div>
+    								
+                                       
+    									<div clas="row">
+    									
+    									       <div class="form-group">
+                                                <label class="col-md-4 control-label6 texalignright">City <i title="" data-original-title="" data-content="City" data-placement="top" data-trigger="hover" class="fa fa-question-circle popovers"></i></label>
+                                                <div class="col-md-3">
+                                                    <input name="propertyCity" id="city" value="" class="form-control srch" type="text">
+                                                </div>
+                                            </div>
+    										
+    										
+    										<div class="form-group">
+                                                <label class="col-md-1 control-label6 texalignright" style="padding-right:0px;">State <i title="" data-original-title="" data-content="State" data-placement="top" data-trigger="hover" class="fa fa-question-circle popovers"></i></label>
+                                                <div class="col-md-2">
+                                                    <input name="propertyState" maxlength="2" size="2" id="state" value="" class="form-control srch" type="text">
+                                                </div>
+                                            </div>
+    										
+                                        </div>
+    									
+    									
+    									
+    									<div class="clearfix marg_top10"></div>
+                                        <div clas="row">
+                                            <div class="form-group">
+                                                <label class="col-md-4 control-label6 texalignright">Zip <i title="" data-original-title="" data-content="Zip" data-placement="top" data-trigger="hover" class="fa fa-question-circle popovers"></i></label>
+                                                <div class="col-md-3">
+                                                    <input name="propertyZip" id="zip" value="" class="form-control srch" type="text">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="clearfix marg_top10"></div>
+                                        <div clas="row">
+                                            <div class="form-group">
+                                                <label class="col-md-4 control-label6 texalignright" style="padding-right:0px;">Property Display Id: <i title="" data-original-title="" data-content="Property Display Id" data-placement="top" data-trigger="hover" class="fa fa-question-circle popovers"></i></label>
+                                                <div class="col-md-3">
+                                                    <input name="propertyDisplayId" id="displayId" value="" class="form-control srch" type="text">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="clearfix marg_top15"></div>
+                                    </div>
+                                </div>
+                            </div>
+                      <!--      <div class="row margin-bottom-5">
+                               <div class="col-md-7">
+                                    <div class="margin-top-10">
+                                        <input name="submit" id="searchProperty" value="Search" class="btn blue btn-sm pull-right">
+                                    </div>
+                              </div>
+                            </div>-->
+                               <div class="text-center col-md-12 clearfix form-actions2">
+                                   <input name="submit" id="searchProperty" value="Search" class="btn blue">
+                               </div>
+                      </div>
+
+
+							<!-- end section -->
+                            </form></div>
+                        </div>
+                        <!-- end Advanced search 1 -->
+                        <div class="row">
+                            <div class="col-md-12">
+                                <!-- BEGIN PAGE TITLE & BREADCRUMB-->
+                                <div id="generalError" class="alert alert-danger display-hide">
+                                    <button class="close" data-close="alert"></button>
+                                    <text>Error in performing the operation.</text>
+                                </div>
+                                <!-- END PAGE TITLE & BREADCRUMB-->
+                            </div>
+                        </div>
+                        <!-- End Search section -->
+           <!--             <div class="row">
+                            <div class="col-md-12" >
+                                <h4>
+                                    <i class="fa fa-search pull-left font25" style="margin-top:5px;"></i>Search Result Property
+                                </h4>
+                            </div>
+                        </div>-->
+						
+						<!-- Start Editable Search section -->
+                        <div class="panel"  id="searchResults">
+
+
+                        <!-- end Advanced search 1 -->
+
+                        </div>
+                    <!-- Start Editable Search section -->
+                </div>
+                 
+                 
+                <div class="clearfix">
+                </div>
+                <div id="propertySearchAddSelectedDiv"></div>
+                <!-- START Property Wishlist lightbox -->
+                <div class="modal fade" id="wishlistmodal" tabindex="-1" role="basic"
+                        aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                                    </button>
+                                    <h4 class="modal-title" align="center">
+                                         Add Property to Recommended List</h4>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="row">
+                                            <div class="col-md-12">
+                                                <!-- BEGIN PAGE TITLE & BREADCRUMB-->
+                                                <div id="generalInvestorError" class="alert alert-danger display-hide">
+                                                    <button class="close" data-close="alert"></button>
+                                                    <text>Error in performing the operation.</text>
+                                                </div>
+                                                <!-- END PAGE TITLE & BREADCRUMB-->
+                                            </div>
+                                    </div> 
+                                       <span class="font15" id="address"> 2906 Percheron Lane,<br>
+                                        Indianapolis, IN, 46237</span><br>
+
+                                  
+                                   <div class="form-body marg_top15">
+                                   <label class="col-md-2" style="padding-left:0px; padding-top:7px;">Investor:</label> <label class="col-md-10"><input type="text" placeholder="First/Last Name" class="form-control isrch" id="investor_fname"></label>
+                                  <div class="col-md-12 marg_top15" id="investorRSearch" propertyid="" leveragedPerc="" investmentAmt=""> <button class="btn bg-blue pull-right">Search</button></div>
+                                   </div>
+                             
+                                   <div class="clearfix"></div>
+                                   <div class="row"  id="investorWishlistSearchResults">
+
+                                   
+                                   </div>
+                                   
+                                   <div class="clearfix"></div>
+                                   
+                                   
+                                   
+                                   
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn blue" id="addInvestor">
+                                        Add</button>
+                                        
+                                         <button type="button"  class="btn default" data-dismiss="modal" id="closeInvestor">
+                                        Cancel</button>
+                                  
+                                </div>
+                            </div>
+                            <!-- /.modal-content -->
+                        </div>
+                        <!-- /.modal-dialog -->
+                </div>
+                <!-- /.modal -->
+                <!-- END Property Wishlist lightbox -->
+            </div>
+</div>
+<script type="text/javascript">
+    jQuery('.popovers').popover({
+            trigger:'hover',
+            'placement': 'top'
+    });
+</script>        

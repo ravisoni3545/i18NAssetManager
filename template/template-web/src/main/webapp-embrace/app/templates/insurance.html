@@ -1,0 +1,136 @@
+<div class="page-content-wrapper" id="insurancePageContentWrapper">
+	<div class="page-content">
+
+		<!-- BEGIN PAGE HEADING-->
+		<div class="row">
+			<div class="col-md-12">
+				<h3 class="page-title">
+					<i class="fa fa-home pull-left font25 marg_top10"></i>Insurance
+					Quotes
+				</h3>
+			</div>
+		</div>
+		<!-- END PAGE HEADING-->
+		<div class="member-search marg_top15">
+			<form action="#" id="insuranceSearchForm">
+				<div class="row">
+					<div class="col-md-5">
+						<div class="form-group clearfix">
+							<label class="control-label clearfix col-md-5">Investor
+								Name</label>
+							<div class="col-md-12">
+								<input type="text" placeholder="First / Last name"
+									class="form-control srch" value="" id="name" name="name">
+							</div>
+						</div>
+					</div>
+					<div class="col-md-5">
+						<div class="form-group clearfix">
+							<label class="control-label clearfix col-md-5">Property
+								Address </label>
+							<div class="col-md-12">
+								<input type="text" class="form-control srch" value=""
+									id="address" name="address">
+							</div>
+						</div>
+					</div>
+					<div class="clearfix"></div>
+
+
+					<div class="col-md-5">
+						<div class="form-group clearfix">
+							<label class="control-label clearfix col-md-5">Status </label>
+							<div class="col-md-12" id="statusList">
+								<!-- <select class="form-control" id="status" name="status">
+									<option value="" selected="selected">SELECT</option>
+									<option value="Submit Insurance Quote">Submit Insurance Quote</option>
+									<option value="Pending Investor Selection">Pending Investor Selection</option>
+									<option value="Pending Insurance Package">Pending Insurance Package</option>
+									<option value="Submit Insurance Binder">Submit Insurance Binder</option>
+									<option value="Submit Insurance Application">Submit Insurance Application</option>
+								</select> -->
+							</div>
+						</div>
+					</div>
+
+					<div class="col-md-1 marg_top15 marg_left15">
+						<button class="btn blue marg_top15" value="Search" name="Submit"
+							id="searchSubmit" type="button">Search</button>
+					</div>
+
+				</div>
+
+			</form>
+		</div>
+		<div id="taskInCompleteMsg" class="alert alert-danger display-hide">
+			<button class="close" data-close="alert"></button>
+			Error in Completion of insurance task.
+		</div>
+		<div id="taskCompletionMsg" class="alert alert-success display-hide">
+			<button class="close" data-close="alert"></button>
+			Successfully Completed insurance task.
+		</div>
+		<div id="mailSent" class="alert alert-success display-hide">
+			<button class="close" data-close="alert"></button>
+			Successfully mailed documents to lender.
+		</div>
+		<div id="insuranceErrMsg" class="alert alert-danger display-hide">
+			<button class="close" data-close="alert"></button>
+			Error in fetching insurance Data.
+		</div>
+		<div class="row" id="insuranceSearchResults"></div>
+		<div id="errorDiv" class="alert alert-danger display-hide">
+			<button class="close" data-close="alert"></button>
+			Error in fetching closings.
+		</div>
+	</div>
+</div>
+
+<!--start Insurance quote dialog box-->
+    <div class="modal fade bs-modal-lg" id="INSURANCE_QUOTE_REQUEST_POPUP_1" tabindex="-1" role="basic" aria-hidden="true">
+          <div class="modal-dialog modal-lg">
+            <div class="modal-content ins-quo">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                    </button>
+                    <h3 class="modal-title">
+                        Insurance Quote</h3>
+                </div>
+                <div class="modal-body table-responsive">
+                
+                </div>
+                <div class="modal-footer">
+                    
+                    
+                    <button class="btn blue" type="button" name="submitAllQuotes">Submit</button>
+                    <button data-dismiss="modal" class="btn default" type="button">Cancel</button>
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+    <!--ends insurance quote dialog box-->
+
+    <div class="modal fade bs-modal-sm" id="form-delete" tabindex="-1"
+	role="dialog" aria-hidden="true">
+	<div class="modal-dialog modal-sm">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal"
+					aria-hidden="true"></button>
+				<h4 class="modal-title">Delete</h4>
+			</div>
+			<div class="modal-body">Are you sure you want to delete this?</div>
+			<div class="modal-footer">
+				<button type="button" class="btn blue" id="confirmDeleteQuote">Yes</button>
+				<button type="button" class="btn default" data-dismiss="modal">No</button>
+			</div>
+		</div>
+		<!-- /.modal-content -->
+	</div>
+	<!-- /.modal-dialog -->
+</div>
+
+<div id='insuranceApplicationPopUpDiv'></div>
+

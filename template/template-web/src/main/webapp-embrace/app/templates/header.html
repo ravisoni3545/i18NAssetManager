@@ -1,0 +1,150 @@
+ <!-- <div class="header-inner">
+ <p>HU Header</p>
+ <ul>
+ 	<li>Hi <%= userName%></li>
+ 	<li><a href="/logout">Logout</a></li>
+ </ul>
+           
+ </div> -->
+   <!-- BEGIN TOP NAVIGATION BAR -->
+<div class="header-inner">
+	<!-- BEGIN LOGO -->
+	<a class="navbar-brand" href="index.html"> <img width="130"
+		src="assets/img/logo.png" alt="logo" class="img-responsive"/>
+	</a>
+   <div id="nav-min-icon" class="sidebar-toggler hidden-phone" data-show="true"></div>
+	<!-- END LOGO -->
+	<!-- BEGIN RESPONSIVE MENU TOGGLER -->
+	<a href="javascript:;" class="navbar-toggle" data-toggle="collapse"
+		data-target=".navbar-collapse"> <img
+		src="assets/img/menu-toggler.png" alt="" />
+	</a>
+	<!-- END RESPONSIVE MENU TOGGLER -->
+	<!-- BEGIN TOP NAVIGATION MENU -->
+	<ul class="nav navbar-nav pull-right">
+		<li>
+			<div id="globe-search-box" class="globe-search-box input-group input-large">
+				<div class="input-group-btn">
+					<button id="gOption" type="button" class="btn default dark" tabindex="-1"><i type="all" class="fa fa-globe"></i></button>
+					<button type="button" class="btn default dropdown-toggle dark" data-toggle="dropdown" tabindex="-1">
+						<i class="fa fa-angle-down"></i>
+					</button>
+					<ul id="gList" class="dropdown-menu" role="menu">
+						<li><a href="#"><i type="all" class="fa fa-globe"></i> All</a></li>
+						<% if(headerPermissions.propertyManagement) { %>
+						<li><a href="#"><i type="property" class="fa fa-home"></i> Properties</a></li>
+						<% }
+						   if(headerPermissions.investorManagement) { %>
+						<li><a href="#"><i type="investor" class="fa fa-user"></i> Investors</a></li>
+						<% }
+						   if(headerPermissions.opportunityManagement) { %>
+						<li><a href="#"><i type="opportunity" class="fa fa-search"></i> Opportunities</a></li>
+						<% } 
+						   if(headerPermissions.closingManagement) { %>
+						<li><a href="#"><i type="closing" class="fa fa-shopping-cart"></i> Closings</a></li>
+						<% } 
+						   if(headerPermissions.assetManagement) { %>
+						<li><a href="#"><i type="asset" class="fa fa-building-o"></i> Assets</a></li>
+						<% } 
+						   if(headerPermissions.rehabManagement) { %>
+						<li><a href="#"><i type="rehab" class="fa fa-legal"></i> Rehab</a></li>
+						<% } 
+						   if(headerPermissions.marketingManagement) { %>
+						<li><a href="#"><i type="marketing" class="fa fa-signal"></i> Marketing</a></li>
+						<% }
+						   if(headerPermissions.vendorManagement) { %>
+						<li><a href="#"><i type="vendor" class="fa fa-users"></i> Vendor</a></li>
+						<% } %>
+					</ul>
+				</div>
+				<div class="input-icon right input-medium"> 
+				<i class="fa fa-times">	</i>
+				<input id="globe-search-input" type="text" class="form-control" placeholder="Min. 3 letters to start searching" autocomplete="off">
+				</div>
+				<!--<a id="icon-search" class="input-group-addon btn btn-primary btn-search-green">
+		        <i class="fa fa-search"></i>
+		      </a>-->
+			</div>
+		</li>
+		<!-- BEGIN USER LOGIN DROPDOWN -->
+<!-- 		<a href="alerts.html" style="float: left; margin-top: 10px;"><span -->
+<!-- 			class="badge badge-danger"> 3 </span></a> -->
+		<li class="dropdown user">
+			<a style="cursor:pointer;" class="dropdown-toggle"
+				data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
+				<div class="MsgNotfy " style="position:relative;float:left;margin-top:4px;">
+				<!-- <div class="MsgNotfy" style="position:relative;float:left;margin-top:4px;"> -->
+					<span class="fa fa-bell" style="color: rgb(165, 181, 181);font-size: 23px;">
+						<span id="msgNotificationCount" class="badge" style="margin-right: -5px;margin-top: -15px; background-color: #00A5EA;"></span>
+					</span>
+				</div>	
+			</a>
+			<ul class="dropdown-menu" id="msgnotification"style="/*position:absolute;*/background-color: white;width:300px;max-height:400px;overflow-y: auto;">
+				<!-- li class="marg_left0"><a href="#mytasks"><i class="fa fa-tasks"></i>My Tasks </a></li>
+				<li class="marg_left0">
+					<div style="/*position:absolute;*/background-color: white;width:330px;" class="display-hide" id="msgnotification"></div>
+					<!-- <div style="/*position:absolute;*/background-color: white;width:300px;" id="msgnotification"></div> -->
+			   </li -->
+		   </ul>
+		   
+		</li>
+		<li class="dropdown user"><a href="#" class="dropdown-toggle"
+			data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
+				<!-- <img alt="" src="assets/img/avatar1_small.jpg" /> --> 
+				<img alt="" src="<%= imageLink %>" width="29" height="29"/>
+				<span
+				class="username"><%= userName%> </span><i class="fa fa-angle-down"></i>
+		</a>
+			<ul class="dropdown-menu animated">
+<!-- 				<li class="marg_left0"><a href="task.html"><i -->
+<!-- 						class="fa fa-tasks"></i>MyTasks </a></li> -->
+<!-- 				<li><a href="myproperties.html"><i class="fa fa-home"></i>MyProperties -->
+<!-- 				</a></li> -->
+<!-- 				<li><a href="myinvestor.html"><i class="fa fa-user"></i>MyInvestors -->
+<!-- 				</a></li> -->
+<!-- 				<li><a href="messages.html"><i class="fa fa-envelope"></i>Messages -->
+<!-- 						<span class="badge badge-danger"> 8 </span></a></li> -->
+<!-- 				<li><a href="alerts.html"><i -->
+<!-- 						class="fa fa-exclamation-triangle"></i>Alerts <span -->
+<!-- 						class="badge badge-danger">3 </span></a></li> -->
+<!-- 				<li class="divider"></li> -->
+<!-- 				<li><a href="profile.html"><i class="fa fa-user"></i>My -->
+<!-- 						Profile </a></li> -->
+<!-- 				<li><a href="#myclosings"><i class="fa fa-shopping-cart"></i>Closings</a></li> -->
+				<% var hasHeaderMenus = false;
+				   if(headerPermissions.closingManagement || headerPermissions.opportunityManagement || headerPermissions.rehabManagement || headerPermissions.assetManagement){ 
+						hasHeaderMenus = true;
+				   %>	
+					<li class="marg_left0"><a href="#mytasks"><i class="fa fa-tasks"></i>My Tasks </a></li>
+				<% }
+				   if(headerPermissions.closingManagement){ 
+						hasHeaderMenus = true;
+				   %>	
+					<li><a href="#myclosings/my"><i class="fa fa-shopping-cart"></i>My Closings</a></li>
+				<% }
+				   if(headerPermissions.assetManagement){ 
+						hasHeaderMenus = true;
+				   %>	
+					<li><a href="#myAssets"><i class="fa fa-building-o"></i>My Assets</a></li>
+				<% } 
+				   if(headerPermissions.investorManagement){
+					 	hasHeaderMenus = true; %> 
+				    <li><a href="#investors"><i class="fa fa-user"></i>My Investors</a></li>
+				<% } 
+				   if(hasHeaderMenus){ %>
+					<li class="divider"></li>
+				<% } %>
+				<li><a href="#changePassword"><i class="fa fa-lock"></i>Change Password </a></li>
+				<li><a href="#logout"><i class="fa fa-key"></i>Log Out </a></li>
+			</ul></li>
+		<!-- END USER LOGIN DROPDOWN -->
+	</ul>
+	<!-- <div class="MsgNotfy display-hide pull-right" style="position:relative;float:left;margin-top:4px;cursor:pointer">
+	<span class="fa fa-envelope" style="color: rgb(165, 181, 181);margin-top: 10px;font-size: 20px;">
+	<span id="msgNotificationCount" class="badge badge-danger" style="margin-left: -10px;"></span></span>
+	<div style="position:absolute;background-color: white;border: 1px solid black;" id="msgnotification"></div>
+</div> -->
+	<!-- END TOP NAVIGATION MENU -->
+</div>
+<!-- END TOP NAVIGATION BAR -->
+

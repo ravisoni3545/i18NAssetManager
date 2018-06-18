@@ -1,0 +1,28 @@
+<tr data-modelid="<%- issue.inspectionItemId%>">
+	<td><%- issue.issueSource%></td>
+    <td><%- _.find(categories,function(item){
+            console.log(item.categoryId);
+            return issue.category == item.categoryId;
+        }).categoryName%>
+    </td>
+    <td><%- issue.description%></td>
+    <td>
+        <textarea class="form-control" style="height: 54px;" name="sellerComments"><%- issue.sellerComments%></textarea>
+    </td>
+    <td class="sellerResponseDD">
+        
+    </td>
+    <td>
+        <div class="input-group date date-picker" data-date-format="mm-dd-yyyy" data-date-viewmode="years">
+                <input class="form-control" readonly type="text" style="cursor: pointer; padding: 2px;" name="repairDate" value="<%- issue.repairDate%>">
+                <span class="input-group-btn hide">
+                    <button class="btn default" type="button">
+                        <i class="fa fa-calendar"></i>
+                    </button>
+                </span>
+        </div>
+    </td>
+    <td>
+        <input type="text" value="<%- issue.creditAmount%>" name="creditAmount" class="form-control currencyTable" style="padding: 2px;">
+    </td>
+</tr>

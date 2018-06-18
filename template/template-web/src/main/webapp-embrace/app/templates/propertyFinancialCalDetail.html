@@ -1,0 +1,625 @@
+<div class="row" style="padding: 6px;">
+    <a href="#" id="export_link"><span class="btn blue pull-right" id="export_excel" style=" border-radius: 20px !important;  padding: 2px 15px;  text-align: center;font-weight: bold ;margin: 5px;">Export To Excel</span></a>
+    <span class="btn blue pull-right" id="reset_financial_calc" style=" border-radius: 20px !important;  padding: 2px 15px;  text-align: center;font-weight: bold ;margin: 5px;">RESET ALL VALUES</span>
+</div>
+<div class="row">
+                            			   <!-- START INVESTMENT SUMMARY-->
+                                                    <div class="portlet box grey">
+                                                        <div class="portlet-title">
+                                                            <div class="caption">
+                                                                <i class="fa fa-cogs"></i>Investment Summary
+                                                            </div>
+                                                           
+                                                        </div>
+                                                        <div class="portlet-body table-responsive" id="financialDetails0">
+                                                            <table class="table table-hover" id="finance1">
+                                                                <tbody>
+                                                                    <tr>
+                                                                        <td width="40%">&nbsp; </td>
+                                                                        <td align="right" width="30%">
+                                                                            <strong>With Financing</strong>                                   </td>
+                                                                        <td align="right" width="30%">
+                                                                            <strong>Without Financing</strong>                                   </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>
+                                                                        <div class="col-md-6">
+                                                                        	<span class="" >Price</span>
+                                                                          	<span class="fa fa-question-circle dashboard-date-range tooltips faq_quest" data-placement="right" data-original-title="Price of the house"></span>
+                                                                        </div>
+                                                                          <!-- <input type="text" id="text_price_val" value="<%- accounting.formatMoney(input.propertyInput.price,"$",0)%>" class="currency calc-input-field form-control input-small pull-right marg_left5"> -->
+																			<div class="input-group col-md-6">
+																				<span class="input-group-addon"><i class="fa fa-dollar"></i></span>
+																				<input class="calc-input-field form-control currency" type="text" name="text_price_val" id="text_price_val" value='<%= input.propertyInput.price %>'>
+																			</div>
+                                                                        </td>
+                                                                        <td class="text-right " id="price_val">
+                                                                            <%- accounting.formatMoney(theData.financedProjection.price,"$",0)%>
+                                                                        </td>
+																		 <td class="text-right" id="price_val1">
+                                                                            <%- accounting.formatMoney(theData.allCashProjection.price,"$",0)%>
+                                                                        </td>
+                                                                       
+                                                                    </tr>
+																	<tr>
+                                                                        <td>
+                                                                        <div class="col-md-6">
+                                                                        	<span class="" >Closing Cost</span>
+                                                                          	<span class="fa fa-question-circle dashboard-date-range tooltips faq_quest" data-placement="right" data-original-title="Closing cost includes owner's title insurance, origination charge appraisal fee, credit report, flood certification, govt. recording charges, miscellaneous fees"></span>
+                                                                        </div>
+                                                                           <!-- <input type="text" id="text_closing_val" value="<%- accounting.formatMoney(theData.financedProjection.closingCost,"$",0)%>" class="currency calc-input-field form-control input-xsmall pull-right marg_left5"> -->
+                                                                           <div class="input-group col-md-6">
+																				<span class="input-group-addon"><i class="fa fa-dollar"></i></span>
+																				<input class="calc-input-field form-control currency" type="text" name="text_closing_val" id="text_closing_val" value='<%= theData.financedProjection.closingCost %>'>
+																				<span class="clearfix font_s12 rfloat calc_err" style="color:#a94442;display: none"></span>
+																			</div>
+                                                                        </td>
+                                                                        <td class="text-right" id="closing_val">
+                                                                            <%- accounting.formatMoney(theData.financedProjection.closingCost,"$",2)%>
+                                                                        </td>
+																		 <td class="text-right" id="closing_val1">
+                                                                            <%- accounting.formatMoney(theData.allCashProjection.closingCost,"$",2)%>
+                                                                        </td>
+                                                                       
+                                                                    </tr>
+																	<tr>
+                                                                        <td>
+                                                                        <div class="col-md-6">
+                                                                        	<span class="" >Refresh/Rehab Cost</span>
+                                                                          	<span class="fa fa-question-circle dashboard-date-range tooltips faq_quest" data-placement="right" data-original-title="Refresh/Rehab Cost"></span>
+                                                                         </div>
+                                                                           <!-- <input type="text" id="text_rehab_val" value="<%- accounting.formatMoney(input.propertyInput.rehabCost,"$",0)%>" class="currency calc-input-field form-control input-xsmall pull-right marg_left5"> -->
+                                                                        <div class="input-group col-md-6">
+																			<span class="input-group-addon"><i class="fa fa-dollar"></i></span>
+																			<input class="calc-input-field form-control currency" type="text" name="text_rehab_val" id="text_rehab_val" value='<%= input.propertyInput.rehabCost %>'>
+																		</div>
+                                                                        </td>
+                                                                        <td class="text-right" id="rehab_val" class='fontbold1'>
+                                                                            <%- accounting.formatMoney(theData.financedProjection.rehabCost,"$",2)%>
+                                                                        </td>
+																		 <td class="text-right" id="rehab_val1">
+                                                                         <%- accounting.formatMoney(theData.allCashProjection.rehabCost,"$",2)%>
+                                                                        </td>
+                                                                       
+                                                                    </tr>
+                                                                    
+                                                                    
+                                                                    <tr>
+                                                                        <td>
+                                                                        <div class="col-md-6">
+                                                                        	<span class="" >Loan Fees & Costs</span>
+                                                                         </div>      
+                                                                        </td>
+                                                                        <td class="text-right" id="loan_fee_cost" class='fontbold1'>
+                                                                            <%- accounting.formatMoney(theData.financedProjection.loanFee,"$",2)%>
+                                                                        </td>
+																		 <td class="text-right" id="loan_fee_cost1" class='fontbold1'>
+                                                                         <%- accounting.formatMoney(theData.allCashProjection.loanFee,"$",2)%>
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>
+                                                                        <div class="col-md-6">
+                                                                        	<span class="" >Acquisition Fee</span>
+                                                                          	<span class="fa fa-question-circle dashboard-date-range tooltips faq_quest" data-placement="right" data-original-title="3.5% of the purchase price, subject to a maximum of $7,500."></span>
+                                                                         </div>      
+                                                                        </td>
+                                                                        <td class="text-right" id="acquisition_fee" class='fontbold1'>
+                                                                            <%- accounting.formatMoney(theData.financedProjection.acquisitionFee,"$",2)%>
+                                                                        </td>
+																		 <td class="text-right" id="acquisition_fee1" class='fontbold1'>
+                                                                         <%- accounting.formatMoney(theData.allCashProjection.acquisitionFee,"$",2)%>
+                                                                        </td>
+                                                                       
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>
+                                                                        <div class="col-md-8">
+                                                                        	<span class="" >Repair & Maintenance Reserve</span>
+                                                                          	<span class="fa fa-question-circle dashboard-date-range tooltips faq_quest" data-placement="right" data-original-title="Required reserve account to cover repair and maintenance expenses in cases where there is not enough money to cover from rent."></span>
+                                                                         </div>      
+                                                                        </td>
+                                                                        <td class="text-right" id="repair_maintainance_reserve" class='fontbold1'>
+                                                                            <%- accounting.formatMoney(theData.financedProjection.repairAndMaintenanceReserve,"$",2)%>
+                                                                        </td>
+																		 <td class="text-right" id="repair_maintainance_reserve1" class='fontbold1'>
+                                                                         <%- accounting.formatMoney(theData.allCashProjection.repairAndMaintenanceReserve,"$",2)%>
+                                                                        </td>
+                                                                       
+                                                                    </tr>
+                                                                    
+																	<tr>
+                                                                        <td>
+                                                                        <div class="col-md-6">
+                                                                        	<span class="" >Investment</span>
+                                                                          	<span class="fa fa-question-circle dashboard-date-range tooltips faq_quest" data-placement="right" data-original-title="Either the purchase price in case of cash purchase Or the down payment in case of loan Plus the closing cost Plus any initial rehab cost."></span>
+                                                                         </div>      
+                                                                        </td>
+                                                                        <td class="text-right" id="invest_val" class='fontbold1'>
+                                                                            <%- accounting.formatMoney(theData.financedProjection.investment,"$",0)%>
+                                                                        </td>
+																		 <td class="text-right" id="invest_val1" class='fontbold1'>
+                                                                         <%- accounting.formatMoney(theData.allCashProjection.investment,"$",0)%>
+                                                                        </td>
+                                                                       
+                                                                    </tr>
+																	<tr>
+                                                                        <td>
+                                                                        <div class="col-md-6">
+                                                                        	<span class="" >Loan Amount (Terms)</span>
+                                                                        	<span class="fa fa-question-circle dashboard-date-range tooltips faq_quest" data-placement="right" data-original-title="Typical terms assumed are 30 year fixed rate mortgage with an interest rate of 5.25% with a 20% down payment."></span>
+                                                                        </div>  
+                                                                        </td>
+                                                                        <td class="text-right"  id="loan_val">
+                                                                            <%- accounting.formatMoney(theData.financedProjection.loanAmount,"$",0)%>
+                                                                        </td>
+																		 <td class="text-right"  id="loan_val1">
+                                                                         
+                                                                        </td>
+                                                                       
+                                                                    </tr>
+                                                                    
+                                                                </tbody>
+                                                            </table>
+                                                        </div>
+                                                    </div>
+                                           <!-- END INVESTMENT SUMMARY-->
+										   
+										   <!-- START MONTHLY RETURN CALCULATION-->
+                                                    <div class="portlet box grey" id="financialDetails1">
+                                                        <div class="portlet-title">
+                                                            <div class="caption">
+                                                                <i class="fa fa-cogs"></i>Return Calculations (15 Year Average)
+                                                            </div>
+                                                           
+                                                        </div>
+                                                        <div class="portlet-body table-responsive">
+                                                            <table class="table table-hover" id="finance2">
+                                                                <tbody>
+                                                                    <tr>
+                                                                        <td width="40%">&nbsp; </td>
+                                                                        <td align="right" width="30%">
+                                                                            <strong>With Financing</strong>                                   </td>
+                                                                        <td align="right" width="30%">
+                                                                            <strong>Without Financing</strong>                                   </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>
+                                                                        <div class="col-md-6">
+                                                                        	<span>Rental Income</span>
+                                                                          	<span class="fa fa-question-circle dashboard-date-range tooltips faq_quest" data-placement="right" data-original-title="Annual rent"></span>
+                                                                         </div>    
+                                                                             <!-- <input type="text" id="text_rent_val" value="<%- accounting.formatMoney(input.propertyInput.rent,"$",0)%>" class="currency calc-input-field form-control input-xsmall pull-right marg_left5" > -->
+                                                                         <div class="input-group col-md-6"">
+																			<span class="input-group-addon"><i class="fa fa-dollar"></i></span>
+																			<input class="calc-input-field form-control currency" type="text" name="text_rent_val" id="text_rent_val" value='<%= input.propertyInput.rent %>'>
+																		</div>
+                                                                        </td>
+                                                                        <td class="text-right" id="financing_rent_val">
+                                                                            <%- accounting.formatMoney(theData.financedProjection.rentalIncome.average,"$",0)%>
+                                                                        </td>
+																		 <td class="text-right" id="withoutfinancing_rent_val">
+                                                                         <%- accounting.formatMoney(theData.allCashProjection.rentalIncome.average,"$",0)%>
+                                                                        </td>
+                                                                       
+                                                                    </tr>
+                                                                    
+                                                                    
+                                                                    <tr>
+                                                                        <td>
+                                                                        <div class="col-md-6">
+                                                                        	Vacancy Provision(%)
+                                                                        </div>
+                                                                        <div class="col-md-6">
+                                                                            <input id="txtVacancyProvision" class="calc-input-field form-control pull-left marg_left5 v_provision_ip" type="text"  value="<%- accounting.formatNumber(theData.financedProjection.vacancyPercent,2)%>" maxlength="5" style="width: 57px; float: right; margin-right: 20px;">
+                                                                            <span class="clearfix"></span>
+                                                                            <span class="clearfix font_s12 rfloat calc_err" style="color:#a94442;display: none"></span>
+                                                                        </div>
+                                                                        </td>
+                                                             
+                                                                        <td align="right" id="financing_vacancyprovision">
+                                                                             <%- accounting.formatMoney(theData.financedProjection.vacancyLoss.average,"$",0)%>
+                                                                        <td align="right" id="withoutfinancing_vacancyprovision">
+                                                                            <%- accounting.formatMoney(theData.allCashProjection.vacancyLoss.average,"$",0)%>
+                                                                        </td>
+                                                                    </tr>
+                                                                    
+																	<tr>
+                                                                        <td><div class="col-md-6">
+                                                                             <span class="">Less (<a href='javascript:;' class=" bookmark" data-id="expenses"> Expenses </a>)</span>
+                                                                             <span class="fa fa-question-circle dashboard-date-range tooltips faq_quest" data-placement="right" data-original-title="Expenses include Property taxes, insurance, HOA (if any) and asset management fees."></span> 
+                                                                             </div>
+                                                                        </td>
+                                                                        <td class="text-right" id="less_expense_val">
+                                                                            <span style="color:#ff0000;"> <%- accounting.formatMoney(theData.financedProjection.totalExpenses.average,{symbol:"$", format:"%s (%v)",precision:0})%></span>
+                                                                        </td>
+																		 <td class="text-right" id="less_expense_val1">
+                                                                        <span style="color:#ff0000;"> <%- accounting.formatMoney(theData.allCashProjection.totalExpenses.average,{symbol:"$", format:"%s (%v)",precision:0})%></span>
+                                                                        </td>
+                                                                       
+                                                                    </tr>
+																	<tr>
+                                                                        <td><div class="col-md-6">
+                                                                        <span class="" >Net Operating Income</span>
+                                                                          <span class="fa fa-question-circle dashboard-date-range tooltips faq_quest"  data-placement="right" data-original-title="Rental Income Minus Expenses and Provisions."></span>
+                                                                          </div> 
+                                                                        </td>
+                                                                        <td class="text-right data-placement="right" data-original-title=ht" id="ynoi">
+                                                                            <%- accounting.formatMoney(theData.financedProjection.netOperatingIncome.average,"$",0)%>
+                                                                        </td>
+																		 <td class="text-right" id="ynoi1">
+                                                                         <%- accounting.formatMoney(theData.allCashProjection.netOperatingIncome.average,"$",0)%>
+                                                                        </td>
+                                                                       
+                                                                    </tr>
+																	<tr>
+                                                                        <td>
+                                                                        <div class="col-md-6">
+                                                                        	<span class="" >Less Interest</span>
+                                                                          	<span class="fa fa-question-circle dashboard-date-range tooltips faq_quest"  data-placement="right" data-original-title="First year interest is used for return calculations."></span>
+                                                                        </div>
+                                                                        </td>
+                                                                        <td class="text-right" id="less_intrest">
+                                                                            <span style="color:#ff0000;"> <%- accounting.formatMoney(theData.financedProjection.loanInterest.average,{symbol:"$", format:"%s (%v)",precision:0})%></span>
+                                                                        </td>
+																		 <td class="text-right" id="less_intrest1">
+                                                                          -
+                                                                        </td>
+                                                                       
+                                                                    </tr>
+																	<tr>
+                                                                        <td>
+                                                                        <div class="col-md-6">
+                                                                        	<span class="" >Net Income</span>
+                                                                          	<span class="fa fa-question-circle dashboard-date-range tooltips faq_quest"  data-placement="right" data-original-title="Net Operating Income Minus Interest."></span>
+                                                                         </div>
+                                                                        </td>
+                                                                        <td class="text-right" id="net_income">
+                                                                            <%- accounting.formatMoney(theData.financedProjection.netIncome.average,"$",0)%>
+                                                                        </td>
+																		 <td class="text-right" id="net_income1">
+                                                                         <%- accounting.formatMoney(theData.allCashProjection.netIncome.average,"$",0)%>
+                                                                        </td>
+                                                                       
+                                                                    </tr>
+																	<tr>
+                                                                        <td>
+                                                                        <div class="col-md-6">
+                                                                        	<span class="" >Return</span>
+                                                                          	<span class="fa fa-question-circle dashboard-date-range tooltips faq_quest"  data-placement="right" data-original-title="Net Income Minus the principal paydown."></span>
+                                                                        </div>
+                                                                        </td>
+                                                                        <td class="text-right" id="returnPercentage">
+                                                                            <%- accounting.formatNumber(theData.financedProjection.yield.average,2)%>%
+                                                                        </td>
+																		 <td class="text-right" id="returnPercentage1">
+                                                                         <%- accounting.formatNumber(theData.allCashProjection.yield.average,2)%>%
+                                                                        </td>
+                                                                       
+                                                                    </tr>
+																	
+																	<tr>
+                                                                        <td>
+                                                                        <div class="col-md-6">
+                                                                        	<span class="" >Principal pay down/equity build</span>
+                                                                          	<span class="fa fa-question-circle dashboard-date-range tooltips faq_quest"  data-placement="right" data-original-title="Monthly mortgage payment Minus the Interest."></span>
+                                                                         </div>
+                                                                        </td>
+                                                                        <td class="text-right" id="principla_paydown_val">
+                                                                            <%- accounting.formatMoney(theData.financedProjection.loanPaydown.average,"$",0)%>
+                                                                        </td>
+																		 <td class="text-right" id="principla_paydown_val1">
+                                                                          -
+                                                                        </td>
+                                                                       
+                                                                    </tr>
+																	
+																	<tr>
+                                                                        <td>
+                                                                        <div class="col-md-6">
+                                                                        	<span class="" >Cash Flow</span>
+                                                                          	<span class="fa fa-question-circle dashboard-date-range tooltips faq_quest"  data-placement="right" data-original-title="Net Income Minus the principal paydown."></span>
+                                                                         </div>
+                                                                        </td>
+                                                                        <td class="text-right" id="yearly_cash_flow">
+                                                                            <%- accounting.formatMoney(theData.financedProjection.cashflow.average,"$",0)%>
+                                                                        </td>
+																		 <td class="text-right" id="yearly_cash_flow1">
+                                                                         <%- accounting.formatMoney(theData.allCashProjection.cashflow.average,"$",0)%>
+                                                                        </td>
+                                                                       
+                                                                    </tr>
+                                                                    
+                                                                </tbody>
+                                                            </table>
+                                                        </div>
+                                                    </div>
+                                           <!-- END MONTHLY RETURN CALCULATION -->
+										   
+										   
+										   <!-- START EXPENSES AND PROVISION -->
+                                                    <div class="portlet box grey" id="expenses"    >
+                                                        <div class="portlet-title">
+                                                            <div class="caption">
+                                                                <i class="fa fa-cogs"></i>Expenses (15 Year Average)
+                                                            </div>
+                                                           
+                                                        </div>
+                                                        <div class="portlet-body table-responsive" id="financialDetails2">
+                                                            <table class="table table-striped table-hover" id="finance3">
+                                                                <tbody>
+                                                                    <tr>
+                                                                        <td width="40%">&nbsp; </td>
+                                                                        <td align="right" width="30%">
+                                                                            <strong>With Financing</strong>                                   </td>
+                                                                        <td align="right" width="30%">
+                                                                            <strong>Without Financing</strong>                                   </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>
+                                                                        	<div class="col-md-6">
+                                                                        		<span class="" >Property Tax</span>
+                                                                          		<span class="fa fa-question-circle dashboard-date-range tooltips faq_quest"  data-placement="right" data-original-title="Property tax is projected. Actual tax is subject to variation."></span>
+                                                                          </div>
+                                                                          <!-- <input type="text" id="text_property_tax" value="<%- accounting.formatMoney(input.propertyInput.tax,"$",0)%>" class="currency calc-input-field form-control input-xsmall pull-right marg_left5"> -->
+                                                                          <div class="input-group col-md-6">
+																				<span class="input-group-addon"><i class="fa fa-dollar"></i></span>
+																				<input class="calc-input-field form-control currency" type="text" name="text_property_tax" id="text_property_tax" value='<%= input.propertyInput.tax %>'>
+																		  </div>
+                                                                        </td>
+                                                                        <td class="text-right" id="financing_property_tax">
+                                                                            <%- accounting.formatMoney(theData.financedProjection.propertyTax.average,"$",0)%>
+                                                                        </td>
+																		 <td class="text-right" id="withoutfinancing_property_tax">
+                                                                         <%- accounting.formatMoney(theData.allCashProjection.propertyTax.average,"$",0)%>
+                                                                        </td>
+                                                                       
+                                                                    </tr>
+																	<tr>
+                                                                        <td>
+                                                                        <div class="col-md-6">
+                                                                             Property Insurance
+                                                                        </div>
+                                                                             <!-- <input type="text" id="text_financing_insurance" value="<%- accounting.formatMoney(input.propertyInput.insurance,"$",0)%>" class="currency calc-input-field form-control input-xsmall pull-right marg_left5"> -->
+                                                                         <div class="input-group col-md-6">
+																			<span class="input-group-addon"><i class="fa fa-dollar"></i></span>
+																			<input class="calc-input-field form-control currency" type="text" name="text_financing_insurance" id="text_financing_insurance" value='<%= input.propertyInput.insurance %>'>
+																	  	</div>
+                                                                        </td>
+                                                                        <td class="text-right" id="financing_insurance">
+                                                                            <%- accounting.formatMoney(theData.financedProjection.propertyInsurance.average,"$",0)%>
+                                                                        </td>
+																		 <td class="text-right" id="withoutfinancing_insurance">
+                                                                         <%- accounting.formatMoney(theData.allCashProjection.propertyInsurance.average,"$",0)%>
+                                                                        </td>
+                                                                       
+                                                                    </tr>
+																	<tr>
+                                                                        <td>
+                                                                        <div class="col-md-6">
+                                                                             HOA
+                                                                        </div>
+                                                                              <!-- <input type="text" id="text_financing_hoa" value="<%- accounting.formatMoney(input.propertyInput.hoa,"$",0)%>" class="currency calc-input-field form-control input-xsmall pull-right marg_left5"> -->
+                                                                         <div class="input-group col-md-6">
+																			<span class="input-group-addon"><i class="fa fa-dollar"></i></span>
+																			<input class="calc-input-field form-control currency" type="text" name="text_financing_hoa" id="text_financing_hoa" value='<%= input.propertyInput.hoa %>'>
+																	  	</div>
+                                                                        </td>
+                                                                        <td class="text-right" id="financing_hoa">
+                                                                            <%- accounting.formatMoney(theData.financedProjection.hoa.average,"$",0)%>
+                                                                        </td>
+																		 <td class="text-right" id="withoutfinancing_hoa">
+                                                                         <%- accounting.formatMoney(theData.allCashProjection.hoa.average,"$",0)%>
+                                                                        </td>
+                                                                       
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>
+                                                                        <div class="col-md-6">
+                                                                             Turnover cost
+                                                                        </div>
+                                                                        </td>
+                                                                        <td class="text-right" id="financing_leasing_fee">
+                                                                            <%- accounting.formatMoney(theData.financedProjection.leasingFee.average,"$",0)%>
+                                                                        </td>
+                                                                         <td class="text-right" id="withoutfinancing_leasing_fee">
+                                                                         <%- accounting.formatMoney(theData.allCashProjection.leasingFee.average,"$",0)%>
+                                                                        </td>
+                                                                       
+                                                                    </tr>
+																	<tr>
+                                                                        <td>
+                                                                        	<div class="col-md-6">
+                                                                            	 Asset Management Fees
+                                                                        	</div>
+                                                                        </td>
+                                                                        <td class="text-right" id="financing_amf">
+                                                                            <%- accounting.formatMoney(theData.financedProjection.assetManagementFee.average,"$",0)%>
+                                                                        </td>
+																		 <td class="text-right" id="withoutfinancing_amf">
+                                                                         <%- accounting.formatMoney(theData.allCashProjection.assetManagementFee.average,"$",0)%>
+                                                                        </td>
+                                                                       
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>
+                                                                        <div class="col-md-6">
+                                                                        	Maintenance Provision(%)
+                                                                        </div>
+                                                                        <div class="col-md-6">
+                                                                            <input id="txtMaintenanceProvision" class="calc-input-field form-control pull-left marg_left5 m_provision_ip" type="text" value="<%- accounting.formatNumber(theData.financedProjection.repairAndMaintenanceFeePercent,2)%>" maxlength="5" style="width: 57px; float: right; margin-right: 20px;">
+                                                                            <span class="clearfix"></span>
+                                                                            <span class="clearfix font_s12 rfloat calc_err" style="color:#a94442;display: none"></span>
+                                                                        </div>
+                                                                        </td>
+                                                                        <td align="right" id="financing_maintenanceprovision">                                                         
+                                                                        <%- accounting.formatMoney(theData.financedProjection.repairAndMaintenanceFee.average,"$",0)%>
+                                                                        </td>
+                                                                        <td align="right" id="withoutfinancing_maintenanceprovision">
+                                                                            <%- accounting.formatMoney(theData.allCashProjection.repairAndMaintenanceFee.average,"$",0)%>
+                                                                        </td>
+                                                                    </tr>
+																	<tr>
+                                                                        <td>
+                                                                        <div class="col-md-6">
+                                                                             Total Expenses
+                                                                        </div>
+                                                                        </td>
+                                                                        <td class="text-right" id="financing_tep">
+                                                                            <%- accounting.formatMoney(theData.financedProjection.totalExpenses.average,"$",0)%>
+                                                                        </td>
+																		 <td class="text-right" id="withoutfinancing_tep">
+                                                                         <%- accounting.formatMoney(theData.allCashProjection.totalExpenses.average,"$",0)%>
+                                                                        </td>
+                                                                       
+                                                                    </tr>
+                                                                    
+                                                                </tbody>
+                                                            </table>
+                                                        </div>
+                                                    </div>
+                                           <!-- END EXPENSES AND PROVISION -->
+										   
+										   <!-- START LOAN TERMS -->
+                                                    <div class="portlet box grey">
+                                                        <div class="portlet-title">
+                                                            <div class="caption">
+                                                                <i class="fa fa-cogs"></i>Loan Term
+                                                            </div>
+                                                           
+                                                        </div>
+                                                        <div class="portlet-body table-responsive">
+                                                            <table class="table table-hover" id="finance4">
+                                                                <tbody>
+                                                                    <tr>
+                                                                        <td width="40%">&nbsp; </td>
+                                                                        <td align="right" width="30%">
+                                                                            <strong>With Financing</strong>                                   </td>
+                                                                        <td align="right" width="30%">
+                                                                            <strong>Without Financing</strong>                                   </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>
+                                                                        <div class="col-md-6">
+                                                                             Down Payment(%)
+                                                                         </div>
+                                                                         <div class="col-md-6">
+                                                                            <input id="text_downpayment_val" class="calc-input-field form-control pull-left marg_left5 down_payment_ip" type="text"  value="<%- accounting.formatNumber(theData.financedProjection.downpaymentPercent,2)%>" maxlength="5" style="width: 62px; float: right; margin-right: 5px;">
+                                                                            <span class="clearfix"></span>
+                                                                            <span class="clearfix font_s12 rfloat calc_err" style="color:#a94442;display: none"></span>
+                                                                          </div>
+                                                                        </td>
+                                                                        <td class="text-right" id="financing_downpayment_val">
+                                                                            <%- accounting.formatNumber(theData.financedProjection.downpaymentPercent,2)%>%
+                                                                        </td>
+																		 <td class="text-right">
+                                                                          
+                                                                        </td>
+                                                                       
+                                                                    </tr>
+																	<tr>
+                                                                        <td>
+                                                                        <div class="col-md-6">
+                                                                             Down Payment (Amount)
+                                                                         </div>
+                                                                        </td>
+                                                                        <td class="text-right" id="downpayment_amount">
+                                                                            <%- accounting.formatMoney(theData.financedProjection.downpaymentAmount,"$",0)%>
+                                                                        </td>
+																		 <td class="text-right">
+                                                                         
+                                                                        </td>
+                                                                       
+                                                                    </tr>
+																	<tr>
+                                                                        <td>
+                                                                        <div class="col-md-6">
+                                                                        	<span class="" >Loan Amount</span>
+                                                                          	<span class="fa fa-question-circle dashboard-date-range tooltips faq_quest"  data-placement="right" data-original-title="Purchase Price Minus Down payment."></span>
+                                                                         </div>
+                                                                        </td>
+                                                                        <td class="text-right" id="loan_val2">
+                                                                            <%- accounting.formatMoney(theData.financedProjection.loanAmount,"$",0)%>
+                                                                        </td>
+																		 <td>
+                                                                         
+                                                                        </td>
+                                                                       
+                                                                    </tr>
+																	<tr>
+                                                                        <td><div class="col-md-6">
+                                                                            <span class="" >Rate(%)</span>
+                                                                          	<span class="fa fa-question-circle dashboard-date-range tooltips faq_quest"  data-placement="right" data-original-title="Lender Financing assumes an indicative rate, good borrower credit history, 360 months term, and zone lender guidelines at indicated down payment."></span>
+                                                                          </div><div class="col-md-6">
+                                                                            <input id="text_rate_val" class="calc-input-field form-control pull-left marg_left5 rate_ip" type="text"  value="<%- accounting.formatNumber(theData.financedProjection.interestRate,2)%>" maxlength="5" style="width: 58px; float: right; margin-right: 8px;">
+                                                                            <span class="clearfix"></span>
+                                                                            <span class="clearfix font_s12 rfloat calc_err" style="color:#a94442;display: none"></span>
+                                                                            </div>
+                                                                        </td>
+                                                                        <td class="text-right" id="rate_val">
+                                                                            <%- accounting.formatNumber(theData.financedProjection.interestRate,2)%>%
+                                                                        </td>
+																		 <td>
+                                                                          
+                                                                        </td>
+                                                                       
+                                                                    </tr>
+																	<tr>
+                                                                        <td><div class="col-md-6"><span class="" >Terms (Years)</span>
+                                                                          <span class="fa fa-question-circle dashboard-date-range tooltips faq_quest"  data-placement="right" data-original-title="Lender Financing assumes an indicative rate, good borrower credit history, 360 months term, and zone lender guidelines at indicated down payment."></span></div>
+                                                                            <div class="col-md-6">
+                                                                            <input id="text_terms_val" class="calc-input-field form-control pull-left marg_left5" value="<%- accounting.formatNumber(theData.financedProjection.loanTerm/12,0)%>" type="text"  maxlength="2" style="width: 57px; float: right; margin-right: 20px;">
+                                                                            <span class="clearfix"></span>
+                                                                             <span class="font_s12 rfloat calc_err" style="color:#a94442;display: none"></span>
+                                                                             </div>
+                                                                        </td>
+                                                                        <td class="text-right" id="terms_val">
+                                                                            <%- accounting.formatNumber(theData.financedProjection.loanTerm/12,0)%>
+                                                                        </td>
+																		 <td>
+                                                                         
+                                                                        </td>
+                                                                       
+                                                                    </tr>
+																	<tr>
+                                                                        <td><div class="col-md-8">
+                                                                             Principal &amp; Interest (P &amp; I)</div>
+                                                                        </td>
+                                                                        <td class="text-right" id="pi_yearly">
+                                                                            <%- accounting.formatMoney(theData.financedProjection.principalAndInterest,"$",0)%>
+                                                                        </td>
+																		 <td>
+                                                                         
+                                                                        </td>
+                                                                       
+                                                                    </tr>
+																	<tr>
+                                                                        <td><div class="col-md-6">
+                                                                             Year 1 Interest</div>
+                                                                        </td>
+                                                                        <td class="text-right" id="pi_year">
+                                                                            <%- accounting.formatMoney(theData.financedProjection.loanInterest.yearlyValues[0],"$",0)%>
+                                                                        </td>
+																		 <td>
+                                                                         
+                                                                        </td>
+                                                                       
+                                                                    </tr>
+                                                                    
+                                                                </tbody>
+                                                            </table>
+                                                        </div>
+                                                    </div>
+                                           <!-- END LOAN TERMS-->
+</div>                                           
+<script type="text/javascript">
+    $(".bookmark").click(function() {
+        var el_to = $(this).data('id');
+        $('html, body').animate({
+            scrollTop: $("#" + el_to).offset().top - 70
+        }, 2000);
+    });
+    jQuery('.tooltips').tooltip();
+
+    $('.currency').formatCurrency({roundToDecimalPlace: -1});
+</script>

@@ -1,0 +1,281 @@
+<div class=" form-horizontal">
+<!--  -->
+	<div  class="alert alert-danger display-hide insuranceSubmitQuoteAlertFailure">
+                                                                <button class="close" data-close="alert">
+                                                                </button>
+                                                                Please save atleast one quote before submitting.
+    </div>
+<!--  -->
+	<div  class="alert alert-danger display-hide insuranceSubmitQuoteInternalServerError">
+                                                                <button class="close" data-close="alert">
+                                                                </button>
+                                                                Couldn't submit the quotes due to internal server error.
+    </div>
+    <div class="alert alert-danger display-hide mailError">
+		<button class="close" data-close="alert"></button>
+		No Mortgagee Information to send mail.
+	</div>
+	<div class="alert alert-success display-hide mailNotification">
+		<button class="close" data-close="alert"></button>
+		Successfully sent mortgage information.
+	</div>
+	<!--  -->
+	<div class="row">
+
+		<div class="col-md-6">
+			<div class="form-group">
+				<label class="control-label col-md-6">Investor Name:</label>
+				<div class="col-md-5">
+					<p class="form-control-static"><%= headerInfo.investorName %></p>
+				</div>
+			</div>
+		</div>
+		<!--/span-->
+		<div class="col-md-6">
+			<div class="form-group">
+				<label class="control-label col-md-5">Date of Birth:</label>
+				<div class="col-md-6">
+					<p class="form-control-static"><%= headerInfo.dob %></p>
+				</div>
+			</div>
+		</div>
+		<!--/span-->
+	</div>
+
+	<div class="row">
+		<div class="col-md-6">
+			<div class="form-group">
+				<label class="control-label col-md-6">SSN:</label>
+				<div class="col-md-5">
+					<p class="form-control-static"><%= headerInfo.ssn %></p>
+				</div>
+			</div>
+		</div>
+		<!--/span-->
+		<div class="col-md-6">
+			<div class="form-group">
+				<label class="control-label col-md-5">Marital Status:</label>
+				<div class="col-md-6">
+					<p class="form-control-static"><%= headerInfo.maritalStatus %>
+					</p>
+				</div>
+			</div>
+		</div>
+		<!--/span-->
+	</div>
+
+	<div class="row">
+		<div class="col-md-6">
+			<div class="form-group">
+				<label class="control-label col-md-6">Home Address:</label>
+				<div class="col-md-5">
+					<p class="form-control-static"><%= headerInfo.homeAddress %></p>
+				</div>
+			</div>
+		</div>
+		<!--/span-->
+		<div class="col-md-6">
+			<div class="form-group">
+				<label class="control-label col-md-5">Property Address:</label>
+				<div class="col-md-6">
+					<p class="form-control-static"><%= headerInfo.propertyAddress
+						%></p>
+				</div>
+			</div>
+		</div>
+		<!--/span-->
+	</div>
+
+	<div class="row">
+		<div class="col-md-6">
+			<div class="form-group">
+				<label class="control-label col-md-6">Profession:</label>
+				<div class="col-md-5">
+					<p class="form-control-static"><%= headerInfo.profession %></p>
+				</div>
+			</div>
+		</div>
+		<!--/span-->
+		<div class="col-md-6">
+			<div class="form-group">
+				<label class="control-label col-md-5">Buyer's Agent:</label>
+				<div class="col-md-6">
+					<p class="form-control-static"><%= headerInfo.ilmInfo %></p>
+				</div>
+			</div>
+		</div>
+		<!--/span-->
+	</div>
+	<div class="row">
+		<div class="col-md-6">
+			<div class="form-group">
+				<label class="control-label col-md-6">CoBuyer:</label>
+				<div class="col-md-5">
+					<p class="form-control-static"><%= headerInfo.coBuyer %></p>
+				</div>
+			</div>
+		</div>
+		<!--/span-->
+		<div class="col-md-6">
+			<div class="form-group">
+				<label class="control-label col-md-5">CoBuyer Relation:</label>
+				<div class="col-md-6">
+					<p class="form-control-static"><%= headerInfo.coBuyerRelation %></p>
+				</div>
+			</div>
+		</div>
+		<!--/span-->
+	</div>
+	<div class="row">
+		<div class="col-md-6">
+			<div class="form-group">
+				<label class="control-label col-md-6">CoBuyer Date of Birth:</label>
+				<div class="col-md-5">
+					<p class="form-control-static"><%= headerInfo.coBuyerDob %></p>
+				</div>
+			</div>
+		</div>
+		<!--/span-->
+		<div class="col-md-6">
+			<div class="form-group">
+				<label class="control-label col-md-5">CoBuyer SSN:</label>
+				<div class="col-md-6">
+					<p class="form-control-static"><%= headerInfo.coBuyerSsn %></p>
+				</div>
+			</div>
+		</div>
+		<!--/span-->
+	</div>
+	<div class="row">
+		<div class="col-md-6">
+			<div class="form-group">
+				<label class="control-label col-md-6">CoBuyer Phone:</label>
+				<div class="col-md-5">
+					<p class="form-control-static"><%= headerInfo.coBuyerPhone %></p>
+				</div>
+			</div>
+		</div>
+		<!--/span-->
+		<div class="col-md-6">
+			<div class="form-group">
+				<label class="control-label col-md-5">CoBuyer Email:</label>
+				<div class="col-md-6">
+					<p class="form-control-static"><%= headerInfo.coBuyerEmail %></p>
+				</div>
+			</div>
+		</div>
+		<!--/span-->
+	</div>
+	<div class="row">
+		<div class="col-md-6">
+			<div class="form-group">
+				<label class="control-label col-md-6">CoBuyer Profession:</label>
+				<div class="col-md-5">
+					<p class="form-control-static"><%= headerInfo.coBuyerProfession %></p>
+				</div>
+			</div>
+		</div>
+		<!--/span-->
+		<div class="col-md-6">
+			<div class="form-group">
+				<label class="control-label col-md-5">Quoted Insurance Amount:</label>
+				<div class="col-md-6">
+					<p class="form-control-static amount"><%= headerInfo.quotedInsuranceAmount %></p>
+				</div>
+			</div>
+		</div>
+		<!--/span-->
+	</div>
+	<div class="row">
+		<div class="col-md-6">
+			<div class="form-group">
+				<label class="control-label col-md-6">Loan Number:</label>
+				<div class="col-md-5">
+					<p class="form-control-static"><%= headerInfo.loanNumber %></p>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-12">
+			<div class="form-group">
+				<label class="control-label col-md-3">Mortgagee Clause:</label>
+				<div class="col-md-8">
+					<p class="form-control-static"><%= headerInfo.mortgageeClause %></p>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- Below code is added to reuse the code in sendMortgageInfoMail -->
+	<div class="row" hidden>
+		<div class="col-md-6">
+			<div class="form-group">
+				<label class="control-label">Loan Number</label>
+				<input type="text" class="form-control" name="loanNumber" id="loanNumber" value="<%- headerInfo.loanNumber %>">
+			</div>
+		</div>
+		<div class="col-md-6">
+			<div class="form-group">
+				<label class="control-label">
+					Mortgagee Clause
+				</label><br>
+				<textarea class="form-control" style="height: 80px;"
+					placeholder="" name="mortgageeClause" id="mortgageeClause"><%= headerInfo.mortgageeClause %></textarea>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+	 <%if(headerInfo.loanNumber || headerInfo.mortgageeClause){%>
+		<div class="col-md-12">
+			<button type="button" class="pull-right btn green" id="mailMortgageClause"
+				style="margin-bottom: 15px;">Mail Insurance Vendor</button>
+		</div>
+	 <%}%>
+	</div>
+	<!--  New field start-->
+	<!-- <div class="row">
+		<div class="col-md-6">
+			<div class="form-group">
+				<label class="control-label col-md-5">Quoted Insurance Amount:</label>
+				<div class="col-md-5">
+					<p class="form-control-static amount"><%= headerInfo.quotedInsuranceAmount %></p>
+				</div>
+			</div>
+		</div>
+		
+	</div> -->
+	<!-- New field end -->
+
+	<div class="clearfix"></div>
+	<div id="accordion2" class="panel-group accordion scrollable"></div>
+
+	<!--<a id="add_item" class="marg_top20">Add</a>-->
+	<a id="add_quote" class="btn blue">Add New Quote</a>
+
+
+
+</div>
+
+<form class="form-horizontal" id="submitQuotesForm" name="submitQuotesForm" method="post"
+	enctype="multipart/form-data">
+	<input type="hidden" id="object" name="object" /> <input type="hidden"
+		id="objectId" name="objectId" /> <input type="hidden" id="taskKey"
+		name="taskKey" /> 
+		
+		<div class="form-group" style="display:none">
+						<label class="control-label" style="text-align: left;">
+							Completion Date </label>
+						<div class="input-group input-medium date date-picker"
+							data-date="" data-date-format="mm-dd-yyyy"
+							data-date-viewmode="years">
+							<input class="form-control" readonly="" placeholder=""
+								type="text" id="endDate" name="endDate"> <span
+								class="input-group-btn">
+								<button class="btn default" type="button">
+									<i class="fa fa-calendar"></i>
+								</button>
+							</span>
+						</div>
+		</div>
+		
+</form>

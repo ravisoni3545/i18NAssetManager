@@ -1,0 +1,750 @@
+<div class="modal fade bs-modal-sm with-popover" id="MILESTONE_POPUP_1"
+	tabindex="-1" role="basic" aria-hidden="true">
+	<div class="modal-dialog modal-sm">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal"
+					aria-hidden="true"></button>
+				<h4 class="modal-title" id="modalTitle"></h4>
+			</div>
+			<div class="modal-body"
+				style="margin-left: 10px; margin-right: 10px;">
+				<form class="milestone-form" method="post" id="">
+					<input type="hidden" id="object" name="object"> <input
+						type="hidden" id="objectId" name="objectId"> <input
+						type="hidden" id="taskKey" name="taskKey">
+						
+						
+						
+						<div id="repairRequired" class="form-group" style="display: none;">
+						<label class="control-label"> Repairs Completed? </label>
+						
+						<div class="radio-list form-control"
+							style="float: left; margin-bottom: 10px; padding-left: 36px;">
+							<label class="radio-inline"> <input
+								name="repairRequired" id="optionsRadiosyes" value="yes"
+								checked="" type="radio"> Yes
+							</label> <label class="radio-inline"
+								style="padding-left: 23px !important;"> <input
+								name="repairRequired" id="optionsRadiosno" value="no"
+								checked="" type="radio"> No
+							</label>
+						</div>
+					</div>
+					
+					<div id="reinspectionRequired" class="form-group" style="display: none;">
+						<label class="control-label"> Re-Inspection Required? </label>
+						
+						<div class="radio-list form-control"
+							style="float: left; margin-bottom: 10px; padding-left: 36px;">
+							<label class="radio-inline"> <input
+								name="reinspectionRequired" id="optionsRadiosyes" value="yes"
+								checked="" type="radio"> Yes
+							</label> <label class="radio-inline"
+								style="padding-left: 23px !important;"> <input
+								name="reinspectionRequired" id="optionsRadiosno" value="no"
+								checked="" type="radio"> No
+							</label>
+						</div>
+					</div>
+					
+					
+						
+
+					<div class="form-group">
+						<label class="control-label" style="text-align: left;">
+							Completion Date <span class="required">* </span>
+						</label>
+						<div class="input-group input-medium date date-picker"
+							data-date="" data-date-format="mm-dd-yyyy"
+							data-date-viewmode="years">
+							<input class="form-control" readonly="" placeholder=""
+								type="text" id="endDate" name="endDate"> <span
+								class="input-group-btn">
+								<button class="btn default" type="button">
+									<i class="fa fa-calendar"></i>
+								</button>
+							</span>
+						</div>
+					</div>
+					
+					
+					 <div id="reInspectionDoc"class="form-group" style="display:none;">
+	                  <div id="existingDocument"></div>
+	                </div>
+
+			
+
+					<div class="form-group">
+						<label class="control-label"> Comments <a
+							class="fa fa-comments-o pull-right showMessageTooltip_2"
+							style="cursor: pointer; font-size: 14px;" data-html="true"
+							data-show="true"> <i>Show past comments</i>
+						</a>
+						</label><br>
+
+						<textarea class="form-control" style="height: 80px;" name="comments" id="comments"></textarea>
+					</div>
+					
+				
+
+					
+				</form>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn blue"
+					id="milestonePopupRehabSubmitButton">SAVE</button>
+				<button type="button" id="cancelButton" class="btn default"
+					data-dismiss="modal">CANCEL</button>
+			</div>
+		</div>
+		<!-- /.modal-content -->
+	</div>
+	<!-- /.modal-dialog -->
+</div>
+<div class="modal fade bs-modal-sm" id="REPROJECT_POPUP" tabindex="-1"
+	role="basic" aria-hidden="true">
+	<div class="modal-dialog modal-sm">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal"
+					aria-hidden="true"></button>
+				<h4 class="modal-title" id="modalTitle">
+					<div id="reprojectTitle"></div>
+				</h4>
+			</div>
+			<div class="modal-body"
+				style="margin-left: 10px; margin-right: 10px;">
+				<div id="formAlertFailure" class="alert alert-danger display-hide">
+					<button class="close" data-close="alert"></button>
+					You have some form errors. Please check below.
+				</div>
+				<form id="reproject-form">
+					<input type="hidden" id="object" name="object"> <input
+						type="hidden" id="objectId" name="objectId"> <input
+						type="hidden" id="taskKey" name="taskKey">
+					<div class="form-group">
+						<label class="control-label" style="text-align: left;">
+							Projected Completion Date </label>
+						<div
+							class="input-group input-medium date date-picker unrestricted"
+							data-date="" data-date-format="mm-dd-yyyy"
+							data-date-viewmode="years">
+							<input class="form-control" readonly="" placeholder=""
+								type="text" id="projectedCompletionDate"
+								name="projectedCompletionDate"> <span
+								class="input-group-btn">
+								<button class="btn default" type="button">
+									<i class="fa fa-calendar"></i>
+								</button>
+							</span>
+						</div>
+					</div>
+
+					<div class="form-group">
+						<label class="control-label">Comments <span
+							class="required">* </span>
+						</label><br>
+
+						<textarea class="form-control" style="height: 200px;"
+							placeholder="" name="comments" id="comments" data-required="1"></textarea>
+					</div>
+				</form>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn blue" id="reProjectPopupSubmit">SAVE</button>
+				<button type="button" id="cancelButton" class="btn default"
+					data-dismiss="modal">CANCEL</button>
+			</div>
+		</div>
+		<!-- /.modal-content -->
+	</div>
+	<!-- /.modal-dialog -->
+</div>
+<!-- option delete lightbox start -->
+<div class="modal fade bs-modal-sm" id="deleteWorkflowStep"
+	tabindex="-1" role="dialog" aria-hidden="true">
+	<div class="modal-dialog modal-sm">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal"
+					aria-hidden="true"></button>
+				<h4 class="modal-title">Delete Rehab Step</h4>
+			</div>
+			<div class="modal-body">
+				Are you sure you want to delete this rehab step?<br>
+				<br> *Note: Deleting intermediate steps will make subsequent
+				steps unusable.
+				<form id="delete-step-form">
+					<input type="hidden" id="object" name="object"> <input
+						type="hidden" id="objectId" name="objectId"> <input
+						type="hidden" id="taskKey" name="taskKey">
+				</form>
+			</div>
+			<div class="modal-footer">
+				<button id="deleteStepConfirmationButton" type="button"
+					class="btn blue">Yes</button>
+				<button type="button" class="btn default" data-dismiss="modal">No</button>
+			</div>
+		</div>
+		<!-- /.modal-content -->
+	</div>
+	<!-- /.modal-dialog -->
+</div>
+<!-- option delete lightbox end -->
+<div class="modal fade bs-modal-sm" id="openWorkflowStep" tabindex="-1"
+	role="dialog" aria-hidden="true">
+	<div class="modal-dialog modal-sm">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal"
+					aria-hidden="true"></button>
+				<h4 class="modal-title">Open Rehab Step</h4>
+			</div>
+			<div class="modal-body">
+				Are you sure you want to open this rehab step? <br>
+				<br> *Note: Opening intermediate steps will make subsequent
+				steps unusable till they are completed again.
+				<form id="open-step-form">
+					<input type="hidden" id="object" name="object"> <input
+						type="hidden" id="objectId" name="objectId"> <input
+						type="hidden" id="taskKey" name="taskKey">
+				</form>
+			</div>
+			<div class="modal-footer">
+				<button id="openStepConfirmationButton" type="button"
+					class="btn blue">Yes</button>
+				<button type="button" class="btn default" data-dismiss="modal">No</button>
+			</div>
+		</div>
+		<!-- /.modal-content -->
+	</div>
+	<!-- /.modal-dialog -->
+</div>
+<div class="modal fade bs-modal-sm with-popover" id="DEFAULT_POPUP_1"
+	tabindex="-1" role="basic" aria-hidden="true">
+	<div class="modal-dialog modal-sm">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal"
+					aria-hidden="true"></button>
+				<h4 class="modal-title" id="modalTitle"></h4>
+			</div>
+			<div class="modal-body"
+				style="margin-left: 10px; margin-right: 10px;">
+				<form class="default-form-with-doc" method="post" id=""
+					enctype="multipart/form-data">
+					<input type="hidden" id="object" name="object"> <input
+						type="hidden" id="objectId" name="objectId"> <input
+						type="hidden" id="taskKey" name="taskKey">
+					<div class="form-group">
+						<label class="control-label" style="text-align: left;">
+							Start Date <span class="required">* </span>
+						</label>
+						<div class="input-group input-medium date date-picker"
+							data-date="" data-date-format="mm-dd-yyyy"
+							data-date-viewmode="years">
+							<input class="form-control" readonly="" placeholder=""
+								type="text" id="startDate" name="startDate"> <span
+								class="input-group-btn">
+								<button class="btn default" type="button">
+									<i class="fa fa-calendar"></i>
+								</button>
+							</span>
+						</div>
+					</div>
+
+					<div class="form-group">
+						<label class="control-label" style="text-align: left;">
+							Completion Date </label>
+						<div class="input-group input-medium date date-picker"
+							data-date="" data-date-format="mm-dd-yyyy"
+							data-date-viewmode="years">
+							<input class="form-control" readonly="" placeholder=""
+								type="text" id="endDate" name="endDate"> <span
+								class="input-group-btn">
+								<button class="btn default" type="button">
+									<i class="fa fa-calendar"></i>
+								</button>
+							</span>
+						</div>
+					</div>
+
+					<div class="form-group">
+						<label class="control-label"> Comments <a
+							class="fa fa-comments-o pull-right showMessageTooltip_2"
+							style="cursor: pointer; font-size: 14px;" data-html="true"
+							data-show="true"> <i>Show past comments</i>
+						</a>
+						</label><br>
+
+						<textarea class="form-control" style="height: 80px;"
+							placeholder="" name="comments" id="comments"></textarea>
+					</div>
+
+					<div style="display: none;" id="staticDocumentArea">
+						<a href="" id="staticDocument" target="_blank">Pre-Inspection
+							Document</a>
+					</div>
+				</form>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn blue" id="defaultPopupSubmitButton">SAVE</button>
+				<button type="button" id="cancelButton" class="btn default"
+					data-dismiss="modal">CANCEL</button>
+			</div>
+		</div>
+		<!-- /.modal-content -->
+	</div>
+	<!-- /.modal-dialog -->
+</div>
+<!-- end Completion Date lightbox -->
+<!-- Property Inspection Appointment Popup start -->
+<div class="modal fade with-popover" id="INSPECTION_APPOINTMENT_POPUP_1"
+	tabindex="-1" role="basic" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal"
+					aria-hidden="true"></button>
+				<h4 class="modal-title" id="modalTitle"></h4>
+			</div>
+			<div class="modal-body"
+				style="margin-left: 10px; margin-right: 10px;">
+				<form class="default-form-with-doc" method="post" id=""
+					enctype="multipart/form-data">
+					<input type="hidden" id="object" name="object"> <input
+						type="hidden" id="objectId" name="objectId"> <input
+						type="hidden" id="taskKey" name="taskKey">
+					<div class="form-group">
+						<label class="control-label" style="text-align: left;">
+							Start Date <span class="required">* </span>
+						</label>
+						<div class="input-group input-medium date date-picker"
+							data-date="" data-date-format="mm-dd-yyyy"
+							data-date-viewmode="years" data-date-autoclose="true">
+							<input class="form-control" readonly="" placeholder=""
+								type="text" id="startDate" name="startDate"> <span
+								class="input-group-btn">
+								<button class="btn default" type="button">
+									<i class="fa fa-calendar"></i>
+								</button>
+							</span>
+						</div>
+					</div>
+
+					<div class="form-group">
+						<label class="control-label" style="text-align: left;">
+							Completion Date </label>
+						<div class="input-group input-medium date date-picker"
+							data-date="" data-date-format="mm-dd-yyyy"
+							data-date-viewmode="years" data-date-autoclose="true">
+							<input class="form-control" readonly="" placeholder=""
+								type="text" id="endDate" name="endDate"> <span
+								class="input-group-btn">
+								<button class="btn default" type="button">
+									<i class="fa fa-calendar"></i>
+								</button>
+							</span>
+						</div>
+					</div>
+					
+					<div class="form-group clearfix">
+						<label class="control-label" style="text-align: left;">
+							Available Date and Time : 
+						</label>
+						<div class="input-group date form_meridian_datetime input-large" data-date="" data-date-autoclose="true">
+							<input type="text" size="16" readonly class="form-control" name="appointmentDate">
+							<span class="input-group-btn">
+								<button class="btn default date-reset" type="button"><i class="fa fa-times"></i></button>
+							</span>
+							<span class="input-group-btn">
+								<button class="btn default date-set" type="button"><i class="fa fa-calendar"></i></button>
+							</span>
+						</div>
+					</div>
+
+					<div class="form-group">
+						<label class="control-label"> Comments <a
+							class="fa fa-comments-o pull-right showMessageTooltip_2"
+							style="cursor: pointer; font-size: 14px;" data-html="true"
+							data-show="true"> <i>Show past comments</i>
+						</a>
+						</label><br>
+
+						<textarea class="form-control" style="height: 80px;"
+							placeholder="" name="comments" id="comments"></textarea>
+					</div>
+
+				</form>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn blue" id="defaultPopupSubmitButton">SAVE</button>
+				<button type="button" id="cancelButton" class="btn default"
+					data-dismiss="modal">CANCEL</button>
+			</div>
+		</div>
+		<!-- /.modal-content -->
+	</div>
+	<!-- /.modal-dialog -->
+</div>
+
+<!-- Property Inspection Appointment Popup end -->
+<!-- Confirm Rehab Start Date Popup start -->
+<div class="modal fade bs-modal-sm with-popover" id="CONFIRM_REHAB_START_DATE_POPUP_1"
+	tabindex="-1" role="basic" aria-hidden="true">
+	<div class="modal-dialog modal-me">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal"
+					aria-hidden="true"></button>
+				<h4 class="modal-title" id="modalTitle"></h4>
+			</div>
+			<div class="modal-body"
+				style="margin-left: 10px; margin-right: 10px;">
+				<form class="milestone-form" method="post" id="">
+					<input type="hidden" id="object" name="object"> <input
+						type="hidden" id="objectId" name="objectId"> <input
+						type="hidden" id="taskKey" name="taskKey">
+
+<div class="">
+					<div class="form-group col-md-6">
+						<label class="control-label" style="text-align: left;">
+							Confirm Estimated Start Date <span class="required">* </span>
+						</label>
+						<div class="input-group input-medium date date-picker unrestricted"
+							data-date="" data-date-format="mm-dd-yyyy"
+							data-date-viewmode="years">
+							<input class="form-control" readonly="" placeholder=""
+								type="text" id="estimatedStartDate" name="estimatedStartDate"> <span
+								class="input-group-btn">
+								<button class="btn default" type="button">
+									<i class="fa fa-calendar"></i>
+								</button>
+							</span>
+						</div>
+					</div>
+					
+					<div class="form-group col-md-6">
+						<label class="control-label" style="text-align: left;">
+							Confirm Estimated End Date <span class="required">* </span>
+						</label>
+						<div class="input-group input-medium date date-picker unrestricted"
+							data-date="" data-date-format="mm-dd-yyyy"
+							data-date-viewmode="years">
+							<input class="form-control" readonly="" placeholder=""
+								type="text" id="estimatedEndDate" name="estimatedEndDate"> <span
+								class="input-group-btn">
+								<button class="btn default" type="button">
+									<i class="fa fa-calendar"></i>
+								</button>
+							</span>
+						</div>
+					</div>
+	</div>
+	<div class="clearfix"></div>
+	<div class="">		
+					<div class="form-group col-md-6">
+						<label class="control-label" style="text-align: left;">
+							Investor Estimated End Date <span class="required">* </span>
+						</label>
+						<div class="input-group input-medium date date-picker unrestricted"
+							data-date="" data-date-format="mm-dd-yyyy"
+							data-date-viewmode="years">
+							<input class="form-control" readonly="" placeholder=""
+								type="text" id="investorEstimatedEndDate" name="investorEstimatedEndDate"> <span
+								class="input-group-btn">
+								<button class="btn default" type="button">
+									<i class="fa fa-calendar"></i>
+								</button>
+							</span>
+						</div>
+					</div>
+						
+					
+					
+					<div class="form-group col-md-6">
+						<label class="control-label" style="text-align: left;">
+							Completion Date <span class="required">* </span>
+						</label>
+						<div class="input-group input-medium date date-picker"
+							data-date="" data-date-format="mm-dd-yyyy"
+							data-date-viewmode="years">
+							<input class="form-control" readonly="" placeholder=""
+								type="text" id="endDate" name="endDate"> <span
+								class="input-group-btn">
+								<button class="btn default" type="button">
+									<i class="fa fa-calendar"></i>
+								</button>
+							</span>
+						</div>
+					</div>
+	</div>
+					<div class="form-group col-md-12">
+						<label class="control-label"> Comments <a
+							class="fa fa-comments-o pull-right showMessageTooltip_2"
+							style="cursor: pointer; font-size: 14px;" data-html="true"
+							data-show="true"> <i>Show past comments</i>
+						</a>
+						</label><br>
+
+						<textarea class="form-control" style="height: 80px;" name="comments" id="comments"></textarea>
+					</div>
+<div class="clearfix"></div>					
+				
+
+					
+				</form>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn blue"
+					id="milestonePopupRehabSubmitButton">SAVE</button>
+				<button type="button" id="cancelButton" class="btn default"
+					data-dismiss="modal">CANCEL</button>
+			</div>
+		</div>
+		<!-- /.modal-content -->
+	</div>
+	<!-- /.modal-dialog -->
+</div>
+<!-- Confirm Rehab Start Date Popup end -->
+<!-- Milestone pop up with doc start-->
+<div class="modal fade with-popover" id="MILESTONE_POPUP_WITH_DOC_1"
+	tabindex="-1" role="basic" aria-hidden="true">
+	<div class="modal-dialog modal-sm">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal"
+					aria-hidden="true"></button>
+				<h4 class="modal-title" id="modalTitle"></h4>
+			</div>
+			<div class="modal-body">
+			<div class="alert alert-danger display-hide">
+			<button class="close" data-close="alert"></button>
+			Please upload wire instruction.
+		</div>
+		<div class="alert alert-success display-hide wireMailNotification">
+			<button class="close" data-close="alert"></button>
+			Successfully sent wire instruction.
+		</div>
+				<form class="milestone-form" method="post" id="">
+					<input type="hidden" id="object" name="object"> <input
+						type="hidden" id="objectId" name="objectId"> <input
+						type="hidden" id="taskKey" name="taskKey">
+							
+							
+							<div class="form-group">
+								<label class="control-label" style="text-align: left;">
+									Completion Date <span class="required">* </span>
+								</label>
+								<div class="input-group input-medium date date-picker"
+									data-date="" data-date-format="mm-dd-yyyy"
+									data-date-viewmode="years">
+									<input class="form-control" readonly="" placeholder=""
+										type="text" id="endDate" name="endDate"> <span
+										class="input-group-btn">
+										<button class="btn default" type="button">
+											<i class="fa fa-calendar"></i>
+										</button>
+									</span>
+								</div>
+							</div>
+						<!-- </div> -->
+
+						<div class="form-group">
+							<label class="control-label"> Upload <span
+								id="documentLabel"></span>
+								<span class="required" style="display: none;" id="milestoneDocRequired">* </span>
+							</label> <a class="fa fa-paperclip pull-right showDocumentTooltip_2"
+								style="cursor: pointer; font-size: 16px;" data-html="true"
+								data-show="true"> </a> 
+								<br>
+								<div id="milestoneDocRequiredMsg" style="display: none;color: red;">This field is mandatory</div>
+								<input name="document"
+								class="form-control" type="file" style="padding-bottom: 40px;"
+								id="document">
+								<!-- 
+								<span id="displayToInvestorMessage">
+									<label class="control-label">Display to Investor <input
+										id="isDisplayToInvestorMessage" type="checkbox"
+										name="isDisplayToInvestorMessage" class="">
+									</label>
+								</span> -->
+						</div>
+						
+						<!-- <div class="clearfix"></div> -->
+						
+						
+						<div class="form-group">
+							<label class="control-label"> Comments <a
+								class="fa fa-comments-o pull-right showMessageTooltip_2"
+								style="cursor: pointer; font-size: 14px;" data-html="true"
+								data-show="true"> <i>Show past comments</i>
+							</a>
+							</label> 
+							<br>
+	
+							<textarea class="form-control" 
+								placeholder="" name="comments" id="comments"></textarea>
+						</div>
+						
+					<!-- </div> -->
+					<div class="clearfix"></div>
+				</form>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn blue"
+					id="milestonePopupRehabSubmitButton">SAVE</button>
+				<button type="button" id="cancelButton" class="btn default"
+					data-dismiss="modal">CANCEL</button>
+			</div>
+		</div>
+		<!-- /.modal-content -->
+	</div>
+	<!-- /.modal-dialog -->
+</div>
+<!-- milestone popup with doc end -->
+<!-- start -->
+<div class="modal fade bs-modal-sm with-popover" id="CONTRACTOR_SCHEDULING_POPUP_1"
+	tabindex="-1" role="basic" aria-hidden="true">
+	<div class="modal-dialog modal-sm">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal"
+					aria-hidden="true"></button>
+				<h4 class="modal-title" id="modalTitle"></h4>
+			</div>
+			<div class="modal-body"
+				style="margin-left: 10px; margin-right: 10px;">
+				<form class="milestone-form" method="post" id="">
+					<input type="hidden" id="object" name="object"> <input
+						type="hidden" id="objectId" name="objectId"> <input
+						type="hidden" id="taskKey" name="taskKey">
+						<div class="form-group">
+							<label class="control-label">Estimated Rehab Duration(In Weeks)</label>
+							<input type="text" class="form-control" name="estimatedRehabDuration" id="estimatedRehabDuration">
+						</div>
+					<div class="form-group">
+						<label class="control-label" style="text-align: left;">
+							Completion Date <span class="required">* </span>
+						</label>
+						<div class="input-group input-medium date date-picker"
+							data-date="" data-date-format="mm-dd-yyyy"
+							data-date-viewmode="years">
+							<input class="form-control" readonly="" placeholder=""
+								type="text" id="endDate" name="endDate"> <span
+								class="input-group-btn">
+								<button class="btn default" type="button">
+									<i class="fa fa-calendar"></i>
+								</button>
+							</span>
+						</div>
+					</div>
+
+					<div class="form-group">
+						<label class="control-label"> Comments <a
+							class="fa fa-comments-o pull-right showMessageTooltip"
+							style="cursor: pointer; font-size: 14px;" data-html="true"
+							data-show="true"> <i>Show past comments</i>
+						</a>
+						</label><br>
+
+						<textarea class="form-control" style="height: 80px;" name="comments" id="comments"></textarea>
+					</div>
+					
+				
+
+					
+				</form>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn blue"
+					id="milestonePopupSubmitButton">SAVE</button>
+				<button type="button" id="cancelButton" class="btn default"
+					data-dismiss="modal">CANCEL</button>
+			</div>
+		</div>
+		<!-- /.modal-content -->
+	</div>
+	<!-- /.modal-dialog -->
+</div>
+<!--  end -->
+<!-- start -->
+<div class="modal fade bs-modal-sm with-popover" id="REHAB_START_CONF_POPUP_1"
+	tabindex="-1" role="basic" aria-hidden="true">
+	<div class="modal-dialog modal-sm">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal"
+					aria-hidden="true"></button>
+				<h4 class="modal-title" id="modalTitle"></h4>
+			</div>
+			<div class="modal-body"
+				style="margin-left: 10px; margin-right: 10px;">
+				<form class="milestone-form" method="post" id="">
+					<input type="hidden" id="object" name="object"> <input
+						type="hidden" id="objectId" name="objectId"> <input
+						type="hidden" id="taskKey" name="taskKey">
+						<div class="form-group">
+							<label class="control-label">Estimated Rehab Duration(In Weeks)</label>
+							<input type="text" class="form-control" name="estimatedRehabDuration" id="estimatedRehabDuration">
+						</div>
+					<div class="form-group">
+						<label class="control-label" style="text-align: left;">
+							Completion Date <span class="required">* </span>
+						</label>
+						<div class="input-group input-medium date date-picker"
+							data-date="" data-date-format="mm-dd-yyyy"
+							data-date-viewmode="years">
+							<input class="form-control" readonly="" placeholder=""
+								type="text" id="endDate" name="endDate"> <span
+								class="input-group-btn">
+								<button class="btn default" type="button">
+									<i class="fa fa-calendar"></i>
+								</button>
+							</span>
+						</div>
+					</div>
+
+					<div class="form-group">
+						<label class="control-label"> Comments <a
+							class="fa fa-comments-o pull-right showMessageTooltip"
+							style="cursor: pointer; font-size: 14px;" data-html="true"
+							data-show="true"> <i>Show past comments</i>
+						</a>
+						</label><br>
+
+						<textarea class="form-control" style="height: 80px;" name="comments" id="comments"></textarea>
+					</div>
+					
+				
+
+					
+				</form>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn blue"
+					id="milestonePopupSubmitButton">SAVE</button>
+				<button type="button" id="cancelButton" class="btn default"
+					data-dismiss="modal">CANCEL</button>
+			</div>
+		</div>
+		<!-- /.modal-content -->
+	</div>
+	<!-- /.modal-dialog -->
+</div>
+<!--  end -->
+
+<!-- Select Property Re Inspection Modal-->
+<div id="propertyReInspectionDiv"></div>
+
+<div id="propertyInspectionRenderDiv"></div>
+
+<div id="PROPERTY_INSPECTION_ILM_RENDER_DIV"></div>
+<div id="PROPERTY_INSPECTION_INVESTOR_RENDER_DIV"></div>
+<div id="REQUEST_FOR_REPAIRS_RENDER_DIV"></div>
+<div id="SELLER_RESPONSE_REPAIRS_RENDER_DIV"></div>
+<div id="INVESTOR_RESPONSE_REPAIRS_RENDER_DIV"></div>
+<div id="HU_UPDATED_QUOTE_RENDER_DIV"></div>
+
+<div id="renderSendToMailTemplate"></div>

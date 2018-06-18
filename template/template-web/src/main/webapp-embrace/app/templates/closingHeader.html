@@ -1,0 +1,142 @@
+<% if(closingData) { %>
+<div class="">
+	<div class="col-sm-12 col-md-7 col-lg-7 font15 pull-left">
+		<div>
+		<h4 class="marg_top0 margin-bottom-10">
+			<a href="#property/<%-closingData.propertyResponse.propertyId%>">
+			<%=closingData.propertyResponse.address%></a>
+		</h4>
+		<p class="font13 margin-bottom-5">Property Type: <%=closingData.propertyResponse.propertyType%>,<%=closingData.propertyResponse.otherDetails%></p>
+		<p class="font13 borb">Property ID: <%=closingData.propertyResponse.propertyDisplayId%></p>
+		</div>
+		 <div id="closing-summary-view" class="closingform">
+				<div class="font13 marg_top15">
+					<div id="ownershipFailure" class="alert alert-danger display-hide">
+						<button class="close" data-close="alert" onclick="$(this).parent().hide();return false;"></button>
+						Error in updating ownership details.
+					</div>
+					<div class="row">
+						<div class="col-md-4 margin-bottom-10 labels with-popover popover-width-630">
+							<strong>First Investor Name</strong>
+							<!-- start -->
+							<a class="investment-popover label label-sm label-warning" data-toggle="popover" data-investorId='<%=closingData.investmentResponse.investorId%>'
+							data-investmentId='<%=closingData.investmentResponse.investmentId%>'
+							style="font-size: smaller;cursor: pointer;" data-placement="bottom" 
+							data-html="true" data-show="true">Other Investments</a>
+							<!-- end -->
+							<br> 
+							<a href="#investorProfile/<%-closingData.investmentResponse.investorId%>">
+							<%=closingData.investmentResponse.investorName%></a>
+							
+							
+							
+						</div>
+						<div class="col-md-4 margin-bottom-10">
+							<strong>International Investor</strong><br>
+							<%=closingData.investmentResponse.internationalInvestor%>
+						</div>
+						<div class="col-md-4 margin-bottom-10">
+							<strong>Status</strong><br>
+							<%=closingData.investmentResponse.investmentStatus%><%
+							if(closingData.investmentResponse.closingStatus){%> -
+							<%=closingData.investmentResponse.closingStatus%><%}%>
+							
+							<%if(closingData.investmentResponse.investmentStatus=="Purchased"){%>
+							<br><strong>Asset Status </strong> -
+							<a href="#myProperties/<%-closingData.investmentResponse.assetId%>">
+							<%=closingData.investmentResponse.assetStatus%></a>
+							<%}%>
+							
+							
+							
+							
+						</div>
+					</div>
+					<div class="row">
+		
+					
+				<% if(closingData.investmentResponse.coBuyerLegalName){ %>
+					<div class="col-md-4 margin-bottom-10">
+					<strong>Second Investor Name</strong> <br>
+					<%=closingData.investmentResponse.coBuyerLegalName%>
+				    </div>
+				    <% }%>
+					
+					
+						<div class="col-md-4 margin-bottom-10">
+							<strong>Deal Type</strong> <br>
+							<%=closingData.investmentResponse.dealTypeName%>
+						</div>
+						<div class="col-md-4 margin-bottom-10">
+							<strong>Financing Type</strong><br><%=closingData.investmentResponse.financingTypeName%>
+						</div>
+						
+						
+					<!--	<div class="col-md-4 margin-bottom-10">
+						<%if(closingData.investmentResponse.investmentStatus=="Purchased"){%>
+							<strong>Asset Status </strong><br> 
+							<a href="#myProperties/<%-closingData.investmentResponse.assetId%>">/<%-closingData.investmentResponse.assetStatus%></a>
+							<%}%>
+						</div> -->
+						
+						
+				
+						
+						
+				
+					</div>
+					<div class="row">
+					<div class="col-md-4 margin-bottom-10">
+					<strong>Ownership Type</strong> <a data-toggle="modal"
+						id="showOwnershipModal"><i class="fa fa-edit"></i></a><br>
+					<%=closingData.investmentResponse.ownershipTypeName%> 
+					<%if(closingData.investmentResponse.investorLegalName){%>
+					
+						<%='('%>
+						<%=closingData.investmentResponse.investorLegalName%>
+						
+						<%if(closingData.investmentResponse.coBuyerLegalName){%>
+							,<%=closingData.investmentResponse.coBuyerLegalName%>
+						<%}%>
+						<%if(closingData.investmentResponse.organizationName){%>
+							,<%=closingData.investmentResponse.organizationName%>
+						<%}%>
+						
+						<%=')'%>
+						
+					<%}%>
+		
+				</div>
+						<div class="col-md-4 margin-bottom-10">
+							<strong>Purchase Price</strong><br>
+							<span class="amount">
+								<%if(closingData.investmentResponse.purchasePrice){%>
+								<%=closingData.investmentResponse.purchasePrice%> <%}%> </span>
+						</div>
+						<div class="col-md-4 margin-bottom-10">
+							<strong>Estimated Closing Date</strong><br>
+							<%=closingData.investmentResponse.estimatedClosingDate%>
+						</div>
+					
+					</div>
+				<div class="row">
+					<div class="col-md-4 margin-bottom-10">
+					<strong>Option Period Expires</strong><br>
+					<%=closingData.investmentResponse.optionPeriodExpires%>
+					</div>
+					<%if(closingData.investmentResponse.cancellationReason){%>
+						<div class="col-md-4 margin-bottom-10">
+						<strong>Cancellation Reason</strong><br>
+						<%=closingData.investmentResponse.cancellationReason%>
+						</div>
+					<%}%>
+					<div class="col-md-8" id="investorDepositDiv"></div>
+				</div>
+
+					
+				</div>
+		</div>
+	</div>
+	<div class="clearfix"></div>
+</div>
+<%}%>

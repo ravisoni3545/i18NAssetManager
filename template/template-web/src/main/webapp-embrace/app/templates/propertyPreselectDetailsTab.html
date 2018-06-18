@@ -1,0 +1,127 @@
+<div id="lastEditModalDiv"></div>
+<div class="portlet box light-grey">
+    <div class="portlet-title">
+        <div class="caption">
+            <i class="fa fa-cogs"></i>Pre Select Details
+        </div>
+        <div class="actions" style="margin-left:30px;">
+<% if(viewpermissions.preselectPropertyDetailEdit){ if(theData.huselect !=null){%>
+<button type="button" class="btn blue btn-sm editBtn">
+<i class="fa fa-pencil"></i>Edit
+</button>
+<% } else{%> <button type="button" class="btn blue btn-sm editBtn">
+<i class="fa fa-tasks"></i>Designate as Preselect
+</button>  <% } } %>
+</div>
+        <br>
+
+
+
+    </div>
+    <div class="portlet-body table-responsive">
+        <% if(theData.propertyLastModifiedBy == "" && theData.propertyLastModifiedDate == ""){ %>
+        <p></p>
+        <% }else{ %>
+        <p align="right">Last Edited by: <%=theData.propertyLastModifiedBy%> on <a href="lastEditModal" data-toggle="modal" ><%=theData.propertyLastModifiedDate%></a></p>
+        <% } %> 
+        <div  align="left"class="row">
+            <div class="col-md-4">
+                SQFT: <%- theData.propertyInfo.totalSqft %>                                                                                                                                                  </div>
+            <div class="col-md-4">
+                Price/SQFT: <%- theData.propertyInfo.pricePersqft %>                                                                                                                                             </div>
+            <div class="col-md-4">
+                <%- theData.propertyInfo.bedRooms %> Bedrooms, <%- theData.propertyInfo.bathRooms %>   Baths
+            </div>
+
+        </div>
+        <div align="left" class="row">
+             <div class="col-md-4"> Rent: <%- theData.propertyInfo.totalSqft %>  </div>
+             <div class="col-md-4"> Rent/SQFT: <%- theData.propertyInfo.rentPersqft %>  </div>
+            <div class="col-md-4">
+                Purchase Price:
+                <%- accounting.formatMoney(theData.propertyInfo.purchasePrice,"$",0) %>                                                                                                                                                      </div>
+        </div>
+        <div align="left" class="row">
+            <div class="col-md-4">
+                Expected Price: 
+                <%- accounting.formatMoney(theData.propertyInfo.pricePersqft * theData.propertyInfo.totalSqft,"$",0)%></div>
+            <div class="col-md-4"></div>
+            <div class="col-md-4"></div>
+
+
+        </div>
+        <br>
+
+        <table class="table table-hover">
+
+            <tbody>
+              
+                <tr>
+                    <td>
+                        <label>Show on Investor Portal <i data-content="Show on Investor Portal" class="fa fa-question-circle preselect-popovers"></i></label>                     </td>
+                        <% if(theData.readyInv == "1"){ %>
+                            <td>
+                            <span id="checkbox"><input class="checkbox" disabled="disabled" checked name="showInv" id="readyInv" type="checkbox"></span></td>
+
+        <% }else{ %>
+            <td>
+                <span id="checkbox"><input class="checkbox" disabled="disabled"  name="showInv" id="readyInv" type="checkbox"></span>
+                </td>
+        <% } %>
+                        
+                    <td colspan="2"> 
+                        <div class="col-md-12 text-right">
+
+                            <a href="#">Listing Details</a>, 
+                            <a href="#property/<%- theData.propertyId %>">Property Details</a>, 
+                            <a href="<%- theData.propertyInfo.salecompsLink %>">Sale Comps</a>
+                            <a href="<%- theData.propertyInfo.leasecompsLink %>">Lease Comps</a>
+
+                        </div>
+                    </td>
+                </tr>
+              <tr>
+                <td>ILM Comments</td>
+                <td colspan="3">
+
+                  <div class="clearfix"></div>	
+
+                    <div class="form-group">
+
+
+                            <textarea id="ilmcomment2" name="editorOverview1"  readonly class="form-control form-control"> <%- theData.ilmcomment %>
+
+                            </textarea > 
+                             <textarea id="ilmcomment" name="editorOverview2"  readonly class="form-control form-control"> <%- theData.ilmcomment %>
+
+                            </textarea > 
+                            <script>
+                                CKEDITOR.replace( 'editorOverview1' );
+                                CKEDITOR.instances.ilmcomment2.config.readOnly = true;
+                              
+                            </script>
+                    </div>
+                </td>
+              </tr> 
+            </tbody>
+        </table>
+
+
+
+    </div>
+
+
+
+    <div class="form-actions fluid clearfix">
+        <div class="col-md-offset-2 col-md-10">
+            <div style="padding-left:10px;">
+                <% if(viewpermissions.preselectPropertyDetailEdit && theData.huselect !=null){ %>
+                <input class="btn green deleteBtn" type="Submit" name="btnr" value="Remove Pre-Select Designation">
+                <input type="reset" class="btn default" name="clr" value="Reset form">
+                    
+                    <% } %> 
+            </div>
+        </div>
+    </div>
+
+</div>

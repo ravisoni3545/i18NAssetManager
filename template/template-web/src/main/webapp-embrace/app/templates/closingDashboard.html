@@ -1,0 +1,137 @@
+
+<div class="page-content">
+	<div class="dash-header">
+		<div >
+			<!-- BEGIN PAGE TITLE & BREADCRUMB-->
+			<h3 class="page-title">
+				Closing Dashboard<br> <small class="marg_top10">closing details and more</small>
+			</h3>
+<!-- 			<ul class="page-breadcrumb breadcrumb"> -->
+				<!-- <li>
+							<i class="fa fa-home"></i>
+							<a href="index.html">
+								Home
+							</a>
+							<i class="fa fa-angle-right"></i>
+						</li>
+						<li>
+							<a href="#">
+                                Closing Dashboard
+							</a>
+						</li> -->
+<!-- 				<li class="pull-right"> -->
+<!-- 					<div data-placement="top" class="dashboard-date-range tooltips" -->
+<!-- 						id="dashboard-report-range" style="display: block;"> -->
+<!-- 						<i class="fa fa-calendar"></i> <span><script>new Date();</script></span> -->
+<!-- 						<i class="fa fa-angle-down"></i> -->
+<!-- 					</div> -->
+<!-- 				</li> -->
+<!-- 			</ul> -->
+			<!-- END PAGE TITLE & BREADCRUMB-->
+		</div>
+
+        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 text-right right">
+			<span style="height: 30px; padding-right: 10px; line-height: 30px; display: inline;">Closings
+				By Status</span>
+            <div class="btn-group" data-toggle="buttons" style="float: right;">
+                <label class="btn btn-default active"> <input type="radio"
+                                                              class="toggle" name="status" value="Closing"> Current
+                </label> <label class="btn btn-default"> <input type="radio"
+                                                                class="toggle" name="status" value="Completed"> Completed
+            </label> <label class="btn btn-default"> <input type="radio"
+                                                            class="toggle" name="status" value="all"> All
+            </label>
+            </div>
+        </div>
+	</div>
+	<div id="dashboardFailure" class="alert alert-danger display-hide">
+				<button class="close" data-close="alert"></button>
+				<text>Error fetching dashboard details.</text>
+	</div>
+	<!-- END PAGE HEADER-->
+	<!-- BEGIN DASHBOARD STATS -->
+	<div class="row">
+		<%if(app.sessionModel.attributes.roles.indexOf("Solution Specialist")!=-1
+				|| app.sessionModel.attributes.roles.indexOf("ILM")!=-1 || app.sessionModel.attributes.roles.indexOf("Closer")!=-1){%>
+		<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12" style="margin-bottom:10px;">
+			<div class="btn-group" data-toggle="buttons">
+				<label class="btn btn-default toggle-btn-radius active"> <input type="radio"
+					class="toggle" name="filter" value="all"> All Closings
+				</label> <label class="btn btn-default toggle-btn-radius"> <input type="radio"
+					class="toggle" name="filter" value="<%- app.sessionModel.attributes.userId %>"> My Closings
+				</label>
+			</div>
+		</div>
+		<%}%>
+
+	</div>
+
+	<div id="dashboardData"></div>
+
+
+	<div class="row">
+
+		<div class="col-md-12 col-sm-12">
+			<div class="panel panel-default calendar">
+<!--				<div class="portlet-title">
+					<div class="caption">
+						<i class="fa fa-calendar"></i>Calendar
+					</div>
+				</div>-->
+                <div class="br-bb">
+                    <fieldset>
+                        <legend style="border: 0 none;"></legend>
+                        <div class="col-sm-6 col-md-3">
+                            <div style="height:20px;width:40px;background-color: #13bdd5;" class="col-md-2"></div>
+                            <div class="col-sm-5 col-md-8">Initiated Closings</div>
+                        </div>
+                        <div class="col-sm-6 col-md-3">
+                            <div style="height:20px;width:40px;background-color: #ffb848;" class="col-md-2"></div>
+                            <div class="col-sm-5 col-md-8">Estimated to Close</div>
+                        </div>
+                        <div class="col-sm-6 col-md-3">
+                            <div style="height:20px;width:40px;background-color: #a3c032;" class="col-md-2"></div>
+                            <div class="col-sm-5 col-md-8">Completed Closings</div>
+                        </div>
+                        <div class="col-sm-6 col-md-3">
+                            <div style="height:20px;width:40px;background-color: #a9a9a9;" class="col-md-2"></div>
+                            <div class="col-sm-5 col-md-8">Cancelled Closings</div>
+                        </div>
+                    </fieldset>
+                </div>
+                <hr style="margin-bottom: 0">
+				<div class="panel-body light-grey">
+					<div id="calendar" class="clearfix"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+<!-- 	 <div class="row ">
+		<div class="col-md-6 col-sm-6">
+			<div class="portlet box blue">
+				<div class="portlet-title">
+					<div class="caption">
+						<i class="fa fa-circle"></i>Current Closings by Status
+					</div>
+				</div>
+				<div class="portlet-body text-center">
+
+					<div id="pie_chart_3" class="chart" style="margin: 38px 0;"></div>
+				</div>
+			</div>
+		</div>
+		<div class="col-md-6 col-sm-6">
+			<div class="portlet box blue">
+				<div class="portlet-title">
+					<div class="caption">
+						<i class="fa fa-globe"></i>Current Closings by Investment Zone
+					</div>
+				</div>
+				<div class="portlet-body text-center">
+
+					<div id="pie_chart_4" class="chart" style="margin: 38px 0;"></div>
+				</div>
+			</div>
+		</div>
+	</div>  -->
+</div>

@@ -1,0 +1,29 @@
+<select name="<%=name%>" class="form-control" id="<%=id%>">
+		<%if(addBlankFirstOption){%>
+			<option value="">select</option>
+		<%}%>
+		<%if(!investorName) { %>
+		
+		<%_(users).each(function(user) { %>
+			<option value="<%= user.userId %>">
+				<%= user.userName%>
+			</option>
+		<% }); %>
+		
+		<%}else{%>
+		<optgroup label="Embrace Users">
+		<%_(users).each(function(user) { %>
+			<option value="<%= user.userId %>">
+				<%= user.userName%>
+			</option>
+		<% }); %>
+		</optgroup>
+		<optgroup label="Investor">
+		<option value="<%= investorId %>">
+				<%= investorName%>
+			</option>
+		
+		</optgroup>
+		
+		<% }%>
+</select>

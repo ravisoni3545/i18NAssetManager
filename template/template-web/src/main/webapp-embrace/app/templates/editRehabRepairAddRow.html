@@ -1,0 +1,122 @@
+<tr>
+     <td id="rehabCategoryCol">
+        <% _.each(categoryList,function(categoryObj){
+            if(categoryObj.categoryId==singleData.rehabCategory){
+                print(categoryObj.categoryName);
+            }
+        }); %>
+     </td>
+     <td id="paidByCol"><%= singleData.paidBy %></td>
+     <td class="amount" id="estimatedCostCol"><%= singleData.estimatedCost %></td>
+     <td id="estStartDateCol"><%= singleData.estStartDate %></td>
+     <td id="estCompletionDateCol"><%= singleData.estCompletionDate %></td>
+     <td class="amount" id="actualCostCol"><%= singleData.actualCost %></td>
+     <td id="actualCompletionDateCol"><%= singleData.actualCompletionDate %></td>
+
+     <td>
+         <a style="cursor:pointer;" data-target="<%= '#repairEditRow' + rowCount %>" data-shown="<%= dataShown %>" title="Edit" class="edit_blue edit-repair-category"><i class="fa fa-edit"></i>
+         </a>
+
+         <a title="Delete" data-rehabItemId="<%= singleData.rehabItemId %>" class="delete_red rehabItemRemoveBtn" data-toggle="modal" style="cursor:pointer;"><i class="fa fa-trash-o">
+         </i></a>
+     </td>
+
+</tr>
+<tr>
+  <td colspan="8" class="hiddenRow">
+     <div class="collapse in" id="<%= 'repairEditRow' + rowCount %>" >
+     <form data-rehabItemId="<%= singleData.rehabItemId %>">
+         <div style="margin-bottom: 0;" class="clearfix well">
+             <div class="form-group col-md-4">
+                 <label class="control-label">
+                     Repair/Rehab Category  <span class="required">* </span>
+                 </label>
+                 <div class="">
+                    <select name="rehabCategory" class="form-control">
+                        <option value="">Select</option>
+                        <% _.each(categoryList,function(category){ %>
+                            <option value="<%- category.categoryId%>" <% (singleData.rehabCategory==category.categoryId)? print('selected=selected'): ''%>>
+                                <%- category.categoryName%>
+                            </option>
+                        <% }) %>
+                    </select>
+                 </div>
+             </div>
+             <div class="form-group col-md-9">
+
+                 <label style="text-align: left;" class="control-label">
+                     Description
+                 </label>
+                 <textarea rows="3" class="form-control" name="description"><%= singleData.description %></textarea>
+
+             </div>
+             <div class="form-group col-md-4">
+                 <label class="control-label">
+                     Repair/Rehab Paid By  <span class="required">* </span>
+                 </label>
+                 <div class="RepairPaidByDD"></div>
+             </div>
+             <div class="form-group col-md-4">
+                 <label class="control-label">
+                     Estimated Cost
+                 </label>
+
+                 <div class=""><input class="form-control amount currencyInsurance estCostAdd" type="text" name="estimatedCost" value="<%- singleData.estimatedCost %>"></div>
+             </div>
+
+             <div class="form-group  col-md-4">
+                 <label class="control-label" style="text-align: left;">
+                     Estimated Start Date
+                 </label>
+                 <div class="input-group input-medium date date-picker" data-date-format="mm-dd-yyyy" data-date-viewmode="years">
+                     <input class="form-control" readonly name="estStartDate" type="text" value="<%- singleData.estStartDate %>">
+                        <span class="input-group-btn">
+                            <button class="btn default" type="button">
+                                <i class="fa fa-calendar"></i>
+                            </button>
+                        </span>
+                 </div>
+             </div>
+             <div class="clearfix"></div>
+             <div class="form-group  col-md-4">
+                 <label style="text-align: left;" class="control-label">
+                     Estimated Completion Date
+                 </label>
+                 <div data-date-viewmode="years" data-date-format="mm-dd-yyyy" class="input-group input-medium date date-picker">
+                     <input type="text" name="estCompletionDate" readonly="" class="form-control" value="<%- singleData.estCompletionDate %>">
+                        <span class="input-group-btn">
+                            <button type="button" class="btn default">
+                                <i class="fa fa-calendar"></i>
+                            </button>
+                        </span>
+                 </div>
+             </div>
+             <div class="form-group col-md-4">
+                 <label class="control-label">
+                     Actual Cost
+                 </label>
+                 <div class=""><input class="form-control amount currencyInsurance actCostAdd" type="text" name="actualCost" value="<%- singleData.actualCost %>"></div>
+             </div>
+             <div class="form-group  col-md-4">
+                 <label style="text-align: left;" class="control-label">
+                     Actual Completion Date
+                 </label>
+                 <div data-date-viewmode="years" data-date-format="mm-dd-yyyy" class="input-group input-medium date date-picker">
+                     <input type="text" name="actualCompletionDate" readonly="" class="form-control" value="<%- singleData.actualCompletionDate %>">
+                        <span class="input-group-btn">
+                            <button type="button" class="btn default">
+                                <i class="fa fa-calendar"></i>
+                            </button>
+                        </span>
+                 </div>
+             </div>
+             <div class="clearfix"></div>
+             <div class="form-group col-md-8"> 
+              <button type="button" class="btn blue saveCategoryDetails">SAVE</button>
+              <button type="button" class="btn default cancelCategoryDetails">CANCEL</button>
+             </div>
+         </div>
+      </form>
+     </div>
+  </td>
+</tr>

@@ -1,0 +1,90 @@
+<div id="investorPreferencesSuccessMessage" class="alert alert-success display-hide">Successfully Saved Investor Preferences</div>
+<div id="investorPreferencesErrorMessage" class="alert alert-danger display-hide">Error in saving Investor Preferences</div>
+<div class="portlet box light-grey">
+	<div class="portlet-title">
+		<div class="caption">
+			<i class="fa fa-star"></i>Investor Preferences
+		</div>
+		<div class="caption pull-right showEditInvestorPreferences investorPreferencesDisplay" style="cursor:pointer;">
+			<i class="fa fa-pencil"></i>
+		</div>
+	</div>
+
+	<div class="portlet-body">
+		<div class="col-md-12 investorPreferencesDisplay">
+			<h5 class="col-md-3 control-label">Preferred Communication Method:</h5>
+			<!-- <label class="col-md-7 control-label">Email</label> -->
+			<!-- <div class="radio-list form-control" style="float: left; margin-bottom: 10px; padding-left: 36px;"> -->
+			<div class="col-md-5 radio-list disable-field-noOpacity">
+				<label class="radio-inline"> 
+					<input name="preferredCommunicationDisplay" value="email" type="radio">E-mail
+				</label> 
+				<label class="radio-inline" style="padding-left: 23px !important;"> 
+					<input name="preferredCommunicationDisplay" value="phone" type="radio">Phone
+				</label>
+				<label class="radio-inline" style="padding-left: 23px !important;"> 
+					<input name="preferredCommunicationDisplay" value="text" type="radio">Text
+				</label>
+			</div>
+			<div class="clearfix"></div>
+
+			<h5 class="col-md-3 control-label">Other Contacts:</h5>
+			<span class="col-md-7"><%- preferenceData.otherContacts%></span>
+			<div class="clearfix"></div>
+
+			<div class="col-md-12 well">
+				<h5 class="col-md-4 control-label">Third Party Communications</h5>
+				<div class="col-md-12">
+					<div class="col-md-2"></div>
+					<h6 class="col-md-3">Transfer to Home Union</h6>
+					<h6 class="col-md-3 clearfix">Date Transferred</h6>
+					<div class="clearfix"></div>
+
+					<div class="col-md-2">Property Tax</div>
+					<div class="col-md-3 radio-list disable-field-noOpacity">
+						<label class="radio-inline" style="padding-left:10px;"> 
+							<input <% print(preferenceData.propertyTax=='Y' ? 'checked="checked"' : '') %> type="radio">Yes
+						</label> 
+						<label class="radio-inline" style="padding-left:23px !important;"> 
+							<input <% print(preferenceData.propertyTax=='N' ? 'checked="checked"' : '') %> type="radio">No
+						</label>
+					</div>
+					<div class="col-md-3" style="padding-left:25px;"><%- preferenceData.propertyTaxDate%></div>
+					<div class="clearfix"></div>
+
+					<div class="col-md-2">Insurance</div>
+					<div class="col-md-3 radio-list disable-field-noOpacity">
+						<label class="radio-inline" style="padding-left:10px;"> 
+							<input <% print(preferenceData.insurance=='Y' ? 'checked="checked"' : '') %> type="radio">Yes
+						</label> 
+						<label class="radio-inline" style="padding-left:23px !important;"> 
+							<input <% print(preferenceData.insurance=='N' ? 'checked="checked"' : '') %> type="radio">No
+						</label>
+					</div>
+					<div class="col-md-3" style="padding-left:25px;"><%- preferenceData.insuranceDate%></div>
+					<div class="clearfix"></div>
+
+					<div class="col-md-2">HOA</div>
+					<div class="col-md-3 radio-list disable-field-noOpacity">
+						<label class="radio-inline" style="padding-left:10px;"> 
+							<input <% print(preferenceData.hoa=='Y' ? 'checked="checked"' : '') %> type="radio">Yes
+						</label> 
+						<label class="radio-inline" style="padding-left:23px !important;"> 
+							<input <% print(preferenceData.hoa=='N' ? 'checked="checked"' : '') %> type="radio">No
+						</label>
+					</div>
+					<div class="col-md-3" style="padding-left:25px;"><%- preferenceData.hoaDate%></div>
+					<div class="clearfix"></div>
+				</div>
+			</div>
+			<a class="btn blue showEditInvestorPreferences">Edit</a>
+		</div>
+		<div class="clearfix"></div>
+
+		<div class="col-md-12 investorPreferencesEdit well display-hide">
+			<div id="investorPreferencesEditDiv"></div>		
+		</div>
+		<div class="clearfix"></div>
+	</div>
+</div>
+

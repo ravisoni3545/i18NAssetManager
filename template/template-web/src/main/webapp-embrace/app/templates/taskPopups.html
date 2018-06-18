@@ -1,0 +1,3633 @@
+<!-- start Completion Date lightbox -->
+<div class="modal fade bs-modal-sm with-popover"
+	id="DEFAULT_POPUP_WITH_DOC_1" tabindex="-1" role="basic"
+	aria-hidden="true">
+	<div class="modal-dialog modal-sm">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal"
+					aria-hidden="true"></button>
+				<h4 class="modal-title" id="modalTitle"></h4>
+			</div>
+			<div class="modal-body"
+				style="margin-left: 10px; margin-right: 10px;">
+				<form class="default-form-with-doc" method="post" id=""
+					enctype="multipart/form-data">
+					<input type="hidden" id="object" name="object"> <input
+						type="hidden" id="objectId" name="objectId"> <input
+						type="hidden" id="taskKey" name="taskKey">
+					<div class="form-group">
+						<label class="control-label" style="text-align: left;">
+							Start Date <span class="required">* </span>
+						</label>
+						<div class="input-group input-medium date date-picker"
+							data-date="" data-date-format="mm-dd-yyyy"
+							data-date-viewmode="years">
+							<input class="form-control" readonly="" placeholder=""
+								type="text" id="startDate" name="startDate"> <span
+								class="input-group-btn">
+								<button class="btn default" type="button">
+									<i class="fa fa-calendar"></i>
+								</button>
+							</span>
+						</div>
+					</div>
+
+					<div class="form-group">
+						<label class="control-label" style="text-align: left;">
+							Completion Date </label>
+						<div class="input-group input-medium date date-picker"
+							data-date="" data-date-format="mm-dd-yyyy"
+							data-date-viewmode="years">
+							<input class="form-control" readonly="" placeholder=""
+								type="text" id="endDate" name="endDate"> <span
+								class="input-group-btn">
+								<button class="btn default" type="button">
+									<i class="fa fa-calendar"></i>
+								</button>
+							</span>
+						</div>
+					</div>
+
+					<div class="form-group">
+						<div id="existingDocument"></div>
+						<label class="control-label"> Upload <span
+							id="documentLabel"></span>
+						</label><a class="fa fa-paperclip pull-right showDocumentTooltip"
+							style="cursor: pointer; font-size: 16px;" data-html="true"
+							data-show="true"> </a> <br> <input name="document"
+							class="form-control" type="file" style="padding-bottom: 40px;"
+							id="document">
+					</div>
+					<div class="form-group">
+						<label class="control-label"> Comments <a
+							class="fa fa-comments-o pull-right showMessageTooltip"
+							style="cursor: pointer; font-size: 14px;" data-html="true"
+							data-show="true"> <i>Show past comments</i>
+						</a>
+						</label><br>
+
+						<textarea class="form-control" style="height: 200px;"
+							placeholder="" name="comments" id="comments"></textarea>
+					</div>
+				</form>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn blue" id="defaultPopupSubmitButton">SAVE</button>
+				<button type="button" id="cancelButton" class="btn default"
+					data-dismiss="modal">CANCEL</button>
+			</div>
+		</div>
+		<!-- /.modal-content -->
+	</div>
+	<!-- /.modal-dialog -->
+</div>
+<!-- end Completion Date lightbox -->
+
+<!-- start Completion Date lightbox -->
+<div class="modal fade bs-modal-sm with-popover" id="DEFAULT_POPUP_1"
+	tabindex="-1" role="basic" aria-hidden="true">
+	<div class="modal-dialog modal-sm">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal"
+					aria-hidden="true"></button>
+				<h4 class="modal-title" id="modalTitle"></h4>
+			</div>
+			<div class="modal-body"
+				style="margin-left: 10px; margin-right: 10px;">
+				<form class="default-form-with-doc" method="post" id=""
+					enctype="multipart/form-data">
+					<input type="hidden" id="object" name="object"> <input
+						type="hidden" id="objectId" name="objectId"> <input
+						type="hidden" id="taskKey" name="taskKey">
+					<div class="form-group">
+						<label class="control-label" style="text-align: left;">
+							Start Date <span class="required">* </span>
+						</label>
+						<div class="input-group input-medium date date-picker"
+							data-date="" data-date-format="mm-dd-yyyy"
+							data-date-viewmode="years">
+							<input class="form-control" readonly="" placeholder=""
+								type="text" id="startDate" name="startDate"> <span
+								class="input-group-btn">
+								<button class="btn default" type="button">
+									<i class="fa fa-calendar"></i>
+								</button>
+							</span>
+						</div>
+					</div>
+
+					<div class="form-group">
+						<label class="control-label" style="text-align: left;">
+							Completion Date </label>
+						<div class="input-group input-medium date date-picker"
+							data-date="" data-date-format="mm-dd-yyyy"
+							data-date-viewmode="years">
+							<input class="form-control" readonly="" placeholder=""
+								type="text" id="endDate" name="endDate"> <span
+								class="input-group-btn">
+								<button class="btn default" type="button">
+									<i class="fa fa-calendar"></i>
+								</button>
+							</span>
+						</div>
+					</div>
+
+					<div class="form-group">
+						<label class="control-label"> Comments <a
+							class="fa fa-comments-o pull-right showMessageTooltip"
+							style="cursor: pointer; font-size: 14px;" data-html="true"
+							data-show="true"> <i>Show past comments</i>
+						</a>
+						</label><br>
+
+						<textarea class="form-control" style="height: 80px;"
+							placeholder="" name="comments" id="comments"></textarea>
+					</div>
+
+					<div style="display: none;" id="staticDocumentArea">
+						<a href="" id="staticDocument" target="_blank">Pre-Inspection
+							Document</a>
+					</div>
+				</form>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn blue" id="defaultPopupSubmitButton">SAVE</button>
+				<button type="button" id="cancelButton" class="btn default"
+					data-dismiss="modal">CANCEL</button>
+			</div>
+		</div>
+		<!-- /.modal-content -->
+	</div>
+	<!-- /.modal-dialog -->
+</div>
+<!-- end Completion Date lightbox -->
+
+<!-- start Completion Date lightbox -->
+<div class="modal fade bs-modal-sm with-popover" id="MILESTONE_POPUP_1"
+	tabindex="-1" role="basic" aria-hidden="true">
+	<div class="modal-dialog modal-sm">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal"
+					aria-hidden="true"></button>
+				<h4 class="modal-title" id="modalTitle"></h4>
+			</div>
+			<div class="modal-body"
+				style="margin-left: 10px; margin-right: 10px;">
+				<form class="milestone-form" method="post" id="">
+					<input type="hidden" id="object" name="object"> <input
+						type="hidden" id="objectId" name="objectId"> <input
+						type="hidden" id="taskKey" name="taskKey">
+
+					<div class="form-group">
+						<label class="control-label" style="text-align: left;">
+							Completion Date <span class="required">* </span>
+						</label>
+						<div class="input-group input-medium date date-picker"
+							data-date="" data-date-format="mm-dd-yyyy"
+							data-date-viewmode="years">
+							<input class="form-control" readonly="" placeholder=""
+								type="text" id="endDate" name="endDate"> <span
+								class="input-group-btn">
+								<button class="btn default" type="button">
+									<i class="fa fa-calendar"></i>
+								</button>
+							</span>
+						</div>
+					</div>
+
+					<div class="form-group">
+						<label class="control-label"> Comments <a
+							class="fa fa-comments-o pull-right showMessageTooltip"
+							style="cursor: pointer; font-size: 14px;" data-html="true"
+							data-show="true"> <i>Show past comments</i>
+						</a>
+						</label><br>
+
+						<textarea class="form-control" style="height: 80px;" name="comments" id="comments"></textarea>
+					</div>
+					
+				
+
+					
+				</form>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn blue"
+					id="milestonePopupSubmitButton">SAVE</button>
+				<button type="button" id="cancelButton" class="btn default"
+					data-dismiss="modal">CANCEL</button>
+			</div>
+		</div>
+		<!-- /.modal-content -->
+	</div>
+	<!-- /.modal-dialog -->
+</div>
+
+<!-- start Completion Date lightbox -->
+<div class="modal fade with-popover" id="MILESTONE_POPUP_WITH_DOC_1"
+	tabindex="-1" role="basic" aria-hidden="true">
+	<div class="modal-dialog modal-sm">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal"
+					aria-hidden="true"></button>
+				<h4 class="modal-title" id="modalTitle"></h4>
+			</div>
+			<div class="modal-body">
+			<div class="alert alert-danger display-hide">
+			<button class="close" data-close="alert"></button>
+			Please upload wire instruction.
+		</div>
+		<div class="alert alert-success display-hide wireMailNotification">
+			<button class="close" data-close="alert"></button>
+			Successfully sent wire instruction.
+		</div>
+				<form class="milestone-form" method="post" id="">
+					<input type="hidden" id="object" name="object"> <input
+						type="hidden" id="objectId" name="objectId"> <input
+						type="hidden" id="taskKey" name="taskKey">
+
+					<!-- <div class="col-md-12"> -->
+						<!-- <div class="col-md-6"> -->
+							
+							<div class="form-group display-hide titleClean" >
+                                <label class="control-label"> Title is clean? </label>
+                                <div class="radio-list form-control">
+                                    <label class="radio-inline" style="padding-left: 0px !important;"> <span><input type="radio" id="optionsRadiosY" name="isTitleClean" value="Y"></span> Yes
+                                    </label> 
+                                     <label class="radio-inline active" style="padding-left: 0px !important;"> <span><input checked="" id="optionsRadiosN" type="radio" value="N" name="isTitleClean"></span> No
+                                    </label>
+                                </div>
+                     </div>
+							
+							
+							<div class="form-group">
+								<label class="control-label" style="text-align: left;">
+									Completion Date <span class="required">* </span>
+								</label>
+								<div class="input-group input-medium date date-picker"
+									data-date="" data-date-format="mm-dd-yyyy"
+									data-date-viewmode="years">
+									<input class="form-control" readonly="" placeholder=""
+										type="text" id="endDate" name="endDate"> <span
+										class="input-group-btn">
+										<button class="btn default" type="button">
+											<i class="fa fa-calendar"></i>
+										</button>
+									</span>
+								</div>
+							</div>
+						<!-- </div> -->
+
+						<div class="form-group">
+							<label class="control-label"> Upload <span
+								id="documentLabel"></span>
+								<span class="required" style="display: none;" id="milestoneDocRequired">* </span>
+							</label> <a class="fa fa-paperclip pull-right showDocumentTooltip"
+								style="cursor: pointer; font-size: 16px;" data-html="true"
+								data-show="true"> </a> 
+								<br>
+								<div id="milestoneDocRequiredMsg" style="display: none;color: red;">This field is mandatory</div>
+								<input name="document"
+								class="form-control" type="file" style="padding-bottom: 40px;"
+								id="document">
+								
+								<span id="displayToInvestorMessage">
+									<label class="control-label">Display to Investor <input
+										id="isDisplayToInvestorMessage" type="checkbox"
+										name="isDisplayToInvestorMessage" class="">
+									</label>
+								</span>
+						</div>
+						
+						<!-- <div class="clearfix"></div> -->
+						
+						
+						<div class="form-group">
+							<label class="control-label"> Comments <a
+								class="fa fa-comments-o pull-right showMessageTooltip"
+								style="cursor: pointer; font-size: 14px;" data-html="true"
+								data-show="true"> <i>Show past comments</i>
+							</a>
+							</label> 
+							<br>
+	
+							<textarea class="form-control" 
+								placeholder="" name="comments" id="comments"></textarea>
+						</div>
+						
+						<div class="form-group">
+						<button type="button" class="pull-right btn green" id="mailWireInstruction"
+								style="margin-top: 27px;margin-left: 35px;">Mail Wire Instruction</button>
+					   </div>
+
+						
+						
+						
+					<!-- </div> -->
+					<div class="clearfix"></div>
+				</form>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn blue"
+					id="milestonePopupSubmitButton">SAVE</button>
+				<button type="button" id="cancelButton" class="btn default"
+					data-dismiss="modal">CANCEL</button>
+			</div>
+		</div>
+		<!-- /.modal-content -->
+	</div>
+	<!-- /.modal-dialog -->
+</div>
+
+<!-- start Completion Date lightbox -->
+<div class="modal fade  with-popover"
+	id="UPLOAD_RENTAL_AGREEMENT_POPUP_1" tabindex="-1" role="basic"
+	aria-hidden="true">
+	<div class="modal-dialog modal-me">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal"
+					aria-hidden="true"></button>
+				<h4 class="modal-title" id="modalTitle"></h4>
+			</div>
+			<div class="modal-body"
+				style="margin-left: 10px; margin-right: 10px;">
+				<div class="alert alert-danger display-hide rentalAgreement-atleastOne-error">
+					<button class="close" data-close="alert"></button>
+					Please save at least one rental agreement.
+				</div>
+				<div class="alert alert-success display-hide rentalAgreementNotification">
+					<button class="close" data-close="alert"></button>
+					Successfully sent the rental agreement.
+				</div>
+				<div class="alert alert-danger display-hide rentalAgreementTabMsg">
+					<button class="close" data-close="alert"></button>
+					Please save rental Agreement Tab changes.
+				</div>
+				<div class="col-md-12">
+					<div class="tabbable-custom">
+	                    <ul class="nav nav-tabs" id="rentalAgreementUL"></ul>
+	                    <div class="tab-content" id="rentalAgreementTab"></div>
+                	</div>
+				</div>
+				<form class="milestone-form" method="post" id="">
+					<input type="hidden" id="object" name="object"> <input
+						type="hidden" id="objectId" name="objectId"> <input
+						type="hidden" id="taskKey" name="taskKey">
+
+					<div class="col-md-12">
+						<!-- <div class="clearfix"></div> -->
+						<div class="form-group col-md-6">
+							<label class="control-label" style="text-align: left;">
+								Completion Date <span class="required">* </span>
+							</label>
+							<div class="input-group input-medium date date-picker"
+								data-date="" data-date-format="mm-dd-yyyy"
+								data-date-viewmode="years">
+								<input class="form-control" readonly="" placeholder=""
+									type="text" id="endDate" name="endDate"> <span
+									class="input-group-btn">
+									<button class="btn default" type="button">
+										<i class="fa fa-calendar"></i>
+									</button>
+								</span>
+							</div>
+						</div>
+						<!-- email button -->
+						<div class="form-group col-md-6">
+						<button type="button" class="btn green" style="margin-top: 27px;margin-left: 35px;"
+					id="mailRentalAgreement">Mail Rental Agreement</button>
+					</div>
+						<!-- email button -->
+						
+						<div class="form-group col-md-12">
+							<label class="control-label"> Comments <a
+								class="fa fa-comments-o pull-right showMessageTooltip"
+								style="cursor: pointer; font-size: 14px;" data-html="true"
+								data-show="true"> <i>Show past comments</i>
+							</a>
+							</label><br>
+
+							<textarea class="form-control" name="comments" id="comments"></textarea>
+						</div>
+					</div>			
+					<div class="clearfix"></div>		
+				</form>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn blue"
+					id="milestonePopupSubmitButton">SAVE</button>
+				<button type="button" id="cancelButton" class="btn default"
+					data-dismiss="modal">CANCEL</button>
+			</div>
+		</div>
+		<!-- /.modal-content -->
+	</div>
+	<!-- /.modal-dialog -->
+</div>
+
+<!-- start Completion Date lightbox -->
+<div class="modal fade  with-popover"
+	id="LEASE_REVIEW_POPUP_1" tabindex="-1" role="basic"
+	aria-hidden="true">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal"
+					aria-hidden="true"></button>
+				<h4 class="modal-title" id="modalTitle"></h4>
+			</div>
+			<div class="modal-body"
+				style="margin-left: 10px; margin-right: 10px;">
+				<div class="alert alert-danger display-hide">
+					<button class="close" data-close="alert"></button>
+					Please save at least one rental agreement.
+				</div>
+				<div class="alert alert-success display-hide rentalAgreementNotification">
+					<button class="close" data-close="alert"></button>
+					Successfully sent the rental agreement.
+				</div>
+				
+				<div class="col-md-12">
+					<div class="tabbable-custom">
+	                    <ul class="nav nav-tabs" id="rentalAgreementReviewUL"></ul>
+	                    <div class="tab-content" id="rentalAgreementReviewTab"></div>
+                	</div>
+				</div>
+				<form class="milestone-form" method="post" id="">
+					<input type="hidden" id="object" name="object"> <input
+						type="hidden" id="objectId" name="objectId"> <input
+						type="hidden" id="taskKey" name="taskKey">
+
+					<div class="col-md-12">
+						<!-- <div class="clearfix"></div> -->
+						<div class="form-group col-md-6">
+							<label class="control-label" style="text-align: left;">
+								Completion Date <span class="required">* </span>
+							</label>
+							<div class="input-group input-medium date date-picker"
+								data-date="" data-date-format="mm-dd-yyyy"
+								data-date-viewmode="years">
+								<input class="form-control" readonly="" placeholder=""
+									type="text" id="endDate" name="endDate"> <span
+									class="input-group-btn">
+									<button class="btn default" type="button">
+										<i class="fa fa-calendar"></i>
+									</button>
+								</span>
+							</div>
+						</div>
+						
+						<div class="form-group col-md-8">
+							<label class="control-label"> Comments <a
+								class="fa fa-comments-o pull-right showMessageTooltip"
+								style="cursor: pointer; font-size: 14px;" data-html="true"
+								data-show="true"> <i>Show past comments</i>
+							</a>
+							</label><br>
+
+							<textarea class="form-control" name="comments" id="comments"></textarea>
+						</div>
+					</div>			
+					<div class="clearfix"></div>		
+				</form>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn blue"
+					id="milestonePopupSubmitButton">SAVE</button>
+				<button type="button" id="cancelButton" class="btn default"
+					data-dismiss="modal">CANCEL</button>
+			</div>
+		</div>
+		<!-- /.modal-content -->
+	</div>
+	<!-- /.modal-dialog -->
+</div>
+
+<!-- start custom task lightbox -->
+<div class="modal fade with-popover" id="FINAL_HUD_POPUP_1"
+	tabindex="-1" role="basic" aria-hidden="true">
+	<div class="modal-dialog" style="width: 65%;">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal"
+					aria-hidden="true"></button>
+				<h4 class="modal-title">Final HUD</h4>
+			</div>
+			<div class="modal-body">
+				<form id="" method="POST" enctype="multipart/form-data"
+					class="final-hud-form">
+					<input type="hidden" id="object" name="object"> <input
+						type="hidden" id="objectId" name="objectId"> <input
+						type="hidden" id="taskKey" name="taskKey">
+					<div class="row">
+						<!-- Start left section -->
+						<div class="col-md-6">
+							<div class="form-group investment-div">
+								<label class="col-md-6 control-label pad_leftright0">Purchase
+									Price</label>
+								<div class="col-md-6 pad_right0 margin-bottom-10">
+									<div class="input-group">
+										<span class="input-group-addon"><i class="fa fa-dollar"></i></span>
+										<input class="form-control text-right currency" placeholder=""
+											readonly="readonly" type="text" name="purchasePriceHUD">
+									</div>
+								</div>
+							</div>
+							<div class="form-group investment-div">
+								<label class="col-md-6 control-label pad_leftright0">Rehab
+									Cost</label>
+								<div class="col-md-6 pad_right0 margin-bottom-10">
+									<div class="input-group">
+										<span class="input-group-addon"><i class="fa fa-dollar"></i></span>
+										<input class="form-control text-right currency" placeholder=""
+											type="text" name="rehabCost">
+									</div>
+								</div>
+							</div>
+
+							<div class="form-group investment-div">
+								<label class="col-md-6 control-label pad_leftright0">Total
+									Closing Cost (Financed) <span class="viewsdiv2"><a
+										href="javascript:void(0);" id="showFinancedClosingDiv"
+										title="View Details"><i class="fa fa-plus-circle"></i></a></span> <span
+									class="display-none hidesdiv2"><a
+										href="javascript:void(0);" id="hideFinancedClosingDiv"
+										title="Hide Details"><i class="fa fa-minus-circle"></i></a></span>
+								</label>
+								<div class="col-md-6 pad_right0 margin-bottom-10">
+									<div class="input-group">
+										<span class="input-group-addon"><i class="fa fa-dollar"></i></span>
+										<input class="form-control text-right currency" placeholder=""
+											readonly="readonly" type="text" name="closingCostFinanced">
+									</div>
+								</div>
+							</div>
+
+							<div class="form-group display-none hidesdiv2">
+								<br>
+								<h5 style="text-decoration: underline;">
+									<strong>HUD Page 1</strong>
+								</h5>
+								<label class="col-md-7 control-label pad_right0">City
+									Property Taxes</label>
+								<div class="col-md-5 pad_right0 margin-bottom-10">
+									<div class="input-group">
+										<span class="input-group-addon"><i class="fa fa-dollar"></i></span>
+										<input class="form-control text-right currency" placeholder=""
+											type="text" name="cityPropertyTax">
+									</div>
+								</div>
+							</div>
+							<div class="form-group display-none hidesdiv2">
+								<label class="col-md-7 control-label pad_right0">County
+									Property Taxes</label>
+								<div class="col-md-5 pad_right0 margin-bottom-10">
+									<div class="input-group">
+										<span class="input-group-addon"><i class="fa fa-dollar"></i></span>
+										<input class="form-control text-right currency" placeholder=""
+											type="text" name="countyPropertyTax">
+									</div>
+								</div>
+							</div>
+							<div class="form-group display-none hidesdiv2">
+								<label class="col-md-7 control-label pad_right0">Annual
+									Assessments</label>
+								<div class="col-md-5 pad_right0 margin-bottom-10">
+									<div class="input-group">
+										<span class="input-group-addon"><i class="fa fa-dollar"></i></span>
+										<input class="form-control text-right currency" placeholder=""
+											type="text" name="annualAssessments">
+									</div>
+								</div>
+							</div>
+							<div class="form-group display-none hidesdiv2">
+								<label class="col-md-7 control-label pad_right0">Flood
+									Insurance</label>
+								<div class="col-md-5 pad_right0 margin-bottom-10">
+									<div class="input-group">
+										<span class="input-group-addon"><i class="fa fa-dollar"></i></span>
+										<input class="form-control text-right currency" placeholder=""
+											type="text" name="floodInsurance">
+									</div>
+								</div>
+							</div>
+							<div class="form-group display-none hidesdiv2">
+								<label class="col-md-7 control-label pad_right0">HOA</label>
+								<div class="col-md-5 pad_right0 margin-bottom-10">
+									<div class="input-group">
+										<span class="input-group-addon"><i class="fa fa-dollar"></i></span>
+										<input class="form-control text-right currency" placeholder=""
+											type="text" name="hoa">
+									</div>
+								</div>
+							</div>
+							<div class="form-group display-none hidesdiv2">
+								<label class="col-md-7 control-label pad_right0">Option
+									Fee Credit</label>
+								<div class="col-md-5 pad_right0 margin-bottom-10">
+									<div class="input-group">
+										<span class="input-group-addon"><i class="fa fa-dollar"></i></span>
+										<input class="form-control text-right currency" placeholder=""
+											type="text" name="optionFeeCredit">
+									</div>
+								</div>
+							</div>
+							<div class="form-group display-none hidesdiv2">
+								<label class="col-md-7 control-label pad_right0">Credit
+									1</label>
+								<div class="col-md-5 pad_right0 margin-bottom-10">
+									<div class="input-group">
+										<span class="input-group-addon"><i class="fa fa-dollar"></i></span>
+										<input class="form-control text-right currency" placeholder=""
+											type="text" name="credit1">
+									</div>
+								</div>
+							</div>
+							<div class="form-group display-none hidesdiv2">
+								<label class="col-md-7 control-label pad_right0">Credit
+									2</label>
+								<div class="col-md-5 pad_right0 margin-bottom-10">
+									<div class="input-group">
+										<span class="input-group-addon"><i class="fa fa-dollar"></i></span>
+										<input class="form-control text-right currency" placeholder=""
+											type="text" name="credit2">
+									</div>
+								</div>
+							</div>
+							<div class="form-group display-none hidesdiv2">
+								<label class="col-md-7 control-label pad_right0">Credit
+									3</label>
+								<div class="col-md-5 pad_right0 margin-bottom-10">
+									<div class="input-group">
+										<span class="input-group-addon"><i class="fa fa-dollar"></i></span>
+										<input class="form-control text-right currency" placeholder=""
+											type="text" name="credit3">
+									</div>
+								</div>
+							</div>
+							<div class="form-group display-none hidesdiv2">
+								<label class="col-md-7 control-label pad_right0">City
+									Property Tax Credit</label>
+								<div class="col-md-5 pad_right0 margin-bottom-10">
+									<div class="input-group">
+										<span class="input-group-addon"><i class="fa fa-dollar"></i></span>
+										<input class="form-control text-right currency" placeholder=""
+											type="text" name="cityPropertyTaxCredit">
+									</div>
+								</div>
+							</div>
+							<div class="form-group display-none hidesdiv2">
+								<label class="col-md-7 control-label pad_right0">County
+									Property Tax Credit</label>
+								<div class="col-md-5 pad_right0 margin-bottom-10">
+									<div class="input-group">
+										<span class="input-group-addon"><i class="fa fa-dollar"></i></span>
+										<input class="form-control text-right currency" placeholder=""
+											type="text" name="countyPropertyTaxCredit">
+									</div>
+								</div>
+							</div>
+							<div class="form-group display-none hidesdiv2">
+								<label class="col-md-7 control-label pad_right0">Annual
+									Assessments Credit</label>
+								<div class="col-md-5 pad_right0 margin-bottom-10">
+									<div class="input-group">
+										<span class="input-group-addon"><i class="fa fa-dollar"></i></span>
+										<input class="form-control text-right currency" placeholder=""
+											type="text" name="annualAssessmentsCredit">
+									</div>
+								</div>
+							</div>
+							<div class="form-group display-none hidesdiv2">
+								<label class="col-md-7 control-label pad_right0">Flood
+									Insurance Credit</label>
+								<div class="col-md-5 pad_right0 margin-bottom-10">
+									<div class="input-group">
+										<span class="input-group-addon"><i class="fa fa-dollar"></i></span>
+										<input class="form-control text-right currency" placeholder=""
+											type="text" name="floodInsuranceCredit">
+									</div>
+								</div>
+							</div>
+							<div class="form-group display-none hidesdiv2">
+								<label class="col-md-7 control-label pad_right0">HOA
+									Credit</label>
+								<div class="col-md-5 pad_right0 margin-bottom-10">
+									<div class="input-group">
+										<span class="input-group-addon"><i class="fa fa-dollar"></i></span>
+										<input class="form-control text-right currency" placeholder=""
+											type="text" name="hoaCredit">
+									</div>
+								</div>
+							</div>
+							<div class="form-group display-none hidesdiv2">
+								<label class="col-md-7 control-label pad_right0">Security Deposit
+									Credit</label>
+								<div class="col-md-5 pad_right0 margin-bottom-10">
+									<div class="input-group">
+										<span class="input-group-addon"><i class="fa fa-dollar"></i></span>
+										<input class="form-control text-right currency" placeholder=""
+											type="text" name="securityDepositCredit">
+									</div>
+								</div>
+							</div>
+							<div class="form-group display-none hidesdiv2">
+								<label class="col-md-7 control-label pad_right0">Pro-rated Rent
+									Credit</label>
+								<div class="col-md-5 pad_right0 margin-bottom-10">
+									<div class="input-group">
+										<span class="input-group-addon"><i class="fa fa-dollar"></i></span>
+										<input class="form-control text-right currency" placeholder=""
+											type="text" name="proRatedRentCredit">
+									</div>
+								</div>
+							</div>
+
+							<div class="clearfix"></div>
+
+							<div class="form-group investment-div">
+								<label class="col-md-6 control-label pad_leftright0">Closing
+									Cost (POC) <span class="viewsdiv1"><a
+										href="javascript:void(0);" id="showClosingDiv"
+										title="View Details"><i class="fa fa-plus-circle"></i></a></span> <span
+									class="display-none hidesdiv1"><a
+										href="javascript:void(0);" id="hideClosingDiv"
+										title="Hide Details"><i class="fa fa-minus-circle"></i></a></span>
+								</label>
+								<div class="col-md-6 pad_right0 margin-bottom-10">
+									<div class="input-group">
+										<span class="input-group-addon"><i class="fa fa-dollar"></i></span>
+										<input class="form-control text-right currency" placeholder=""
+											readonly="readonly" type="text" name="closingCost">
+									</div>
+								</div>
+							</div>
+							<div class="form-group display-none hidesdiv1">
+								<label class="col-md-7 control-label pad_right0">Option
+									Fee</label>
+								<div class="col-md-5 pad_right0 margin-bottom-10">
+									<div class="input-group">
+										<span class="input-group-addon"><i class="fa fa-dollar"></i></span>
+										<input class="form-control text-right currency" placeholder=""
+											type="text" name="optionFee">
+									</div>
+								</div>
+							</div>
+							<div class="form-group display-none hidesdiv1">
+								<label class="col-md-7 control-label pad_right0">Utilities
+									Activation Fee</label>
+								<div class="col-md-5 pad_right0 margin-bottom-10">
+									<div class="input-group">
+										<span class="input-group-addon"><i class="fa fa-dollar"></i></span>
+										<input class="form-control text-right currency" placeholder=""
+											type="text" name="utilitiesActivationFee">
+									</div>
+								</div>
+							</div>
+							<div class="form-group display-none hidesdiv1">
+								<label class="col-md-7 control-label pad_right0">Inspection
+									Fee</label>
+								<div class="col-md-5 pad_right0 margin-bottom-10">
+									<div class="input-group">
+										<span class="input-group-addon"><i class="fa fa-dollar"></i></span>
+										<input class="form-control text-right currency" placeholder=""
+											type="text" name="inspectionFee">
+									</div>
+								</div>
+							</div>
+							<div class="form-group display-none hidesdiv1">
+								<label class="col-md-7 control-label pad_right0">Appraisal
+									Fee</label>
+								<div class="col-md-5 pad_right0 margin-bottom-10">
+									<div class="input-group">
+										<span class="input-group-addon"><i class="fa fa-dollar"></i></span>
+										<input class="form-control text-right currency" placeholder=""
+											type="text" name="appraisalFee1">
+									</div>
+								</div>
+							</div>
+							<div class="form-group investment-div" id="downPaymentField">
+								<label class="col-md-6 control-label pad_leftright0">Down
+									Payment</label>
+								<div class="col-md-6 pad_right0 margin-bottom-10">
+									<div class="input-group">
+										<span class="input-group-addon"><i class="fa fa-dollar"></i></span>
+										<input class="form-control text-right currency" placeholder=""
+											type="text" name="downPayment">
+									</div>
+								</div>
+							</div>
+							<div class="form-group">
+								<label
+									class="col-md-6 control-label pad_leftright0 text-right font13"><strong>Total
+										Investment</strong></label>
+								<div class="col-md-6 pad_right0 margin-bottom-10">
+									<div class="input-group">
+										<span class="input-group-addon"><i class="fa fa-dollar"></i></span>
+										<input class="form-control text-right currency" placeholder=""
+											readonly="readonly" type="text" style="font-weight: bold;"
+											name="totalInvestment">
+									</div>
+								</div>
+							</div>
+							<div class="clearfix"></div>
+						</div>
+						<!-- End left section -->
+
+						<!-- Start right section -->
+						<div class="col-md-6">
+							<div class="form-group">
+								<label class="col-md-6 control-label pad_leftright0">Home
+									Union Commission</label>
+								<div class="col-md-6 pad_right0 margin-bottom-10">
+									<div class="input-group">
+										<span class="input-group-addon"><i class="fa fa-dollar"></i></span>
+										<input class="form-control text-right currency" placeholder=""
+											type="text" name="homeUnionCommission">
+									</div>
+								</div>
+							</div>
+							<!-- 							<div class="mortgageFields"> -->
+							<!-- 							<div class="form-group"> -->
+							<!-- 								<label class="col-md-6 control-label pad_leftright0">Property Insurance Reserve -->
+							<!-- 									</label> -->
+							<!-- 								<div class="col-md-6 pad_right0 margin-bottom-10"> -->
+							<!-- 									<div class="input-group"> -->
+							<!-- 										<span class="input-group-addon"><i class="fa fa-dollar"></i></span> -->
+							<!-- 										<input class="form-control text-right currency" placeholder="" -->
+							<!-- 											type="text" name="propertyInsuranceReserve"> -->
+							<!-- 									</div> -->
+							<!-- 								</div> -->
+							<!-- 							</div> -->
+							<!-- 							<div class="form-group"> -->
+							<!-- 								<label class="col-md-6 control-label pad_leftright0">Property Tax Reserve</label> -->
+							<!-- 								<div class="col-md-6 pad_right0 margin-bottom-10"> -->
+							<!-- 									<div class="input-group"> -->
+							<!-- 										<span class="input-group-addon"><i class="fa fa-dollar"></i></span> -->
+							<!-- 										<input class="form-control text-right currency" placeholder="" -->
+							<!-- 											type="text" name="propertyTaxReserve"> -->
+							<!-- 									</div> -->
+							<!-- 								</div> -->
+							<!-- 							</div> -->
+							<!-- 							</div> -->
+							<div class="form-group">
+								<label class="col-md-6 control-label pad_leftright0">&nbsp;</label>
+								<div class="col-md-6 pad_right0 margin-bottom-10">
+									<div class="input-group" style="height: 34px;"></div>
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="col-md-6 control-label pad_leftright0">&nbsp;</label>
+								<div class="col-md-6 pad_right0 margin-bottom-10">
+									<div class="input-group" style="height: 34px;"></div>
+								</div>
+							</div>
+							<div class="form-group display-none hidesdiv2">
+								<div style="text-align: center;">
+									<h5 style="text-decoration: underline;">
+										<strong>HUD Page 2</strong>
+									</h5>
+								</div>
+								<label class="col-md-7 control-label pad_right0">Origination
+									Charges</label>
+								<div class="col-md-5 pad_right0 margin-bottom-10">
+									<div class="input-group">
+										<span class="input-group-addon"><i class="fa fa-dollar"></i></span>
+										<input class="form-control text-right currency" placeholder=""
+											type="text" name="originationCharges">
+									</div>
+								</div>
+							</div>
+							<div class="form-group display-none hidesdiv2">
+								<label class="col-md-7 control-label pad_right0">Appraisal
+									Fee</label>
+								<div class="col-md-5 pad_right0 margin-bottom-10">
+									<div class="input-group">
+										<span class="input-group-addon"><i class="fa fa-dollar"></i></span>
+										<input class="form-control text-right currency" placeholder=""
+											type="text" name="appraisalFee">
+									</div>
+								</div>
+							</div>
+							<div class="form-group display-none hidesdiv2">
+								<label class="col-md-7 control-label pad_right0">Credit
+									Report</label>
+								<div class="col-md-5 pad_right0 margin-bottom-10">
+									<div class="input-group">
+										<span class="input-group-addon"><i class="fa fa-dollar"></i></span>
+										<input class="form-control text-right currency" placeholder=""
+											type="text" name="creditReport">
+									</div>
+								</div>
+							</div>
+							<div class="form-group display-none hidesdiv2">
+								<label class="col-md-7 control-label pad_right0">Flood
+									Certification Fee</label>
+								<div class="col-md-5 pad_right0 margin-bottom-10">
+									<div class="input-group">
+										<span class="input-group-addon"><i class="fa fa-dollar"></i></span>
+										<input class="form-control text-right currency" placeholder=""
+											type="text" name="floodCertificationFee">
+									</div>
+								</div>
+							</div>
+							<div class="form-group display-none hidesdiv2">
+								<label class="col-md-7 control-label pad_right0">Daily
+									Interest Charges</label>
+								<div class="col-md-5 pad_right0 margin-bottom-10">
+									<div class="input-group">
+										<span class="input-group-addon"><i class="fa fa-dollar"></i></span>
+										<input class="form-control text-right currency" placeholder=""
+											type="text" name="dailyInterestCharges">
+									</div>
+								</div>
+							</div>
+							<div class="form-group display-none hidesdiv2">
+								<label class="col-md-7 control-label pad_right0">Homeowner's
+									Insurance - Yearly</label>
+								<div class="col-md-5 pad_right0 margin-bottom-10">
+									<div class="input-group">
+										<span class="input-group-addon"><i class="fa fa-dollar"></i></span>
+										<input class="form-control text-right currency" placeholder=""
+											type="text" name="homeownersInsuranceYearly">
+									</div>
+								</div>
+							</div>
+							<div class="form-group display-none hidesdiv2">
+								<label class="col-md-7 control-label pad_right0">Homeowner's
+									Insurance Reserves</label>
+								<div class="col-md-5 pad_right0 margin-bottom-10">
+									<div class="input-group">
+										<span class="input-group-addon"><i class="fa fa-dollar"></i></span>
+										<input class="form-control text-right currency" placeholder=""
+											type="text" name="homeownersInsuranceReserves">
+									</div>
+								</div>
+							</div>
+							<div class="form-group display-none hidesdiv2">
+								<label class="col-md-7 control-label pad_right0">Property
+									Tax Reserves</label>
+								<div class="col-md-5 pad_right0 margin-bottom-10">
+									<div class="input-group">
+										<span class="input-group-addon"><i class="fa fa-dollar"></i></span>
+										<input class="form-control text-right currency" placeholder=""
+											type="text" name="propertyTaxReserves">
+									</div>
+								</div>
+							</div>
+							<div class="form-group display-none hidesdiv2">
+								<label class="col-md-7 control-label pad_right0">Aggregate
+									Adjustment</label>
+								<div class="col-md-5 pad_right0 margin-bottom-10">
+									<div class="input-group">
+										<span class="input-group-addon"><i class="fa fa-dollar"></i></span>
+										<input class="form-control text-right currency" placeholder=""
+											type="text" name="aggregateAdjustment">
+									</div>
+								</div>
+							</div>
+							<div class="form-group display-none hidesdiv2">
+								<label class="col-md-7 control-label pad_right0">Title
+									Services & Title Insurance</label>
+								<div class="col-md-5 pad_right0 margin-bottom-10">
+									<div class="input-group">
+										<span class="input-group-addon"><i class="fa fa-dollar"></i></span>
+										<input class="form-control text-right currency" placeholder=""
+											type="text" name="titleServicesInsurance">
+									</div>
+								</div>
+							</div>
+							<div class="form-group display-none hidesdiv2">
+								<label class="col-md-7 control-label pad_right0">Owner's
+									Title Insurance</label>
+								<div class="col-md-5 pad_right0 margin-bottom-10">
+									<div class="input-group">
+										<span class="input-group-addon"><i class="fa fa-dollar"></i></span>
+										<input class="form-control text-right currency" placeholder=""
+											type="text" name="ownersTitleInsurance">
+									</div>
+								</div>
+							</div>
+							<div class="form-group display-none hidesdiv2">
+								<label class="col-md-7 control-label pad_right0">Recording
+									Charges</label>
+								<div class="col-md-5 pad_right0 margin-bottom-10">
+									<div class="input-group">
+										<span class="input-group-addon"><i class="fa fa-dollar"></i></span>
+										<input class="form-control text-right currency" placeholder=""
+											type="text" name="recordingFee">
+									</div>
+								</div>
+							</div>
+							<div class="form-group display-none hidesdiv2">
+								<label class="col-md-7 control-label pad_right0">Mobile
+									Closing Fee</label>
+								<div class="col-md-5 pad_right0 margin-bottom-10">
+									<div class="input-group">
+										<span class="input-group-addon"><i class="fa fa-dollar"></i></span>
+										<input class="form-control text-right currency" placeholder=""
+											type="text" name="mobileClosingFee">
+									</div>
+								</div>
+							</div>
+
+							<div class="form-group display-none hidesdiv2">
+								<label class="col-md-7 control-label pad_right0">Other
+									Costs</label>
+								<div class="col-md-5 pad_right0 margin-bottom-10">
+									<div class="input-group">
+										<span class="input-group-addon"><i class="fa fa-dollar"></i></span>
+										<input class="form-control text-right currency" placeholder=""
+											type="text" name="otherCosts">
+									</div>
+								</div>
+							</div>
+						</div>
+						<!-- End right section -->
+
+						<div class="clearfix"></div>
+
+						<div class="mortgageFields">
+							<!-- Start left section1 -->
+							<div class="col-md-6">
+								<div class="form-group">
+									<label class="col-md-6 control-label pad_leftright0">Mortgage
+										Type</label>
+									<div class="col-md-6 pad_right0 margin-bottom-10"
+										id="mortgageTypes"></div>
+								</div>
+								<div class="form-group">
+									<label class="col-md-6 control-label pad_leftright0">Loan
+										Amount</label>
+									<div class="col-md-6 pad_right0 margin-bottom-10">
+										<div class="input-group">
+											<span class="input-group-addon"><i
+												class="fa fa-dollar"></i></span> <input
+												class="form-control text-right currency" placeholder=""
+												type="text" name="loanAmount">
+										</div>
+									</div>
+								</div>
+								<div class="form-group">
+									<label class="col-md-6 control-label pad_leftright0">Monthly
+										Mortgage Payment</label>
+									<div class="col-md-6 pad_right0 margin-bottom-10">
+										<div class="input-group">
+											<span class="input-group-addon"><i
+												class="fa fa-dollar"></i></span> <input
+												class="form-control text-right currency" placeholder=""
+												type="text" name="monthlyPayment">
+										</div>
+									</div>
+								</div>
+								<div class="form-group">
+									<label class="control-label col-md-6 pad_leftright0" style="text-align: left;">
+										Rate Lock Expiration Date </label>
+									<div style="opacity:1 !important;" 
+										class="input-group col-md-6 date date-picker unrestricted disable-field"
+										data-date="" data-date-format="mm-dd-yyyy"
+										data-date-viewmode="years">
+										<input class="form-control" readonly="" placeholder=""
+											type="text" id="rateLockExpirationDate"
+											name="rateLockExpirationDate"> <span
+											class="input-group-btn">
+											<!-- <button class="btn default" type="button">
+												<i class="fa fa-calendar"></i>
+											</button> -->
+										</span>
+									</div>
+								</div>
+								<div class="form-group">
+									<label class="col-md-6 control-label pad_leftright0" style="text-align: left;">First Payment Due Date
+										</label>
+									<div
+										class="input-group col-md-6 date date-picker unrestricted"
+										data-date="" data-date-format="mm-dd-yyyy"
+										data-date-viewmode="years">
+										<input class="form-control" readonly=""
+											type="text" placeholder="" name="firstPaymentDueDate" id="firstPaymentDueDate"> <span
+											class="input-group-btn">
+											<button class="btn default" type="button">
+												<i class="fa fa-calendar"></i>
+											</button>
+										</span>
+									</div>
+								</div>
+								<div class="form-group">
+									<label class="col-md-6 control-label pad_leftright0" style="text-align: left;">Maturity Date</label>
+									<div
+										class="input-group col-md-6 date date-picker unrestricted"
+										data-date="" data-date-format="mm-dd-yyyy"
+										data-date-viewmode="years">
+										<input class="form-control" readonly=""
+											type="text" placeholder="" name="maturityDate" id="maturityDate"> <span
+											class="input-group-btn">
+											<button class="btn default" type="button">
+												<i class="fa fa-calendar"></i>
+											</button>
+										</span>
+									</div>
+								</div>
+							</div>
+							<!-- End left section1 -->
+
+							<!-- Start right section1 -->
+							<div class="col-md-6">
+								<div class="form-group">
+									<label class="col-md-6 control-label pad_leftright0">Impound</label>
+									<div class="col-md-6 pad_right0 margin-bottom-10"
+										id="impoundTypes"></div>
+								</div>
+								<div class="form-group" id="impoundAmountDiv">
+									<label class="col-md-6 control-label pad_leftright0">Impound Amount
+										(Monthly)</label>
+									<div class="col-md-6 pad_right0 margin-bottom-10">
+										<div class="input-group">
+											<span class="input-group-addon"><i
+												class="fa fa-dollar"></i></span> <input
+												class="form-control text-right currency" placeholder=""
+												type="text" name="impoundAmount">
+										</div>
+									</div>
+								</div>
+								<div class="form-group">
+									<label class="col-md-6 control-label pad_leftright0">Interest
+										Rate %</label>
+									<div class="col-md-6 pad_right0 margin-bottom-10">
+										<div class="input-group">
+											<input class="form-control text-right" placeholder=""
+												type="text" name="interestRate"> <span
+												class="input-group-addon"><i class="fa">%</i></span>
+										</div>
+									</div>
+								</div>
+								<div class="form-group">
+									<label class="col-md-6 control-label pad_leftright0">Term
+										(Months)</label>
+									<div class="col-md-6 pad_right0 margin-bottom-10">
+										<input class="form-control text-right" placeholder=""
+											type="text" name="term" id="term">
+									</div>
+								</div>
+								<div class="form-group">
+									<label class="col-md-6 control-label pad_leftright0">Amortization Period
+										(Months)</label>
+									<div class="col-md-6 pad_right0 margin-bottom-10">
+										<input class="form-control text-right" placeholder=""
+											type="text" name="amortizationPeriod" id="amortizationPeriod">
+									</div>
+								</div>
+								<div class="clearfix"></div>
+								<div class="form-group">
+									<label class="col-md-6 control-label pad_leftright0">ARM
+										Length (Months)</label>
+									<div class="col-md-6 pad_right0 margin-bottom-10">
+										<input class="form-control text-right" placeholder=""
+											type="text" name="armLength">
+									</div>
+								</div>
+							</div>
+							<!-- End right section1 -->
+						</div>
+
+						<div class="clearfix"></div>
+
+						<!-- Start left section 2-->
+						<div class="col-md-6">
+
+							<div class="form-group">
+								<div id="existingFinalHudDocument"></div>
+								<label class="col-md-6 control-label pad_leftright0 pad_top15">Upload
+									Final HUD<span class="required">*</span>
+									</label> 
+								<button type="button" class="btn blue display-none hidesdiv3 col-md-6"
+											id="finalHudPopupExtractDataButton">EXTRACT HUD DATA</button>
+								<div class="clearfix"></div>
+								<a
+									class="fa fa-paperclip pull-right showDocumentTooltip"
+									data-doc="Final HUD" style="cursor: pointer; font-size: 16px;"
+									data-html="true" data-show="true"> </a>
+								<div
+									class="col-md-12 pad_right0 margin-bottom-10 pad_leftright0">
+									<input name="finalHudDocument" class="form-control" type="file"
+										style="padding-bottom: 40px;">
+								</div>
+								<div id="extractError" class="col-md-12 alert alert-danger display-hide">
+								</div>
+							</div>
+							<div class="clearfix"></div>
+							<div class="form-group">
+								<div id="existingTitleDocument"></div>
+								<label class="col-md-12 control-label pad_leftright0 pad_top10">Upload
+									Title</label><a class="fa fa-paperclip pull-right showDocumentTooltip"
+									data-doc="Title" style="cursor: pointer; font-size: 16px;"
+									data-html="true" data-show="true"> </a>
+								<div
+									class="col-md-12 pad_right0 margin-bottom-10 pad_leftright0">
+									<input name="titleDocument" class="form-control" type="file"
+										style="padding-bottom: 40px;">
+								</div>
+							</div>
+
+						</div>
+						<!-- End left section 2-->
+
+						<!-- Start right section 2-->
+						<div class="col-md-6">
+							<div class="form-group">
+								<div id="existingMortgageNote"></div>
+								<label class="col-md-12 control-label pad_leftright0 pad_top15">Upload
+									Mortgage Note</label><a
+									class="fa fa-paperclip pull-right showDocumentTooltip"
+									data-doc="Mortgage Note"
+									style="cursor: pointer; font-size: 16px;" data-html="true"
+									data-show="true"> </a>
+								<div
+									class="col-md-12 pad_right0 margin-bottom-10 pad_leftright0">
+									<input name="mortgageNote" class="form-control"
+										type="file" style="padding-bottom: 40px;">
+								</div>
+							</div>
+							<div class="clearfix"></div>
+							<div class="form-group">
+								<div id="existingTaxCertificate"></div>
+								<label class="col-md-12 control-label pad_leftright0 pad_top10">Upload
+									Tax Certificate</label><a
+									class="fa fa-paperclip pull-right showDocumentTooltip"
+									data-doc="Tax Certificate"
+									style="cursor: pointer; font-size: 16px;" data-html="true"
+									data-show="true"> </a>
+								<div
+									class="col-md-12 pad_right0 margin-bottom-10 pad_leftright0">
+									<input name="taxCertificateDocument" class="form-control"
+										type="file" style="padding-bottom: 40px;">
+								</div>
+							</div>
+						</div>
+						<!-- End right section 2-->
+						<!-- <div class="clearfix"></div> -->
+						<!-- date start -->
+						<div class="form-group">
+							<label style="padding-left: 2%;"
+								class="col-md-12 control-label pad_leftright0 pad_top10">Completion
+
+								Date</label>
+							<div class="clearfix"></div>
+							<div class="col-md-12 margin-bottom-10 pad_leftright0">
+								<div style="padding-left: 2%;"
+									class="input-group input-medium date date-picker"
+									data-date="07-01-2014" data-date-format="mm-dd-yyyy"
+									data-date-viewmode="years">
+									<input class="form-control" readonly="" style="width: 90%;"
+										type="text" placeholder="" name="endDate"> <span
+										class="input-group-btn pull-left">
+										<button class="btn default" type="button">
+											<i class="fa fa-calendar"></i>
+										</button>
+									</span>
+								</div>
+							</div>
+						</div>
+
+						<!-- 
+								<div class="form-group">
+									<label class="col-md-12 control-label pad_leftright0">Maturity
+										Date</label>
+									<div class="clearfix"></div>
+									<div style="padding-left: 0%;"
+										class="input-group col-md-6 input-medium date date-picker unrestricted"
+										data-date="" data-date-format="mm-dd-yyyy"
+										data-date-viewmode="years">
+										<input class="form-control" readonly="" style="width: 90%;"
+											type="text" placeholder="" name="maturityDate"> <span
+											class="input-group-btn pull-left">
+											<button class="btn default" type="button">
+												<i class="fa fa-calendar"></i>
+											</button>
+										</span>
+									</div>
+								</div>
+							
+							 -->
+						<!-- date end -->
+						<div class="clearfix"></div>
+						<!-- Start comment section -->
+						<div class="col-md-12">
+							<div class="form-group">
+								<label class="control-label">Comments <a
+									class="fa fa-comments-o pull-right showMessageTooltip"
+									style="cursor: pointer; font-size: 14px;" data-html="true"
+									data-show="true"> <i>Show past comments</i>
+								</a>
+								</label>
+								<textarea class="form-control" style="height: 70px;"
+									name="comments"></textarea>
+
+							</div>
+						</div>
+						<!-- End comment section -->
+					</div>
+				</form>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn blue"
+					id="finalHudPopupSubmitButton">SAVE</button>
+				<button type="button" class="btn default" data-dismiss="modal">
+					CANCEL</button>
+			</div>
+		</div>
+		<!-- /.modal-content -->
+	</div>
+	<!-- /.modal-dialog -->
+</div>
+<!-- end custom task lightbox -->
+
+<!-- start appraisal required lightbox -->
+<div class="modal fade bs-modal-sm with-popover"
+	id="APPRAISAL_REQUIRED_POPUP_1" tabindex="-1" role="basic"
+	aria-hidden="true">
+	<div class="modal-dialog modal-sm">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal"
+					aria-hidden="true"></button>
+				<h4 class="modal-title">Property Appraisal Required</h4>
+			</div>
+			<div class="modal-body">
+				<form method="post" id="appraisalRequiredForm">
+					<input type="hidden" id="object" name="object" /> <input
+						type="hidden" id="objectId" name="objectId" /> <input
+						type="hidden" id="taskKey" name="taskKey" />
+
+					<div class="form-group">
+						<label class="control-label" style="text-align: left;">
+							Completion Date </label>
+						<div class="input-group input-medium date date-picker"
+							data-date="" data-date-format="mm-dd-yyyy"
+							data-date-viewmode="years">
+							<input class="form-control" readonly="" placeholder=""
+								type="text" name="endDate"> <span
+								class="input-group-btn">
+								<button class="btn default" type="button">
+									<i class="fa fa-calendar"></i>
+								</button>
+							</span>
+						</div>
+					</div>
+
+					<div class="form-group">
+						<label class="control-label"> Appraisal Required? </label>
+
+						<div class="radio-list form-control"
+							style="float: left; margin-bottom: 10px; padding-left: 36px;">
+							<label class="radio-inline"> <input
+								name="appraisalRequired" id="optionsRadiosyes" value="yes"
+								type="radio"> Yes
+							</label> <label class="radio-inline active"
+								style="padding-left: 23px !important;"> <input
+								name="appraisalRequired" id="optionsRadiosno" value="no"
+								checked="" type="radio"> No
+							</label>
+						</div>
+					</div>
+
+					<div class="form-group">
+						<label class="control-label"> Comments <a
+							class="fa fa-comments-o pull-right showMessageTooltip"
+							style="cursor: pointer; font-size: 14px;" data-html="true"
+							data-show="true"> <i>Show past comments</i>
+						</a>
+						</label><br>
+						<textarea name="comments" class="form-control"
+							style="height: 200px;" placeholder=""></textarea>
+					</div>
+				</form>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn blue"
+					id="appraisalRequiredPopupSubmitButton">SAVE</button>
+				<button type="button" class="btn default" data-dismiss="modal">
+					CANCEL</button>
+			</div>
+		</div>
+		<!-- /.modal-content -->
+	</div>
+	<!-- /.modal-dialog -->
+</div>
+<!-- end appraisal required lightbox -->
+
+<!-- start appraisal required lightbox -->
+<div class="modal fade bs-modal-sm with-popover"
+	id="HU_TO_PROVIDE_INSURANCE_POPUP_1" tabindex="-1" role="basic"
+	aria-hidden="true">
+	<div class="modal-dialog modal-sm">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal"
+					aria-hidden="true"></button>
+				<h4 class="modal-title">HU to Provide Insurance</h4>
+			</div>
+			<div class="modal-body">
+				<form method="post" id="appraisalRequiredForm">
+					<input type="hidden" id="object" name="object" /> <input
+						type="hidden" id="objectId" name="objectId" /> <input
+						type="hidden" id="taskKey" name="taskKey" />
+
+					<div class="form-group">
+						<label class="control-label" style="text-align: left;">
+							Completion Date </label>
+						<div class="input-group input-medium date date-picker"
+							data-date="" data-date-format="mm-dd-yyyy"
+							data-date-viewmode="years">
+							<input class="form-control" readonly="" placeholder=""
+								type="text" name="endDate"> <span
+								class="input-group-btn">
+								<button class="btn default" type="button">
+									<i class="fa fa-calendar"></i>
+								</button>
+							</span>
+						</div>
+					</div>
+
+					<div class="form-group">
+						<label class="control-label"> HU to Provide Insurance? </label>
+
+						<div class="radio-list form-control"
+							style="float: left; margin-bottom: 10px; padding-left: 36px;">
+							<label class="radio-inline"> <input
+								name="huToProvideInsurance" id="optionsRadiosyes" value="yes"
+								type="radio"> Yes
+							</label> <label class="radio-inline active"
+								style="padding-left: 23px !important;"> <input
+								name="huToProvideInsurance" id="optionsRadiosno" value="no"
+								checked="" type="radio"> No
+							</label>
+						</div>
+					</div>
+
+					<div class="form-group">
+						<label class="control-label"> Comments <a
+							class="fa fa-comments-o pull-right showMessageTooltip"
+							style="cursor: pointer; font-size: 14px;" data-html="true"
+							data-show="true"> <i>Show past comments</i>
+						</a>
+						</label><br>
+						<textarea name="comments" class="form-control"
+							style="height: 200px;" placeholder=""></textarea>
+					</div>
+				</form>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn blue"
+					id="huToProvideInsurancePopupSubmitButton">SAVE</button>
+				<button type="button" class="btn default" data-dismiss="modal">
+					CANCEL</button>
+			</div>
+		</div>
+		<!-- /.modal-content -->
+	</div>
+	<!-- /.modal-dialog -->
+</div>
+<!-- end appraisal required lightbox -->
+
+<!-- start appraisal required lightbox -->
+<div class="modal fade bs-modal-sm with-popover"
+	id="PROPERTY_RENTAL_STATUS_POPUP_1" tabindex="-1" role="basic"
+	aria-hidden="true">
+	<div class="modal-dialog modal-sm">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal"
+					aria-hidden="true"></button>
+				<h4 class="modal-title">Property Rental Status</h4>
+			</div>
+			<div class="modal-body">
+				<form method="post" id="propertyRentalStatusForm">
+					<input type="hidden" id="object" name="object" /> <input
+						type="hidden" id="objectId" name="objectId" /> <input
+						type="hidden" id="taskKey" name="taskKey" />
+
+					<div class="form-group">
+						<label class="control-label" style="text-align: left;">
+							Completion Date </label>
+						<div class="input-group input-medium date date-picker"
+							data-date="" data-date-format="mm-dd-yyyy"
+							data-date-viewmode="years">
+							<input class="form-control" readonly="" placeholder=""
+								type="text" name="endDate"> <span
+								class="input-group-btn">
+								<button class="btn default" type="button">
+									<i class="fa fa-calendar"></i>
+								</button>
+							</span>
+						</div>
+					</div>
+
+					<div class="form-group">
+						<label class="control-label"> Status </label>
+						<div class="radio-list form-control"
+                            style="float: left; margin-bottom: 10px; /*padding-left: 36px;*/ height:60px;">
+							<label class="radio-inline"> 
+								<input name="isVacant" id="optionsRadiosvacant" value="vacant" type="radio"> Vacant
+							</label> 
+							<label class="radio-inline" style="padding-left: 0px !important;"> 
+                                <input name="isVacant" value="ownerOccupied" id="optionsRadiosownerOccupied" checked="" type="radio"> Owner Occupied
+                            </label>
+                            <label class="radio-inline" style="padding-left: 68px !important;"> 
+                            	<input name="isVacant" value="tenantOccupied" id="optionsRadiostenantOccupied" type="radio"> Tenant Occupied
+                            </label>
+						</div>
+					</div>
+
+					<div class="form-group" id="leaseActive" style="display: none;">
+						<label class="control-label"> Will lease remain in effect
+							after closing? </label>
+
+						<div class="radio-list form-control"
+							style="float: left; margin-bottom: 10px; padding-left: 36px;">
+							<label class="radio-inline"> <input name="isRented"
+								id="optionsRadiosyes" value="yes" type="radio"> Yes
+							</label> <label class="radio-inline active"
+								style="padding-left: 23px !important;"> <input
+								name="isRented" id="optionsRadiosno" value="no" checked=""
+								type="radio"> No
+							</label>
+						</div>
+					</div>
+
+					<div class="form-group">
+						<label class="control-label"> Comments <a
+							class="fa fa-comments-o pull-right showMessageTooltip"
+							style="cursor: pointer; font-size: 14px;" data-html="true"
+							data-show="true"> <i>Show past comments</i>
+						</a>
+						</label><br>
+						<textarea name="comments" class="form-control"></textarea>
+					</div>
+				</form>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn blue"
+					id="rentalStatusPopupSubmitButton">SAVE</button>
+				<button type="button" class="btn default" data-dismiss="modal">
+					CANCEL</button>
+			</div>
+		</div>
+		<!-- /.modal-content -->
+	</div>
+	<!-- /.modal-dialog -->
+</div>
+<!-- end property inspection lightbox -->
+
+<!-- Notify Investor start lightbox -->
+<div class="modal fade with-popover" id="NOTIFY_INVESTOR_POPUP_1"
+	tabindex="-1" role="basic" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal"
+					aria-hidden="true"></button>
+				<h4 class="modal-title">Notify Investor / Negotiate with TKP</h4>
+			</div>
+			<form class="form-horizontal" method="post" id="notifyInvestorForm"
+				enctype="multipart/form-data">
+				<div class="modal-body">
+					<input type="hidden" id="object" name="object" /> <input
+						type="hidden" id="objectId" name="objectId" /> <input
+						type="hidden" id="taskKey" name="taskKey" />
+					<div class="col-md-6">
+						<div class="form-group">
+							<label class="control-label" style="text-align: left;">
+								Start Date </label>
+							<div class="input-group input-medium date date-picker"
+								data-date-format="mm-dd-yyyy" data-date-viewmode="years">
+								<input class="form-control" readonly="" type="text"
+									name="startDate"> <span class="input-group-btn">
+									<button class="btn default" type="button">
+										<i class="fa fa-calendar"></i>
+									</button>
+								</span>
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="control-label" style="text-align: left;">
+								Completion Date </label>
+							<div class="input-group input-medium date date-picker"
+								data-date-format="mm-dd-yyyy" data-date-viewmode="years">
+								<input class="form-control" readonly="" type="text"
+									name="endDate"> <span class="input-group-btn">
+									<button class="btn default" type="button">
+										<i class="fa fa-calendar"></i>
+									</button>
+								</span>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="form-group">
+							<label class="control-label" style="text-align: left;">
+								Purchase Price </label>
+							<div class="input-group">
+								<span class="input-group-addon"><i class="fa fa-dollar"></i></span>
+								<input class="form-control currency" type="text"
+									name="offerAmount" readonly="readonly">
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="control-label" style="text-align: left;">
+								Appraisal Value </label>
+							<div class="input-group">
+								<span class="input-group-addon"><i class="fa fa-dollar"></i></span>
+								<input class="form-control currency" type="text"
+									name="appraisalValue" readonly="readonly">
+							</div>
+						</div>
+					</div>
+					<div class="col-md-12">
+						<div class="form-group">
+							<label class="control-label"> Price Issue Resolved?</label> <label
+								class="control-label">*Note: 'No' will result in
+								cancellation of this closing transaction.</label>
+
+							<div class="radio-list form-control"
+								style="float: left; margin-bottom: 10px; padding-left: 36px;">
+								<label class="radio-inline"> <input
+									name="priceIssueResolved" id="optionsRadiosYes" value="yes"
+									type="radio"> Yes
+								</label> <label class="radio-inline active"
+									style="padding-left: 23px !important;"> <input
+									name="priceIssueResolved" id="optionsRadiosNo" value="no"
+									checked="" type="radio"> No
+								</label>
+							</div>
+						</div>
+					</div>
+					<div class="clearfix"></div>
+					<div class="form-group col-md-12">
+						<label class="control-label"> Comments <a
+							class="fa fa-comments-o pull-right showMessageTooltip"
+							style="cursor: pointer; font-size: 14px;" data-html="true"
+							data-show="true"> <i>Show past comments</i>
+						</a>
+						</label><br>
+						<textarea class="form-control" style="height: 200px;"
+							name="comments"></textarea>
+					</div>
+				</div>
+			</form>
+			<div class="modal-footer">
+				<button type="button" class="btn blue"
+					id="notifyInvestorPopupSubmitButton">SAVE</button>
+				<button type="button" class="btn default" data-dismiss="modal">
+					CANCEL</button>
+			</div>
+		</div>
+		<!-- /.modal-content -->
+	</div>
+	<!-- /.modal-dialog -->
+</div>
+<!-- Notify Investor end lightbox -->
+
+<div id="cancelClosingDiv"></div>
+
+<!-- START Complete Closing lightbox -->
+<div class="modal fade bs-modal-sm" id="completeClosing" tabindex="-1"
+	role="dialog" aria-hidden="true">
+	<div class="modal-dialog modal-sm">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal"
+					aria-hidden="true"></button>
+				<h4 class="modal-title">
+					<i class="fa fa-times"></i> Complete Closing
+				</h4>
+			</div>
+			<div class="modal-body">
+				<p>Are you sure you want to complete this transaction?</p>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn blue" id="completeClosingButton">
+					Yes</button>
+				<button type="button" class="btn default" data-dismiss="modal">
+					No</button>
+			</div>
+		</div>
+		<!-- /.modal-content -->
+	</div>
+	<!-- /.modal-dialog -->
+</div>
+<!-- /.modal -->
+<!-- END Complete Closing lightbox -->
+
+<!-- start Completion Date lightbox -->
+<div class="modal fade bs-modal-sm with-popover"
+	id="TERMS_AND_RATE_POPUP_1" tabindex="-1" role="basic"
+	aria-hidden="true">
+	<div class="modal-dialog modal-sm">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal"
+					aria-hidden="true"></button>
+				<h4 class="modal-title" id="modalTitle"></h4>
+			</div>
+			<div class="modal-body"
+				style="margin-left: 10px; margin-right: 10px;">
+				<form class="term-rate-form" method="post" id="">
+					<input type="hidden" id="object" name="object"> <input
+						type="hidden" id="objectId" name="objectId"> <input
+						type="hidden" id="taskKey" name="taskKey">
+
+					<div class="form-group">
+						<label class="control-label" style="text-align: left;">
+							Completion Date <span class="required">* </span>
+						</label>
+						<div class="input-group input-medium date date-picker"
+							data-date="" data-date-format="mm-dd-yyyy"
+							data-date-viewmode="years">
+							<input class="form-control" readonly="" placeholder=""
+								type="text" id="endDate" name="endDate"> <span
+								class="input-group-btn">
+								<button class="btn default" type="button">
+									<i class="fa fa-calendar"></i>
+								</button>
+							</span>
+						</div>
+					</div>
+
+					<div class="form-group">
+						<label class="control-label" style="text-align: left;">
+							Rate Lock Expiration Date </label>
+						<div
+							class="input-group input-medium date date-picker unrestricted"
+							data-date="" data-date-format="mm-dd-yyyy"
+							data-date-viewmode="years">
+							<input class="form-control" readonly="" placeholder=""
+								type="text" id="rateLockExpirationDate"
+								name="rateLockExpirationDate"> <span
+								class="input-group-btn">
+								<button class="btn default" type="button">
+									<i class="fa fa-calendar"></i>
+								</button>
+							</span>
+						</div>
+					</div>
+
+					<div class="form-group">
+						<label class="control-label"> Comments <a
+							class="fa fa-comments-o pull-right showMessageTooltip"
+							style="cursor: pointer; font-size: 14px;" data-html="true"
+							data-show="true"> <i>Show past comments</i>
+						</a>
+						</label><br>
+
+						<textarea class="form-control" style="height: 80px;"
+							placeholder="" name="comments" id="comments"></textarea>
+					</div>
+				</form>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn blue"
+					id="milestonePopupSubmitButton">SAVE</button>
+				<button type="button" id="cancelButton" class="btn default"
+					data-dismiss="modal">CANCEL</button>
+			</div>
+		</div>
+		<!-- /.modal-content -->
+	</div>
+	<!-- /.modal-dialog -->
+</div>
+
+<!-- end Completion Date lightbox -->
+<!-- start Completion Date lightbox -->
+<div class="modal fade bs-modal-sm" id="REPROJECT_POPUP" tabindex="-1"
+	role="basic" aria-hidden="true">
+	<div class="modal-dialog modal-sm">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal"
+					aria-hidden="true"></button>
+				<h4 class="modal-title" id="modalTitle">
+					<div id="reprojectTitle"></div>
+				</h4>
+			</div>
+			<div class="modal-body"
+				style="margin-left: 10px; margin-right: 10px;">
+				<div id="formAlertFailure" class="alert alert-danger display-hide">
+					<button class="close" data-close="alert"></button>
+					You have some form errors. Please check below.
+				</div>
+				<form id="reproject-form">
+					<input type="hidden" id="object" name="object"> <input
+						type="hidden" id="objectId" name="objectId"> <input
+						type="hidden" id="taskKey" name="taskKey">
+					<div class="form-group">
+						<label class="control-label" style="text-align: left;">
+							Projected Completion Date </label>
+						<div
+							class="input-group input-medium date date-picker unrestricted"
+							data-date="" data-date-format="mm-dd-yyyy"
+							data-date-viewmode="years">
+							<input class="form-control" readonly="" placeholder=""
+								type="text" id="projectedCompletionDate"
+								name="projectedCompletionDate"> <span
+								class="input-group-btn">
+								<button class="btn default" type="button">
+									<i class="fa fa-calendar"></i>
+								</button>
+							</span>
+						</div>
+					</div>
+
+					<div class="form-group">
+						<label class="control-label">Comments <span
+							class="required">* </span>
+						</label><br>
+
+						<textarea class="form-control" style="height: 200px;"
+							placeholder="" name="comments" id="comments" data-required="1"></textarea>
+					</div>
+				</form>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn blue" id="reProjectPopupSubmit">SAVE</button>
+				<button type="button" id="cancelButton" class="btn default"
+					data-dismiss="modal">CANCEL</button>
+			</div>
+		</div>
+		<!-- /.modal-content -->
+	</div>
+	<!-- /.modal-dialog -->
+</div>
+<!-- end Completion Date lightbox -->
+
+<!-- option delete lightbox start -->
+<div class="modal fade bs-modal-sm" id="openWorkflowStep" tabindex="-1"
+	role="dialog" aria-hidden="true">
+	<div class="modal-dialog modal-sm">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal"
+					aria-hidden="true"></button>
+				<h4 class="modal-title">Open Step</h4>
+			</div>
+			<div class="modal-body">
+				Are you sure you want to open this step? <br>
+				<br> *Note: Opening intermediate steps will make subsequent
+				steps unusable till they are completed again.
+				<form id="open-step-form">
+					<input type="hidden" id="object" name="object"> <input
+						type="hidden" id="objectId" name="objectId"> <input
+						type="hidden" id="taskKey" name="taskKey">
+				</form>
+			</div>
+			<div class="modal-footer">
+				<button id="openStepConfirmationButton" type="button"
+					class="btn blue">Yes</button>
+				<button type="button" class="btn default" data-dismiss="modal">No</button>
+			</div>
+		</div>
+		<!-- /.modal-content -->
+	</div>
+	<!-- /.modal-dialog -->
+</div>
+<!-- option delete lightbox end -->
+
+<!-- option delete lightbox start -->
+<div class="modal fade bs-modal-sm" id="deleteWorkflowStep"
+	tabindex="-1" role="dialog" aria-hidden="true">
+	<div class="modal-dialog modal-sm">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal"
+					aria-hidden="true"></button>
+				<h4 class="modal-title">Delete Step</h4>
+			</div>
+			<div class="modal-body">
+				Are you sure you want to delete this step?<br>
+				<br> *Note: Deleting intermediate steps will make subsequent
+				steps unusable.
+				<form id="delete-step-form">
+					<input type="hidden" id="object" name="object"> <input
+						type="hidden" id="objectId" name="objectId"> <input
+						type="hidden" id="taskKey" name="taskKey">
+				</form>
+			</div>
+			<div class="modal-footer">
+				<button id="deleteStepConfirmationButton" type="button"
+					class="btn blue">Yes</button>
+				<button type="button" class="btn default" data-dismiss="modal">No</button>
+			</div>
+		</div>
+		<!-- /.modal-content -->
+	</div>
+	<!-- /.modal-dialog -->
+</div>
+<!-- option delete lightbox end -->
+
+<!-- start provide rehab lightbox -->
+<div id="provideRehabEstimateRenderDiv"></div>
+<!-- end provide rehab lightbox -->
+<!-- Select Tenanat Modal Start-->
+<div id="selectTenantPopUpDiv"></div>
+<div id="propertyInspectionRenderDiv"></div>
+<!-- Select Tenanat Modal End-->
+<div id="propertyAppraisalDiv"></div>
+
+<!--  Insurance Review Start-->
+<div class="modal fade bs-modal-lg with-popover" id="INSURANCE_QUOTES_REVIEW_POPUP_1"
+	tabindex="-1" role="basic" aria-hidden="true">
+	<div class="modal-dialog modal-full">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button aria-hidden="true" data-dismiss="modal" class="close"
+					type="button"></button>
+				<h3 class="modal-title">Insurance Quotes Review</h3>
+			</div>
+			<div class="modal-body clearfix">
+				<form>
+					<div class="form-horizontal">
+						<div id="renderQuoteReviewHeader"></div>
+
+						<div class="col-md-12 marg_top20 portlet box light-grey">
+							<div class="portlet-title">
+								<div class="caption">Insurance Info</div>
+
+							</div>
+
+							<!--  -->
+							<div style="padding: 0; padding-bottom: 10px;"
+								class="portlet-body">
+								<div class="panel-group table-responsive">
+									<div id="renderInsuranceReviewData"></div>
+
+								</div>
+
+							</div>
+
+							<!--  -->
+
+
+
+						</div>
+
+
+						<div class="col-md-12">
+							<div class="form-group">
+								<label class="control-label margin-bottom-5"> Completion
+									Date </label>
+								<div data-date-viewmode="years" data-date-format="mm-dd-yyyy"
+									
+									class="input-group input-medium date date-picker">
+									<input type="text"  class="form-control" id="endDate" name="endDate">
+									<span class="input-group-btn">
+										<button type="button" class="btn default">
+											<i class="fa fa-calendar"></i>
+										</button>
+									</span>
+								</div>
+							</div>
+						</div>
+						<div class="clearfix"></div>
+
+					</div>
+				</form>
+			</div>
+			<div class="modal-footer">
+					
+				<button id="insuranceReviewPopupSubmitButton" class="btn blue" type="button">
+					SAVE</button>
+				<button data-dismiss="modal" class="btn default" type="button">
+					CANCEL</button>
+			</div>
+		
+		</div>
+		<!-- /.modal-content -->
+	</div>
+	<!-- /.modal-dialog -->
+</div>
+<!--  Insurance Review End-->
+
+
+<!--  Insurance Selection Start-->
+<div class="modal fade bs-modal-lg with-popover"
+	id="INSURANCE_VENDOR_SELECTION_POPUP_1" tabindex="-1" role="basic"
+	aria-hidden="true">
+	<div class="modal-dialog modal-full">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button aria-hidden="true" data-dismiss="modal" class="close"
+					type="button"></button>
+				<h3 class="modal-title">Insurance Vendor Selection</h3>
+			</div>
+			<div class="modal-body clearfix">
+				<form>
+					<div class="form-horizontal">
+						<div id="renderVendorSelectionHeader"></div>
+
+						<div class="col-md-12 marg_top20 portlet box light-grey">
+							<div class="portlet-title">
+								<div class="caption">Insurance Info</div>
+
+							</div>
+							<!--  -->
+							<div style="padding: 0; padding-bottom: 10px;"
+								class="portlet-body">
+								<div class="panel-group table-responsive">
+									<div id="renderVendorSelectionData"></div>
+
+								</div>
+
+							</div>
+						</div>
+
+
+						<div class="col-md-12">
+							<div class="form-group">
+								<label class="control-label margin-bottom-5"> Completion
+									Date </label>
+								<div data-date-viewmode="years" data-date-format="mm-dd-yyyy"
+									class="input-group input-medium date date-picker">
+									<input type="text" class="form-control" id="endDate"
+										name="endDate"> <span class="input-group-btn">
+										<button type="button" class="btn default">
+											<i class="fa fa-calendar"></i>
+										</button>
+									</span>
+								</div>
+							</div>
+						</div>
+						<div class="clearfix"></div>
+
+					</div>
+				</form>
+			</div>
+			<div class="modal-footer">
+
+				<button id="insuranceVendorSelectionPopupSubmitButton" class="btn blue"
+					type="button">SAVE</button>
+				<button data-dismiss="modal" class="btn default" type="button">
+					CANCEL</button>
+			</div>
+
+		</div>
+		<!-- /.modal-content -->
+	</div>
+	<!-- /.modal-dialog -->
+</div>
+<!--  Insurance Selection End-->
+
+<div class="modal fade bs-modal-lg with-popover"
+	id="INSURANCE_APPLICATION_SIGNATURE_POPUP_1" tabindex="-1" role="basic"
+	aria-hidden="true">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button aria-hidden="true" data-dismiss="modal" class="close"
+					type="button"></button>
+				<h3 class="modal-title">Insurance Application Signature</h3>
+			</div>
+			<div class="modal-body clearfix">
+				<form>
+					<div class="form-horizontal">
+					<div id="renderInsuranceApplicationData"></div>
+					<label class="control-label col-md-2 pad_top10">
+									Completion Date </label>
+
+						<div class="col-md-4 margin-bottom-10">
+							<div data-date-viewmode="years" data-date-format="mm-dd-yyyy"
+								class="input-group input-medium date date-picker">
+								<input type="text" name="endDate" class="form-control" id="endDate">
+								<span class="input-group-btn">
+									<button type="button" class="btn default">
+										<i class="fa fa-calendar"></i>
+									</button>
+								</span>
+							</div>
+						</div>
+						
+						<div class="clearfix"></div>
+
+						<div class="col-md-12 margin-bottom-15">
+
+							<div class="col-md-12">
+
+								<div class="form-group">
+									<label class="control-label"> Comments <a
+										class="fa fa-comments-o pull-right showMessageTooltip"
+										style="cursor: pointer; font-size: 14px;" data-html="true"
+										data-show="true"> <i>Show past comments</i>
+									</a>
+									</label><br>
+									<textarea class="form-control" name="comments"></textarea>
+								</div>
+
+							</div>
+
+
+						</div>
+					</div>
+				</form>
+			</div>
+			<div class="modal-footer">
+
+				<button class="btn blue" id="insuranceAppSignaturePopupSubmitButton"
+					type="button">Save</button>
+
+				<button data-dismiss="modal" class="btn default" type="button">
+					CANCEL</button>
+
+			</div>
+
+		</div>
+
+	</div>
+	<!-- /.modal-content -->
+
+	<!-- /.modal-dialog -->
+</div>
+
+<!-- Preliminary HUD Popup -->
+<div class="modal fade" id="PRELIMINARY_HUD_POPUP_1" tabindex="-1" role="basic" aria-hidden="true">
+       <div class="modal-dialog">
+           <div class="modal-content">
+               <div class="modal-header">
+                   <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                   </button>
+                   <h4 class="modal-title">
+                       Preliminary HUD Review
+					</h4>
+               </div>
+             <div class="modal-body">
+			<div class="row">
+			<form method="post" id="PreliminaryHudReviewForm">
+			<input type="hidden" id="object" name="object" /> <input
+						type="hidden" id="objectId" name="objectId" /> <input
+						type="hidden" id="taskKey" name="taskKey" />
+
+			<div class="col-md-6">
+				<div class="form-group">
+					<label class="control-label" style="text-align: left;">
+						Start Date <span class="required">* </span>
+					</label>
+					<div class="input-group input-medium date date-picker"
+						data-date="" data-date-format="mm-dd-yyyy"
+						data-date-viewmode="years">
+						<input class="form-control" readonly="" placeholder=""
+							type="text" id="startDate" name="startDate"> <span
+							class="input-group-btn">
+							<button class="btn default" type="button">
+								<i class="fa fa-calendar"></i>
+							</button>
+						</span>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-6">
+				<div class="form-group">
+					<label class="control-label" style="text-align: left;">
+						Completion Date </label>
+					<div class="input-group input-medium date date-picker"
+						data-date="" data-date-format="mm-dd-yyyy"
+						data-date-viewmode="years">
+						<input class="form-control" readonly="" placeholder=""
+							type="text" id="endDate" name="endDate"> <span
+							class="input-group-btn">
+							<button class="btn default" type="button">
+								<i class="fa fa-calendar"></i>
+							</button>
+						</span>
+					</div>
+				</div>
+			</div>
+			<div class="clearfix">
+			</div>
+
+			<div class="col-md-6">
+			   <div class="form-group">
+					<label class="control-label">Buyer Name matches</label>
+				<div class="radio-list  col-md-12" style="float: left;">
+                    <label class="radio-inline">
+                        <input name="buyerNameMatch" id="optionsRadiosyes" value="yes" checked="" type="radio">
+                        Yes</label>&nbsp;&nbsp;&nbsp;
+                    <label class="radio-inline" style="padding-left: 0px!important;">
+                        <input name="buyerNameMatch" id="optionsRadiosno" value="no" checked="" type="radio">
+                        No
+                    </label>
+				 </div>
+			   </div>
+			</div>
+			<div class="col-md-6">
+			   <div class="form-group">
+					<label class="control-label">Address matches</label>
+				<div class="radio-list  col-md-12" style="float: left;">
+                    <label class="radio-inline">
+                        <input name="addressMatch" id="optionsRadiosyes" value="yes" checked="" type="radio">
+                        Yes</label>&nbsp;&nbsp;&nbsp;
+                    <label class="radio-inline" style="padding-left: 0px!important;">
+                        <input name="addressMatch" id="optionsRadiosno" value="no" checked="" type="radio">
+                        No
+                    </label>
+				 </div>
+			   </div>
+			</div>
+			
+			<div class="clearfix">
+			</div>
+			
+			<div class="col-md-6">
+			   <div class="form-group">
+					<label class="control-label">Commission to HU matches</label>
+				<div class="radio-list  col-md-12" style="float: left;">
+                    <label class="radio-inline">
+                        <input name="commissionToHuMatch" id="optionsRadiosyes" value="yes" checked="" type="radio">
+                        Yes</label>&nbsp;&nbsp;&nbsp;
+                    <label class="radio-inline" style="padding-left: 0px!important;">
+                        <input name="commissionToHuMatch" id="optionsRadiosno" value="no" checked="" type="radio">
+                        No
+                    </label>
+				 </div>
+			   </div>
+			</div>
+			<div class="col-md-6">
+				<div class="form-group">
+					<label class="control-label">Pro-rated rent credit</label>
+				<div class="radio-list  col-md-12" style="float: left;">
+                    <label class="radio-inline">
+                        <input name="proRatedRentCreditMatch" id="optionsRadiosyes" value="yes" checked="" type="radio">
+                        Yes</label>&nbsp;&nbsp;&nbsp;
+                    <label class="radio-inline" style="padding-left: 0px!important;">
+                        <input name="proRatedRentCreditMatch" id="optionsRadiosno" value="no" checked="" type="radio">
+                        No
+                    </label>
+				 </div>
+			   </div>
+			</div>
+			<div class="clearfix">
+			</div>
+			
+			<div class="col-md-6">
+			   <div class="form-group">
+					<label class="control-label">Purchase Price matches offer</label>
+				<div class="radio-list  col-md-12" style="float: left;">
+                    <label class="radio-inline">
+                        <input name="purchasePriceMatch" id="optionsRadiosyes" value="yes" checked="" type="radio">
+                        Yes</label>&nbsp;&nbsp;&nbsp;
+                    <label class="radio-inline" style="padding-left: 0px!important;">
+                        <input name="purchasePriceMatch" id="optionsRadiosno" value="no" checked="" type="radio">
+                        No
+                    </label>
+				 </div>
+			   </div>
+			</div>
+			<div class="col-md-6">
+			   <div class="form-group">
+					<label class="control-label">Seller Credits match</label>
+				<div class="radio-list  col-md-12" style="float: left;">
+                    <label class="radio-inline">
+                        <input name="sellerCreditsMatch" id="optionsRadiosyes" value="yes" checked="" type="radio">
+                        Yes</label>&nbsp;&nbsp;&nbsp;
+                    <label class="radio-inline" style="padding-left: 0px!important;">
+                        <input name="sellerCreditsMatch" id="optionsRadiosno" value="no" checked="" type="radio">
+                        No
+                    </label>
+				 </div>
+			   </div>
+			</div>
+			
+			<div class="clearfix">
+			</div>
+
+			<div class="col-md-6">
+			   <div class="form-group">
+					<label class="control-label">Security deposit credit</label>
+				<div class="radio-list  col-md-12" style="float: left;">
+                    <label class="radio-inline">
+                        <input name="securityDepositPreHud" id="optionsRadiosyes" value="yes" checked="" type="radio">
+                        Yes</label>&nbsp;&nbsp;&nbsp;
+                    <label class="radio-inline" style="padding-left: 0px!important;">
+                        <input name="securityDepositPreHud" id="optionsRadiosno" value="no" checked="" type="radio">
+                        No
+                    </label>
+				 </div>
+			   </div>
+			</div>
+			<!--  -->
+			 <div class="col-md-6">
+                <div class="form-group">
+                    <label class="control-label">Rental Status</label>
+                <div class="col-md-12 form-control rentalStatus" style="float: left;">
+                   
+                 </div>
+               </div>
+            </div>
+			<!--  -->
+			<div class="col-md-6">
+				<div class="form-group">
+					<label class="control-label margin-bottom-5"> Settlement
+						Date </label>
+					<div data-date-viewmode="years" data-date-format="mm-dd-yyyy"
+						
+						class="input-group input-medium date date-picker unrestricted" >
+						<input type="text"  class="form-control" id="settlementDate" name="settlementDate"  readonly="">
+						<span class="input-group-btn">
+							<button type="button" class="btn default">
+								<i class="fa fa-calendar"></i>
+							</button>
+						</span>
+					</div>
+				</div>
+			</div>
+		
+			<div class="clearfix">
+			</div>
+
+			<div class="col-md-6" style="padding-top: 10px">
+				<div class="form-group">
+					<div id="existingDocument"></div>
+					<label class="control-label"> Upload <span
+						id="documentLabel"></span> <span class="required">* </span>
+					</label><a class="fa fa-paperclip pull-right showDocumentTooltip"
+						style="cursor: pointer; font-size: 16px;" data-html="true"
+						data-show="true"> </a> <br> <input name="document"
+						class="form-control" type="file" style="padding-bottom: 40px;"
+						id="document">
+				</div>
+			</div>
+			<div class="clearfix"></div>
+
+			<div class="col-md-12">
+				<div class="form-group">
+					<label class="control-label"> Comments <a
+						class="fa fa-comments-o pull-right showMessageTooltip"
+						style="cursor: pointer; font-size: 14px;" data-html="true"
+						data-show="true"> <i>Show past comments</i>
+					</a>
+					</label><br>
+
+					<textarea class="form-control" style="height: 80px;"
+						placeholder="" name="comments" id="comments"></textarea>
+				</div>
+			</div>
+			<div class="clearfix"></div>
+
+			</form>
+			<!--  -->
+			</div> 
+               </div>
+               <div class="modal-footer">
+               <button type="button" class="btn blue" id="preliminaryHudPopupSubmitButton">
+                       Save</button>
+                <button type="button"  class="btn default" data-dismiss="modal">
+                       Cancel</button>
+               </div>
+           </div>
+           <!-- /.modal-content -->
+       </div>
+       <!-- /.modal-dialog -->
+   </div>
+
+
+<div class="modal fade bs-modal-sm with-popover"
+	id="ASSET_MGMT_AGREEMENT_POPUP_1" tabindex="-1" role="basic"
+	aria-hidden="true">
+	<div class="modal-dialog modal-sm">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal"
+					aria-hidden="true"></button>
+				<h4 class="modal-title" id="modalTitle"></h4>
+			</div>
+			<div class="modal-body"
+				style="margin-left: 10px; margin-right: 10px;">
+				<form class="assetMgmtAgreementform" method="post" id=""
+					enctype="multipart/form-data" id="assetMgmtAgreementForm">
+					<input type="hidden" id="object" name="object"> <input
+						type="hidden" id="objectId" name="objectId"> <input
+						type="hidden" id="taskKey" name="taskKey">
+					<div class="form-group">
+						<label class="control-label" style="text-align: left;">
+							Start Date <span class="required">* </span>
+						</label>
+						<div class="input-group input-medium date date-picker"
+							data-date="" data-date-format="mm-dd-yyyy"
+							data-date-viewmode="years">
+							<input class="form-control" readonly="" placeholder=""
+								type="text" id="startDate" name="startDate"> <span
+								class="input-group-btn">
+								<button class="btn default" type="button">
+									<i class="fa fa-calendar"></i>
+								</button>
+							</span>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="control-label" style="text-align: left;">
+							Completion Date </label>
+						<div class="input-group input-medium date date-picker"
+							data-date="" data-date-format="mm-dd-yyyy"
+							data-date-viewmode="years">
+							<input class="form-control" readonly="" placeholder=""
+								type="text" id="endDate" name="endDate"> <span
+								class="input-group-btn">
+								<button class="btn default" type="button">
+									<i class="fa fa-calendar"></i>
+								</button>
+							</span>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="control-label">Asset Management Agreement Signed</label>
+						<div class="radio-list form-control"
+							style="float: left; margin-bottom: 10px; padding-left: 36px;">
+							<label class="radio-inline"> <input name="isAgreementSigned"
+								id="optionsRadiosYes" value="Yes" type="radio"> Yes
+							</label> <label class="radio-inline active"
+								style="padding-left: 23px !important;"> <input
+								name="isAgreementSigned" id="optionsRadiosNo" value="No" checked=""
+								type="radio"> No
+							</label>
+						</div>
+						
+					</div>
+					<div class="form-group">
+						<div><a class="fa fa-paperclip pull-right showDocumentTooltip"
+							style="cursor: pointer; font-size: 16px;" data-html="true"
+							data-show="true"> </a> </div>
+						<div id="assetMgmtAgreementDiv">
+							<label class="control-label"> Upload <span
+								id="documentLabel"></span><span class="required">* </span>
+							</label><br> <input name="document"
+								class="form-control" type="file" style="padding-bottom: 40px;"
+								id="document">
+						</div>
+						<div id="assetMgmtAgreementErrDiv" hidden>
+						<span style="color:#e02222">This field is required</span></div>
+					</div>
+					<div class="form-group">
+						<label class="control-label"> Comments <a
+							class="fa fa-comments-o pull-right showMessageTooltip"
+							style="cursor: pointer; font-size: 14px;" data-html="true"
+							data-show="true"> <i>Show past comments</i>
+						</a>
+						</label><br>
+
+						<textarea class="form-control" style="height: 80px;"
+							placeholder="" name="comments" id="comments"></textarea>
+					</div>
+				</form>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn blue" id="assetMgmtAgreementPopupSubmitButton">SAVE</button>
+				<button type="button" id="cancelButton" class="btn default"
+					data-dismiss="modal">CANCEL</button>
+			</div>
+		</div>
+		<!-- /.modal-content -->
+	</div>
+	<!-- /.modal-dialog -->
+</div>
+
+<div class="modal fade bs-modal-md with-popover"
+	id="MORTGAGEE_CLAUSE_POPUP_1" tabindex="-1" role="basic"
+	aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal"
+					aria-hidden="true"></button>
+				<h4 class="modal-title" id="modalTitle"></h4>
+			</div>
+			<div class="modal-body"
+				style="margin-left: 10px; margin-right: 10px;">
+				<div class="alert alert-danger display-hide mortgageMailError">
+					<button class="close" data-close="alert"></button>
+					Please enter loan number/mortgagee clause.
+				</div>
+				<div class="alert alert-success display-hide mortgageMailNotification">
+					<button class="close" data-close="alert"></button>
+					Successfully sent mortgage information.
+				</div>
+				<form class="milestone-form" method="post" id="">
+					<input type="hidden" id="object" name="object"> <input
+						type="hidden" id="objectId" name="objectId"> <input
+						type="hidden" id="taskKey" name="taskKey">
+					<div class="col-md-12">	
+						<div class="form-group row">
+							<label class="control-label">Loan Number</label>
+							<input type="text" class="form-control" name="loanNumber" id="loanNumber">
+						</div>
+						<div class="form-group row">
+							<label class="control-label">
+								Mortgagee Clause
+							</label><br>
+							<textarea class="form-control" style="height: 80px;"
+								placeholder="" name="mortgageeClause" id="mortgageeClause"></textarea>
+						</div>
+						<div class="form-group row">
+							<label class="control-label"> Comments <a
+								class="fa fa-comments-o pull-right showMessageTooltip"
+								style="cursor: pointer; font-size: 14px;" data-html="true"
+								data-show="true"> <i>Show past comments</i>
+							</a>
+							</label><br>
+
+							<textarea class="form-control" style="height: 80px;"
+								placeholder="" name="comments" id="comments"></textarea>
+						</div>
+						<div class="form-group row">
+							<div class="col-md-6">
+								<label class="control-label" style="text-align: left;">
+									Completion Date <span class="required">* </span>
+								</label>
+								<div class="input-group input-medium date date-picker"
+									data-date="" data-date-format="mm-dd-yyyy"
+									data-date-viewmode="years">
+									<input class="form-control" readonly="" placeholder=""
+										type="text" id="endDate" name="endDate"> <span
+										class="input-group-btn">
+										<button class="btn default" type="button">
+											<i class="fa fa-calendar"></i>
+										</button>
+									</span>
+								</div>
+							</div>
+							<div class="col-md-6">
+								<button type="button" class="pull-right btn green" id="mailMortgageClause"
+									style="margin-top: 27px;margin-left: 35px;">Mail Insurance Vendor</button>
+							</div>
+						</div>	
+					</div>	
+					<div class="clearfix"></div>		
+				</form>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn blue"
+					id="mortgageClausePopupSubmitButton">SAVE</button>
+				<button type="button" id="cancelButton" class="btn default"
+					data-dismiss="modal">CANCEL</button>
+			</div>
+		</div>
+		<!-- /.modal-content -->
+	</div>
+	<!-- /.modal-dialog -->
+</div>
+
+<div class="modal fade with-popover" id="SELLER_DISCLOSURE_POPUP_1"
+	tabindex="-1" role="basic" aria-hidden="true">
+	<div class="modal-dialog modal-sm">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal"
+					aria-hidden="true"></button>
+				<h4 class="modal-title" id="modalTitle"></h4>
+			</div>
+			<div class="modal-body">
+				<form class="milestone-form" method="post" id="">
+					<input type="hidden" id="object" name="object"> <input
+						type="hidden" id="objectId" name="objectId"> <input
+						type="hidden" id="taskKey" name="taskKey">
+							
+						<div class="form-group">
+							<label class="control-label" style="text-align: left;">
+								Completion Date <span class="required">* </span>
+							</label>
+							<div class="input-group input-medium date date-picker"
+								data-date="" data-date-format="mm-dd-yyyy"
+								data-date-viewmode="years">
+								<input class="form-control" readonly="" placeholder=""
+									type="text" id="endDate" name="endDate"> <span
+									class="input-group-btn">
+									<button class="btn default" type="button">
+										<i class="fa fa-calendar"></i>
+									</button>
+								</span>
+							</div>
+						</div>
+
+						<div class="form-group">
+							<label class="control-label"> Upload Seller Disclosure
+							</label> <a class="fa fa-paperclip pull-right showDocumentTooltip"
+								style="cursor: pointer; font-size: 16px;" data-html="true"
+								data-show="true"> </a> 
+								<br>
+								<input name="document"
+								class="form-control" type="file" style="padding-bottom: 40px;"
+								id="document">
+						</div>
+						
+						<div class="form-group" id="fldDisclosureDiv" hidden>
+							<label class="control-label"> Upload FLD Disclosure
+							</label><br>
+								<input name="fldDocument"
+								class="form-control" type="file" style="padding-bottom: 40px;"
+								id="fldDocument">
+						</div>
+						
+						<div class="form-group">
+							<label class="control-label"> Comments <a
+								class="fa fa-comments-o pull-right showMessageTooltip"
+								style="cursor: pointer; font-size: 14px;" data-html="true"
+								data-show="true"> <i>Show past comments</i>
+							</a>
+							</label> 
+							
+							<br>
+	
+							<textarea class="form-control" 
+								placeholder="" name="comments" id="comments"></textarea>
+						</div>
+
+					<div class="clearfix"></div>
+				</form>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn blue"
+					id="sellerDisclosurePopupSubmitButton">SAVE</button>
+				<button type="button" id="cancelButton" class="btn default"
+					data-dismiss="modal">CANCEL</button>
+			</div>
+		</div>
+		<!-- /.modal-content -->
+	</div>
+	<!-- /.modal-dialog -->
+</div>
+
+<div class="modal fade with-popover" id="FEE_SHEET_POPUP_1"
+	tabindex="-1" role="basic" aria-hidden="true">
+	<div class="modal-dialog modal-sm">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal"
+					aria-hidden="true"></button>
+				<h4 class="modal-title" id="modalTitle">Fee Sheet</h4>
+			</div>
+			<div class="modal-body">
+				<div class="alert alert-danger display-hide">
+					<button class="close" data-close="alert"></button>
+					Please upload fee sheet.
+				</div>
+				<div class="alert alert-success display-hide feeSheetMailNotification">
+					<button class="close" data-close="alert"></button>
+					Successfully sent fee sheet.
+				</div>
+				<form class="milestone-form" method="post" id="">
+					<input type="hidden" id="object" name="object"> <input
+						type="hidden" id="objectId" name="objectId"> <input
+						type="hidden" id="taskKey" name="taskKey">
+
+							<div class="form-group">
+								<label class="control-label" style="text-align: left;">
+									Completion Date <span class="required">* </span>
+								</label>
+								<div class="input-group input-medium date date-picker"
+									data-date="" data-date-format="mm-dd-yyyy"
+									data-date-viewmode="years">
+									<input class="form-control" readonly="" placeholder=""
+										type="text" id="endDate" name="endDate"> <span
+										class="input-group-btn">
+										<button class="btn default" type="button">
+											<i class="fa fa-calendar"></i>
+										</button>
+									</span>
+								</div>
+							</div>
+
+						<div class="form-group">
+							<label class="control-label"> Upload Fee Sheet
+								<span class="required">* </span>
+							</label> <a class="fa fa-paperclip pull-right showDocumentTooltip"
+								style="cursor: pointer; font-size: 16px;" data-html="true"
+								data-show="true"> </a> 
+								<br>
+								<div id="feeSheetRequiredMsg" style="display: none;color: red;">This field is mandatory</div>
+								<input name="document"
+								class="form-control" type="file" style="padding-bottom: 40px;"
+								id="document">
+						</div> 
+						
+						<div class="form-group">
+							<label class="control-label"> Comments <a
+								class="fa fa-comments-o pull-right showMessageTooltip"
+								style="cursor: pointer; font-size: 14px;" data-html="true"
+								data-show="true"> <i>Show past comments</i>
+							</a>
+							</label> 
+							
+							<br>
+	
+							<textarea class="form-control" 
+								placeholder="" name="comments" id="comments"></textarea>
+						</div>
+						<div class="form-group">
+							<button type="button" class="pull-right btn green" id="mailFeeSheet"
+									style="margin-top: 27px;margin-left: 35px;">Mail Fee Sheet</button>
+						</div>
+					<div class="clearfix"></div>
+				</form>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn blue"
+					id="feeSheetPopupSubmitButton">SAVE</button>
+				<button type="button" id="cancelButton" class="btn default"
+					data-dismiss="modal">CANCEL</button>
+			</div>
+		</div>
+		<!-- /.modal-content -->
+	</div>
+	<!-- /.modal-dialog -->
+</div>
+
+<div class="modal fade with-popover" id="INSPECTION_APPOINTMENT_POPUP_1"
+	tabindex="-1" role="basic" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal"
+					aria-hidden="true"></button>
+				<h4 class="modal-title" id="modalTitle"></h4>
+			</div>
+			<div class="modal-body"
+				style="margin-left: 10px; margin-right: 10px;">
+				<form class="default-form-with-doc" method="post" id=""
+					enctype="multipart/form-data">
+					<input type="hidden" id="object" name="object"> <input
+						type="hidden" id="objectId" name="objectId"> <input
+						type="hidden" id="taskKey" name="taskKey">
+					<div class="form-group">
+						<label class="control-label" style="text-align: left;">
+							Start Date <span class="required">* </span>
+						</label>
+						<div class="input-group input-medium date date-picker"
+							data-date="" data-date-format="mm-dd-yyyy"
+							data-date-viewmode="years" data-date-autoclose="true">
+							<input class="form-control" readonly="" placeholder=""
+								type="text" id="startDate" name="startDate"> <span
+								class="input-group-btn">
+								<button class="btn default" type="button">
+									<i class="fa fa-calendar"></i>
+								</button>
+							</span>
+						</div>
+					</div>
+
+					<div class="form-group">
+						<label class="control-label" style="text-align: left;">
+							Completion Date </label>
+						<div class="input-group input-medium date date-picker"
+							data-date="" data-date-format="mm-dd-yyyy"
+							data-date-viewmode="years" data-date-autoclose="true">
+							<input class="form-control" readonly="" placeholder=""
+								type="text" id="endDate" name="endDate"> <span
+								class="input-group-btn">
+								<button class="btn default" type="button">
+									<i class="fa fa-calendar"></i>
+								</button>
+							</span>
+						</div>
+					</div>
+					
+					<div class="form-group clearfix">
+						<label class="control-label" style="text-align: left;">
+							Available Date and Time : 
+						</label>
+						<div class="input-group date form_meridian_datetime input-large" data-date="" data-date-autoclose="true">
+							<input type="text" size="16" readonly class="form-control" name="appointmentDate">
+							<span class="input-group-btn">
+								<button class="btn default date-reset" type="button"><i class="fa fa-times"></i></button>
+							</span>
+							<span class="input-group-btn">
+								<button class="btn default date-set" type="button"><i class="fa fa-calendar"></i></button>
+							</span>
+						</div>
+					</div>
+
+					<div class="form-group">
+						<label class="control-label"> Comments <a
+							class="fa fa-comments-o pull-right showMessageTooltip"
+							style="cursor: pointer; font-size: 14px;" data-html="true"
+							data-show="true"> <i>Show past comments</i>
+						</a>
+						</label><br>
+
+						<textarea class="form-control" style="height: 80px;"
+							placeholder="" name="comments" id="comments"></textarea>
+					</div>
+
+				</form>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn blue" id="defaultPopupSubmitButton">SAVE</button>
+				<button type="button" id="cancelButton" class="btn default"
+					data-dismiss="modal">CANCEL</button>
+			</div>
+		</div>
+		<!-- /.modal-content -->
+	</div>
+	<!-- /.modal-dialog -->
+</div>
+<!-- end Completion Date lightbox -->
+<div class="modal fade bs-modal-sm with-popover" id="DEED_RECORDED_POPUP_1"
+	tabindex="-1" role="basic" aria-hidden="true">
+	<div class="modal-dialog modal-sm">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal"
+					aria-hidden="true"></button>
+				<h4 class="modal-title" id="modalTitle"></h4>
+			</div>
+			<div class="modal-body"
+				style="margin-left: 10px; margin-right: 10px;">
+				<form class="deedRecordedForm" method="post" id="">
+					<input type="hidden" id="object" name="object"> <input
+						type="hidden" id="objectId" name="objectId"> <input
+						type="hidden" id="taskKey" name="taskKey">
+
+					<div class="form-group">
+						<label class="control-label" style="text-align: left;">
+							Deed Recorded Date <span class="required">* </span>
+						</label>
+						<div class="input-group input-medium date date-picker unrestricted"
+							data-date="" data-date-format="mm-dd-yyyy"
+							data-date-viewmode="years">
+							<input class="form-control" readonly="" placeholder=""
+								type="text" id="closingEndDate" name="closingEndDate"> <span
+								class="input-group-btn">
+								<button class="btn default" type="button">
+									<i class="fa fa-calendar"></i>
+								</button>
+							</span>
+						</div>
+					</div>
+
+					<div class="form-group">
+						<label class="control-label" style="text-align: left;">
+							Completion Date <span class="required">* </span>
+						</label>
+						<div class="input-group input-medium date date-picker"
+							data-date="" data-date-format="mm-dd-yyyy"
+							data-date-viewmode="years">
+							<input class="form-control" readonly="" placeholder=""
+								type="text" id="endDate" name="endDate"> <span
+								class="input-group-btn">
+								<button class="btn default" type="button">
+									<i class="fa fa-calendar"></i>
+								</button>
+							</span>
+						</div>
+					</div>
+
+					<div class="form-group">
+						<label class="control-label"> Comments <a
+							class="fa fa-comments-o pull-right showMessageTooltip"
+							style="cursor: pointer; font-size: 14px;" data-html="true"
+							data-show="true"> <i>Show past comments</i>
+						</a>
+						</label><br>
+
+						<textarea class="form-control" style="height: 80px;" name="comments" id="comments"></textarea>
+					</div>
+					
+				</form>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn blue"
+					id="deedRecordedPopupSubmitButton">SAVE</button>
+				<button type="button" id="cancelButton" class="btn default"
+					data-dismiss="modal">CANCEL</button>
+			</div>
+		</div>
+		<!-- /.modal-content -->
+	</div>
+	<!-- /.modal-dialog -->
+</div>
+
+<!-- start movein inspection required lightbox -->
+<div class="modal fade bs-modal-sm with-popover"
+	id="MOVEIN_INSPECTION_1" tabindex="-1" role="basic"
+	aria-hidden="true">
+	<div class="modal-dialog modal-sm">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal"
+					aria-hidden="true"></button>
+				<h4 class="modal-title">Move-in Inspection</h4>
+			</div>
+			<div class="modal-body">
+				<form method="post" id="appraisalRequiredForm">
+					<input type="hidden" id="object" name="object" /> <input
+						type="hidden" id="objectId" name="objectId" /> <input
+						type="hidden" id="taskKey" name="taskKey" />
+
+					<div class="form-group">
+						<label class="control-label" style="text-align: left;">
+							Completion Date </label>
+						<div class="input-group input-medium date date-picker"
+							data-date="" data-date-format="mm-dd-yyyy"
+							data-date-viewmode="years">
+							<input class="form-control" readonly="" placeholder=""
+								type="text" name="endDate" id="endDate"> <span
+								class="input-group-btn">
+								<button class="btn default" type="button">
+									<i class="fa fa-calendar"></i>
+								</button>
+							</span>
+						</div>
+					</div>
+
+					<div class="form-group">
+						<label class="control-label"> Repairs Required? </label>
+
+						<div class="radio-list form-control"
+							style="float: left; margin-bottom: 10px; padding-left: 36px;">
+							<label class="radio-inline"> <input
+								name="moveinRepairsRequired" id="optionsRadiosyes" value="yes"
+								type="radio"> Yes
+							</label> <label class="radio-inline active"
+								style="padding-left: 23px !important;"> <input
+								name="moveinRepairsRequired" id="optionsRadiosno" value="no"
+								checked="" type="radio"> No
+							</label>
+						</div>
+					</div>
+					
+					<div class="form-group">
+						<label class="control-label"> Upload <span
+							id="documentLabel"></span>
+							<span class="required" style="display: none;" id="milestoneDocRequired">* </span>
+						</label> <a class="fa fa-paperclip pull-right showDocumentTooltip"
+							style="cursor: pointer; font-size: 16px;" data-html="true"
+							data-show="true"> </a> 
+							<br>
+							<div id="milestoneDocRequiredMsg" style="display: none;color: red;">This field is mandatory</div>
+							<input name="document"
+							class="form-control" type="file" style="padding-bottom: 40px;"
+							id="document">
+							
+<!-- 								<span id="displayToInvestorMessage"> -->
+<!-- 									<label class="control-label">Display to Investor <input -->
+<!-- 										id="isDisplayToInvestorMessage" type="checkbox" -->
+<!-- 										name="isDisplayToInvestorMessage" class=""> -->
+<!-- 									</label> -->
+<!-- 								</span> -->
+					</div>
+
+					<div class="form-group">
+						<label class="control-label"> Comments <a
+							class="fa fa-comments-o pull-right showMessageTooltip"
+							style="cursor: pointer; font-size: 14px;" data-html="true"
+							data-show="true"> <i>Show past comments</i>
+						</a>
+						</label><br>
+						<textarea name="comments" id="comments" class="form-control"
+							style="height: 200px;" placeholder=""></textarea>
+					</div>
+				</form>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn blue"
+					id="appraisalRequiredPopupSubmitButton">SAVE</button>
+				<button type="button" class="btn default" data-dismiss="modal">
+					CANCEL</button>
+			</div>
+		</div>
+		<!-- /.modal-content -->
+	</div>
+	<!-- /.modal-dialog -->
+</div>
+<!-- end movein inspection required lightbox -->
+
+
+<div class="modal fade with-popover" id="TAX_CERTIFICATE_POPUP_1"
+	tabindex="-1" role="basic" aria-hidden="true">
+	<div class="modal-dialog modal-sm">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal"
+					aria-hidden="true"></button>
+				<h4 class="modal-title" id="modalTitle"></h4>
+			</div>
+			<div class="modal-body">
+				<form class="taxCertificateForm" method="post" id="">
+					<input type="hidden" id="object" name="object"> <input
+						type="hidden" id="objectId" name="objectId"> <input
+						type="hidden" id="taskKey" name="taskKey">
+					
+					<div class="form-group">
+						<label class="control-label" style="text-align: left;">
+							Annual Property tax
+						</label><br>
+						<span class="propertyTaxesAnnual amount"></span>
+				    </div>	
+						
+					<div class="form-group">
+						<label class="control-label" style="text-align: left;">
+							Yearly Tax Amount (Tax Certificate) <span class="required">* </span>
+						</label><br>
+						<div class="input-group">
+							<span class="input-group-addon"><i
+								class="fa fa-dollar"></i></span> <input
+								class="form-control text-right currency" placeholder=""
+								type="text" name="yearlyTaxAmount">
+						</div>
+				    </div>
+
+					<div class="form-group">
+						<label class="control-label" style="text-align: left;">
+							Completion Date <span class="required">* </span>
+						</label>
+						<div class="input-group input-medium date date-picker"
+							data-date="" data-date-format="mm-dd-yyyy"
+							data-date-viewmode="years">
+							<input class="form-control" readonly="" placeholder=""
+								type="text" id="endDate" name="endDate"> <span
+								class="input-group-btn">
+								<button class="btn default" type="button">
+									<i class="fa fa-calendar"></i>
+								</button>
+							</span>
+						</div>
+					</div>
+
+					<div class="form-group">
+						<label class="control-label"> Upload Tax Certificate 
+							<span class="required">* </span>
+						</label> <a class="fa fa-paperclip pull-right showDocumentTooltip"
+							style="cursor: pointer; font-size: 16px;" data-html="true"
+							data-show="true"> </a> <br>
+						<div id="taxCertificateRequiredMsg"
+							style="display: none; color: red;">This field is mandatory</div>
+						<input name="document" class="form-control" type="file"
+							style="padding-bottom: 40px;" id="document"> <span
+							id="displayToInvestorMessage"> <label
+							class="control-label">Display to Investor <input
+								id="isDisplayToInvestorMessage" type="checkbox"
+								name="isDisplayToInvestorMessage" class="">
+						</label>
+						</span>
+					</div>
+
+					<div class="form-group">
+						<label class="control-label"> Comments <a
+							class="fa fa-comments-o pull-right showMessageTooltip"
+							style="cursor: pointer; font-size: 14px;" data-html="true"
+							data-show="true"> <i>Show past comments</i>
+						</a>
+						</label> <br>
+
+						<textarea class="form-control" placeholder="" name="comments"
+							id="comments"></textarea>
+					</div>
+
+					<div class="clearfix"></div>
+				</form>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn blue"
+					id="taxCertificatePopupSubmitButton">SAVE</button>
+				<button type="button" id="cancelButton" class="btn default"
+					data-dismiss="modal">CANCEL</button>
+			</div>
+		</div>
+		<!-- /.modal-content -->
+	</div>
+	<!-- /.modal-dialog -->
+</div>
+
+<!-- start -->
+<div class="modal fade bs-modal-sm with-popover" id="CONTRACTOR_SCHEDULING_POPUP_1"
+	tabindex="-1" role="basic" aria-hidden="true">
+	<div class="modal-dialog modal-sm">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal"
+					aria-hidden="true"></button>
+				<h4 class="modal-title" id="modalTitle"></h4>
+			</div>
+			<div class="modal-body"
+				style="margin-left: 10px; margin-right: 10px;">
+				<form class="milestone-form" method="post" id="">
+					<input type="hidden" id="object" name="object"> <input
+						type="hidden" id="objectId" name="objectId"> <input
+						type="hidden" id="taskKey" name="taskKey">
+						<div class="form-group">
+							<label class="control-label">Estimated Rehab Duration(In Weeks)</label>
+							<input type="text" class="form-control" name="estimatedRehabDuration" id="estimatedRehabDuration">
+						</div>
+					<div class="form-group">
+						<label class="control-label" style="text-align: left;">
+							Completion Date <span class="required">* </span>
+						</label>
+						<div class="input-group input-medium date date-picker"
+							data-date="" data-date-format="mm-dd-yyyy"
+							data-date-viewmode="years">
+							<input class="form-control" readonly="" placeholder=""
+								type="text" id="endDate" name="endDate"> <span
+								class="input-group-btn">
+								<button class="btn default" type="button">
+									<i class="fa fa-calendar"></i>
+								</button>
+							</span>
+						</div>
+					</div>
+
+					<div class="form-group">
+						<label class="control-label"> Comments <a
+							class="fa fa-comments-o pull-right showMessageTooltip"
+							style="cursor: pointer; font-size: 14px;" data-html="true"
+							data-show="true"> <i>Show past comments</i>
+						</a>
+						</label><br>
+
+						<textarea class="form-control" style="height: 80px;" name="comments" id="comments"></textarea>
+					</div>
+					
+				
+
+					
+				</form>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn blue"
+					id="milestonePopupSubmitButton">SAVE</button>
+				<button type="button" id="cancelButton" class="btn default"
+					data-dismiss="modal">CANCEL</button>
+			</div>
+		</div>
+		<!-- /.modal-content -->
+	</div>
+	<!-- /.modal-dialog -->
+</div>
+<!--  end -->
+<!-- start -->
+<div class="modal fade bs-modal-sm with-popover" id="REHAB_START_CONF_POPUP_1"
+	tabindex="-1" role="basic" aria-hidden="true">
+	<div class="modal-dialog modal-sm">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal"
+					aria-hidden="true"></button>
+				<h4 class="modal-title" id="modalTitle"></h4>
+			</div>
+			<div class="modal-body"
+				style="margin-left: 10px; margin-right: 10px;">
+				<form class="milestone-form" method="post" id="">
+					<input type="hidden" id="object" name="object"> <input
+						type="hidden" id="objectId" name="objectId"> <input
+						type="hidden" id="taskKey" name="taskKey">
+						<div class="form-group">
+							<label class="control-label">Estimated Rehab Duration(In Weeks)</label>
+							<input type="text" class="form-control" name="estimatedRehabDuration" id="estimatedRehabDuration">
+						</div>
+					<div class="form-group">
+						<label class="control-label" style="text-align: left;">
+							Completion Date <span class="required">* </span>
+						</label>
+						<div class="input-group input-medium date date-picker"
+							data-date="" data-date-format="mm-dd-yyyy"
+							data-date-viewmode="years">
+							<input class="form-control" readonly="" placeholder=""
+								type="text" id="endDate" name="endDate"> <span
+								class="input-group-btn">
+								<button class="btn default" type="button">
+									<i class="fa fa-calendar"></i>
+								</button>
+							</span>
+						</div>
+					</div>
+
+					<div class="form-group">
+						<label class="control-label"> Comments <a
+							class="fa fa-comments-o pull-right showMessageTooltip"
+							style="cursor: pointer; font-size: 14px;" data-html="true"
+							data-show="true"> <i>Show past comments</i>
+						</a>
+						</label><br>
+
+						<textarea class="form-control" style="height: 80px;" name="comments" id="comments"></textarea>
+					</div>
+					
+				
+
+					
+				</form>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn blue"
+					id="milestonePopupSubmitButton">SAVE</button>
+				<button type="button" id="cancelButton" class="btn default"
+					data-dismiss="modal">CANCEL</button>
+			</div>
+		</div>
+		<!-- /.modal-content -->
+	</div>
+	<!-- /.modal-dialog -->
+</div>
+<!--  end -->
+
+<!-- start Completion Date lightbox -->
+<div class="modal fade with-popover" id="MILESTONE_POPUP_WITH_DOC_MARKETING_1"
+	tabindex="-1" role="basic" aria-hidden="true">
+	<div class="modal-dialog modal-sm">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal"
+					aria-hidden="true"></button>
+				<h4 class="modal-title" id="modalTitle"></h4>
+			</div>
+			<div class="modal-body">
+				<form class="milestone-form" method="post" id="">
+					<input type="hidden" id="object" name="object"> <input
+						type="hidden" id="objectId" name="objectId"> <input
+						type="hidden" id="taskKey" name="taskKey">
+
+					<!-- <div class="col-md-12"> -->
+						<!-- <div class="col-md-6"> -->							
+							
+							<div class="form-group">
+								<label class="control-label" style="text-align: left;">
+									Completion Date <span class="required">* </span>
+								</label>
+								<div class="input-group input-medium date date-picker"
+									data-date="" data-date-format="mm-dd-yyyy"
+									data-date-viewmode="years">
+									<input class="form-control" readonly="" placeholder=""
+										type="text" id="endDate" name="endDate"> <span
+										class="input-group-btn">
+										<button class="btn default" type="button">
+											<i class="fa fa-calendar"></i>
+										</button>
+									</span>
+								</div>
+							</div>
+						<!-- </div> -->
+
+						<div class="form-group">
+							<label class="control-label"> Upload <span
+								id="documentLabel"></span>
+								<span class="required" style="display: none;" id="milestoneDocRequired">* </span>
+							</label> <a class="fa fa-paperclip pull-right showDocumentTooltip"
+								style="cursor: pointer; font-size: 16px;" data-html="true"
+								data-show="true"> </a> 
+								<br>
+								<div id="milestoneDocRequiredMsg" style="display: none;color: red;">This field is mandatory</div>
+								<input name="document"
+								class="form-control" type="file" style="padding-bottom: 40px;"
+								id="document">
+								
+<!-- 								<span id="displayToInvestorMessage"> -->
+<!-- 									<label class="control-label">Display to Investor <input -->
+<!-- 										id="isDisplayToInvestorMessage" type="checkbox" -->
+<!-- 										name="isDisplayToInvestorMessage" class=""> -->
+<!-- 									</label> -->
+<!-- 								</span> -->
+						</div>
+						
+						<!-- <div class="clearfix"></div> -->
+						
+						
+						<div class="form-group">
+							<label class="control-label"> Comments <a
+								class="fa fa-comments-o pull-right showMessageTooltip"
+								style="cursor: pointer; font-size: 14px;" data-html="true"
+								data-show="true"> <i>Show past comments</i>
+							</a>
+							</label> 
+							<br>
+	
+							<textarea class="form-control" 
+								placeholder="" name="comments" id="comments"></textarea>
+						</div>
+						
+					<!-- </div> -->
+					<div class="clearfix"></div>
+				</form>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn blue"
+					id="milestonePopupSubmitButton">SAVE</button>
+				<button type="button" id="cancelButton" class="btn default"
+					data-dismiss="modal">CANCEL</button>
+			</div>
+		</div>
+		<!-- /.modal-content -->
+	</div>
+	<!-- /.modal-dialog -->
+</div>
+
+<!-- start Completion Date lightbox -->
+<div class="modal fade with-popover" id="MOVEIN-DOCS_POPUP_1"
+	tabindex="-1" role="basic" aria-hidden="true">
+	<div class="modal-dialog modal-sm">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal"
+					aria-hidden="true"></button>
+				<h4 class="modal-title" id="modalTitle"></h4>
+			</div>
+			<div class="modal-body">
+				<form class="milestone-form" method="post" id="">
+					<input type="hidden" id="object" name="object"> <input
+						type="hidden" id="objectId" name="objectId"> <input
+						type="hidden" id="taskKey" name="taskKey">
+
+					<!-- <div class="col-md-12"> -->
+						<!-- <div class="col-md-6"> -->							
+							
+							<div class="form-group">
+								<label class="control-label" style="text-align: left;">
+									Completion Date <span class="required">* </span>
+								</label>
+								<div class="input-group input-medium date date-picker"
+									data-date="" data-date-format="mm-dd-yyyy"
+									data-date-viewmode="years">
+									<input class="form-control" readonly="" placeholder=""
+										type="text" id="endDate" name="endDate"> <span
+										class="input-group-btn">
+										<button class="btn default" type="button">
+											<i class="fa fa-calendar"></i>
+										</button>
+									</span>
+								</div>
+							</div>
+						<!-- </div> -->
+
+						<div class="form-group">
+							<label class="control-label"> Upload Utility Transfer Confirmation
+								<span class="required" style="display: none;" id="milestoneDocRequired">* </span>
+							</label> <a class="fa fa-paperclip pull-right showDocumentTooltip"
+								style="cursor: pointer; font-size: 16px;" data-html="true"
+								data-show="true" data-doc="Utility Transfer Confirmation" data-object="451"> </a> 
+								<br>
+								<div id="milestoneDocRequiredMsg" style="display: none;color: red;">This field is mandatory</div>
+								<input name="utilityTransferDocument"
+								class="form-control" type="file" style="padding-bottom: 40px;"
+								id="utilityTransferDocument">
+								
+<!-- 								<span id="displayToInvestorMessage"> -->
+<!-- 									<label class="control-label">Display to Investor <input -->
+<!-- 										id="isDisplayToInvestorMessage" type="checkbox" -->
+<!-- 										name="isDisplayToInvestorMessage" class=""> -->
+<!-- 									</label> -->
+<!-- 								</span> -->
+						</div>
+						
+						<div class="form-group">
+							<label class="control-label"> Upload Renters Insurance
+								<span class="required" style="display: none;" id="milestoneDocRequired">* </span>
+							</label> <a class="fa fa-paperclip pull-right showDocumentTooltip"
+								style="cursor: pointer; font-size: 16px;" data-html="true"
+								data-show="true" data-doc="Renters Insurance" data-object="451"> </a> 
+								<br>
+								<div id="milestoneDocRequiredMsg" style="display: none;color: red;">This field is mandatory</div>
+								<input name="rentersInsuranceDocument"
+								class="form-control" type="file" style="padding-bottom: 40px;"
+								id="rentersInsuranceDocument">
+								
+<!-- 								<span id="displayToInvestorMessage"> -->
+<!-- 									<label class="control-label">Display to Investor <input -->
+<!-- 										id="isDisplayToInvestorMessage" type="checkbox" -->
+<!-- 										name="isDisplayToInvestorMessage" class=""> -->
+<!-- 									</label> -->
+<!-- 								</span> -->
+						</div>
+						
+						<!-- <div class="clearfix"></div> -->
+						
+						
+						<div class="form-group">
+							<label class="control-label"> Comments <a
+								class="fa fa-comments-o pull-right showMessageTooltip"
+								style="cursor: pointer; font-size: 14px;" data-html="true"
+								data-show="true"> <i>Show past comments</i>
+							</a>
+							</label> 
+							<br>
+	
+							<textarea class="form-control" 
+								placeholder="" name="comments" id="comments"></textarea>
+						</div>
+						
+					<!-- </div> -->
+					<div class="clearfix"></div>
+				</form>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn blue"
+					id="milestonePopupSubmitButton">SAVE</button>
+				<button type="button" id="cancelButton" class="btn default"
+					data-dismiss="modal">CANCEL</button>
+			</div>
+		</div>
+		<!-- /.modal-content -->
+	</div>
+	<!-- /.modal-dialog -->
+</div>
+
+<!-- start -->
+<div class="modal fade bs-modal-me with-popover" id="REVIEW_RENT_POPUP_1"
+	tabindex="-1" role="basic" aria-hidden="true">
+	<div class="modal-dialog modal-me">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal"
+					aria-hidden="true"></button>
+				<h4 class="modal-title" id="modalTitle"></h4>
+			</div>
+			<div class="modal-body"
+				style="margin-left: 10px; margin-right: 10px;">
+				<form class="milestone-form" method="post" id="">
+					<input type="hidden" id="object" name="object"> <input
+						type="hidden" id="objectId" name="objectId"> <input
+						type="hidden" id="taskKey" name="taskKey">
+					<div class="row">
+						<div class="col-md-6">
+							<div class="form-group">
+								<label class="col-md-4 control-label pad_leftright0">Estimated Rent</label>
+								<div class="col-md-8 pad_right0 margin-bottom-10">
+									<div class="input-group">
+										<span class="input-group-addon"><i class="fa fa-dollar"></i></span>
+										<input class="form-control text-right currency" placeholder=""
+											readonly="readonly" type="text" name="estimatedRent">
+									</div>
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="col-md-4 control-label pad_leftright0">Updated AVM</label>
+								<div class="col-md-8 pad_right0 margin-bottom-10">
+									<div class="input-group">
+										<span class="input-group-addon"><i class="fa fa-dollar"></i></span>
+										<input class="form-control text-right currency" placeholder=""
+											readonly="readonly" type="text" name="updatedAvm">
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-6">
+							<div class="form-group">
+								<label class="col-md-4 control-label pad_leftright0">Updated CMA</label>
+								<div class="col-md-8 pad_right0 margin-bottom-10">
+									<div class="input-group">
+										<span class="input-group-addon"><i class="fa fa-dollar"></i></span>
+										<input class="form-control text-right currency" placeholder=""
+											type="text" name="updatedCma">
+									</div>
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="col-md-4 control-label pad_leftright0">Zestimate</label>
+								<div class="col-md-8 pad_right0 margin-bottom-10">
+									<div class="input-group">
+										<span class="input-group-addon"><i class="fa fa-dollar"></i></span>
+										<input class="form-control text-right currency" placeholder=""
+											type="text" name="zestimate">
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="control-label" style="text-align: left;">
+							Completion Date <span class="required">* </span>
+						</label>
+						<div class="input-group input-medium date date-picker"
+							data-date="" data-date-format="mm-dd-yyyy"
+							data-date-viewmode="years">
+							<input class="form-control" readonly="" placeholder=""
+								type="text" id="endDate" name="endDate"> <span
+								class="input-group-btn">
+								<button class="btn default" type="button">
+									<i class="fa fa-calendar"></i>
+								</button>
+							</span>
+						</div>
+					</div>
+
+					<div class="form-group">
+						<label class="control-label"> Comments <a
+							class="fa fa-comments-o pull-right showMessageTooltip"
+							style="cursor: pointer; font-size: 14px;" data-html="true"
+							data-show="true"> <i>Show past comments</i>
+						</a>
+						</label><br>
+
+						<textarea class="form-control" style="height: 80px;" name="comments" id="comments"></textarea>
+					</div>					
+				</form>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn blue"
+					id="milestonePopupSubmitButton">SAVE</button>
+				<button type="button" id="cancelButton" class="btn default"
+					data-dismiss="modal">CANCEL</button>
+			</div>
+		</div>
+		<!-- /.modal-content -->
+	</div>
+	<!-- /.modal-dialog -->
+</div>
+<!--  end -->
+
+<!-- start -->
+<div class="modal fade bs-modal-sm with-popover" id="CONFIRM_MOVEIN_POPUP_1"
+	tabindex="-1" role="basic" aria-hidden="true">
+	<div class="modal-dialog modal-sm">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal"
+					aria-hidden="true"></button>
+				<h4 class="modal-title" id="modalTitle"></h4>
+			</div>
+			<div class="modal-body"
+				style="margin-left: 10px; margin-right: 10px;">
+				<form class="milestone-form" method="post" id="">
+					<input type="hidden" id="object" name="object"> <input
+						type="hidden" id="objectId" name="objectId"> <input
+						type="hidden" id="taskKey" name="taskKey">
+					
+					<div class="form-group">
+						<label class="control-label" style="text-align: left;">
+ 							Move-in Date <!-- <span class="required">* </span> -->
+						</label>
+						<div class="input-group input-medium date date-picker unrestricted"
+							data-date="" data-date-format="mm-dd-yyyy"
+							data-date-viewmode="years">
+							<input class="form-control" readonly="" placeholder=""
+								type="text" id="moveinDate" name="moveinDate"> <span
+								class="input-group-btn">
+								<button class="btn default" type="button">
+									<i class="fa fa-calendar"></i>
+								</button>
+							</span>
+						</div>
+					</div>
+					
+					<div class="form-group">
+						<label class="control-label" style="text-align: left;">
+							Completion Date <span class="required">* </span>
+						</label>
+						<div class="input-group input-medium date date-picker"
+							data-date="" data-date-format="mm-dd-yyyy"
+							data-date-viewmode="years">
+							<input class="form-control" readonly="" placeholder=""
+								type="text" id="endDate" name="endDate"> <span
+								class="input-group-btn">
+								<button class="btn default" type="button">
+									<i class="fa fa-calendar"></i>
+								</button>
+							</span>
+						</div>
+					</div>
+
+					<div class="form-group">
+						<label class="control-label"> Comments <a
+							class="fa fa-comments-o pull-right showMessageTooltip"
+							style="cursor: pointer; font-size: 14px;" data-html="true"
+							data-show="true"> <i>Show past comments</i>
+						</a>
+						</label><br>
+
+						<textarea class="form-control" style="height: 80px;" name="comments" id="comments"></textarea>
+					</div>					
+				</form>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn blue"
+					id="milestonePopupSubmitButton">SAVE</button>
+				<button type="button" id="cancelButton" class="btn default"
+					data-dismiss="modal">CANCEL</button>
+			</div>
+		</div>
+		<!-- /.modal-content -->
+	</div>
+	<!-- /.modal-dialog -->
+</div>
+<!--  end -->
+<div id="EXECUTED_MUTUAL_RELEASE_DIV"></div>
+<div id="SEND_MUTUAL_RELEASE_DIV"></div>
+<div id="PROPERTY_INSPECTION_ILM_RENDER_DIV"></div>
+<div id="PROPERTY_INSPECTION_INVESTOR_RENDER_DIV"></div>
+<div id="REQUEST_FOR_REPAIRS_RENDER_DIV"></div>
+<div id="SELLER_RESPONSE_REPAIRS_RENDER_DIV"></div>
+<div id="INVESTOR_RESPONSE_REPAIRS_RENDER_DIV"></div>
+<div id="FINAL_WALK_THROUGH_RENDER_DIV"></div>
+<div id="CLOSING_APPOINTMENT_RENDER_DIV"></div>
+<div id="HU_UPDATED_QUOTE_RENDER_DIV"></div>
+
+<div id="renderSendToMailTemplate"></div>
+<div id="renderHomeWarrantyTemplate"></div>
+<div id="renderUtilityInformation"></div>
+<div id="renderUtilityTransfer"></div>
+<div id="renderOptionFee"></div>
+<div id="renderHUImpound"></div>
+
+<div id="renderPOSInspection"></div>
+<div id="renderPOSReport"></div>
+<div id="renderPOSRepairCompletion"></div>
+<div id="UPLOAD_MUTUAL_RELEASE_DIV"></div>
+<div id="PENDING_INVESTOR_SIGNATURE_DIV"></div>
+<div id="UPLOAD_EXECUTED_MUTUAL_RELEASE_DIV"></div>

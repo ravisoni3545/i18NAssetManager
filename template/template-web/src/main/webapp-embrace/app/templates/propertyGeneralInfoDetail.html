@@ -1,0 +1,307 @@
+<div class="portlet box grey">
+	    <div class="portlet-title">
+	        <div class="caption">
+	            <i class="fa fa-cogs"></i>General Information
+	        </div>
+	    </div>
+</div>
+<div id="generalInfoErrorMessage" class="alert alert-danger display-hide">
+		<button class="close" data-close="alert" onclick="$(this).parent().hide();return false;"></button>
+		<text></text>
+</div>	
+<form id="generalInfoForm">
+		<div class="col-md-6">
+		    <div class="form-group">
+				<label class="control-label" style="text-align: left;">
+				Address:<span class="required">* </span></label>
+				<input class="form-control" type="text"
+				name="address" value="<%- theData.propertyDetails.address %>">
+			</div>
+	    </div>
+	    <div class="col-md-6">
+		    <div class="form-group">
+				<label class="control-label" style="text-align: left;">
+				NIR:</label>
+				<input class="form-control" type="text"
+				name="nir" value="<%- theData.propertyDetails.nir %>" readonly>
+			</div>
+	    </div>
+	    <div class="col-md-6">
+		    <div class="form-group">
+				<label class="control-label" style="text-align: left;">
+				Bed Rooms:</label>
+				<input class="form-control" type="text"
+				name="bedRooms" value="<%- theData.propertyDetails.bedRooms %>">
+			</div>
+	    </div>
+	    <div class="col-md-6">
+		    <div class="form-group">
+				<label class="control-label" style="text-align: left;">
+				Bath Rooms:</label>
+				<input class="form-control" type="text"
+				name="bathRooms" value="<%- theData.propertyDetails.bathRooms %>">
+			</div>
+	    </div>
+	    <div class="col-md-6">
+		    <div class="form-group">
+				<label class="control-label" style="text-align: left;">
+				Year Built:</label>
+				<input class="form-control" type="text"
+				name="yearBuilt" value="<%- theData.propertyDetails.yearBuilt %>">
+			</div>
+	    </div>
+	    <div class="col-md-6">
+		    <div class="form-group">
+				<label class="control-label" style="text-align: left;">
+				House Size(Sqft):</label>
+				<input class="form-control persqftPrice" type="text"
+				name="totalSqft" id='totalSqft' value="<%- theData.propertyDetails.totalSqft %>">
+			</div>
+	    </div>
+	    
+	    <div class="col-md-6">
+		    <div class="form-group">
+				<label class="control-label" style="text-align: left;">
+				Lot Size:</label>
+				<input class="form-control" type="text"
+				name="lotSize" value="<%- theData.propertyDetails.lotSize %>">
+			</div>
+	    </div>
+	    <div class="col-md-6">
+		    <div class="form-group">
+				<label class="control-label" style="text-align: left;">
+				Lot Measure:</label>
+				<input class="form-control" type="text"
+				name="lotMeasure" value="<%- theData.propertyDetails.lotMeasure %>">
+			</div>
+	    </div>
+
+         <div class="col-md-6">
+		    <div class="form-group">
+				<label class="control-label" style="text-align: left;">
+				Type: <span class="required">* </span></label>
+				<!-- <input class="form-control" type="text"
+				id="propertyType" value="<%- theData.propertyType %>"> -->
+				
+				<div id="propertyTypeDropdown"></div>
+				
+			</div>
+	    </div>              
+
+		<div class="col-md-6">
+		    <div class="form-group">
+				<label class="control-label" style="text-align: left;">
+				Garage:</label>
+				<input class="form-control" type="text"
+				name="parkingSpaces" value="<%- theData.propertyDetails.parkingSpacese %>">
+			</div>
+	    </div>
+	    <div class="col-md-6">
+		    <div class="form-group">
+				<label class="control-label" style="text-align: left;">
+				School District:</label>
+				<input class="form-control" type="text"
+				name="schoolDistrict" value="<%- theData.propertyDetails.schoolDistrict %>">
+			</div>
+	    </div>  
+	    <div class="col-md-6">
+		    <div class="form-group">
+				<label class="control-label" style="text-align: left;">
+				Appreciation Rate(%):</label>
+				<input class="form-control" type="text"
+				name="appreciationRate" value="<%- accounting.formatNumber(theData.propertyDetails.appreciationRate,2) %>" readonly>
+			</div>
+	    </div>
+	    
+	    <div class="col-md-6">
+		    <div class="form-group">
+				<label class="control-label" style="text-align: left;">
+				Asking Price($): <span class="required">* </span></label>
+				<div class="input-group">
+					<span class="input-group-addon"><i class="fa fa-dollar"></i></span>
+					<input class="form-control currency persqftPrice" type="text" name="askingPrice" id="askingPrice" value='<%= theData.propertyDetails.purchasePrice %>'>
+				</div>
+			</div>
+	    </div>
+	    <div class="col-md-6">
+		    <div class="form-group">
+				<label class="control-label" style="text-align: left;">
+				Price Per Sqft($):</label>
+				<div class="input-group">
+					<span class="input-group-addon"><i class="fa fa-dollar"></i></span>
+					<input class="form-control currency" type="text" name="pricePersqft" id="pricePersqft" value='<%= theData.propertyDetails.pricePersqft %>' readonly>
+				</div>
+			</div>
+	    </div>
+		<div class="col-md-6">
+		    <div class="form-group">
+				<label class="control-label" style="text-align: left;">
+				Bid Range($)</label>
+			</div>
+			<div class="col-md-6">
+				<div class="input-group">
+					<span class="input-group-addon"><i class="fa fa-dollar"></i></span>
+					<input class="form-control currency" type="text" name="minBid" id="minBid" value='<%= theData.propertyDetails.minBid %>'>
+				</div>
+		</div>
+	    <div class="col-md-6">
+				<div class="input-group">
+					<span class="input-group-addon"><i class="fa fa-dollar"></i></span>
+					<input class="form-control currency" type="text" name="maxBid" id="maxBid" value='<%= theData.propertyDetails.maxBid %>'>
+				</div>
+		</div>
+	    </div>
+	    <div class="col-md-6">
+		    <div class="form-group">
+				<label class="control-label" style="text-align: left;">
+				Down Payment(%): <span class="required">* </span></label>
+				<input class="form-control" type="text"
+				name="downpaymentpercentage" value="<%- accounting.formatNumber(theData.propertyDetails.downPaymentPercentage,2) %>" readonly>
+			</div>
+	    </div>
+                                  
+       <div class="col-md-6">
+		    <div class="form-group">
+				<label class="control-label" style="text-align: left;">
+				Listed Rent Monthly($): <span class="required">* </span></label>
+				<div class="input-group">
+					<span class="input-group-addon"><i class="fa fa-dollar"></i></span>
+					<input class="form-control currency persqftPrice" type="text" name="leasedRent" id="leasedRent" value='<%= theData.propertyDetails.listedRent %>'>
+				</div>
+			</div>
+	    </div>
+	    <div class="col-md-6">
+		    <div class="form-group">
+				<label class="control-label" style="text-align: left;">
+				Rent Per Sqft($):</label>
+				<div class="input-group">
+					<span class="input-group-addon"><i class="fa fa-dollar"></i></span>
+					<input class="form-control currency" type="text" name="rentPersqft" id="rentPersqft" value='<%= theData.propertyDetails.rentPersqft %>' readonly>
+				</div>
+			</div>
+	    </div>
+                                  
+         <div class="col-md-6">
+		    <div class="form-group">
+				<label class="control-label" style="text-align: left;">
+				Property Taxes Annual($):</label>
+				<div class="input-group">
+					<span class="input-group-addon"><i class="fa fa-dollar"></i></span>
+					<input class="form-control currency monthlyPrices" type="text" name="propertyTaxesAnnual" id="propertyTaxesAnnual" value='<%= theData.propertyDetails.propertyTaxesAnnual %>'>
+				</div>
+			</div>
+	    </div>
+	    <div class="col-md-6">
+		    <div class="form-group">
+				<label class="control-label" style="text-align: left;">
+				Property Taxes Monthly($):</label>
+				<div class="input-group">
+					<span class="input-group-addon"><i class="fa fa-dollar"></i></span>
+					<input class="form-control currency" type="text" name="propertyTaxesMonthly" id="propertyTaxesMonthly" value='<%= theData.propertyDetails.propertyTaxesMonthly %>' readonly>
+				</div>
+			</div>
+	    </div>
+                                  
+        <div class="col-md-6">
+		    <div class="form-group">
+				<label class="control-label" style="text-align: left;">
+				Property Insurance Annual($):</label>
+				<div class="input-group">
+					<span class="input-group-addon"><i class="fa fa-dollar"></i></span>
+					<input class="form-control currency monthlyPrices" type="text" name="propertyInsuranceAnnual" id="propertyInsuranceAnnual" value='<%= theData.propertyDetails.propertyInsuranceAnnual %>'>
+				</div>
+			</div>
+	    </div>
+	    <div class="col-md-6">
+		    <div class="form-group">
+				<label class="control-label" style="text-align: left;">
+				Property Insurance Monthly($):</label>
+				<div class="input-group">
+					<span class="input-group-addon"><i class="fa fa-dollar"></i></span>
+					<input class="form-control currency" type="text" name="propertyInsuranceMonthly" id="propertyInsuranceMonthly" value='<%= theData.propertyDetails.propertyInsuranceMonthly %>' readonly>
+				</div>
+			</div>
+	    </div>
+                                  
+         <div class="col-md-6">
+		    <div class="form-group">
+				<label class="control-label" style="text-align: left;">
+				HOA Fee Annual($):</label>
+				<div class="input-group">
+					<span class="input-group-addon"><i class="fa fa-dollar"></i></span>
+					<input class="form-control currency monthlyPrices" type="text" name="hoaFeeAnnual" id="hoaFeeAnnual" value='<%= theData.propertyDetails.hoaFeeAnnual %>'>
+				</div>
+			</div>
+	    </div>
+	    
+	    <div class="col-md-6">
+		    <div class="form-group">
+				<label class="control-label" style="text-align: left;">
+				HOA Fee Monthly($):</label>
+				<div class="input-group">
+					<span class="input-group-addon"><i class="fa fa-dollar"></i></span>
+					<input class="form-control currency" type="text" name="hoaFeeMonthly" id="hoaFeeMonthly" value='<%= theData.propertyDetails.hoaFeeMonthly %>' readonly>
+				</div>
+			</div>
+	    </div>
+	    
+	    <div class="col-md-6">
+		    <div class="form-group">
+				<label class="control-label" style="text-align: left;">
+				Rehab Estimate($):</label>
+				<div class="input-group">
+					<span class="input-group-addon"><i class="fa fa-dollar"></i></span>
+					<input class="form-control currency calcrehabbucket" type="text" name="rehabEstimate" id="rehabEstimate" value='<%= theData.propertyDetails.rehabEstimate %>'>
+				</div>
+			</div>
+	    </div>
+	    <div class="col-md-6">
+		    <div class="form-group">
+				<label class="control-label" style="text-align: left;">
+				Rehab Bucket:</label>
+				<div class="input-group">
+					<input class="form-control" type="text" name="rehabBucket_text" id="rehabBucket_text" value='' readonly>
+					<input class="form-control" type="hidden" name="rehabBucket" id="rehabBucket" value=''>
+				</div>
+				<!-- <input class="form-control" type="text"
+				id="rehabBucket" value="<%- theData.propertyDetails.rehabBucket %>"> -->
+			</div>
+	    </div>
+	    <div class="col-md-6">
+         <div class="col-md-8 marg_top15" style=";">
+		    <div class="form-group">
+				<label class="control-label col-md-4" style="text-align: left; padding-left: 0px;padding-right: 0px;">
+				Show on web:</label>
+				<input class="col-md-1" type='checkbox' id='showOnweb'  name="showOnweb" class='checkbox showOnweb' <%= theData.propertyDetails.showOnweb ? "checked" : "" %> >
+			</div>
+	    </div>
+         <div class="col-md-4 marg_top15">
+		    <div class="form-group">
+				<label  class="control-label col-md-6" style="text-align: left; padding-left: 0px;padding-right: 0px;">
+				Tenanted:</label>
+				<input class="col-md-4" type='checkbox' id='tenantedProperty' name="tenantedProperty" class='checkbox tenantedProperty' <%= theData.propertyDetails.tenantedProperty ? "checked" : "" %> >
+				
+			</div>
+	    </div>
+	    </div>
+	    <div class="col-md-6">
+		    <div class="form-group">
+				<label class="control-label" style="text-align: left;">
+				Original Rehab:</label>
+				<div class="input-group">
+					<span class="input-group-addon"><i class="fa fa-dollar"></i></span>
+					<input class="form-control currency" type="text" name="originalRehab" id="originalRehab" value='<%= theData.propertyDetails.originalRehab %>' readonly>
+				</div>
+			</div>
+	    </div>
+	     <div class="col-md-12 marg_top15">   
+			 <div class="col-md-2">
+			 </div>  
+			<div class="form-group col-md-8">
+				<button type="button" name="cancelBtn" class="btn default">
+					CANCEL</button>
+				<button type="button" id="saveGeneralInfoModalBtn" class="btn blue">
+					<i class="fa fa-check"></i>SAVE</button>
+			</div>
+		</div>
+</form>

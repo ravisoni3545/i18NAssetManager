@@ -1,0 +1,61 @@
+<div class="col-md-12 rehabResultDiv">
+	<!-- Existing contract table start -->
+	<div class="table table-responsive">
+		<table style="table-layout: fixed; width: 100%"
+			class="table table-striped table-bordered table-advance table-hover tablegreen"
+			id="rehabsTable">
+			<thead>
+				<tr>
+					<th class="fontnml" style="text-align: center;">PROPERTY</th>
+					<th class="fontnml" style="text-align: center;">INVESTOR</th>
+					<th class="fontnml" style="text-align: center;">REHAB COORDINATOR</th>
+					<th class="fontnml" style="text-align: center;">OPTION PERIOD EXPIRES</th>
+					<th class="fontnml" style="text-align: center;">CLOSING DATE</th>
+					<th class="fontnml" style="text-align: center;">REHAB START DATE</th>
+					<th class="fontnml" style="text-align: center;">CLOSING STATUS</th>
+					<th class="fontnml" style="text-align: center;">REHAB STATUS</th>
+				</tr>
+			</thead>
+			<% if(templateData) { %> 
+				<% _.each(templateData, function( singleData){ %>
+					<tr>
+		
+						<td style="border-left: none;word-wrap: break-word;">
+							<div class="" style="margin:0 -8px 0 -6px;">
+								<img src="<%- singleData.propertyInfo.photoLink %>" border="0" class="pull-left marg_right3 img1class" alt="Image">
+								<a href="#property/<%- singleData.propertyInfo.propertyId%>" class="darkcolor dottext propNameTooltip font13" style="margin-bottom:0px;" data-toggle="tooltip" title="<%= singleData.propertyInfo.address %>">
+					                <%- singleData.propertyInfo.address %>
+				              	</a>
+								<span class="lightfontcolor font13">
+									<%if(singleData.propertyInfo.propertyType) {%> <%-singleData.propertyInfo.propertyType %>, <%}%> 
+									<%- singleData.propertyInfo.otherDetails %>
+									<%if(singleData.propertyInfo.propertyDisplayId) {%> <br> <%-singleData.propertyInfo.propertyDisplayId %> <%}%> 
+								</span>
+							</div>
+						</td>
+						<td style="word-wrap: break-word;"><%- singleData.investorName %></td>
+						<td style="word-wrap: break-word;"><%- singleData.rehabCoordinator %></td>
+						<td><%- singleData.optionPeriodExpires %></td>
+						
+						<%if(singleData.closingEndDate){%> 
+							<td><%- singleData.closingEndDate %></td> 
+						<%} else {%> 
+							<td	style="color: #0D638F;font-style: italic;"><%-	singleData.estimatedClosingDate %></td>
+						<%}%>
+						
+						<td><%- singleData.rehabStartDate %></td>
+						<td style="word-wrap: break-word;"><a href="#closing/<%- singleData.investmentId %>" id="redirectUrl"> <!-- <%- singleData.investmentStatus %>- -->
+								<%- singleData.closingStatus %>
+						</a></td>
+						<td style="word-wrap: break-word;"><a href="#rehab/<%- singleData.rehabId %>" id="redirectUrl">
+							<%- singleData.rehabStatus %>
+						</a></td>
+					</tr>
+				<% }); %> 
+			<% }else{ %>
+				<tr>No Data Available
+				</tr>
+			<%}%>
+		</table>
+	</div>
+</div>

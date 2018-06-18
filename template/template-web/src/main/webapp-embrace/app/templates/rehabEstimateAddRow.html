@@ -1,0 +1,12 @@
+<tr class="newrowdelete1_1">
+<% if(data){ %>
+	<td class="form-group"> <input name='item' type="text" class="form-control termianl1" value="<%- data.item %>"></td>
+	<td style="display:none"><input name='rehabItemId' value="<%- data.rehabItemId %>"></td>
+	<td><div class="input-group form-group col-md-12" style="padding-left:10px;"><span class="input-group-addon"><i class="fa fa-dollar"></i></span><input  name='cost' type="text"  class="form-control termianl1 currency" value="<%- data.cost %>"> </div></td>
+	<td><a href="javascript:void(0);" class="delete_red" title="Delete" name="deleteInspectionIssueRow"><i class="fa fa-trash-o"></i></a></td>
+<%} else{ %>
+	<td class="form-group"> <input name='item' type="text" class="form-control termianl1" value=""></td>
+	<td><div class="input-group form-group col-md-12" style="padding-left:10px;"><span class="input-group-addon"><i class="fa fa-dollar"></i></span><input  name='cost' type="text"  class="form-control termianl1 currency" value=""> </div></td>	
+	<td><a href="javascript:void(0);" class="delete_red" title="Delete" name="deleteInspectionIssueRow"><i class="fa fa-trash-o"></i></a></td>
+	<% } %>
+</tr>

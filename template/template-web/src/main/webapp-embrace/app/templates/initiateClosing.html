@@ -1,0 +1,136 @@
+<div><form method="post" id="initiateClosingForm" enctype="multipart/form-data" class="form-horizontal">
+<div class="alert alert-danger display-hide">
+	<button class="close" data-close="alert"></button>
+	You have some form errors. Please check below.
+</div>
+<div class="alert alert-success display-hide">
+	<button class="close" data-close="alert"></button>
+	Your form validation is successful!
+</div>
+
+<div class="col-md-6">
+	<img src="<%= property.photoLink %>" alt="Property Image">
+</div>
+<div class="col-md-6">
+	<strong>
+		 <%- property.address %>
+	</strong><br> 
+	<%- property.otherDetails %>
+	<span id="propertyId" name="propertyId" style="display: none;"><%- property.propertyId %></span>
+</div>
+<div class="clearfix"></div>
+
+<div class="col-md-6 marg_top15">
+	<strong>Investor</strong><br> 
+	<%- investorName %>
+	<span id="investorId" name="investorId" style="display: none;"><%- investorId %></span>
+</div>
+<div class="col-md-6 marg_top15">
+	<strong>International</strong><br>
+
+	<div class="radio-list  col-md-12" style="padding-left: 20px;">
+		<label class="radio-inline"> <input name="international"
+			id="optionsRadios25" value="Yes"  type="radio">
+			Yes
+		</label> <label class="radio-inline"> <input name="international"
+			id="optionsRadios26" value="No" checked="true" type="radio">
+			No
+		</label>
+	</div>
+
+</div>
+<div class="clearfix"></div>
+
+<div class="col-md-6 marg_top15">
+	<strong>Deal Type</strong><br>
+	<div class="radio-list  col-md-12" style="padding-left: 20px;">
+		<%_(dealType).each(function(deal) { %>
+						
+						<label class="radio-inline">
+							<input name="dealType" id="dealType" value="<%= deal.id %>" type="radio"
+								<% if(deal.codeDisplay=="ILM"){ %>
+													checked="true"
+												<%}%>
+							>
+								 <%- deal.codeDisplay %>
+							 </input>
+						</label>
+	
+					<%	}); %>
+	</div>
+</div>
+<div class="col-md-6 marg_top15">
+	<strong>Financing Type</strong><br> 
+	<select class="form-control" id="financingType" name="financingType">
+		<%
+						_(finacingType).each(function(finance) { %>
+						<option value="<%= finance.id %>"
+								<% if(finance.isDefault=="Y"){ %>
+													selected="selected"
+												<%}%>
+						><%= finance.codeDisplay%></option> <%
+						}); %>
+	</select>
+</div>
+<div class="clearfix"></div>
+
+<div class="col-md-6 marg_top15">
+		<lable class="control-label">
+		<strong>Purchase Price</strong><span class="required">* </span></lable>
+		<input id="purchasePrice" class="form-control currency" type="text"	name="purchasePrice" data-required=
+		"2">
+</div>
+<div class="col-md-6 marg_top15">
+	<strong>ILM/TKP</strong><br> 
+	<select class="form-control" id="ilmUserId" name="ilmUserId">
+						<option value="">select</option>
+						<%
+						_(ilmUsers).each(function(ilmUser) { %>
+						<option value="<%= ilmUser.userId %>"><%= ilmUser.userName%></option> <%
+						}); %>
+	</select>
+</div>
+<div class="clearfix"></div>
+
+<div class="col-md-6 marg_top15">
+	<strong>Closer</strong><br> <select
+		class="form-control" id="closingUserId" name="closingUserId">
+						<%
+						_(closingUsers).each(function(user) { %>
+						<option value="<%= user.userId %>"><%= user.userName%></option> <%
+						}); %>
+	</select>
+</div>
+<div class="col-md-6 marg_top15">
+	<strong>Solution Specialist</strong><lable class="control-label"><span class="required">* </span></lable><br> 
+	<select class="form-control" id="saleUserId" name="saleUserId">
+				<%
+						_(solutionSpecialists).each(function(solutionSpecialist) { %>
+						<option value="<%= solutionSpecialist.userId %>"
+								<% if(solutionSpecialist.userName==currentUser){ %>
+													selected="selected"
+												<%}%>
+						><%= solutionSpecialist.userName%></option> <%
+						}); %>
+		
+	</select>
+</div>
+<div class="clearfix"></div>
+<div class="col-md-6 marg_top15">
+	<strong>Asset Manager</strong><lable class="control-label"></lable><br> 
+	<select class="form-control" id="assetManagerId" name="assetManagerId">
+				<option value="">select</option>
+				<%
+						_(assetManagers).each(function(assetManager) { %>
+							<option value="<%= assetManager.userId %>"><%= assetManager.userName%></option> <%
+						}); 
+				%>
+		
+	</select>
+</div>
+<div class="col-md-6 marg_top15">
+	<strong>Upload Purchase Agreement</strong><lable class="control-label"><span class="required">* </span></lable><br> 
+	<input name="purchaseAgreementDoc" class="form-control" type="file" style="padding-bottom: 40px;height: auto;" id="purchaseAgreementDoc">
+</div>
+<div class="clearfix"></div>
+</form></div>

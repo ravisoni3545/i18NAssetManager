@@ -1,0 +1,513 @@
+<p class="clearfix">
+    <span id="finance-calculator" class="pull-right">
+        <a id="calculator" class="btn btn-primary" href="#finance-calculator/<%- tblpropertyPropertyid %>">FINANCIAL CALCULATOR</a>
+    </span>
+</p>  
+                            			   <!-- START INVESTMENT SUMMARY-->
+                                                    <div class="portlet box grey">
+                                                        <div class="portlet-title">
+                                                            <div class="caption">
+                                                                <i class="fa fa-cogs"></i>Investment Summary
+                                                            </div>
+                                                           
+                                                        </div>
+                                                        <div class="portlet-body table-responsive">
+                                                            <table class="table table-hover">
+                                                                <thead>
+                                                                    <tr>
+																	<th>&nbsp;</th>
+                                                                        <th class="text-right">
+                                                                           With Financing
+                                                                        </th>
+                                                                        <th class="text-right">
+                                                                            Without Financing
+                                                                        </th>
+																		 
+                                                                    </tr>
+                                                                </thead>
+                                                                <tbody>
+                                                                    <tr>
+                                                                        <td>
+                                                                             Price
+                                                                        </td>
+                                                                        <td class="text-right">
+                                                                            <%- accounting.formatMoney(theData.financedProjection.price,"$",0)%>
+                                                                        </td>
+																		 <td class="text-right">
+                                                                            <%- accounting.formatMoney(theData.allCashProjection.price,"$",0)%>
+                                                                        </td>
+                                                                       
+                                                                    </tr>
+																	<tr>
+                                                                        <td>
+                                                                             Closing Cost
+                                                                        </td>
+                                                                        <td class="text-right">
+                                                                            <%- accounting.formatMoney(theData.financedProjection.closingCost,"$",2)%>
+                                                                        </td>
+																		 <td class="text-right">
+                                                                            <%- accounting.formatMoney(theData.allCashProjection.closingCost,"$",2)%>
+                                                                        </td>
+                                                                       
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>
+                                                                             Refresh/Rehab Cost
+                                                                        </td>
+                                                                        <td class="text-right">
+                                                                            <%- accounting.formatMoney(theData.financedProjection.rehabCost,"$",2)%>
+                                                                        </td>
+																		 <td class="text-right">
+                                                                         <%- accounting.formatMoney(theData.allCashProjection.rehabCost,"$",2)%>
+                                                                        </td>
+                                                                       
+                                                                    </tr>
+                                                                    
+                                                                    <tr>
+                                                                        <td>
+                                                                             Loan Fees & Costs
+                                                                        </td>
+                                                                        <td class="text-right">
+                                                                            <%- accounting.formatMoney(theData.financedProjection.loanFee,"$",2)%>
+                                                                        </td>
+																		 <td class="text-right">
+                                                                         <%- accounting.formatMoney(theData.allCashProjection.loanFee,"$",2)%>
+                                                                        </td>
+                                                                       
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>
+                                                                             Acquisition Fee
+                                                                        </td>
+                                                                        <td class="text-right">
+                                                                            <%- accounting.formatMoney(theData.financedProjection.acquisitionFee,"$",2)%>
+                                                                        </td>
+																		 <td class="text-right">
+                                                                         <%- accounting.formatMoney(theData.allCashProjection.acquisitionFee,"$",2)%>
+                                                                        </td>
+                                                                       
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>
+                                                                             Repair & Maintenance Reserve
+                                                                        </td>
+                                                                        <td class="text-right">
+                                                                            <%- accounting.formatMoney(theData.financedProjection.repairAndMaintenanceReserve,"$",2)%>
+                                                                        </td>
+																		 <td class="text-right">
+                                                                         <%- accounting.formatMoney(theData.allCashProjection.repairAndMaintenanceReserve,"$",2)%>
+                                                                        </td>
+                                                                       
+                                                                    </tr>
+                                                                    
+                                                                    
+																	<tr>
+                                                                        <td>
+                                                                             Investment
+                                                                        </td>
+                                                                        <td class="text-right">
+                                                                            <%- accounting.formatMoney(theData.financedProjection.investment,"$",0)%>
+                                                                        </td>
+																		 <td class="text-right">
+                                                                         <%- accounting.formatMoney(theData.allCashProjection.investment,"$",0)%>
+                                                                        </td>
+                                                                       
+                                                                    </tr>
+																	<tr>
+                                                                        <td>
+                                                                             Loan Amount (Terms)
+                                                                        </td>
+                                                                        <td class="text-right">
+                                                                            <%- accounting.formatMoney(theData.financedProjection.loanAmount,"$",0)%>
+                                                                        </td>
+																		 <td class="text-right">
+                                                                         
+                                                                        </td>
+                                                                       
+                                                                    </tr>
+                                                                    
+                                                                </tbody>
+                                                            </table>
+                                                        </div>
+                                                    </div>
+                                           <!-- END INVESTMENT SUMMARY-->
+										   
+										   <!-- START MONTHLY RETURN CALCULATION-->
+                                                    <div class="portlet box grey">
+                                                        <div class="portlet-title">
+                                                            <div class="caption">
+                                                                <i class="fa fa-cogs"></i>Return Calculations (15 Year Average)
+                                                            </div>
+                                                           
+                                                        </div>
+                                                        <div class="portlet-body table-responsive">
+                                                            <table class="table table-hover">
+                                                                <thead>
+                                                                    <tr>
+																	<th>&nbsp;</th>
+                                                                        <th class="text-right">
+                                                                           With Financing
+                                                                        </th>
+                                                                        <th class="text-right">
+                                                                            Without Financing
+                                                                        </th>
+																		 
+                                                                    </tr>
+                                                                </thead>
+                                                                <tbody>
+                                                                    <tr>
+                                                                        <td>
+                                                                             Rental Income
+                                                                        </td>
+                                                                        <td class="text-right">
+                                                                            <%- accounting.formatMoney(theData.financedProjection.rentalIncome.average,"$",0)%>
+                                                                        </td>
+																		 <td class="text-right">
+                                                                         <%- accounting.formatMoney(theData.allCashProjection.rentalIncome.average,"$",0)%>
+                                                                        </td>
+                                                                       
+                                                                    </tr>
+                                                                    
+                                                                    <tr>
+                                                                        <td>
+                                                                             Less Vacancy
+                                                                        </td>
+                                                                        <td class="text-right">
+                                                                            <%- accounting.formatMoney(theData.financedProjection.vacancyLoss.average,"$",0)%>
+                                                                        </td>
+																		 <td class="text-right">
+                                                                         <%- accounting.formatMoney(theData.allCashProjection.vacancyLoss.average,"$",0)%>
+                                                                        </td>
+                                                                       
+                                                                    </tr>
+                                                                    
+																	<tr>
+                                                                        <td>
+                                                                             <span class="">Less (<a href='javascript:;' class=" bookmark" data-id="expenses"> Expenses </a>)</span>
+                                                                        </td>
+                                                                        <td class="text-right">
+                                                                            <span style="color:#ff0000;"> <%- accounting.formatMoney(theData.financedProjection.totalExpenses.average,{symbol:"$", format:"%s (%v)",precision:0})%></span>
+                                                                        </td>
+																		 <td class="text-right">
+                                                                        <span style="color:#ff0000;"> <%- accounting.formatMoney(theData.allCashProjection.totalExpenses.average,{symbol:"$", format:"%s (%v)",precision:0})%></span>
+                                                                        </td>
+                                                                       
+                                                                    </tr>
+																	<tr>
+                                                                        <td>
+                                                                             Net Operating Income
+                                                                        </td>
+                                                                        <td class="text-right">
+                                                                            <%- accounting.formatMoney(theData.financedProjection.netOperatingIncome.average,"$",0)%>
+                                                                        </td>
+																		 <td class="text-right">
+                                                                         <%- accounting.formatMoney(theData.allCashProjection.netOperatingIncome.average,"$",0)%>
+                                                                        </td>
+                                                                       
+                                                                    </tr>
+																	<tr>
+                                                                        <td>
+                                                                             Less Interest
+                                                                        </td>
+                                                                        <td class="text-right">
+                                                                            <span style="color:#ff0000;"> <%- accounting.formatMoney(theData.financedProjection.loanInterest.average,{symbol:"$", format:"%s (%v)",precision:0})%></span>
+                                                                        </td>
+																		 <td class="text-right">
+                                                                          -
+                                                                        </td>
+                                                                       
+                                                                    </tr>
+																	<tr>
+                                                                        <td>
+                                                                             Net Income
+                                                                        </td>
+                                                                        <td class="text-right">
+                                                                            <%- accounting.formatMoney(theData.financedProjection.netIncome.average,"$",0)%>
+                                                                        </td>
+																		 <td class="text-right">
+                                                                         <%- accounting.formatMoney(theData.allCashProjection.netIncome.average,"$",0)%>
+                                                                        </td>
+                                                                       
+                                                                    </tr>
+																	<tr>
+                                                                        <td>
+                                                                           Return
+                                                                        </td>
+                                                                        <td class="text-right">
+                                                                        <%- accounting.formatNumber(theData.financedProjection.yield.average,2)%>%
+                                                                          </td>
+																		 <td class="text-right">
+                                                                         <%- accounting.formatNumber(theData.allCashProjection.yield.average,2)%>%
+                                                                        </td>
+                                                                       
+                                                                    </tr>
+																	
+																	<tr>
+                                                                        <td>
+                                                                             Principal pay down/equity build
+                                                                        </td>
+                                                                        <td class="text-right">
+                                                                            <%- accounting.formatMoney(theData.financedProjection.loanPaydown.average,"$",0)%>
+                                                                        </td>
+																		 <td class="text-right">
+                                                                          -
+                                                                        </td>
+                                                                       
+                                                                    </tr>
+																	
+																	<tr>
+                                                                        <td>
+                                                                             Cash Flow
+                                                                        </td>
+                                                                        <td class="text-right">
+                                                                            <%- accounting.formatMoney(theData.financedProjection.cashflow.average,"$",0)%>
+                                                                        </td>
+																		 <td class="text-right">
+                                                                         <%- accounting.formatMoney(theData.allCashProjection.cashflow.average,"$",0)%>
+                                                                        </td>
+                                                                       
+                                                                    </tr>
+                                                                    
+                                                                </tbody>
+                                                            </table>
+                                                        </div>
+                                                    </div>
+                                           <!-- END MONTHLY RETURN CALCULATION -->
+										   
+										   
+										   <!-- START EXPENSES AND PROVISION -->
+                                                    <div class="portlet box grey" id="expenses"    >
+                                                        <div class="portlet-title">
+                                                            <div class="caption">
+                                                                <i class="fa fa-cogs"></i>Expenses (15 Year Average)
+                                                            </div>
+                                                           
+                                                        </div>
+                                                        <div class="portlet-body table-responsive">
+                                                            <table class="table table-hover">
+                                                                <thead>
+                                                                    <tr>
+																	<th>&nbsp;</th>
+                                                                        <th class="text-right">
+                                                                           With Financing
+                                                                        </th>
+                                                                        <th class="text-right">
+                                                                            Without Financing
+                                                                        </th>
+																		 
+                                                                    </tr>
+                                                                </thead>
+                                                                <tbody>
+                                                                    <tr>
+                                                                        <td>
+                                                                             Property Tax
+                                                                        </td>
+                                                                        <td class="text-right">
+                                                                            <%- accounting.formatMoney(theData.financedProjection.propertyTax.average,"$",0)%>
+                                                                        </td>
+																		 <td class="text-right">
+                                                                         <%- accounting.formatMoney(theData.allCashProjection.propertyTax.average,"$",0)%>
+                                                                        </td>
+                                                                       
+                                                                    </tr>
+																	<tr>
+                                                                        <td>
+                                                                             Property Insurance
+                                                                        </td>
+                                                                        <td class="text-right">
+                                                                            <%- accounting.formatMoney(theData.financedProjection.propertyInsurance.average,"$",0)%>
+                                                                        </td>
+																		 <td class="text-right">
+                                                                         	<%- accounting.formatMoney(theData.allCashProjection.propertyInsurance.average,"$",0)%>
+                                                                        </td>
+                                                                       
+                                                                    </tr>
+																	<tr>
+                                                                        <td>
+                                                                             HOA
+                                                                        </td>
+                                                                        <td class="text-right">
+                                                                            <%- accounting.formatMoney(theData.financedProjection.hoa.average,"$",0)%>
+                                                                        </td>
+																		 <td class="text-right">
+                                                                         <%- accounting.formatMoney(theData.allCashProjection.hoa.average,"$",0)%>
+                                                                        </td>
+                                                                       
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>
+                                                                             Turnover cost
+                                                                        </td>
+                                                                        <td class="text-right">
+                                                                            <%- accounting.formatMoney(theData.financedProjection.leasingFee.average,"$",0)%>
+                                                                        </td>
+                                                                         <td class="text-right">
+                                                                         <%- accounting.formatMoney(theData.allCashProjection.leasingFee.average,"$",0)%>
+                                                                        </td>
+                                                                       
+                                                                    </tr>
+																	<tr>
+                                                                        <td>
+                                                                             Asset Management Fees
+                                                                        </td>
+                                                                        <td class="text-right">
+                                                                            <%- accounting.formatMoney(theData.financedProjection.assetManagementFee.average,"$",0)%>
+                                                                        </td>
+																		 <td class="text-right">
+                                                                         <%- accounting.formatMoney(theData.allCashProjection.assetManagementFee.average,"$",0)%>
+                                                                        </td>
+                                                                       
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>
+                                                                             Repairs & Maintenance
+                                                                        </td>
+                                                                        <td class="text-right">
+                                                                            <%- accounting.formatMoney(theData.financedProjection.repairAndMaintenanceFee.average,"$",0)%>
+                                                                        </td>
+																		 <td class="text-right">
+                                                                         <%- accounting.formatMoney(theData.allCashProjection.repairAndMaintenanceFee.average,"$",0)%>
+                                                                        </td>
+                                                                       
+                                                                    </tr>
+																	<tr>
+                                                                        <td>
+                                                                             Total Expenses
+                                                                        </td>
+                                                                        <td class="text-right">
+                                                                            <%- accounting.formatMoney(theData.financedProjection.totalExpenses.average,"$",0)%>
+                                                                        </td>
+																		 <td class="text-right">
+                                                                         <%- accounting.formatMoney(theData.allCashProjection.totalExpenses.average,"$",0)%>
+                                                                        </td>
+                                                                       
+                                                                    </tr>
+                                                                    
+                                                                </tbody>
+                                                            </table>
+                                                        </div>
+                                                    </div>
+                                           <!-- END EXPENSES AND PROVISION -->
+										   
+										   <!-- START LOAN TERMS -->
+                                                    <div class="portlet box grey">
+                                                        <div class="portlet-title">
+                                                            <div class="caption">
+                                                                <i class="fa fa-cogs"></i>Loan Term
+                                                            </div>
+                                                           
+                                                        </div>
+                                                        <div class="portlet-body table-responsive">
+                                                            <table class="table table-hover">
+                                                                <thead>
+                                                                    <tr>
+																	<th>&nbsp;</th>
+                                                                        <th class="text-right">
+                                                                           With Financing
+                                                                        </th>
+                                                                        <th class="text-right">
+                                                                            Without Financing
+                                                                        </th>
+																		 
+                                                                    </tr>
+                                                                </thead>
+                                                                <tbody>
+                                                                    <tr>
+                                                                        <td>
+                                                                             Down Payment
+                                                                        </td>
+                                                                        <td class="text-right">
+                                                                            <%- accounting.formatNumber(theData.financedProjection.downpaymentPercent,0)%>%
+                                                                        </td>
+																		 <td class="text-right">
+                                                                          
+                                                                        </td>
+                                                                       
+                                                                    </tr>
+																	<tr>
+                                                                        <td>
+                                                                             Down Payment (Amount)
+                                                                        </td>
+                                                                        <td class="text-right">
+                                                                            <%- accounting.formatMoney(theData.financedProjection.downpaymentAmount,"$",0)%>
+                                                                        </td>
+																		 <td class="text-right">
+                                                                         
+                                                                        </td>
+                                                                       
+                                                                    </tr>
+																	<tr>
+                                                                        <td>
+                                                                            Loan Amount
+                                                                        </td>
+                                                                        <td class="text-right">
+                                                                            <%- accounting.formatMoney(theData.financedProjection.loanAmount,"$",0)%>
+                                                                        </td>
+																		 <td>
+                                                                         
+                                                                        </td>
+                                                                       
+                                                                    </tr>
+																	<tr>
+                                                                        <td>
+                                                                             Rate*
+                                                                        </td>
+                                                                        <td class="text-right">
+                                                                            <%- accounting.formatNumber(theData.financedProjection.interestRate,2)%>%
+                                                                        </td>
+																		 <td>
+                                                                          
+                                                                        </td>
+                                                                       
+                                                                    </tr>
+																	<tr>
+                                                                        <td>
+                                                                             Terms (Months)*
+                                                                        </td>
+                                                                        <td class="text-right">
+                                                                            <%- accounting.formatNumber(theData.financedProjection.loanTerm,0)%>
+                                                                        </td>
+																		 <td>
+                                                                         
+                                                                        </td>
+                                                                       
+                                                                    </tr>
+																	<tr>
+                                                                        <td>
+                                                                             Principal &amp; Interest (P &amp; I)
+                                                                        </td>
+                                                                        <td class="text-right">
+                                                                            <%- accounting.formatMoney(theData.financedProjection.principalAndInterest,"$",0)%>
+                                                                        </td>
+																		 <td>
+                                                                         
+                                                                        </td>
+                                                                       
+                                                                    </tr>
+																	<tr>
+                                                                        <td>
+                                                                             Year 1 Interest
+                                                                        </td>
+                                                                        <td class="text-right">
+                                                                            <%- accounting.formatMoney(theData.financedProjection.loanInterest.yearlyValues[0],"$",0)%>
+                                                                        </td>
+																		 <td>
+                                                                         
+                                                                        </td>
+                                                                       
+                                                                    </tr>
+                                                                    
+                                                                </tbody>
+                                                            </table>
+                                                        </div>
+                                                    </div>
+                                           <!-- END LOAN TERMS-->
+<script type="text/javascript">
+    $(".bookmark").click(function() {
+        var el_to = $(this).data('id');
+        $('html, body').animate({
+            scrollTop: $("#" + el_to).offset().top - 70
+        }, 2000);
+    });
+    jQuery('.tooltips').tooltip();
+</script>                                           

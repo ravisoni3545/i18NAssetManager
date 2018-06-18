@@ -1,0 +1,87 @@
+<!-- upload mutual release lightbox -->
+<div class="modal fade bs-modal-sm with-popover" id="UPLOAD_EXECUTED_MUTUAL_RELEASE_POPUP_1"
+	tabindex="-1" role="basic" aria-hidden="true">
+	<div class="modal-dialog modal-sm">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal"
+					aria-hidden="true"></button>
+				<h4 class="modal-title" id="modalTitle"></h4>
+			</div>
+			<div class="modal-body"
+				style="margin-left: 10px; margin-right: 10px;">
+				<form class="milestone-form" method="post" id="uploadExecutedMutualReleaseForm">
+					<input type="hidden" id="object" name="object"> <input
+						type="hidden" id="objectId" name="objectId"> <input
+						type="hidden" id="taskKey" name="taskKey">
+
+					<div class="form-group">
+						<label class="control-label" style="text-align: left;">
+							Completion Date <span class="required">* </span>
+						</label>
+						<div class="input-group input-medium date date-picker"
+							data-date-clear-btn="true" data-date-format="mm-dd-yyyy"
+							data-date-viewmode="years">
+							<input class="form-control" readonly="" placeholder=""
+								type="text" id="endDate" name="endDate"> <span
+								class="input-group-btn">
+								<button class="btn default" type="button">
+									<i class="fa fa-calendar"></i>
+								</button>
+							</span>
+						</div>
+					</div>
+
+					<div class="form-group">
+						<label class="control-label"> Comments <a
+							class="fa fa-comments-o pull-right showMessageTooltip"
+							style="cursor: pointer; font-size: 14px;" data-html="true"
+							data-show="true"> <i>Show past comments</i>
+						</a>
+						</label><br>
+						<textarea class="form-control" style="height: 80px;" name="comments" id="comments"></textarea>
+					</div>
+					
+					<!-- <div class="form-group">
+						<div id="existingExecutedMutualRelease"></div>
+						<label class="col-md-12 control-label pad_leftright0 pad_top10">Upload
+							Executed Mutual Release</label><a
+							class="fa fa-paperclip pull-right showDocumentTooltip"
+							data-doc="Executed Mutual Release"
+							style="cursor: pointer; font-size: 16px;" data-html="true"
+							data-show="true"> </a>
+						<div
+							class="col-md-12 pad_right0 margin-bottom-10 pad_leftright0">
+							<input name="executedMutualReleaseDocument" class="form-control"
+								type="file" style="padding-bottom: 40px;">
+						</div>
+					</div> -->
+					
+					<div class="form-group">
+						<label class="control-label"> Upload Executed Mutual Release
+							<span class="required">* </span>
+						</label> <a class="fa fa-paperclip pull-right showDocumentTooltip"
+							style="cursor: pointer; font-size: 16px;" data-html="true"
+							data-show="true"> </a> 
+							<br>
+							<div id="executedMutualReleaseRequiredMsg" style="display: none;color: red;">This field is mandatory</div>
+							<input name="document"
+							class="form-control" type="file" style="padding-bottom: 40px;"
+							id="document">
+					</div> 
+						
+						
+				</form>
+                <div class="clearfix"></div>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn blue"
+					id="PopupClosingCancellationSubmitButton">SAVE</button>
+				<button type="button" id="cancelButton" class="btn default"
+					data-dismiss="modal">CANCEL</button>
+			</div>
+		</div>
+		<!-- /.modal-content -->
+	</div>
+	<!-- /.modal-dialog -->
+</div>

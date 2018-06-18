@@ -1,0 +1,143 @@
+
+<!-- BEGIN CONTENT -->
+<div class="page-content-wrapper">
+	<div class="page-content">
+
+		<!-- BEGIN PAGE HEADING-->
+		<div class="dash-header">
+			<div class="">
+				<!-- BEGIN PAGE TITLE & BREADCRUMB-->
+
+				<div class="clearfix xtra-buttons">
+					<h3 class="page-title pull-left">
+						<i class="fa fa-user pull-left"></i> Other
+						Reports
+					</h3>
+
+				</div>
+				<!-- END PAGE TITLE & BREADCRUMB-->
+			</div>
+		</div>
+
+		<div class="member-search">
+
+				<!-- BEGIN EXAMPLE TABLE PORTLET-->
+
+					<div class="" style="margin-left:10px;">
+						<% var result = $.grep(this.reportInfoList, function (element) {
+						return element.reportGroupName == 'Closing Reports'; }); %> 
+						<% if(result.length>0){ %>
+					<div class="margin-bottom-31">	<h4 class="marg_top0">Closing Reports</h4>
+
+						<table 	class="table table-bordered table-advance table-hover tablegreen" style="width:60%;">
+							<thead>
+								<tr>
+									<th width="60%">Report Name</th>
+									<th width="40%">Report Link</th>
+								</tr>
+							</thead>
+							<tbody>
+								<% _.each(reportInfoList, function( info){ %> <%
+								if(info.reportGroupName=='Closing Reports') {%>
+								<tr>
+									<td><%=info.reportName%></td>
+									<td><a data-url="<%=info.url%>" style="cursor: pointer" class="jasperReportUrl"><i
+											class="fa fa-hand-o-right"></i> View Report </a></td>
+								</tr>
+								<% } %> <% }); %>
+							</tbody>
+						</table>
+                    </div>
+						<% } %> 
+						<% var result = $.grep(this.reportInfoList, function(element) { 
+						return element.reportGroupName == 'Asset Servicing Reports'; }); %> 
+						<% if(result.length>0){ %>
+                        <div class="margin-bottom-31 ">	<h4>Asset Servicing Reports</h4>
+
+						<table
+							class="table  table-bordered table-advance table-hover tablegreen" style="width:60%;">
+							<thead>
+
+
+
+								<tr>
+									<th style="width:60%;">Report Name</th>
+									<th style="width:40%;">Report Link</th>
+								</tr>
+							</thead>
+							<tbody>
+								<% _.each(reportInfoList, function( info){ %> <%
+								if(info.reportGroupName=='Asset Servicing Reports') {%>
+								<tr>
+									<td><%=info.reportName%></td>
+									<td><a data-url="<%=info.url%>" style="cursor: pointer" class="jasperReportUrl"><i
+											class="fa fa-hand-o-right"></i> View Report </a></td>
+								</tr>
+								<% } %> <% }); %>
+							</tbody>
+						</table>
+                            </div>
+						<% } %> 
+						<% var result = $.grep(this.reportInfoList, function(element) { 
+						return element.reportGroupName == 'Performance Reports'; }); %> 
+						<% if(result.length>0){ %>
+                        <div class="margin-bottom-31"><h4>Performance Reports</h4>
+
+						<table
+							class="table table-bordered table-advance table-hover tablegreen" style="width:60%;">
+							<thead>
+								<tr>
+									<th style="width:60%;">Report Name</th>
+									<th style="width:40%;">Report Link</th>
+								</tr>
+							</thead>
+							<tbody>
+								<% _.each(reportInfoList, function( info){ %> <%
+								if(info.reportGroupName=='Performance Reports'){ %>
+								<tr>
+									<td><%=info.reportName%></td>
+									<td><a data-url="<%=info.url%>" style="cursor: pointer" class="jasperReportUrl"><i
+											class="fa fa-hand-o-right"></i> View Report </a></td>
+								</tr>
+								<% } %> <% }); %>
+							</tbody>
+						</table>
+                            </div>
+						<% } %>
+						
+						<!-- Start Opportunity Reports -->
+						<% var result = $.grep(this.reportInfoList, function(element) { 
+						return element.reportGroupName == 'Opportunity Reports'; }); %> 
+						<% if(result.length>0){ %>
+						<h4>Opportunity Reports</h4>
+
+						<table
+							class="table table-bordered table-advance table-hover tablegreen" style="width:60%;">
+							<thead>
+								<tr>
+									<th style="width:60%;">Report Name</th>
+									<th style="width:40%;">Report Link</th>
+								</tr>
+							</thead>
+							<tbody>
+								<% _.each(reportInfoList, function( info){ %> <%
+								if(info.reportGroupName=='Opportunity Reports'){ %>
+								<tr>
+									<td><%=info.reportName%></td>
+									<td><a data-url="<%=info.url%>" style="cursor: pointer" class="jasperReportUrl"><i
+											class="fa fa-hand-o-right"></i> View Report </a></td>
+								</tr>
+								<% } %> <% }); %>
+							</tbody>
+						</table>
+						<% } %>
+						<!-- End Opportunity Reports -->
+
+					</div>
+
+
+			<!-- END PAGE HEADING-->
+
+		</div>
+	</div>
+	<!-- END CONTENT -->

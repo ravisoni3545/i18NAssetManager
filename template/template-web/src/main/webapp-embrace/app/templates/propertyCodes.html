@@ -1,0 +1,17 @@
+<select name="<%= codeParamName%>" class="form-control codeType">
+	<%if(addBlankFirstOption){%>
+		<option value="">select</option>
+	<%}%>
+	<%if(addFirstOptionShowAll){%>
+		<option value="showAll">Show All</option>
+	<%}%>
+	<% _(codes).each(function(code) { 
+		if(code.isVisible != "N") {	%>
+			<option value="<%= code.id%>" 
+				<% if(code.isDefault == 'Y'){ %>
+					selected="selected"
+				<%}%>
+				><%= code.codeDisplay%></option>
+	<% 	}
+	}); %>
+</select>

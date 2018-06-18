@@ -1,0 +1,45 @@
+<table
+	class="table table-striped table-bordered table-advance table-hover tablegreen"
+	id="investorPaymentsTable">
+	<thead>
+		<tr data-modelid="">
+			<th>Type</th>
+			<th>Property</th>
+			<th>Date</th>
+			<th>Credit Amount</th>
+			<th>Debit Amount</th>
+			<th>Status</th>
+			<th>Action</th>
+		</tr>
+	</thead>
+	<tbody>
+
+	</tbody>
+	<tfoot>
+		<tr>
+			<th rowspan="1" colspan="1">TOTAL</th>
+			<th rowspan="1" colspan="1"></th>
+			<th rowspan="1" colspan="1"></th>
+			<th rowspan="1" colspan="1" style="text-align: center;">
+				<span class="amount " id="creditTotal"><%- totalsObj.creditTotal%></span>
+			</th>
+			<th rowspan="1" colspan="1" style="text-align: center;">
+				<span class="amount " id="debitTotal"><%- totalsObj.debitTotal%></span>
+			</th>
+			<th rowspan="1" colspan="1"></th>
+			<th rowspan="1" colspan="1"></th>
+		</tr>
+
+		<tr>
+			<th rowspan="1" colspan="1"><h6 style="margin: 0px;">BALANCE</h6></th>
+			<th rowspan="1" colspan="1"></th>
+			<th rowspan="1" colspan="1"></th>
+			<th rowspan="1" colspan="1" style="text-align: center;">
+				<h6 class="amount <% (totalsObj.totalBalance<0)? print('textcolorred'):''%>" style="margin: 0px;" id="totalBalance"><%- totalsObj.totalBalance%></h6>
+			</th>
+			<th rowspan="1" colspan="1"></th>
+			<th rowspan="1" colspan="1"></th>
+			<th rowspan="1" colspan="1"></th>
+		</tr>
+	</tfoot>
+</table>

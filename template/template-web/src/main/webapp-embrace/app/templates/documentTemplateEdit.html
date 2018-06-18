@@ -1,0 +1,69 @@
+<!-- div class="panel panel-default">
+<div class="panel-body"-->
+<form id="documentEditForm" role="form" class="form-horizontal" >
+	<% if (typeof documentTemplateId !== "undefined") { %>
+    <input type=hidden class="form-control" name="documentTemplateId" value="<%- documentTemplateId %>"/>
+    <% } %>
+    <div class="form-group">
+    	<label class="control-label col-sm-2" for="templateTitle">Title:</label>
+    	<div class="col-sm-9">
+		    <input type="text" class="form-control" name="templateTitle" value="<%- templateTitle %>" 
+		      	placeholder="Enter Template Title">
+	    </div>
+	    <div class="col-sm-1"></div>
+    </div>
+<div class="clearFix"></div>
+      <div class="form-group">
+    	<label class="control-label col-sm-2" for="templateType">Task Type:</label>
+    	<div class="col-sm-3">
+		    <input type="text" class="form-control" name="templateType" value="<%- templateType %>" 
+		      	placeholder="Enter Template Type" data-toggle="tooltip" 
+		      	title="closing ,asset, investor, vendor, or opportunity" />
+	    </div>
+    	<label class="control-label col-sm-3" for="templateFormat">Document Format:</label>
+    	<div class="col-sm-3">
+		    <input type="text" class="form-control" name="templateFormat" value="<%- templateFormat %>" 
+		    	data-toggle="tooltip" title="PDF, Word, or Excel"
+		      	placeholder="Enter Template Format" />
+	    </div>
+	    <div class="col-sm-1"></div>
+	  </div>
+<div class="clearFix"></div>
+    <div class="form-group">
+	   	<label class="control-label col-sm-2" for="templateContent">Content:</label>
+	   	<div class="col-sm-9">
+		    <input type="text" class="form-control" name="templateContent" value="<%- templateContent %>" 
+		      	placeholder="Enter Template Content">
+	    </div>
+	    <div class="col-sm-1"></div>
+    </div>
+<div class="clearFix"></div>
+	<div class="form-group">
+	  <label for="docusignTemplatePath" class="col-sm-3">Assign Docusign Template:</label>
+	  <div class="col-sm-8">
+		  <select class="form-control" name="docusignTemplatePath">
+		  <% _.each(docusigns,function(optn) { %>
+		    <option value="<%= optn.templatePath %>" <%= optn.templatePath==docusignTemplatePath ? "selected" : "" %> ><%= optn.templateName %></option>
+		  <% }) %>
+		  </select>
+	  </div>
+	  <div class="col-sm-1"></div>
+	</div>
+</form>
+<!--/div>
+</div-->
+<!--
+documentTemplateId: "5"  (hidden)
+
+templateTitle: "Additional Insured"                
+templateType: "closing"                      templateFormat: "PDF"
+templateContent: "Investor, Property and Insurance information."
+
+docusignTemplateId: null  (dropdown selector)
+documents (list follows, but only changes via docusign template edit)
+recipients (list follows, but only changes via docusign template edit)
+
+
+templateImplmentation: "Implement as DocuSign template in Embrace." (don't need this)
+isDeleted: "N"
+-->

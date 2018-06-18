@@ -1,0 +1,40 @@
+<div>
+	<div class="row no-margin-row marg_top15" style="font-size: 18px; font-weight:800; text-align: center;">
+		<% if(initialRehab) { %>
+			Initial Rehab Cost Estimation: <span class = "amount_1"> <%- initialRehab %> </span>
+		<% } else { %>
+			Initial Rehab Cost Estimation
+		<% } %>
+	</div>
+	<br>
+	
+	<div class="row font15 margin-bottom-15">
+		<% if(!_.isEmpty(prevRehab)) {%>
+		
+		<div class="col-md-2 col-lg-2  margin-bottom-15">
+		<% if(RehabStatus == "Draft") { %>
+			<button class="rehab-with-permission  btn blue btn-sm marg_left5" id="edit-rehab-estimate" style="cursor:pointer;">Edit</button>
+		<% } %>
+			<!-- <h4 style="display: inline; color: rgb(65, 76, 89);">Total Rehab Cost</h4> -->
+		<% if(RehabStatus == "Completed") { %>
+			<button class="rehab-with-permission  btn blue btn-sm marg_left5" id="edit-rehab-estimate" style="cursor:pointer;">Start New</button>
+		<% } %>
+		</div>
+		<div class="col-md-10 margin-bottom-15 font13 text-right pull-right"  style="color: #428BCA;">
+			<span id = "RehabStatus" style="color: rgb(65, 76, 89) ! important; vertical-align: 0px; margin-right: 10px; border-right: 1px solid #ddd; padding-right:10px;"><span style="color:#858598;">Status: </span> <%- RehabStatus %></span> <span style="color: rgb(65, 76, 89) ! important; margin-right: 10px; border-right: 1px solid #ddd; padding-right:10px;" id = "RehabEditUserName"><span style="color:#858598;">Edited By: </span> <%- RehabEditUserName %></span> <span id = "RehabEditDate" style="color: rgb(65, 76, 89) ! important;"><span style="color:#858598;">Last edited: </span> <%- RehabEditdnt %></span>
+		</div>	
+		<div class="col-md-12 panel-group" id = "populate-Categories">
+			
+		</div>	
+		<% } else { %>
+		
+		<div class="rehab-with-permission" style="display: none; text-align: center;">
+			Rehab Cost Inspection is due
+			<br>
+			<br>
+			<button id="startRehabEstimationBtn" type="button" class="btn blue">Start Rehab Estimation</button>
+		</div>
+		
+		<% } %>
+	</div>
+</div>

@@ -1,0 +1,191 @@
+<% if(rehabData) { %>
+<div class="">
+	<div class="col-sm-12 col-md-12 col-lg-8 font15 pull-left">
+		<div>
+			<h3 class="marg_top0 margin-bottom-10">
+				<a href="#property/<%-rehabData.propertyResponse.propertyId%>">
+					<%=rehabData.propertyResponse.address%></a>
+			</h3>
+			<p>Property Type:
+				<%=rehabData.propertyResponse.propertyType%>,<%=rehabData.propertyResponse.otherDetails%></p>
+			<p class="font14 borb">Property ID:
+				<%=rehabData.propertyResponse.propertyDisplayId%></p>
+		</div>
+		<div id="rehab-summary-view" class="rehabform">
+			<div class="font13">
+				<div id="ownershipFailure" class="alert alert-danger display-hide">
+					<button class="close" data-close="alert"
+						onclick="$(this).parent().hide();return false;"></button>
+					Error in updating ownership details.
+				</div>
+				<div class="row">
+					<div class="col-md-3 margin-bottom-10 labels">
+						<strong>Investor</strong>
+						<!-- start -->
+						<!-- end -->
+						<br> <a
+							href="#investorProfile/<%-rehabData.investmentResponse.investorId%>">
+							<%=rehabData.investmentResponse.investorName%></a>
+
+
+
+					</div>
+					<div class="col-md-3 margin-bottom-10">
+						<strong>Int'l Investor</strong><br>
+						<%=rehabData.investmentResponse.internationalInvestor%>
+					</div>
+					<div class="col-md-3 margin-bottom-10">
+						<strong>Deal Type</strong> <br>
+						<%=rehabData.investmentResponse.dealTypeName%>
+					</div>
+					<div class="col-md-3 margin-bottom-10">
+						<strong>Ownership Type</strong> <br>
+						<%=rehabData.investmentResponse.ownershipTypeName%>
+						<%if(rehabData.investmentResponse.investorLegalName){%> <%='('%>
+						<%=rehabData.investmentResponse.investorLegalName%>
+
+						<%if(rehabData.investmentResponse.coBuyerLegalName){%>
+						,<%=rehabData.investmentResponse.coBuyerLegalName%> <%}%>
+						<%if(rehabData.investmentResponse.organizationName){%>
+						,<%=rehabData.investmentResponse.organizationName%> <%}%> <%=')'%>
+
+						<%}%>
+
+					</div>
+
+				</div>
+				<div class="row">
+					<div class="col-md-3 margin-bottom-10">
+						<strong>Financing Type</strong><br><%=rehabData.investmentResponse.financingTypeName%>
+					</div>
+					<div class="col-md-3 margin-bottom-10">
+						<strong>Purchase Price</strong><br> <span class="amount">
+							<%if(rehabData.investmentResponse.purchasePrice){%>
+							<%=rehabData.investmentResponse.purchasePrice%> <%}%> </span>
+					</div>
+					<div class="col-md-3 margin-bottom-10">
+						<strong>Closing Date</strong><br>
+						<%if(rehabData.investmentResponse.closingEndDate){%> <%=
+						rehabData.investmentResponse.closingEndDate %> <%} else{%>
+						<div style="color: #0D638F;">
+							<em><%=rehabData.investmentResponse.estimatedClosingDate%></em>
+						</div>
+						<%}%>
+					</div>
+					<div class="col-md-3 margin-bottom-10">
+						<strong>Closing Status</strong><br> <a
+							href="#closing/<%-rehabData.investmentResponse.investmentId%>">
+							<% if(rehabData.investmentResponse.closingStatus){%>
+							<%=rehabData.investmentResponse.closingStatus%><%}%> </a>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-3 margin-bottom-10">
+						<strong>Rehab Status</strong><br><%=rehabData.rehabStatus %>
+					</div>
+					<div class="col-md-3 margin-bottom-10">
+						<strong class="wrap-text">Preliminary Rehab Estimate</strong> 
+						<%if(rehabData.propertyResponse.preliminaryRehabEstimate){%>
+						<span class="amount"><%=rehabData.propertyResponse.preliminaryRehabEstimate %></span>
+						<%}%>
+						<% if(rehabData.rehabLevel) {%><a	class="label label-sm label-warning"> <%=rehabData.rehabLevel %> </a> <%}%>
+					</div>
+					<div class="col-md-3 margin-bottom-10">
+						<strong class="wrap-text">Approved Rehab Budget</strong>
+						<%if(rehabData.approvedRehabBudget ){%>
+						 <span class="amount"><%= rehabData.approvedRehabBudget %></span>
+						 <%}%>
+					</div>
+					<div class="col-md-3 margin-bottom-10">
+						<strong class="wrap-text">Actual Rehab Cost</strong>
+						<%if(rehabData.actualRehabCost){%>
+						<span class="amount"> <%= rehabData.actualRehabCost %></span>
+						<% }%>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-3 margin-bottom-10">
+						<strong>Rehab Coordinator</strong> Ed Pajarito
+					</div>
+					<div class="col-md-3 margin-bottom-10">
+						<strong>Option Period Expires</strong><br>
+						<%=rehabData.investmentResponse.optionPeriodExpires%>
+					</div>
+					<!-- <div class="col-md-3 margin-bottom-10">
+						<strong>Investor Deposit</strong>
+					</div>
+					<div class="col-md-3 margin-bottom-10">
+						<strong>Outstanding Deposit</strong>
+					</div> -->
+					<div class="col-md-3 margin-bottom-10 with-popover">
+
+					<strong>Home Warranty : </strong>
+					<span><i id="editHomeWarranty" style="margin-left:10px; cursor:pointer;"class ="fa fa-edit"></i></span>
+											<% if(rehabData.homeWarrantyCompanyName){
+												print(rehabData.homeWarrantyCompanyName);
+											}else if(rehabData.isWarrantyRequired=='N'){ %> No 
+											<% }else { %> N/A <% } %><br>
+					<% if(rehabData.validToDate) { %>
+					<span class="<% (rehabData.isWarrantyExpired=='Y')?print('textcolorred'):'' %>"> (Exp. <%- rehabData.validToDate %>) </span>
+					<a class="margin-right-10 fa fa-paperclip font14 showDocumentTooltip_2" style="cursor: pointer;" 
+						data-object="49" data-objectid="<%=rehabData.investmentResponse.investmentId%>" data-taskkey_1="HOME_WARRANTY" data-html="true" data-show="true">
+					</a>
+					<% } %>
+					<div id="homeWarrantLoadDiv"></div>
+				</div>
+
+				</div>
+				<div class="row">
+				<div class="col-md-3">
+					<a data-toggle="modal" href="assetsInitiateMarketing" class="btn default pull-left margin-bottom-10 marg_right10">Initiate Marketing</a>
+				</div>
+
+			</div>
+		</div>
+	</div>
+	<div class="clearfix"></div>
+</div>
+<div id="initiateMarketingDiv"></div>
+<%}%>
+<!-- <div class="modal fade bs-modal-sm" id="level" tabindex="-1" role="basic" aria-hidden="true" style="display: none;">
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                    </button>
+                    <h4 class="modal-title">
+                        Level</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label class="control-label" style="text-align: left;">
+                            Select Level
+                        </label>
+                        <select class="form-control">
+                            <option>Level 1</option>
+                            <option>Level 2</option>
+                            <option>Level 3</option>
+                            <option>Level 4</option>
+
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label">
+                            Comments
+                        </label><br>
+
+                        <textarea class="form-control" placeholder="Lorem Ipsum Ifnocent"></textarea>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn default" data-dismiss="modal">
+                        CANCEL</button>
+                    <button type="button" class="btn blue" data-dismiss="modal">
+                        SAVE</button>
+                </div>
+            </div>
+            /.modal-content
+        </div>
+        /.modal-dialog
+    </div> -->

@@ -1,0 +1,90 @@
+<!-- Confirm Rehab Start Date Popup start -->
+<div class="modal fade bs-modal-sm with-popover" id="rehabDateEditPopup"
+	tabindex="-1" role="basic" aria-hidden="true">
+	<div class="modal-dialog modal-me">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal"
+					aria-hidden="true"></button>
+				<h4 class="modal-title" id="modalTitle">Rehab Estimated Dates</h4>
+			</div>
+			<div class="modal-body"
+				style="margin-left: 10px; margin-right: 10px;">
+				<form class="milestone-form" method="post" id="">
+<div class="">
+					<div class="form-group col-md-6">
+						<label class="control-label" style="text-align: left;">
+							Confirm Estimated Start Date 
+						</label>
+						<div class="input-group input-medium date date-picker unrestricted"
+							data-date="" data-date-format="mm-dd-yyyy"
+							data-date-viewmode="years">
+							<input class="form-control" readonly="" placeholder=""
+								type="text" id="estimatedStartDate" name="estimatedStartDate"> <span
+								class="input-group-btn">
+								<button class="btn default" type="button">
+									<i class="fa fa-calendar"></i>
+								</button>
+							</span>
+						</div>
+					</div>
+					
+					<div class="form-group col-md-6">
+						<label class="control-label" style="text-align: left;">
+							Confirm Estimated End Date 
+						</label>
+						<div class="input-group input-medium date date-picker unrestricted"
+							data-date="" data-date-format="mm-dd-yyyy"
+							data-date-viewmode="years">
+							<input class="form-control" readonly="" placeholder=""
+								type="text" id="estimatedEndDate" name="estimatedEndDate"> <span
+								class="input-group-btn">
+								<button class="btn default" type="button">
+									<i class="fa fa-calendar"></i>
+								</button>
+							</span>
+						</div>
+					</div>
+	</div>
+	<div class="clearfix"></div>
+	<div class="">		
+					<div class="form-group col-md-6">
+						<label class="control-label" style="text-align: left;">
+							Investor Estimated End Date 
+						</label>
+						<div class="input-group input-medium date date-picker unrestricted"
+							data-date="" data-date-format="mm-dd-yyyy"
+							data-date-viewmode="years">
+							<input class="form-control" readonly="" placeholder=""
+								type="text" id="investorEstimatedEndDate" name="investorEstimatedEndDate"> <span
+								class="input-group-btn">
+								<button class="btn default" type="button">
+									<i class="fa fa-calendar"></i>
+								</button>
+							</span>
+						</div>
+					</div>
+	</div>
+					<div class="form-group col-md-12">
+						<label class="control-label"> Comments <span class="required">* </span>
+						</label><br>
+
+						<textarea class="form-control" style="height: 80px;" name="comments" id="comments"></textarea>
+					</div>
+<div class="clearfix"></div>					
+				
+
+					
+				</form>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn blue"
+					id="rehabDateEditSubmitButton">SAVE</button>
+				<button type="button" id="cancelButton" class="btn default"
+					data-dismiss="modal">CANCEL</button>
+			</div>
+		</div>
+		<!-- /.modal-content -->
+	</div>
+	<!-- /.modal-dialog -->
+</div>

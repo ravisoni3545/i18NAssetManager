@@ -1,0 +1,300 @@
+<div class="page-content">
+	<form id="alertsForm">
+		<div id="alertCancelClosingFailure" class="alert alert-danger display-hide">
+			<button class="close" data-close="alert" onclick="$(this).parent().hide();return false;"></button>
+			Error in canceling the closing.
+		</div>
+		<div id="alertCancelClosingSuccess" class="alert alert-success display-hide">
+			<button class="close" data-close="alert" onclick="$(this).parent().hide();return false;"></button>
+			Successfully canceled the closing.
+		</div>
+		<div id="alertCompleteClosingFailure" class="alert alert-danger display-hide">
+			<button class="close" data-close="alert" onclick="$(this).parent().hide();return false;"></button>
+			Error in completing the closing.
+		</div>
+		<div id="alertCompleteClosingSuccess" class="alert alert-success display-hide">
+			<button class="close" data-close="alert" onclick="$(this).parent().hide();return false;"></button>
+			Successfully completed the closing.
+		</div>
+		<div id="alertReopenClosingSuccess" class="alert alert-success display-hide">
+			<button class="close" data-close="alert" onclick="$(this).parent().hide();return false;"></button>
+			Successfully reopened the closing.
+		</div>
+		<div id="alertReopenClosingFailure" class="alert alert-danger display-hide">
+			<button class="close" data-close="alert" onclick="$(this).parent().hide();return false;"></button>
+			Error in reopening the closing.
+		</div>
+		<div id="alertDeleteClosingSuccess" class="alert alert-success display-hide">
+			<button class="close" data-close="alert" onclick="$(this).parent().hide();return false;"></button>
+			Successfully deleting the closing.
+		</div>
+		<div id="alertDeleteClosingFailure" class="alert alert-danger display-hide">
+			<button class="close" data-close="alert" onclick="$(this).parent().hide();return false;"></button>
+			Error in deleting the closing.
+		</div>
+		<div id="alertCompleteClosingFailure1" class="alert alert-danger display-hide">
+			<button class="close" data-close="alert" onclick="$(this).parent().hide();return false;"></button>
+			Closing can't be completed as final task is not complete.
+		</div>
+	</form>
+                <!-- BEGIN PAGE HEADING-->
+                <!-- <div class="row">
+                    <div class="col-md-12">
+                        <h3 class="page-title">
+                            <i class="fa fa-check-square-o pull-left font25 marg_top10"></i>Closing
+                        </h3>
+                    </div>
+                </div> -->
+                <!-- END PAGE HEADING-->
+	<% if(closingData) { %>
+	<!-- BEGIN PAGE HEADING-->
+	<div class="dash-header">
+		<div class="clearfix">
+
+				<div class="col-lg-4 row">
+					<h3 class="page-title">
+						<i class="fa fa-check-square-o pull-left"></i>Closing
+						Details
+					</h3>
+				</div>
+				<div class="" id="closingCompletionStatusDiv"></div>
+
+		</div>
+	</div>
+	<!-- END PAGE HEADING-->
+
+	<!-- BEGIN PAGE HEADING 1-->
+		<!-- <div class="row">
+		 	 <div class="col-sm-12 col-md-5 col-lg-4">
+				<div id="closingCarouselDiv"></div>
+			</div> 
+		
+			<div class="col-sm-12 col-md-7 col-lg-7 font15 pull-right">
+				<div id="closingHeader"></div>	
+			</div> 
+		</div> --> 
+
+		<div class="panel clearfix">
+			<div class="row panel-body">
+				<div class="col-sm-12 col-md-5 col-lg-4">
+					<div id="closingcarouselDiv"></div>
+					<div id="closingAdminDiv"></div>
+				</div>
+				<div id="closingHeader"></div>
+
+	            <!-- ACCORDION START-->
+	            <div class="">
+	            	<div id="currentRemarks" class="col-sm-12 col-md-5 with-popover" style="margin-top: 2px;">
+			            
+		            </div>
+	                <div id="closingBtnsDiv" class="col-md-7"></div>
+
+	                <div id="closingHeaderAccordion" class="panel-group col-md-12" style="margin-bottom: 0px;">
+	                                    <div class="tools pull-left clearfix marg_top10">
+	                                        <a data-toggle="collapse" data-parent="#closingHeaderAccordion" href="#collapseOne"
+	                                           style="text-decoration:none; font-size: 17px;">More Details &nbsp;
+	                                            <i class="fa fa-chevron-down" style="font-size: 12px;"></i>
+	                                        </a>
+	                                    </div>
+
+
+	                            <div id="collapseOne" class="panel-collapse collapse col-md-12">
+	                                <div class="panel-body">
+	                                    <div id="financialInfoDiv"></div>
+	                                    <div id="impDatesDiv"></div>
+	                                    <div id="transMemsDiv"></div>
+	                                </div>
+	                            </div>
+	                </div>
+
+	            </div>
+	            <!-- ACCORDION END-->
+
+
+	        </div>
+        </div>
+	<!-- END PAGE HEADING 1-->
+
+<!--    <div class="panel panel-default" style="border: none;">
+        <div class="portlet box white02 breadbox-md margin-bottom-15">
+            <div class="portlet-title icon-toggle" style="text-align: center;">
+                <div class="caption">
+                    <div class="tools pull-left" style="margin-left:12px;">
+                        <a data-toggle="collapse" data-parent="#closingHeaderAccordion" href="#collapseOne"
+                           style="text-decoration:none; font-size: 15px;">More Details &nbsp;
+                            <i class="fa fa-chevron-down" style="font-size: 12px;"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div id="collapseOne" class="panel-collapse collapse">
+                <div class="panel-body">
+                    <div id="financialInfoDiv"></div>
+                    <div id="impDatesDiv"></div>
+                    <div id="transMemsDiv"></div>
+                </div>
+            </div>
+        </div>
+    </div>-->
+
+
+	
+	<div  id="ownershipDiv"></div>
+    <div id="propertyInsuranceRenderDiv"></div>
+    <div id="propertyTaxRenderDiv"></div>
+    <div id="propertyHoaRenderDiv"></div>
+    <div id="addUnitsRenderDiv"></div>
+    <div id="rehabrepairTab">
+    	 <div id="addEditRehabRepairsId"></div>
+    	 <div class="modal fade bs-modal-sm" id="deleteRehabModal" tabindex="-1"
+		    role="dialog" aria-hidden="true">
+		    <div class="modal-dialog modal-sm">
+		        <div class="modal-content">
+		            <div class="modal-header">
+		                <button type="button" class="close" data-dismiss="modal"
+		                    aria-hidden="true"></button>
+		                <h4 class="modal-title">Delete</h4>
+		            </div>
+		            <div class="modal-body">Are you sure want to delete this?</div>
+		            <div class="modal-footer">
+		                <button type="button" class="btn blue" id="rehabRemoveConfirmBtn">Yes</button>
+		                <button type="button" class="btn default" data-dismiss="modal">No</button>
+		            </div>
+		        </div>
+		        <!-- /.modal-content -->
+		    </div>
+		    <!-- /.modal-dialog -->
+		</div>
+    </div>
+   
+
+	<!-- Start Search section -->
+	<div class="panel">
+		<div class="panel-body">
+			<!-- Tab Start -->
+			<div class="tabbable">
+				<ul class="nav nav-tabs1">
+					<li class="active" name="closingNav"><a href="javascript:;"
+						data-toggle="tab" id="closingSteps"><i
+							class="fa fa-building-o pull-left font14 marg_top4"> </i>Closing
+							Steps </a></li>
+					<li class="" name="closingNav"><a href="#contacts"
+						data-toggle="tab" id="closingContact"><i
+							class="fa fa-phone pull-left font14 marg_top4"> </i>Contacts </a></li>
+					<li class="" name="closingNav"><a href="javascript:;"
+						data-toggle="tab" id="closingDocuments"><i
+							class="fa fa-file-text pull-left font14 marg_top4"> </i>Documents
+					</a></li>
+					<li class="" name="closingNav"><a href="javascript:;"
+						data-toggle="tab" id="closingMessages"><i
+							class="fa fa-envelope pull-left font14 marg_top4"> </i>Messages </a></li>
+
+				</ul>
+				<div class="tab-content" style="width: 100%; margin-top: 20px;">
+					<!-- Closing steps tab start -->
+					<div class="tab-pane active" id="closingStepsTab"
+						name="closingInfoTab"></div>
+					<div class="tab-pane" id="contactsTab" name="closingInfoTab">
+					</div>
+					<div class="tab-pane" id="closingDocumentsTab"
+						name="closingInfoTab"></div>
+					<div class="tab-pane" id="closingMessagesTab" name="closingInfoTab">
+					</div>
+					<!-- Occupancy tab start -->
+
+				</div>
+			</div>
+			<!-- Tab End -->
+
+		</div>
+	</div>
+	
+<!-- insurance vendor modal start-->
+<div class="modal fade" id="insuranceVendor" tabindex="-1" role="basic"
+	aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal"
+					aria-hidden="true"></button>
+				<h4 class="modal-title">Insurance Vendor</h4>
+			</div>
+			<div class="modal-body">
+				<div id="insuranceVendorFormMsg" class="alert alert-danger display-hide">
+					<button class="close" data-close="alert" onclick="$(this).parent().hide();return false;"></button>
+					<text>Please select insurance vendor.</text>
+				</div>
+				<div id="insuranceVendorDiv"></div>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn blue" id="saveInsuranceVendor">
+					SAVE</button>
+				<button type="button" class="btn default" data-dismiss="modal">
+					CANCEL</button>
+			</div>
+		</div>
+		<!-- /.modal-content -->
+	</div>
+	<!-- /.modal-dialog -->
+</div>
+<!-- insurance vendor modal end-->
+
+<!--start lending company edit-->
+<div class="modal fade" id="lendingcompany" tabindex="-1" role="basic"
+	aria-hidden="true">
+	<div class="modal-dialog">
+		<form id="mortgageDetailsForm">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal"
+						aria-hidden="true"></button>
+					<h4 class="modal-title">Mortgage Company Name</h4>
+				</div>
+				<!-- <div id="formFailure" class="alert alert-danger display-hide">
+					<button class="close" data-close="alert"></button>
+					<text id="textValue"></text>
+				</div> -->
+				<div class="modal-body">
+					<div id="formFailure" class="alert alert-danger display-hide">
+						<button class="close" data-close="alert" onclick="$(this).parent().hide();return false;"></button>
+						<text id="textValue"></text>
+					</div>
+					<div class="form-group  col-md-6">
+						<label class="control-label">Lender</label>
+						<div id="lendersListUpdate"></div>
+					</div>
+					<div class="form-group  col-md-6">
+						<label class="control-label">New Lender</label> <input type="text"
+							id="newlenderUpdate" name="newlenderUpdate" value="" disabled
+							class="form-control">
+					</div>
+					<div class="form-group col-md-6">
+						<label class="control-label">Loan Status</label><br>
+						<div id="statusListUpdate"></div>
+					</div>
+					<div class="clearfix"></div>
+					<div class="clearfix"></div>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn blue" id="saveMortgage">
+						SAVE</button>
+					<button type="button" class="btn default" data-dismiss="modal">
+						CANCEL</button>
+				</div>
+			</div>
+		</form>
+		<!-- /.modal-content -->
+	</div>
+	<!-- /.modal-dialog -->
+</div>
+<!--end lending company edit-->
+
+<!--start seller agent edit-->
+
+<!--end seller agent edit-->
+	
+	
+<%} else {%>
+	<div id="closingErrorMessage" style="text-align: center; font-size: large;">Investment details not found</div>
+<%} %>
+</div>

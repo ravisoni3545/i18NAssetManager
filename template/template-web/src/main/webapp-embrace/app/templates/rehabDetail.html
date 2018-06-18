@@ -1,0 +1,346 @@
+<div class="page-content">
+	<form id="alertsForm">
+		<div id="alertCancelRehabFailure" class="alert alert-danger display-hide">
+			<button class="close" data-close="alert" onclick="$(this).parent().hide();return false;"></button>
+			Error in canceling the rehab.
+		</div>
+		<div id="alertCancelRehabSuccess" class="alert alert-success display-hide">
+			<button class="close" data-close="alert" onclick="$(this).parent().hide();return false;"></button>
+			Successfully canceled the rehab.
+		</div>
+		<div id="alertCompleteRehabFailure" class="alert alert-danger display-hide">
+			<button class="close" data-close="alert" onclick="$(this).parent().hide();return false;"></button>
+			Error in completing the rehab.
+		</div>
+		<div id="alertCompleteRehabSuccess" class="alert alert-success display-hide">
+			<button class="close" data-close="alert" onclick="$(this).parent().hide();return false;"></button>
+			Successfully completed the rehab.
+		</div>
+		<div id="alertReopenRehabSuccess" class="alert alert-success display-hide">
+			<button class="close" data-close="alert" onclick="$(this).parent().hide();return false;"></button>
+			Successfully reopened the rehab.
+		</div>
+		<div id="alertReopenRehabFailure" class="alert alert-danger display-hide">
+			<button class="close" data-close="alert" onclick="$(this).parent().hide();return false;"></button>
+			Error in reopening the rehab.
+		</div>
+		<div id="alertDeleteRehabSuccess" class="alert alert-success display-hide">
+			<button class="close" data-close="alert" onclick="$(this).parent().hide();return false;"></button>
+			Successfully deleting the rehab.
+		</div>
+		<div id="alertDeleteRehabFailure" class="alert alert-danger display-hide">
+			<button class="close" data-close="alert" onclick="$(this).parent().hide();return false;"></button>
+			Error in deleting the rehab.
+		</div>
+		<div id="alertCompleteRehabFailure1" class="alert alert-danger display-hide">
+			<button class="close" data-close="alert" onclick="$(this).parent().hide();return false;"></button>
+			Rehab can't be completed as final task is not complete.
+		</div>
+	</form>
+                <!-- BEGIN PAGE HEADING-->
+                <!-- <div class="row">
+                    <div class="col-md-12">
+                        <h3 class="page-title">
+                            <i class="fa fa-check-square-o pull-left font25 marg_top10"></i>Rehab
+                        </h3>
+                    </div>
+                </div> -->
+                <!-- END PAGE HEADING-->
+	<% if(rehabData) { %>
+	<!-- BEGIN PAGE HEADING-->
+	<div class="row">
+		<div class="col-md-12">
+			<div class="page-title clearfix" style="padding-bottom: 0;">
+				<div class="col-lg-4">
+					<h3 class="pull-left">
+						<i class="fa fa-legal pull-left font25 marg_top10"></i>Rehab
+						Details
+					</h3>
+				</div>
+				<!-- <div class="col-lg-8" id="rehabCompletionStatusDiv"></div> -->
+			</div>
+		</div>
+	</div>
+	<!-- END PAGE HEADING-->
+
+	<!-- BEGIN PAGE HEADING 1-->
+		<!-- <div class="row">
+		 	 <div class="col-sm-12 col-md-5 col-lg-4">
+				<div id="rehabCarouselDiv"></div>
+			</div> 
+		
+			<div class="col-sm-12 col-md-7 col-lg-7 font15 pull-right">
+				<div id="rehabHeader"></div>	
+			</div> 
+		</div> --> 
+		<div class="row">
+			<div class="col-sm-12 col-md-5 col-lg-4">
+				<div id="rehabcarouselDiv"></div>
+				<div id="rehabAdminDiv"></div>
+				<div id="currentRemarks" class="col-sm-12 with-popover" style="margin-top: 2px;"></div>
+			</div>
+			<div id="rehabDetailHeader"></div>
+		</div>
+	<!-- END PAGE HEADING 1-->
+	
+
+	
+	<!-- ACCORDION START-->
+	<div class="row">	
+		<div id="rehabHeaderAccordion" class="panel-group" style="margin-bottom: 0px;">
+		    <div class="panel panel-default" style="border: none;">
+		        <div class="portlet box white02 breadbox-md margin-bottom-25">
+	                <div class="portlet-title icon-toggle" style="text-align: center;">
+	                   <div class="caption">
+	                   		<div class="tools pull-left" style="margin-left:12px;">
+	                    		<a data-toggle="collapse" data-parent="#rehabHeaderAccordion" href="#collapseOne"
+	                    			style="text-decoration:none">More Details &nbsp;
+	                    			<i class="fa fa-chevron-down" style="color:grey"></i>
+	                    		 </a>
+	                    	</div> 
+						</div>
+	                </div>
+			        <div id="collapseOne" class="panel-collapse collapse">
+			            <div class="panel-body">
+							<div id="financialInfoDiv"></div>
+							<div id="impDatesDiv"></div>
+							<div id="transMemsDiv"></div>
+						</div>
+			        </div>
+		        </div>
+		    </div>
+		</div>
+	</div>
+	<!-- ACCORDION END-->
+
+	<div id="rehabBtnsDiv"></div>
+	
+	<div  id="ownershipDiv"></div>
+    <div id="propertyInsuranceRenderDiv"></div>
+    <div id="propertyTaxRenderDiv"></div>
+    <div id="propertyHoaRenderDiv"></div>
+    <div id="addUnitsRenderDiv"></div>
+    <div id="rehabrepairTab">
+    	 <div id="addEditRehabRepairsId"></div>
+    	 <div class="modal fade bs-modal-sm" id="deleteRehabModal" tabindex="-1"
+		    role="dialog" aria-hidden="true">
+		    <div class="modal-dialog modal-sm">
+		        <div class="modal-content">
+		            <div class="modal-header">
+		                <button type="button" class="close" data-dismiss="modal"
+		                    aria-hidden="true"></button>
+		                <h4 class="modal-title">Delete</h4>
+		            </div>
+		            <div class="modal-body">Are you sure want to delete this?</div>
+		            <div class="modal-footer">
+		                <button type="button" class="btn blue" id="rehabRemoveConfirmBtn">Yes</button>
+		                <button type="button" class="btn default" data-dismiss="modal">No</button>
+		            </div>
+		        </div>
+		        <!-- /.modal-content -->
+		    </div>
+		    <!-- /.modal-dialog -->
+		</div>
+    </div>
+   
+
+	<!-- Start Search section -->
+	<div class="row">
+		<div class="col-md-12">
+			<!-- Tab Start -->
+			<div class="tabbable">
+				<ul class="nav nav-tabs1">
+					<li class="active" name="rehabNav"><a href="javascript:;"
+						data-toggle="tab" id="rehabSteps"><i
+							class="fa fa-building-o pull-left font14 marg_top4"> </i>Rehab
+							Steps </a></li>					
+					<li class="active" name="rehabNav"><a href="javascript:;"
+						data-toggle="tab" id="rehabItems"><i
+							class="fa fa-building-o pull-left font14 marg_top4"> </i>Rehab Items </a></li>					
+					<li class="active" name="rehabNav"><a href="#"
+											data-toggle="tab" id="rehabPhotos"><i
+												class="fa fa-picture-o pull-left font14 marg_top4"> </i>Rehab
+												Photos </a></li>
+					<li class="" name="rehabNav"><a href="#contacts"
+						data-toggle="tab" id="rehabContact"><i
+							class="fa fa-phone pull-left font14 marg_top4"> </i>Contacts </a></li>
+					<li class="" name="rehabNav"><a href="javascript:;"
+						data-toggle="tab" id="rehabDocuments"><i
+							class="fa fa-file-text pull-left font14 marg_top4"> </i>Documents
+					</a></li>
+					<li class="" name="rehabNav"><a href="javascript:;"
+						data-toggle="tab" id="rehabMessages"><i
+							class="fa fa-envelope pull-left font14 marg_top4"> </i>Messages </a></li>
+
+				</ul>
+				<div class="tab-content" style="width: 100%; margin-top: 20px;">
+					<!-- rehab steps tab start -->
+					<div class="tab-pane active" id="rehabItemsTab"
+						name="rehabInfoTab"></div>
+					<div class="tab-pane active" id="rehabStepsTab"
+						name="rehabInfoTab"></div>
+						<div class="tab-pane active" id="rehabPhotosTab"
+						name="rehabInfoTab"></div>
+					<div class="tab-pane" id="contactsTab" name="rehabInfoTab">
+					</div>
+					<div class="tab-pane" id="rehabDocumentsTab"
+						name="rehabInfoTab"></div>
+					<div class="tab-pane" id="rehabMessagesTab" name="rehabInfoTab">
+					</div>
+					<!-- Occupancy tab start -->
+
+				</div>
+			</div>
+			<!-- Tab End -->
+
+		</div>
+	</div>
+	
+<!-- insurance vendor modal start-->
+<div class="modal fade" id="rehabCoordinator" tabindex="-1" role="basic"
+	aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal"
+					aria-hidden="true"></button>
+				<h4 class="modal-title">Rehab Co-ordinator</h4>
+			</div>
+			<div class="modal-body">
+				<div id="insuranceVendorFormMsg" class="alert alert-danger display-hide">
+					<button class="close" data-close="alert" onclick="$(this).parent().hide();return false;"></button>
+					<text>Please select rehab co-ordinator.</text>
+				</div>
+				<div id="rehabCoordinatorDiv"></div>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn blue" id="save-trans-mem">
+					SAVE</button>
+				<button type="button" class="btn default" data-dismiss="modal">
+					CANCEL</button>
+			</div>
+		</div>
+		<!-- /.modal-content -->
+	</div>
+	<!-- /.modal-dialog -->
+</div>
+<!-- insurance vendor modal end-->
+
+<!-- Escrow company modal start-->
+<div class="modal fade" id="escrowcompany" tabindex="-1" role="basic"
+	aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal"
+					aria-hidden="true"></button>
+				<h4 class="modal-title">Escrow Company</h4>
+			</div>
+			<!-- <div class="modal-body" id="escrowcompanyDiv"> -->
+			<div class="modal-body">
+				<div id="escrowCompanyFormMsg" class="alert alert-danger display-hide">
+						<button class="close" data-close="alert" onclick="$(this).parent().hide();return false;"></button>
+						<text>Please select escrow company.</text>
+				 </div>
+				<div id="escrowcompanyDiv"></div>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn blue" id="saveEscrowCompany">
+					SAVE</button>
+				<button type="button" class="btn default" data-dismiss="modal">
+					CANCEL</button>
+			</div>
+		</div>
+		<!-- /.modal-content -->
+	</div>
+	<!-- /.modal-dialog -->
+</div>
+<!-- Escrow company modal end-->
+
+<!--start lending company edit-->
+<div class="modal fade" id="lendingcompany" tabindex="-1" role="basic"
+	aria-hidden="true">
+	<div class="modal-dialog">
+		<form id="mortgageDetailsForm">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal"
+						aria-hidden="true"></button>
+					<h4 class="modal-title">Mortgage Company Name</h4>
+				</div>
+				<!-- <div id="formFailure" class="alert alert-danger display-hide">
+					<button class="close" data-close="alert"></button>
+					<text id="textValue"></text>
+				</div> -->
+				<div class="modal-body">
+					<div id="formFailure" class="alert alert-danger display-hide">
+						<button class="close" data-close="alert" onclick="$(this).parent().hide();return false;"></button>
+						<text id="textValue"></text>
+					</div>
+					<div class="form-group  col-md-6">
+						<label class="control-label">Lender</label>
+						<div id="lendersListUpdate"></div>
+					</div>
+					<div class="form-group  col-md-6">
+						<label class="control-label">New Lender</label> <input type="text"
+							id="newlenderUpdate" name="newlenderUpdate" value="" disabled
+							class="form-control">
+					</div>
+					<div class="form-group col-md-6">
+						<label class="control-label">Loan Status</label><br>
+						<div id="statusListUpdate"></div>
+					</div>
+					<div class="clearfix"></div>
+					<div class="clearfix"></div>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn blue" id="saveMortgage">
+						SAVE</button>
+					<button type="button" class="btn default" data-dismiss="modal">
+						CANCEL</button>
+				</div>
+			</div>
+		</form>
+		<!-- /.modal-content -->
+	</div>
+	<!-- /.modal-dialog -->
+</div>
+<!--end lending company edit-->
+
+<!--start seller agent edit-->
+<div id="sellerAgentDiv"></div>
+<!--end seller agent edit-->
+<!-- rehab vendor modal start-->
+<div class="modal fade" id="rehabVendor" tabindex="-1" role="basic"
+	aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal"
+					aria-hidden="true"></button>
+				<h4 class="modal-title">Rehab Vendor</h4>
+			</div>
+			<div class="modal-body">
+				<div id="rehabVendorFormMsg" class="alert alert-danger display-hide">
+					<button class="close" data-close="alert" onclick="$(this).parent().hide();return false;"></button>
+					<text>Please select rehab vendor.</text>
+				</div>
+				<div id="rehabVendorDiv"></div>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn blue" id="save-rehab-vendor">
+					SAVE</button>
+				<button type="button" class="btn default" data-dismiss="modal">
+					CANCEL</button>
+			</div>
+		</div>
+		<!-- /.modal-content -->
+	</div>
+	<!-- /.modal-dialog -->
+</div>
+<!-- rehab vendor modal end-->	
+	
+<%} else {%>
+	<div id="rehabErrorMessage" style="text-align: center; font-size: large;">Rehab details not found</div>
+<%} %>
+</div>

@@ -1,0 +1,105 @@
+<div class="rent_agreement_tab_general tab-pane rentalAgreementNavTab active">
+	<form class="form-horizontal rentalAgreementTabForm" method="post" enctype="multipart/form-data">
+		<input type="hidden" name="leaseId" value="<%= leaseData.leaseId %>"/>
+		<input type="hidden" name="unitId" value="<%= propertyUnit.unitId %>"/>
+		<input type="hidden" name="assetId" value="<%= assetId %>"/>
+		<input type="hidden" name="taskKey" value="<%= taskKey %>"/>
+		<input type="hidden" name="investmentId" value="<%= investmentId %>"/>
+		<input type="hidden" name="object" value="<%= object %>"/>
+
+		<div class="form-group investment-div col-md-6">
+			<label class="control-label pad_leftright0">Tenant Name</label>
+			<div class="pad_right0 margin-bottom-10">
+				<div class="input-group">
+					<input class="form-control text-right" type="text" name="tenantName" value="<%= leaseData.tenantName %>">
+				</div>
+			</div>
+		</div>
+		<div class="form-group investment-div col-md-6">
+			<label class="control-label pad_leftright0">Rent Amount</label>
+			<div class="pad_right0 margin-bottom-10">
+				<div class="input-group">
+					<span class="input-group-addon"><i class="fa fa-dollar"></i></span>
+					<input class="form-control text-right currency rentAmount" type="text" name="rentAmount" value="<%= leaseData.rentAmount %>">
+				</div>
+			</div>
+		</div>
+		<div class="clearfix"></div>
+
+		<div class="form-group investment-div col-md-6">
+			<label class="control-label pad_leftright0">Security Deposit Amount</label>
+			<div class="pad_right0 margin-bottom-10">
+				<div class="input-group">
+					<span class="input-group-addon"><i class="fa fa-dollar"></i></span>
+					<input class="form-control text-right currency" type="text" name="securityDeposits" value="<%= leaseData.securityDeposits %>">
+				</div>
+			</div>
+		</div>
+		<div class="form-group investment-div col-md-6">
+			<label class="control-label pad_leftright0">Rental Daily Per Diem</label>
+			<div class="pad_right0 margin-bottom-10">
+				<div class="input-group">
+					<span class="input-group-addon"><i class="fa fa-dollar"></i></span>
+					<input class="form-control text-right" disabled type="text" name="rentalDailyperDiem">
+				</div>
+			</div>
+		</div>
+		<div class="clearfix"></div>
+
+		<div class="form-group col-md-5">
+			<label class="control-label pad_leftright0">Lease Start
+				Date</label>
+			<div class="clearfix"></div>
+			<div style="padding-left: 0%;"
+				class="input-group date date-picker unrestricted"
+				data-date="" data-date-format="mm-dd-yyyy"
+				data-date-viewmode="years">
+				<input class="form-control" readonly="" type="text" name="leaseStartDate" value="<%= leaseData.leaseStartDate %>"> <span
+					class="input-group-btn">
+					<button class="btn default" type="button">
+						<i class="fa fa-calendar"></i>
+					</button>
+				</span>
+			</div>
+		</div>
+		<div class="col-md-2"></div>
+		<div class="form-group col-md-5">
+			<label class="control-label pad_leftright0">Lease End Date</label>
+			<div class="clearfix"></div>
+			<div style="padding-left: 0%;"
+				class="input-group date date-picker unrestricted"
+				data-date="" data-date-format="mm-dd-yyyy"
+				data-date-viewmode="years">
+				<input class="form-control" readonly="" type="text" name="leaseEndDate" value="<%= leaseData.leaseEndDate %>"> <span
+					class="input-group-btn">
+					<button class="btn default" type="button">
+						<i class="fa fa-calendar"></i>
+					</button>
+				</span>
+			</div>
+		</div>
+		<div class="clearfix"></div>
+
+		<div class="form-group col-md-7">
+			<div id="existingDocument1"></div>
+			<label class="control-label"> Upload Rental Agreement<span class="required">*</span>
+				<a class="fa fa-paperclip pull-right 
+					<% if(propertyUnit.unitId) { %>
+						showDocumentTooltip_2
+					<% } else { %>
+						showDocumentTooltip
+					<% } %>" style="cursor: pointer; font-size: 16px;" data-object="<%= object %>" data-objectid="<%= investmentId %>" data-subobject="<%= subObject %>" data-subobjectid="<%= propertyUnit.unitId %>" data-html="true" data-show="true"> </a>
+			</label>
+			<br> <input name="document" class="form-control" type="file" style="padding-bottom: 40px;" id="document">
+			<div id="docRequiredMsg" style="display: none;color: red;">This field is mandatory</div>
+		</div>
+		<div class="form-group col-md-6" hidden>
+				<div class="input-group">
+					<input class="form-control text-right" type="text" name="uploadedDocumentId" value="<%= leaseData.documentId %>">
+				</div>
+		</div>
+		<div class="clearfix"></div>
+		<button class="btn blue saveRentalAgreementTab" style="margin-top: 15px;/*margin-left: 55em;*/" type="button">Save</button>
+		<div class="clearfix"></div>
+	</form>
+</div>

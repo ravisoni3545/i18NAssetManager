@@ -1,0 +1,73 @@
+<div class="col-md-12">
+	<div class="table-scrollable">
+<% if(paymentTerms.length>0){ %>	
+	<table id="existingcontactPaymentTermTableParent"
+		class="table table-striped table-bordered table-advance table-hover">
+		<thead>
+			<tr>
+				<th>Fee Type</th>
+				<th>Payment Type</th>
+				<th>Flat Fee</th>
+				<th>Percentage</th>
+				<th></th>
+			</tr>
+		</thead>
+		<tbody id="existingcontactPaymentTermTable">
+		
+		<% _.each(paymentTerms, function( paymentTerm ){ %>
+			<tr name="existingcontractPaymentRow">
+				<td width="25%"><select class="form-control" name="feeType"> <%
+						_(feeType).each(function(type) { %>
+						<option value="<%= type.id %>"
+								<% if(type.id==paymentTerm.feeType.id){ %>
+													selected="selected"
+												<%}%>
+						><%= type.codeDisplay%></option> <%
+						}); %>
+				</select></td>
+				<td width="25%"><select class="form-control"
+					onchange="showinputs1(this.value)" name="paymentType"> <%
+						_(paymentType).each(function(payment) { %>
+						<option value="<%= payment.id %>"
+							<% if(payment.id==paymentTerm.paymentType.id){ %>
+													selected="selected"
+												<%}%>
+						><%=
+							payment.codeDisplay%></option> <% }); %>
+				</select></td>
+				<td width="23%"><span id="inputfee1" class="input-group">
+						<span class="input-group-addon"><i class="fa fa-dollar"></i></span>
+					 	<input type="text"
+						class="form-control currencyTable" name="flatFee" value="<%-paymentTerm.paymentAmount %>" 
+						<% if(paymentTerm.paymentType.codeDisplay=='Percentage'){ %>
+													disabled
+						<%}%>
+						>
+				</span>
+				<span name="flatFeeErrorMessage" style="color:red;">
+				</span>
+				</td>
+				<td width="22%"><span id="percent1"> <input type="text"
+						class="form-control" name="percentage" value="<%-paymentTerm.paymentPercent%>" 
+						<% if(paymentTerm.paymentType.codeDisplay=='Flat Fee'){ %>
+													disabled
+						<%}%>
+						>
+				</span>
+				<span name="percentageErrorMessage" style="color:red;">
+				</span>
+				</td>
+				<td class="pad_top16" width="5%"><a href="#optionDeleteContractPayment" id="deleteContractPaymentLink" data-toggle="modal" class="delete_red"
+					title="Delete" name="deleteExistingPaymentRow" data-contractid="<%-paymentTerm.id.contractID%>" data-paymentermid="<%-paymentTerm.id.paymentTermID%>"> 
+					<i class="fa fa-trash-o" data-contractid="<%-paymentTerm.id.contractID%>" data-paymentermid="<%-paymentTerm.id.paymentTermID%>"></i>
+				</a></td>
+			</tr>
+	<% });}else{ %>
+	<div class="col-md-12">
+		NO RESULTS FOUND
+	</div>
+	<% } %>
+		</tbody>
+	</table>
+	</div>
+</div>	

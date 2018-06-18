@@ -1,0 +1,220 @@
+<form id="lpoaPorpertiesForm" data-lpoa-id="<%-LpoaData.lpoaId%>" method="post" autocomplete="off">
+<!-- <div class="form-group col-md-12">
+	<label class="control-label">Select the number of properties the user is going to purchase then set the priority order.</label><br>
+</div> -->
+<div class="clearfix"></div>
+	<div class="form-group clearfix">
+			<div class="row col-md-12">
+				<div class="form-group col-md-4">
+					<label class="control-label"><strong>Investor: </strong></label><br/>
+					<span><%- LpoaData.investorName%></span>
+				</div>
+				<div class="form-group col-md-4">
+					<label class="control-label"><strong>Investor Email: </strong></label><br/>
+					<span><%- LpoaData.investorEmail%></span>
+				</div>
+				<div class="form-group col-md-4 lpoaAmmendmentHide">
+					<label class="control-label"><strong>Financed</strong></label>
+					<input type='checkbox' class='checkbox lpoafinanced' <%= LpoaData.financed ? "checked" : "" %> >
+				</div>
+			</div>
+			<div class="row col-md-12">
+				<% if(LpoaData.coBuyerName){ %>
+				<div class="form-group col-md-4">
+					<label class="control-label"><strong>Investor2: </strong></label><br/>
+					<span><%- LpoaData.coBuyerName%></span>
+				</div>
+				<div class="form-group col-md-4">
+					<label class="control-label"><strong>Investor 2 Email:</strong></label><br/>
+					<span><%- LpoaData.coBuyerEmail%></span>
+				</div>
+				<% } %>
+			</div>
+			<div class="col-md-12 row">
+				<div class="form-group col-md-3">
+					<label class="control-label"><strong>Number of Properties<span class="required">*</span></strong></label>
+					<input class="form-control" type="text" name="numberOfProperties" id="numberOfProperties" 
+					value="<%- LpoaData.propertyCount%>">
+				</div>
+				
+				<% if(LpoaData.isAmendment!='N'){ %>
+				<div class="form-group col-md-3">
+					<label class="control-label"><strong>Additional Purchase</strong></label>
+					<input type='checkbox' class='checkbox additionalPurchase' <%= LpoaData.additional ? "checked" : "" %> >
+				</div>
+				<% } %>
+			</div>
+			
+			<div class="col-md-12 row">
+			<div class="form-group col-md-4 lpoaAmmendmentHide">
+					<label class="control-label"><strong>Deposit Amount:<span class="required">*</span></strong></label><br/>
+					<!--span class ='lpoaDepositAmountlpoaDepositAmount'><div><%- accounting.formatMoney(LpoaData.depositAmount,"$",2) %></div></span-->
+					<div class="input-group">
+						<span class="input-group-addon"><i class="fa fa-dollar"></i></span>
+						<input class="form-control currency" type="text" name="lpoaDepositAmount" id="lpoaDepositAmount" value="<%- LpoaData.depositAmount%>">
+					</div>
+				</div>
+			</div>
+			
+			
+			
+			<div class="col-md-12 row">
+				<div class="col-md-8">
+					<label class="control-label"></label>
+					<% _.each(LpoaData.lpoaDocuments, function(singleData){  %>
+						<div>
+							<a href="document/download/<%-singleData.documentId%>" class="document-hover" data-id="<%=singleData.documentId%>"><%- singleData.fileName%>
+							</a>&nbsp;
+							<!-- <div class="pull"> -->
+							<a style="cursor:pointer;" url="document/download/<%- singleData.documentId%>" title="Preview" docName="<%-singleData.fileName%>" class="document-preview document-show " data-id="<%=singleData.documentId%>" data-docname="<%=singleData.fileName%>">
+								<i class="fa fa-file-text"></i>
+							</a>
+							<!-- </div> -->
+						</div>
+					<% } );%>
+				</div>
+			</div>
+	</div>
+
+	
+<div class="form-group red8 box8 display">
+	<div class="form-group col-md-12">
+		<div class="panel-group table-responsive" id="lpoapropTableDiv">
+			<table class="table table-striped table-bordered table-advance table-hover tablegreen dataTable" id="lpoaPropertyDataTable">
+				<thead>
+					<tr>
+						<th><label class="control-label">Priority</label></th>
+						<th><label class="control-label">Property Address</label></th>
+						<th><label class="control-label">List Price</label></th>
+						<!-- <th><label class="control-label">Deposit Amount</label></th> -->
+						<th><label class="control-label">Min Bid<span class="required">*</span></label></th>
+						<th><label class="control-label">Max Bid<span class="required">*</span></label></th>
+					</tr>
+				</thead>
+				<tbody>
+					<% _.each(LpoaData.opportunitylpoaPropertyList, function( singleData,indx){ %>
+						<tr class="lpoaitem" data-object="<%- singleData.hilOppPropertyObject%>" data-objectid="<%- singleData.hilOppPropertyId%>" data-lpoa-opp-property-id="<%- singleData.lpoaOppPropertyId%>">
+							<td>
+								<span class='priorityArrow'>
+									<a  class="fa fa-arrow-up lpoaPropertyMove lpoaup"></a>
+            						<a  class="fa fa-arrow-down lpoaPropertyMove"></a>
+								</span>
+								<span class='priorityCount'>
+									<label class="control-label"><%- singleData.priority%></label>
+								</span>
+            				</td>
+							<!-- <td style="word-wrap: break-word;word-break: break-all;white-space: normal;"> -->
+							<td>
+							<%- singleData.address%>
+							<div class="lightfontcolor lpoaDepositAmountCashDiv lpoaAmmendmentHide">Deposit Amount : <%- accounting.formatMoney(singleData.depositAmountCash,"$",2) %></div>
+							<div class="lightfontcolor lpoaDepositAmountFinancialDiv lpoaAmmendmentHide">Deposit Amount : <%- accounting.formatMoney(singleData.depositAmountFinancial,"$",2) %></div>
+							</td>
+							<td><%- accounting.formatMoney(singleData.listPrice,"$",2) %></td>
+							<!-- <td>
+								<div class="lpoaDepositAmountCashDiv"><%- accounting.formatMoney(singleData.depositAmountCash,"$",2) %></div>
+								<div class="lpoaDepositAmountFinancialDiv"><%- accounting.formatMoney(singleData.depositAmountFinancial,"$",2) %></div>
+							</td> -->
+							<td>
+								<div class="input-group">
+									<span class="input-group-addon"><i class="fa fa-dollar"></i></span>
+									<input class="form-control currency" type="text" name="minBid" id="minBid" value='<%= singleData.bidMin%>'>
+								</div>
+							</td>
+							<td>
+								<div class="input-group">
+									<span class="input-group-addon"><i class="fa fa-dollar"></i></span>
+									<input class="form-control currency" type="text" name="maxBid" id="maxBid" value='<%= singleData.bidMax%>'>
+								</div>
+							</td>
+						</tr>
+					<% }); %>
+				</tbody>
+			</table>
+			<div class="">
+				<div class="form-group col-md-12">
+					<div id="lpoaSignererrorMsg" class="alert alert-danger display-hide">
+						<button class="close" data-close="alert" onclick="$(this).parent().hide();return false;"></button>
+						<text></text>
+				 	</div>
+			 	</div>
+				<div class="form-group col-md-3">
+					<label class="control-label">LPOA HomeUnion Signer<span class="required">*</span></label><br>
+					<div class="lpoaSignerDropdown" id="lpoaSignerDropdown"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="clearfix"></div>
+</form>
+<% if(LpoaData.lpoaStatus){%>
+					<div class="col-md-12 row">
+						<label class="control-label"><strong>Status: </strong></label>
+						<span><%- LpoaData.lpoaStatus%></span>
+					</div>
+					<% if(LpoaData.lpoaStatus!='Cancelled'){ %>
+					<div class="col-md-5 panel">
+						<div class="form-group col-md-12" style="margin-top: 6px;">
+							<% if(LpoaData.uploadForInvestor){ %>
+								<span class="control-label"><strong>Investor:</strong>Not sent for signature</span>
+							<% } else { %>
+								<% if(!LpoaData.investorSignedDate){ %>
+									<span class="control-label"><strong>Investor:</strong>Waiting for signature</span>
+								<% } else {%>
+									<span class="control-label"><strong>Investor:</strong>Signed on <%- LpoaData.investorSignedDate%></span>
+								<% } %><br>
+								<% if(!LpoaData.invEnvSignerSignedDate){ %>
+									<span class="control-label"><strong>HU Signer:</strong>Waiting for signature</span>
+								<% } else {%>
+									<span class="control-label"><strong>HU Signer:</strong>Signed on <%- LpoaData.invEnvSignerSignedDate%></span>
+								<% } %>
+							<% } %>
+							<% if((LpoaData.lpoaStatus=='Draft' || LpoaData.lpoaStatus=='Created') && !LpoaData.investorLpoaCompleted){ %>
+								<form class="investorLpoaUploadForm" method="post"enctype="multipart/form-data">
+								<div class="form-group">
+										<input name="investorLpoadocument"
+											class="form-control" type="file" style="padding-bottom: 40px;"
+											id="investorLpoadocument">
+								</div>
+								</form>
+								<div class="form-group col-md-4"><button type="button" class="btn blue lpoauploadButton" data-objectid="<%= LpoaData.lpoaId%>" data-recipient="investor">UPLOAD</button></div>
+							<% } %>
+						</div>
+					</div>
+					<div class="col-md-1"></div>
+					<% if(LpoaData.coBuyerExists){ %>
+							<div class="col-md-5 panel">
+							<div class="form-group col-md-12" style="margin-top: 6px;">
+							
+							<% if(LpoaData.uploadForCobuyer){ %>
+								<span class="control-label"><strong>Co-Buyer:</strong>Not sent for signature</span>
+							<% } else {%>
+								<% if(!LpoaData.coBuyerSignedDate){ %>
+									<span class="control-label"><strong>Co-Buyer:</strong>Waiting for signature</span>
+								<% } else {%>
+									<span class="control-label"><strong>Co-Buyer:</strong>Signed on <%- LpoaData.coBuyerSignedDate%></span>
+								<% } %><br>
+								<% if(!LpoaData.cobEnvSignerSignedDate){ %>
+									<span class="control-label"><strong>HU Signer:</strong>Waiting for signature</span>
+								<% } else {%>
+									<span class="control-label"><strong>HU Signer:</strong>Signed on <%- LpoaData.cobEnvSignerSignedDate%></span>
+								<% } %>
+							<% } %>
+									
+							<% if((LpoaData.lpoaStatus=='Draft' || LpoaData.lpoaStatus=='Created') && !LpoaData.cobuyerLpoaCompleted){ %>
+							<form class="cobuyerLpoaUploadForm" method="post"enctype="multipart/form-data">
+							<div class="form-group">
+								<input name="cobuyerLpoadocument"
+								class="form-control" type="file" style="padding-bottom: 40px;"
+								id="cobuyerLpoadocument">
+							</div>
+							</form>
+							<div class="form-group col-md-4"><button type="button" class="btn blue lpoauploadButton" data-objectid="<%= LpoaData.lpoaId%>" data-recipient="cobuyer">UPLOAD</button></div>
+								<% } %>
+						</div>
+							</div>
+						<% } %>
+						
+					<% } %>
+			<% } %>
+			<div class="clearfix"></div>

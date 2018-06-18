@@ -1,0 +1,12 @@
+<% if(dataArray && dataArray.length){ %>
+	<ul>
+		<%
+		_.each(dataArray,function(propertyCountResponse){
+		%>
+		<li><span class="sale-info"><%-
+				propertyCountResponse.displayName %> <i class="fa fa-img-up"></i>
+		</span> <span class="sale-num"><a href="#myclosings" class="showClosings"
+				data-type="<%- dataType%>"><%-
+					propertyCountResponse.count %></a></span></li> <% }); %>
+	</ul>
+<%}%>

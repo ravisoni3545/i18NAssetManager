@@ -1,0 +1,7 @@
+<select class="form-control servicesDropdown" name="serviceId">
+		<option value="">Select</option>
+		<%_(services.availableServices).each(function(service) { %>
+			<option value="<%= service.serviceId%>"><%= service.serviceName%></option>
+		<% }); %>
+
+</select>

@@ -1,0 +1,12 @@
+<select class="bs-select form-control" id="servicesDropdown" name="serviceId">
+	<optgroup label="Selected Services" id="selectedServices">
+		<%_(services.selectedServices).each(function(service) { %>
+			<option id="<%= service.serviceId%>" type="selected" value="<%= service.serviceId%>" class="selectbg1"><%= service.serviceName%></option>
+		<% }); %>
+	</optgroup>
+	<optgroup label="Available Services" id="availableServices">
+		<%_(services.availableServices).each(function(service) { %>
+			<option id="<%= service.serviceId%>" type="available" value="<%= service.serviceId%>"><%= service.serviceName%></option>
+		<% }); %>
+	</optgroup>
+</select>

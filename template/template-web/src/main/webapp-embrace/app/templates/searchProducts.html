@@ -1,0 +1,11 @@
+<select class="form-control productsDropdown"  name="productId">
+	
+	<%if(productList.length>0) {%>
+	<option value="">Select</option>
+		<%_(productList).each(function(product) { %>
+			<option value="<%= product.productId%>"><%= product.productName%></option>
+		<% }); %>
+	<%} else {%>
+		<option value="">No product available for service</option>
+	<%}%>
+</select>

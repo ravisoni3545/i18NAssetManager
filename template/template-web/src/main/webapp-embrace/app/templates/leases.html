@@ -1,0 +1,246 @@
+<div class="addbtnposition pull-right margin-bottom-10">
+    <a href="#lease-form1" data-toggle="modal"
+      class="btn green" id="showAddLeaseModal"><i data-toggle="tooltip" title="Add New Lease"  class="fa fa-plus hopNameTooltip"></i> </a>
+</div>
+<div class="panel-group accordion table-responsive" id="accordion3">
+	<table
+		class="table table-striped table-bordered table-advance table-hover tablegreen dataTable" id="leaseDataTableMain">
+		<thead>
+			<tr>
+				<th>Tenant Name</th>
+				<th>Start Date</th>
+				<th>End Date</th>
+				<th>Move-In Date</th>
+				<th>Move-Out Date</th>
+				<th>Monthly Rent</th>
+				<th>Security Deposit</th>
+				<th>Unit Name</th>
+				<th>Status</th>
+				<th>Actions
+				</th>
+			</tr>
+		</thead>
+		<tbody>
+			<% if(templateData) { %> 
+				<% _.each(templateData, function( singleData){ %>
+					<tr>
+						<td><%- singleData.leasecontactName %></td>
+						<td><%- singleData.startDate %></td>
+						<td><%- singleData.endDate %></td>
+						<td><%- singleData.moveinDate %></td>
+						<td><%- singleData.moveoutDate %></td>
+						<td class="amount" style="text-align:right ;"><%- singleData.monthlyRent %></td>
+						<td class="amount" style="text-align:right ;"><%- singleData.securityDeposit %></td>
+						<td><%- singleData.unitName %></td>
+						<td><%- singleData.status %></td>
+						<td><a data-toggle="modal"
+							class="edit_blue" style="cursor: pointer" title="Edit" leaseId="<%- singleData.leaseId %>" name="editLease">
+								<i class="fa fa-edit"></i>
+						</a> <a leaseId="<%- singleData.leaseId %>"
+							data-toggle="modal" class="delete_red" style="cursor: pointer" title="Delete" name="deleteLease"><i
+								class="fa fa-trash-o"> </i></a></td>
+		
+					</tr>
+				<% }); %> 
+			<% } %>
+		</tbody>
+	</table>
+
+</div>
+<!-- start add leases lightbox -->
+<div class="modal fade" id="lease-form1" tabindex="-1" role="basic"
+	aria-hidden="true">
+	
+	<div class="modal-dialog">
+		<div class="modal-content">
+		 <form id="leaseForm" > 
+                                                     
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal"
+					aria-hidden="true"></button>
+				<h4 class="modal-title">Lease Details</h4>
+			</div>
+			<div class="modal-body">
+			
+				<div class="col-md-6">
+					
+			<!-- Unit DropDown start -->
+			<div class="form-group">
+				<label class="control-label" style="text-align: left;"> Property Unit </label> 
+				<div id="unitDropdown"></div>
+			</div>
+			<!-- Unit DD end -->
+					
+					<div class="form-group">
+						<label class="control-label" style="text-align: left;">
+							Tenant Name <span class="required">* </span>
+						</label> <input class="form-control" type="text"
+							name="tenantName">
+					</div>
+
+
+					<div class="form-group">
+						<label class="control-label" style="text-align: left;">
+							Address </label> <input class="form-control" type="text"
+							name="address">
+					</div>
+
+					<div class="form-group">
+							<label class="control-label" style="text-align: left;">
+								City </label> <input class="form-control" type="text"
+								name="city">
+					</div>
+					<div class="form-group">
+							<label class="control-label" style="text-align: left;">
+								State </label> <select name="state" data-required="4"
+								class="form-control">
+								<option value="">Select</option>
+								<% _(states).each(function(state) { %>
+												<option value="<%= state.name %>">
+													<%= state.name %>
+												</option>
+											<% }); %>
+							</select>
+					</div>
+					
+					<div class="form-group">
+						<label class="control-label" style="text-align: left;">
+							Postal Code </label> <input class="form-control" type="text"
+							name="postalCode">
+					</div>
+
+
+
+					<div class="form-group">
+						<label class="control-label" style="text-align: left;">
+							Phone </label> <input class="form-control" type="text"
+							name="phone">
+					</div>
+					<!-- Lease status DropDown start -->
+					<div class="form-group">
+						<label class="control-label" style="text-align: left;"> Status </label> 
+						<div id="leaseStatusDropdown"></div>
+					</div>
+					<!-- Lease status DropDown end -->
+					
+				</div>
+				<div class="col-md-6">
+					<div class="form-group">
+						<label class="control-label" style="text-align: left;">
+							Start Date <span class="required">* </span>
+						</label>
+						<div class="input-group input-medium date date-picker startDate"
+							 data-date-format="mm-dd-yyyy"
+							data-date-viewmode="years">
+							<input class="form-control" readonly="" 
+								type="text" name="startDate"> <span class="input-group-btn">
+								<button class="btn default" type="button">
+									<i class="fa fa-calendar"></i>
+								</button>
+							</span>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="control-label" style="text-align: left;">
+							End Date <span class="required">* </span>
+						</label>
+						<div class="input-group input-medium date date-picker endDate"
+							 data-date-format="mm-dd-yyyy"
+							data-date-viewmode="years">
+							<input class="form-control" readonly="" 
+								type="text" name="endDate"> <span class="input-group-btn">
+								<button class="btn default" type="button">
+									<i class="fa fa-calendar"></i>
+								</button>
+							</span>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="control-label" style="text-align: left;">
+							Move-In Date </label>
+						<div class="input-group input-medium date date-picker moveInDate"
+							 data-date-format="mm-dd-yyyy"
+							data-date-viewmode="years">
+							<input class="form-control" readonly="" 
+								type="text" name="moveInDate"> <span class="input-group-btn">
+								<button class="btn default" type="button">
+									<i class="fa fa-calendar"></i>
+								</button>
+							</span>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="control-label" style="text-align: left;">
+							Move-Out Date </label>
+						<div class="input-group input-medium date date-picker moveOutDate"
+							 data-date-format="mm-dd-yyyy"
+							data-date-viewmode="years">
+							<input class="form-control" readonly="" 
+								type="text" name="moveOutDate"> <span class="input-group-btn">
+								<button class="btn default" type="button">
+									<i class="fa fa-calendar"></i>
+								</button>
+							</span>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="control-label" style="text-align: left;">
+							Monthly Rent <span class="required">* </span>
+						</label> 
+						<div class="input-group col-md-12" style="padding-right:5px;">
+							<span class="input-group-addon"><i class="fa fa-dollar"></i></span>
+							<input type="text"  class="form-control currency" name="monthlyRent">
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="control-label" style="text-align: left;">
+							Security Deposit </label>
+							<div class="input-group col-md-12" style="padding-right:5px;">
+								<span class="input-group-addon"><i class="fa fa-dollar"></i></span>
+								 <input type="text" 
+								class="form-control currency" name="securityDeposit">
+							</div>
+					</div>
+					
+					<div class="form-group">
+						<label class="control-label" style="text-align: left;">
+							E-mail </label> <input class="form-control" type="text"
+							name="email">
+					</div>
+				</div>
+				<div class="clearfix"></div>
+			</div>
+		
+			<div class="modal-footer">
+				<button type="button" class="btn blue" id="addLease">
+					SAVE</button>
+				<button type="button" class="btn default" data-dismiss="modal">
+					CANCEL</button>
+			</div>
+		</form>
+		</div>
+		<!-- /.modal-content -->
+	</div>
+	<!-- /.modal-dialog -->
+</div>
+<div id="editLeaseDiv">
+</div>
+<div class="modal fade bs-modal-sm" id="optionDeleteLase" tabindex="-1" role="dialog" aria-hidden="true">
+	<div class="modal-dialog modal-sm">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+				<h4 class="modal-title">Delete</h4>
+			</div>
+			<div class="modal-body">
+				  Are you sure you want to delete this?
+			</div>
+			<div class="modal-footer">
+				<button id="deleteLeaseConfirmationButton" type="button" class="btn blue">Yes</button>
+				<button type="button" class="btn default" data-dismiss="modal">No</button>
+			</div>
+		</div>
+		<!-- /.modal-content -->
+	</div>
+	<!-- /.modal-dialog -->
+</div>

@@ -1,0 +1,78 @@
+<div>
+<h4 class="margin-bottom-15 borb">
+	<i class="fa fa-dollar pull-left marg_top5"></i>Financial Information <a
+		style="cursor: pointer;"  id="fin-info-edit"><i class="fa fa-edit"></i></a>
+</h4>
+<div id="finInfoSuccessMsg" class="alert alert-success display-hide">
+	<button class="close" data-close="alert" onclick="$(this).parent().hide();return false;"></button>
+	<text></text>
+</div>
+<div id="finInfoFailureMsg" class="alert alert-danger display-hide">
+	<button class="close" data-close="alert" onclick="$(this).parent().hide();return false;"></button>
+	<text></text>
+</div>
+<div id="financial-view" class="financialtoggle">
+	<div class="row margin-bottom-25">
+		<div class="col-md-3">
+			<!-- <div class="summ-view"> -->
+				<strong>Purchase Price</strong><br>
+				<span class="amount">
+				<%if(investmentResponse.purchasePrice){%>
+					<%=investmentResponse.purchasePrice%>
+				<%}%>
+				</span>
+			<!-- </div> -->
+		</div>
+		<div class="col-md-3">
+			<strong>EMD Amount</strong><br>
+			<span class="amount">
+				<%if(investmentResponse.emdAmount){%>
+					<%=investmentResponse.emdAmount%>
+				<%}%>
+			</span>
+		</div>
+		<div class="col-md-3">
+			<strong>Commission</strong><br>
+			<span class="amount">
+				<%if(investmentResponse.commission){%>
+					<%=investmentResponse.commission%>
+				<%}%>
+			</span>
+		</div>
+		<div class="col-md-3">
+			<strong>Option Fee</strong><br>
+			<span class="amount">
+				<%if(investmentResponse.optionFee){%>
+					<%=investmentResponse.optionFee%>
+				<%}%>
+			</span>
+		</div>
+	</div>
+</div>
+<div id="financial-edit" class="financialtoggle  margin-bottom-20">
+	<div class="row margin-bottom-10">
+		<div class="col-md-3">
+			<!-- <div class="summ-view"> -->
+				<strong>Purchase Price</strong><br> <input type="text" name="purchasePrice"
+					class="form-control amount currencyInsurance marg_top10">
+			<!-- </div> -->
+		</div>
+		<div class="col-md-3">
+			<strong>EMD Amount</strong><br> <input type="text" name="emdAmount"
+				class="form-control amount currencyInsurance marg_top10" >
+		</div>
+		<div class="col-md-3">
+			<strong>Commission</strong><br> <input type="text" name="commission"
+				class="form-control amount currencyInsurance marg_top10" >
+		</div>
+		<div class="col-md-3">
+			<strong>Option Fee</strong><br> <input type="text" name="optionFee"
+				class="form-control amount currencyInsurance marg_top10" >
+		</div>
+	</div>
+	<button type="button" id="save-fininfo" class="btn blue" data-dismiss="modal">
+		Save</button>
+	<button type="button" id="cancel-fininfo" class="btn default"
+		data-dismiss="modal">Cancel</button>
+</div>
+</div>

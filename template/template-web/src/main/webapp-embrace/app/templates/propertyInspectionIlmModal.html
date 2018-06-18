@@ -1,0 +1,163 @@
+<div class="modal fade with-popover" id="PROPERTY_INSPECTION_ILM_POPUP_1"
+    tabindex="-1" role="basic" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                </button>
+                <h4 class="modal-title">
+                   <%- title %></h4>
+            </div>
+            <div class="modal-body clearfix">
+            <div class="col-md-12">
+                <span class="font14">
+                    <i>Quoted Rehab Cost:</i> <strong><span class="amount" id="inspectionRehabCost"></span></strong>
+                </span>
+                <a id="table_excel" class="btn btn-primary pull-right exportToExcelWFTooltip icon-excel-15" data-toggle="tooltip" title="Export to Excel" data-placement="left">
+                  <!-- <i class="fa fa-share"></i> -->
+                </a>
+                <!-- <a id="table_excel"><button type="button" class="btn blue pull-right" >Export To Excel</button></a> -->
+                <div class="pull-right" id="inspectionDocument" style="margin-right:50px;"></div>
+                <div class="clearfix"></div>
+
+                <div class="table-responsive">
+                   <table class="table table-striped table-bordered table-advance table-hover tablegreen" id="inspection_table">
+                       <thead>
+                       <tr data-modelid="">
+                           <th>Issue Source</th>    
+                           <th>Category</th>
+                           <th>Description</th>
+                           <th>HU Comments</th>
+                           <th>Repaired By</th>
+                           <th>Estimate</th>
+                           <th width="5%;">Inspection Page No.</th>
+                           <th class="noExl">
+                               &nbsp;<a class="textcolordark fa fa-plus addOrEditInspectionIlmCategory" data-show=true data-toggle="collapse" data-target=".inspectionRow0" title="Add New Item" style="cursor:pointer;"> </a>
+                           </th>
+                       </tr>
+                       </thead>
+                       <tbody>
+                            
+                       </tbody>
+                       <tfoot>
+                            <tr>
+                                <th rowspan="1" colspan="1"></th>
+                                <th rowspan="1" colspan="1"></th>
+                                <th rowspan="1" colspan="1"></th>
+                                <th rowspan="1" colspan="1" style="text-align:right;">TOTAL</th>
+                                <th rowspan="1" colspan="1"></th>
+                                <th rowspan="1" colspan="1" style="text-align:right;"><span class="amount "id="inspectionTotal"></span></th>
+                                <th rowspan="1" colspan="1"></th>
+                                <th rowspan="1" colspan="1" class="noExl"></th>
+                            </tr>
+                        </tfoot>
+                   </table>
+                </div>
+
+                <div class="clearfix"></div>
+                <form class="milestone-form" method="post">
+                  <input type="hidden" id="object" name="object"> 
+                  <input type="hidden" id="objectId" name="objectId"> 
+                  <input type="hidden" id="taskKey" name="taskKey">
+
+
+                <% if(taskKey == "CONTRACTOR_QUOTE") { %>
+                  <div class="col-md-6">
+                        <div class="form-group">
+                            <div id="existingDocument3"></div>
+                            <label class="control-label"> Upload Contractor Quote
+                                <span id="documentLabel2"></span><span class="required">*</span>
+                            </label> <a class="fa fa-paperclip pull-right showDocumentTooltip"
+                                style="cursor: pointer; font-size: 16px;" data-html="true"
+                                data-show="true"> </a> <br> <input name="document"
+                                class="form-control" type="file" style="padding-bottom: 40px;">
+                        </div>
+                    </div>
+                    <div class="col-md-2"></div>
+                  <div class="form-group col-md-4">
+                      <label class="control-label" style="text-align: left;">
+                          Review Date<span class="required">*</span>
+                      </label>
+                      <div class="input-group input-medium date date-picker" data-date-format="mm-dd-yyyy" data-date-viewmode="years" data-date-autoclose="true">
+                              <input class="form-control" readonly type="text" id="endDate" name="endDate">
+                              <span class="input-group-btn">
+                                  <button class="btn default" type="button">
+                                      <i class="fa fa-calendar"></i>
+                                  </button>
+                              </span>
+                          </div>
+                  </div>
+                  <div class="clearfix"></div>
+                  <div class="form-group col-md-6">
+                    <label class="control-label">
+                        Comments<a class="fa fa-comments-o pull-right showMessageTooltip"
+                          style="cursor: pointer; font-size: 14px;" data-html="true"
+                          data-show="true"> <i>Show past comments</i></a>
+                    </label><br>
+                    <textarea class="form-control" name="comments"></textarea>
+                  </div>
+                <% } else {%>
+
+                  <div class="form-group col-md-6">
+                    <label class="control-label">
+                        Comments<a class="fa fa-comments-o pull-right showMessageTooltip"
+                          style="cursor: pointer; font-size: 14px;" data-html="true"
+                          data-show="true"> <i>Show past comments</i></a>
+                    </label><br>
+                    <textarea class="form-control" name="comments"></textarea>
+                  </div>
+                  <div class="col-md-2"></div>
+                  <div class="form-group col-md-4">
+                      <label class="control-label" style="text-align: left;">
+                          Review Date<span class="required">*</span>
+                      </label>
+                      <div class="input-group input-medium date date-picker" data-date-format="mm-dd-yyyy" data-date-viewmode="years" data-date-autoclose="true">
+                              <input class="form-control" readonly type="text" id="endDate" name="endDate">
+                              <span class="input-group-btn">
+                                  <button class="btn default" type="button">
+                                      <i class="fa fa-calendar"></i>
+                                  </button>
+                              </span>
+                          </div>
+                  </div>
+                  <% } %>
+                  <div class="clearfix"></div>
+                </form>
+            </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn blue" id="propertyInspectionIlmPopupSubmitButton">
+                    SAVE</button>
+                <button type="button"  class="btn default" data-dismiss="modal">
+                    CANCEL</button>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+<div class="modal fade bs-modal-sm" id="inspectionDeleteModal" tabindex="-1"
+  role="dialog" aria-hidden="true">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"
+          aria-hidden="true"></button>
+        <h4 class="modal-title">
+          <i class="fa fa-times"></i> Delete Inspection Category
+        </h4>
+      </div>
+      <div class="modal-body">
+        <p>Are you sure you want to delete this item?</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn blue" id="inspectionDeleteYesBtn">
+          Yes</button>
+        <button type="button" class="btn default" data-dismiss="modal">
+          No</button>
+      </div>
+    </div>
+    <!-- /.modal-content -->
+  </div>
+  <!-- /.modal-dialog -->
+</div>

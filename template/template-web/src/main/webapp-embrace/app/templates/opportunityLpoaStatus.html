@@ -1,0 +1,58 @@
+<div class="">
+	<div class="activeFiltersList clearfix" style="display: block;">
+		<%_(lpoadata.lpoaDetails).each(function(singleData,indx) { 
+			var labelColor = 'label-warning';
+			if(indx==lpoadata.lpoaDetails.length-1 && lpoadata.lpoaStatus=='Draft' && lpoadata.lastLpoaStatus!='Cancelled'){
+				labelColor = 'label-success';
+			} %>
+			<a style="cursor:pointer;" class="lpoaViewModel" data-lpoaid="<%- singleData.lpoaOpportunityId %>">
+				<% if(singleData.amendmentNumber){ %>
+					<span class='label label-sm label-warning'>Amendment<%- singleData.amendmentNumber%></span>
+				<% } else{ %>
+					<span class='label label-sm <%-labelColor%>'>LPOA Agreement</span>
+			    <% } %> 
+		    </a>
+		<% }); %>
+	<strong>Status:</strong>
+	<% if(!lpoadata.amendment && (!lpoadata.lastLpoaStatus || lpoadata.lastLpoaStatus=='Cancelled')){ %>
+		<span class="lightfontcolor">Not Created</span>
+	<% } else if(lpoadata.lastLpoaStatus=='Cancelled'){%>
+		<span class="lightfontcolor">Cancelled</span>
+	<% } else {%>
+		<% if(lpoadata.lastLpoaStatus=='Draft') { %>
+			<span class="lightfontcolor">Draft</span>
+		<% } else { %>
+		
+		<% if(lpoadata.uploadForInvestor){ %>
+				<span class="lightfontcolor"><strong>Investor:</strong>Not sent for signature</span>
+		<% } else { %>
+			<% if(!lpoadata.investorSignedDate){ %>
+				<span class="lightfontcolor"><strong>Investor:</strong>Waiting for signature</span>
+			<% } else { %>
+				<span class="lightfontcolor"><strong>Investor:</strong>Signed on <%- lpoadata.investorSignedDate%></span>
+			<% } %>
+		<% } %>	
+			<% if(lpoadata.coBuyerExists){ %>
+				<% if(lpoadata.uploadForCobuyer){ %>
+					<span class="lightfontcolor"><strong>, Co-Buyer:</strong>Not sent for signature</span>
+				<% } else { %>
+					<% if(!lpoadata.coBuyerSignedDate){ %>
+						<span class="lightfontcolor"><strong>, Co-Buyer:</strong>Waiting for signature</span>
+					<% } else { %>
+						<span class="lightfontcolor"><strong>, Co-Buyer:</strong>Signed on <%- lpoadata.coBuyerSignedDate%></span>
+					<% } %>
+			<% } %>
+				
+			<% }
+		} %>
+		<% if(!lpoadata.lpoaSigned) {%>
+			<a style="cursor:pointer;" class="disable-needed cancelLpoa" data-lpoaid="<%- lpoadata.lpoaDetails[lpoadata.lpoaDetails.length-1].lpoaOpportunityId %>" ><span class='label label-sm label-info'>Cancel LPOA</span></a>
+		<%}%>
+	<% } %>
+	&nbsp;&nbsp;&nbsp;&nbsp;
+		<% if((!lpoadata.amendment && (!lpoadata.lastLpoaStatus || lpoadata.lastLpoaStatus=='Cancelled')) || lpoadata.lpoaSigned) {%>
+			<a  style="cursor:pointer;" id='lpoabutton' class="disable-needed"><span class='label label-sm label-warning lpoasavebtn '>Create LPOA</span></a>
+		<%}%>
+	</div>
+	
+</div>

@@ -1,0 +1,180 @@
+ <div class="page-content">
+                <!-- BEGIN SAMPLE PORTLET CONFIGURATION MODAL FORM-->
+                <div class="modal fade" id="portlet-config" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+                    aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                                </button>
+                                <h4 class="modal-title">
+                                    Modal title</h4>
+                            </div>
+                            <div class="modal-body">
+                                Widget settings form goes here
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn blue">
+                                    Save changes</button>
+                                <button type="button" class="btn default" data-dismiss="modal">
+                                    Close</button>
+                            </div>
+                        </div>
+                        <!-- /.modal-content -->
+                    </div>
+                    <!-- /.modal-dialog -->
+                </div>
+                <!-- /.modal -->
+                <!-- END SAMPLE PORTLET CONFIGURATION MODAL FORM-->
+                <!-- BEGIN PAGE HEADING-->
+                <div class="dash-header">
+
+                        <h3 class="page-title">
+                            <i class="fa fa-search pull-left"></i>Search Vendor
+                        </h3>
+
+                </div>
+                <!-- END PAGE HEADING-->
+                <!-- Start Search section -->
+
+                    <div class="member-search">
+
+                        <!-- Start Editable Search section -->
+                        <div class="row" id="advanceddivsearch">
+                            <form novalidate="novalidate" id="search_form" class="form-horizontal">
+
+	                                <div class="col-md-6">
+	                                    <div class="form-group">
+	                                        <label class="control-label col-md-4">
+	                                            Company Name</label>
+                                            <div class="col-md-6">  <input name="organizationName" class="form-control" type="text"></div>
+	                                    </div>
+	                                </div>
+	                                <div class="col-md-6">
+	                                    <div class="form-group">
+	                                        <label class="control-label col-md-4">
+	                                            Tin #</label>
+                                            <div class="col-md-6">  <input name="taxId" class="form-control" type="text" maxlength="10" size="10"></div>
+	                                    </div>
+	                                </div>
+	                                <div class="col-md-6">
+	                                    <div class="form-group">
+	                                        <label class="control-label col-md-4">
+	                                            Services Provided</label>
+	                                        <!-- <select class="form-control">
+	                                            <option selected="selected">Select</option>
+	                                            <option>Property Management</option>
+	                                            <option>Appraisal Service</option>
+	                                            <option>Inspection Service</option>
+	                                        </select> -->
+	                                        <div id="servicesList" class="col-md-6"></div>
+	                                    </div>
+	                                </div>
+	                                <div class="col-md-6">
+	                                    <div class="form-group">
+	                                      <label class="control-label col-md-4">
+	                                            Products</label>
+	                                         <!--  <select class="form-control" name="productId">
+	                                            <option value="" selected="selected">Select</option>
+	                                            <option>Appraisal 1004</option>
+	                                            <option>Appraisal 1025</option>
+	                                            <option>Appraisal 1025</option>
+	                                            <option>Property Inspection</option>
+	                                        </select> -->
+	                                        <div id="productsList" class="col-md-6">
+	                                        </div>
+	                                        
+	                                    </div>
+	                                </div>
+	                                <div class="col-md-6">
+	                                    <div class="form-group">
+	                                        <!-- <label class="control-label">
+	                                            State/City/Zip</label> -->
+	                                        <!-- <select id="select02_sample02" class="form-control select2" multiple>
+	                                            <optgroup label="">
+	                                                <option>Eucid, OH 44132 </option>
+	                                                <option>2nd Street, East Lancaster, CA 44132</option>
+	                                                <option>44132 West Askew Drive, Maricopa, AZ</option>
+	                                                <option>Irvine CA</option>
+	                                                <option>Irvine Center Drive, Irvive CA</option>
+	                                                <option>Irvine Avenue, Newport Beach, CA</option>
+	                                                <option>Orange County, CA</option>
+	                                                <option>Orange County Register, North Grand Avenue, Santa Ana, CA</option>
+	                                                <option>Orange County Transport Authority, 550 S Main St, Orange, CA 92868</option>
+	                                                <option>California</option>
+	                                                <option>California City, CA</option>
+	                                                <option>California Street, San Francisco, CA</option>
+	                                                <option>California Apartments, Federal Avenue, Los Angeles, CA</option>
+	                                                <option>Texas</option>
+	                                                <option>Texas Cirt, TX</option>
+	                                                <option>Texas Motor Speedway, Lone Star Circle, Fort Worth, TX</option>
+	                                                <option>Texas Street, San Diego, CA </option>
+	                                            </optgroup>
+	                                        </select> -->
+	                                        <div id="geographies">
+	                                        </div>
+	                                    </div>
+	                                </div>
+	                                <div class="col-md-6">
+	                                    <div class="form-group">
+	                                        <label class="control-label col-md-4">
+	                                            Status</label>
+	                                        <!-- <select name="Status" class="form-control">
+	                                            <option selected="selected">In-Review</option>
+	                                            <option>Approved</option>
+	                                            <option>Suspended</option>
+	                                        </select> -->
+	                                        <div id="status" class="col-md-6">
+	                                        </div>
+	                                    </div>
+	                                </div>
+	                                 
+	                                <!-- <div class="col-md-1">
+	                                    <div class="form-group">
+	                                        <label class="control-label">
+	                                            Miles</label>
+	                                        <input name="miles" class="form-control" type="text">
+	                                    </div>
+	                                </div> -->
+	                               <!-- <div align="center" class="col-md-2">
+	                                    <div class="form-group">
+	                                        <button type="button" id="searchContact" class="btn  bg-green pull-right" style="margin-top: 26px; width: 100px;">
+	                                        	Search
+                                            </button>
+	                                    </div>
+	                                </div>
+-->
+                                <div class="text-center col-md-12 clearfix form-actions2">
+                                    <button type="button" id="searchContact" class="btn blue">
+                                        Search
+                                    </button>
+                                </div>
+
+                            </form>
+                        </div>
+                        <!-- end Advanced search 1 -->
+                        <div class="clearfix">
+                        </div>
+                    </div>
+                    <!-- Start Editable Search section -->
+
+
+                <!-- End Search section -->
+
+
+                <!-- Start Search section -->
+                <div class="panel">
+                    <div class="table table-responsive panel-body">
+
+                        <!-- Search table start -->
+                       <div id="searchResults"></div>
+                        <!-- Search table end -->
+                        <div class="clearfix">
+                        </div>
+                    </div>
+                </div>
+                <div class="clearfix">
+                </div>
+                <div class="clearfix">
+                </div>
+            </div>

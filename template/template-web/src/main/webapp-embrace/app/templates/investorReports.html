@@ -1,0 +1,223 @@
+ <!-- BEGIN CONTENT -->
+        <div class="page-content-wrapper">
+            <div class="page-content">
+               
+                <!-- BEGIN PAGE HEADING-->
+                 <div class="dash-header">
+        <div class="">
+          <!-- BEGIN PAGE TITLE & BREADCRUMB-->
+          
+          <div class="clearfix xtra-buttons">
+            <h3 class="page-title pull-left"> <i class="fa fa-user pull-left"></i> Investors Reports
+ </h3>
+           
+          </div>
+          <!-- END PAGE TITLE & BREADCRUMB-->
+        </div>
+      </div>
+      <div class="member-search">
+        <div class="">
+          <!-- BEGIN EXAMPLE TABLE PORTLET-->
+          <div class="row">
+            <div class="">
+              <!-- BEGIN ERROR MESSAGE-->
+              <div class="error-msg">
+      </div>
+              <!--END ERROR MESSAGE-->
+              <div class=" clearfix">
+                <form id="investorReportForm">
+                  <!--  -->
+                 <!--  <div class="alert alert-danger display-hide">
+										<button class="close" data-close="alert"></button>
+										You have some form errors. Please check below.
+									</div>
+									<div class="alert alert-success display-hide">
+										<button class="close" data-close="alert"></button>
+										Your form validation is successful!
+									</div>
+									<div class="alert alert-danger display-hide dateValidation">
+										<button class="close" data-close="alert"></button>
+										Start date can't be greater than end date. Please correct it and submit again.
+									</div> -->
+									<div id="errMsgDiv" class="alert alert-danger display-hide">
+										<button class="close" data-close="alert" onclick="$(this).parent().hide();return false;"></button>
+										Error in generating reports.
+									</div>
+									<div id="successMsgDiv" class="alert alert-success display-hide">
+										<button class="close" data-close="alert" onclick="$(this).parent().hide();return false;"></button>
+										Successfully generated the reports.
+									</div>
+									<div id="startMsgDiv" class="alert alert-success display-hide">
+										<button class="close" data-close="alert" onclick="$(this).parent().hide();return false;"></button>
+										Report Generation in progress.Mail will be sent with report generation status.
+									</div>
+									
+									 <!-- <div class="row">
+									   <div class="col-md-7">
+	                                        <div id="investorNames">
+	                                        <div class="form-group"></div>
+	                                        </div>
+	                                   </div>
+	                                </div> -->
+                  <!--  -->
+           <!--        <div class="row">
+                    <div class="col-md-7">k
+                      <div class="form-group">
+                        <label class="control-label col-md-5">Name</label>
+                        <div class="col-md-7">
+                           
+						  
+						 <div id="investorNames" 
+   style="margin-left: -3px;" 
+						 ></div>
+						  
+                        </div>
+                      </div>
+                    </div>
+				   </div> -->
+				   <!--  -->
+                      <div class="row">
+                    <div class="col-md-7">
+                      <div class="form-group" style="
+    margin-top: 16px;">
+                        <label class="control-label col-md-3">Report</label>
+                        <div class="col-md-7">
+                           
+						  
+						 <div  
+   style="margin-left: -3px;" 
+						 >
+						 <select class="form-control">
+						 	<option>Investor Statement - Monthly</option>
+						 </select>
+						 </div>
+						  
+                        </div>
+                      </div>
+                    </div>
+				   </div>
+                      <!--  -->
+				   <!-- <div class="clearfix"></div> -->
+				 
+  <!--                     <div class="form-group" style="
+    margin-top: 16px;">
+						<label class="control-label col-md-3" >
+							Start Date <span class="required">* </span>
+						</label>
+						<div class="input-group input-medium date date-picker col-md-3"
+							data-date="" data-date-format="mm-dd-yyyy"
+							data-date-viewmode="years">
+							<input class="form-control" readonly="" placeholder=""
+								type="text" id="startDate" name="startDate"> <span
+								class="input-group-btn" style="vertical-align: top;">
+								<button class="btn default" type="button">
+									<i class="fa fa-calendar"></i>
+								</button>
+							</span>
+						</div>
+					</div>
+					
+				     
+				    
+					
+					<div class="form-group">
+						<label class="control-label col-md-3" >
+							End Date <span class="required">* </span>
+						</label>
+						<div class="input-group input-medium date date-picker col-md-3"
+							data-date="" data-date-format="mm-dd-yyyy"
+							data-date-viewmode="years">
+							<input class="form-control" readonly="" placeholder=""
+								type="text" id="endDate" name="endDate"> <span
+								class="input-group-btn" style="vertical-align: top;">
+								<button class="btn default" type="button">
+									<i class="fa fa-calendar"></i>
+								</button>
+							</span>
+						</div>
+					</div> -->
+
+					<div class="row">
+						<div class="col-md-7">
+							<div class="form-group" style="margin-top: 16px;">
+								<label class="control-label col-md-3">Month<span class="required">*</span></label>
+								<div class="col-md-7">
+
+
+									<div style="margin-left: -3px;">
+										<select class="form-control" name="month">
+											<option value="">Select</option>
+											<option value="1">January</option>
+											<option value="2">February</option>
+											<option value="3">March</option>
+											<option value="4">April</option>
+											<option value="5">May</option>
+											<option value="6">June</option>
+											<option value="7">July</option>
+											<option value="8">August</option>
+											<option value="9">September</option>
+											<option value="10">October</option>
+											<option value="11">November</option>
+											<option value="12">December</option>
+										</select>
+									</div>
+
+								</div>
+							</div>
+						</div>
+					</div>
+					
+					<div class="row">
+						<div class="col-md-7">
+							<div class="form-group" style="margin-top: 16px;">
+								<label class="control-label col-md-3">Year<span class="required">*</span></label>
+								<div class="col-md-7">
+
+
+									<div style="margin-left: -3px;">
+										<select class="form-control" name="year">
+											<option value="">Select</option>
+											<option value="2014">2014</option>
+											<option value="2015">2015</option>
+											<option value="2016">2016</option>
+										</select>
+									</div>
+
+								</div>
+							</div>
+						</div>
+					</div>
+
+
+					<div class="clearfix"></div>
+				   
+				   <div class="col-md-4 margin-top-10 marg_left30">
+				   <a href="javascript:;" class="btn blue pull-right" id="generateInvestorReport">Generate</a>
+				   </div>
+                
+              
+              
+                </form>
+				
+              </div>
+			  
+            </div>
+			
+			
+          </div>
+        
+           <!-- Start search section -->
+							
+						  	 <!-- End search section -->
+          <!-- END EXAMPLE TABLE PORTLET-->
+          <!-- BEGIN EXAMPLE TABLE PORTLET-->
+          <!-- END EXAMPLE TABLE PORTLET-->
+        </div>
+      </div>
+                <!-- END PAGE HEADING-->
+				
+               
+				
+            </div>
+        </div>
+        <!-- END CONTENT -->

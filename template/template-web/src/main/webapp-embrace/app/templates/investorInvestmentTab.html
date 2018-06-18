@@ -1,0 +1,46 @@
+<div class="portlet-body table-responsive">
+		<table
+			class="table table-striped table-bordered table-advance table-hover tablegreen"
+			id="investorInvestmentTable">
+			<thead>
+				<tr>
+					<th class="fontnml" style="text-align: center;">Property</th>
+					<th class="fontnml" style="text-align: center;">Closer</th>
+					<th class="fontnml" style="text-align: center;">Asset Manager</th>
+					<th class="fontnml" style="text-align: center;">Status</th>
+				</tr>
+			</thead>
+			<tbody>
+				<% if(investmentDetails) { %> <% _.each(investmentDetails,
+				function(invDetail){ %>
+				<tr>
+					<td style="border-left: none;"><img
+						src="<%- invDetail.photoLink %>" border="0"
+						class="pull-left marg_right10 img1class" alt="Image"> <span
+						> <%= invDetail.address + ', ' + invDetail.city + ', '
+							+ invDetail.state%> </span> <br> <%= invDetail.bedroom + 'Beds, ' +
+						invDetail.bath + 'Baths, '%> <span class="amount"><%-invDetail.area%></span> <%-
+						' Sqft.'%></td>
+					<td><%- invDetail.closer %></td>
+					<td><%- invDetail.manager %></td>
+					<td><% if(invDetail.investmentStatus == "Purchased") {%> <a
+						href="#myProperties/<%= invDetail.assetId%>"> <%=
+							invDetail.investmentStatus + ' -'%><br> <%=
+							invDetail.currentStatus%>
+					</a> <% }else if ((invDetail.investmentStatus == "Closing") ||
+						(invDetail.investmentStatus == "Cancelled") ){ %> <a
+						href="#closing/<%= invDetail.investmentID %>"> <%=
+							invDetail.investmentStatus + ' -'%><br> <%=
+							invDetail.currentStatus%>
+					</a> <%} else {%> <%= invDetail.investmentStatus + ' -'%><br> <%=
+						invDetail.currentStatus%> <%}%>
+					</td>
+
+				</tr>
+				<% }); %> <% }else{ %>
+				<tr>No Data Available
+				</tr>
+				<%}%>
+			</tbody>
+		</table>
+	</div>

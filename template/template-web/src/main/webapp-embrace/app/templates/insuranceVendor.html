@@ -1,0 +1,17 @@
+<div style="margin-right:280px;margin-bottom:10px;">
+
+<select class="form-control" id="insuranceVendorDropdown">
+		<%if(addBlankFirstOption){%>
+			<option value="">select</option>
+		<%}%>
+				
+		<%_(users).each(function(user) { %>
+			<option value="<%= user.userId %>">
+				<%= user.userName%>
+			</option>
+		<% }); %>
+		
+		<
+</select>
+
+</div>

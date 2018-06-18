@@ -1,0 +1,130 @@
+<div class="portlet box grey">
+    <div class="portlet-title">
+        <div class="caption">
+            <i class="fa fa-cogs"></i>Listing Information
+        </div>
+
+    </div>
+</div>
+<div id="listingInfoErrorMessage" class="alert alert-danger display-hide">
+		<button class="close" data-close="alert" onclick="$(this).parent().hide();return false;"></button>
+		<text></text>
+</div>	
+<form id="listingInfoForm">
+    <div class="col-md-6">
+	    <div class="form-group">
+			<label class="control-label" style="text-align: left;">
+			MLS Number:</label>
+			<input class="form-control" type="text"
+			name="mlsNumber" value="<%- theData.listingDetails.mlsNumber %>">
+		</div>
+    </div>
+    <div class="col-md-6">
+	    <div class="form-group">
+			<label class="control-label" style="text-align: left;">
+			Listing Agent Name:</label>
+			<input class="form-control" type="text"
+			name="listingAgentname" value="<%- theData.listingDetails.listingAgentname %>">
+		</div>
+    </div>
+    <div class="col-md-6">
+	    <div class="form-group">
+			<label class="control-label" style="text-align: left;">
+			Listing Agent Phone:</label>
+			<input class="form-control" type="text"
+			name="listingAgentphone" value="<%- theData.listingDetails.listingAgentphone %>">
+		</div>
+    </div>
+    <div class="col-md-6">
+	    <div class="form-group">
+			<label class="control-label" style="text-align: left;">
+			Listing Agent Mail:</label>
+			<input class="form-control" type="text"
+			name="listingAgentemail" value="<%- theData.listingDetails.listingAgentemail %>">
+		</div>
+    </div>
+    <div class="col-md-6">
+	    <div class="form-group">
+			<label class="control-label" style="text-align: left;">
+			Realtor Company Name:</label>
+			<input class="form-control" type="text"
+			name="realtorCompanyname" value="<%- theData.listingDetails.realtorCompanyname %>">
+		</div>
+    </div>
+	    <div class="col-md-6">
+		    <div class="form-group">
+				<label class="control-label" style="text-align: left;">
+				Realtor Company Phone:</label>
+				<input class="form-control" type="text"
+				name="realtorCompanyphone" value="<%- theData.listingDetails.realtorCompanyphone %>">
+			</div>
+	    </div>
+	    
+	    <!-- <div class="col-md-6">
+		    <div class="form-group">
+				<label class="control-label" style="text-align: left;">
+				Listed On:</label>
+				<input class="form-control" type="text"
+				name="listedOn" value="<%- theData.listingInfo.listedOn %>">
+			</div>
+	    </div> -->
+	    <div class="col-md-6">
+		    <div class="form-group">
+				<label class="control-label" style="text-align: left;">
+				Listing URL:</label>
+				<input class="form-control" type="text"
+				name="listingUrl" value="<%- theData.listingDetails.listingUrl %>">
+			</div>
+	    </div>
+
+         <div class="col-md-6">
+		    <div class="form-group">
+				<label class="control-label" style="text-align: left;">
+				Appraised Value($):</label>
+				<div class="input-group">
+					<span class="input-group-addon"><i class="fa fa-dollar"></i></span>
+					<input class="form-control currency" type="text" name="appraisedValue" id="appraisedValue" value='<%= theData.listingDetails.appraisedValue%>'>
+				</div>
+			</div>
+	    </div>
+	    <div class="col-md-6">
+		    <div class="form-group">
+				<label class="control-label" style="text-align: left;">
+				Appraisal Doc:</label>
+				<input class="form-control" type="text"
+				name="appraisalDoc" value="<%- theData.listingDetails.appraisalDoc %>">
+			</div>
+	    </div>                  
+
+		<div class="col-md-6">
+		    <div class="form-group">
+				<label class="control-label" style="text-align: left;">
+				Agent Remarks:</label>
+				<input class="form-control" type="text"
+				name="agentRemarks" value="<%- theData.listingDetails.agentRemarks %>">
+			</div>
+	    </div>
+	    <div class="col-md-6">
+	    <div class="form-group">
+				<label class="control-label" style="text-align: left;">
+				ILM Notes:</label>
+				<input class="form-control" type="text"
+				name="notes" value="<%- theData.listingDetails.notes %>">
+			</div>
+	    </div>
+</form>
+	    <div class="col-md-12">   
+			 <div class="col-md-2">
+			 </div>  
+			<div class="form-group col-md-8">
+				<button type="button" name="cancelBtn" class="btn default">
+					CANCEL</button>
+				<button type="button" id="saveListingInfoModalBtn" class="btn blue">
+					<i class="fa fa-check"></i>SAVE</button>
+			</div>
+		</div>
+	    
+    <div class="portlet-body table-responsive">
+        <table name="listing" class="table table-hover table-striped table-bordered table-advance margin-top-20">
+        </table>
+    </div>

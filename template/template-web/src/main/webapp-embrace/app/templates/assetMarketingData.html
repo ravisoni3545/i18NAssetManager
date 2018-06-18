@@ -1,0 +1,56 @@
+<div class="col-md-12 closingResultDiv">
+	<!-- Existing contract table start -->
+	<div class="table table-responsive panel">
+		<table style="table-layout: fixed; width:100%;"
+			class="table table-striped table-bordered table-advance table-hover tablegreen"
+			id="myAssetMarketingTable">
+			<thead>
+				<tr>
+					<th class="fontnml" style="text-align: center;">PROPERTY</th>
+					<th class="fontnml" style="text-align: center;">UNIT #</th>
+					<th class="fontnml" style="text-align: center;">INVESTOR</th>
+					<th class="fontnml" style="text-align: center;">TYPE</th>
+					<th class="fontnml" style="text-align: center;">START DATE</th>
+					<th class="fontnml" style="text-align: center;">END DATE</th>
+					<th class="fontnml" style="text-align: center;">DOM</th>
+					<th class="fontnml" style="text-align: center;">STATUS</th>
+				</tr>
+			</thead>
+			<% if(assetMarketingResponse) { %> 
+				<% _.each(assetMarketingResponse, function(singleData){ %>
+				<tr>
+						<td style="border-left: none;">
+							<div>
+								<img src="<%- singleData.propertyPhoto %>" border="0" class="pull-left marg_right5 img1class" alt="Image"> 
+								<a href="#property/<%- singleData.propertyId%>" class="darkcolor dottext propNameTooltip font13" data-toggle="tooltip" title="<%= singleData.propertyAddress %>">
+					                <%- singleData.propertyAddress %>
+				              	</a>
+								<span class="lightfontcolor font13">
+									<%if(singleData.propertyType) {%> <%-singleData.propertyType %>, <%}%> 
+									<%- singleData.propertyOtherDetails %>
+									<%if(singleData.propertyDisplayId) {%> <br> <%-singleData.propertyDisplayId %> <%}%> 
+								</span>
+							</div>
+						</td>
+						<td><% if(singleData.unitId) { %>
+							 <%- singleData.unitId %> 
+							 <% } %></td>
+						<td><%- singleData.investorName %></td>
+						<td><%- singleData.marketingType %></td>
+						<td><%- singleData.marketingStartDate %></td>
+						<td><%- singleData.marketingEndDate %></td>
+						<td><%- singleData.daysOnMarket %></td>
+						<td><a href="#marketing/<%- singleData.marketingId %>" id="redirectUrl"> <!-- <%- singleData.investmentStatus %>- -->
+								<%- singleData.marketingStatus %>
+							</a>
+						</td>
+						
+				<% }); %> 
+			<% }else{ %>
+				<tr>No Data Available
+				</tr>
+			<%}%>	
+		</table>
+	</div>
+</div>
+

@@ -1,0 +1,394 @@
+<div class="modal fade bs-modal-lg" id="editAMAgreementsModal" data-backdrop="static" data-keyboard="false" tabindex="-1"
+	role="basic" aria-hidden="true">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal"
+						aria-hidden="true"></button>
+					<h4 class="modal-title"><u>Asset Management Agreement Details</u></h4>
+				</div>
+				
+			
+			<div class="modal-body">
+				<form id="editAMAgreementsForm" autocomplete="off"> 
+			<div class="row">
+					<div class="col-md-4">
+						<div class="form-group">
+							<label class="col-md-4 control-label pad_leftright0">
+								Start Date:<span class="required">*</span>
+							</label>
+							<div class="input-group input-medium date date-picker col-md-7 pad_right0 margin-bottom-10"
+								data-date-format="mm-dd-yyyy" data-date-clear-btn="true"
+								data-date-viewmode="years">
+								<input class="form-control" readonly=""
+									type="text" name="startDate" value="<%- AMAgreementsModel.startDate %>"> <span class="input-group-btn">
+									<button class="btn default" type="button">
+										<i class="fa fa-calendar"></i>
+									</button>
+								</span>
+								</div>
+						</div>
+					</div>
+	
+	
+					<div class="col-md-4">
+						<div class="form-group">
+							<label class="col-md-4 control-label pad_leftright0">
+								End Date:<span class="required">*</span>
+							</label>
+							<div class="input-group input-medium date date-picker col-md-7 pad_right0 margin-bottom-10"
+								data-date-format="mm-dd-yyyy" data-date-clear-btn="true"
+								data-date-viewmode="years">
+								<input class="form-control" readonly=""
+									type="text" name="endDate" value="<%- AMAgreementsModel.endDate %>"> <span class="input-group-btn">
+									<button class="btn default" type="button">
+										<i class="fa fa-calendar"></i>
+									</button>
+								</span>
+								</div>
+						</div>
+					</div>
+					
+					<div class="col-md-4">
+						<div class="form-group">
+							<label class="col-md-4 control-label pad_leftright0">
+								Date Signed:<span class="required"></span>
+							</label>
+							<div id="signedDateDiv" class="disable-field">
+							<div class="input-group input-medium date date-picker col-md-7 pad_right0 margin-bottom-10"
+								data-date-format="mm-dd-yyyy" data-date-clear-btn="true"
+								data-date-viewmode="years">
+								<input class="form-control ignore" readonly=""
+									type="text" name="signedDate" value="<%- AMAgreementsModel.signedDate %>"> <span class="input-group-btn">
+									<button class="btn default" type="button">
+										<i class="fa fa-calendar"></i>
+									</button>
+								</span>
+								</div>
+							</div>
+						</div>
+					</div>
+			</div>
+				
+			<div class="row">
+            	<div class="col-md-6">
+                    <div class="form-group">
+                         <label class="col-md-4 control-label" style="padding-left:0px;">Asset Acquisition Fee Type</label>
+                         <div class="radio-list col-md-6" style="padding-left: 35px">
+		                    <label class="radio-inline" style="padding-right:10px">
+		                        <input name="isAAFeePercentage" id="isAAFeePercentageN" value="N" type="radio" 
+		                        <%if(AMAgreementsModel.isAssetAcquisitionFeePercent==null){%>checked="true"<%}else if(AMAgreementsModel.isAssetAcquisitionFeePercent=='N'){%>
+                        		checked="true"<%}%>>
+		                        Amount
+		                    </label>
+		                    &nbsp;&nbsp;&nbsp;
+		                    <label class="radio-inline" style="padding-left: 0px!important;">
+		                        <input name="isAAFeePercentage" id="isAAFeePercentageY" value="Y" type="radio" 
+		                        <%if(AMAgreementsModel.isAssetAcquisitionFeePercent=='Y'){%>
+                        		checked="true"<%}%>>
+                        		Percentage
+		                    </label>
+						 </div>
+                    </div>
+                </div>
+                
+                
+            </div>
+				
+			<div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="col-md-4 control-label pad_leftright0">Asset Acquisition Fee</label>
+                        <div class="col-md-7 pad_right0 margin-bottom-10"  id="AAFeeAmountDiv" style="display: none;">
+                            <input type="text" name="AAFeeAmount" class="form-control text-right currencyInsurance" value="<%-AMAgreementsModel.assetAcuisitionFee%>">
+                        </div>
+                      	<div class="col-md-7 pad_right0 margin-bottom-10" id="AAFeePercentageDiv" >
+                      		<div class="input-group"> 
+								<input type="text" name="AAFeePercentage" class="form-control text-right" value="<%-AMAgreementsModel.assetAcuisitionFee%>">
+								<span class="input-group-addon"><i class="fa">%</i></span>
+							 </div> 
+						</div>
+						<div class="col-md-4"></div>
+						<div class="col-md-7 pull-left margin-bottom-20" id="AAFeeErrDiv" style="display: none;color: #b94a48;">This field is required</div>
+                    </div>
+                </div>
+                
+              
+                <div class="col-md-6" id="AAFeeAmountCalcDiv">
+                    <div class="form-group">
+                        <label class="col-md-4 control-label pad_leftright0">Fee Amount</label>
+                        <div class="col-md-7 pad_right0 margin-bottom-10">
+                            <input type="text" name="AAFeeAmountCalc" id="AAFeeAmountCalc" placeholder="" class="form-control text-right currencyInsurance" value="" readonly="readonly">
+                        </div>
+                    </div>
+                </div>
+            
+            </div>
+            
+            <div class="row">            
+            	 <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="col-md-4 control-label pad_leftright0">Waivers</label>
+                        <div class="col-md-7 pad_right0 margin-bottom-10">
+                            <input type="text" name="AAWaivers" placeholder="" class="form-control text-right" value="<%-AMAgreementsModel.acqWaivers%>">
+                        </div>
+                    </div>
+                </div>
+                
+                 <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="col-md-4 control-label pad_leftright0">Revised Fee Amount</label>
+                        <div class="col-md-7 pad_right0 margin-bottom-10">
+                            <input type="text" name="RevisedAAFeeAmount" placeholder="" class="form-control text-right currencyInsurance" value="<%-AMAgreementsModel.discountedAAFee%>">
+                        </div>
+                    </div>
+                </div>            
+            </div>
+            
+            <div class="row">
+            	<div class="col-md-6">
+                    <div class="form-group">
+                         <label class="col-md-4 control-label" style="padding-left:0px;">Asset Management Fee Type</label>
+                         <div class="radio-list col-md-8" style="padding-left: 35px">
+		                    <label class="radio-inline" style="padding-right:10px">
+		                        <input name="isAMFeePercentage" id="isAMFeePercentageN" value="N" type="radio" checked="true">
+		                        Amount
+		                    </label>
+		                    &nbsp;
+		                    <label class="radio-inline" style="padding-left: 0px!important;">
+		                         <input name="isAMFeePercentage" id="isAMFeePercentageY" value="Y" type="radio" 
+		                        <%if(AMAgreementsModel.isAssetManagementFeePercent=='Y'){%>
+                        		checked="true"<%}%>>
+                        		% of Price
+		                    </label>
+		                    &nbsp;&nbsp;&nbsp;
+		                    <label class="radio-inline" style="padding-left: 0px!important;">
+		                         <input name="isAMFeePercentage" id="isAMFeePercentageR" value="R" type="radio" 
+		                        <%if(AMAgreementsModel.isAMFeePercentOfRent=='Y'){%>
+                        		checked="true"<%}%>>
+                        		% of Rent
+		                    </label>
+						 </div>
+                    </div>
+                </div>
+                
+            </div>
+				
+			<div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="col-md-4 control-label pad_leftright0">Asset Management Fee<span class="required">*</span></label>
+                        <div class="col-md-7 pad_right0 margin-bottom-10"  id="AMFeeAmountDiv" style="display: none;">
+                            <input type="text" name="AMFeeAmount" class="form-control text-right currencyInsurance" value="<%-AMAgreementsModel.assetManagementFee%>">
+                        </div>
+                      	<div class="col-md-7 pad_right0 margin-bottom-10" id="AMFeePercentageDiv" >
+                      		<div class="input-group"> 
+								<input type="text" name="AMFeePercentage" class="form-control text-right" value="<%-AMAgreementsModel.assetManagementFee%>">
+								<span class="input-group-addon"><i class="fa">%</i></span>
+							 </div> 
+						</div>
+						<div class="col-md-4"></div>
+						<div class="col-md-7 pull-left margin-bottom-20" id="AMFeeErrDiv" style="display: none;color: #b94a48;">This field is required</div>
+                    </div>
+                </div>
+                
+              
+                <div class="col-md-6" id="AMFeeAmountCalcDiv">
+                    <div class="form-group">
+                    	<div class="col-md-4 control-label pad_leftright0">
+	                        <label >Fee Amount</label>
+	                        <label id="yearly">(Yearly)</label>
+	                        <label id="monthly">(Monthly)</label>
+                        </div>
+                        <div class="col-md-7 pad_right0 margin-bottom-10">
+                            <input type="text" name="AMFeeAmountCalc" id="AMFeeAmountCalc" placeholder="" class="form-control text-right currencyInsurance" value="" readonly="readonly">
+                        </div>
+                    </div>
+                </div>
+            
+            </div>
+           
+            
+            <div class="row">            
+            	 <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="col-md-4 control-label pad_leftright0">Waivers</label>
+                        <div class="col-md-7 pad_right0 margin-bottom-10">
+                            <input type="text" name="AMWaivers" placeholder="" class="form-control text-right" value="<%-AMAgreementsModel.mgmtWaivers%>">
+                        </div>
+                    </div>
+                </div>
+                
+                 <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="col-md-4 control-label pad_leftright0">Revised Fee Amount</label>
+                        <div class="col-md-7 pad_right0 margin-bottom-10">
+                            <input type="text" name="RevisedAMFeeAmount" placeholder="" class="form-control text-right currencyInsurance" value="<%-AMAgreementsModel.discountedAMFee%>">
+                        </div>
+                    </div>
+                </div>            
+            </div> 
+            
+            <div class="row">
+            	<div class="col-md-6">
+                    <div class="form-group">
+                         <label class="col-md-4 control-label" style="padding-left:0px;">Property Management Fee Type</label>
+                         <div class="radio-list col-md-6" style="padding-left: 35px">
+		                    <label class="radio-inline" style="padding-right:10px">
+		                        <input name="isPMFeePercentage" id="isPMFeePercentageN" value="N" type="radio" 
+		                        <%if(AMAgreementsModel.isPropertyManagementFeePercent==null){%>checked="true"<%}else if(AMAgreementsModel.isPropertyManagementFeePercent=='N'){%>
+                        		checked="true"<%}%>>
+		                        Amount
+		                    </label>
+		                    &nbsp;&nbsp;&nbsp;
+		                    <label class="radio-inline" style="padding-left: 0px!important;">
+		                         <input name="isPMFeePercentage" id="isPMFeePercentageY" value="Y" type="radio" 
+		                        <%if(AMAgreementsModel.isPropertyManagementFeePercent=='Y'){%>
+                        		checked="true"<%}%>>
+                        		Percentage
+		                    </label>
+						 </div>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="col-md-4 control-label pad_leftright0">Property Management Fee(Monthly)</label>
+                        <div class="col-md-7 pad_right0 margin-bottom-10"  id="PMFeeAmountDiv" style="display: none;">
+                            <input type="text" name="PMFeeAmount" class="form-control text-right currencyInsurance" value="<%-AMAgreementsModel.propertyManagementFee%>">
+                        </div>
+                      	<div class="col-md-7 pad_right0 margin-bottom-10" id="PMFeePercentageDiv" >
+                      		<div class="input-group"> 
+								<input type="text" name="PMFeePercentage" class="form-control text-right" value="<%-AMAgreementsModel.propertyManagementFee%>">
+								<span class="input-group-addon"><i class="fa">%</i></span>
+							 </div> 
+						</div>
+                    </div>
+                </div>
+            
+            </div>
+            
+             <div class="row">            
+            	 <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="col-md-4 control-label pad_leftright0">Leasing Fee</label>
+                        <div class="col-md-7 pad_right0 margin-bottom-10">
+                        	<div class="input-group"> 
+	                            <input type="text" name="leasingFee" placeholder="" class="form-control text-right" value="<%-AMAgreementsModel.leasingFee%>">
+	                            <span class="input-group-addon"><i class="fa">%</i></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                 <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="col-md-4 control-label pad_leftright0">Re-Leasing Fee</label>
+                        <div class="col-md-7 pad_right0 margin-bottom-10">
+                        	<div class="input-group"> 
+	                            <input type="text" name="reLeasingFee" placeholder="" class="form-control text-right" value="<%-AMAgreementsModel.reLeasingFee%>">
+	                            <span class="input-group-addon"><i class="fa">%</i></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>            
+            </div> 
+            
+            <div class="row">            
+            	 <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="col-md-4 control-label pad_leftright0">Maintenance Notification Threshold Amount</label>
+                        <div class="col-md-7 pad_right0 margin-bottom-10">
+                            <input type="text" name="maintenanceAmount" placeholder="" class="form-control text-right currencyInsurance" value="<%-AMAgreementsModel.maintenanceAmount%>">
+                        </div>
+                    </div>
+                </div>
+                
+                 <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="col-md-4 control-label pad_leftright0">Provision/Reserves Billed</label>
+                        <div class="col-md-7 pad_right0 margin-bottom-10">
+                            <input type="text" name="provisionBilled" placeholder="" class="form-control text-right currencyInsurance" value="<%-AMAgreementsModel.provisionBilled%>">
+                        </div>
+                    </div>
+                </div>            
+            </div> 
+            
+            <div class="row">
+            	<div class="col-md-6">
+                    <div class="form-group">
+                         <label class="col-md-4 control-label" style="padding-left:0px;">Asset Management Agreement Auto Renews?</label>
+                         <div class="radio-list col-md-6" style="padding-left: 35px">
+		                    <label class="radio-inline" style="padding-right:10px">
+		                        <input name="isAutoRenew" id="isAutoRenewY" value="Y" type="radio" 
+		                        <%if(AMAgreementsModel.isAutoRenew=='Y'){%> checked="true" <%}%> >
+		                        Yes
+		                    </label>
+		                    &nbsp;&nbsp;&nbsp;
+		                    <label class="radio-inline" style="padding-left: 0px!important;">
+		                         <input name="isAutoRenew" id="isAutoRenewN" value="N" type="radio" 
+		                        <%if(AMAgreementsModel.isAutoRenew==null || AMAgreementsModel.isAutoRenew=='N'){%>
+                        		checked="true"<%}%>>
+                        		No
+		                    </label>
+						 </div>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="row">
+            		
+				<div class="col-md-6">
+						<div class="form-group">
+							<label class="col-md-4 control-label pad_leftright0">
+								Status <span class="required">* </span>
+							</label>
+							
+							<div class="col-md-7 pad_right0 margin-bottom-10" id="editAMAgreementsStatus"></div>
+						</div>
+				</div> 
+			</div>
+			
+			<div class="clearfix"></div>
+			</form>
+			
+			</div>
+			 
+			 <div class="row">
+				<div class="col-md-10">
+					<div class="form-group">
+						<div id="AMAgreementsDocs"></div>
+						<label class="col-md-12 control-label"> Upload Document
+							<span id="documentLabel" class="required">*</span>
+							<a class="margin-right-10 fa fa-paperclip font14 showDocumentTooltip_2" style="cursor: pointer;" 
+								data-object="<%=AMAgreementsModel.object%>" data-objectid="<%=assetId%>" 
+								data-subobject="<%=AMAgreementsModel.subObject%>" data-subobjectid="<%=AMAgreementsModel.agreementsId%>" data-html="true" data-show="true">
+				              	</a>
+						</label><br> 
+						<div class="col-md-12">
+							<div id="documentUploadDiv" class="col-md-12 grey-well"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+			
+			<div class="modal-footer">
+					<button type="button" class="btn blue" id="editOrSaveAMAgreements">
+						SAVE</button>
+					<button type="button" class="btn default" data-dismiss="modal">
+						CANCEL</button>
+			</div>
+			
+			
+		
+		</div>
+		<!-- /.modal-content -->
+	</div>
+	<!-- /.modal-dialog -->
+</div>
+<!--ends edit expenses dialog box-->

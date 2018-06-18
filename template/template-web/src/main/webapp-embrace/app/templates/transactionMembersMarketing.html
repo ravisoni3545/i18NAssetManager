@@ -1,0 +1,54 @@
+<div>
+<div id="transMemsSuccessMsg" class="alert alert-success display-hide">
+	<button class="close" data-close="alert" onclick="$(this).parent().hide();return false;"></button>
+	<text>Successfully saved the transaction member</text>
+</div>
+<div id="transMemsFailureMsg" class="alert alert-danger display-hide">
+	<button class="close" data-close="alert" onclick="$(this).parent().hide();return false;"></button>
+	<text>Failed to save the transaction member</text>
+</div>
+
+<!-- trans members view start -->
+<div id="trans-mem-view" class="transmemtoggle margin-bottom-20">
+	<div class="row" style="margin-bottom:-10px;">
+	<% var count=1 %>
+	<% _.each(transactionMemberResponse, function( singleData){ %>
+	<div class="col-md-3">
+		
+			<strong><%= singleData.roleName%>
+		<% if(singleData.roleName=='Leasing Coordinator'||singleData.roleName=='Leasing Agent'){ %>
+			<a
+		style="cursor: pointer"  id="transmem-edit" data-roleName='<%-singleData.roleName%>' 
+		data-processRoleId='<%-singleData.processRoleId%>' data-userId='<%-singleData.userId%>' data-show='true'><i class="fa fa-edit"></i></a>
+		<% } %>
+		</strong><br>
+	<div class="transactionMemberSection">
+			<div class="dash-list-style">
+
+				<ul>
+					<li><span class="sale-info">
+							<%if(singleData.imageUrl) { %> <img alt=""
+								src="<%= singleData.imageUrl %>" width="29"
+								height="29" class="marg_right5"> <%} else {%> <img
+								alt="" src="assets/img/user1.png" width="29" height="29" />
+							<%}%> <%=singleData.userName%> <i
+							class="fa fa-img-up"></i>
+					</span></li>
+
+				</ul>
+
+			</div>
+		 </div>
+		 <div class="marketingUserDropdown dash-list-style"></div>
+		</div>
+		<% if(count%4==0) {%>
+			<div class="clearfix"></div>
+			<% } %>
+			<% count++ %>
+	<% }); %>
+
+</div>
+<!-- trans members view end -->
+
+<!-- trans members edit start -->
+

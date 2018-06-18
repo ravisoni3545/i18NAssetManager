@@ -1,0 +1,186 @@
+<div class="modal fade" id="INSURANCE_PROVIDED_POPUP_1" tabindex="-1"
+	role="basic" aria-hidden="true">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal"
+					aria-hidden="true"></button>
+				<h3 class="modal-title">Upload Binder</h3>
+			</div>
+			<div class="modal-body clearfix">
+
+				<div class="form-horizontal">
+					<div class="row">
+
+						<div class="col-md-6">
+							<div class="form-group clearfix">
+								<label class="control-label col-md-5">Investor Name:</label>
+								<div class="col-md-6">
+									<p class="form-control-static"><%- popupData.investorName
+										%></p>
+								</div>
+							</div>
+						</div>
+						<!--/span-->
+						<div class="col-md-6">
+							<div class="form-group clearfix">
+								<label class="control-label col-md-5">Property Address:</label>
+								<div class="col-md-7">
+									<p class="form-control-static"><%-
+										popupData.fullPropertyAddress %></p>
+								</div>
+							</div>
+						</div>
+						<!--/span-->
+						<div class="col-md-6">
+							<div class="form-group clearfix">
+								<label class="control-label col-md-5">Lender:</label>
+								<div class="col-md-6">
+									<p class="form-control-static">
+										<%- popupData.lenderOrgName %><br> <%- popupData.name %><br>
+										<%- popupData.phone %><br> <a style="cursor: pointer">
+											<%- popupData.email %></a>
+
+									</p>
+								</div>
+							</div>
+						</div>
+
+						<div class="col-md-12 marg_top20">
+							<!-- BEGIN PORTLET-->
+							<div class="portlet box light-grey">
+								<div class="portlet-title">
+									<div class="caption">
+										<i class="fa fa-reorder"></i>Upload following 4 documents
+									</div>
+
+								</div>
+								<div class="portlet-body form">
+									<!-- BEGIN FORM-->
+									<form class="form-horizontal form-bordered" method="post"
+										id="INSURANCE_PROVIDED_POPUP_1_FORM"
+										enctype="multipart/form-data">
+										<div style="display: none;">
+											<input type="hidden" name="object"
+												value="<%- popupData.object %>"> <input
+												type="hidden" name="objectId"
+												value="<%- popupData.objectId %>"> <input
+												type="hidden" name="taskKey"
+												value="<%- popupData.taskKey %>"> <input
+												type="hidden" name="propertyInsuranceId"
+												value="<%- popupData.propertyInsuranceId %>"> <input
+												type="hidden" name="email" value="">
+										</div>
+										<div class="form-body">
+											<div class="form-group">
+												<label class="control-label col-md-3"><i
+													class="fa fa-file marg_right5"></i>Certificate of Issuance</label>
+												<div class="col-md-9">
+													<input type="file" name="insuranceCertificateDocs"
+														class="form-control" multiple
+														style="padding-bottom: 40px; border: 1px solid transparent;">
+												</div>
+											</div>
+											<div class="form-group">
+												<label class="control-label col-md-3"><i
+													class="fa fa-file marg_right5"></i> Evidence of Insurance<span
+													class="required">* </span></label>
+												<div class="col-md-9">
+													<input type="file" name="insuranceEvidenceDocs" multiple
+														class="form-control"
+														style="padding-bottom: 40px; border: 1px solid transparent;">
+
+												</div>
+											</div>
+											<div class="form-group">
+												<label class="control-label col-md-3"><i
+													class="fa fa-file marg_right5"></i> Insurance Declaration</label>
+												<div class="col-md-9">
+													<input type="file" name="insuranceDeclarationDocs" multiple
+														class="form-control"
+														style="padding-bottom: 40px; border: 1px solid transparent;">
+
+												</div>
+											</div>
+											<div class="form-group last">
+												<label class="control-label col-md-3"><i
+													class="fa fa-file marg_right5"></i>Invoice</label>
+												<div class="col-md-9">
+													<input type="file" name="insuranceInvoiceDocs" multiple
+														class="form-control"
+														style="padding-bottom: 40px; border: 1px solid transparent;">
+
+												</div>
+											</div>
+										</div>
+										<div class="clearfix"></div>
+										
+										<div class="col-md-12 marg_top15 margin-bottom-15 row">
+												<button type="button"
+													class="btn green showDocumentTooltip pull-left"
+													data-taskkey="INSURANCE_APPLICATION_SIGNED"
+													data-object="<%- popupData.object %>"
+													data-objectid="<%- popupData.objectId %>"
+													data-html="true" data-show="true"
+													data-original-title title>
+													<i class="fa fa-file marg_right5"></i>View Insurance Application
+												</button>
+										</div>
+
+										<div class="col-md-12 margin-bottom-15 row">
+
+
+											<div class="form-group">
+												<label class="control-label margin-bottom-15"> <i
+													class="fa fa-comment-o "></i> Comments
+												</label><br>
+
+												<textarea class="form-control" name="comments"></textarea>
+											</div>
+											
+											<div id="mailContentErrDiv" style="margin-top: 10px;"
+												class="alert alert-danger display-hide">
+												<button class="close" data-close="alert"></button>
+												Please enter message to lender.
+											</div>
+											
+											<div class="form-group" id="mailContentDiv"
+												style="display: none;margin-top: -10px;">
+												<label class="control-label margin-bottom-15"> <i
+													class="fa fa-comment-o "></i> Message To Lender<span
+													class="required">* </span>
+												</label><br>
+
+												<textarea class="form-control" name="mailContent"
+													style="height:200px;" id="mailContent"></textarea>
+											</div>
+
+										</div>
+
+									</form>
+									<!-- END FORM-->
+								</div>
+							</div>
+							<!-- END PORTLET-->
+
+						</div>
+					</div>
+
+				</div>
+				<div class="clearfix"></div>
+				<div class="modal-footer">
+					<button type="button" class="btn blue"
+						id="insuranceBinderSubmitButton">Save</button>
+					<button type="button" class="btn blue"
+						data-email="<%- popupData.email %>" id="sendDocsToLenderButton">
+						Save and Send Documents to Lender</button>
+					<button type="button" class="btn default" data-dismiss="modal">
+						Cancel</button>
+
+				</div>
+			</div>
+			<!-- /.modal-content -->
+		</div>
+		<!-- /.modal-dialog -->
+	</div>
+</div>

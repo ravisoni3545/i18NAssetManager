@@ -1,0 +1,6 @@
+<select class="form-control states" data-required="4" name="state">
+	<option value="">Select</option>
+	<% _(states).each(function(state) { %>
+    <option value="<%= state.code %>"><%= state.name %></option>
+  	<% }); %>
+</select>

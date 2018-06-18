@@ -1,0 +1,23 @@
+<%  var rowCount=1;
+_.each(issues,function(issue){ %>
+    <tr data-modelid="<%- issue.inspectionItemId%>">
+        <td><%- issue.issueSource%></td>
+        <td><%- _.find(categories,function(item){
+                console.log(item.categoryId);
+                return issue.category == item.categoryId;
+            }).categoryName%>
+        </td>
+        <td><%- issue.description%></td>
+        <td><%- issue.huComments%></td>
+        <td><%- issue.repairedBy%></td>
+        <td class="amount text-right <%(issue.repairedBy=='Seller')? print('lightfontcolor'): '' %>" style="text-align:right;"><%- issue.estimate%></td>
+        <td><p style="text-align:center;"><%- issue.referenceNo%></p></td>
+        <td class="noExl">
+             <a style="cursor:pointer;" data-toggle="collapse"  data-show=true data-target="<%= '.inspectionRow' + rowCount %>" title="Edit" class="edit_blue accordion-toggle addOrEditInspectionIlmCategory"><i class="fa fa-edit"></i>
+             </a>
+
+             <a title="Delete" class="delete_red deleteInspectionCategory" data-toggle="modal" style="cursor:pointer;"><i class="fa fa-trash-o">
+             </i></a>
+        </td>
+    </tr>
+<% rowCount++; }) %>

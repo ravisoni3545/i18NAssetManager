@@ -1,0 +1,131 @@
+<div class="addbtnposition pull-right margin-bottom-10">
+    <a style="cursor:pointer;" data-toggle="modal"
+        class="btn green showEditAMAgreementsModal"
+       id="showAddAMAgreementsModal"> <i title="Add New AMAgreement" data-toggle="tooltip" class="fa fa-plus hopNameTooltip"></i></a>
+
+</div>
+<div class="panel-group accordion table-responsive" id="accordionAMAgreement">
+	<table
+		class="table table-striped table-bordered table-advance table-hover tablegreen">
+		<thead>
+			<tr>
+				<th>Created Date</th>
+				<th>Date Signed</th>
+				<th>Start Date</th>
+				<th>End Date</th>
+				<th>Asset Acquisition Fee</th>
+				<th>Asset Management Fee</th>
+				<th>Waivers</th>
+				<th>Status</th>
+				<th style="width:7%;">Actions</th>
+			</tr>
+		</thead>
+		<tbody>
+			<% if(agreementsData) { %> <% _.each(agreementsData, function( singleData){
+			%>
+			<tr data-agreementsid="<%- singleData.agreementsId %>">
+				<td><%- singleData.createdDate %></td>
+				<td><%- singleData.signedDate %>
+					<a class="margin-right-10 fa fa-paperclip font14 showDocumentTooltip_2" style="cursor: pointer;" 
+						data-object="<%=singleData.object%>" data-objectid="<%=assetId%>" 
+						data-subobject="<%=singleData.subObject%>" data-subobjectid="<%=singleData.agreementsId%>" data-html="true" data-show="true">
+                	</a>
+                </td>
+				<td><%- singleData.startDate %></td>
+				<td><%- singleData.endDate %></td>
+				<td><% if(singleData.assetAcuisitionFee){
+						if(singleData.isAssetAcquisitionFeePercent=='N') {
+							if(singleData.discountedAAFee==null){
+								print('<span class=amount>' + singleData.assetAcuisitionFee + '</span>');
+							}
+							else{
+								print('<span class=amount>' + singleData.discountedAAFee + '</span>');
+							}
+					} else if(singleData.isAssetAcquisitionFeePercent=='Y'){
+							if(singleData.discountedAAFee!=null){
+								print(singleData.assetAcuisitionFee + '% (<span class="amount lightfontcolor-blue">' + singleData.discountedAAFee + '</span>)');
+							}
+							else{
+								print(singleData.assetAcuisitionFee + '% (<span class=amount>' + (singleData.assetAcuisitionFee*purchasePrice)/100 + '</span>)');
+							}
+						
+					}} %>
+				 </td>
+				<td><% if(singleData.isAssetManagementFeePercent=='N' && singleData.isAMFeePercentOfRent=='N') {
+							if(singleData.discountedAMFee==null){
+								print('<span class=amount>' + singleData.assetManagementFee + '</span>');
+							}
+							else{
+								print('<span class=amount>' + singleData.discountedAMFee + '</span>');
+							}
+					} else if(singleData.isAssetManagementFeePercent=='Y'){
+							if(singleData.discountedAMFee!=null){
+								print(singleData.assetManagementFee + '% (<span class="amount lightfontcolor-blue">' + singleData.discountedAMFee + '</span>)');
+							}
+							else{
+								if(((singleData.assetManagementFee*purchasePrice)/100)>1200){
+									print(singleData.assetManagementFee + '% (<span class=amount>' + (singleData.assetManagementFee*purchasePrice)/100 + '</span>)');
+								}else{
+									print(singleData.assetManagementFee + '% (<span class=amount>1200</span>)');
+								}
+							}
+					} else if(singleData.isAMFeePercentOfRent=='Y'){
+							if(singleData.discountedAMFee!=null){
+								print(singleData.assetManagementFee + '% (<span class="amount lightfontcolor-blue">' + singleData.discountedAMFee + '</span>)');
+							}
+							else{
+								if(((singleData.assetManagementFee*rent)/100)>100){
+									print(singleData.assetManagementFee + '% (<span class=amount>' + (singleData.assetManagementFee*rent)/100 + '</span>)');
+								}else{
+									print(singleData.assetManagementFee + '% (<span class=amount>100</span>)');
+								}
+							}
+					}%>
+				</td>
+				<td>AA:<% if(singleData.acqWaivers!=null){
+								print(singleData.acqWaivers);
+							} else{
+								print('None');
+							} %>
+							, AM:<% if(singleData.mgmtWaivers!=null) {
+								print(singleData.mgmtWaivers);
+							} else{
+								print('None');
+							} %>
+				</td>
+				<td><%- singleData.statusType %></td>
+				<td>  <a style="cursor:pointer;" data-toggle="modal" class="edit_blue showEditAMAgreementsModal" title="Edit"><i class="fa fa-edit"></i></a> 
+                      <a style="cursor:pointer;" data-toggle="modal" class="delete_red AMAgreementsRemoveBtn" title="Delete"><i class="fa fa-trash-o"></i></a>
+                </td>
+			</tr>
+			<% }); %> <% } %>
+		</tbody>
+	</table>
+</div>
+
+<div id="editAMAgreementsDiv"></div>
+
+<!-- AMAgreements tab ends -->
+<!--start add AMAgreements dialog box-->
+
+<!--ends add AMAgreements dialog box-->
+
+<div class="modal fade bs-modal-sm" id="optionDeleteAMAgreement" tabindex="-1" role="dialog" aria-hidden="true">
+	<div class="modal-dialog modal-sm">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+				<h4 class="modal-title">Delete</h4>
+			</div>
+			<div class="modal-body">
+				  Are you sure you want to delete this?
+			</div>
+			<div class="modal-footer">
+				<button id="deleteAMAgreementConfirmationButton" type="button" class="btn blue">Yes</button>
+				<button type="button" class="btn default" data-dismiss="modal">No</button>
+			</div>
+		</div>
+		<!-- /.modal-content -->
+	</div>
+	<!-- /.modal-dialog -->
+</div>

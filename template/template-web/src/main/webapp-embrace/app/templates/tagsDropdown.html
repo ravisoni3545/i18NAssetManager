@@ -1,0 +1,6 @@
+ <select class="form-control" name="tag">
+    <option  value="">select</option>
+  <% _.each(tagsList,function(tag){ %>
+    <option value="<%-tag.tagId %>"><%-tag.tagName %></option>
+  <% });  %>
+ </select>

@@ -1,0 +1,68 @@
+<div class="rent_agreement_tab_general tab-pane rentalAgreementNavTab active">
+	<form class="form-horizontal" method="post" enctype="multipart/form-data">
+		<input type="hidden" name="leaseId" value="<%= lease.leaseId %>"/>
+		<input type="hidden" name="unitId" value="<%= propertyUnit.unitId %>"/>
+		<input type="hidden" name="assetId" value="<%= assetId %>"/>
+		<input type="hidden" name="taskKey" value="<%= taskKey %>"/>
+		<input type="hidden" name="investmentId" value="<%= investmentId %>"/>
+		<input type="hidden" name="object" value="<%= object %>"/>
+
+		<div class="form-group investment-div col-md-6">
+			<label class="control-label col-md-6"><strong>Tenant Name:</strong></label>
+			<div class="col-md-6">
+                <p class="form-control-static">
+                    <%-lease.tenantName%>
+                </p>
+            </div>
+		</div>
+		<div class="form-group investment-div col-md-6" style="margin-left:3px;">
+			<label class="control-label col-md-6"><strong>Rent Amount:</strong></label>
+			<div class="col-md-6">
+                <p class="form-control-static amount">
+                    <%-lease.rentAmount%>
+                </p>
+            </div>
+		</div>
+		<div class="clearfix"></div>
+
+		<div class="form-group investment-div col-md-6">
+			<label class="control-label col-md-6"><strong>Security Deposit Amount:</strong></label>
+			<div class="col-md-6">
+                <p class="form-control-static amount">
+                    <%-lease.securityDeposits%>
+                </p>
+            </div>
+		</div>
+		<div class="form-group investment-div col-md-6" style="margin-left:3px;">
+			<label class="control-label col-md-6"><strong>Rental Daily Per Diem:</strong></label>
+			<div class="col-md-6">
+                <p class="form-control-static amount">
+                    <%-lease.rentalDailyPerDiem%>
+                </p>
+            </div>
+		</div>
+		<div class="clearfix"></div>
+		<div class="form-group investment-div col-md-6">
+			<label class="control-label col-md-6"><strong>Lease Start Date:</strong></label>
+			<div class="col-md-6">
+                <p class="form-control-static">
+                    <%-lease.leaseStartDate%>
+                </p>
+            </div>
+		</div>
+		<div class="form-group investment-div col-md-6" style="margin-left:3px;">
+			<label class="control-label col-md-6"><strong>Lease End Date:</strong></label>
+			<div class="col-md-6">
+                <p class="form-control-static">
+                    <%-lease.leaseEndDate%>
+                </p>
+            </div>
+		</div>
+		<div class="clearfix"></div>
+
+		<div class="form-group col-md-12" style="margin-left:25px;">
+			<a style="cursor: pointer; font-size: 15px;" target="_blank" href="document/download/<%-lease.documentId%>"><%-lease.documentName%></a>
+		</div>
+		<div class="clearfix"></div>
+	</form>
+</div>

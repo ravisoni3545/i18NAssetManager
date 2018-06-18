@@ -1,0 +1,309 @@
+
+<form class="form-horizontal" name="save-quote-form" method="post"
+	enctype="multipart/form-data">
+	<input type="hidden" id="object" name="object" /> <input type="hidden"
+		id="objectId" name="objectId" /> <input type="hidden" id="taskKey"
+		name="taskKey" /> <input type="hidden" id="propertyInsuranceId"
+		name="propertyInsuranceId" />
+	<div class="form-body">
+	<!--  -->
+	<div  class="alert alert-danger display-hide insuranceQuoteAlertFailure">
+                                                                <button class="close" data-close="alert">
+                                                                </button>
+                                                                You have some form errors. Please check below.
+    </div>
+	<!--  -->
+	<div class="alert alert-success display-hide">
+										<button class="close" data-close="alert"></button>
+										Successfully saved the insurance quote.
+									</div>
+	<!--  -->
+	<div  class="alert alert-danger display-hide internalServerError">
+                                                                <button class="close" data-close="alert">
+                                                                </button>
+                                                                Couldn't save the quote due to internal server error.
+    </div>
+	<!--  -->
+		<h3 class="form-section marg_top5">Insurance Info</h3>
+		<!-- Start left section -->
+		<div class="row">
+
+
+			<div class="col-md-6">
+				<div class="form-group">
+					<label class="col-md-4 control-label pad_leftright0"><span
+													class="required">* </span>Insurance
+						Type</label>
+					<div class="col-md-7 pad_right0 margin-bottom-10">
+						
+						<div id="insTypes"></div>
+
+					</div>
+				</div>
+			</div>
+			<div class="col-md-6">
+				<div class="form-group">
+                     <label class="col-md-4 control-label" style="padding-right:0px;">Vacant Policy</label>
+                     <div class="radio-list col-md-6" style="padding-left: 35px">
+	                    <label class="radio-inline" style="padding-left: 0px!important;">
+	                        <input name="vacantPolicy" id="vacantPolicyY" value="Y" type="radio" 
+	                        <%if(quote.vacantPolicy=='Y'){%>
+                    		checked="true"<%}%>>Yes
+	                    </label>&nbsp;&nbsp;&nbsp;
+	                    <label class="radio-inline" style="padding-right:10px">
+	                        <input name="vacantPolicy" id="vacantPolicyN" value="N" type="radio" 
+	                        <%if(quote.vacantPolicy==null){%>checked="true"<%}else if(quote.vacantPolicy=='N'){%>
+                    		checked="true"<%}%>>
+	                        No</label>
+					 </div>
+                </div>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-md-6">
+				<div class="form-group">
+					<label class="col-md-4 control-label pad_leftright0"><span
+													class="required">* </span>Insurance
+						Provider</label>
+					<div class="col-md-7 pad_right0 margin-bottom-10">
+						
+						<select class="bs-select form-control" name="insuranceProvider">
+							<option>Select</option>
+							<optgroup label="Insurance Providers">
+
+								<% _(insuranceOrgList).each(function(org) { %>
+								<option value="<%= org.orgId%>"><%=org.orgName %></option>
+								<% }); %>
+
+							</optgroup>
+							<!-- <optgroup label="Add New"> -->
+								<option value="addNewInsuranceVendor">Add new</option>
+							<!-- </optgroup> -->
+						</select>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-6">
+				<div class="form-group">
+					<label class="col-md-4 control-label pad_leftright0">Add
+						New</label>
+					<div class="col-md-7 pad_right0 margin-bottom-10">
+						<input type="text" class="form-control text-right" name="newInsuranceVendor" disabled=""
+							placeholder="">
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-6">
+				<div class="form-group">
+					<label class="col-md-4 control-label pad_leftright0">
+					<span
+													class="required">* </span>
+					Yearly
+						Premium</label>
+					<div class="col-md-7 pad_right0 margin-bottom-10">
+						<input type="text" class="form-control text-right currencyInsurance" data-required="1"
+							name="yearlyPremium" 
+							value="<%= quote.yearlyPremium %>">
+					</div>
+				</div>
+			</div>
+			<div class="col-md-6"></div>
+		</div>
+		<div class="row">
+            	<div class="col-md-6">
+                    <div class="form-group">
+                         <label class="col-md-4 control-label" style="padding-right:0px;">Deductible Type</label>
+                         <div class="radio-list col-md-6" style="padding-left: 35px">
+		                    <label class="radio-inline" style="padding-right:10px">
+		                        <input name="isDeductiblePercentage" id="isDeductiblePercentageN" value="N" type="radio" 
+		                        <%if(quote.isDeductiblePercentage==null){%>checked="true"<%}else if(quote.isDeductiblePercentage=='N'){%>
+                        		checked="true"<%}%>>
+		                        Amount</label>&nbsp;&nbsp;&nbsp;
+		                    <label class="radio-inline" style="padding-left: 0px!important;">
+		                        <input name="isDeductiblePercentage" id="isDeductiblePercentageY" value="Y" type="radio" 
+		                        <%if(quote.isDeductiblePercentage=='Y'){%>
+                        		checked="true"<%}%>>Percentage
+		                    </label>
+						 </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                         <label class="col-md-5 control-label" style="text-align:left; padding-right:0px;">Wind and Hail Type</label>
+                         <div class="radio-list col-md-6" style="padding-left: 0px;">
+		                    <label class="radio-inline" style="padding-right:10px">
+		                        <input name="isWindAndHailPercentage" id="isWindAndHailPercentageN" value="N" type="radio" 
+		                        <%if(quote.isWindAndHailPercentage==null){%>checked="true"<%}else if(quote.isWindAndHailPercentage=='N'){%>
+                        		checked="true"<%}%>>
+		                        Amount</label>&nbsp;&nbsp;&nbsp;
+		                    <label class="radio-inline" style="padding-left: 0px!important;">
+		                        <input name="isWindAndHailPercentage" id="isWindAndHailPercentageY" value="Y" type="radio" 
+		                        <%if(quote.isWindAndHailPercentage=='Y'){%>
+                        		checked="true"<%}%>>Percentage
+		                    </label>
+						 </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="col-md-4 control-label pad_leftright0">Deductible<span class="required">*</span></label>
+                        <div class="col-md-7 pad_right0 margin-bottom-10"  id="deductibleAmountDiv" style="display: none;">
+                            <input type="text" name="deductibleAmount" class="form-control text-right currencyInsurance" value="<%-quote.deductible%>">
+                        </div>
+                      	<div class="col-md-7 pad_right0 margin-bottom-10" id="deductiblePercentageDiv" >
+                      		<div class="input-group"> 
+								<input type="text" name="deductiblePercentage" class="form-control text-right" value="<%-quote.deductible%>">
+								<span class="input-group-addon"><i class="fa">%</i></span>
+							 </div> 
+						</div>
+						<div class="col-md-4"></div>
+						<div class="col-md-7 pull-left margin-bottom-20" id="deductibleErrDiv" style="display: none;color: #b94a48;">This field is required</div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+
+                    <div class="form-group">
+                        <label class="col-md-4 control-label pad_leftright0">Wind and Hail</label>
+                        <div class="col-md-7 pad_right0 margin-bottom-10"  id="windAndHailAmountDiv" style="display: none;">
+                            <input type="text" name="windAndHailAmount" class="form-control text-right currencyInsurance" value="<%-quote.windAndHail%>">
+                        </div>
+                      	<div class="col-md-7 pad_right0 margin-bottom-10" id="windAndHailPercentageDiv" >
+                      		<div class="input-group"> 
+								<input type="text" name="windAndHailPercentage" class="form-control text-right" value="<%-quote.windAndHail%>">
+								<span class="input-group-addon"><i class="fa">%</i></span>
+							 </div> 
+						</div>
+                    </div>
+
+
+                </div>
+            </div>
+		<h3 class="form-section">Coverage</h3>
+
+		<div class="row">
+			<div class="col-md-6">
+				<div class="form-group">
+					<label class="col-md-4 control-label pad_leftright0">Dwelling</label>
+					<div class="col-md-7 pad_right0 margin-bottom-10">
+						<input type="text" class="form-control text-right currencyInsurance" name="dwelling"
+							value="<%= quote.dwelling %>">
+					</div>
+				</div>
+			</div>
+
+			<div class="col-md-6">
+				<div class="form-group">
+					<label class="col-md-4 control-label pad_leftright0">Other
+						Structures</label>
+					<div class="col-md-7 pad_right0 margin-bottom-10">
+						<input type="text" class="form-control text-right currencyInsurance"
+							name="otherStructures" 
+							value="<%= quote.otherStructures %>">
+					</div>
+				</div>
+			</div>
+
+		</div>
+		<div class="row">
+			<div class="col-md-6">
+				<div class="form-group">
+					<label class="col-md-4 control-label pad_leftright0">Personal
+						Property</label>
+					<div class="col-md-7 pad_right0 margin-bottom-10">
+						<input type="text" class="form-control text-right currencyInsurance"
+							name="personalProperty" 
+							value="<%= quote.personalProperty %>">
+					</div>
+				</div>
+			</div>
+
+			<div class="col-md-6">
+				<div class="form-group">
+					<label class="col-md-4 control-label pad_leftright0">Loss
+						of Use</label>
+					<div class="col-md-7 pad_right0 margin-bottom-10">
+						<input type="text" class="form-control text-right currencyInsurance"
+							name="lossOfUse" 
+							value="<%= quote.lossOfUse %>">
+					</div>
+				</div>
+			</div>
+
+		</div>
+		<div class="row">
+			<div class="col-md-6">
+				<div class="form-group">
+					<label class="col-md-4 control-label pad_leftright0">Premises
+						Liability</label>
+					<div class="col-md-7 pad_right0 margin-bottom-10">
+						<input type="text" class="form-control text-right currencyInsurance"
+							name="premisesLiability" 
+							value="<%= quote.premisesLiability %>">
+					</div>
+				</div>
+			</div>
+			<div class="col-md-6">
+
+				<div class="form-group">
+					<label class="col-md-4 control-label pad_leftright0">Medical
+						Payment</label>
+					<div class="col-md-7 pad_right0 margin-bottom-10">
+						<input type="text" class="form-control text-right currencyInsurance"
+							name="medicalPayment" 
+							value="<%= quote.medicalPayment %>">
+					</div>
+				</div>
+
+
+			</div>
+		</div>
+
+
+		<div class="row">
+			<div class="col-md-6">
+				<div class="form-group">
+					<label class="col-md-4 control-label pad_leftright0">Upload
+						Policy Details</label>
+					<div class="col-md-7 pad_right0 margin-bottom-10">
+						<input type="file" style="padding-bottom: 40px;" multiple=""
+							class="form-control" name="insuranceQuoteDocuments">
+					</div>
+				</div>
+				<!-- <div id="existingDocumentInsurance"></div> -->
+				<div>Existing Documents: <br>
+				<a class="fa fa-paperclip pull-left showDocumentTooltip" data-subobjectid="<%= quote.propertyInsuranceId %>"
+							data-subobject="<%= quote.propertyInsuraceCodelistObjectId %>" data-taskKey="<%= quote.taskKey %>" style="cursor: pointer; font-size: 16px;" data-html="true"
+							data-show="true"> </a>
+				</div>
+			</div>
+			<div class="col-md-6"></div>
+		</div>
+
+
+
+		<div class="clearfix"></div>
+
+		<div class="col-md-12 margin-bottom-15">
+
+
+			<div class="form-group">
+				<label class="control-label margin-bottom-15"> <i
+					class="fa fa-comment-o "></i> Comments
+				</label><br>
+
+				<textarea class="form-control" name="comments"><%= quote.comments %></textarea>
+			</div>
+
+
+		</div>
+		<button class="btn blue pull-right margin-bottom-15" type="button"
+			name="saveQuoteButton">Save</button>
+	</div>
+
+</form>
+

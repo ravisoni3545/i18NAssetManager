@@ -1,0 +1,8 @@
+<select class="form-control templateDropDown" <%if(elementId){%> id="<%-elementId%>" <%}else{%> id="messageTemplateID" <%}%> name="messageTemplateID">
+	<option value="">select</option>
+	<% _(codes).each(function(code) { %>
+		<option value="<%= code.id%>"> 
+			<%= code.name%>
+		</option>
+	<% }); %>
+</select>

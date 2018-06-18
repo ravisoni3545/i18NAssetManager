@@ -1,0 +1,106 @@
+<div class="modal fade" id="editFinancialForm" tabindex="-1"
+	role="basic" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal"
+					aria-hidden="true"></button>
+				<h4 class="modal-title">Financial Transaction Details</h4>
+			</div>
+
+
+			<div class="modal-body table-responsive" >
+
+
+
+				<div class="form-group col-md-6" style="padding-left: 0px;">
+					<label class="control-label"> Transaction Category </label>
+					<div id="editTransactionCategoryDropdown"></div>
+				</div>
+				<div class="form-group col-md-6" style="padding-right: 0px;">
+					<label class="control-label"> Transaction Type </label>
+
+					<div id="editTransactionTypeDropdown"></div>
+				</div>
+
+				<div class="clearfix"></div>
+
+				<div class="form-group col-md-12"
+					style="padding-left: 0px; padding-right: 0px;">
+					<label class="control-label" style="text-align: left;">
+						Description </label> <input type="text" class="form-control"
+						id="editDescription" value="<%- financialData.description %>">
+
+				</div>
+
+				<table
+					class="table table-striped table-bordered table-advance table-hover tablegreen" id="financialTransactionTable">
+					<thead>
+						<tr>
+							<th width="34%">Item</th>
+							<th width="32%">Credit</th>
+							<th width="35%">Debit</th>
+						</tr>
+					</thead>
+<tr><td colspan="3">
+<div style="overflow:auto; height: 75px; clear:both;">
+<table>
+					<tbody id="edit-form-financial" >
+						<% _.each(financialData.transactionDetails, function( detail ){ %>
+							
+						<tr>
+							<td><input type="text" class="form-control payment"
+								name="detailDescription" value="<%- detail.detailDescription %>"></td>
+							<td class="text-right"><span class="right121 Credit">
+									<input type="text" class="form-control termianl1"
+									name="creditAmount" value="<%- detail.creditAmount %>">
+							</span></td>
+							<td><span class="left121 Debit"> <input type="text"
+									class="form-control termianl1" name="debitAmount" value="<%- detail.debitAmount %>"></span></td>
+							<td style="display: none"><input type="text" class="form-control termianl1"
+									name="transactionDetailId" value="<%- detail.transactionDetailId %>"></td>		
+
+						</tr>
+						<% }); %>
+					</tbody>
+					</table>
+					</div>
+					</td>
+</tr>					
+					<tr>
+                                <td class="text-right">
+                                    Total
+                                </td>
+                                <td class="text-right">
+                                
+                                  <span >  <input type="text" name='result' readonly="readonly" id="totalCreditAmount"  class="form-control"></span>
+                                </td>
+                                <td class="text-right">
+                                   <span>   <input type="text" class="form-control" readonly="readonly" id="totalDebitAmount" ></span>
+                                </td>
+                            </tr>
+                            <tr  class="allleftinput">
+                                <td>
+                                </td>
+                                <td class="text-right">
+                                   <span  > <input type="text" class="form-control" readonly="readonly" id="totalAmount" ></span>
+                                </td>
+                                <td>
+                                </td>
+                            </tr>
+				</table>
+				
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn blue" id="addFinancialRowToEdit">ADD
+					NEW</button>
+				<button type="button" class="btn blue" id="updateFinancialData">SAVE</button>
+				<button type="button" class="btn default" data-dismiss="modal">
+					CANCEL</button>
+
+			</div>
+		</div>
+		<!-- /.modal-content -->
+	</div>
+	<!-- /.modal-dialog -->
+</div>

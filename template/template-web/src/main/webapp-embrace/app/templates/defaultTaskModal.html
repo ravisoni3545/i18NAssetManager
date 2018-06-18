@@ -1,0 +1,89 @@
+<!-- start Completion Date lightbox -->
+<div class="modal fade bs-modal-sm with-popover" id="DEFAULT_POPUP_1"
+	tabindex="-1" role="basic" aria-hidden="true">
+	<div class="modal-dialog modal-sm">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal"
+					aria-hidden="true"></button>
+				<h4 class="modal-title" id="modalTitle"></h4>
+			</div>
+			<div class="modal-body"
+				style="margin-left: 10px; margin-right: 10px;">
+				<form class="default-form-with-doc" method="post" id="defaultTaskPopUp"
+					enctype="multipart/form-data">
+					<!--  -->
+				<div id="formAlertFailure" class="alert alert-danger display-hide">
+										<button class="close" data-close="alert"></button>
+										You have some form errors. Please check below.
+									</div>
+									<div class="alert alert-success display-hide">
+										<button class="close" data-close="alert"></button>
+										Your form validation is successful!
+									</div>
+				<!--  -->
+					<input type="hidden" id="object" name="object"> <input
+						type="hidden" id="objectId" name="objectId"> <input
+						type="hidden" id="taskKey" name="taskKey">
+					<div class="form-group">
+						<label class="control-label" style="text-align: left;">
+							Start Date <span class="required">* </span>
+						</label>
+						<div class="input-group input-medium date date-picker"
+							data-date="" data-date-format="mm-dd-yyyy"
+							data-date-viewmode="years">
+							<input class="form-control" readonly="" placeholder=""
+								type="text" id="startDate" name="startDate"> <span
+								class="input-group-btn">
+								<button class="btn default" type="button">
+									<i class="fa fa-calendar"></i>
+								</button>
+							</span>
+						</div>
+					</div>
+
+					<div class="form-group">
+						<label class="control-label" style="text-align: left;">
+							Completion Date </label>
+						<div class="input-group input-medium date date-picker"
+							data-date="" data-date-format="mm-dd-yyyy"
+							data-date-viewmode="years">
+							<input class="form-control" readonly="" placeholder=""
+								type="text" id="endDate" name="endDate"> <span
+								class="input-group-btn">
+								<button class="btn default" type="button">
+									<i class="fa fa-calendar"></i>
+								</button>
+							</span>
+						</div>
+					</div>
+
+					<div class="form-group">
+						<label class="control-label"> Comments <a
+							class="fa fa-comments-o pull-right showMessageTooltip_2"
+							style="cursor: pointer; font-size: 14px;" data-html="true"
+							data-show="true"> <i>Show past comments</i>
+						</a>
+						</label><br>
+
+						<textarea class="form-control" style="height: 200px;"
+							placeholder="" name="comments" id="comments"></textarea>
+					</div>
+
+					<div style="display: none;" id="staticDocumentArea">
+						<a href="" id="staticDocument" target="_blank">Pre-Inspection
+							Document</a>
+					</div>
+				</form>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn blue" id="defaultPopupSubmitButton">SAVE</button>
+				<button type="button" id="cancelButton" class="btn default"
+					data-dismiss="modal">CANCEL</button>
+			</div>
+		</div>
+		<!-- /.modal-content -->
+	</div>
+	<!-- /.modal-dialog -->
+</div>
+<!-- end Completion Date lightbox -->

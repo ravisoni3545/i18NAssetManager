@@ -1,0 +1,78 @@
+<tr class="noExl">
+    <td colspan="8" class="hiddenRow">
+        <div class="accordian-body collapse <%- row%>">
+            <div style="margin-bottom: 0;" class="clearfix well repair-edit-form">
+            <form method="post" enctype="multipart/form-data">
+                <input type="hidden" name="inspectionItemId" value="<%-singleData.model.inspectionItemId%>">
+
+                <div class="col-md-12 row">
+                    <div class="form-group  col-md-4">
+                        <label class="control-label" style="text-align: left;"> Issue Source<span class="required">* </span> </label>
+                        <select name="issueSource" class="form-control">
+                            <% if(singleData.flag == "isHUInspectionReview"){_.each(singleData.inspectionIssueSources,function(issueSourceObj){ %>
+                                    <option value="<%- issueSourceObj.codeDisplay%>" 
+                                        <% if(issueSourceObj.codeDisplay == singleData.model.issueSource){ print('selected');
+                                            }else if(jQuery.isEmptyObject(singleData.model) && issueSourceObj.isDefault=='Y'){print('selected');
+                                        } %>>
+                                        <%- issueSourceObj.codeDisplay%></option>
+                            <% });} %>
+                            <% if(singleData.flag == "isContractorQuote"){ %>
+                            <option value="Contractor Quote">Contractor Quote</option>
+                            <% } %>
+                        </select>
+                    </div>
+                    <div class="form-group  col-md-4">
+                        <label class="control-label" style="text-align: left;"> Category<span class="required">* </span> </label>
+                        <select name="category" class="form-control">
+                            <option value="">Select</option>
+                            <% _.each(singleData.inspectionCategories,function(category){ %>
+                                    <option value="<%- category.categoryId%>" <% if(category.categoryId == singleData.model.category){ print('selected'); } %>><%- category.categoryName%></option>
+                            <% });  %>
+                        </select>
+                    </div>
+                    <div class="form-group  col-md-4">
+                        <label class="control-label" style="text-align: left;"> Repaired by<span class="required">* </span> </label>
+                        <select name="repairedBy" class="form-control">
+                            <% if(singleData.flag == "isHUInspectionReview"){ %>
+                            <option value="Seller" <% if("Seller" == singleData.model.repairedBy){ print('selected'); } %>>Seller</option>
+                            <option value="Investor" <% if("Investor" == singleData.model.repairedBy){ print('selected'); } %>>Investor</option>
+                            <% } if(singleData.flag == "isContractorQuote"){ %>
+                            <option value="Investor" <% if("Investor" == singleData.model.repairedBy){ print('selected'); } %>>Investor</option>
+                            <option value="Seller" <% if("Seller" == singleData.model.repairedBy){ print('selected'); } %>>Seller</option>
+                            <% } %>
+                        </select>
+                    </div>
+                 </div>
+                 <div class="col-md-12 row">
+                    <div class="form-group  col-md-4">
+                        <label class="control-label" style="text-align: left;">Estimate</label>
+                        <input type="text" value="<%-singleData.model.estimate%>" name="estimate" class="form-control currency">
+                    </div>
+                    <div class="form-group  col-md-4">
+                        <label class="control-label" style="text-align: left;">Insp Page No:</label>
+                        <input type="text" value="<%-singleData.model.referenceNo%>" name="referenceNo" class="form-control">
+                    </div>
+                </div>
+
+
+                <div class="col-md-12 row">
+                    <div class="form-group col-md-6">
+                        <label class="control-label">  Work Description </label>
+                        <br>
+                        <textarea name="description" class="form-control"><%-singleData.model.description%></textarea>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label class="control-label">  HU Comments </label>
+                        <br>
+                        <textarea name="huComments" class="form-control"><%-singleData.model.huComments%></textarea>
+                    </div>
+                </div>
+                <div class="form-group col-md-8">
+                    <button type="button" class="btn blue saveInspectionIlmCategory"> SAVE</button>
+                    <button type="button" class="btn default cancelInspectionRow"> CANCEL</button>
+                </div>
+            </form>
+            </div>
+        </div>
+    </td>
+</tr>       

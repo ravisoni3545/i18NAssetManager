@@ -1,0 +1,83 @@
+<% var leases = _.filter(propetyUnitLeaseDetails, function(item){
+ return item.assetId==currentAssetId; });
+console.log("lease.length::"+leases.length); %> 
+<% if(leases.length >0){ console.log("lease.length::"+leases.length);%>
+<tr>
+	<td colspan="8" class="hiddenRow">
+		<div class="accordian-body collapse leaseRow">
+			<div class="col-md-12 col-xs-12">
+				<br><p style="color: #00a5ea;"><b>UNIT DETAILS</b></p>
+			</div>
+			<div class="col-md-12 col-xs-12">
+				<table	class="table table-bordered">
+					<thead class="table-inside">
+						<tr>
+				           <th>UNIT NAME</th>
+				           <th>PROPERTY INFO</th>
+				           <th>STATUS</th>
+						   <th>RENT</th>
+						</tr>
+					</thead>
+					<tbody>
+						<% _.each(leases, function(lease) { %>
+							<tr>
+	            				 <td><%=lease.unitName?lease.unitName:''%></td>
+								 <td> <% if(lease.bedrooms && lease.bedrooms > 0) { %> 
+								 		<% if(lease.bedrooms > 1) { %>
+								 			<%=lease.bedrooms%> Beds
+								 		<%}else{%>
+								 			<%=lease.bedrooms%> Bed
+								 		<% } %>
+								 	  <% } %> 
+								 	  <% if(lease.bathrooms && lease.bathrooms > 0) { %>
+								 	   	<% if(lease.bathrooms > 1) { %>
+											, <%=lease.bathrooms%> Baths
+										<%}else{%>
+										 , <%=lease.bathrooms%> Bath
+										 <% } %> 
+									  <% } %> 
+									  <% if(lease.totalSqft && lease.totalSqft > 0) { %> 
+									  	, <span class="amountWithOutSymbol"><%=lease.totalSqft%></span> Sqft.<% } %>
+								 </td>
+								 <td> <%=lease.unitStatus%>
+								  <%if(lease.unitStatus){%>
+								  	<%if(lease.unitStatus.toLowerCase().indexOf("marketing") >= 0 && lease.marketingStatus){%>
+								  		 - <%=lease.marketingStatus%>
+								  	<%}else	if(lease.unitStatus.toLowerCase().indexOf("rehab") >= 0 && lease.rehabStatus){%>
+								  		 - <%=lease.rehabStatus%>
+								  	<%}%>
+								 <%}%>
+								 <%if(lease.leaseExpirationDate){%><span style="padding-left:1em">(Exp:
+								  <%if(lease.leaseExpired){%>
+								  	<span style="color:#FF0000;"><%=lease.leaseExpirationDate%></span>
+								  <%}else{%>
+								  	<%=lease.leaseExpirationDate%>
+								  <%}%>
+								  	)</span><%}%>
+								  
+								  <%if(lease.unitStatus && lease.unitStatus.toLowerCase().indexOf("rehab") >= 0 && lease.rehabStatus) {%>
+								  		<%if(lease.rehabCompletionDate){%>
+								  			<br>Started on <%=lease.rehabStartDate%><br>Completed on <%=lease.rehabCompletionDate%>
+								  		<%} else if(lease.rehabStartDate){%>
+								  			<br>Started on <%=lease.rehabStartDate%><br>Estimated to complete on <%=lease.rehabInvestorEstimatedCompletionDate%>
+								  		<%} else if(!lease.rehabEstimatedStartDate && !lease.rehabInvestorEstimatedCompletionDate){%>
+								  			<%if(lease.rehabFundsReceived && lease.rehabFundsReceived=='No'){%><br><span style="color:#000000">Pending Rehab Funds</span><%}%>
+								  			<br>Estimated Duration:<%if(lease.estimatedRehabDuration){%> <%=lease.estimatedRehabDuration%> weeks<%}%>
+								  		<%} else {%>
+								  			<br>Estimated to started on: <%=lease.rehabEstimatedStartDate%><br>Estimated to complete  on: <%=lease.rehabInvestorEstimatedCompletionDate%>
+								  		<%}%>
+								  <%}%>
+								  </td>
+								 <td><%if(lease.rent){%>
+								 		<span class="amount"><%=lease.rent%> </span>
+								 	<%}%>
+								 </td>
+						 <% }); %>
+					</tbody>
+				</table>
+				</br>
+			</div>
+		</div>
+	</td>
+</tr>
+<% } %>

@@ -1,0 +1,21 @@
+<div class="row">
+  <div class="col-lg-12">
+    <% for (singleRecipient in recipienttemplateData) { %>
+      <div class="row">
+		<div class="col-md-4" style="margin-top:8px;><label for="<%= singleRecipient %>">
+			<span style="word-wrap: break-word;"><b><%= recipienttemplateData[singleRecipient].display %></b></span>
+		</label></div>
+		<div class="col-md-8 " id="<%= singleRecipient.replace(/ /g,'') %>" style="margin-bottom:8px;word-wrap: break-word;" >
+			<input type="text" class="form-control dSignRec 
+			<% if (singleRecipient!='docops' && singleRecipient!='Other') { %>dSignS2 <% } %>
+			<% if (singleRecipient=='Other') { %>docsS2 <% } %> col-md-12" 
+			name="<%= singleRecipient %>" 
+			<% if (singleRecipient=="docops") { %>value="docops@homeunion.com"<% } %> 
+			<% if (singleRecipient=="docops" && singleRecipient.value) { %>value="<%= singleRecipient.value %>"<% } %> />
+		</div>
+	  </div>
+    <% } %>
+
+  </div><!-- /.col-lg-12 -->
+</div><!-- /.row -->
+

@@ -1,0 +1,45 @@
+<% if(issues && issues.length) {
+	
+	
+      _.each(issues,function(issue){ %>
+      
+
+      
+        <tr data-modelid="<%- issue.inspectionItemId%>" >
+        
+        <td><%- issue.issueSource%></td>
+        
+            <td><%- _.find(categories,function(item){
+                    console.log(item.categoryId);
+                    return issue.category == item.categoryId;
+                }).categoryName%>
+            </td>
+            <td><%- issue.description%></td>
+            <td class="amount text-right <%(issue.repairedBy=='Seller'||issue.investorResponse!="Fix Now")? print('lightfontcolor'): '' %>"><%- issue.estimate%></td>
+            
+          
+            
+            
+    
+            		 <td class="<%(issue.investorResponse!="Fix Now")? print('lightfontcolor'): '' %>"><%- issue.investorResponse%></td>
+            
+            
+           
+          
+            <td >
+            <textarea class="form-control" style="height: 50px;resize: none;" name="sellerComments" disabled ><%- issue.sellerComments%></textarea>
+        </td>
+      
+            
+            <td><%- issue.sellerResponse%></td>
+            <td>
+                <input class="toggle-one" data-toggle="toggle" data-size="mini" data-width="60" data-height="25" data-on="Accept" data-off="Reject" data-onstyle="success" data-offstyle="danger" <%if(issue.isInvestorAccepted) {print('checked')}%> type="checkbox" name="isInvestorAccepted">
+            </td>
+            <td>
+                <textarea class="form-control" style="height: 58px;" name="investorComments"><%- issue.investorComments%></textarea>
+            </td>
+        </tr>
+    <% }) 
+} else { %>
+    <tr class="dummy-row"><td colspan="6" style="text-align:center;">No inspection item found.</td></tr>
+<% } %>

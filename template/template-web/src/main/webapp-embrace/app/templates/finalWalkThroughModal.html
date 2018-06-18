@@ -1,0 +1,95 @@
+<div aria-hidden="true" role="basic" tabindex="-1"
+	id="FINAL_WALK_THROUGH_POPUP_1" class="modal fade bs-modal-lg with-popover">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal"
+					aria-hidden="true"></button>
+				<h3 class="modal-title">Final Walk Through</h3>
+			</div>
+			<div class="modal-body clearfix">
+				<div class="">
+
+					<div class="form-horizontal">
+						<div class="alert alert-danger display-hide">
+							<button class="close" data-close="alert"></button>
+							Failed to save response details.
+						</div>
+						<div class="alert alert-success display-hide">
+							<button class="close" data-close="alert"></button>
+							Successfully updated response details.
+						</div>
+						<div style="margin-bottom: 0;">
+							<div class="table-responsive">
+								<table class="table table-striped table-bordered table-advance tablegreen">
+									<thead>
+										<tr>
+											<th width="17%">Category</th>
+											<th width="27%">Seller Response</th>
+											<th width="25%">Completed</th>
+											<th width="21%">Upload Pictures</th>
+											<th width="10%">Action</th>
+										</tr>
+									</thead>
+									<tbody>
+
+
+									</tbody>
+
+								</table>
+							</div>
+
+						</div>
+					</div>
+
+					<div class="margin-bottom-10 marg_top20">
+						<form class="milestone-form" method="post">
+		                  <input type="hidden" id="object" name="object"> 
+		                  <input type="hidden" id="objectId" name="objectId"> 
+		                  <input type="hidden" id="taskKey" name="taskKey">
+
+							<div class="form-group col-md-12">
+								<label class="col-md-2 pad_leftright0 pad_top10 control-label">
+									Completion Date<span class="required">*</span> </label>
+								<div class="col-md-4 margin-bottom-10">
+									<div class="input-group input-medium date date-picker"
+										data-date="" data-date-format="mm-dd-yyyy"
+										data-date-viewmode="years" data-date-autoclose="true">
+										<input class="form-control" readonly="" placeholder=""
+											type="text" id="endDate" name="endDate"> <span
+											class="input-group-btn">
+											<button class="btn default" type="button">
+												<i class="fa fa-calendar"></i>
+											</button>
+										</span>
+									</div>
+								</div>
+							</div>
+							<div class="form-group col-md-8">
+								<label class="control-label"> Comments <a
+									class="fa fa-comments-o pull-right showMessageTooltip"
+									style="cursor: pointer; font-size: 14px;" data-html="true"
+									data-show="true"> <i>Show past comments</i>
+								</a>
+								</label><br>
+	
+								<textarea class="form-control" style="height: 80px;"
+									placeholder="" name="comments" id="comments"></textarea>
+							</div>
+ 							<div class="clearfix"></div>
+                		</form>
+					</div>
+
+				</div>
+
+				<div class="clearfix"></div>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn blue"
+					id="finalWalkThroughPopupSubmitButton">Save</button>
+				<button type="button" class="btn default" data-dismiss="modal">
+					Cancel</button>
+			</div>
+		</div>	
+	</div>
+</div>

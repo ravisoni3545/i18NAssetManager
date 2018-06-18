@@ -1,0 +1,64 @@
+<div class="col-md-12">
+	<!-- Existing contract table start -->
+	<div class="table table-responsive">
+		<table
+			class="table table-striped table-bordered table-advance table-hover tablegreen"
+			id="insuranceClosingsTable">
+			<thead>
+				<tr>
+					<th class="fontnml" style="text-align: center;">
+						PROPERTY</th>
+					<th class="fontnml" style="text-align: center;">
+						INVESTOR NAME</th>
+					<th class="fontnml" style="text-align: center;">
+						ESTIMATED CLOSING DATE</th>
+					<th class="fontnml" style="text-align: center;">
+						PURCHASE PRICE</th>
+					<th class="fontnml" style="text-align: center;">INSURANCE
+						APPLICATION STATUS</th>
+				</tr>
+			</thead>
+			<% if(templateData) { %> 
+				<% _.each(templateData, function( singleData){ %>
+					<tr>
+						<td style="border-left: none;"><div 
+							class="data-table-column-overflow"><img
+							src="<%- singleData.propertyInfo.photoLink %>" border="0"
+							class="pull-left marg_right10 img1class" alt="Image"> <span
+							class="darkcolor"> <%- singleData.propertyInfo.address %> </span> <br>
+							<span class="lightfontcolor"> <%-
+								singleData.propertyInfo.otherDetails %> </span></div></td>
+						<td><%- singleData.investorName %></td>
+						<td><%-	singleData.estimatedClosingDate %></td>
+						<td class="amount"><%- singleData.purchasePrice %></td>
+						<td><% if(singleData.objectId!=null){%>
+						<a class="insurancePopUp" data-toggle="modal" href="taskPopup" data-taskKey="<%=singleData.taskKey%>"
+								 data-popupKey="<%=singleData.popupKey%>" data-popupVersion="<%=singleData.popupVersion%>"
+								 data-object="<%=singleData.object%>" data-objectId="<%=singleData.objectId%>">
+						<%- singleData.status %></a><%} else {%>
+						<%- singleData.status %><%}%></td>
+					</tr>
+				<% }); %> 
+			<% }else{ %>
+				<tr>No Data Available
+				</tr>
+			<%}%>
+			<!-- <tr>
+
+				<td style="border-left: none;"><img
+					src="assets/img/3435-EUCLID.png" border="0"
+					class="pull-left marg_right10 img1class"><span
+					class="darkcolor">915 Churchill Farms Dr., Georgetown, TX </span> <br>
+
+					<span class="lightfontcolor">3 Beds, 2.5 Baths, 1,860 Sqft.</span>
+				</td>
+				<td>John Francis</td>
+				<td>10/8/2015</td>
+				<td>$120,000</td>
+				<td><a href="#insurance-quote" data-toggle="modal">Submit
+						Insurance Quote</a></td>
+			</tr> -->
+
+		</table>
+	</div>
+</div>

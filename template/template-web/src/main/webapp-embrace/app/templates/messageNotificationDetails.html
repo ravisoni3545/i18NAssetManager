@@ -1,0 +1,55 @@
+<div class="page-content">
+    <div class="row">
+        <div class="col-md-12">
+            <h3 class="page-title">
+                <i class="fa fa-bell-o pull-left font25 marg_top10"></i>Notifications
+            </h3>
+        </div>
+    </div>
+    <!-- END PAGE HEADING-->
+    <!-- Start Search section -->
+              
+    <% if(messageNotificationDetailsData && messageNotificationDetailsData.length) { %>
+		<table id="notificationTable">
+			<thead>
+				<tr>
+					<th></th>
+				</tr>
+			</thead>
+			<tbody>
+				<% _.each(messageNotificationDetailsData,function(eachMessage){ %>
+					<% console.log(eachMessage)%>
+			        <tr> 
+			        	<td>
+			  				<div class="row">
+			                    <div class="col-md-12">
+			                                <div class="media">
+			                                    	<div class="pull-left">
+			                                    		<a> <img width="45" src=<%=eachMessage.imageLink %> class="message-thumb img-responsive"></a>
+			                                    	</div>
+	                                    			<div class="media-body">
+	                                    						<a class="font15"><%=eachMessage.senderName%></a>
+	                                    					<br>		
+	                                    						 <p><div><%=eachMessage.messageText %></div> </p>
+	                                    					<br>
+	                                    					 	 <a><%=eachMessage.createdDate%> </a>
+	                                    			</div>
+	                                 		</div>
+                                </div>
+			                 </div>
+			                 <br>
+		                 </td>
+	                 </tr>
+				<%});%>
+			</tbody>
+		</table>
+	<%}else {%>
+<a >
+ No Notifications Found.
+</a>
+
+<%}%>
+
+         
+</div>
+

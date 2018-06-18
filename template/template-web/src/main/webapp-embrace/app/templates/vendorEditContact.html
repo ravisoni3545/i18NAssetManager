@@ -1,0 +1,202 @@
+ <div class="modal fade" id="edit-contact-form" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+			 <form class="form-horizontal" id="editContactForm">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                    </button>
+					<div class="col-md-3" style="padding-right:0px;">
+                    <h4 class="modal-title">
+                        Edit Contact</h4>
+					</div>
+					<div class="col-md-4" style="padding-left: 0px;">
+					<div id="status_edit"></div>
+					</div>
+					
+					
+<!-- 					<div class="col-md-4" style="padding-left:0px;">
+					<select class="bs-select form-control" id="contactType">
+					<option value="stco">Select Type</option>
+					<option value="Primary Contact">Primary Contact</option>
+					
+					<option value="Billing Contact">Billing Contact</option>
+					<option value="Legal Contact">Legal Contact</option>
+					<option value="Technical Contact">Technical Contact</option>
+					<option value="After Hour Contact">After Hour Contact</option>
+					</select>
+					</div> -->
+					
+					<!-- <div id="primaryco" class="col-md-5" style="display:none;"> <input type="checkbox"> 
+                                                                            Create User Account? </div>
+					<div id="billingco" class="col-md-5" style="display:none;"> 
+                                                                        <input type="checkbox" >  Same as Primary Contact?
+                                                                       
+                                                                    </div>
+				<div id="selectco"></div>
+				<div id="legalco"></div>
+				<div id="technicalco"></div>
+				<div id="afterho"></div>	 -->												
+																	
+					 
+					
+					
+					<div class="clearfix"></div>
+					
+                </div>
+                <div class="modal-body">
+                   <!-- start form -->
+				   
+                                                        <div class="row">
+                                                            <div class="col-md-12">
+                                                              
+															  <!-- start primary contact -->
+									<div >
+									 <!-- BEGIN SAMPLE TABLE PORTLET-->
+                                                    
+														 
+														  
+                                                        <div class="form-body">
+                                                            <div id="editFormAlertFailure" class="alert alert-danger display-hide">
+                                                                <button class="close" data-close="alert">
+                                                                </button>
+                                                                You have some form errors. Please check below.
+                                                            </div>
+                                                            <div class="alert alert-success display-hide">
+                                                                <button class="close" data-close="alert">
+                                                                </button>
+                                                                Your form validation is successful!
+                                                            </div>
+                                                            <div class="clearfix">
+                                                            </div>
+                                                            <!-- start optional fields 2 -->
+                                                            <div>
+                                                                <div class="col-md-6">
+                                                                    <div class="form-group">
+                                                                        <label class="control-label">
+                                                                            Contact Name <span class="required">* </span>
+                                                                        </label>
+                                                                        <input name="contactName" data-required="1" class="form-control" type="text" value="<%- model.attributes.contactName %>">
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <label class="control-label">
+                                                                            Address 1
+                                                                        </label>
+                                                                        <input name="address1" data-required="2" class="form-control" type="text" value="<%- model.attributes.address1 %>">
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <label class="control-label">
+                                                                            Address 2
+                                                                        </label>
+                                                                        <input name="address2" class="form-control" type="text" value="<%- model.attributes.address2 %>">
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <label class="control-label">
+                                                                            City
+                                                                        </label>
+                                                                        <input name="city" data-required="3" class="form-control" type="text" value="<%- model.attributes.city %>">
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <label class="control-label">
+                                                                            State
+                                                                        </label>
+                                                                        <div id="states2">
+																		</div>
+                                                                    </div>
+                                                                    <div class="form-group dob">
+																		<label class="control-label">Date of Birth</label>
+																		<div class="input-group input-medium date date-picker"
+																			data-date="<%if(model.attributes.dateOfbirth){%><%- model.attributes.dateOfbirth %><%}else{%>12-02-2012<%}%>" data-date-format="mm-dd-yyyy"
+																			data-date-viewmode="years">
+																			<input class="form-control" readonly="" name="dateOfbirth"
+																				value="<%- model.attributes.dateOfbirth %>"
+																				type="text"> <span class="input-group-btn">
+																				<button class="btn default" type="button">
+																					<i class="fa fa-calendar"></i>
+																				</button>
+																			</span>
+																		</div>
+																	</div>
+																	<div class="clearfix"></div>
+                                                                </div>
+                                                                <div class="col-md-2">
+                                                                </div>
+                                                                <div class="col-md-5">
+																<div class="form-group">
+                                                                        <label class="control-label">
+                                                                            Postal Code
+                                                                        </label>
+                                                                        <input name="postalCode" data-required="5" class="form-control" type="text" value="<%- model.attributes.postalCode %>">
+                                                                    </div>
+																
+                                                                    <div class="form-group">
+                                                                        <label class="control-label">
+                                                                            Email <span class="required">* </span>
+                                                                        </label>
+                                                                        <input name="email" data-required="6" class="form-control" type="text" value="<%- model.attributes.email %>">
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <label class="control-label">
+                                                                            Phone Number 1 <span class="required">* </span>
+                                                                        </label>
+                                                                        <% if(model.attributes.phoneHome) { %>
+                                                                        	<input name="phoneHome" data-required="6" class="form-control" type="text" value="<%- model.attributes.phoneHome %>">
+                                                                        <% } else { %>
+                                                                        	<input name="phoneMobile" data-required="6" class="form-control" type="text" value="<%- model.attributes.phoneMobile %>">
+                                                                        <% } %>
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <label class="control-label">
+                                                                            Phone Number 2
+                                                                        </label>
+                                                                        <input name="phoneWork" data-required="6" class="form-control" type="text" value="<%- model.attributes.phoneWork %>">
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <label class="control-label">
+                                                                            Fax
+                                                                        </label>
+                                                                        <input name="fax" data-required="6" class="form-control" type="text" value="<%- model.attributes.fax %>">
+                                                                    </div>
+																	<div class="form-group ssn">
+																		<label class="control-label">SSN </label><br> <input
+																			type="text" class="form-control" name="ssn" 
+																			value="<%= model.attributes.ssn %>">
+																	</div>
+																	
+                                                                </div>
+                                                                <div class="clearfix">
+                                                                </div>
+                                                                
+                                                            </div>
+                                                            <!-- end optional fields 2-->
+                                                        </div>
+                                                        <div class="clearfix">
+                                                        </div>
+                                                        
+                                                       
+														 
+                                                             
+                                                      
+                                                    <!-- END SAMPLE TABLE PORTLET-->
+									</div>			
+									<!-- end primary contact -->
+															  
+                                                                
+                                                            </div>
+                                                        </div>
+                                                       
+				   <!-- end form -->
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn blue" id="editContact">
+                        Submit</button>
+                    <button type="button" class="btn default" data-dismiss="modal">
+                        Close</button>
+                </div> </form>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+    <!-- edit contact form end -->
+    

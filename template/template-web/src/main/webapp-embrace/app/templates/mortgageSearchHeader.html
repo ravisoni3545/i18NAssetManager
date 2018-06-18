@@ -1,0 +1,85 @@
+<div class="row">
+		<div class="col-md-12">
+			<!-- BEGIN EXAMPLE TABLE PORTLET-->
+			<div class="row">
+				<div class="form-body">
+					<!-- BEGIN ERROR MESSAGE-->
+					<div class="error-msg"></div>
+					<!--END ERROR MESSAGE-->
+					<div class="member-search">
+						<form id="search_mortgage_form">
+							<div class="row">
+								<div class="col-md-4">
+									<div class="form-group">
+										<label class="control-label col-md-3">Name</label>
+										<div class="col-md-9">
+											<input type="text" name="customerName" id="fname" 
+												class="form-control srch" placeholder="First / Last name" />
+										</div>
+									</div>
+								</div>
+								<div class="col-md-5">
+									<div class="form-group">
+										<label class="control-label col-md-3">Phone Number</label>
+										<div class="col-md-9">
+											<input type="text" name="phoneNumber" 
+												class="form-control srch" />
+										</div>
+									</div>
+								</div>
+								
+								<div class="col-md-5">
+									<div class="form-group">
+										<label class="control-label col-md-3">Amount</label>
+										<div class="col-md-9">
+											<input type="text" name="amount" 
+												class="form-control srch" />
+										</div>
+									</div>
+								</div>
+								
+								<div class="col-md-5">
+									<div class="form-group">
+										<label class="control-label col-md-3">Address</label>
+										<div class="col-md-9">
+											<input type="text" name="customerAddress" 
+												class="form-control srch" />
+										</div>
+									</div>
+								</div>
+								
+								<div class="col-md-0">
+									<div>
+										<label class="control-label col-md-3">
+										<input  type="checkbox" name="isRelease" value="false" style="height:13px;">
+										 <span>Item Released</span></label>
+							    	</div>
+								</div>
+								
+							</div>
+							<!-- .row -->
+							<div class="clearfix marg_top20"></div>
+							<div class="row">
+								<div class="col-md-1"></div>
+								<div class="col-md-1">
+									<div class="form-group">
+
+										<button type="button" id="searchMortgageRecords" name="Submit" value="true" class="btn blue btn-sm marg_left30">
+											Search
+										</button>
+									</div>
+								</div>
+
+							</div>
+							
+							<!-- .row -->
+						</form>
+					</div>
+				</div>
+	
+			</div>
+
+			<div id="mortgageSearchResults"></div>
+		
+		</div>
+	</div>

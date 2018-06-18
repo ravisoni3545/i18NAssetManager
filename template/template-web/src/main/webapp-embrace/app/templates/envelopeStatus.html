@@ -1,0 +1,53 @@
+<div class="page-content">
+	 <!-- BEGIN PAGE HEADING-->
+                <div class="row">
+                    <div class="col-md-12">
+                        <h3 class="page-title">
+                            <i class="fa fa-envelope pull-left font25 marg_top10"></i>
+                             &nbsp;Envelope Status &nbsp; 
+                             <div align="right">
+							<button href="#refreshDocusign" data-toggle="modal" class="btn blue" 
+							name="refreshDocusign"> <i class="fa fa-refresh"> </i>
+							Refresh from Docusign </button>
+							</div>
+                        </h3>
+                        
+                    </div>
+                    
+                </div>
+                <!-- END PAGE HEADING-->
+      
+  	<div class="portlet-body table-responsive">
+
+				<table
+					class="table table-striped table-bordered table-advance table-hover tablegreen"
+					id="envStatusTable">
+					<thead>
+					</thead>
+					<tbody></tbody>
+				</table>
+	</div>
+                
+</div>
+<!-- Docusign Envelope View modal start -->
+<div class="modal fade bs-modal-lg" id="docusignEnvView" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true"> </button>
+                <!--h4 class="modal-title"> <i class="fa fa-th-list marg_right10" style="font-size: 20px;"></i>Docusign Envelope</h4-->
+            </div>
+            <div class="modal-body">
+                <div class="embed-responsive embed-responsive-4by3">
+				    <div class="docusignEnvelopeArea"></div>
+					<div class="envelopeErrorMessage"></div>
+				</div>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+<!-- Docusign Envelope View modal end -->
+

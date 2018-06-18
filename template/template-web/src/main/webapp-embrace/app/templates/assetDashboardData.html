@@ -1,0 +1,237 @@
+ <% if(assetDashboardResponse){ %>
+<div class="row">
+	<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+		<div class="dashboard-stat purple">
+			<div class="visual">
+				<i class="fa fa-shopping-cart fa-icon-medium"></i>
+			</div>
+			<div class="details">
+				<div class="number"><%-	assetDashboardResponse.assetProperties %></div>
+				<div class="desc">Properties in Asset Servicing</div>
+			</div>
+			<a href="#myAssets" class="more showAssetPage" data-type="assetProperties"> View more <i
+				class="m-icon-swapright m-icon-white" data-type="assetProperties"></i>
+			</a>
+		</div>
+	</div>
+	<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+		<div class="dashboard-stat blue">
+			<div class="visual">
+				<i class="fa fa-calendar fa-icon-medium"></i>
+			</div>
+			<div class="details">
+				<div class="number"><%-	assetDashboardResponse.currentLeaseProperties %></div>
+				<div class="desc">Lease Expiring in next 30 days</div>
+			</div>
+			<a href="#myAssets" class="more showAssetPage" data-type="expiringLeases"> View more <i
+				class="m-icon-swapright m-icon-white" data-type="expiringLeases"></i>
+			</a>
+		</div>
+	</div>
+	<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+		<div class="dashboard-stat green">
+			<div class="visual">
+				<i class="fa fa-dollar fa-icon-medium"></i>
+			</div>
+			<div class="details">
+				<div class="number"><span class="amount"><%- assetDashboardResponse.totalInvestment %>
+										</span></div>
+				<div class="desc">Total Investment</div>
+			</div>
+			<a href="#myAssets" class="more showAssetPage" data-type="totalInvestment"> View more <i
+				class="m-icon-swapright m-icon-white" data-type="totalInvestment"></i>
+			</a>
+		</div>
+	</div>
+</div>
+<!-- END DASHBOARD STATS -->
+<div class="clearfix"></div>
+
+<div class="row ">
+	<div class="col-md-4 col-sm-4">
+	
+		<div class="portlet-body dash-list-style">
+			<div class="note note-danger">
+				<div class="details">
+					<h4>
+						<i class="fa fa-dollar"></i> Rental Income
+					</h4>
+					<div class="sale-summary">
+
+						<div class="portlet-body dash-list-style">
+							<div class="custom-scroll-dash">
+								<ul>
+									<li><span class="sale-info">Rent Collected (MTD) <i class="fa fa-img-up"></i></span> 
+										<span class="sale-num amount" id="rentCollectedMTD"></span></span></li>
+									<li><span class="sale-info">Rent Collected (YTD) <i class="fa fa-img-up"></i></span> 
+										<span class="sale-num amount" id="rentCollectedYTD"></span></span></li>
+									<li><span class="sale-info">Rent Outstanding<i class="fa fa-img-up"></i></span> 
+										<span class="sale-num amount" id="rentOutstanding"></span></span></li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+	</div>
+	
+	<div class="col-md-4 col-sm-4">
+		
+		<div class="portlet-body dash-list-style">
+			<div class="note note-info">
+				<div class="details">
+					<h4>
+						<i class="fa fa-user"></i> By Property Manager
+					</h4>
+					<div class="sale-summary">
+
+						<div class="portlet-body dash-list-style">
+							<div class="custom-scroll-dash">
+								<% if(assetDashboardResponse.propertyManagerData){ %>
+								<ul>
+									<%	_.each(assetDashboardResponse.propertyManagerData,function(dashboardResponse){ %>
+									<li><span class="sale-info"><%-	dashboardResponse.name %><i class="fa fa-img-up"></i></span> 
+										<span class="sale-num"><a href="#myAssets"  class="showAssetPage" data-type="propertyManager" 
+											data-val="<%- dashboardResponse.name %>"><%- dashboardResponse.count %></a></span></li> 
+									<% }); %>
+								</ul>
+								<%}%>
+							</div>
+						</div>
+						
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- END PORTLET-->
+	</div>
+	<div class="col-md-4 col-sm-4">
+
+		<div class="portlet-body dash-list-style">
+			<div class="note note-danger">
+				<div class="details">
+					<h4>
+						<i class="fa fa-dot-circle-o"></i> By Status
+					</h4>
+					<div class="sale-summary">
+
+						<div class="portlet-body dash-list-style">
+							<div class="custom-scroll-dash">
+								<% if(assetDashboardResponse.statusData){ %>
+								<ul>
+									<%	_.each(assetDashboardResponse.statusData,function(dashboardResponse){%>
+									<li><span class="sale-info"><%-	dashboardResponse.name %><i class="fa fa-img-up"></i></span> 
+										<span class="sale-num"><a href="#myAssets" class="showAssetPage" data-type="status" 
+										data-val="<%- dashboardResponse.id %>"><%- dashboardResponse.count %></a></span></li> 
+									<% }); %>
+								</ul>
+								<%}%>
+							</div>
+						</div>
+						
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- END PORTLET-->
+	</div>
+	
+</div>
+
+<div class="clearfix"></div>
+
+<div class="row ">
+	<div class="col-md-6 col-sm-6">
+
+<div class="portlet-body dash-list-style">
+
+			<div class="note note-warning">
+				<div class="details">
+					<h4>
+						<i class="fa fa-user"></i> By Asset Manager
+					</h4>
+					<div class="">
+
+						<div class="portlet-body">
+							<div class="custom-scroll-dash">
+								<% if(assetDashboardResponse.assetManagerData) { %>
+								<ul>
+									<%
+									_.each(assetDashboardResponse.assetManagerData,function(userPropertyResponse){
+									%>
+									<li><span class="sale-info"> <%
+											if(userPropertyResponse.userImageLink) { %> <img alt=""
+											src="<%= userPropertyResponse.userImageLink %>" width="29"
+											height="29" class="marg_right5"> <%} else {%> <img
+											alt="" src="assets/img/user1.png" width="29" height="29" />
+											<%}%> <%- userPropertyResponse.userName %> <i
+											class="fa fa-img-up"></i>
+									</span> <span class="sale-num"><a href="#myAssets" class="showAssetPage" data-type="assetManager" 
+									data-val="<%- userPropertyResponse.userId %>"> <%- userPropertyResponse.count %></a> </span></li> 
+									<%}); %>
+								</ul>
+								<%}%>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+		</div>
+
+		<!-- END PORTLET-->
+	</div>
+	<div class="col-md-6 col-sm-6">
+
+		<div class="portlet-body dash-list-style">
+			<div class="note note-success">
+				<div class="details">
+					<h4>
+						<i class="fa fa-dot-circle-o"></i> Vacancy Status
+					</h4>
+					<div class="sale-summary">
+
+						<div class="portlet-body dash-list-style">
+							<div class="custom-scroll-dash">
+								<% if(assetDashboardResponse.vacancyData) { %>
+								<ul>
+									<li><span class="sale-info">Currently Vacant<i class="fa fa-img-up"></i></span> 
+										<span class="sale-num">
+											<% if(assetDashboardResponse.vacancyData.currentlyVacant) { %>
+												<a href="#myAssets" class="showAssetPage" data-type="status" 
+												data-val="<%- assetDashboardResponse.vacancyData.currentlyVacant.id %>">
+												<%- assetDashboardResponse.vacancyData.currentlyVacant.count %></a></td>
+											<%} else {%>0<%}%>
+										</span>
+									</li> 
+									<li><span class="sale-info">Vacancy % (Current)<i class="fa fa-img-up"></i></span>
+										<span class="sale-num"><%- assetDashboardResponse.vacancyData.vacancyCurrent %>%
+										</span>
+									</li> 
+									<li><span class="sale-info">Vacancy % (YTD)<i class="fa fa-img-up"></i></span>
+										<span class="sale-num"><%- assetDashboardResponse.vacancyData.vacancyYTD %>%
+										</span>
+									</li> 
+									<li><span class="sale-info">Vacancy % (Total)<i class="fa fa-img-up"></i></span>
+										<span class="sale-num"><%- assetDashboardResponse.vacancyData.vacancyTotal %>%
+										</span>
+									</li> 
+								</ul>
+								<%}%>
+							</div>
+						</div>
+						
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- END PORTLET-->
+	</div>
+
+</div>
+<div class="clearfix"></div>
+
+<%}%>

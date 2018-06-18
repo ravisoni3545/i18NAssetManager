@@ -1,0 +1,76 @@
+<% if(isOpportunityScreen || (investorDepositModel.status && investorDepositModel.status != "Requested")){ %>
+	<div class="">
+		<strong>
+			<% if(depositHeader != "") {%>
+				<span><%- depositHeader%></span>
+			<%}%>
+			<% if(navPermission.investorDepositView) {
+				if(navPermission.investorDepositEdit && investorDepositModel.status == "Requested") { %>
+					<a data-toggle="modal" id="confirmReceiptBtn" class="btn bg-blue" style="padding:1px 12px;margin:5px;">
+						Confirm Receipt
+					</a>
+				<% } 
+				if(investorDepositModel.status != "Requested") { %>
+					<a data-toggle="modal" class="btn btn-md bg-blue" id="depositDetailsBtn" style="padding:1px 12px;">
+						Details
+					</a>
+				<% } 
+			} %>
+			<% if(depositHeader != "" || navPermission.investorDepositView) {%>
+				<br>
+			<%}%>
+			<span class="amount_1"><%- parseFloat(dataModel.creditAmount) %></span>
+			<% if(investorDepositModel.status != "Requested") { %>
+				<span>( Balance: <span class="amount_1 f-18"><%- parseFloat(dataModel.creditAmount) - parseFloat(dataModel.debitAmount) %></span>)</span>
+			<% } %>
+			<br>
+			<span class="lightfontcolor-green"><%- investorDepositModel.status%> (<%- investorDepositModel.transactionDate%>)</span>
+		</strong>
+	</div>
+
+
+	<div class="modal fade bs-modal-sm"	id="confirmReceiptModal" tabindex="-1" role="basic"	aria-hidden="true">
+		<div class="modal-dialog modal-sm">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+					<h4 class="modal-title">Confirm Deposit Receipt</h4>
+				</div>
+				<div class="modal-body">
+					<form id="confirmReceiptFormId" data-financial-transaction-detail-id="<%- investorDepositModel.financialTransactionDetailId%>">
+						<div class="form-group">
+							<label class="control-label" style="text-align: left;">
+								Date Received <span class="required">* </span>
+							</label>
+							<div class="input-group date date-picker" data-date="" data-date-format="mm-dd-yyyy" data-date-viewmode="years">
+								<input class="form-control" readonly="" type="text" name="transactionDate" value="<%- investorDepositModel.transactionDate%>"> 
+								<span class="input-group-btn">
+									<button class="btn default" type="button">
+										<i class="fa fa-calendar"></i>
+									</button>
+								</span>
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="control-label pad_leftright0">
+								Amount Received <span class="required">* </span>
+							</label>
+							<div class="pad_right0 margin-bottom-10">
+								<div class="input-group">
+									<span class="input-group-addon"><i class="fa fa-dollar"></i></span>
+									<input class="form-control text-right currency" type="text" name="creditAmount" value="<%- investorDepositModel.creditAmount%>">
+								</div>
+							</div>
+						</div>
+						<div class="clearfix"></div>
+					</form>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn blue" id="confirmReceiptModalSave">SAVE</button>
+					<button type="button" class="btn default" data-dismiss="modal">CANCEL</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div id='depositDetailsDiv'></div>
+<% } %>

@@ -1,0 +1,229 @@
+<!-- Wishlist tab start -->
+<div class="tab-pane" id="tab_6_4">
+	<div class="panel-group accordion" id="accordion3">
+
+
+
+
+		<!-- BEGIN SAMPLE TABLE PORTLET-->
+		<div class="portlet box">
+			<div class="alert alert-danger display-hide">
+		        <button class="close" data-close="alert"></button>
+		        <text></text>
+		    </div>
+		    <div class="alert alert-success display-hide">
+		        <button class="close" data-close="alert"></button>
+		        Successfully Saved.
+		    </div>
+			<div class="">
+
+
+				<!-- Search table start -->
+				<div class="portlet-body table-responsive">
+					<table
+						class="table  table-striped table-bordered table-hover tablegreen"
+						id="wishlistTable">
+						<thead>
+							<tr>
+								<th>Actions</th>
+								<th>Property</th>
+								<th>Address</th>
+								<th>Property Status</th>
+								<th>Wishlist Status</th>
+
+								<th>Date Added</th>
+								<th>Asking Price</th>
+
+								<!-- <th>Appreciation Rate</th> -->
+
+
+
+							</tr>
+						</thead>
+						<tbody>
+
+							<% if(wishlistModel) { %> <% _.each(wishlistModel, function(
+							singleData){ %>
+							<tr>
+								<td><% if(singleData.wishlistStatus=="Added"||
+									singleData.wishlistStatus=="Intend to buy"){ %>
+									<div class="btn-group" style="text-align: left !important;">
+										<button data-toggle="dropdown"
+											class="btn dropdown-toggle gear1button" type="button">
+											<i class="fa fa-gear"></i>
+										</button>
+										<ul role="menu" class="dropdown-menu"
+											style="margin-left: 30px !important; margin-top: -20px !important; padding: 5px;">
+											<li><a data-toggle="modal" name="viewOnPortal"
+												class="btn btn-xs pad5_left_right textalignleft viewOnPortal ippropertypage" style="cursor: pointer;" 
+												data-objectid="<%- singleData.investorPortalPropertyAddress %>" target="blank">
+												<i class="fa fa-eye"></i> Investor View</a></li>
+											<li><a data-toggle="modal" name="removeFromWishlist"
+												investorid="<%- singleData.investorId %>"
+												propertyid="<%- singleData.propertyId %>"
+												class="btn btn-xs pad5_left_right textalignleft removeWishlist"
+												href="#form-delete1"><i class="fa fa-trash-o"></i>
+													Remove From Wishlist</a></li> <%
+											if(singleData.propertyStatus=="Available"){ %> <%
+											if(singleData.wishlistStatus=="Intend to buy"){ %>
+												<li><a data-toggle="modal" style="cursor: pointer"
+												class="btn green btn-xs black pad5_left_right textalignleft"
+												style="background-color: #48D55E;" name="initiateClosingWL"
+												investorid="<%- singleData.investorId %>"
+												propertyid="<%- singleData.propertyId %>"><i investorid="<%- singleData.investorId %>"
+												propertyid="<%- singleData.propertyId %>"
+													class="fa fa-shopping-cart"></i> Initiate Closing</a></li> <% } %>
+											<% if(singleData.wishlistStatus=="Added"){ %>
+												<li><a data-toggle="modal" name="intendToBuyFromWishlist"
+													investorid="<%- singleData.investorId %>"
+													propertyid="<%- singleData.propertyId %>"
+													href="#form-ready-invest"
+													class="btn green btn-xs black pad5_left_right textalignleft readyToInvestWishlist"
+													style="background-color: #48D55E;"><i
+														class="fa fa-shopping-cart" investorid="<%- singleData.investorId %>"
+													propertyid="<%- singleData.propertyId %>" ></i> Ready to Invest</a>
+												</li>
+												<%	if(showRecommend==true) { %>
+													<li>
+														<a data-toggle="modal" name="moveToRecommended"
+														investorid="<%- singleData.investorId %>"
+														propertyid="<%- singleData.propertyId %>"
+														href="#form-moveTo-recommended"
+														class="btn yellow btn-xs black pad5_left_right textalignleft moveToRecommended"><i class="fa fa-gift" investorid="<%- singleData.investorId %>" propertyid="<%- singleData.propertyId %>" ></i> Move to Recommended</a>
+													</li>
+												<%	} %>	 
+												<% } %> <%
+											} %>
+
+
+										</ul>
+									</div> <% }%>
+								</td>
+								<td><img src="<%- singleData.propertyImage %>"></td>
+								<td><%- singleData.propertyAddress %></td> <%
+								if(singleData.propertyStatus!="Available"){ %>
+								<td class="bgclryellow"><%- singleData.propertyStatus %></td>
+								<%} else{ %>
+								<td class="bgclrgreen"><%- singleData.propertyStatus %></td> <%
+								} %>
+								<td><%- singleData.wishlistStatus %></td>
+								<td class="dataAdded"><%- singleData.dateAdded %></td>
+								<td class="amount"><%- singleData.askingPrice %></td>
+
+								
+
+							</tr>
+							<% }); %> <% }else{ %>
+							<tr>No Data Available
+							</tr>
+							<%}%>
+							<!--  -->
+
+						</tbody>
+					</table>
+				</div>
+				<!-- Search table end -->
+
+
+			</div>
+		</div>
+		<!-- END SAMPLE TABLE PORTLET-->
+
+		<!--  end vendor information -->
+
+
+	</div>
+</div>
+
+<!-- Wishlist tab end -->
+<!-- START Initiate Closing lightbox -->
+<div class="modal fade" id="initiateclosing" tabindex="-1" role="basic"
+	aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal"
+					aria-hidden="true"></button>
+				<h4 class="modal-title">
+					<i class="fa fa-times"></i> Initiate Closing
+				</h4>
+			</div>
+			<div class="modal-body" id="initiateClosingDiv"></div>
+			<div class="modal-footer">
+
+				<button type="button" class="btn default" data-dismiss="modal">Cancel</button>
+
+				<button type="button" class="btn blue" id="submitInitiateClosingWL">Initiate
+					Closing</button>
+
+			</div>
+		</div>
+		<!-- /.modal-content -->
+	</div>
+	<!-- /.modal-dialog -->
+</div>
+<!-- END Initiate Closing lightbox -->
+<!-- Start remove from wishlist modal -->
+<div class="modal fade bs-modal-sm" id="form-delete1" tabindex="-1"
+	role="dialog" aria-hidden="true">
+	<div class="modal-dialog modal-sm">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal"
+					aria-hidden="true"></button>
+				<h4 class="modal-title">Delete</h4>
+			</div>
+			<div class="modal-body">Are you sure want to delete this?</div>
+			<div class="modal-footer">
+				<button type="button" class="btn blue" id="confirmDeleteWishtlist">Yes</button>
+				<button type="button" class="btn default" data-dismiss="modal">No</button>
+			</div>
+		</div>
+		<!-- /.modal-content -->
+	</div>
+	<!-- /.modal-dialog -->
+</div>
+<!-- End remove from wishlist modal -->
+<!-- Start Ready to Invest modal -->
+<div class="modal fade bs-modal-sm" id="form-ready-invest" tabindex="-1"
+	role="dialog" aria-hidden="true">
+	<div class="modal-dialog modal-sm">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal"
+					aria-hidden="true"></button>
+				<h4 class="modal-title">Ready To Invest</h4>
+			</div>
+			<div class="modal-body">Are you sure want to invest?</div>
+			<div class="modal-footer">
+				<button type="button" class="btn blue" id="confirmInvest">Yes</button>
+				<button type="button" class="btn default" data-dismiss="modal">No</button>
+			</div>
+		</div>
+		<!-- /.modal-content -->
+	</div>
+	<!-- /.modal-dialog -->
+</div>
+<!-- End Ready to Invest modal -->
+
+<!-- Start Ready to Invest modal -->
+<div class="modal fade bs-modal-sm" id="form-moveTo-recommended" tabindex="-1"
+	role="dialog" aria-hidden="true">
+	<div class="modal-dialog modal-sm">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal"
+					aria-hidden="true"></button>
+				<h4 class="modal-title">Ready To Invest</h4>
+			</div>
+			<div class="modal-body">Are you sure want to move to recommended?</div>
+			<div class="modal-footer">
+				<button type="button" class="btn blue" id="confirmRecommended">Yes</button>
+				<button type="button" class="btn default" data-dismiss="modal">No</button>
+			</div>
+		</div>
+		<!-- /.modal-content -->
+	</div>
+	<!-- /.modal-dialog -->
+</div>
+<!-- End Ready to Invest modal -->

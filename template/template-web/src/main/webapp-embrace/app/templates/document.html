@@ -1,0 +1,354 @@
+<div id="documentTabTableRender">
+<div class="addbtnposition pull-right margin-bottom-10">
+    <a href="#document-form1" data-toggle="modal" data-toggle="tooltip"  title="Add New Document" 
+      class="btn green hopNameTooltip"><i class="fa fa-plus"></i> </a>
+   <a href="#document-form-templates" data-toggle="modal" data-toggle="tooltip" title="Create Envelope from Templates"
+      class="btn blue hopNameTooltip"><i class="fa fa-plus-square"></i>  </a>
+</div>
+<div class="panel-group accordion table-responsive" id="accordion3">
+	<table
+		class="table table-striped table-bordered table-advance table-hover eVaultHide tablegreen">
+		<thead>
+			<tr>
+				<th width="39%">Name</th>
+				<th width="20%">Type</th>
+				<th width="15%">Uploaded Date</th>
+				<th width="10%">Uploaded By</th>
+				<th width="8%">myVault Upload</th>
+				<th width="8%">Actions
+				<!-- <th>
+					  <div class="btn-group" style="text-align:left!important;">
+						<button data-toggle="dropdown" class="btn blue dropdown-toggle gear2button myaction" type="button">
+							<i class="textcolorwhite fa fa-gear"></i>
+						</button>
+						<ul role="menu" class="dropdown-menu" 
+							style="margin-left:-240px!important;margin-top:-20px!important; padding:5px; ">
+							<li><a href="#document-form1" name="addNewDoc" data-toggle="modal" 
+								class="btn btn-xs purple textalignleft" style="padding-right:13px;">
+								<i class="fa fa-wrench"></i> Add New Document </a></li>
+							<li><a href="#document-form-templates" name="createDocTemplEnv" data-toggle="modal" 
+								class="btn btn-xs red textalignleft" style="padding-right:13px;">
+								<i class="fa fa-plus-square"></i> Create Envelope from Templates </a></li>
+						</ul>
+					</div> 
+
+				</th>-->
+			</tr>
+		</thead>
+		<tbody>
+			<% _.each(templateData, function(singleData){  %>
+					<tr>
+						<td>
+							<div style="position:relative;">
+								<a href="document/download/<%-singleData.documentId%>" class="document-hover" data-id="<%=singleData.documentId%>"><%- singleData.fileName%>
+								</a>&nbsp;
+								<div class="pull-right">
+								<a style="cursor:pointer;" url="document/download/<%- singleData.documentId%>" title="Preview" docName="<%-singleData.fileName%>" class="document-preview document-show " data-id="<%=singleData.documentId%>" data-docname="<%=singleData.fileName%>">
+									<i class="fa fa-file-text"></i>
+								</a>
+								<% if (singleData.isEmailAttachment)  { %>
+								&nbsp;
+								<a style="cursor:pointer;" url="#message" title="Linked Message" class="linked-message" data-id="<%=singleData.subObjectId%>" >
+									<i class="fa fa-link"></i>
+								</a>
+								<% } %>
+								</div>
+							</div>
+						</td>
+						<td><%-singleData.documentType%>
+							<% if (singleData.isOpportunityDoc == "Y")  { %>
+								<a style="cursor:pointer;" title="Document carried over from Opportunity">
+									<i class="fa fa-search"></i>
+								</a>
+							<% } %>
+						</td>
+						<td><% if(singleData.createdDate) { %>
+							 <%-singleData.createdDate%>
+							 <% } %></td>
+						<td><%-singleData.createdBy%></td>
+						<td><%-singleData.isVaultUpload%>
+						</td>
+						<td>
+
+								<% if (singleData.isEmailAttachment || singleData.documentType == "Other")  { %>
+
+								 <a style="cursor: pointer" data-toggle="modal"
+								  class="edit_doc"	name="editDocument" documentId="<%- singleData.documentId %>"
+								  documentName="<%- singleData.fileName %>" title="Edit document" 
+								  object="<%=singleData.object %>" objectid="<%=singleData.objectId %>"><i class="fa fa-edit">
+								 </i></a>&nbsp;&nbsp;
+								 <% } %>
+								 <a style="cursor: pointer" data-toggle="modal" title="Send document"
+								 class="email_doc"	name="emailDocument" documentId="<%- singleData.documentId %>"
+								  object="<%=singleData.object %>" objectid="<%=singleData.objectId %>"><i class="fa fa-envelope">
+								 </i></a>&nbsp;&nbsp;
+								<a style="cursor: pointer" data-toggle="modal"
+							class="delete_red" title="Delete" name="deleteDocument" documentId="<%- singleData.documentId %>"><i class="fa fa-trash-o">
+							</i></a>
+					   </td>
+					</tr>
+					<% }); %> 
+		</tbody>
+	</table>
+</div>
+</div>
+	<!-- start add document lightbox -->
+    <div class="modal fade" id="document-form1" tabindex="-1" role="basic" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                    </button>
+                    <h4 class="modal-title">
+                       Add New Document</h4>
+                </div>
+                <div class="modal-body">
+                	<form  method="post" id="documentForm"  enctype="multipart/form-data" class="form-horizontal">
+						<div class="col-md-12">
+							<div class="col-md-6 form-group small-DD-font-size_13" style="width: 246px; margin-left: 11px;">
+		                        <label class="control-label" style="text-align: left;">
+		                            Document Type
+		                        </label>
+		                       <select class="form-control" name="docType">
+							   <% _(docTypes).each(function(type) { %>
+									<option value="<%= type.id %>">
+										<%= type.codeDisplay %>
+									</option>
+								<% }); %>
+							   </select>
+		                    </div>
+		                    <div class="col-md-6" style="width: 246px; margin-left: 11px; margin-top: 18px">
+								<div>
+									<label class="control-label">
+									<input id="vaultUpload" type="checkbox" name="vaultUpload" style="height:13px;">
+										<span>Upload to myVault</span></label>
+								</div>
+							</div>
+						</div>
+						<div class="clearfix"></div>
+						<div class="row col-md-12">
+							<div class="col-md-6"></div>
+							<div class="col-md-6 form-group small-DD-font-size_13" style="width: 246px; margin-left: 11px;" id="folderDiv">
+		                        <label class="control-label" style="text-align: left;">
+		                            Folder Type
+		                        </label>
+		                        <div  id="sharefileFolderDD">
+		                        </div>
+		                    </div>
+						</div>
+						<div class="clearfix"></div>
+						<div class="row col-md-12" style="margin: auto;  padding-top: 10px;">
+		                    <div class="form-group uploadDocDiv">
+								<div class="doc-drop-field-big">
+									<div class="doc-drop-text">
+										<span>Drop files here to attach them</span>
+										</br>
+										<span style="margin-left: 80px;">or</span>
+									</div>
+									<span class="btn doc-attach-btn fileinput-button">
+					                    <i class="glyphicon glyphicon-plus"></i>
+					                    <span>Upload Document</span>
+					                    <input name="document" multiple type="file">
+			                		</span>
+								</div>
+								<span id="documentErrorSpan" class="help-block hide" style="color:red;">* This field is required.</span>
+								<table class="files table-hover"></table>
+							</div>
+						</div>
+						<div class="clearfix"></div>
+           			</form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn blue" id="submittDoc">
+                        SAVE</button>
+                    <button type="button"  class="btn default" data-dismiss="modal">
+                        CANCEL</button>
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+	<!-- end add document lightbox -->
+	<!-- start edit document lightbox -->
+    <div class="modal fade" id="document-form-edit" tabindex="-1" role="basic" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                    </button>
+                    <h4 class="modal-title">
+                       Edit Document</h4>
+                </div>
+                <div class="modal-body">
+                	<form  method="post" id="editedDocumentForm"  class="form-horizontal">
+                		<div class="row col-md-12">
+							<div class="col-md-12 form-group" style="margin-left: 11px;" id="fileNameDiv">
+			                        <label class="control-label" style="text-align: left;">
+			                            File Name
+			                        </label>
+			                        <input class="form-control" id="fileName" type="text" name="fileName" value="">
+			                    </div>
+							</div>
+						<div class="clearfix"></div>
+						<div class="row col-md-12">
+							<div class="col-md-6 form-group small-DD-font-size_13" style="width: 246px; margin-left: 11px;">
+		                        <label class="control-label" style="text-align: left;">
+		                            Document Type
+		                        </label>
+		                       <select class="form-control" name="docType">
+							   <% _(docTypes).each(function(type) { %>
+									<option value="<%= type.id %>">
+										<%= type.codeDisplay %>
+									</option>
+								<% }); %>
+							   </select>
+		                    </div>
+		                    <div class="col-md-6" style="width: 246px; margin-left: 11px; margin-top: 18px">
+								<div>
+									<label class="control-label">
+									<input id="editVaultUpload" type="checkbox" name="vaultUpload" style="height:13px;">
+										<span>Upload to myVault</span></label>
+								</div>
+							</div>
+						</div>
+						<div class="clearfix"></div>
+						<div class="row col-md-12">
+						<div class="col-md-6"></div>
+							<div class="col-md-6 form-group small-DD-font-size_13" style="width: 246px; margin-left: 11px;" id="editFolderDiv">
+		                        <label class="control-label" style="text-align: left;">
+		                            Folder Type
+		                        </label>
+		                        <div  id="editSharefileFolderDD">
+		                        </div>
+		                    </div>
+						</div>
+						<div class="clearfix"></div>
+           			</form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn blue" id="editDoc">
+                        SAVE</button>
+                    <button type="button"  class="btn default" data-dismiss="modal">
+                        CANCEL</button>
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+	<!-- end edit document lightbox -->
+	
+	<!-- start document templates lightbox -->
+    <div class="modal fade" id="document-form-templates" role="basic" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                    </button>
+                    <h4 class="modal-title">
+                       Document Templates</h4>
+                </div>
+                <div class="modal-body">
+                	<form  method="post" id="documentTemplatesForm"  class="form-horizontal">
+                		<div class="panel panel-default" style="border: solid 1px #D0D0D0;">
+						  <div class="panel-heading">
+						    <h3 class="panel-title">Select Documents</h3>
+						  </div>
+						  <div class="panel-body" id="formDocs">
+						  </div>
+						</div>						
+						<div class="clearfix"></div>
+						<div class="row col-md-12" style="margin: auto; padding-bottom: 12px;">
+		                    <div class="form-group uploadDocDiv">
+								<div class="doc-drop-field-big">
+									<div class="doc-drop-text">
+										<span>Drop files here to attach them</span>
+										</br>
+										<span style="margin-left: 80px;">or</span>
+									</div>
+									<span class="btn doc-attach-btn fileinput-button">
+					                    <i class="glyphicon glyphicon-plus"></i>
+					                    <span>Upload Document</span>
+					                    <input name="document" multiple type="file">
+			                		</span>
+								</div>
+								<span id="templatedocumentErrorSpan" class="help-block hide" style="color:red;">* This field is required.</span>
+								<table class="files table-hover"></table>
+							</div>
+						</div>
+						<div class="clearfix"></div>
+						<div class="panel panel-default" style="border: solid 1px #D0D0D0;">
+						  <div class="panel-heading">
+						    <h3 class="panel-title">Select Recipients</h3>
+						  </div>
+						  <div class="panel-body"  id="formRecips">
+						  </div>
+						  <div class="recipErrors">
+						  </div>
+						</div>
+           			</form>
+                </div>
+                <div class="modal-footer">
+                	<button class="btn green" name="goToDocumentTemplates"> <i class="fa fa-list-alt"> </i>
+								 Document Templates </button>
+                    <button type="button" class="btn blue docusign" id="createEnv">
+                        CREATE ENVELOPE</button>
+                    <button type="button"  name="cancelDocumentTemplates" class="btn default" data-dismiss="modal">
+                        CANCEL</button>
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+	<!-- end document templates  lightbox -->
+	<!-- start show message lightbox -->
+	<div class="modal fade" id="formShowMessage" tabindex="-1"
+	role="basic" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal"
+						aria-hidden="true"></button>
+					<h4 class="modal-title">Linked Message</h4>
+				</div>
+				<div class="modal-body">
+					<div class="row">
+						<div class="col-md-1"><span  style="margin-left:-15px;"><b>Subject: </b></span></div>
+						<div class="col-md-11" style="margin-bottom:8px;word-wrap: break-word;" id="subject" >
+						</div>
+					</div>
+					<hr>
+					<div id="showMessage" style="word-wrap: break-word;">
+					</div>
+				</div>
+				<div class="modal-footer">
+				</div>
+			</div>
+			<!-- /.modal-content -->
+		</div>
+		<!-- /.modal-dialog -->
+	</div>
+
+	<!-- end show message lightbox -->
+	<div class="modal fade bs-modal-sm" id="optionDeleteDocument" tabindex="-1" role="dialog" aria-hidden="true">
+	<div class="modal-dialog modal-sm">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+				<h4 class="modal-title">Delete</h4>
+			</div>
+			<div class="modal-body">
+				  Are you sure you want to delete this?
+			</div>
+			<div class="modal-footer">
+				<button id="deleteDocumentConfirmationButton" type="button" class="btn blue">Yes</button>
+				<button type="button" class="btn default" data-dismiss="modal">No</button>
+			</div>
+		</div>
+		<!-- /.modal-content -->
+	</div>
+	<!-- /.modal-dialog -->
+</div>
+<div id="messagesViewRenderId"></div>

@@ -1,0 +1,245 @@
+<div class="page-content">
+	<!-- BEGIN PAGE HEADING-->
+	<div class="dash-header">
+		<div class="">
+			<h3 class="page-title">
+				<i class="fa fa-check-square-o pull-left"></i>Opportunity Details
+			</h3>
+		</div>
+	</div>
+    <div id="opportunityErrorMessage" class="alert alert-danger display-hide">Error in fetching opportunity information</div>
+	
+	<div id="depositReceiptSuccessMessage" class="alert alert-success display-hide">Successfully Confirmed Deposit Receipt</div>
+	<div id="depositReceiptErrorMessage" class="alert alert-danger display-hide">Error in Confirming Deposit Receipt</div>
+	
+	<!-- END PAGE HEADING-->
+	<div id="opportunityHeader" class="member-search"></div>
+
+	<!-- Start Search section -->
+	
+	<!-- 	<div class="row">
+		<div class="col-md-12">
+			Tab Start
+			<div class="tabbable">
+				<ul class="nav nav-tabs1">
+					<li class="active" name="closingNav"><a href="javascript:;"
+						data-toggle="tab" id="closingSteps"><i
+							class="fa fa-building-o pull-left font14 marg_top4"> </i>Closing
+							Steps </a></li>
+					<li class="" name="closingNav"><a href="#contacts"
+						data-toggle="tab" id="closingContact"><i
+							class="fa fa-phone pull-left font14 marg_top4"> </i>Contacts </a></li>
+					<li class="" name="closingNav"><a href="javascript:;"
+						data-toggle="tab" id="closingDocuments"><i
+							class="fa fa-file-text pull-left font14 marg_top4"> </i>Documents
+					</a></li>
+					<li class="" name="closingNav"><a href="javascript:;"
+						data-toggle="tab" id="closingMessages"><i
+							class="fa fa-envelope pull-left font14 marg_top4"> </i>Messages </a></li>
+
+				</ul>
+				<div class="tab-content" style="width: 100%; margin-top: 20px;">
+					Closing steps tab start
+					<div class="tab-pane active" id="closingStepsTab"
+						name="closingInfoTab"></div>
+					<div class="tab-pane" id="contactsTab" name="closingInfoTab">
+					</div>
+					<div class="tab-pane" id="closingDocumentsTab"
+						name="closingInfoTab"></div>
+					<div class="tab-pane" id="closingMessagesTab" name="closingInfoTab">
+					</div>
+					Occupancy tab start
+
+				</div>
+			</div>
+			Tab End
+		</div>
+	</div> -->
+	<div id="addPropertyOpportunity" class="member-search clearfix"></div>
+	<div id="lpoaStatusDiv"></div>
+	<br>
+	<div class="alert alert-success display-hide" id="lpoaStatusSuccessMessage">
+		<button class="close" data-close="alert" onclick="$(this).parent().hide();return false;"></button>
+		<text></text>
+	</div>
+	<div id="lpoaStatusErrorMessage" class="alert alert-danger display-hide">
+		<button class="close" data-close="alert" onclick="$(this).parent().hide();return false;"></button>
+		<text></text>
+	 </div>	
+<!-- Edit Investment Zone div start -->
+ <div class="modal fade" id="editInvestmentZone" tabindex="-1" role="basic" aria-hidden="true">
+        <div class="modal-dialog">
+        <form id="investmentZoneForm"> 
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                    </button>
+                    <h4 class="modal-title">
+                       Recommended Investment Zone(s)</h4>
+                </div>
+                <div class="modal-body">
+                <!-- Validation start -->
+                <div id="formAlertFailure" class="alert alert-danger display-hide">
+										<button class="close" data-close="alert"></button>
+										Please fill required fields and submit again.
+									</div>
+									
+									<div class="clearfix"></div>
+                <!-- Validation end -->
+
+                 <div class="row">
+                     <div class="col-md-6">
+                         <div class="form-group">
+                             <label class="control-label">Investment Zone(s)<span
+													class="required">* </span></label>
+                            
+                            <div id="investmentZoneDropdown"></div>
+                             
+                         </div>
+                     </div><!-- <div class="col-md-6">
+                     <div class="form-group">
+                         <label class="control-label">ILM<span
+													class="required">* </span></label>
+                        
+                         <div id="ilmDropdown"></div>
+                     </div>
+                 </div> -->
+                 </div>
+                    <div class="clearfix"></div>
+                    <!-- Start -->
+                    <div class="row">
+                     <!-- <div class="col-md-6">
+                         <div class="form-group">
+                         <label class="control-label">Send introduction email to investor?</label>
+                            <input id="sendMailToInvestor" type="checkbox"> 
+                             
+                         </div>
+                     </div> --><div class="col-md-6">
+                     <div class="form-group">
+                     <label class="control-label">Send breadbox info to ILM?</label>
+                         <input id="sendBreadBoxInfoToILM" type="checkbox"> 
+                     </div>
+                 </div>
+                 </div>
+                    <div class="clearfix"></div>
+                    <!-- End -->
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn blue" id="saveInvestmentZone" >
+                        SAVE</button>
+                    <button type="button"  class="btn default" data-dismiss="modal">
+                        CANCEL</button>    
+                </div>
+            </div>
+            <!-- /.modal-content -->
+           </form>
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+
+<!-- Edit Investment Zone div end -->
+
+	<div class="panel">
+        <div class="panel-body">
+          
+          <!-- Tab Start -->
+          <div class="tabbable">
+            <ul class="nav nav-tabs1">
+              <li class="active" name="opportunityInfoNav" >
+              	<a style="cursor:pointer;" data-toggle="tab" id="opportunityProperties"><i class="fa fa-home pull-left font14 marg_top4"> </i>Properties </a>
+              </li>
+              <!-- <li class=""><a href="#tab_6_2" data-toggle="tab"><i class="fa fa-phone pull-left font14 marg_top4"> </i>Contacts </a></li>
+               -->
+              
+              <li class="" name="opportunityInfoNav"><a style="cursor: pointer;" id="wishlistDetails"  data-toggle="tab"><i
+									class="fa fa-bars pull-left font14 marg_top4"> </i>Wishlist </a></li>
+			  <li class="" name="opportunityInfoNav"><a style="cursor: pointer;" id="opportunityContacts"><i class="fa fa-phone pull-left font14 marg_top4"> </i>Contacts </a></li>						
+              <li class="" name="opportunityInfoNav"><a style="cursor: pointer;" id="opportunityDocuments" data-toggle="tab"><i class="fa fa-file-text pull-left font14 marg_top4"> </i>Documents </a></li>
+              <li class="" name="opportunityInfoNav"><a style="cursor: pointer;" id="opportunityMessages" data-toggle="tab"><i class="fa fa-envelope pull-left font14 marg_top4"> </i>Messages </a></li>
+            </ul>
+
+
+            <div class="tab-content" style="width: 100%; margin-top: 20px;"> 
+             	<div class="tab-pane active" id="opportunityPropertiesTab" name="opportunityInfoTab">
+				</div>
+			<div class="tab-pane" id="opportunityWishlistDetailsTab" name="opportunityInfoTab">
+							 </div>
+							 <div class="tab-pane" id="opportunityContactsTab" name="opportunityInfoTab">
+                                 <a class="btn green">
+                                     Add New <i class="fa fa-plus"></i>
+                                 </a>
+							 </div>
+							 <div class="tab-pane" id="opportunityDocumentsTab" name="opportunityInfoTab">
+							 </div>
+							 <div class="tab-pane" id="opportunityMessagesTab" name="opportunityInfoTab">
+							 </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+<div class="modal fade" id="lpoaPropertModal" tabindex="-1" role="basic" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                    </button>
+                    <h4 class="modal-title">Limited Power of Attorney</h4>
+                </div>
+                <div class="modal-body">
+					<div id="lpoaFormerrorMsg" class="alert alert-danger display-hide">
+						<button class="close" data-close="alert" onclick="$(this).parent().hide();return false;"></button>
+						<text></text>
+					 </div>
+					 <div class="alert alert-success display-hide" id="lpoaFormSuccessMessage">
+					<button class="close" data-close="alert" onclick="$(this).parent().hide();return false;"></button>
+					<text></text>
+				</div>
+					 <div  id="lpoamainDiv"></div>
+                </div>
+                <div class="modal-footer" style="margin-top: 0px; ">
+                    <button type="button" class="btn green" id="sendAndSaveLpoaData">
+                        Save and Send Mail
+                    </button>
+                    <button type="button" class="btn blue"  id="savelpoaData">
+                        SAVE</button>
+                    <button type="button"  class="btn default disable-field-remove" data-dismiss="modal">
+                        CANCEL</button>
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+</div>
+
+<!-- START cancel lpoa-->
+<div class="modal fade bs-modal-sm" id="cancellpoapopup" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"> </button>
+        <h4 class="modal-title"> Cancel LPOA</h4>
+      </div>
+      <div class="modal-body">
+        <p> Are you sure you want to Cancel this LPOA?</p>
+        <form class="cancellpoaReasonForm">
+	        <div class="form-group col-md-12 ">
+		  		<label class="control-label">Cancel Reason <span class="required">* </span></label>
+		  		<textarea class="form-control" style="height: 140px;"
+								placeholder="" name="cancellpoaComment" id="cancellpoaComment"></textarea>
+			</div>
+		</form>
+		<div class="clearfix"></div>
+      </div>
+      <div class="modal-footer">
+        <a class="btn blue cancellpoaButton" data-lpoaid=""> Yes</a>
+        <button type="button" class="btn default" data-dismiss="modal"> No</button>
+      </div>
+    </div>
+    <!-- /.modal-content --> 
+  </div>
+  <!-- /.modal-dialog --> 
+</div>
+<!-- END cancel lpoa--> 
+</div>

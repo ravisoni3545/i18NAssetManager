@@ -1,0 +1,26 @@
+<% _.each(payments,function(investorPayment){ %>
+    <tr data-modelid="<%- investorPayment.financialTransactionDetailId%>">
+        <td><%- investorPayment.description%></td>
+        <td>
+          <span class="darkcolor dottext propNameTooltip font13" data-toggle="tooltip" title="<%- investorPayment.propertyFullAddress%>"><%- investorPayment.propertyFullAddress%></span>
+        </td>
+        <td><%- investorPayment.transactionDate%></td>
+        <td style="text-align: center;">
+         <% if(investorPayment.creditAmount){ %>
+        	<span class="amount"><%- investorPayment.creditAmount%> </span>
+         <%}%>
+        </td>
+        <td style="text-align: center;">
+         <% if(investorPayment.debitAmount){ %>
+        	<span class="amount"><%- investorPayment.debitAmount%></span>
+         <%}%>
+        </td>
+        <td><%- investorPayment.status%></td>
+        <td>
+            <% if(navPermission.investorDepositEdit && investorPayment.description!='Investor Deposit'){ %>
+            <a title="Delete" class="delete_red deleteInvestorPayment" style="cursor:pointer;">
+              <i class="fa fa-trash-o"></i></a>
+            <%}%>
+        </td>
+    </tr>
+<% }) %>

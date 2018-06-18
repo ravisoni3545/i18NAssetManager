@@ -1,0 +1,50 @@
+<div class="modal fade bs-modal-lg" id="editHUFeeModal" data-backdrop="static" data-keyboard="false" tabindex="-1"
+	role="dialog" aria-hidden="true">
+	<div class="modal-dialog modal-md">
+		<div class="modal-content">
+			
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal"
+						aria-hidden="true"></button>
+					<h4 class="modal-title"><u>HU Oversite Fee</u></h4>
+				</div>
+				
+			
+			<div class="modal-body">
+				<form id="editHUFeeForm" autocomplete="off"> 
+					
+					<div class="row">            
+		            	 <div class="col-md-6">
+		                    <div class="form-group">
+		                        <label class="col-md-4 control-label pad_leftright0">HU Oversite Fee Estimated</label>
+		                        <div class="col-md-7 pad_right0 margin-bottom-10">
+		                            <input type="text" name="huFeeEstimated" id="huFeeEstimatedEditText" placeholder="" class="form-control text-right currencyInsurance" value="<%- huFeeEstimated %>">
+		                        </div>
+		                    </div>
+		                </div>
+		                
+		                 <div class="col-md-6">
+		                    <div class="form-group">
+		                        <label class="col-md-4 control-label pad_leftright0">HU Oversite Fee Actual</label>
+		                        <div class="col-md-7 pad_right0 margin-bottom-10">
+		                            <input type="text" name="huFeeActual" id="huFeeActualEditText" placeholder="" class="form-control text-right currencyInsurance" value="<%- huFeeActual %>">
+		                        </div>
+		                    </div>
+		                </div>            
+	            	</div> 
+            
+			</form>
+			</div>
+			
+			<div class="modal-footer">
+					<button type="button" class="btn blue" id="saveHUFeeBtn">
+						SAVE</button>
+					<button type="button" class="btn default" data-dismiss="modal">
+						CANCEL</button>
+			</div>
+			
+		</div>
+		<!-- /.modal-content -->
+	</div>
+	<!-- /.modal-dialog -->
+</div>

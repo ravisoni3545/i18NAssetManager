@@ -1,0 +1,104 @@
+
+<div class="modal fade" id="deleteTagConfirmationModal" tabindex="-1" role="dialog"
+    aria-hidden="true">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                </button>
+                <h4 class="modal-title">
+                    <i class="fa fa-trash-o"></i> Delete Tag?</h4>
+            </div>
+            <div class="modal-body">
+                <p>
+                    Are you sure you want to delete this Tag? </p>
+            </div>
+            <div class="modal-footer">
+                <button id="deleteTagConfirm" type="button" class=" btn blue" data-dismiss="modal">
+                    Yes</button>
+                <button type="button" class="btn default" data-dismiss="modal">
+                    No</button>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+
+	<%if(isProfile){%>
+	<div class="portlet box">
+			<div class="portlet-title">
+					<div class="caption bold font-dark-grey-color3" style = "margin-right : 9px;">Tags</div> 
+					<div class="actions">
+                                      <div class="btn-group">
+                                      		<%if(canEdit == true){%>
+                                            <a data-toggle="dropdown" href="javascript:;" class="btn bg-blue btn-sm">
+                                             <i class="fa fa-tags"></i> Edit
+                                             <i class="fa fa-angle-down "></i>
+                                            </a>
+                                            <%}%>  
+                                            <ul class="dropdown-menu pull-right" style = "border : 2px transparent #ddd">
+                                            <%_.each(availableTags,function(tag){%>
+                                            <li>
+                                                    <a class = "tagSelect " href="javascript:;" data-value='<%-tag.tagId%>'><%-tag.tagName%> </a>
+                                            </li>
+                                            <%});%>
+                                            </ul>
+                   					  </div>
+                     
+                     </div>
+            </div>
+            <div class="portlet-body">
+
+			</div>
+  		<%_.each(tags,function(objectTag){%>
+			<div style="float : left;background-color : #e2e6ed;padding : 5px;margin : 3px;" class="text-center marg_right2">
+				<span style="color:#333" class="label label-sm" ><%-objectTag.tagName%></span> 
+				<%if(canEdit == true){%>
+                        <a href="#deleteTagConfirmationModal" data-toggle="modal" class="deleteTag editShow" object-tag-id="<%-objectTag.objectTag.objectTagId%>" style="cursor:pointer">
+						<i class="fa fa-times"></i> 
+						</a>
+                <%} %> 
+			</div>
+
+		<%});%>
+				
+
+	</div>
+	<%} else {%>
+	<div>
+	<i class="fa fa-tags" ><span class="font13" style="color: #428BCA">Tags</span></i> 
+	
+	<%if(canEdit === true){%>
+	
+	<i id="editTags" style="margin-left:15px"class ="fa fa-edit"></i>
+	
+	<%}%>
+
+	<div style="margin:10px" >
+		<div class="editShow" style="display: none; margin-bottom: 8px">
+			<select name="list" class="form-control" id="tagSelect">
+
+					<option value="">select</option>
+				
+					<%_.each(availableTags,function(tag){%>
+
+					<option value='<%-tag.tagId%>'><%-tag.tagName%></option>
+					
+					<%});%>
+			</select>
+		</div>
+
+		<%_.each(tags,function(objectTag){%>
+			<div style="display:inline-block">
+				<span style="background:#ddd; color:#333" class="label label-sm" ><%-objectTag.tagName%></span> 
+				<a href="#deleteTagConfirmationModal" data-toggle="modal" class="deleteTag editShow" object-tag-id="<%-objectTag.objectTag.objectTagId%>" style="display: none;cursor:pointer">
+					<i style="color:red" class="fa fa-trash-o"></i> 
+				</a>
+			</div>
+
+		<%});%>
+
+	</div>
+	</div>
+	<%}%>

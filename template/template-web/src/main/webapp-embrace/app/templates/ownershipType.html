@@ -1,0 +1,238 @@
+<div class="modal fade" id="ownershiptype" tabindex="-1" role="basic" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                    </button>
+                    <h4 class="modal-title">
+                        Ownership Type</h4>
+                </div>
+                <div class="modal-body">
+					<div id="ownershipTypeFormMsg" class="alert alert-danger display-hide">
+						<button class="close" data-close="alert" onclick="$(this).parent().hide();return false;"></button>
+						<text>Please select ownership type.</text>
+					 </div>	
+					 <div>
+							<form id="ownershipTypeForm" method="post">
+							<div class="form-group col-md-6">
+								<label class="control-label">Ownership Type</label><br>
+								<div id="ownershipTypeDropdown"></div>
+							</div>
+							<div class="clearfix"></div>
+							
+							<div class="form-group red8 box8 display-none singleform">
+								<div class="form-group col-md-6">
+									<label class="control-label">Investor Legal Name<span class="required">*</span></label><br> <input
+										class="form-control" type="text" name="ownershipInvLegalName" id="ownershipInvLegalName" 
+										value="<%=ownershipData.investorLegalName%>">
+									<input type="hidden" id="investorId"
+										value="<%=ownershipData.investorId%>">
+								</div>
+							
+								<div class="clearfix"></div>
+								<div class="form-group col-md-6 dob">
+									<label class="control-label">Date of Birth</label><br>
+										<div class="input-group input-medium date date-picker"
+											data-date="" data-date-format="mm-dd-yyyy"
+											data-date-viewmode="years">
+											<input class="form-control" readonly="" name="investorDob"  id="investorDob"
+												value="<%- ownershipData.investorDob%>" 
+												type="text"> <span class="input-group-btn">
+												<button class="btn default" type="button">
+													<i class="fa fa-calendar"></i>
+												</button>
+											</span>
+										</div>
+								</div>
+							
+								<div class="form-group col-md-6 ssn">
+									<label class="control-label">SSN</label><br> <input
+										class="form-control" type="text" id="investorSSN"
+										value="<%= ownershipData.investorSSN%>">
+								</div>
+								
+								<div class="clearfix"></div>
+								<div class="form-group col-md-6">
+									<label class="control-label">Investor Profession</label><br> <input
+										class="form-control" type="text" id="investorProfession"
+										value="<%= ownershipData.investorProfession%>">
+								</div>
+							
+							</div>
+							
+							<div class="clearfix"></div>
+							
+							<!-- 2 multiple section -->
+							<div class="box8 green8 display-none multipleform">
+								<div class="form-group col-md-6">
+									<label class="control-label">Co-Buyer</label><br>
+									<div class="coBuyerDropdown" id="coBuyerDropdown"></div>
+								</div>
+								<div class="clearfix"></div>
+								<div class="showCoBuyer" style="display:none">	
+									<div class="form-group col-md-6">
+										<label class="control-label">Co-Buyer Legal Name<span class="required">*</span></label><br> <input 
+											class="form-control" type="text" name="coBuyerLegalName" id="coBuyerLegalName" 
+											value="<%= ownershipData.coBuyerLegalName%>">
+									</div>
+									
+									<div class="clearfix"></div>
+
+									<div class="form-group col-md-12 address-div">
+										<label class="col-md-6 control-label pad_leftright0">Address
+											<span class="required">*</span> <span class="viewsdiv1">
+												<a style="cursor: pointer;" class="showAddressDiv"
+												title="View Address Details"><i
+													class="fa fa-plus-circle"></i></a>
+										</span> <span class="display-none hidesdiv1"> <a
+												style="cursor: pointer;" class="hideAddressDiv"
+												title="Hide Address Details"><i
+													class="fa fa-minus-circle"></i></a>
+										</span>
+										</label>
+										<input id="copyInvestorAddress" type="checkbox"> Same as Investor Address?
+										<br>
+										<!-- <div class="col-md-6 pad_right0"> -->
+											<textarea placeholder="" readonly="readonly"
+												class="form-control text-left  existingaddress"
+												style="cursor: pointer;"></textarea>
+										<!-- </div> -->
+									</div>
+									
+									<div class="clearfix"></div>
+									
+									<div class="col-md-11 hidesdiv1 display-none"
+										style="background-color: rgba(134, 134, 134, 0.0901961);margin-left: 25px;">
+
+											<div class="form-group col-md-12 showExistingAddress margin-top-10">
+												<label class="col-md-2 control-label pad_leftright0">Address
+													1<span class="required">*</span>
+												</label>
+												<div class="col-md-9 pad_right0 margin-bottom-10">
+													<input type="text" name="coBuyerAddress1" id="coBuyerAddress1" placeholder=""
+														class="form-control text-left"
+														value="<%-ownershipData.coBuyerAddress1%>">
+												</div>
+											</div>
+											<div class="form-group col-md-12 showExistingAddress margin-top-10">
+												<label class="col-md-2 control-label pad_leftright0">Address
+													2</label>
+												<div class="col-md-9 pad_right0 margin-bottom-10">
+													<input type="text" name="coBuyerAddress2" id="coBuyerAddress2" placeholder=""
+														class="form-control text-left"
+														value="<%-ownershipData.coBuyerAddress2%>">
+												</div>
+											</div>
+												
+											<div class="clearfix"></div>
+											
+											<div class="form-group col-md-12 showExistingAddress">
+													<label class="col-md-2 control-label pad_leftright0">State<span class="required">*</span></label>
+													<div id="coBuyerStateDropdown" class="col-md-9 pad_right0 margin-bottom-10">
+														<div class="state"></div>
+													</div>
+											</div>	
+											
+											<div class="clearfix"></div>
+								
+											<div class="form-group col-md-6 showExistingAddress">
+												<label class="col-md-3 control-label pad_leftright0">City</label>
+												<div class="col-md-9 pad_right0 margin-bottom-10">
+													<input type="text" name="coBuyerCity" id="coBuyerCity" placeholder=""
+														class="form-control text-left"
+														value="<%-ownershipData.coBuyerPostalCity%>">
+												</div>
+											</div>
+	
+											<div class="form-group col-md-6 showExistingAddress">
+												<label class="col-md-3 control-label pad_leftright0">Postal
+													Code</label>
+												<div class="col-md-9 pad_right0 margin-bottom-10">
+													<input type="text" name="coBuyerPostalCode" id="coBuyerPostalCode"
+														placeholder="" class="form-control text-left"
+														value="<%-ownershipData.coBuyerPostalCode%>">
+												</div>
+											</div>
+									</div>
+
+								    <div class="clearfix"></div>
+								
+									<div class="form-group col-md-6 dob">
+										<label class="control-label">Date of Birth</label><br>
+										<div class="input-group input-medium date date-picker"
+												data-date="" data-date-format="mm-dd-yyyy"
+												data-date-viewmode="years">
+												<input class="form-control" readonly="" name="coBuyerDob"  id="coBuyerDob"
+													value="<%- ownershipData.coBuyerDob%>"
+													type="text"> <span class="input-group-btn">
+													<button class="btn default" type="button">
+														<i class="fa fa-calendar"></i>
+													</button>
+												</span>
+										</div>
+									</div>
+								
+									<div class="form-group col-md-6 ssn">
+										<label class="control-label">SSN</label><br> <input
+											class="form-control" type="text" id="coBuyerSSN"
+											value="<%= ownershipData.coBuyerSSN%>">
+									</div>
+								
+									<div class="clearfix"></div>
+									
+									<div class="form-group col-md-6">
+										<label class="control-label">Relationship</label><br>
+										<div class="relationTypeDropdown" id="co-buyer-reln"></div>
+									</div>
+								
+									<div class="form-group col-md-6">
+										<label class="control-label">Phone</label><br> <input
+											class="form-control" type="text" name="coBuyerPhone" id="coBuyerPhone"
+											value="<%= ownershipData.coBuyerPhone%>">
+									</div>
+								
+									<div class="clearfix"></div>
+									
+									<div class="form-group col-md-6">
+										<label class="control-label">E-mail<span class="required">*</span></label><br> <input
+											class="form-control" type="text" name="coBuyerEmail" id="coBuyerEmail"
+											value="<%= ownershipData.coBuyerEmail%>">
+									</div>
+								
+									<div class="form-group col-md-6">
+										<label class="control-label">Profession</label><br> <input
+											class="form-control" type="text" id="coBuyerProfession"
+											value="<%= ownershipData.coBuyerProfession%>">
+									</div>
+								</div>
+							</div>
+							<div class="clearfix"></div>
+							
+							<!-- 2 multiple section -->
+							
+							
+							<div class="col-md-6 box8 blue8 display-none orgform">
+								<div class="form-group">
+									<label class="control-label">Organization</label><br>
+									<div class="investorOrgDropdown" id="investorOrgDropdown"></div>
+								</div>
+								<div class="addOrg form-group" style="display:none">
+									<label class="control-label">New Organization<span class="required">*</span></label><br> <input
+										class="form-control" type="text" name="organization" id="organization"
+										value="">
+								</div>
+							</div>
+							
+							<div class="clearfix"></div>
+							</form>
+					</div>											
+                </div>
+                <div class="modal-footer" style="margin-top: 0px; ">
+                    <button type="button" class="btn blue"  id="saveOwnership">
+                        SAVE</button>
+                    <button type="button"  class="btn default" data-dismiss="modal">
+                        CANCEL</button>
+                </div>
+            </div>
+        </div>
+</div>

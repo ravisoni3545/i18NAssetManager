@@ -1,0 +1,1320 @@
+<div>
+	<div id="buttonsViews">
+		<!-- style="display: none;"> -->
+		<div id="READY_INVESTOR_REVIEW">
+			<button
+				class="btn btn-primary btn-xs accordion-toggle margin-bottom-5 READY_INVESTOR_REVIEW directActionButton"
+				data-taskkey="READY_INVESTOR_REVIEW">Show in Wishlist</button>
+		</div>
+		<div id="REMOVE_PROPERTY">
+			<button
+				class="btn red btn-xs accordion-toggle margin-bottom-5 REMOVE_PROPERTY directActionButton"
+				data-taskkey="REMOVE_PROPERTY">Remove Property</button>
+		</div>
+		<div id="INVESTOR_REVIEW">
+			<button
+				class="btn btn-primary btn-xs accordion-toggle margin-bottom-5 INVESTOR_REVIEW formActionButton"
+				data-taskkey="INVESTOR_REVIEW" data-toggle="collapse"
+				data-target=".investorreviewRow" data-showpopup=true>Investor
+				Review</button>
+		</div>
+		<div id="READY_TO_INVEST">
+			<!-- <div id="READY_INVESTOR_REVIEW"> -->
+			<button
+				class="btn btn-primary btn-xs accordion-toggle margin-bottom-5 READY_TO_INVEST formActionButton"
+				data-taskkey="READY_TO_INVEST" data-toggle="collapse"
+				data-target=".readyToInvestRow" data-showpopup=true>Start Investment</button>
+		</div>
+		<div id="PROPERTY_REJECTED">
+			<button
+				class="btn red btn-xs accordion-toggle margin-bottom-5 PROPERTY_REJECTED formActionButton"
+				data-taskkey="PROPERTY_REJECTED" data-toggle="collapse"
+				data-target=".propertyRejectedRow" data-showpopup=true>Rejected
+				by Investor</button>
+		</div>
+		<div id="SUBMIT_OFFER">
+			<button
+				class="btn blue btn-xs accordion-toggle margin-bottom-5 SUBMIT_OFFER formActionButton"
+				data-taskkey="SUBMIT_OFFER" data-toggle="collapse"
+				data-target=".offerSubmitRow" data-showpopup=true>Send Offer</button>
+		</div>
+		<div id="CREATE_OFFER">
+			<button
+				class="btn purple btn-xs accordion-toggle margin-bottom-5 CREATE_OFFER formActionButton"
+				data-taskkey="CREATE_OFFER" data-toggle="collapse"
+				data-target=".createOfferRow" data-showpopup=true>Upload Offer</button>
+		</div>
+		<div id="APPROVE_OFFER">
+			<button
+				class="btn purple btn-xs accordion-toggle margin-bottom-5 CREATE_OFFER formActionButton"
+				data-taskkey="CREATE_OFFER" data-toggle="collapse"
+				data-target=".createOfferRow" data-showpopup=true>Approve Offer</button>
+		</div>
+		<div id="REVIEW_OFFER">
+			<button
+				class="btn purple btn-xs accordion-toggle margin-bottom-5 CREATE_OFFER formActionButton"
+				data-taskkey="CREATE_OFFER" data-toggle="collapse"
+				data-target=".createOfferRow" data-showpopup=true>Review Offer</button>
+		</div>
+		<div id="INITIATE_CLOSING">
+			<button
+				class="btn green_1 btn-xs accordion-toggle margin-bottom-5 INITIATE_CLOSING directActionButton disable-field-remove"
+				data-taskkey="INITIATE_CLOSING">Closing Details</button>
+		</div>
+		<div id="UPLOAD_PA">
+			<button
+				class="btn purple btn-xs accordion-toggle margin-bottom-5 UPLOAD_PA formActionButton"
+				data-taskkey="UPLOAD_PA" data-toggle="collapse"
+				data-target=".uploadPaRow" data-showpopup=true>Upload
+				Offer</button>
+		</div>
+
+		<div id="CREATE_PA">
+			<button
+				class="btn purple btn-xs accordion-toggle margin-bottom-5 CREATE_PA formActionButton"
+				data-taskkey="CREATE_PA" data-toggle="collapse"
+				data-target=".createPARow" data-showpopup=true>Upload Offer</button>
+		</div>
+		<div id="OFFER_RESPONSE">
+			<button
+				class="btn green btn-xs accordion-toggle margin-bottom-5 OFFER_RESPONSE formActionButton"
+				data-taskkey="OFFER_RESPONSE" data-subtaskkey="ACCEPT"
+				data-toggle="collapse" data-target=".acceptOfferRow"
+				data-showpopup=true>Accept</button>
+			<button
+				class="btn yellow btn-xs accordion-toggle margin-bottom-5 OFFER_RESPONSE formActionButton"
+				data-taskkey="OFFER_RESPONSE" data-subtaskkey="COUNTER"
+				data-toggle="collapse" data-target=".counterOfferRow"
+				data-showpopup=true>Counter</button>
+			<button
+				class="btn red btn-xs accordion-toggle margin-bottom-5 OFFER_RESPONSE formActionButton"
+				data-taskkey="OFFER_RESPONSE" data-subtaskkey="REJECT"
+				data-toggle="collapse" data-target=".rejectOfferRow"
+				data-showpopup=true>Reject</button>
+		</div>
+		<div id="OFFER_RESPONSE_SELLER">
+			<button
+				class="btn green btn-xs accordion-toggle margin-bottom-5 OFFER_RESPONSE formActionButton"
+				data-taskkey="OFFER_RESPONSE" data-subtaskkey="ACCEPT"
+				data-toggle="collapse" data-target=".acceptOfferRow"
+				data-showpopup=true>Send for Signature</button>
+			<button
+				class="btn yellow btn-xs accordion-toggle margin-bottom-5 OFFER_RESPONSE formActionButton"
+				data-taskkey="OFFER_RESPONSE" data-subtaskkey="COUNTER"
+				data-toggle="collapse" data-target=".counterOfferRow"
+				data-showpopup=true>Counter</button>
+			<button
+				class="btn red btn-xs accordion-toggle margin-bottom-5 OFFER_RESPONSE formActionButton"
+				data-taskkey="OFFER_RESPONSE" data-subtaskkey="REJECT"
+				data-toggle="collapse" data-target=".rejectOfferRow"
+				data-showpopup=true>Reject</button>
+		</div>
+		<div id="OFFER_RESPONSE_REVIEW_OFFER">
+			<button
+				class="btn green btn-xs accordion-toggle margin-bottom-5 OFFER_RESPONSE formActionButton"
+				data-taskkey="OFFER_RESPONSE" data-subtaskkey="REVIEW"
+				data-toggle="collapse" data-target=".offerResponseReviewRow"
+				data-showpopup=true>Review Offer</button>
+		</div>
+	</div>
+	<div id="actionsViews">
+		<!-- style="display: none;"> -->
+		<table id="INVESTOR_REVIEW_FORM">
+			<tbody>
+				<tr>
+					<td colspan="8" class="hiddenRow">
+						<div class="accordian-body collapse investorreviewRow">
+							<div style="margin-bottom: 0;" class="clearfix well">
+								<form method="post" enctype="multipart/form-data">
+									<div class="form-group  col-md-4">
+										<label class="control-label" style="text-align: left;">
+											Review Date<span class="required">* </span>
+										</label>
+										<div class="input-group input-medium date date-picker"
+											data-date-format="mm-dd-yyyy" data-date-viewmode="years">
+											<input type="text" class="form-control" readonly
+												name="reviewDate"> <span class="input-group-btn">
+												<button class="btn default" type="button">
+													<i class="fa fa-calendar"></i>
+												</button>
+											</span>
+										</div>
+									</div>
+									<div class="col-md-12">
+										<div class="form-group">
+											<label class="control-label"> Comments </label> <br>
+											<textarea class="form-control" name="comments"></textarea>
+										</div>
+									</div>
+									<div class="form-group col-md-8">
+										<button type="button" class="btn default cancelToggleBtnClass">
+											CANCEL</button>
+										<button type="button" class="btn blue saveToggleBtnClass">
+											SAVE</button>
+									</div>
+								</form>
+							</div>
+						</div>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+		<table id="READY_TO_INVEST_FORM">
+			<tbody>
+				<tr>
+					<td colspan="8" class="hiddenRow">
+						<div class="accordian-body collapse readyToInvestRow">
+							<div style="margin-bottom: 0;" class="clearfix well">
+								<form method="post" enctype="multipart/form-data">
+									<div class="col-md-12 row alert alert-danger display-hide"
+										id="readyToInvestErrorMessage">
+										<button class="close" data-close="alert"></button>
+										<text></text>
+									</div>
+									<div class="form-group col-md-3 display-hide">
+										<div class="form-group col-md-3">
+											<label class="control-label ">WorkFlow<span
+												class="required">* </span>
+											</label>
+											<div class="radio-list">
+												<label class="radio-inline"> <input name="isNormal"
+													value="Yes" type="radio" checked="true"> Normal
+													Flow
+												</label>
+												<!-- <label class="radio-inline"
+													style="padding-left: 0px !important;"> <input
+													name="isNormal" value="No" type="radio"> RightBid
+													Flow
+												</label> -->
+											</div>
+										</div>
+									</div>
+
+									<div class="col-md-12 row">
+										<div class="form-group col-md-4">
+											<label class="control-label"> Offer Amount <span
+												class="required">* </span>
+											</label>
+											<div class="input-group">
+												<span class="input-group-addon"><i
+													class="fa fa-dollar"></i></span> <input type="text"
+													class="form-control  currency" name="offerAmount">
+											</div>
+										</div>
+										<div class="form-group col-md-4">
+											<label class="control-label">EMD Amount <span
+												class="required">* </span>
+											</label>
+											<div class="input-group">
+												<span class="input-group-addon"><i
+													class="fa fa-dollar"></i></span> <input type="text"
+													class="form-control  currency" name="emdAmount">
+											</div>
+										</div>
+
+									</div>
+
+									<div class="col-md-12 row">
+										<div class="form-group  col-md-4">
+											<label class="control-label" style="text-align: left;">
+												Offer Date<span class="required">* </span>
+											</label>
+											<div class="input-group date date-picker"
+												data-date-format="mm-dd-yyyy" data-date-viewmode="years">
+												<input type="text" class="form-control" id="offerDate" name="offerDate" readonly>
+												<span class="input-group-btn">
+													<button class="btn default" type="button">
+														<i class="fa fa-calendar"></i>
+													</button>
+												</span>
+											</div>
+										</div>
+										<div class="form-group  col-md-4">
+											<label class="control-label" style="text-align: left;">
+												Estimated Closing Date<span class="required">* </span>
+											</label>
+											<div class="input-group date date-picker"
+												data-date-format="mm-dd-yyyy" data-date-viewmode="years">
+												<input type="text" class="form-control" readonly
+													id="estimatedClosingDate" name="estimatedClosingDate">
+												<span class="input-group-btn">
+													<button class="btn default" type="button">
+														<i class="fa fa-calendar"></i>
+													</button>
+												</span>
+											</div>
+										</div>
+
+									</div>
+
+
+									<div class="col-md-12 row">
+										<div class="form-group col-md-4">
+											<label class="control-label"> First Investor Legal
+												name <span class="required">* </span>
+											</label>
+											<div class="">
+												<input type="text" class="form-control "
+													id="firstInvlegalName" name="firstInvlegalName">
+											</div>
+										</div>
+										<!--     -->
+
+										<!-- 
+                                     -->
+										<div class="form-group col-md-4">
+											<label class="control-label">E-mail<span
+												class="required">*</span>
+											</label>
+											<div>
+												<input type="text" class="form-control" id="emailAddress"
+													name="emailAddress" readonly="readonly">
+											</div>
+										</div>
+
+
+										<div class="form-group col-md-4">
+											<label class="control-label">Phone Number<span
+												class="required">*</span>
+											</label>
+											<div>
+												<input type="text" class="form-control" id="phoneNumber"
+													name="phoneNumber">
+											</div>
+										</div>
+
+									</div>
+
+
+									<div class="col-md-12 row">
+										<div class="form-group col-md-4">
+											<label class="control-label">Second Investor Legal
+												name </label>
+											<div class="">
+												<input type="text" class="form-control "
+													id="secondInvlegalName" name="secondInvlegalName">
+											</div>
+										</div>
+
+										<div class="form-group col-md-4">
+											<label class="control-label">E-mail</label>
+											<div>
+												<input type="text" class="form-control"
+													id="secInvEmailAddress" name="secInvEmailAddress">
+											</div>
+										</div>
+
+
+
+										<div class="form-group col-md-4">
+											<label class="control-label"> Phone Number </label>
+											<div>
+												<input type="text" class="form-control"
+													id="secInvPhoneNumber" name="secInvPhoneNumber">
+											</div>
+										</div>
+									</div>
+
+
+									<div class="col-md-12 row">
+										<!-- 	<div class="form-group col-md-4">
+											<label class="control-label">Title conveyed to<span
+												class="required">* </span>
+											</label>
+											<div class="">
+												<input type="text" class="form-control" id="titleConveyedTo"
+													name="titleConveyedTo">
+											</div>
+										</div> -->
+										<div class="form-group col-md-4">
+											<label class="control-label">Marital Status<span
+												class="required">*</span>
+											</label>
+											<div>
+												<input type="text" class="form-control" id="maritalStatus"
+													name="maritalStatus">
+											</div>
+										</div>
+
+
+										<div class="form-group col-md-4">
+											<label class="control-label">citizenship<span
+												class="required">* </span>
+											</label>
+											<div class="">
+												<input type="text" class="form-control" id="citizenship"
+													name="citizenship">
+											</div>
+										</div>
+									</div>
+
+
+									<div class="row col-md-12">
+										<div class="col-md-6">
+											<div class="form-group">
+												<label class="control-label pad_leftright0">Address
+													<span class="required">*</span> <span class="viewsdiv1">
+														<a style="cursor: pointer;" class="showAddressDiv"
+														title="View Address Details"><i
+															class="fa fa-plus-circle"></i></a>
+												</span> <span class="display-none hidesdiv1"> <a
+														style="cursor: pointer;" class="hideAddressDiv"
+														title="Hide Address Details"><i
+															class="fa fa-minus-circle"></i></a>
+												</span>
+												</label>
+												<div class="pad_right0">
+													<textarea placeholder="" readonly="readonly"
+														class="form-control text-right  existingaddress"
+														name="existingaddress" style="cursor: pointer;"></textarea>
+												</div>
+											</div>
+										</div>
+									</div>
+
+
+
+
+									<div class="col-md-12 hidesdiv1 display-none"
+										style="background-color: rgba(231, 230, 230, 0.117647); padding-top: 9px;">
+										<div class="row">
+											<div class="col-md-1"></div>
+											<div class="col-md-5">
+												<div class="form-group showExistingAddress">
+													<label class="col-md-5 control-label pad_leftright0">Address
+														1<span class="required">*</span>
+													</label>
+													<div class="col-md-7 pad_right0 margin-bottom-10">
+														<input type="text" id="address1" name="address1"
+															class="form-control text-right">
+													</div>
+												</div>
+											</div>
+											<div class="col-md-5">
+												<div class="form-group showExistingAddress">
+													<label class="col-md-5 control-label pad_leftright0">Address
+														2</label>
+													<div class="col-md-7 pad_right0 margin-bottom-10">
+														<input type="text" id="address2" name="address2"
+															class="form-control text-right">
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="row">
+											<div class="col-md-1"></div>
+											<div class="col-md-5 showExistingAddress">
+												<div class="form-group">
+													<label class="col-md-5 control-label pad_leftright0">City<span
+														class="required">*</span></label>
+													<div class="col-md-7 pad_right0 margin-bottom-10">
+														<input type="text" id="city" name="city" placeholder=""
+															class="form-control text-right">
+													</div>
+												</div>
+											</div>
+											<div class="col-md-5 showExistingAddress">
+												<div class="form-group">
+													<label class="col-md-5 control-label pad_leftright0">State<span
+														class="required">*</span></label>
+													<div class="col-md-7 pad_right0 margin-bottom-10">
+														<div class="state"></div>
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="row">
+											<div class="col-md-1"></div>
+											<div class="col-md-5 showExistingAddress">
+												<div class="form-group">
+													<label class="col-md-5 control-label pad_leftright0">Postal
+														Code<span class="required">*</span>
+													</label>
+													<div class="col-md-7 pad_right0 margin-bottom-10">
+														<input type="text" id="postalCode" name="postalCode"
+															placeholder="" class="form-control text-right">
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+
+
+									<div class="col-md-12 row">
+										<div class="form-group col-md-4">
+											<label class="control-label" style="text-align: left;">
+												Financing Type <span class="required">* </span>
+											</label>
+											<div id="financingTypeDD"></div>
+										</div>
+									</div>
+
+									<div class="col-md-12 row">
+										<div id="proofOfFundsDocumentDiv"
+											class="form-group col-md-4 display-hide grey-well">
+											<label class="control-label"> Upload Proof of Funds </label>
+											<a class="fa fa-paperclip pull-right showDocumentTooltip_2"
+												style="cursor: pointer; font-size: 16px;" data-object=""
+												data-objectid="" data-subobject="" data-subobjectid=""
+												data-taskkey_1="" data-html="true" data-show="true"> </a> <br>
+											<input name="proofOfFunds" class="form-control" type="file"
+												style="padding-bottom: 40px;" disabled="true">
+											
+											<label id="isProofdocsUploaded" class="display-hide" style="font-size:12px"><strong>Proof of funds have already been added</strong>.If you would like to upload a different one,add it here.</label>
+											
+											
+										</div>
+										<div id="uploadPreLetterDiv"
+											class="form-group col-md-4 display-hide grey-well">
+											<label class="control-label"> Upload
+												Pre-Qualification Letter </label> <a
+												class="fa fa-paperclip pull-right showDocumentTooltip_2"
+												style="cursor: pointer; font-size: 16px;" data-object=""
+												data-objectid="" data-subobject="" data-subobjectid=""
+												data-taskkey_1="" data-html="true" data-show="true"> </a> <br>
+											<input name="preQualDocument" class="form-control"
+												type="file" disabled="true">
+											
+											<label id="isPreQualdocsUploaded" class="display-hide" style="font-size:12px"><strong>Pre-Qualification Letter has already been added</strong>.If you would like to upload a different one,add it here.</label>
+											
+										</div>
+										<div id="mortgageDetailsDiv" class="display-hide">
+											<div class="form-group col-md-2 grey-well">
+												<label class="control-label" style="text-align: left;">
+													Mortgage Type </label>
+												<div id="mortgageTypeDD"></div>
+											</div>
+											<div class="form-group col-md-3 grey-well">
+												<label class="control-label">Down Payment Percentage</label>
+												<div class="input-group">
+													<span class="input-group-addon"><i class="fa">%</i></span>
+													<input type="text" class="form-control"
+														id="downPaymentPercentage">
+												</div>
+												<label class="control-label">Down Payment</label>
+												<div class="input-group">
+													<span class="input-group-addon"><i
+														class="fa fa-dollar"></i></span> <input type="text"
+														class="form-control currency" name="downPayment">
+												</div>
+											</div>
+											<div class="form-group col-md-3 grey-well">
+												<label class="control-label">Interest Rate</label>
+												<div class="input-group">
+													<span class="input-group-addon"><i class="fa">%</i></span>
+													<input type="text" class="form-control" name="interestRate" id="interestRate">
+												</div>
+											</div>
+										</div>
+									</div>
+
+
+
+									<div class="col-md-12 row">
+										<div class=" marg_top20 col-md-2">
+											<label class="radio-inline" style="padding-left: 0;">
+												<span class="checked"><input type="checkbox"
+													id="lpoa" name="isLpoa" value="N"></span> LPOA
+											</label>
+										</div>
+										<div id="huSigner" class="form-group col-md-4 display-hide">
+											<label class="control-label" style="text-align: left;">
+												Home Union Signer <span class="required">* </span>
+											</label>
+											<div id="husignerDD"></div>
+										</div>
+									</div>
+
+
+									<div class="marg_top10 col-md-9">
+										<div class="form-group">
+											<label class="control-label"> Comments </label> <br>
+											<textarea class="form-control" name="comments"></textarea>
+										</div>
+									</div>
+									<input type="hidden" name="generatePa" id="generatePa" value="N">
+									<div class="form-group col-md-8">
+										<button type="button" class="btn default cancelToggleBtnClass">
+											CANCEL</button>
+										<button type="button" class="btn blue saveToggleBtnClass">
+											SAVE</button>
+									</div>
+
+								</form>
+							</div>
+						</div>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+		<table id="PROPERTY_REJECTED_FORM">
+			<tbody>
+				<tr>
+					<td colspan="8" class="hiddenRow">
+						<div class="accordian-body collapse propertyRejectedRow">
+							<div style="margin-bottom: 0;" class="clearfix well">
+								<form method="post" enctype="multipart/form-data">
+									<div class="form-group  col-md-4">
+										<label class="control-label" style="text-align: left;">Reason
+											for Rejection<span class="required">* </span>
+										</label>
+										<div id="rejectionReasonDropdown"></div>
+									</div>
+									<div class="col-md-12">
+										<div class="form-group">
+											<label class="control-label"> Comments </label> <br>
+											<textarea class="form-control" name="comments"></textarea>
+										</div>
+									</div>
+									<div class="form-group col-md-8">
+										<button type="button" class="btn default cancelToggleBtnClass">
+											CANCEL</button>
+										<button type="button" class="btn blue saveToggleBtnClass">
+											SAVE</button>
+									</div>
+								</form>
+							</div>
+						</div>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+
+		<!-- Start Submit offer table -->
+		<table id="SUBMIT_OFFER_FORM">
+			<tbody>
+				<tr>
+					<td colspan="8" class="hiddenRow"><div
+							class="accordian-body collapse offerSubmitRow">
+							<div class="clearfix well" style="margin-bottom: 0;">
+								<form method="post" enctype="multipart/form-data">
+
+									<div class="alert alert-danger display-hide">
+										<button class="close" data-close="alert"></button>
+										<text></text>
+									</div>
+
+
+
+									<div class="col-md-12 row">
+										<div class="form-group col-md-3">
+											<label class="control-label"> Offer Amount <span
+												class="required">* </span>
+											</label>
+											<div class="input-group">
+												<span class="input-group-addon"><i
+													class="fa fa-dollar"></i></span> <input type="text"
+													name="offerAmount" class="form-control currency" readonly>
+											</div>
+										</div>
+										<div class="form-group col-md-3">
+											<label class="control-label">EMD Amount <span
+												class="required">* </span>
+											</label>
+											<div class="input-group">
+												<span class="input-group-addon"><i
+													class="fa fa-dollar"></i></span> <input type="text"
+													class="form-control currency" name="emdAmount" readonly>
+											</div>
+										</div>
+
+									</div>
+									<div class="col-md-12 row">
+										<div class="form-group  col-md-3">
+											<label class="control-label" style="text-align: left;">
+												Offer Date<span class="required">* </span>
+											</label>
+											<div class="input-group date"
+												data-date-format="mm-dd-yyyy" data-date-viewmode="years">
+												<input type="text" class="form-control" name="offerDate">
+												<span class="input-group-btn">
+													<button class="btn default" type="button" disabled="disabled">
+														<i class="fa fa-calendar"></i>
+													</button>
+												</span>
+											</div>
+										</div>
+										<div class="form-group  col-md-3">
+											<label class="control-label" style="text-align: left;">
+												Estimated Closing Date<span class="required">* </span>
+											</label>
+											<div class="input-group date"
+												data-date-format="mm-dd-yyyy" data-date-viewmode="years">
+												<input type="text" class="form-control"
+													name="estimatedClosingDate"> <span
+													class="input-group-btn">
+													<button class="btn default" type="button" disabled="disabled">
+														<i class="fa fa-calendar"></i>
+													</button>
+												</span>
+											</div>
+										</div>
+
+
+									</div>
+
+
+									<div class="col-md-12 row">
+										<div class="form-group  col-md-8">
+											<label class="control-label" style="text-align: left;">
+												Change of Terms </label> <span class="lightfontcolor">
+												**Please note any terms which vary from the original
+												agreement</span>
+											<div class="">
+												<textarea class="form-control" name="terms" rows="2"></textarea>
+											</div>
+										</div>
+									</div>
+									<div class="col-md-8">
+										<div class="form-group">
+											<label class="control-label"> Comments </label> <br>
+											<textarea placeholder="Type your comments here"
+												class="form-control" name="comments"></textarea>
+										</div>
+									</div>
+									<div class="form-group col-md-8">
+										<button type="button" class="btn blue saveToggleBtnClass">
+											SAVE</button>
+										<button type="button" class="btn default cancelToggleBtnClass">
+											CANCEL</button>
+											<div class="pull-right lightfontcolor" id="investorSignMsg"></div>
+										<a id="emailOffer" class="btn green pull-right" type="button">
+											EMAIL OFFER</a>
+									</div>
+									<div class="form-group col-md-8">
+										<div class="pull-right lightfontcolor" style="margin-top: 0px;padding-top: 0px;" id="othEnvSignMsg"></div>
+									</div>
+								</form>
+							</div>
+						</div></td>
+				</tr>
+			</tbody>
+		</table>
+		<table id="CREATE_OFFER_FORM">
+			<tbody>
+				<tr>
+					<td colspan="8" class="hiddenRow">
+						<div class="accordian-body collapse createOfferRow">
+							<div class="clearfix well" style="margin-bottom: 0;">
+								<div id="createOfferformFTAlert"
+									class="alert alert-danger display-hide">
+									<button class="close" data-close="alert"></button>
+									Please upload and send the document for signature, then save
+									this form.
+								</div>
+
+								<form method="post" enctype="multipart/form-data">
+									<div class="col-md-12 row" style="padding-right: 0px;">
+										<div class="col-md-6">
+											<div class="form-group col-md-6">
+												<label class="control-label"> Offer Amount <span
+													class="required">* </span>
+												</label>
+												<div class="input-group">
+													<span class="input-group-addon"><i
+														class="fa fa-dollar"></i></span> <input type="text"
+														id="offerAmount" name="offerAmount"
+														class="form-control currency" readonly>
+												</div>
+											</div>
+											<div class="form-group col-md-6">
+												<label class="control-label">EMD Amount <span
+													class="required">* </span>
+												</label>
+												<div class="input-group">
+													<span class="input-group-addon"><i
+														class="fa fa-dollar"></i></span> <input type="text"
+														class="form-control currency" id="emdAmount"
+														name="emdAmount" readonly>
+												</div>
+											</div>
+											<!-- <div class="clearfix"></div> -->
+											<div class="form-group  col-md-6">
+												<label class="control-label" style="text-align: left;">
+													Offer Date<span class="required">* </span>
+												</label>
+												<div class="input-group date"
+													data-date-format="mm-dd-yyyy" data-date-viewmode="years">
+													<input type="text" class="form-control" readonly
+														id="offerDate" name="offerDate"> <span
+														class="input-group-btn">
+														<button class="btn default" type="button" disabled="disabled">
+															<i class="fa fa-calendar"></i>
+														</button>
+													</span>
+												</div>
+											</div>
+											<div class="form-group  col-md-6">
+												<label class="control-label" style="text-align: left;">
+													Estimated Closing Date<span class="required">* </span>
+												</label>
+												<div class="input-group date"
+													data-date-format="mm-dd-yyyy" data-date-viewmode="years">
+													<input type="text" class="form-control" readonly
+														id="estimatedClosingDate" name="estimatedClosingDate">
+													<span class="input-group-btn">
+														<button class="btn default" type="button" disabled="disabled">
+															<i class="fa fa-calendar"></i>
+														</button>
+													</span>
+												</div>
+											</div>
+										</div>
+										<div class="col-md-6 pull-left">
+												<div class="display-hide" id="createPAbuttnBox">
+													<button id="createPAbuttn" type="button"
+														class="btn purple">
+														Generate Purchase Agreement</button>
+													<br><br>Or<br><br>
+												</div>
+												<div class="form-group" id="plainPaAgreement">
+													<label style="text-align: left;" class="control-label">
+														Upload Purchase Agreement<!-- <span class="required">* </span> -->
+													</label> <input type="file" name="plainPaAgreement"
+														class="form-control" style="padding-bottom: 40px;">
+												</div>
+												<div class="">
+													<input type="hidden" id="object" name="object"> <input
+														type="hidden" id="objectId" name="objectId"> <input
+														type="hidden" id="offerId" name="offerId"> <input
+														type="hidden" id="taskId" name="taskId"> <input
+														type="hidden" name="docType" value="Plain PA">
+														<input type="hidden" id="subtask" name="subtask" value="">
+													<div class="docusignEnvelopeArea"></div>
+													<div class="envelopeErrorMessage"></div>
+												</div>
+										</div>
+									</div>
+								<div class="col-md-12 row" style="margin-top: 10px;padding-right: 0px;">
+									<div class="form-group  col-md-4">
+										<label style="text-align: left;" class="control-label">Change
+											of Terms </label> <span class="lightfontcolor" style="font-size: 11px;"> **Please note
+											any terms which vary from the original agreement</span>
+										<div class="">
+											<textarea class="form-control" id="terms" name="terms"
+												rows="3"></textarea>
+										</div>
+										<div class="form-group">
+											<label class="control-label"> Comments </label> <br>
+											<textarea class="form-control" rows="3" name="comments"></textarea>
+										</div>
+									</div>
+									<div class="col-md-3" style="padding-top: 24px;">
+										<label style="text-align: left;" class="control-label" >LPOA:</label>
+										<span id="isLpoa" class="lightfontcolor"></span>
+										</br>
+										<label style="text-align: left;" class="control-label" >Offer being sent to:</label></br>
+										<span id="husigner" class="display-hide" ><label>HU Signer:</label></br><span id="husignerEmail" class="lightfontcolor"></span></br></span>
+										<span id="investor"class="display-hide" ><label >Investor:</label></br><span id="investorEmail" class="lightfontcolor"></span></br></span>
+										<span id="cobuyer" class="display-hide"><label>CoBuyer:</label></br><span id="coBuyermail" class="lightfontcolor"></span></span>
+									</div>
+									<div class="col-md-5">
+										<div class="docusignOthEnvelopeArea"></div>
+									</div>
+								</div>		
+									<div class="form-group col-md-8">
+										<button type="button" class="btn default cancelToggleBtnClass">
+											CANCEL</button>
+										<button type="button" class="btn blue saveToggleBtnClass">
+											SAVE</button>
+									</div>
+								</form>
+							</div>
+						</div>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+		<table id="UPLOAD_PA_FORM">
+			<tbody>
+				
+			</tbody>
+		</table>
+
+		<table id="CREATE_PA_FORM">
+			<tbody>
+				<tr>
+					<td colspan="8" class="hiddenRow">
+						<div class="accordian-body collapse createPARow">
+							<div class="clearfix well" style="margin-bottom: 0;">
+								<form method="post" enctype="multipart/form-data">
+									<div class="col-md-6 row">
+										<div class="col-md-12">
+											<div class="form-group">
+												<label class="control-label"> Comments </label> <br>
+												<textarea class="form-control" name="comments"></textarea>
+											</div>
+										</div>
+									</div>
+									<div class="col-md-6 row pull-right">
+										<div class="form-group" id="plainPaAgreement">
+											<label style="text-align: left;" class="control-label">
+												Upload Purchase Agreement<span class="required">* </span>
+											</label> <input type="file" name="plainPaAgreement"
+												class="form-control" style="padding-bottom: 40px;">
+										</div>
+										<div class="">
+											<input type="hidden" id="object" name="object"> <input
+												type="hidden" id="objectId" name="objectId"> <input
+												type="hidden" id="offerId" name="offerId"> <input
+												type="hidden" id="taskId" name="taskId"> <input
+												type="hidden" name="docType" value="Plain PA">
+											<div class="docusignEnvelopeArea"></div>
+											<div class="envelopeErrorMessage"></div>
+										</div>
+									</div>
+									<div class="form-group col-md-8">
+										<button type="button" class="btn default cancelToggleBtnClass">
+											CANCEL</button>
+										<button type="button" class="btn blue saveToggleBtnClass">
+											SAVE</button>
+									</div>
+								</form>
+							</div>
+						</div>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+		<table id="OFFER_RESPONSE_ACCEPT_FORM">
+			<tbody>
+				<tr>
+					<td colspan="8" class="hiddenRow">
+						<div class="accordian-body collapse acceptOfferRow">
+							<div class="clearfix well" style="margin-bottom: 0;">
+								<div id="uploadPAformAlertFailure"
+									class="alert alert-danger display-hide">
+									<button class="close" data-close="alert"></button>
+									Please enter all required fields.
+								</div>
+								<div id="uploadPAformFTAlert"
+									class="alert alert-danger display-hide">
+									<button class="close" data-close="alert"></button>
+									Please select financing type for this opportunity before saving
+									the form.
+								</div>
+								<form method="post" enctype="multipart/form-data">
+									<input type="hidden" name="offerResponse" value="Accept" /> <input
+										type="hidden" id="object" name="object"> <input
+										type="hidden" id="objectId" name="objectId"> <input
+										type="hidden" id="offerId" name="offerId"> <input
+										type="hidden" id="taskId" name="taskId">
+										<input type="hidden" name="docType" value="Final PA">
+										
+									<div id="sellerCounterOfferBox">
+<!-- 										<input type="hidden" name="docType" value="Counter Offer"> -->
+										<div class="col-md-12">
+											<div id="sellerCounterOfferDocument" class="col-md-2" style="padding-left: 0px;">
+												<span><a id="sellerCounterOfferDocumentLink"
+													target="_blank" type="button" class="pull-left"> <i
+														class="fa fa-file marg_right5"></i>Counter Offer Document
+												</a> </span>
+											</div>
+											<div class="col-md-6">
+												<div class="docusignEnvelopeArea"></div>
+												<div class="envelopeErrorMessage"></div>
+											</div>
+										</div>
+									</div>
+									
+									<div id="finalPAForm">
+										
+										<div class="col-md-12 row">
+											<div class="form-group col-md-3">
+												<label class="control-label"> Offer Amount </label>
+												<div class="input-group">
+													<span class="input-group-addon"><i
+														class="fa fa-dollar"></i></span> <input type="text"
+														class="form-control currency" name="offerAmount" readonly>
+												</div>
+											</div>
+											<div class="form-group col-md-3">
+												<label class="control-label">EMD Amount <span
+													class="required">* </span>
+												</label>
+												<div class="input-group">
+													<span class="input-group-addon"><i
+														class="fa fa-dollar"></i></span> <input type="text"
+														name="emdAmount" class="form-control currency" readonly>
+												</div>
+											</div>
+											<div class="marg_top30 col-md-4">
+												<label class="radio-inline" style="padding-left: 0;">
+													<span class="checked"><input type="checkbox"
+														name="rented" value="1"></span> Property Currently Rented?
+												</label>
+	
+											</div>
+										</div>
+										<div class="col-md-12 row">
+											<div class="form-group  col-md-3">
+												<label style="text-align: left;" class="control-label">
+													PA Date<span class="required">* </span>
+												</label>
+												<div data-date-viewmode="years" data-date-format="mm-dd-yyyy"
+													class="input-group date date-picker">
+													<input type="text" name="paDate" readonly
+														class="form-control"> <span class="input-group-btn">
+														<button type="button" class="btn default">
+															<i class="fa fa-calendar"></i>
+														</button>
+													</span>
+												</div>
+											</div>
+											<div class="form-group  col-md-3">
+												<label class="control-label" style="text-align: left;">
+													PA Close of Escrow Date<span class="required">* </span>
+												</label>
+												<div class="input-group date date-picker"
+													data-date-format="mm-dd-yyyy" data-date-viewmode="years">
+													<input class="form-control" name="paCloseEscrowDate"
+														readonly type="text"> <span class="input-group-btn">
+														<button class="btn default" type="button">
+															<i class="fa fa-calendar"></i>
+														</button>
+													</span>
+												</div>
+											</div>
+										</div>
+										<div class="col-md-12 row">
+											<div class="form-group  col-md-6">
+												<label style="text-align: left;" class="control-label">
+													Upload Purchase Agreement<span class="required">* </span>
+												</label> <input type="file" name="finalPaAgreement"
+													class="form-control" multiple style="padding-bottom: 40px;">
+											</div>
+	
+										</div>
+										<div class="col-md-8">
+											<div class="form-group">
+												<label class="control-label"> Change of Terms </label> <span
+													class="lightfontcolor"> **Please note any terms which
+													vary from the original agreement</span> <br>
+												<textarea class="form-control" name="terms"></textarea>
+											</div>
+										</div>
+									</div>
+									
+									<div class="clearfix"></div>
+									<div class="col-md-8">
+										<div class="form-group">
+											<label class="control-label"> Comments </label> <br>
+											<textarea class="form-control" name="comments"></textarea>
+										</div>
+									</div>
+									<div class="form-group col-md-8">
+										<button type="button" class="btn default cancelToggleBtnClass"
+											data-dismiss="modal">CANCEL</button>
+										<button type="button" class="btn blue saveToggleBtnClass">
+											SAVE</button>
+									</div>
+								</form>
+							</div>
+						</div>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+		<table id="OFFER_RESPONSE_REVIEW_FORM">
+			<tbody>
+				<tr>
+					<td colspan="8" class="hiddenRow">
+						<div class="accordian-body collapse offerResponseReviewRow">
+							<div class="clearfix well" style="margin-bottom: 0;">
+								<div id="createOfferformFTAlert"
+									class="alert alert-danger display-hide">
+									<button class="close" data-close="alert"></button>
+									Please upload and send the document for signature, then save
+									this form.
+								</div>
+
+								<form method="post" enctype="multipart/form-data">
+									<div class="col-md-12 row" style="padding-right: 0px;">
+										<div class="col-md-6">
+											<div class="form-group col-md-6">
+												<label class="control-label"> Offer Amount <span
+													class="required">* </span>
+												</label>
+												<div class="input-group">
+													<span class="input-group-addon"><i
+														class="fa fa-dollar"></i></span> <input type="text"
+														id="offerAmount" name="offerAmount"
+														class="form-control currency" readonly>
+												</div>
+											</div>
+											<div class="form-group col-md-6">
+												<label class="control-label">EMD Amount <span
+													class="required">* </span>
+												</label>
+												<div class="input-group">
+													<span class="input-group-addon"><i
+														class="fa fa-dollar"></i></span> <input type="text"
+														class="form-control currency" id="emdAmount"
+														name="emdAmount" readonly>
+												</div>
+											</div>
+											<!-- <div class="clearfix"></div> -->
+											<div class="form-group  col-md-6">
+												<label class="control-label" style="text-align: left;">
+													Offer Date<span class="required">* </span>
+												</label>
+												<div class="input-group date"
+													data-date-format="mm-dd-yyyy" data-date-viewmode="years">
+													<input type="text" class="form-control" readonly
+														id="offerDate" name="offerDate"> <span
+														class="input-group-btn">
+														<button class="btn default" type="button" disabled="disabled">
+															<i class="fa fa-calendar"></i>
+														</button>
+													</span>
+												</div>
+											</div>
+											<div class="form-group  col-md-6">
+												<label class="control-label" style="text-align: left;">
+													Estimated Closing Date<span class="required">* </span>
+												</label>
+												<div class="input-group date"
+													data-date-format="mm-dd-yyyy" data-date-viewmode="years">
+													<input type="text" class="form-control" readonly
+														id="estimatedClosingDate" name="estimatedClosingDate">
+													<span class="input-group-btn">
+														<button class="btn default" type="button" disabled="disabled">
+															<i class="fa fa-calendar"></i>
+														</button>
+													</span>
+												</div>
+											</div>
+										</div>
+										<div class="col-md-6 pull-left">
+												<div class="form-group" id="plainPaAgreement">
+													<label style="text-align: left;" class="control-label">
+														Upload Purchase Agreement<!-- <span class="required">* </span> -->
+													</label> <input type="file" name="plainPaAgreement"
+														class="form-control" style="padding-bottom: 40px;">
+												</div>
+												<div class="">
+													<input type="hidden" id="object" name="object"> <input
+														type="hidden" id="objectId" name="objectId"> <input
+														type="hidden" id="offerId" name="offerId"> <input
+ 														type="hidden" id="taskId" name="taskId"> <!--<input -->
+<!-- 														type="hidden" name="docType" value="Plain PA"> -->
+														<input type="hidden" name="offerResponse" value="Review" />
+														<input type="hidden" id="subtask" name="subtask" value="">
+													<div class="docusignEnvelopeArea"></div>
+													<div class="envelopeErrorMessage"></div>
+												</div>
+										</div>
+									</div>
+								<div class="col-md-12 row" style="margin-top: 10px;padding-right: 0px;">
+									<div class="form-group  col-md-4">
+<!-- 										<label style="text-align: left;" class="control-label">Change -->
+<!-- 											of Terms </label> <span class="lightfontcolor" style="font-size: 11px;"> **Please note -->
+<!-- 											any terms which vary from the original agreement</span> -->
+<!-- 										<div class=""> -->
+<!-- 											<textarea class="form-control" id="terms" name="terms" -->
+<!-- 												rows="3"></textarea> -->
+<!-- 										</div> -->
+										<div class="form-group">
+											<label class="control-label"> Comments </label> <br>
+											<textarea class="form-control" rows="3" name="comments"></textarea>
+										</div>
+									</div>
+<!-- 									<div class="col-md-3" style="padding-top: 24px;"> -->
+<!-- 										<label style="text-align: left;" class="control-label" >LPOA:</label> -->
+<!-- 										<span id="isLpoa" class="lightfontcolor"></span> -->
+<!-- 										</br> -->
+<!-- 										<label style="text-align: left;" class="control-label" >Offer being sent to:</label></br> -->
+<!-- 										<span id="husigner" class="display-hide" ><label>HU Signer:</label></br><span id="husignerEmail" class="lightfontcolor"></span></br></span> -->
+<!-- 										<span id="investor"class="display-hide" ><label >Investor:</label></br><span id="investorEmail" class="lightfontcolor"></span></br></span> -->
+<!-- 										<span id="cobuyer" class="display-hide"><label>CoBuyer:</label></br><span id="coBuyermail" class="lightfontcolor"></span></span> -->
+<!-- 									</div> -->
+<!-- 									<div class="col-md-5"> -->
+<!-- 										<div class="NCdocusignEnvelopeArea"></div> -->
+<!-- 									</div> -->
+								</div>		
+									<div class="form-group col-md-8">
+										<button type="button" class="btn default cancelToggleBtnClass">
+											CANCEL</button>
+										<button type="button" class="btn blue saveToggleBtnClass">
+											SAVE</button>
+									</div>
+								</form>
+							</div>
+						</div>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+		<table id="OFFER_RESPONSE_COUNTER_FORM">
+			<tbody>
+				<tr>
+					<td colspan="8" class="hiddenRow">
+						<div class="accordian-body collapse counterOfferRow">
+							<div class="clearfix well" style="margin-bottom: 0;">
+								<form method="post" enctype="multipart/form-data">
+									<input type="hidden" name="offerResponse" value="Counter" />
+									<div class="col-md-12 row">
+										<div class="form-group col-md-6">
+											<label class="control-label">Counter Type<span
+												class="required">* </span>
+											</label><span id="counterTypeError"></span>
+											<div class="radio-list">
+												<label class="radio-inline"> <input
+													name="counterType" value="Seller" type="radio">
+													Seller Counter
+												</label> <label class="radio-inline"
+													style="padding-left: 0px !important;"> <input
+													name="counterType" value="Investor" type="radio">
+													Investor Counter
+												</label>
+											</div>
+										</div>
+									</div>
+									<div id="counterSubForm" style="display: none">
+										<div class="col-md-12 row">
+											<div class="form-group col-md-6">
+												<div id="offerHistoryTable"></div>
+											</div>
+										</div>
+										<div class="col-md-6 row">
+											<div class="form-group col-md-6">
+												<label class="control-label"> Counter Offer Amount <span
+													class="required">* </span>
+												</label>
+												<div class="input-group">
+													<span class="input-group-addon"><i
+														class="fa fa-dollar"></i></span> <input type="text"
+														id="counterOfferAmount" name="counterOfferAmount"
+														class="form-control currency">
+												</div>
+											</div>
+											<div class="form-group  col-md-6">
+												<label class="control-label" style="text-align: left;">
+													Offer Date<span class="required">* </span>
+												</label>
+												<div class="input-group date date-picker"
+													data-date-format="mm-dd-yyyy" data-date-viewmode="years">
+													<input type="text" class="form-control" name="offerDate">
+													<span class="input-group-btn">
+														<button class="btn default" type="button">
+															<i class="fa fa-calendar"></i>
+														</button>
+													</span>
+												</div>
+											</div>
+											<div class="form-group col-md-6">
+												<label class="control-label"> EMD Amount <span
+													class="required">* </span>
+												</label>
+												<div class="input-group">
+													<span class="input-group-addon"><i
+														class="fa fa-dollar"></i></span> <input type="text"
+														id="emdAmount" name="emdAmount"
+														class="form-control currency">
+												</div>
+											</div>
+											<div class="form-group  col-md-6">
+												<label class="control-label" style="text-align: left;">
+													Estimated Closing Date <span class="required">* </span>
+												</label>
+												<div class="input-group date date-picker"
+													data-date-format="mm-dd-yyyy" data-date-viewmode="years">
+													<input type="text" class="form-control"
+														name="estimatedClosingDate"> <span
+														class="input-group-btn">
+														<button class="btn default" type="button">
+															<i class="fa fa-calendar"></i>
+														</button>
+													</span>
+												</div>
+											</div>
+
+											<div class="form-group col-md-12" id="counterOfferDocument">
+												<!--                                     	<div class="col-md-12"> -->
+												<label style="text-align: left;" class="control-label">
+													Upload Counter Offer Document<!-- <span class="required">*
+												</span> -->
+												</label> <input type="file" name="counterOfferDocument"
+													class="form-control" style="padding-bottom: 40px;">
+												<!-- 										</div> -->
+											</div>
+											<div class="col-md-12">
+												<div class="docusignEnvelopeArea"></div>
+												<div class="envelopeErrorMessage"></div>
+											</div>
+										</div>
+										<div class="col-md-12 row">
+											<div class="col-md-9">
+												<div class="form-group">
+													<label class="control-label" style="text-align: left;">
+														Change of Terms </label> <span class="lightfontcolor">
+														**Please note any terms which vary from the original
+														agreement</span>
+													<div class="">
+														<textarea class="form-control" name="terms" rows="2"></textarea>
+													</div>
+												</div>
+											</div>
+											<div class="col-md-9">
+												<div class="form-group">
+													<label class="control-label"> Comments </label> <br>
+													<textarea class="form-control" name="comments"></textarea>
+												</div>
+											</div>
+											<input type="hidden" id="object" name="object"> <input
+												type="hidden" id="objectId" name="objectId"> <input
+												type="hidden" id="offerId" name="offerId"> <input
+												type="hidden" id="taskId" name="taskId"> <input
+												type="hidden" name="docType" value="Counter Offer">
+										</div>
+									</div>
+									<div class="form-group col-md-8">
+										<button type="button" class="btn default cancelToggleBtnClass">
+											CANCEL</button>
+										<button type="button" class="btn blue saveToggleBtnClass">
+											SAVE</button>
+									</div>
+								</form>
+							</div>
+						</div>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+		<table id="OFFER_RESPONSE_REJECT_FORM">
+			<tbody>
+				<tr>
+					<td colspan="8" class="hiddenRow">
+						<div class="accordian-body collapse rejectOfferRow">
+							<div class="clearfix well" style="margin-bottom: 0;">
+								<form method="post" enctype="multipart/form-data">
+									<input type="hidden" name="offerResponse" value="Reject" />
+									<div class="col-md-6 row">
+										<div class="form-group  col-md-7">
+											<label class="control-label" style="text-align: left;">Reason
+												for Rejection<span class="required">* </span>
+											</label>
+											<div id="offerRejectionReasonDropdown"></div>
+										</div>
+										<div class="col-md-12">
+											<div class="form-group">
+												<label class="control-label"> Comments </label> <br>
+												<textarea class="form-control" name="comments"></textarea>
+											</div>
+										</div>
+									</div>
+									<div class="form-group col-md-8">
+										<button type="button" class="btn default cancelToggleBtnClass">
+											CANCEL</button>
+										<button type="button" class="btn blue saveToggleBtnClass">
+											SAVE</button>
+									</div>
+								</form>
+							</div>
+						</div>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</div>

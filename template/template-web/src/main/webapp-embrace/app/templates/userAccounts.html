@@ -1,0 +1,175 @@
+<div id="editUserModalDiv"></div>
+  <div class="modal fade" id="deleteUserConfirmationModal" tabindex="-1" role="dialog"
+        aria-hidden="true">
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                    </button>
+                    <h4 class="modal-title">
+                        <i class="fa fa-trash-o"></i> Delete User</h4>
+                </div>
+                <div class="modal-body">
+                    <p>
+                        Are you sure you want to delete this user?</p>
+                </div>
+                <div class="modal-footer">
+                    <button name="deleteUserConfirm" type="button" class="btn blue" data-dismiss="modal">
+                        Yes</button>
+                    <button type="button" class="btn default" data-dismiss="modal">
+                        No</button>
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+      <div class="modal fade" id="resetUserPasswordConfirmationModal" tabindex="-1" role="dialog"
+        aria-hidden="true">
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                    </button>
+                    <h4 class="modal-title">
+                        <i class="fa fa-user"></i> Reset User Password</h4>
+                </div>
+                <div class="modal-body">
+                    <p>
+                        Are you sure you want to reset the User's password?</p>
+                </div>
+                <div class="modal-footer">
+                    <button name="resetConfirm" type="button" class="btn blue" data-dismiss="modal">
+                        Yes</button>
+                    <button type="button" class="btn default" data-dismiss="modal">
+                        No</button>
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+<div class="modal fade" id="createUserModal" tabindex="-1" role="basic" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                </button>
+                <h4 class="modal-title">
+                   <i class="fa fa-user"> </i><i class="fa fa-plus"></i> Create User</h4>
+            </div>
+            <div class="modal-body">
+             <form novalidate="novalidate" id="createUserForm" autocomplete="on" class="form-horizontal">
+             	<div class="alert alert-danger display-hide" id="createUserFormError">
+							<button class="close" data-close="alert" onclick="$(this).parent().hide();return false;"></button>
+							You have some form errors. Please check below.
+						</div>
+             <div class="row">
+              <div class="form-group" style="margin-left:5px; margin-right:5px">
+              	<div class="col-md-6">
+                <label class="control-label" style="text-align: left;">
+                    First Name <span class="required">* </span>
+                </label>
+                <input id="createFirstName" name="firstName" type="text" class="form-control" >
+           		 </div>
+                <div class="col-md-6">        
+                <label class="control-label">
+                    Last Name  <span class="required">* </span>
+                </label> 
+                <input id="createLastName" name="lastName"type="text" class="form-control"> 
+                </div>
+              </div>
+              </div>
+              <div class="row">
+               <div class="form-group" style="margin-left:5px; margin-right:5px">
+               	<div class="col-md-6">
+                <label class="control-label" style="text-align: left;">
+                    User Name <span class="required">* </span>
+                </label>
+                <input id="createUserName" name="username" type="text" class="form-control" >
+            	</div>
+            	<div class="col-md-6">
+                <label class="control-label" style="text-align: left;">
+                    Title 
+                </label>
+                <input id="createTitle" name="createTitle" type="text" class="form-control" >
+              </div>
+		      </div>
+		      </div>
+		      <div class="row">
+              <div class="form-group" style="margin-left:5px; margin-right:5px">
+              	<div class="col-md-6">
+                <label class="control-label" style="text-align: left;">
+                    From Email <span class="required">* </span>
+                </label>
+                <input id="createFromEmail" name="fromEmail"type="text" class="form-control" >
+              </div>
+              <div class="col-md-6">
+                <label class="control-label" style="text-align: left;">
+                    Phone Number
+                </label>
+                <input id="createPhoneNumber" name="phoneNumber"type="text" class="form-control" >
+              </div>
+          		</div>
+      		</div>
+          </form>
+      </br>
+           <table class="table table-striped table-bordered table-advance table-hover tablegreen">
+              <thead>
+                <th>Inactive</th>
+                <th>Locked</th>
+                <th>Can receive Messages</th>
+              </thead>
+              <tbody>
+                <div class="form-group">
+                <td><input id="createInactive" type="checkbox"></td>
+              </div>
+              <div class="form-group">
+                
+                <td><input id="createLocked" type="checkbox"  ></td>
+              </div>
+              
+              <div class="form-group">
+                <td><input id="createMessages" type="checkbox"  ></td>
+              </div>
+          </tbody>
+      </table>
+
+           </div>
+                <div class="modal-footer">
+                    <button type="button"  class="btn default" data-dismiss="modal">
+                        CANCEL</button>
+                    <button name="createUserBtn" type="button" class="btn blue" >
+                        CREATE</button>
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+<div class="page-content">
+	 <!-- BEGIN PAGE HEADING-->
+                <div class="dash-header">
+                    <div class="">
+                        <h3 class="page-title">
+                            <i class="fa fa-user pull-left"></i><i class="fa fa-key font25" style="position:absolute; margin-left:-15px; margin-top:16px;"></i> &nbsp;User Accounts &nbsp; <div align="right" class="pull-right"> <button href="#createUserModal" data-toggle="modal" class="btn blue" name="createUser"> <i class="fa fa-user"> </i><i class="fa fa-plus"></i> Create User </button> </div>
+                        </h3>
+
+                    </div>
+                    
+                </div>
+                <!-- END PAGE HEADING-->
+    <div class="panel">
+  	<div class="panel-body table-responsive">
+
+				<table
+					class="table table-striped table-bordered table-advance table-hover tablegreen"
+					id="userInfoTable">
+					<thead>
+					</thead>
+					<tbody></tbody>
+				</table>
+	</div>
+    </div>
+                
+</div>

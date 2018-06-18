@@ -1,0 +1,112 @@
+<form id="investorPreferencesEditForm">
+	<div class="form-group">
+		<h5 class="col-md-4 control-label">Preferred Communication Method:</h5>
+		<div class="col-md-5 radio-list">
+			<label class="radio-inline"> 
+				<input name="preferredCommunication" value="email" type="radio">E-mail
+			</label> 
+			<label class="radio-inline" style="padding-left: 23px !important;"> 
+				<input name="preferredCommunication" value="phone" type="radio">Phone
+			</label>
+			<label class="radio-inline" style="padding-left: 23px !important;"> 
+				<input name="preferredCommunication" value="text" type="radio">Text
+			</label>
+		</div>
+	</div>
+	<div class="clearfix"></div>
+
+	<div class="form-group">
+		<h5 class="col-md-4 control-label">Other Contacts:</h5>
+		<textarea class="col-md-7" rows="1" name="otherContacts"><%- preferenceData.otherContacts%></textarea>
+	</div>
+	<div class="clearfix"></div>
+
+	<div class="col-md-12">
+		<h5 class="col-md-4 control-label">Third Party Communications</h5>
+		<div class="col-md-12">
+			<div class="col-md-3"></div>
+			<h6 class="col-md-3">Transfer to Home Union</h6>
+			<h6 class="col-md-3 clearfix">Date Transferred</h6>
+			<div class="clearfix"></div>
+
+			<div class="col-md-12 transfer-field">
+				<div class="col-md-3">Property Tax</div>
+				<div class="col-md-3 radio-list form-group">
+					<label class="radio-inline"> 
+						<input name="propertyTax" class="transfer-radio-btn" value="Y" <% print(preferenceData.propertyTax=='Y' ? 'checked="checked"' : '') %> type="radio">Yes
+					</label> 
+					<label class="radio-inline" style="padding-left:23px !important;"> 
+						<input name="propertyTax" class="transfer-radio-btn" value="N" <% print(preferenceData.propertyTax=='N' ? 'checked="checked"' : '') %> type="radio">No
+					</label>
+				</div>
+				<div class="form-group col-md-3 transfer-date-field <% print(preferenceData.propertyTax!='Y' ? 'display-hide' : '') %>">
+					<div class="input-group date date-picker"
+						data-date="" data-date-format="mm-dd-yyyy" data-date-clear-btn="true"
+						data-date-viewmode="years">
+						<input class="form-control" readonly="" type="text" value="<%- preferenceData.propertyTaxDate%>" name="propertyTaxDate"> 
+						<span class="input-group-btn">
+							<button class="btn default" type="button">
+								<i class="fa fa-calendar"></i>
+							</button>
+						</span>
+					</div>
+				</div>
+			</div>
+			<div class="clearfix"></div>
+			<div class="col-md-12 transfer-field">
+				<div class="col-md-3">Insurance</div>
+				<div class="col-md-3 radio-list form-group">
+					<label class="radio-inline"> 
+						<input name="insurance" class="transfer-radio-btn" value="Y" <% print(preferenceData.insurance=='Y' ? 'checked="checked"' : '') %> type="radio">Yes
+					</label> 
+					<label class="radio-inline" style="padding-left:23px !important;"> 
+						<input name="insurance" class="transfer-radio-btn" value="N" <% print(preferenceData.insurance=='N' ? 'checked="checked"' : '') %> type="radio">No
+					</label>
+				</div>
+				<div class="form-group col-md-3 transfer-date-field <% print(preferenceData.insurance!='Y' ? 'display-hide' : '') %>">
+					<div class="input-group date date-picker"
+						data-date="" data-date-format="mm-dd-yyyy" data-date-clear-btn="true"
+						data-date-viewmode="years">
+						<input class="form-control" readonly="" type="text" value="<%- preferenceData.insuranceDate%>" name="insuranceDate"> 
+						<span class="input-group-btn">
+							<button class="btn default" type="button">
+								<i class="fa fa-calendar"></i>
+							</button>
+						</span>
+					</div>
+				</div>
+			</div>
+			<div class="clearfix"></div>
+
+			<div class="col-md-12 transfer-field">
+				<div class="col-md-3">HOA</div>
+				<div class="col-md-3 radio-list form-group">
+					<label class="radio-inline"> 
+						<input name="hoa" class="transfer-radio-btn" value="Y" <% print(preferenceData.hoa=='Y' ? 'checked="checked"' : '') %> type="radio">Yes
+					</label> 
+					<label class="radio-inline" style="padding-left:23px !important;"> 
+						<input name="hoa" class="transfer-radio-btn" value="N" <% print(preferenceData.hoa=='N' ? 'checked="checked"' : '') %> type="radio">No
+					</label>
+				</div>
+				<div class="form-group col-md-3 transfer-date-field <% print(preferenceData.hoa!='Y' ? 'display-hide' : '') %>">
+					<div class="input-group date date-picker"
+						data-date="" data-date-format="mm-dd-yyyy" data-date-clear-btn="true"
+						data-date-viewmode="years">
+						<input class="form-control" readonly="" type="text" value="<%- preferenceData.hoaDate%>" name="hoaDate"> 
+						<span class="input-group-btn">
+							<button class="btn default" type="button">
+								<i class="fa fa-calendar"></i>
+							</button>
+						</span>
+					</div>
+				</div>
+			</div>
+			<div class="clearfix"></div>
+		</div>
+	</div>
+
+	<div class="form-group col-md-8" style="margin-top:12px;"> 
+		<button type="button" class="btn blue" id="investorPreferencesSaveBtn">SAVE</button>
+		<button type="button" class="btn default" id="investorPreferencesCancelBtn">CANCEL</button>
+	</div>
+</form>

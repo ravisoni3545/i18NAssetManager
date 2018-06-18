@@ -1,0 +1,212 @@
+<a href="closing/downloadInsuranceReview/<%-objectId%>/<%-object%>"
+		class="btn bg-blue pull-right margin-bottom-10 insuranceReviewExportToExcel" style="margin-top: 7px;" target="_blank">Export to Excel</a>
+<table class="table ins-table table-bordered insuranceReviewTable">
+	<thead>
+		<tr id="insuranceReviewRow">
+			<td  width="15%">
+				<table class="table ins-table table-bordered">
+					<tr class="select" style="height:37px;">
+						<th><span></span></th>
+					</tr>
+					<tr>
+						<td class="ins-title marg_left10">Insurance Type</td>
+					</tr>
+					<tr>
+						<td class="ins-title marg_left10">Vacant Policy</td>
+					</tr>						
+					<tr>
+						<td class="ins-title marg_left10">Insurance Provider</td>
+					</tr>
+					<tr>
+						<td class="ins-title marg_left10">Yearly Premium</td>
+					</tr>
+					<tr>
+						<td class="ins-title marg_left10">Deductible</td>
+					</tr>
+					<tr>
+						<td class="ins-title marg_left10">Wind and Hail</td>
+					</tr>
+					<tr class="select">
+						<th><span>Coverage</span></th>
+					</tr>
+					<tr>
+						<td class="ins-title marg_left10">Dwelling</td>
+					</tr>
+					<tr>
+						<td class="ins-title marg_left10">Other Structures</td>
+					</tr>
+					<tr>
+						<td class="ins-title marg_left10">Personal Property</td>
+					</tr>
+					<tr>
+						<td class="ins-title marg_left10">Loss of Use</td>
+					</tr>
+					<tr>
+						<td class="ins-title marg_left10">Premises Liability</td>
+					</tr>
+					<tr>
+						<td class="ins-title marg_left10"> Medical Payment</td>
+					</tr>
+					<tr>
+						<td class="ins-title marg_left10">Uploaded Documents</td>
+					</tr>
+					<tr>
+						<td ><div style="height: 40px;">Vendor Comments</div></td>
+					</tr>
+					<tr>
+						<td style="height:72px;">HU Comments</td>
+					</tr>
+				</table>
+			</td> 
+			<% var count=1;
+			var width=80/quotes.length;
+			%>
+			<% _.each(quotes, function( quote ){ %>
+			<td class="quoteClass" width="<%=width%>%">
+			
+				<table class="table ins-table table-bordered">
+					
+					<tr class="select">
+						<th><span>Quote <%= count %></span></th>
+					</tr>
+					
+					<tr>
+						<td><%= quote.insuranceType %></td>
+					</tr>
+					<tr>
+						<td><% if (quote.vacantPolicy == "Y") { %>
+							Yes
+						<% } else { %>
+							No
+						<% } %>
+						</td>
+					</tr>
+					<tr>
+						<td><%= quote.insuranceProvider %></td>
+					</tr>
+					<tr>
+						<td class="amount"><%= quote.yearlyPremium %></td>
+					</tr>
+					<tr>
+						<td>
+						<% if(quote.isDeductiblePercentage=='N' && quote.deductible!=null){%>
+								<p class="amount" style="margin-bottom:0px;"><%- quote.deductible %></p>
+						<%}else if(quote.isDeductiblePercentage=='N' && quote.deductible==null){%>
+								<p class="amount" style="margin-bottom:0px;">0</p>
+						<%}else if(quote.isDeductiblePercentage=='Y' && quote.deductible!=null){%>
+								<p style="margin-bottom:0px;"><%- quote.deductible %>%</p>
+						<%}else if(quote.isDeductiblePercentage=='Y' && quote.deductible==null){%>
+								<p style="margin-bottom:0px;">0%</p>
+						<%}%>	
+						</td>
+					</tr>
+					<tr>
+						<td>
+						<% if(quote.isWindAndHailPercentage=='N' && quote.windAndHail!=null){%>
+								<p class="amount" style="margin-bottom:0px;"><%- quote.windAndHail %></p>
+						<%}else if(quote.isWindAndHailPercentage=='N' && quote.windAndHail==null){%>
+								<p class="amount" style="margin-bottom:0px;">0</p>
+						<%}else if(quote.isWindAndHailPercentage=='Y' && quote.windAndHail!=null){%>
+								<p style="margin-bottom:0px;"><%- quote.windAndHail %>%</p>
+						<%}else if(quote.isWindAndHailPercentage=='Y' && quote.windAndHail==null){%>
+								<p style="margin-bottom:0px;">0%</p>
+						<%}%>	
+						</td>
+					</tr>
+					<tr class="select" style="height:37px;">
+						<th><span></span></th>
+					</tr>
+					<tr>
+						<td class="amount">
+						
+						<% if(quote.dwelling){ %>
+						<%= quote.dwelling %>
+						<% }else{ %>
+						0
+						<% } %>
+						
+						</td>
+					</tr>
+					<tr>
+						<td class="amount">
+						
+						<% if(quote.otherStructures){ %>
+						<%= quote.otherStructures %>
+						<% }else{ %>
+						0
+						<% } %>
+						
+						</td>
+					</tr>
+					<tr>
+						<td class="amount">
+						
+						<% if(quote.personalProperty){ %>
+						<%= quote.personalProperty %>
+						<% }else{ %>
+						0
+						<% } %>
+						</td>
+					</tr>
+					<tr>
+						<td class="amount">
+						
+						<% if(quote.lossOfUse){ %>
+						<%= quote.lossOfUse %>
+						<% }else{ %>
+						0
+						<% } %>
+						</td>
+					</tr>
+					<tr>
+						<td class="amount">
+						
+						<% if(quote.premisesLiability){ %>
+						<%= quote.premisesLiability %>
+						<% }else{ %>
+						0
+						<% } %>
+						</td>
+					</tr>
+					<tr>
+						<td>
+						
+						<% if(quote.medicalPayment){ %>
+					<div class="amount">	<%= quote.medicalPayment %> </div>
+						<% }else{ %>
+						No Coverage
+						<% } %>
+						
+						</td>
+					</tr>
+					<tr style="height:36px;">
+					
+						<td>
+						
+						<a class="fa fa-paperclip pull-left showDocumentTooltip" data-subobjectid="<%= quote.propertyInsuranceId %>"
+							data-subobject="<%= quote.propertyInsuraceCodelistObjectId %>" data-taskKey="<%= quote.taskKey %>" style="cursor: pointer; font-size: 16px;" data-html="true"
+							data-show="true"> </a>
+						</td>
+					</tr>
+					<tr>
+						<td class="success">
+						<div style="word-break: break-all;overflow-y: scroll;height: 40px;">
+						<%= quote.comments %>
+						</div>
+						</td>
+					</tr>
+					<tr>
+						<td class="danger" style="height:40px;"><textarea  class="form-control" name="msg" id="<%= quote.propertyInsuranceId %>"> <%= quote.huComments %></textarea></td>
+					</tr>
+					
+				</table>
+			</td> 
+			<% count++; %>
+			<% }); %>
+
+
+		</tr>
+
+	</thead>
+
+</table>

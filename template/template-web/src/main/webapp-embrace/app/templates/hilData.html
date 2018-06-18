@@ -1,0 +1,51 @@
+
+<div class="portlet box blue">
+	<div class="portlet-title">
+		<div class="caption">
+			<i class="fa fa-map-marker"></i>By Investment Location
+		</div>
+
+	</div>
+	<div class="portlet-body">
+		<div class="table-responsive tab custom-scroll-dash2">
+			<table class="table table-striped">
+				<thead>
+					<tr>
+
+						<th>HIL</th>
+						<th>Property Count</th>
+						<th>Purchase Price</th>
+						<!-- 	<th>Performance</th> -->
+
+
+					</tr>
+				</thead>
+				<tbody>
+					<% if(investmentLocationData) { %> <%
+					_.each(investmentLocationData.locationResponseList,function(locationResponse){
+					%>
+					<tr>
+						<td><%- locationResponse.name %></td>
+						<td><a href="#myAssets" class="showAssetPage" data-type="hil"
+							data-val="<%- locationResponse.name %>">
+							<%-	locationResponse.count %></a></td>
+						<td><span class="sale-num amount"><%- locationResponse.purchasePrice %></span></td>
+						<!-- <td>5%</td> -->
+					</tr>
+					<% }); %>
+					<tr>
+
+						<td class="bgf5f5f5"><strong>TOTAL</strong></td>
+						<td class="bgf5f5f5"><strong><%- investmentLocationData.totalCount %></strong></td>
+						<td class="bgf5f5f5"><strong><span class="amount">$<%- investmentLocationData.totalPurchasePrice %></span></strong></td>
+						<!-- <td class="bgf5f5f5"><strong>11%</strong></td> -->
+
+					</tr>
+					<%}%>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>
+
+<!-- END PORTLET-->

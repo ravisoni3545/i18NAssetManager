@@ -1,0 +1,9 @@
+<select class="bs-select form-control" id="productsDropdown" name="productId">
+	<%if(productList.length>0) {%>
+		<%_(productList).each(function(product) { %>
+			<option id="<%= product.productId%>" value="<%= product.productId%>"><%= product.productName%></option>
+		<% }); %>
+	<%} else {%>
+		<option value="">No product available for service</option>
+	<%}%>
+</select>

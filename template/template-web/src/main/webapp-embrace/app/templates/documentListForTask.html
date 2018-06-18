@@ -1,0 +1,35 @@
+<% if(documentDatas) { %>
+	<table class="table-hover">
+		<tbody>
+			<tr class="popup_border_bottom">
+			<td><div id="tooltipAddDocument"></div></td>
+			<td></td>
+			<td>
+				<div class="fa fa-times pull-right popover-close"  data-item="doc"
+					style="position: relative;opacity: 0.3;font-size: 12px;
+						padding-bottom: 2px;padding-right: 2px;cursor: pointer;"></div>
+			</td></tr>
+			<% _.each(documentDatas,function(documentData){  %>
+			<tr class="popup_border_bottom" style="line-height: 25px; min-height: 25px; height: 25px;">
+				<td>
+							<a target="_blank" style="cursor:pointer; word-wrap:break-word;" href="document/download/<%-documentData.documentId%>" 
+								data-id="<%=documentData.documentId%>"><%-documentData.documentName%></a>
+				</td>
+				<td>
+							<a style="cursor: pointer" data-toggle="modal" 
+								 class="email_doc"	name="emailDocument" documentId="<%=documentData.documentId %>"
+								 object="<%=documentData.object %>" objectid="<%=documentData.objectId %>"><i class="fa fa-envelope">
+								 </i></a>
+				</td>
+				<td>
+							<a style="cursor:pointer;" url="document/download/<%-documentData.documentId%>" 
+								docName="<%-documentData.documentName%>"
+								class="document-preview document-show" data-id="<%=documentData.documentId%>" data-docname="<%=documentData.documentName%>">
+								<i class="fa fa-file-text"></i></a>
+				</td>
+			</tr>
+			<% }); %>
+		</tbody>
+	</table>
+	
+<% } %>

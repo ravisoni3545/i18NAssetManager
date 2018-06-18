@@ -1,0 +1,19 @@
+<select <%if(multiple){%>id="selects1_samples112"<%}%> name="<%= codeParamName%>" class="form-control codeType <%if(multiple){%>select2<%}%>" <%if(multiple){%>multiple="multiple"<%}%>>
+	<%if(multiple){%><optgroup label=""><%}%>
+	<%if(addBlankFirstOption){%>
+		<option value="">select</option>
+	<%}%>
+	<%if(addFirstOptionShowAll){%>
+		<option value="showAll">Show All</option>
+	<%}%>
+	<% _(codes).each(function(code) { 
+		if(code.isVisible != "N") {	%>
+			<option value="<%= code.id%>" 
+				<% if(code.isDefault == 'Y'){ %>
+					selected="selected"
+				<%}%>
+				><%= code.codeDisplay%></option>
+	<% 	}
+	}); %>
+	<%if(multiple){%></optgroup><%}%>
+</select>

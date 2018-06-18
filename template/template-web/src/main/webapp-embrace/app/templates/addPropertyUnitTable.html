@@ -1,0 +1,56 @@
+<div class="table-responsive marg_top10">
+   <table class="table table-striped table-bordered table-advance table-hover tablegreen">
+       <thead>
+       <tr>
+           <th>Unit Name</th>
+           <th>Address</th>
+           <th>Status</th>
+           <th>
+               &nbsp;<a class="fa fa-wrench addOrEditNewItem" data-show=true data-toggle="collapse" data-modelid="" data-target="<%= '.unitRow0' %>" title="Add New Property Unit" style="cursor:pointer;"> </a>
+           </th>
+       </tr>
+       </thead>
+       <tbody>
+       <%   function addArr(addressArr){
+                var tempArr = [];
+                _.each(addressArr,function(str){
+                    if(str){tempArr.push(str);}
+                });
+                return tempArr.join(", ");
+            }
+            var rowCount = 1; 
+        %>
+       <% _.each(propertyUnits,function(singleData){
+            var addressArr = [singleData.attributes.address,singleData.attributes.city,singleData.attributes.state,singleData.attributes.zip];
+            var address = addArr(addressArr);
+        %>
+            <tr>
+             <td><%= singleData.attributes.unitName %></td>
+             <td><%= address %>.
+             </br>
+                <span class="lightfontcolor2">
+                    <%- singleData.attributes.bedrooms %> Beds, 
+                    <%- singleData.attributes.bathrooms %> Baths, 
+                    <%- accounting.formatMoney(singleData.attributes.totalSqft,"",0) %> Sqft.
+                </span>
+             </td>
+             <td><%= singleData.attributes.unitStatusName %></td>
+             <td>
+                 <a style="cursor:pointer;" data-show=true data-toggle="collapse" data-modelid="<%= singleData.attributes.unitId %>" data-target="<%= '.unitRow' + rowCount %>" title="Edit" class="edit_blue addOrEditNewItem"><i class="fa fa-edit"></i>
+                 </a>
+
+                 <a title="Delete" class="delete_red propertyUnitRemove" data-toggle="modal" style="cursor:pointer;"><i class="fa fa-trash-o">
+                 </i></a>
+             </td>
+
+            </tr>
+        <% 
+            rowCount++;
+            }); 
+        %>
+        
+
+        </tbody>
+       </table>
+
+</div>

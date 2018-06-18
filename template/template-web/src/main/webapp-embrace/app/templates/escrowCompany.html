@@ -1,0 +1,92 @@
+<!-- <div style="margin-right:280px;margin-bottom:10px;"> -->
+<div style="width:70%;">
+<!-- <label>Escrow Company</label> -->
+<select id="escrowCompanyDropdown" class="form-control select2"
+				 name="escrowCompanyDropdown">
+				<option value="">select</option> 
+				<optgroup label="New Escrow Company">
+					<option value="addNewEscrow">Add New</option>
+				</optgroup>
+				<optgroup label="Other Escrow Companies">
+					<% _(escrowOrgList).each(function(org) { %>
+					<option value="<%= org.orgId%>"> <%=org.orgName %></option>
+					<% }); %>
+				</optgroup>
+</select>
+
+</div>
+
+
+<table
+	class="table table-striped table-bordered table-advance table-hover addEscrowForm" style="display:none">
+
+	<tr>
+		<td>Company Name</td>
+		<td><input type="text" class="form-control"
+			id="companyName" value="<%= escrowOrganization.orgName%>"></td>
+
+	</tr>
+	<tr>
+		<td>Contact Name</td>
+		<td><input type="text" class="form-control"
+			id="contactName" value="<%= escrowOrganizationContact.firstName%>"></td>
+	</tr>
+
+	<tr>
+		<td>Address 1</td>
+		<td><input type="text" class="form-control"
+			id="address1" value="<%= escrowOrganizationContact.address1%>"></td>
+	</tr>
+
+	<tr>
+		<td>Address 2</td>
+		<td><input type="text" class="form-control"
+			 id="address2" value="<%= escrowOrganizationContact.address2%>"></td>
+	</tr>
+	<tr>
+		<td>City</td>
+		<td><input type="text" class="form-control" placeholder="" id="city" value="<%= escrowOrganizationContact.city%>"></td>
+	</tr>
+	<tr>
+		<td>State</td>
+		<td>
+			<select id="state" class="form-control select2"
+				 name="statesCovered">
+				<optgroup label="">
+					<option value="">Select</option>
+					<% _(states).each(function(state) { %>
+					<option value="<%= state.name%>"
+						<% if(escrowOrganizationContact.state==state.name){ %>
+													selected="selected"
+												<%}%>
+					><%= state.name %></option>
+					<% }); %>
+				</optgroup>
+			</select>
+		</td>
+	</tr>
+	<tr>
+		<td>Postal Code</td>
+		<td><input type="text" class="form-control" placeholder="" id="postalCode" value="<%= escrowOrganizationContact.postalCode%>"></td>
+	</tr>
+	<tr>
+		<td>Phone 1</td>
+		<td><input type="text" class="form-control"
+			placeholder="" id="phone1" value="<%= escrowOrganizationContact.phoneMobile%>"></td>
+	</tr>
+	<tr>
+		<td>Phone 2</td>
+		<td><input type="text" class="form-control"
+			placeholder="" id="phone2" value="<%= escrowOrganizationContact.phoneWork%>"></td>
+	</tr>
+	<tr>
+		<td>Fax</td>
+		<td><input type="text" class="form-control"
+			placeholder="" id="fax" value="<%= escrowOrganizationContact.fax%>"></td>
+	</tr>
+	<tr>
+		<td>E-mail</td>
+		<td><input type="text" class="form-control"
+			placeholder="" id="email" value="<%= escrowOrganizationContact.email%>"></td>
+	</tr>
+</table>

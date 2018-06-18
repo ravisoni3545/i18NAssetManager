@@ -1,0 +1,17 @@
+<div id="currntRemrksDiv" class="col-md-4" style="padding: 0;margin-right: -20px;">
+	<label style="float:left; margin-right:10px; margin-top:5px;">
+		Current Remarks: 
+	</label> 
+</div>
+<% if(remarks && remarks.length) { %>
+	<div id="ShowFullRemarks" class="current-remarks-hover  col-md-7" style="padding-left: 0px;padding-right: 0px;background-color: #E5E5E5;">
+		<a id="" style="float: right;color: #000 !important;font-size: 19px;">
+			<span class="fa fa-pencil btn default currentRemarksEditTooltip" style="color: #000;font-size: 14px;margin-top: 0px;" data-html="true" data-show="true"></span>
+		</a>
+		<p id="hoverTooltip" class="title field-text darkcolor dottext propNameTooltip" data-toggle="tooltip" data-placement="left" title="<%= remarks[0].messageTextPart2 %>" 
+			style="margin-right: 0px;margin-bottom: 7px;margin-top:5px;width: 14em;padding-left: 10px;">
+			<%-remarks[0].messageTextPart2%>
+		</p>
+	</div>
+<%}%>
+	

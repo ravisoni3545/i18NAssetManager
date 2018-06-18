@@ -1,0 +1,19 @@
+@media (min-width: 992px) {
+    .search-detail-landing .page-content{
+        margin-left: 0 !important;
+    }
+    .search-detail-landing  .shortlist1_top{
+        color: #35AA47;
+        font-weight: bold;
+    }
+}
+.hu-slider{
+    padding-bottom: 25px;
+    padding-top: 15px;
+}
+.form-horizontal.form-value .control-label{
+    padding-top: 0;
+}
+textarea.control-label{
+    text-align: left !important;
+}

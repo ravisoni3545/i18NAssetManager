@@ -1,0 +1,98 @@
+<div class="modal fade with-popover" id="INVESTOR_RESPONSE_REPAIRS_POPUP_1"
+	tabindex="-1" role="basic" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                </button>
+                <h3 class="modal-title">
+                   Investor Response for Repairs</h3>
+            </div>
+            <div class="modal-body clearfix">
+              <div class="col-md-12">
+                <div id="inspectionDocument" class="pull-right"></div>
+              </div>
+                <div class="clearfix"></div>
+                <div class="table-responsive marg_top5">
+                   <table class="table table-striped table-bordered table-advance table-hover tablegreen">
+                       <thead>
+                       <tr data-modelid="">
+                            <th width="8%">Issue Source</th>
+                           <th width="9%">Category</th>
+                           <th width="9%">Description</th>
+                           <th width="10%">Estimate</th>
+                           <th width="10%">Investor Action</th>
+                           <th width="18%">Seller Comments</th>
+                           <th width="11%;">Seller Response</th>
+                           <th width="8%">Investor Response</th>
+                           <th width="17%;">Comments</th>
+                       </tr>
+                       </thead>
+                       
+                       <tfoot>
+                       <tr>
+                       	<th rowspan="1" colspan="1"></th>
+                           <th rowspan="1" colspan="1"></th>
+                           <th rowspan="1" colspan="1"style="text-align:right;">TOTAL</th>
+                           <th class="text-right" rowspan="1" colspan="1"><span class="amount"id="estimateTotalAmount"></th>
+                           <th rowspan="1" colspan="1"></th>
+                           <th rowspan="1" colspan="1"></th>
+                           <th rowspan="1" colspan="1"></span></th>
+                           <th rowspan="1" colspan="1"></span></th>
+                           <th rowspan="1" colspan="1"></th>
+                       </tr>
+                   </tfoot>
+                        <tbody>
+                            
+                        </tbody>
+                   </table>
+                </div>
+
+                <div class="clearfix"></div>
+                <form class="milestone-form" method="post">
+                  <input type="hidden" id="object" name="object"> 
+                  <input type="hidden" id="objectId" name="objectId"> 
+                  <input type="hidden" id="taskKey" name="taskKey">
+
+                  <div class="form-group col-md-4">
+                      <label class="control-label pad_leftright0 pad_top10" style="text-align: left;">
+                          Completion Date<span class="required">*</span>
+                      </label>
+                        <div class="input-group input-medium date date-picker" data-date-format="mm-dd-yyyy" data-date-viewmode="years" data-date-autoclose="true">
+                                <input class="form-control" readonly type="text" id="endDate" name="endDate">
+                                <span class="input-group-btn">
+                                    <button class="btn default" type="button">
+                                        <i class="fa fa-calendar"></i>
+                                    </button>
+                                </span>
+                        </div>
+                      <!-- <div class="text-right">
+                        <a id="inspectionDocument" class="btn green" href="" target="_blank" style="word-wrap:break-word;">
+                          <i class="fa fa-file marg_right5"></i>View Inspection
+                        </a>
+                    </div> -->
+                  </div>
+
+                  <div class="form-group col-md-8">
+                    <label class="control-label pad_top10">
+                        Comments<a class="fa fa-comments-o pull-right showMessageTooltip"
+                          style="cursor: pointer; font-size: 14px;" data-html="true"
+                          data-show="true"> <i>Show past comments</i></a>
+                    </label><br>
+                    <textarea class="form-control" name="comments"></textarea>
+                  </div>
+                  
+                  <div class="clearfix"></div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button"  class="btn default" data-dismiss="modal">
+                    CANCEL</button>
+                <button type="button" class="btn blue" id="sellerResponseRepairsPopupSubmitButton">
+                    SAVE</button>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>

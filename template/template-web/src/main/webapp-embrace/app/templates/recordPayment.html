@@ -1,0 +1,58 @@
+<div class="col-md-12 grey-well" id="investorPaymentModal">
+	<form id="recordPaymentFormId">
+		<div class="row">
+			<div class="col-md-4 form-group">
+				<label class="control-label" style="text-align: left;">
+					Payment Date <span class="required">* </span>
+				</label>
+				<div class="input-group date date-picker" data-date=""
+					data-date-format="mm-dd-yyyy" data-date-viewmode="years">
+					<input class="form-control" readonly="" type="text"
+						name="transactionDate"> <span class="input-group-btn">
+						<button class="btn default" type="button">
+							<i class="fa fa-calendar"></i>
+						</button>
+					</span>
+				</div>
+			</div>
+			<div class="col-md-4 form-group">
+				<label class="control-label pad_leftright0">
+					Payment Amount<span class="required">* </span>
+				</label>
+				<div class="pad_right0 margin-bottom-10">
+					<div class="input-group">
+						<span class="input-group-addon"><i class="fa fa-dollar"></i></span>
+						<input class="form-control text-right currency" type="text"
+							name="debitAmount">
+					</div>
+				</div>
+			</div>
+			<div class="col-md-4 form-group">
+				<label class="control-label" style="text-align: left;">
+					Payment Status <span class="required">* </span>
+				</label>
+				<div id='paymentStatusDropdown'></div>
+			</div>
+		</div>
+		<div class="clearfix"></div>
+		<div class="row">
+			<div class="col-md-4 form-group">
+				<label class="control-label" style="text-align: left;">
+					Payment Type <span class="required">* </span>
+				</label>
+				<div id='paymentTypeDropdown'></div>
+			</div>
+			<div class="col-md-6 form-group">
+				<label class="control-label" style="text-align: left;">
+					Property Address <span class="required">* </span>
+				</label>
+				<div id='investorPropertiesDropdown'></div>
+			</div>
+		</div>
+		<div class="clearfix"></div>
+		<div>
+			<button type="button" class="btn blue" id="saveInvestorPayment">SAVE</button>
+			<button type="button" class="btn default" id='cancelInvestorPayment'>CANCEL</button>
+		</div>
+	</form>
+</div>

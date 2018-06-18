@@ -1,0 +1,67 @@
+<!-- START Cancel Closing lightbox -->
+<div class="modal fade bs-modal-md" id="cancelClosing" tabindex="-1"
+	role="basic" aria-hidden="true">
+	<div class="modal-dialog modal-md">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal"
+					aria-hidden="true"></button>
+				<h4 class="modal-title">
+					<i class="fa fa-times"></i> Cancel Closing
+				</h4>
+			</div>
+
+			<div class="modal-body">
+				<form class="form-horizontal" id="cancelClosingForm">
+					<div class="alert alert-danger display-hide">
+						<button class="close" data-close="alert"></button>
+						You have some form errors. Please check below.
+					</div>
+					<div class="alert alert-success display-hide">
+						<button class="close" data-close="alert"></button>
+						Your form validation is successful!
+					</div>
+					<h5>Are you sure you want to cancel this transaction?</h5>
+
+					<div class="form-group col-md-8 ">
+						<label class="control-label">Cancellation Reason </label>
+						<div id="cancellationReasonTypes"></div>
+					</div>
+					<div class="form-group col-md-12 " id="cancellationSubReasonsDiv" hidden></div>
+					<div class="form-group col-md-12">
+						<span id="huRecommendedCancellationSpan">
+								<label class="control-label"><input
+									id="huRecommendedCancellation" type="checkbox"
+									name="huRecommendedCancellation">HU Recommended Cancellation
+								</label>
+						</span>
+						<!-- <span id="investorRequestedCancellationSpan">
+								<label class="control-label"><input
+									id="investorRequestedCancellation" type="checkbox"
+									name="investorRequestedCancellation" class="">Investor Requested Cancellation
+								</label>
+						</span> -->
+					</div>
+					<div class="form-group col-md-12">
+						<label class="control-label"> <span class="required">*
+						</span> Comments
+						</label><br>
+						<textarea class="form-control" name="comments" data-required="1"></textarea>
+					</div>
+				</form>
+				<div class="clearfix"></div>
+			</div>
+
+			<div class="modal-footer">
+				<button type="button" class="btn blue" id="cancelClosingButton">
+					Yes</button>
+				<button type="button" class="btn default" data-dismiss="modal">
+					No</button>
+			</div>
+		</div>
+		<!-- /.modal-content -->
+	</div>
+	<!-- /.modal-dialog -->
+</div>
+<!-- /.modal -->
+<!-- END Cancel Closing lightbox -->

@@ -1,0 +1,12 @@
+<label class="control-label">Cancellation Sub Reasons</label><br>
+<% _(codelists).each(function(codelist) { 
+	if(codelist.isVisible != "N") {	%>
+	<span>
+		<label class="control-label">
+			<input type="checkbox"	name="cancellationSubReasons" class="" value="<%= codelist.id%>"><%= codelist.codeDisplay%>
+		</label>
+	</span><br>
+<% }
+}); %>
+<label class="control-label">Items of concern </label><br>
+<textarea class="form-control" name="itemsOfConcern"></textarea>

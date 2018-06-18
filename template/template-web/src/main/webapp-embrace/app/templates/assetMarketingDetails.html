@@ -1,0 +1,70 @@
+<div class="page-content">
+	<div class="row">
+		<div class="col-md-12">
+			<!-- BEGIN PAGE TITLE & BREADCRUMB-->
+			<h3 class="page-title">
+				<i class="fa fa-signal pull-left font25"></i>Asset Marketing Details
+			</h3>
+		</div>
+	</div>
+	<div id="marketingDetailsFailure" class="alert alert-danger display-hide">
+				<button class="close" data-close="alert"></button>
+				<text>Error fetching asset marketing details.</text>
+	</div>
+	<div id="marketingDetailsSaveFailure" class="alert alert-danger display-hide">
+				<button class="close" data-close="alert"></button>
+				<text>Unable to save details.</text>
+	</div>
+	<div id="marketingDetailsSaveSuccess" class="alert alert-success display-hide">
+				<button class="close" data-close="alert"></button>
+				<text>Asset marketing details saved successfully.</text>
+	</div>
+	<div id="weekStartNotMonday" class="alert alert-danger display-hide">
+				<button class="close" data-close="alert"></button>
+				<text>Date in week start date field should be Monday.</text>
+	</div>
+	<!-- BEGIN DASHBOARD STATS -->
+	<div id="marketingDetailsData"></div>
+
+	<div class="clearfix"></div>
+
+	<!-- Start Search section -->
+	<div class="row">
+		<div class="col-md-12">
+			<!-- Tab Start -->
+			<div class="tabbable">
+				<ul class="nav nav-tabs1">
+					<li class="" name="marketingNav"><a href="#marketingSteps"
+						data-toggle="tab" id="marketingSteps"><i
+							class="fa fa-phone pull-left font14 marg_top4"> </i>Marketing Steps </a></li>
+					<li class="" name="marketingNav"><a href="#contacts"
+						data-toggle="tab" id="marketingContact"><i
+							class="fa fa-phone pull-left font14 marg_top4"> </i>Contacts </a></li>
+							<li class="" name="marketingNav"><a href="#leasingPhotos"
+						data-toggle="tab" id="marketingPhotos"><i
+							class="fa fa-picture-o pull-left font14 marg_top4"> </i>Leasing Photos </a></li>
+					<li class="" name="marketingNav"><a href="javascript:void()"
+						data-toggle="tab" id="marketingDocuments"><i
+							class="fa fa-file-text pull-left font14 marg_top4"> </i>Documents
+					</a></li>
+					<li class="" name="marketingNav"><a href="javascript:void()"
+						data-toggle="tab" id="marketingMessages"><i
+							class="fa fa-envelope pull-left font14 marg_top4"> </i>Messages </a></li>
+<!-- 					<li class="" name="marketingNav"><a href="#calendar" data-toggle="tab" id="marketingCalendar"><i -->
+<!-- 							class="fa fa-calendar pull-left font14 marg_top4"> </i>Calendar </a></li> -->
+				</ul>
+				<div class="tab-content" style="width: 100%; margin-top: 20px;">
+					<div class="tab-pane" id="marketingStepsTab" name="marketingInfoTab"></div>
+					<div class="tab-pane" id="contactsTab" name="marketingInfoTab"></div>
+					<div class="tab-pane" id="marketingPhotosTab" name="marketingInfoTab"></div>
+					<div class="tab-pane" id="marketingDocumentsTab" name="marketingInfoTab"></div>
+					<div class="tab-pane" id="marketingMessagesTab" name="marketingInfoTab"></div>
+<!-- 					<div class="tab-pane" id="marketingCalendarTab" name="marketingInfoTab"></div> -->
+				</div>
+			</div>
+			<!-- Tab End -->
+
+		</div>
+	</div>
+	
+</div>

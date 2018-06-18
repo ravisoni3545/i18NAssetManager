@@ -1,0 +1,249 @@
+<div class="page-sidebar navbar-collapse collapse">
+	<!-- add "navbar-no-scroll" class to disable the scrolling of the sidebar menu -->
+	<!-- BEGIN SIDEBAR MENU -->
+	<ul class="page-sidebar-menu" data-auto-scroll="true"
+		data-slide-speed="200" id="sideBar">
+		<!--<li class="sidebar-toggler-wrapper">
+
+			<div class="sidebar-toggler hidden-phone"></div>
+		</li>--><br>
+<!-- 		<li class="sidebar-search-wrapper"> -->
+<!-- 			<!-- BEGIN RESPONSIVE QUICK SEARCH FORM --> 
+<!-- 			<form class="sidebar-search" action="extra_search.html" method="POST"> -->
+<!-- 				<div class="form-container"> -->
+<!-- 					<div class="input-box"> -->
+<!-- 						<a href="javascript:;" class="remove"></a> <input type="text" -->
+<!-- 							placeholder="Search..." /> <input type="button" class="submit" -->
+<!-- 							value=" " /> -->
+<!-- 					</div> -->
+<!-- 				</div> -->
+<!-- 			</form> END RESPONSIVE QUICK SEARCH FORM -->
+<!-- 		</li> -->
+		
+	<!-- commenting the old navigation <% if(navpermission.vendorManagement || navpermission.vendorSearch){ %>	
+		<li class="start active"><a href="javascript:;"><i
+				class="fa fa-home"></i><span class="title"> Vendor Management
+			</span><span class="arrow "></span><span class="selected"></span> </a>
+			<ul class="sub-menu">
+				<li><a href="#search"><i class="fa fa-search"></i>  <%= polyglot.t('navigation.search') %>
+				</a></li>
+				<% if(navpermission.vendorManagement) { %>	
+				<li class="active"><a href="#vendor"><i
+						class="fa fa-bullhorn"></i>Create New </a></li>
+			    <%}%>
+			</ul></li>
+		<% } %> </li>-->
+		<!--  MLS Links start -->
+			<% if(navpermission.retsListing || navpermission.bpoRETS || navpermission.viewMetrics || 
+			navpermission.updateFinancials || navpermission.viewApprovedProperties || navpermission.reviewListRehab || navpermission.reviewListRent){ %>
+			
+				<% if(urlMap.mlsUrls) {%>
+					<li class="start"><a href="javascript:;"><i class="fa fa-list"></i><span
+						class="title">Inventory Management</span> <span class="arrow "></span></a>
+					<ul class="sub-menu">
+					<% _.each(urlMap.mlsUrls, function( key,value){ %>
+						<%	if(navpermission.bpoRETS && value=='BPO RETS Listing'){ %>
+							<li><a href="<%- key %>" target="_blank"><i class="fa fa-hand-o-right"></i><%- value %></a></li>
+						
+						<% } else if(navpermission.retsListing && value=='Select RETS Listing'){ %>
+							<li><a href="<%- key %>" target="_blank"><i class="fa fa-hand-o-right"></i><%- value %></a></li>
+						
+						<% } else if(navpermission.viewMetrics && value=='View Metrics'){ %>
+							<li><a href="<%- key %>" target="_blank"><i class="fa fa-hand-o-right"></i><%- value %></a></li>
+						<% } else if(navpermission.updateFinancials && value=='Update Financials'){ %>
+							<li><a href="<%- key %>" target="_blank"><i class="fa fa-hand-o-right"></i><%- value %></a></li>
+						<% } else if(navpermission.viewApprovedProperties && value=='View Approved Properties'){ %>
+							<li><a href="<%- key %>" target="_blank"><i class="fa fa-hand-o-right"></i><%- value %></a></li>
+						<% } else if(navpermission.exceptionList && value=='Exception List'){ %>
+							<li><a href="<%- key %>" target="_blank"><i class="fa fa-hand-o-right"></i><%- value %></a></li>
+						<% } else if(navpermission.reviewListRehab && value=='Rehab Review Listing'){ %>
+							<li><a href="<%- key %>" target="_blank"><i class="fa fa-hand-o-right"></i><%- value %></a></li>
+						<% } else if(navpermission.reviewListRent && value=='Rent Review Listing'){ %>
+							<li><a href="<%- key %>" target="_blank"><i class="fa fa-hand-o-right"></i><%- value %></a></li>
+						<% } %>
+					<% });%>	
+					</ul>
+					</li>
+				<% } %>
+			<% } %>
+		<!--  MLS Links end -->
+		
+		<% if(navpermission.propertyManagement){ %>
+       	<% if(!urlMap.mlsUrls) {%>
+       	<li class="start">
+       	<% } else{ %>
+       	<li>
+       	<% } %>
+       	
+       	<a href="javascript:;"><i class="fa  fa-home"></i><span class="title">Properties </span><span class="arrow "></span></a>
+                        <ul class="sub-menu">
+                           
+                           <li><a href="#propertySearch"><i class="fa fa-search"></i>Search/View</a> </li>
+                             <% _.each(urlMap.mapsAppUrls, function( key,value){ %>
+	                           	<%	if(navpermission.viewMaps){ %>
+	                           	<li><a href="<%- key %>" target="_blank"><i class="fa fa-globe"></i><%- value %></a></li>
+	                           <% } %>
+                           <% });%>	
+                           <!-- <li><a href="#propertySearch"><i class="fa fa-plus"></i>Add Property</a></li> -->
+                        </ul>
+        </li>
+        <% } %>
+		<% if(navpermission.investorManagement || navpermission.investorView){ %>
+		<li><a href="javascript:;"><i class="fa  fa-user"></i><span class="title">Investors </span><span class="arrow "></span></a>
+              <ul class="sub-menu">
+                  <li><a href="#investorSearch"><i class="fa fa-search"></i>Search/View</a> </li>
+                 <!-- <li><a href="#"><i class="fa fa-plus-circle"></i>Create New</a></li> -->
+                  
+              </ul>
+        </li>
+        <% } %>
+        
+        
+         <!--  -->
+         <% if(navpermission.opportunityManagement || navpermission.opportunityView){ %>
+			<li ><a href="javascript:;"><i class="fa fa-search"></i><span class="title">Opportunities
+                    </span><span class="arrow "></span></a>
+                        <ul class="sub-menu">
+                            <li class="active"><a href="#opportunitySearch"><i class="fa fa-search"></i>Search/View</a> </li>
+
+                        </ul>
+            </li>
+         <% } %>
+			<!--  -->
+        
+        
+		<!-- TODO:// Currently closing will be visible to all the users.In future it would be permission based. -->
+		<% if(navpermission.closingManagement || navpermission.closingView){ %>	
+		<li><a href="javascript:;"><i class="fa fa-shopping-cart"></i><span class="title">Closings
+                    </span><span class="arrow "></span></a>
+                        <ul class="sub-menu">
+                        	<li><a href="#closingDashboard"><i class="fa fa-bar-chart-o"></i> Dashboard </a></li>
+                            <li><a href="#myclosings"><i class="fa fa-search"></i>Search/View</a> </li>
+                             
+                        </ul>
+         </li>
+        <% } %>
+        
+       
+        
+		<% if(navpermission.closingManagement || navpermission.closingView){ %>	
+		<!-- <li><a href="javascript:;"><i class="fa fa-shopping-cart"></i><span class="title">Closings
+                    </span><span class="arrow "></span></a>
+                        <ul class="sub-menu">
+                            <li><a href="#myclosings"><i class="fa fa-search"></i>Search/View</a> </li>
+                             
+                        </ul>
+         </li> -->
+		<% } %>
+		<% if(navpermission.assetManagement || navpermission.assetView || navpermission.rehabManagement || navpermission.rehabView){ %>					
+		 <li><a href="javascript:;"><i class="fa fa-building-o"></i><span class="title">Assets
+                    </span><span class="arrow "></span></a>
+                        <ul class="sub-menu">
+                        	  <% if(navpermission.assetManagement || navpermission.assetView){ %>
+                        	  <li><a href="#assetDashboard"><i class="fa fa-bar-chart-o"></i> Dashboard </a></li>
+                        	  <% } %>	
+                        	  <% if(navpermission.rehabManagement || navpermission.rehabView){ %>	
+                        	  	 <li><a href="#rehabSearch"><i class="fa fa-legal"></i>Rehabs</a> </li>
+                        	  <% } %>	
+                        	  <% if(navpermission.assetManagement || navpermission.assetView){ %>
+                        	  <li><a href="#assetMarketing"><i class="fa fa-signal"></i> Marketing </a></li>
+                              <li><a href="#myAssets"><i class="fa fa-search"></i>Search/View</a> </li>
+                              <% } %>	
+                        </ul>
+         </li>
+		<% } %>
+		
+		<% if(navpermission.vendorManagement || navpermission.vendorSearch){ %>
+		<li><a href="javascript:;"><i class="fa fa-users"></i><span class="title">
+                        Vendors</span><span class="arrow"></span><span class="selected"></span>
+                    </a>
+                        <ul class="sub-menu">
+                            <li><a href="#search"><i class="fa fa-search"></i><%= polyglot.t('navigation.search') %></a></li>
+                            <% if(navpermission.vendorManagement) { %>
+                            <li><a href="#vendor"><i class="fa fa-plus-circle"></i>Create New </a>
+                            </li>
+                            <%}%>
+                        </ul>
+                    </li>
+         <% } %>
+		
+		<!-- <% if(navpermission.propertyManagement){ %>
+		<li><a href="javascript:;"><i class="fa  fa-pagelines"></i><span
+				class="title">Property Maintenance </span><span class="arrow "></span></a>
+			<ul class="sub-menu">
+				<li><a href="#"><i class="fa fa-hand-o-right"></i>View /
+						Add Properties</a></li>
+				<li><a href="#"><i class="fa fa-hand-o-right"></i>Property
+						Financial Details</a></li>
+				<li><a href="#"><i class="fa fa-hand-o-right"></i>View /
+						Add Listing</a></li>
+			</ul></li>
+			<% } %>	
+			<% if(navpermission.wishListManagement){ %>
+		<li><a href="javascript:;"><i class="fa fa-list-ol"></i><span
+				class="title">Wishlist </span><span class="arrow "></span></a>
+			<ul class="sub-menu">
+				<li><a href="#"><i class="fa fa-hand-o-right"></i>View Wish
+						List</a></li>
+				<li><a href="#"><i class="fa fa-hand-o-right"></i>View Wish
+						List By Property</a></li>
+			</ul></li>
+			<% } %>	
+			
+			
+			<% if(navpermission.cashFlowManagement){ %>
+		<li><a href="javascript:;"><i class="fa fa-briefcase"></i><span
+				class="title">Cash Flow Management</span> <span class="arrow "></span></a>
+			<ul class="sub-menu">
+				<li><a href="#"><i class="fa fa-hand-o-right"></i>Add
+						Property Cash Flow</a></li>
+				<li><a href="#"><i class="fa fa-hand-o-right"></i>View/Edit
+						Property Cash Flow</a></li>
+			</ul></li>
+			<% } %>	 -->
+		
+		<% if(navpermission.reportsView){ %>
+		<li><a href="javascript:;"><i class="fa fa-files-o"></i><span
+				class="title">Reports</span> <span class="arrow "></span></a>
+			<ul class="sub-menu">
+				<li><a href="#investorReport"><i class="fa fa-hand-o-right"></i>Investor Reports</a></li>
+				<li><a href="#investorReportSearch"><i class="fa fa-hand-o-right"></i>Investor Reports Search</a></li>
+				<li><a href="#otherReports"><i class="fa fa-hand-o-right"></i>Other Reports</a></li>
+				<!-- <li><a href="#"><i class="fa fa-hand-o-right"></i>PM Report</a>
+				</li>
+				<li><a href="#"><i class="fa fa-hand-o-right"></i>AM
+						Reconciliation Report</a></li>
+				<li><a href="#"><i class="fa fa-hand-o-right"></i>AM Data
+						Analytics</a></li>
+				<li><a href="#"><i class="fa fa-hand-o-right"></i>Vendor
+						Performance Report</a></li> -->
+			</ul></li>
+			<% } %>
+		<% if(navpermission.userManagement || navpermission.userView){ %>
+		<li><a href="javascript:;"><i class="fa fa-pencil-square-o"></i><span
+				class="title"> Site Administration </span><span class="arrow "></span></a>
+			<ul class="sub-menu">
+				<li><a href="#userAccounts"><i class="fa fa-user"></i>&nbsp;User
+						Accounts </a></li>
+				<li><a href="#messageTemplates"><i class="fa fa-envelope-o"></i>&nbsp;Message Templates </a></li>
+				<% if(navpermission.documentTemplateStatus || navpermission.documentTemplateStatusView){ %>
+				<li><a href="#documentTemplateStatus"><i class="fa fa-list-alt"></i>&nbsp;Document Templates </a></li>
+				<% } %>	
+				<% if(navpermission.envelopeStatus || navpermission.envelopeStatusView){ %>
+				<li><a href="#envelopeStatus"><i class="fa fa-envelope"></i>&nbsp;Envelope
+						Status </a>
+				</li>
+				<% } %>
+				<li><a href="#endPoints"><i class="fa fa-refresh"></i>&nbsp;End Points</a></li>
+				<li><a href="#rolePermissions"><i class="fa fa-user"></i>&nbsp;User Roles</a></li>
+			</ul>
+		</li>
+		<% } %>	
+		<% if(navpermission.insuranceManagement || navpermission.insuranceManagement){ %>					
+		 <li><a href="#insurance"><i class="fa fa-building-o"></i><span class="title">Insurance</span></a> 
+                    
+         </li>
+		<% } %>
+	</ul>
+	<!-- END SIDEBAR MENU -->
+</div>

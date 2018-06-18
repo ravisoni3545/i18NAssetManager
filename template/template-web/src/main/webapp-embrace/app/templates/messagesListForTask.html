@@ -1,0 +1,35 @@
+<% if(msgDatas) { %> 
+<table class="table-bordered table-advance table-hover" style="width:400px;">
+			<tbody>
+				<div class="fa fa-times pull-right popover-close" data-item="msg"
+				style="position: relative;opacity: 0.3;font-size: 12px;
+					padding-bottom: 2px;padding-right: 2px;cursor: pointer;"></div>
+				<% _.each(msgDatas,
+				function(msgData){ %>
+				<tr>
+					<td style="word-wrap: break-word;word-break: break-all;font-size: 12px; padding: 5px 15px 5px 5px;">
+						<div>
+						<i><%- msgData.createdBy +' added a comment ' + msgData.createdDate%></i>
+						</div>
+						<div style="text-indent: 20px;">
+						<% if(msgData.messageTextPart1){ %> 
+								<div  class="showLessContent">
+									<%= msgData.messageTextPart1 %>...&nbsp;
+									<a class="showMoreMessage" style="cursor: pointer">show more</a>
+								</div>
+								<div class="showMoreContent" style="display:none;">
+									<%= msgData.messageTextPart2 %>&nbsp;&nbsp;
+									<a class="showLessMessage" style="cursor: pointer">show less</a>
+								</div>
+							<% } else{%>
+								<div><%= msgData.messageTextPart2 %></div>
+							<% } %>
+						</div>
+					</td>
+
+				</tr>
+				<% }); %> 
+				
+			</tbody>
+</table>
+<% } %>

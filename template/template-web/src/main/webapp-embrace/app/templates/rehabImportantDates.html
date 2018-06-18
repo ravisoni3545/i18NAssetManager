@@ -1,0 +1,76 @@
+<div>
+	<!-- imp date view start -->
+	<h4 class="margin-bottom-15 borb">
+		<i class="fa fa-th pull-left marg_top5"></i>Important Dates
+	</h4>
+	<div id="imp-date-view" class="impdatetoggle margin-bottom-25">
+		<div class="row margin-bottom-10">
+			<div class="col-md-3">
+				<strong>Closing Date</strong><br>
+				<%if(rehabData.investmentResponse.closingEndDate){%>
+				<%=rehabData.investmentResponse.closingEndDate %> <%} else{%>
+				<div style="color: #0D638F;">
+					<em><%=rehabData.investmentResponse.estimatedClosingDate%></em>
+				</div>
+				<%}%>
+			</div>
+			<div class="col-md-3">
+				<strong>Confirmed Estimated Start Date
+				<a data-dateLabel="Confirmed Estimated Start Date" id="rehabDateEdit"
+				data-dateType="estimatedRehabStartDate"
+				data-dateVal="<%-rehabData.estimatedRehabStartDate%>"
+				style="cursor: pointer"><i class="fa fa-edit"></i></a>
+				</strong><br>
+				<div style="color: #0D638F;">
+					<em><%=rehabData.estimatedRehabStartDate%></em>
+				</div>
+			</div>
+			<div class="col-md-3">
+				<strong>Confirmed Estimated End Date
+				<a data-dateLabel="Confirmed Estimated End Date" id="rehabDateEdit"
+				data-dateType="estimatedRehabCompletionDate"
+				data-dateVal="<%-rehabData.estimatedRehabCompletionDate%>"
+				style="cursor: pointer"><i class="fa fa-edit"></i></a>
+				</strong><br>
+				<div style="color: #0D638F;">
+					<em><%=rehabData.estimatedRehabCompletionDate%></em>
+				</div>
+			</div>
+			<div class="col-md-3">
+				<strong>Investor Estimated End Date
+				<a data-dateLabel="Investor Estimated End Date" id="rehabDateEdit"
+				data-dateType="investorEstimatedEndDate"
+				data-dateVal="<%-rehabData.investorEstimatedEndDate%>"
+				style="cursor: pointer"><i class="fa fa-edit"></i></a>
+				</strong><br>
+				<div style="color: #0D638F;">
+				<em><%=rehabData.investorEstimatedEndDate%></em>
+				</div>
+			</div>
+
+		</div>
+		<div class="row margin-bottom-10">
+		
+		<div class="col-md-3">
+				<strong>Option Period Expires</strong><br>
+				<%=investmentResponse.optionPeriodExpires%>
+			</div>
+		
+			<div class="col-md-3">
+				<strong>Actual Start Date</strong><br>
+				<%=rehabData.actualRehabStartDate%>
+			</div>
+			<div class="col-md-3">
+				<strong>Actual End Date</strong><br>
+				<%=rehabData.actualRehabCompletionDate%>
+			</div>
+			
+			<div class="col-md-3">
+				<strong>Rent Ready Date</strong><br>
+				<%=rehabData.rentReadyDate%>
+			</div>
+		</div>
+	</div>
+	<!-- imp date view end -->
+</div>
+<div id="renderDateEditModal"></div>

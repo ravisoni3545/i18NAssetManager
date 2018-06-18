@@ -1,0 +1,224 @@
+<div class="hoa_tab_general tab-pane hoaNavTab active">
+    <div class="form-horizontal">
+        <div class="marg_top10">
+
+        <form class="form-horizontal" method="post" enctype="multipart/form-data">
+        
+        <input type="hidden" id="object" name="object" /> <input type="hidden"
+        id="objectId" name="objectId" /> <input type="hidden" id="hoaId"
+        name="hoaId" />
+        <div class="form-body">
+            <div id="formFailure" class="alert alert-danger display-hide">
+                <button class="close" data-close="alert"></button>
+                <text id="textValue"></text>
+            </div>
+            <div class="alert alert-success display-hide">
+                <button class="close" data-close="alert"></button>
+                Successfully saved HOA Details.
+            </div>
+            <!-- Start left section -->
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="col-md-4 control-label pad_leftright0">Association Name<span class="required">*</span></label>
+                        <div class="col-md-7 pad_right0 margin-bottom-10">
+                            <input type="text" name="associationName" placeholder="" class="form-control text-right" value="<%-singleData.associationName%>" >
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6"></div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group address-div">
+                        <label class="col-md-4 control-label pad_leftright0">Address <span class="required">*</span>
+                        	<span class="viewsdiv1">
+                        		<a style="cursor: pointer;" class="showAddressDiv"	title="View Address Details"><i class="fa fa-plus-circle"></i></a>
+							</span>
+							<span class="display-none hidesdiv1">
+								<a	style="cursor: pointer;" class="hideAddressDiv" title="Hide Address Details"><i class="fa fa-minus-circle"></i></a>
+							</span>
+						</label>
+                        <div class="col-md-7 pad_right0">
+                         <textarea   placeholder="" readonly="readonly" class="form-control text-right  existingaddress" style="cursor: pointer;"></textarea>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6"></div>
+            </div>
+           <div class="col-md-12 hidesdiv1 display-none" style="background-color: rgba(134, 134, 134, 0.0901961);">
+        <div class="row">
+           <div class="col-md-1"></div>
+                <div class="col-md-5">
+                       <div class="form-group showExistingAddress">
+                        <label class="col-md-5 control-label pad_leftright0">Address 1<span class="required">*</span></label>
+                        <div class="col-md-7">
+                            <input type="text" name="address1" placeholder="" class="form-control text-right" value="<%-singleData.address1%>" >
+                        </div>
+                    </div>
+                </div>
+                 <div class="col-md-5">
+                       <div class="form-group showExistingAddress">
+                        <label class="col-md-5 control-label pad_leftright0">Address 2</label>
+                        <div class="col-md-7">
+                            <input type="text" name="address2" placeholder="" class="form-control text-right" value="<%-singleData.address2%>" >
+                        </div>
+                    </div>
+                </div>
+       </div>
+
+         <div class="row">
+            <div class="col-md-1"></div>
+                <div class="col-md-5">
+                    <div class="form-group showExistingAddress">
+                      <label class="col-md-5 control-label pad_leftright0">City</label>
+                      <div class="col-md-7 margin-bottom-10">
+                        <input type="text" name="city" placeholder="" class="form-control text-right" value="<%-singleData.city%>">
+                     </div>
+                  </div>
+               </div>
+            <div class="col-md-5">
+              <div class="form-group showExistingAddress">
+                <label class="col-md-5 control-label pad_leftright0">State</label>
+               <div class="col-md-7">                
+                    <div class="state"></div>
+               </div>
+             </div>
+         </div>
+       </div>
+  <div class="row">
+         <div class="col-md-1"></div>
+                <div class="col-md-5">
+                    <div class="form-group showExistingAddress">
+                        <label class="col-md-5 control-label pad_leftright0">Postal Code</label>
+                        <div class="col-md-7 margin-bottom-10">
+                            <input type="text" name="postalcode" placeholder="" class="form-control text-right" value="<%-singleData.postalcode%>" >
+                        </div>
+                    </div>
+                </div>
+  </div>
+  </div>
+            <div class="row">
+               <div class="col-md-6">
+                     <div class="form-group">
+                        <label class="col-md-4 control-label pad_leftright0">Phone Number</label>
+                        <div class="col-md-7 pad_right0 margin-bottom-10">
+                            <input type="text" name="phone" placeholder="" class="form-control text-right" value="<%-singleData.phone%>" >
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="col-md-4 control-label pad_leftright0">Reference Number</label>
+                        <div class="col-md-7 pad_right0 margin-bottom-10">
+                            <input type="text" name="referenceNo" placeholder="" class="form-control text-right" value="<%-singleData.referenceNo%>" >
+                        </div>
+                    </div>
+                </div>
+             
+            </div>
+
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="col-md-4 control-label pad_leftright0">Payment Amount<span class="required">*</span></label>
+                        <div class="col-md-7 pad_right0 margin-bottom-10">
+                            <input type="text" name="paymentAmount" placeholder="" class="form-control text-right currencyInsurance" value="<%-singleData.paymentAmount%>">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="col-md-4 control-label pad_leftright0">Frequency<span class="required">*</span></label>
+                        <div class="col-md-7 pad_right0 margin-bottom-10">
+                            <div class="frequencyTypeDD"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="col-md-4 control-label pad_leftright0">Upload Policy Details</label>
+                        <a class="fa fa-paperclip pull-right showDocumentTooltip_2"
+                            style="cursor: pointer; font-size: 16px;" data-object="<%=singleData.essentials.objectCodeListId%>" data-objectid="<%=singleData.essentials.objectId%>" data-subobject="<%=singleData.essentials.subObject%>" data-subobjectid="<%=singleData.hoaId%>"
+                            data-html="true" data-show="true"> </a>
+                        <div class="col-md-7 pad_right0 margin-bottom-10">
+                            <input type="file" name="hoaPolicyDocs" class="form-control" multiple="" style="padding-bottom:40px;">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+
+                </div>
+            </div>
+
+        
+
+            <div class="clearfix"></div>
+
+            <div class="col-md-12 margin-bottom-15">
+                <div class="form-group">
+                    <label class="control-label margin-bottom-15">
+                        <i class="fa fa-comment-o "></i>  Comments<a
+                            class="fa fa-comments-o pull-right showMessageTooltip_2"
+                            style="cursor: pointer; font-size: 14px;" data-object="<%=singleData.essentials.objectCodeListId%>" data-objectid="<%=singleData.essentials.objectId%>" data-subobject="<%=singleData.essentials.subObject%>" data-subobjectid="<%=singleData.hoaId%>"
+                            data-html="true" data-show="true"> <i>Show past comments</i>
+                        </a>
+                    </label><br>
+
+                    <textarea class="form-control" name="comments" ></textarea>
+                </div>
+            </div>
+
+        </div>
+
+        </form>
+
+        <button type="button" class="addNewPayment btn blue margin-bottom-15">
+            Add New Payment</button>
+            <div class="portlet box light-grey" style="margin-bottom: 0;">
+                <div class="portlet-title">
+                    <div class="caption">
+                        <i class="fa fa-clock-o"></i>Payment History
+                    </div>
+
+                </div>
+                <div class="portlet-body">
+                    <div class="table-responsive">
+                        <table id="paymentTable" style="table-layout:fixed; width:100%; min-width: 800px;" class="table order-list ins-table table-striped table-bordered table-advance">
+                            <thead>
+                                <tr>
+                                    <th style="width:14%;">
+                                         Payment Due Date
+                                    </th>
+                                    <th style="width:14%;">
+                                        Payment Date
+                                    </th>
+                                    <th style="width:17%">
+                                        <span class="control-label">Payment Amount<span class="required">*</span></span>
+                                    </th>
+                                    <th style="width:17%">
+                                        <span class="control-label">Status<span class="required">*</span></span>
+                                    </th>
+                                    <th style="width:19%">Paid By </th>
+                                    <th style="width:15%">Reference No</th>
+                                    <th style="width:3%;"></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+
+                            </tbody>
+
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <button class="btn blue savePropertyHoa" style="margin-top: 15px;/*margin-left: 55em;*/" type="button">
+                Save</button>
+
+        </div>       
+    </div>
+</div>

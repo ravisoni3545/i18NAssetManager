@@ -1,0 +1,17 @@
+<select class="form-control sendToNamesDropDown select2" name="mailToReceipients" multiple="multiple" id="mailToReceipients">
+	<optgroup label="Investor" id="investor">
+		<%_(codes.investors).each(function(investor) { %>
+			<option value="<%= investor.emailAddress%>"><%= investor.name%></option>
+		<% }); %>
+	</optgroup>
+	<optgroup label="Embrace Internal Users" id="embraceUsers">
+		<%_(codes.embraceUsers).each(function(embraceUser) { %>
+			<option value="<%= embraceUser.emailAddress%>"><%= embraceUser.name%></option>
+		<% }); %>
+	</optgroup>
+	<optgroup   label="Vendors" id="vendors">
+	<%_(codes.vendors).each(function(vendor) { %>
+		<option value="<%= vendor.emailAddress%>"><%= vendor.name%></option>
+	<% }); %>
+	</optgroup>
+</select>

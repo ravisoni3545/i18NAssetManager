@@ -1,0 +1,38 @@
+<% if(otherInvestments) { %> 
+<div class="table-responsive">
+	<div class="fa fa-times pull-right popover-close" 
+				style="position: relative;opacity: 0.3;font-size: 12px;
+					padding-bottom: 2px;padding-right: 10px;cursor: pointer;"></div>
+	<table class="table table-striped table-bordered table-advance table-hover">
+				<thead>
+					<tr>
+						<th>Property Address</th>
+						<th>Status</th>
+						<th>Closing</th>
+						<th>Asset Servicing</th>
+					</tr>
+				</thead>
+				<tbody>
+					<% _.each(otherInvestments,
+					function(investmentData){ %>
+					<tr>
+						<td>
+							<%-investmentData.propertyAddress%>
+						</td>
+						<td>
+							<%-investmentData.status%>
+						</td>
+						<td>
+							<a href=#closing/<%-investmentData.investmentId%> target="_blank">View</a>
+						</td>
+						<td>
+							<%if(investmentData.assetId){%>
+							<a href=#myProperties/<%-investmentData.assetId%>  target="_blank">View</a>
+							<%}%>
+						</td>
+					</tr>
+					<% }); %> 
+			    </tbody>
+	</table>
+</div>
+<% } %>

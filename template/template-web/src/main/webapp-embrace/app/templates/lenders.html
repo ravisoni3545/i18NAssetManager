@@ -1,0 +1,16 @@
+<select class="bs-select form-control" id="lendersDropdown" name="lenderCompany">
+	<option value="">select</option>
+	<optgroup label="Home Union Lenders" id="lendersHU">
+		<%_(lenders.huLenders).each(function(lender) { %>
+			<option id="<%= lender.orgId%>" value="<%= lender.orgName%>"><%= lender.orgName%></option>
+		<% }); %>
+	</optgroup>
+	<optgroup label="Other Lenders" id="lendersNonHU">
+		<%_(lenders.nonHuLenders).each(function(nonHuLender) { %>
+			<option id="<%= nonHuLender.orgId%>" value="<%= nonHuLender.orgName%>"><%= nonHuLender.orgName%></option>
+		<% }); %>
+	</optgroup>
+	<optgroup   label="New Lender" id="newLender">
+		<option value="newlender">Add new Lender</option>
+	</optgroup>
+</select>

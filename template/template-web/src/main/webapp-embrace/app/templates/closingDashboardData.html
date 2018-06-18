@@ -1,0 +1,302 @@
+ <% if(closingDashboardResponse){ %>
+<div class="row">
+	<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+		<div class="dashboard-stat purple">
+			<div class="visual">
+				<i class="fa fa-shopping-cart fa-icon-medium" style="font-size: 40px;line-height: 40px"></i>
+			</div>
+			<div class="details">
+				<div class="number" style="font-size:20px;"><%-
+					closingDashboardResponse.closingProperties %></div>
+				<div class="desc"  style="font-size:14px;" >Properties in Closing</div>
+			</div>
+			<div class="viewClosings">
+			<a href="#myclosings" class="more" data-type="closedProperties">
+				View more <i class="m-icon-swapright m-icon-white"
+				data-type="closedProperties"></i>
+			</a>
+			</div>
+		</div>
+	</div>
+	<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+		<div class="dashboard-stat green">
+			<div class="visual">
+				<i class="fa fa-calendar fa-icon-medium" style="font-size: 40px;line-height: 40px"></i>
+			</div>
+			<div class="details">
+				<div class="number" style="font-size:20px;"><%-
+					closingDashboardResponse.currentMonthProperties %></div>
+				<div class="desc"  style="font-size:14px;">Scheduled to Close This Month</div>
+			</div>
+			<div class="viewClosings">
+			<a href="#myclosings" class="more" data-type="scheduled"> View
+				more <i class="m-icon-swapright m-icon-white" data-type="scheduled"></i>
+			</a>
+			</div>
+		</div>
+	</div>
+	<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+		<div class="dashboard-stat yellow">
+			<div class="visual">
+				<i class="fa fa-dollar fa-icon-medium" style="font-size: 40px;line-height: 40px"></i>
+			</div>
+			<div class="details">
+				<div class="number" style="font-size:20px;">
+					<span class="amount"><%-
+						closingDashboardResponse.totalInvestment %></span>
+				</div>
+				<div class="desc"  style="font-size:14px;">Total Investment</div>
+			</div>
+			<div class="viewClosings">
+			<a href="#myclosings" class="more" data-type="totalInvestment">
+				View more <i class="m-icon-swapright m-icon-white"
+				data-type="totalInvestment"></i>
+			</a>
+			</div>
+		</div>
+	</div>
+	<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+		<div class="dashboard-stat blue">
+			<div class="visual">
+				<i class="fa fa-dollar fa-icon-medium" style="font-size: 40px;line-height: 40px"></i>
+			</div>
+			<div class="details">
+				<div class="number" style="font-size:20px;">
+					<span class="amount"><%-
+						closingDashboardResponse.totalRevenue %></span>
+				</div>
+				<div class="desc" style="font-size:14px;">Total Revenue</div>
+			</div>
+			<div class="viewClosings">
+			<a href="#myclosings" class="more" data-type="totalRevenue">
+				View more <i class="m-icon-swapright m-icon-white"
+				data-type="totalRevenue"></i>
+			</a>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- END DASHBOARD STATS -->
+<div class="clearfix"></div>
+<div class="row ">
+	<div class="col-md-4 col-sm-4">
+
+		<div class="portlet-body dash-list-style">
+			<div class="note">
+				<div class="details">
+					<h4>
+						<i class="fa fa-clock-o"></i> Closing Duration
+					</h4>
+					<div class="sale-summary">
+
+						<div class="portlet-body dash-list-style">
+							<div class="custom-scroll-dash">
+								<% if(closingDashboardResponse.closingDurationProperties){ %>
+								<ul>
+									<%
+									_.each(closingDashboardResponse.closingDurationProperties,function(propertyCountResponse){
+									%>
+									<li><span class="sale-info"><%-
+											propertyCountResponse.displayName %> <i class="fa fa-img-up"></i>
+									</span> <span class="sale-num"><a href="#myclosings" class="showClosings"
+											data-type="closingDuration"><%-
+												propertyCountResponse.count %></a></span></li> <% }); %>
+								</ul>
+								<%}%>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- END ALERTS PORTLET-->
+	</div>
+	<div class="col-md-4 col-sm-4">
+
+		<div class="portlet-body dash-list-style">
+
+			<div class="note">
+				<div class="details">
+					<h4>
+						<i class="fa fa-dollar"></i> Financing Type
+					</h4>
+					<div class="sale-summary">
+
+						<div class="portlet-body">
+							<div class="custom-scroll-dash">
+								<% if(closingDashboardResponse.financingTypeProperties) { %>
+								<ul>
+									<%
+									_.each(closingDashboardResponse.financingTypeProperties,function(propertyCountResponse){
+									%>
+									<li><span class="sale-info"><%-
+											propertyCountResponse.displayName %> <i class="fa fa-img-up"></i>
+									</span> <span class="sale-num"><a href="#myclosings" class="showClosings"
+											data-type="financingType"><%- propertyCountResponse.count
+												%></a></span></li> <% }); %>
+								</ul>
+								<%}%>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- END ALERTS PORTLET-->
+	</div>
+
+	<div class="col-md-4 col-sm-4">
+		<div class="portlet-body dash-list-style">
+			<div class="note">
+				<div class="details">
+					<h4>
+						<i class="fa fa-bell-o"></i> TKP/ILM
+					</h4>
+					<div class="sale-summary">
+
+						<div class="portlet-body">
+							<div class="custom-scroll-dash">
+								<% if(closingDashboardResponse.dealTypeProperties) { %>
+								<ul>
+									<%
+									_.each(closingDashboardResponse.dealTypeProperties,function(propertyCountResponse){
+									%>
+									<li><span class="sale-info"><%-
+											propertyCountResponse.displayName %> <i class="fa fa-img-up"></i>
+									</span> <span class="sale-num"><a href="#myclosings" class="showClosings"
+											data-type="dealType"> <%- propertyCountResponse.count %></a>
+									</span></li> <% }); %>
+								</ul>
+								<%}%>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- BEGIN PORTLET-->
+
+			<!-- END PORTLET-->
+		</div>
+	</div>
+	<div class="col-md-4 col-sm-4">
+		<div class="portlet-body dash-list-style">
+
+			<div class="note">
+				<div class="details">
+					<h4>
+						<i class="fa fa-user"></i> Closer
+					</h4>
+					<div class="">
+
+						<div class="portlet-body">
+							<div class="custom-scroll-dash">
+								<% if(closingDashboardResponse.closerProperties) { %>
+								<ul>
+									<%
+									_.each(closingDashboardResponse.closerProperties,function(userPropertyResponse){
+									%>
+									<li><span class="sale-info"> <%
+											if(userPropertyResponse.userImageLink) { %> <img alt=""
+											src="<%= userPropertyResponse.userImageLink %>" width="29"
+											height="29" class="marg_right5"> <%} else {%> <img
+											alt="" src="assets/img/user1.png" width="29" height="29" />
+											<%}%> <%- userPropertyResponse.userName %> <i
+											class="fa fa-img-up"></i>
+									</span> <span class="sale-num"><a href="#myclosings" class="showClosings"
+											data-type="closer"> <%- userPropertyResponse.count %></a> </span></li> <%
+									}); %>
+								</ul>
+								<%}%>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+
+			<!-- BEGIN PORTLET-->
+
+			<!-- END PORTLET-->
+		</div>
+	</div>
+	<div class="col-md-4 col-sm-4">
+		<div class="portlet-body dash-list-style">
+			<div class="note">
+				<div class="details">
+					<h4>
+						<i class="fa fa-user"></i> ILM
+					</h4>
+					<div class="sale-summary">
+
+						<div class="portlet-body">
+							<div class="custom-scroll-dash">
+								<% if(closingDashboardResponse.ilmProperties) { %>
+								<ul>
+									<%
+									_.each(closingDashboardResponse.ilmProperties,function(userPropertyResponse){
+									%>
+									<li><span class="sale-info"> <%
+											if(userPropertyResponse.userImageLink) { %> <img alt=""
+											src="<%= userPropertyResponse.userImageLink %>" width="29"
+											height="29" class="marg_right5"> <%} else {%> <img
+											alt="" src="assets/img/user1.png" width="29" height="29" />
+											<%}%> <%- userPropertyResponse.userName %> <i
+											class="fa fa-img-up"></i>
+									</span> <span class="sale-num"><a href="#myclosings" class="showClosings"
+											data-type="ilmProperties"> <%- userPropertyResponse.count
+												%> </a></span></li> <% }); %>
+								</ul>
+								<%}%>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="col-md-4 col-sm-4">
+		<div class="portlet-body dash-list-style">
+
+			<div class="note">
+				<div class="details">
+					<h4>
+						<i class="fa fa-user"></i> Solution Specialist
+					</h4>
+					<div class="sale-summary">
+
+						<div class="portlet-body dash-list-style">
+							<div class="custom-scroll-dash">
+								<% if(closingDashboardResponse.solutionSpecialistProperties) {
+								%>
+								<ul>
+									<%
+									_.each(closingDashboardResponse.solutionSpecialistProperties,function(userPropertyResponse){
+									%>
+									<li><span class="sale-info"> <%
+											if(userPropertyResponse.userImageLink) { %> <img alt=""
+											src="<%= userPropertyResponse.userImageLink %>" width="29"
+											height="29" class="marg_right5"> <%} else {%> <img
+											alt="" src="assets/img/user1.png" width="29" height="29" />
+											<%}%> <%- userPropertyResponse.userName %> <i
+											class="fa fa-img-up"></i>
+									</span> <span class="sale-num"><a href="#myclosings" class="showClosings"
+											data-type="solutionSpecialistProperties"> <%-
+												userPropertyResponse.count %> </a></span></li> <% }); %>
+								</ul>
+								<%}%>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- BEGIN PORTLET-->
+
+			<!-- END PORTLET-->
+		</div>
+	</div>
+</div>
+<%}%>

@@ -1,0 +1,95 @@
+<div id="pixeetModalDiv"></div>
+<div class="modal fade" id="deleteTourConfirmationModal" tabindex="-1" role="dialog"
+        aria-hidden="true">
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                    </button>
+                    <h4 class="modal-title">
+                        <i class="fa fa-trash-o"></i> Delete Tour</h4>
+                </div>
+                <div class="modal-body">
+                    <p>
+                        Are you sure you want to delete this Tour?</p>
+                </div>
+                <div class="modal-footer">
+                    <button name="deleteConfirm" type="button" class="btn blue" data-dismiss="modal">
+                        Yes</button>
+                    <button type="button" class="btn default" data-dismiss="modal">
+                        No</button>
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div> 
+<div class="form-group">
+        <label class="control-label col-md-2">Pixeet URL
+            <span class="required">
+                *
+            </span>
+        </label>
+        <div class="col-md-6">
+            <input name="url" type="text" class="form-control" id="pixeet_url" placeholder="Pixeet URL">
+            <span class="help-block">
+                e.g: http://www.demo.com or http://demo.com
+            </span>
+        </div>
+        <button name="addLinkBtn" type="submit" class="btn green add">
+            <i class="fa fa-plus"></i>
+            <span>
+                Add link
+            </span>
+        </button>
+      
+        <!-- The global file processing state -->
+        <span class="fileupload-process">
+        </span>
+    </div>
+</div>
+                                        
+ <br>
+<br>
+ <br>
+<br>
+<br>
+<table role="presentation" class="table table-striped clearfix">
+    <tbody class="files">
+         <% 
+        $.each(theLinks.tourLinks, function(k,v){
+    %>          
+        <tr>
+            <td></td>
+            <td><a href="<%-v.tourLink %>"> <%-v.tourLink%> </a></td>
+            <td><button  href="#deleteTourConfirmationModal" data-toggle="modal" class="btn red delete" name="deleteSelectedBtn" style="margin-right:4px;" tour-id="<%-v.tourid%>"><span style="padding-left:3px;"><i class="fa fa-trash-o"></i> Delete</span></button><button name="pixeetPreview" data-toggle="modal" data-target="#pixeetModal" class="btn blue" type="delete" style="margin-right:4px;" url="<%-v.tourLink%>"><span style="padding-left:3px;"><i class="fa fa-film"></i> Preview</span></button></td>
+        </tr>
+    <%
+
+        });
+
+    %>
+        
+        
+   </tbody>
+</table>
+
+<div class="panel panel-success">
+<div class="panel-heading">
+<h3 class="panel-title">Notes</h3>
+</div>
+<div class="panel-body">
+<ul>
+    <li>
+        Make sure to "Make Pre-Select Property" on the <b>Details</b> tab <i>before</i> adding pixeet links
+    </li>
+    <li>
+        Upload photos and documents using their respective tabs.
+    </li>
+</ul>
+</div>
+</div>
+                                        
+                                        <br>
+                                        <br>
+                                        <br>

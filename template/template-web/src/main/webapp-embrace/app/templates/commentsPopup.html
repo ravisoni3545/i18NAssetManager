@@ -1,0 +1,95 @@
+<div class="modal fade" id="commentsModal" tabindex="-1" role="dialog"
+	aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal"
+					aria-hidden="true"></button>
+				<h4 class="modal-title">
+					<i class="fa fa-comments marg_right10"></i>Comments
+				</h4>
+			</div>
+			<div class="modal-body">
+				<% if(msgDatas) { %> 
+				<div class="comments-section">
+					<% _.each(msgDatas,function(msgData){ %>
+					<div class="row">
+						<div class="col-md-12">
+							<div class="media">
+							
+								<div class="pull-left">
+									<% if(msgData.userImageLink) { %> 
+										<img alt=""
+											src="<%= msgData.userImageLink %>" width="45"
+											class="message-thumb img-responsive"> 
+									<%} else {%> <img
+											src="assets/img/avatar1_small.jpg" width="45" class="message-thumb img-responsive" />
+									<%}%>
+								</div>
+								<div class="media-body">
+									<div>
+									<i><span style=" color: rgb(43, 103, 153);"><%- msgData.createdBy %></span> added a comment 
+										<span style=" color: rgb(43, 103, 153);"><%- msgData.createdDate %></span> </i>
+									</div>
+									<div style="text-indent: 20px;">
+									<% if(msgData.messageTextPart1){ %> 
+											<div  class="showLessContent">
+												<%= msgData.messageTextPart1 %>...&nbsp;
+												<a class="showMoreMessage" style="cursor: pointer">show more</a>
+											</div>
+											<div class="showMoreContent" style="display:none;">
+												<%= msgData.messageTextPart2 %>&nbsp;&nbsp;
+												<a class="showLessMessage" style="cursor: pointer">show less</a>
+											</div>
+										<% } else{%>
+											<div><%= msgData.messageTextPart2 %></div>
+										<% } %>
+									</div>
+									<ul class="list-inline">
+										<% if(msgData.deliveryMethod=="Email" || msgData.deliveryMethod=="email"){ %> 
+											<li><i class="fa fa-envelope"></i> Sent via email</li>
+										<% } else{%>
+											<li><i class="fa fa-comment"></i>Comment</li>
+										<% } %>
+										<li><i class="fa fa-user"></i> Investor Name: 
+											<a href="#investorProfile/<%-investorId %>"><%-investorName%></a></li>
+									</ul>
+								</div>
+
+							</div>
+							<hr>
+						</div>
+					</div>
+					<% }); %>
+				</div>
+				<% } %>
+				<!--  <div class="post-comment marg_top20"> -->
+				<br>
+				<div>
+					<!-- <h4 class="form-section">Leave a Comment</h4> -->  
+					<form id="commentsForm">
+						<input type="hidden" id="subObjectId" name="subObjectId"
+							value="<%=subObjectId%>" /> <input type="hidden" id="objectId"
+							name="objectId" value="<%=objectId%>" />
+						<div class="form-group">
+							<!-- <label class="control-label"> Comments </label><br> -->
+							<label class="control-label">Leave a Comment<span class="required">* </span></label>
+							<textarea class="form-control" style="height: 150px;"
+								placeholder="" name="comments" id="comments"></textarea>
+						</div>
+
+					</form>
+					<div class="clearfix"></div>
+					<div class="modal-footer">
+						<button type="button" class="btn blue" id="saveComments">
+							SAVE</button>
+						<button type="button" class="btn default" data-dismiss="modal">
+							CANCEL</button>
+					</div>
+				</div>
+			</div>
+			<!-- /.modal-content -->
+		</div>
+		<!-- /.modal-dialog -->
+	</div>
+	<!-- End Comments Popup Box -->

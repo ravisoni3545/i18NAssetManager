@@ -1,0 +1,298 @@
+<div class="tax_tab_general tab-pane taxNavTab active">
+    <div class="form-horizontal">
+        <div class="marg_top10">
+
+        <form class="form-horizontal" method="post" enctype="multipart/form-data">
+        <!-- <form class="form-horizontal" name="save-quote-form" method="post" 
+        enctype="multipart/form-data"> -->
+        <input type="hidden" id="object" name="object" /> <input type="hidden"
+        id="objectId" name="objectId" /> <input type="hidden" id="propertyTaxId"
+        name="propertyTaxId" />
+        <div class="form-body">
+            <div id="formFailure" class="alert alert-danger display-hide">
+                <button class="close" data-close="alert"></button>
+                <text id="textValue"></text>
+            </div>
+            <div class="alert alert-success display-hide">
+                <button class="close" data-close="alert"></button>
+                Successfully saved Property Tax Details.
+            </div>
+            <!-- Start left section -->
+            <div class="row">
+
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="col-md-4 control-label pad_leftright0">Tax Type<span class="required">*</span></label>
+                        <div class="col-md-7 pad_right0 margin-bottom-10">
+                            <div class="TaxTypeDD"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="col-md-4 control-label pad_leftright0">Tax Assessor<span class="required">*</span></label>
+                        <div class="col-md-7 pad_right0 margin-bottom-10">
+                            <input type="text" name="taxAssessor" placeholder="" class="form-control text-right" value="<%-singleData.taxAssessor%>" >
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+
+                </div>
+            </div>
+            
+                 <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group address-div">
+                        <label class="col-md-4 control-label pad_leftright0">Address <span class="required">*</span>
+                        	<span class="viewsdiv1">
+                        		<a style="cursor: pointer;" class="showAddressDiv"	title="View Address Details"><i class="fa fa-plus-circle"></i></a>
+							</span>
+							<span class="display-none hidesdiv1">
+								<a	style="cursor: pointer;" class="hideAddressDiv" title="Hide Address Details"><i class="fa fa-minus-circle"></i></a>
+							</span>
+						</label>
+                        <div class="col-md-7 pad_right0">
+                         <textarea   placeholder="" readonly="readonly" class="form-control text-right  existingaddress" style="cursor: pointer;"></textarea>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-6"></div>
+               
+            </div>
+            
+            
+            
+          <div class="col-md-12 display-none hidesdiv1"style="background-color: rgba(134, 134, 134, 0.0901961);">
+            <div class="row">
+            <div class="col-md-1"></div>
+                <div class="col-md-5">
+                    <div class="form-group showExistingAddress">
+                        <label class="col-md-5 control-label pad_leftright0">Address 1<span class="required">*</span></label>
+                        <div class="col-md-7 pad_right0 margin-bottom-10">
+                            <input type="text" name="address1" placeholder="" class="form-control text-right" value="<%-singleData.address1%>" >
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-5">
+                           <div class="form-group showExistingAddress">
+                        <label class="col-md-5 control-label pad_leftright0">Address 2</label>
+                        <div class="col-md-7 pad_right0 margin-bottom-10">
+                            <input type="text" name="address2" placeholder="" class="form-control text-right" value="<%-singleData.address2%>" >
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+          <div class="row">
+           <div class="col-md-1"></div>
+                       <div class="col-md-5">
+                          <div class="form-group showExistingAddress">
+                             <label class="col-md-5 control-label pad_leftright0">City</label>
+                               <div class="col-md-7 pad_right0 margin-bottom-10">
+                                 <input type="text" name="city" placeholder="" class="form-control text-right" value="<%-singleData.city%>">
+                               </div>
+                         </div>
+                     </div>
+         
+           <div class="col-md-5">
+              <div class="form-group showExistingAddress">
+                <label class="col-md-5 control-label pad_leftright0">State</label>
+                   <div class="col-md-7 pad_right0 margin-bottom-10">                
+                         <div class="state"></div>
+                  </div>
+             </div>
+         
+         </div>
+       </div>
+   
+       <div class="row">
+          <div class="col-md-1"></div>
+              <div class="col-md-5 showExistingAddress">
+                    <div class="form-group">
+                        <label class="col-md-5 control-label pad_leftright0">Postal Code</label>
+                        <div class="col-md-7 pad_right0 margin-bottom-10">
+                            <input type="text" name="postalcode" placeholder="" class="form-control text-right" value="<%-singleData.postalcode%>" >
+                        </div>
+                    </div>
+              </div>
+               
+       </div>
+       </div>
+              <div class="row">
+              
+              <div class="col-md-6">
+              
+               <div class="form-group">
+                        <label class="col-md-4 control-label pad_leftright0">Phone</label>
+                        <div class="col-md-7 pad_right0 margin-bottom-10">
+                            <input type="text" name="phone" placeholder="" class="form-control text-right" value="<%-singleData.phone%>">
+                        </div>
+                    </div>
+              
+              
+              
+              </div>
+              
+              </div>
+            <div class="row">
+              
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="col-md-4 control-label pad_leftright0">URL</label>
+                        <div class="col-md-7 pad_right0 margin-bottom-10">
+                            <input type="url" name="url" placeholder="" class="form-control text-right" value="<%-singleData.url%>">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="col-md-4 control-label pad_leftright0">Parcel #</label>
+                        <div class="col-md-7 pad_right0 margin-bottom-10">
+                            <input type="text" name="parcelNo" placeholder="" class="form-control text-right" value="<%-singleData.parcelNo%>">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="col-md-4 control-label pad_leftright0">Assessed Value</label>
+                        <div class="col-md-7 pad_right0 margin-bottom-10">
+                            <input type="text" name="accessedValue" placeholder="" class="form-control text-right currencyInsurance" value="<%-singleData.accessedValue%>">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+
+                </div>
+
+            </div>
+
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="col-md-4 control-label pad_leftright0">Tax Percent</label>
+                        <div class="col-md-7 pad_right0 margin-bottom-10">
+                            <input type="text" name="taxPercentage" placeholder="" class="form-control text-right" value="<%-singleData.taxPercentage%>">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="col-md-4 control-label pad_leftright0">Tax Amount</label>
+                        <div class="col-md-7 pad_right0 margin-bottom-10">
+                            <input type="text" name="taxAmount" placeholder="" class="form-control text-right currencyInsurance" value="<%-singleData.taxAmount%>">
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="col-md-4 control-label pad_leftright0">Upload Tax Statement</label>
+                        <a class="fa fa-paperclip pull-right showDocumentTooltip_2"
+                            style="cursor: pointer; font-size: 16px;" data-object="<%=singleData.essentials.objectCodeListId%>" data-objectid="<%=singleData.essentials.objectId%>" data-subobject="<%=singleData.essentials.subObject%>" data-subobjectid="<%=singleData.propertyTaxId%>"
+                            data-html="true" data-show="true"> </a>
+                        <div class="col-md-7 pad_right0 margin-bottom-10">
+                            <input type="file" name="taxStatementDocs" class="form-control" multiple="" style="padding-bottom:40px;">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+
+                </div>
+            </div>
+
+        
+
+            <div class="clearfix"></div>
+
+            <div class="col-md-12 margin-bottom-15">
+                <div class="form-group">
+                    <label class="control-label margin-bottom-15">
+                        <i class="fa fa-comment-o "></i>  Comments<a
+                            class="fa fa-comments-o pull-right showMessageTooltip_2"
+                            style="cursor: pointer; font-size: 14px;" data-object="<%=singleData.essentials.objectCodeListId%>" data-objectid="<%=singleData.essentials.objectId%>" data-subobject="<%=singleData.essentials.subObject%>" data-subobjectid="<%=singleData.propertyTaxId%>"
+                            data-html="true" data-show="true"> <i>Show past comments</i>
+                        </a>
+                    </label><br>
+
+                    <textarea class="form-control" name="comments"></textarea>
+                </div>
+            </div>
+
+        </div>
+
+        </form>
+
+        <button type="button" class="addNewPayment btn blue margin-bottom-15">
+            Add New Payment</button>
+            <div class="portlet box light-grey" style="margin-bottom: 0;">
+                <div class="portlet-title">
+                    <div class="caption">
+                        <i class="fa fa-clock-o"></i>Payment History
+                    </div>
+
+                </div>
+                <div class="portlet-body">
+                    <div class="table-responsive">
+                        <table id="paymentTable" style="table-layout:fixed; width:100%; min-width: 900px;" class="table order-list ins-table table-striped table-bordered table-advance">
+                            <thead>
+                                <tr>
+                                    <th style="width:11%;">
+                                         Payment Type
+                                    </th>
+                                    <th style="width:11%;">
+                                        Paid Through Date
+                                    </th>
+                                    <th style="width:11%;">
+                                        Payment Due Date
+                                    </th>
+                                    <th style="width:11%;">
+                                        Payment Date
+                                    </th>
+                                    <th style="width:12%">
+                                        <span class="control-label">Payment Amount<span class="required">*</span></span>
+                                    </th>
+                                    <th style="width:14%">
+                                        <span class="control-label">Status<span class="required">*</span></span>
+                                    </th>
+                                    <th style="width:15%">Paid By </th>
+                                    <th style="width:12%">Reference No</th>
+                                    <th style="width:3%;"></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+
+                            </tbody>
+
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <button class="btn blue savePropertyTax" style="margin-top: 15px;/*margin-left: 55em;*/" type="button">
+                Save</button>
+
+        </div>       
+    </div>
+</div>

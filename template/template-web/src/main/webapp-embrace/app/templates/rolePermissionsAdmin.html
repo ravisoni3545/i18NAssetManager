@@ -1,0 +1,64 @@
+<div class="page-content">
+     <div style="margin-top: 10px; display: none;" class="alert alert-danger display-hide" id="saveRoleError">
+                        <button class="close" data-close="alert" onclick="$(this).parent().hide();return false;"></button>
+                         Error saving role. 
+                      <br>
+                      
+               </div>
+                   <div style="margin-top: 10px; display: none;" class="alert alert-success display-hide" id="saveRoleSuccess">
+                        <button class="close" data-close="alert" onclick="$(this).parent().hide();return false;"></button>
+                         Success saving role. 
+                      <br>
+                      
+               </div>
+	 <!-- BEGIN PAGE HEADING-->
+                <div class="dash-header">
+                    <div class="">
+                        <h3 class="page-title">
+                            <i class="fa fa-user pull-left"></i><i class="fa fa-check" style="position:absolute; margin-left:-15px; margin-top:16px;"></i> &nbsp;Role Permissions &nbsp;
+                        </h3>
+                        
+                  </div>
+                    
+                </div>
+                <!-- END PAGE HEADING-->
+    <div style="padding: 10px 13px 10px 23px; background:white">
+      	<div class="row">
+            <div class="col-md-2">
+            <label class="control-label" style="text-align:center;">Role:</label>
+                <select style="margin-bottom:15px" class="form-control" id="roleSelect">
+                    <option value="">select</option>
+                    <%_.each(roles,function(role){%>
+                        <option value='<%-role.roleId%>'><%-role.roleName%></option>
+                    <%})%>
+                </select>
+            </div>
+                            <span class="col-md-4"><button id="rolePermissionSave" style="display:none" class="pull-right btn btn-primary blue">Save</button></span>
+
+            </div>
+
+<%if(roleSelect !=''){%>
+
+<select multiple="multiple" id="my-select" >
+    <% _.each(availablePermissions, function(permission){%>
+    <option class='permission' value='<%-permission.permissionId%>'><%-permission.name%></option>
+   <% });
+
+   _.each(currentPermissions,function(permission){ %>
+
+        <option class='rolePermission' value='<%-permission.rolePermissionId%>' selected><%-permission.name%></option>
+
+    <% });%>
+     
+    </select>
+    
+<%}else{console.log('no availablePermissions');}%>
+
+
+    </div>
+
+
+
+
+                
+</div>

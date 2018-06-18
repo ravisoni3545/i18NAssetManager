@@ -1,0 +1,17 @@
+<div style="margin-right:280px;margin-bottom:10px;">
+
+<select name="<%=name%>"  class="form-control" id="<%=id%>">
+		<%if(addBlankFirstOption){%>
+			<option value="">select</option>
+		<%}%>
+				
+		<%_(users).each(function(user) { %>
+			<option value="<%= user.orgId %>">
+				<%= user.orgName%>
+			</option>
+		<% }); %>
+		
+		<
+</select>
+
+</div>

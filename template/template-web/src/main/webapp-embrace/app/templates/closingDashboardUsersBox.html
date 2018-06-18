@@ -1,0 +1,17 @@
+<% if(dataArray && dataArray.length) { %>
+	<ul>
+		<%
+		_.each(dataArray,function(userPropertyResponse){
+		%>
+		<li><span class="sale-info"> <%
+				if(userPropertyResponse.userImageLink) { %> <img alt=""
+				src="<%= userPropertyResponse.userImageLink %>" width="29"
+				height="29" class="marg_right5"> <%} else {%> <img
+				alt="" src="assets/img/user1.png" width="29" height="29" />
+				<%}%> <%- userPropertyResponse.userName %> <i
+				class="fa fa-img-up"></i>
+		</span> <span class="sale-num"><a href="#myclosings" class="showClosings"
+				data-type="<%- dataType%>"> <%- userPropertyResponse.count %></a> </span></li> <%
+		}); %>
+	</ul>
+<%}%>

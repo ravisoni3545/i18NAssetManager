@@ -1,0 +1,285 @@
+<div>
+	<h4 class="margin-bottom-15 borb">
+		<i class="fa fa-users pull-left marg_top5"></i>Transaction Members
+		<!-- <a
+		style="cursor: pointer"  id="transmem-edit" ><i class="fa fa-edit"></i></a> -->
+	</h4>
+	<div id="transMemsSuccessMsg" class="alert alert-success display-hide">
+		<button class="close" data-close="alert"
+			onclick="$(this).parent().hide();return false;"></button>
+		<text>Successfully saved the transaction member</text>
+	</div>
+	<div id="transMemsFailureMsg" class="alert alert-danger display-hide">
+		<button class="close" data-close="alert"
+			onclick="$(this).parent().hide();return false;"></button>
+		<text>Failed to save the transaction member</text>
+	</div>
+
+	<!-- trans members view start -->
+	<div id="trans-mem-view" class="transmemtoggle margin-bottom-20">
+		<div class="row" style="margin-bottom: 10px;">
+			<% var count=1 %> <% _.each(transactionMemberResponse, function(
+			singleData){ if(singleData.isVendor!='Y'){ %>
+			<div class="col-md-3">
+
+				<strong><%= singleData.roleName%> <% if(singleData.processRoleId){%> <a
+					style="cursor: pointer" id="transmem-edit"
+					data-roleName='<%-singleData.roleName%>'
+					data-processRoleId='<%-singleData.processRoleId%>'
+					data-userId='<%-singleData.userId%>' data-show='true'><i
+						class="fa fa-edit"></i></a><%}%>
+
+				</strong><br>
+				<div class="transactionMemberSection">
+					<div class="dash-list-style">
+
+						<ul>
+							<li><span class="sale-info">
+									<%if(singleData.imageUrl) { %> <img alt=""
+									src="<%= singleData.imageUrl %>" width="29" height="29"
+									class="marg_right5"> <%} else {%> <img alt=""
+									src="assets/img/user1.png" width="29" height="29" /> <%}%>
+									<%=singleData.userName%> <i class="fa fa-img-up"></i>
+							</span></li>
+
+						</ul>
+
+					</div>
+				</div>
+				<div class="rehabUserDropdown dash-list-style"></div>
+			</div>
+			<% if(count%4==0) {%>
+			<div class="clearfix"></div>
+			<% } %> <% count++ %> <% }}); %>
+
+			<!--  -->
+		</div>
+
+
+<div class="row" style="margin-bottom: 10px;">
+			<% var count=1 %> <% _.each(transactionMemberResponse, function(
+			singleData){ if(singleData.isVendor=='Y'){ %>
+			<div class="col-md-3">
+
+				<strong><%= singleData.roleName%> 
+				
+				<% if(singleData.roleName=='Escrow Company'){ %>
+				<a style="cursor: pointer" data-roleName='<%-singleData.roleName%>' data-processRoleId='<%-singleData.processRoleId%>'
+						data-userId='<%-singleData.userId%>' class="transmem-org-edit"
+					id="showEscrowCompanyModal" data-toggle="modal"><i
+					class="fa fa-edit"></i></a>
+				
+				<% } else if(singleData.roleName=='Mortgage Company'){ %>
+				<a href="#lendingcompany" data-roleName='<%-singleData.roleName%>' data-processRoleId='<%-singleData.processRoleId%>'
+						data-userId='<%-singleData.userId%>' class="transmem-org-edit"
+					data-toggle="modal"><i class="fa fa-edit"></i></a>  <a
+					href="#vendor/<%-investmentResponse.lendingCompanyId %>">
+				
+				<%} else if(singleData.roleName=='Listing Agent'){ %>
+				<a style="cursor: pointer" data-roleName='<%-singleData.roleName%>' data-processRoleId='<%-singleData.processRoleId%>'
+						data-userId='<%-singleData.userId%>' class="transmem-org-edit"
+					id="showSellerAgentModal" data-toggle="modal"><i
+					class="fa fa-edit"></i></a>
+				
+				<%} else if(singleData.roleName=='Rehab Vendor'){ %>
+				<a style="cursor: pointer" data-roleName='<%-singleData.roleName%>' data-processRoleId='<%-singleData.processRoleId%>'
+						data-userId='<%-singleData.userId%>' class="transmem-org-edit"
+					id="rehabVendorEdit"><i class="fa fa-edit"></i></a>	
+				
+				<%} else{ %>
+					<a style="cursor: pointer" id="transmem-org-gen-edit"
+						data-roleName='<%-singleData.roleName%>'
+						data-processRoleId='<%-singleData.processRoleId%>'
+						data-userId='<%-singleData.userId%>' data-show='true'><i
+							class="fa fa-edit transmem-org-edit"></i></a>
+				<% } %>
+				</strong><br>
+				<div class="transactionMemberSection">
+					<div class="dash-list-style">
+
+						<ul>
+							<li><span class="sale-info">
+									<%=singleData.userName%> <i class="fa fa-img-up"></i>
+									<% if(singleData.roleName=='Mortgage Company'){ %></a><br/><span><%=investmentResponse.mortgageStatusDisplay%></span><% } %>
+							</span></li>
+
+						</ul>
+
+					</div>
+				</div>
+				<div class="rehabUserDropdown dash-list-style"></div>
+			</div>
+			<% if(count%4==0) {%>
+			<div class="clearfix"></div>
+			<% } %> <% count++ %> <% }}); %>
+
+			<!--  -->
+		</div>
+
+	</div>
+</div>
+<!-- trans members view end -->
+
+<!-- trans members edit start -->
+<div class="modal fade" id="lendingcompany" tabindex="-1" role="basic"
+	aria-hidden="true">
+	<div class="modal-dialog">
+		<form id="mortgageDetailsForm">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal"
+						aria-hidden="true"></button>
+					<h4 class="modal-title">Mortgage Company Name</h4>
+				</div>
+				<!-- <div id="formFailure" class="alert alert-danger display-hide">
+					<button class="close" data-close="alert"></button>
+					<text id="textValue"></text>
+				</div> -->
+				<div class="modal-body">
+					<div id="formFailure" class="alert alert-danger display-hide">
+						<button class="close" data-close="alert" onclick="$(this).parent().hide();return false;"></button>
+						<text id="textValue"></text>
+					</div>
+					<div class="form-group  col-md-6">
+						<label class="control-label">Lender</label>
+						<div id="lendersListUpdate"></div>
+					</div>
+					<div class="form-group  col-md-6">
+						<label class="control-label">New Lender</label> <input type="text"
+							id="newlenderUpdate" name="newlenderUpdate" value="" disabled
+							class="form-control">
+					</div>
+					<div class="form-group col-md-6">
+						<label class="control-label">Loan Status</label><br>
+						<div id="statusListUpdate"></div>
+					</div>
+					<div class="clearfix"></div>
+					<div class="clearfix"></div>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn blue" id="saveMortgage">
+						SAVE</button>
+					<button type="button" class="btn default" data-dismiss="modal">
+						CANCEL</button>
+				</div>
+			</div>
+		</form>
+		<!-- /.modal-content -->
+	</div>
+	<!-- /.modal-dialog -->
+</div>
+
+<!-- Escrow company modal start-->
+<div class="modal fade" id="escrowcompany" tabindex="-1" role="basic"
+	aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal"
+					aria-hidden="true"></button>
+				<h4 class="modal-title">Escrow Company</h4>
+			</div>
+			<!-- <div class="modal-body" id="escrowcompanyDiv"> -->
+			<div class="modal-body">
+				<div id="escrowCompanyFormMsg" class="alert alert-danger display-hide">
+						<button class="close" data-close="alert" onclick="$(this).parent().hide();return false;"></button>
+						<text>Please select escrow company.</text>
+				 </div>
+				<div id="escrowcompanyDiv"></div>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn blue" id="saveEscrowCompany">
+					SAVE</button>
+				<button type="button" class="btn default" data-dismiss="modal">
+					CANCEL</button>
+			</div>
+		</div>
+		<!-- /.modal-content -->
+	</div>
+	<!-- /.modal-dialog -->
+</div>
+<!-- Escrow company modal end-->
+
+<div class="modal fade" id="transMemberClosing" tabindex="-1" role="basic"
+	aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal"
+					aria-hidden="true"></button>
+				<h4 class="modal-title">Transaction Member</h4>
+			</div>
+			<div class="modal-body">
+				<div id="transMemberClosingFormMsg" class="alert alert-danger display-hide">
+					<button class="close" data-close="alert" onclick="$(this).parent().hide();return false;"></button>
+					<text>Please select transaction member.</text>
+				</div>
+				<div id="transactionMemberClosingDiv"></div>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn blue" id="save-trans-mem">
+					SAVE</button>
+				<button type="button" class="btn default" data-dismiss="modal">
+					CANCEL</button>
+			</div>
+		</div>
+		<!-- /.modal-content -->
+	</div>
+	<!-- /.modal-dialog -->
+</div>
+
+<div class="modal fade" id="rehabVendor" tabindex="-1" role="basic"
+	aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal"
+					aria-hidden="true"></button>
+				<h4 class="modal-title">Rehab Vendor</h4>
+			</div>
+			<div class="modal-body">
+				<div id="rehabVendorFormMsg" class="alert alert-danger display-hide">
+					<button class="close" data-close="alert" onclick="$(this).parent().hide();return false;"></button>
+					<text>Please select rehab vendor.</text>
+				</div>
+				<div id="rehabVendorDiv"></div>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn blue" id="save-rehab-vendor">
+					SAVE</button>
+				<button type="button" class="btn default" data-dismiss="modal">
+					CANCEL</button>
+			</div>
+		</div>
+		<!-- /.modal-content -->
+	</div>
+	<!-- /.modal-dialog -->
+</div>
+
+<div class="modal fade" id="genericVendor" tabindex="-1" role="basic"
+	aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal"
+					aria-hidden="true"></button>
+				<h4 class="modal-title"></h4>
+			</div>
+			<div class="modal-body">
+				<div style="margin-right:280px;margin-bottom:10px;">
+					<div id="genericVendorDiv"></div>
+				</div>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn blue" id="save-generic-vendor">
+					SAVE</button>
+				<button type="button" class="btn default" data-dismiss="modal">
+					CANCEL</button>
+			</div>
+		</div>
+		<!-- /.modal-content -->
+	</div>
+	<!-- /.modal-dialog -->
+</div>
+
+<div id="sellerAgentDiv"></div>

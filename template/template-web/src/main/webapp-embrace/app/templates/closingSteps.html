@@ -1,0 +1,219 @@
+<% if(_(closingStepsData).size() > 0) { %>
+	<div style="cursor: pointer;" id="showOpenClosingToggleButton"
+		class="btn bg-blue pull-left margin-bottom-10 closingExportToExcel">Show Open</div>
+	<div class="addbtnposition">
+	<a href="closing/downloadClosingSteps/<%-objectId%>/<%-object%>"
+		class="btn btn-primary pull-right margin-bottom-10 closingExportToExcel" target="_blank" data-toggle="tooltip" data-placement="left"><i data-toggle="tooltip" title="Export to Excel" class="fa fa-share hopNameTooltip"></i></a>	
+
+	<a href="#addTaskModal" id="addTaskPopup" data-toggle="modal" class="btn green pull-right margin-bottom-10 margin-right-10" data-object="<%=object%>"  data-objectId="<%=objectId%>"><i title="Add New Task" data-toggle="tooltip" class="hopNameTooltip fa fa-plus"></i></a> &nbsp;
+    </div>
+	<div class="clearfix"></div>
+	<!--  -->
+	<!--  -->
+	<div id="formAlertFailure" class="alert alert-danger display-hide">
+										<button class="close" data-close="alert"></button>
+										Couldn't update the date due to some error.
+									</div>
+									<div id="formAlertSuccess" class="alert alert-success display-hide">
+										<button class="close" data-close="alert"></button>
+										Date update is successful!
+									</div>
+	<div id="workflowExecutionFailureAlert" class="alert alert-danger display-hide">
+										<button class="close" data-close="alert"></button>
+										<span></span>
+	</div>
+	<div id="workflowExecutionSuccessAlert" class="alert alert-success display-hide">
+										<button class="close" data-close="alert"></button>
+										<span></span>
+	</div>
+	<!--  -->
+	
+	<div class="panel-group accordion table-responsive" id="accordion3">
+		<table id="closingStepsTable"
+			
+			class="table table-striped table-bordered table-advance table-hover tablegreen">
+			<thead>
+				<tr>
+					<th>Step</th>
+					<th>Date Started</th>
+					<th>Date Completed</th>
+					<th>Assigned Person</th>
+					<th>Completed By</th>
+					<th>Status</th>
+					<%if(app.sessionModel.attributes.roles.indexOf("Administrator")!=-1 && !(closingStatusSteps=='Completed' || closingStatusSteps=='Cancelled')){%>
+						<th>Actions </th>
+					<%}%>
+				</tr>
+			</thead>
+			<tbody class="with-popover">
+				<% var count=0;
+				_(closingStepsData).each(function(task) { %>
+					<tr>
+						<td><a data-toggle="modal" href="taskPopup" data-taskKey="<%=task.taskKey%>"
+								 data-popupKey="<%=task.popupKey%>" data-popupVersion="<%=task.popupVersion%>"
+								 data-object="<%=task.object%>" data-objectId="<%=task.objectId%>" 
+								 data-documentLabel="<%=task.documentLabel%>" data-taskName="<%=task.taskName%>"
+								 data-startDate="<%=task.actualStart%>" data-completedDate="<%=task.actualEnd%>"
+								 data-projectedStartDate="<%=task.projectedStart%>" data-projectedCompletedDate="<%=task.projectedEnd%>"
+								 data-status="<%=task.status%>">
+							<%=task.taskName%>
+							</a>
+							<a class="fa fa-comments-o pull-right showMessageTooltip" style="cursor: pointer; font-size:14px;" 
+								data-taskkey="<%=task.taskKey%>" data-object="<%=task.object%>" data-objectid="<%=task.objectId%>" 
+								data-html="true" data-show="true"></a>
+							<a class="fa fa-paperclip pull-right showDocumentTooltip" style="cursor: pointer; font-size:16px;" 
+								data-taskkey="<%=task.taskKey%>" data-object="<%=task.object%>" data-objectid="<%=task.objectId%>"
+								data-html="true" data-show="true"></a>
+						</td>
+						<%if(task.actualStart){%><td><%=task.actualStart%></td>
+						<%}else{%><td style="color: #0D638F;"><em><%=task.projectedStart%></em></td><%}%>
+						<%if(task.actualEnd){%><td><%=task.actualEnd%></td>
+						<%}else{%><td style="color: #0D638F;"><em><%=task.projectedEnd%></em>
+						<!--  -->
+							<%if( !(closingStatusSteps=='Completed' || closingStatusSteps=='Cancelled') ){%>
+								<a class="edit_blue" style="cursor: pointer;padding-left:4px;" title="Edit Date" id="reprojectDate"><i
+										class="fa fa-clock-o" style="font-size:16px;" id="reprojectDate"></i> </a>
+							<%}%>
+							<%if(task.isReprojected=='Y'){%>
+								<i class="fa fa-clock-o" style="font-size:16px;" title="Date is previously reprojected for this task"></i>
+							<%}%>
+						<!--  -->
+						</td><%}%>
+						<td><%=task.assignedUserName%></td>
+						<td><%=task.completedUserName%></td>
+						<td><%=task.status%></td>
+						<%if(app.sessionModel.attributes.roles.indexOf("Administrator")!=-1 && !(closingStatusSteps=='Completed' || closingStatusSteps=='Cancelled')){%>
+							<td>
+								<%if(count>1) {%>
+									<a class="delete_red"
+										style="cursor: pointer;padding-left:4px;" title="Delete Step" id="deleteStep"><i
+											class="fa fa-trash-o" style="font-size:16px;" id="deleteStep"></i> </a>
+								<%}%>
+								<%if(task.actualEnd && task.taskKey.indexOf('adhocTask')==-1){%>
+									<a class="edit_blue"
+										style="cursor: pointer;padding-left:4px;" title="Open Step" id="openStep"><i
+											class="fa fa-undo" style="font-size:16px;" id="openStep"></i> </a>
+								<%}%>
+							</td>
+						<%}%>
+					</tr>
+				<%count++;
+				});%>
+			</tbody>
+	
+		</table>
+	
+	</div>
+	<p>
+		<strong>Note:</strong> Dates in Italic/Blue are projected dates
+	</p>
+	
+	
+	<a data-toggle="modal" href="#completeClosing" class="btn bg-blue pull-right closingCompletedButton">Closing Completed</a>
+	<a data-toggle="modal" id="cancelClosingLink"
+		class="btn bg-blue pull-right marg_right10">Pending Cancellation</a>
+<% } else { %>
+	<div style="text-align: center;"><strong>No closing steps found.</strong>
+		<%if(app.sessionModel.attributes.roles.indexOf("Administrator")!=-1){%>
+			<a id="initiateWorkflow" title="Generates closing steps from the begining of closing workflow" style="cursor: pointer"
+				href="#initiateWorkflowModal" data-toggle="modal">Initiate Workflow</a>
+		<%}%>
+	</div>
+<% } %>
+
+<div id="insurancePopupsDiv"></div>
+<div id="taskPopups"></div>
+
+
+<div class="modal fade bs-modal-sm" id="initiateWorkflowModal" tabindex="-1" role="dialog" aria-hidden="true">
+	<div class="modal-dialog modal-sm">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+				<h4 class="modal-title">Initiate Closing Workflow</h4>
+			</div>
+			<div class="modal-body">
+				  Are you sure you want to initiate the closing workflow?
+			</div>
+			<div class="modal-footer">
+				<button id="initiateWorkflowConfirmationButton" type="button" class="btn blue">Yes</button>
+				<button type="button" class="btn default" data-dismiss="modal">No</button>
+			</div>
+		</div>
+		<!-- /.modal-content -->
+	</div>
+	<!-- /.modal-dialog -->
+</div>
+
+<div class="modal fade bs-modal-sm with-popover" id="addTaskModal"
+	tabindex="-1" role="basic" aria-hidden="true">
+	<div class="modal-dialog modal-sm">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal"
+					aria-hidden="true"></button>
+				<h4 class="modal-title" id="modalTitle">Add New Task</h4>
+			</div>
+			<div class="modal-body"
+				style="margin-left: 10px; margin-right: 10px;">
+				<form class="addTaskForm" >
+					<input type="hidden" id="object" name="object"> <input
+						type="hidden" id="objectId" name="objectId">
+					
+					<!--  -->
+					<div class="form-group">
+												<label class="control-label"> Task Name <span
+													class="required">* </span>
+												</label> <input name="taskName" data-required="1"
+													class="form-control" type="text">
+					</div>
+					<!--  -->
+					<div class="form-group">
+												<label class="control-label"> Assigned User <span
+													class="required">* </span>
+												</label>
+					<div id="assignedUsers"></div>
+					</div>
+					<!--  -->
+				
+					<div class="form-group">
+						<label class="control-label" style="text-align: left;">
+							Projected Completion Date <span
+													class="required">* </span> </label>
+						<div class="input-group input-medium date date-picker unrestricted"
+							data-date="" data-date-format="mm-dd-yyyy"
+							data-date-viewmode="years">
+							<input class="form-control" readonly="" placeholder=""
+								type="text" id="projectedCompletionDate" name="projectedCompletionDate"> <span
+								class="input-group-btn">
+								<button class="btn default" type="button">
+									<i class="fa fa-calendar"></i>
+								</button>
+							</span>
+						</div>
+					</div>
+
+					<div class="form-group">
+						<label class="control-label"> Comments 
+						</label><br>
+
+						<textarea class="form-control" style="height: 200px;"
+							placeholder="" name="comments" id="comments"></textarea>
+					</div>
+
+					<div style="display: none;" id="staticDocumentArea">
+						<a href="" id="staticDocument" target="_blank">Pre-Inspection
+							Document</a>
+					</div>
+				</form>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn blue" id="saveTaskButton">SAVE</button>
+				<button type="button" id="cancelButton" class="btn default"
+					data-dismiss="modal">CANCEL</button>
+			</div>
+		</div>
+		<!-- /.modal-content -->
+	</div>
+	<!-- /.modal-dialog -->
+</div>

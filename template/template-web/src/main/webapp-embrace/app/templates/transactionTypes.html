@@ -1,0 +1,10 @@
+<select class="form-control accountTypeDropDown" name="accountTypeId">
+	<% _(codes).each(function(code) { %>
+		<option value="<%= code.id%>" 
+			<% if(code.isDefault == 'Y'){ %>
+				selected="selected"
+			<%}%>
+			><%= code.code%>
+		</option>
+	<% }); %>
+</select>

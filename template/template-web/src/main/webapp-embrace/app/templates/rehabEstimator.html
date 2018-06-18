@@ -1,0 +1,155 @@
+<div class="rehab-estimator">
+	<div class="header navbar navbar-fixed-top">
+	<div class="header-inner text-center marg_top10 font18 font-white">	<a class="pull-left font-white marg_left15" id="gotoPropertyDtls">X</a>
+		Rehab Estimator</div>
+  	</div>
+  	<div class="clearfix"></div>
+	<div id = "modalPopup" class="display-hide col-md-12"></div>
+	<div id="rehabDisplayError" class="alert alert-danger display-hide">
+		<button class="close" data-close="alert"></button>
+		<text>Unable to get rehab estimate form</text>
+	</div>
+	<div class="page-container">
+
+		<div class="page-sidebar-wrapper">
+		  	<div class="page-sidebar rehab-sidebar page-header-fixed navbar-collapse collapse" id="rehab-estimate-form">
+		  		<div class="mt-element-card panel-body">
+		  			
+		  			<div class="mt-card-item margin-bottom-5" id="rehab-sidebar-prop-dtls">
+		  				<div class="mt-card-avatar mt-overlay-1 mt-element-ribbon">
+		                     <% if(dataObj.preSelect == "Yes") { %>
+		                     	<div class="ribbon ribbon-color-warning uppercase">Preselect</div>
+		                     <% } %>
+		                     <img src="<%- dataObj.sidebarImg %>" class="img-responsive">
+		                 </div>
+
+		                 <div class="mt-card-content">
+		                     <p class="mt-card-desc font-dark marg_top10 font16"><b><%- dataObj.address %></b></p>
+		                     <p class="mt-card-desc"><%- dataObj.otherInfo %></p>
+		                     <p class="mt-card-desc">Built <%- dataObj.propertyYearBuilt %></p>
+		                     <p class="mt-card-desc">NIR Rating : <span><%- dataObj.nir %></span></p>
+		                     <p class="mt-card-desc"><label class="label label-warning font15 marg_right5" style="border-radius:0; padding:4px 8px;">Pre-Select</label> <span><%- dataObj.preSelect %></span></p>
+		                     <hr class="margin-bottom-15 marg_top20">
+		                     <p class="mt-card-desc font-dark bold font15" style="padding-left: 5px !important; padding-right: 5px !important;">Initial Est. Rehab: <span class="font-blue-color pull-right rehab_amt"><%- dataObj.initialRehab %></span></p>
+		                 </div>
+                 	</div>
+
+                 	<h4 class="marg_top15 padlr12 margin-bottom-5 bg-title font16">Detail Rehab Estimate</h4>
+
+                 	<ul class="rehab-sidebar-menu" data-auto-scroll="true" data-slide-speed="200">
+                 		<% _.each(dataObj.myStructure, function(headCategory, index){ %>
+                 			<% if(index == 0) { %>
+                 				<li class="start">
+                        			<span class="title" id="sidebar-head-cat-<%- headCategory.categoryId %>"><%- headCategory.categoryName %> </span>
+                        			<span class="pull-right font-dark rehab_amt side-head-cat-total" id="sidebar-head-cat-val-<%- headCategory.categoryId %>"><%- (headCategory.rehabCost ? headCategory.rehabCost : "0") %></span>
+                        		</li>
+                 			<% } else { %>
+                 				<li>
+                       				<span class="title" id="sidebar-head-cat-<%- headCategory.categoryId %>"><%- headCategory.categoryName %> </span>
+                        			<span class="pull-right font-dark rehab_amt side-head-cat-total" id="sidebar-head-cat-val-<%- headCategory.categoryId %>"><%- (headCategory.rehabCost ? headCategory.rehabCost : "0") %></span>
+                     			</li>
+                 			<% } %>
+                 		<%	}); %>
+
+                 		<li>
+               				<span class="title">Oversight Fee </span>
+                			<span class="pull-right font-dark rehab_amt"  id="huOversightFee"><%- (dataObj.huOversightFee? dataObj.huOversightFee : "0") %></span>
+             			</li>
+
+             			<li class="bold">
+                         	<span class="title font-dark">Total</span><span class="pull-right font-dark rehab_amt" id="all-categories-total"><%- (dataObj.total? dataObj.total : "0") %></span>
+                     	</li>
+                    </ul>
+
+			    </div>
+			</div> 
+		</div>
+		<div class="page-content-wrapper">
+         	<div class="page-content1"> 
+				<div class=" clearfix mt-element-step">
+                 	<div class="step-line" id="head-category-navigation">
+					<!-- all the head categories will be displayed here for navigation -->
+                 	</div>
+                 	<br>
+					<div id="categorySaveError" class="alert alert-danger display-hide" style="margin-left: 255px !important;">
+						<button class="close" data-close="alert"></button>
+						<text>Error occurred while saving...</text>
+					</div>
+
+					<div class="rehab-panels col-md-12" id="head-category-div-container">
+					<!-- all the head category divs will come here -->
+					</div>
+                </div>
+			</div>
+		</div>
+		<div class="row no-margin-row" id="rehab-estimate-form-summary">
+			<div id="categorySubmitError" class="alert alert-danger display-hide">
+				<button class="close" data-close="alert"></button>
+				<text>Error occurred while submitting estimate</text>
+			</div>
+			<div class="row1">
+				  	<div class="col-md-3"></div>
+				  	<div class="col-md-6 font15" id="summary-dtls-section" style="margin-top: 20px;"></div>
+				  	<div class="col-md-3"></div>	
+		    </div>
+		</div>
+	</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <div>
+	<div class="row navbar-fixed-top" style="background-color: #444; color: #fff; width: 100%; margin: 0 0; font-size: 25px; line-height: 42px; text-align: center;">
+		<a style="display: inline-block; margin-left: 20px; color: #fff; text-decoration: none; width: 50px;" class="pull-left" id="gotoPropertyDtls">X</a>
+		Rehab Estimator
+  	</div>
+	<div id = "modalPopup" class="display-hide col-md-12"></div>
+	<div id="rehabDisplayError" class="alert alert-danger display-hide">
+		<button class="close" data-close="alert"></button>
+		<text>Unable to get rehab estimate form</text>
+	</div>
+  	<div class="row no-margin-row rehab-estimator page-container" id="rehab-estimate-form">
+	  	<div class="page-sidebar" style="padding-right: 20px; padding-left: 10px;">
+	  		<div class="row no-margin-row" id="rehab-sidebar-prop-dtls"></div>
+		  	<div id = "initRehab" style="text-align: center;"></div>
+		  	<hr style="margin-top: 5px; margin-bottom: 5px;">
+		  	<div id = "DetailedRehab" style="margin-bottom: 10px;"></div>
+		  	<div class="row no-margin-row" id="rehab-sidebar-summary"></div>
+		   	<div class="row no-margin-row" id="rehab-sidebar-summary-total"></div>
+	  	</div>
+	  	<div class="page-content">
+		  	<div class="row  no-margin-row" style="line-height: 25px;" id="head-category-navigation"></div>
+			<br>
+			<div id="categorySaveError" class="alert alert-danger display-hide">
+				<button class="close" data-close="alert"></button>
+				<text>Error occurred while saving...</text>
+			</div>
+			<div id="head-category-div-container"></div>
+	  	</div>
+	</div>
+	<div class="row no-margin-row" id="rehab-estimate-form-summary">
+		<div id="categorySubmitError" class="alert alert-danger display-hide">
+			<button class="close" data-close="alert"></button>
+			<text>Error occurred while submitting estimate</text>
+		</div>
+		<div class="row1">
+			  	<div class="col-md-3"></div>
+			  	<div class="col-md-6 font15" id="summary-dtls-section" style="margin-top: 20px;"></div>
+			  	<div class="col-md-3"></div>	
+	    </div>
+	</div>
+</div> -->

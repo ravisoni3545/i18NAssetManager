@@ -1,0 +1,173 @@
+<!-- email the document -->
+<div class="modal fade" id="emailDoc-form1" tabindex="-1" role="basic"
+	aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal"
+					aria-hidden="true"></button>
+				<h4 class="modal-title">Email Document</h4>
+			</div>
+			<form id="emailForm" method="post" enctype="multipart/form-data">
+				<div class="modal-body">
+					<div id="emailformFailure" class="alert alert-danger display-hide">
+						<button class="close" data-close="alert"></button>
+							<text>Please enter recipients.</text>
+					</div>
+					<div class="form-group  col-md-12 row emailTemplateDiv">
+						<div class="col-md-3"><label class="control-label" style="text-align: left;">
+							Email Template </label></div>
+						<div class="col-md-9 pull-right" id="mailTemplateDD"></div>
+
+					</div>
+
+					<div class="clearfix"></div>
+					<div class="form-group col-md-12"
+						 style="padding-right: 0px;">
+                        <div>
+								<div class="col-md-10"></div>
+								<div class="col-md-2">
+										<!-- <label class="control-label" style="text-align: left;"> To
+										</label> -->
+										<label id="mail_add_cc" style="cursor: pointer">
+											<u>Cc</u>
+										</label>&nbsp;&nbsp;
+										<label id="mail_add_bcc" style="cursor: pointer">
+											<u>Bcc</u>
+										</label>
+								</div>
+						 </div>
+                        <div id="to_container" class="row">
+							<div class="col-md-1"><span>To: </span></div>
+							<div class="col-md-11" style="margin-bottom:8px;" id="sendToDropdown">
+								<input class="form-control sendToNamesDropDown" name="mailToRecipients" id="mailToRecipients">
+							</div>
+						</div>
+						<!-- <div class="clearfix"></div> -->
+						<div id="cc_container" class="row">
+							<div class="col-md-1"><span>Cc: </span></div>
+							<div class="col-md-11" id="ccDropdown" style="margin-bottom:8px;">
+								<input class="form-control sendToNamesDropDown" name="mailCcRecipients" id="mailCcRecipients">
+							</div>
+						</div>
+						<!-- <div class="clearfix"></div> -->
+						<div id="bcc_container" class="row">
+							<div class="col-md-1" ><span>Bcc: </span></div>
+							<div class="col-md-11" id="bccDropdown">
+								<input class="form-control sendToNamesDropDown" name="mailBccRecipients" id="mailBccRecipients">
+							</div>
+						</div>
+					</div>
+					<!--  -->
+					<!-- <div class="form-group" id="displayToInvestorDiv">
+                        <label class="control-label">Display to Investor <input id="isDisplayToInvestor" type="checkbox" name="isDisplayToInvestor" class=""> </label>
+                         
+                      </div> -->
+					<!--  -->
+					<div class="form-group" style="margin-right: -15px;">
+						<div class="col-md-1"><span style="margin-left: -10px;">Subject</span></div>
+						<div class="col-md-11" style="margin-bottom:8px;">
+							<input class="form-control" id="mailSubject" name="subject">
+						</div>
+					</div>
+					<div class="clearfix"></div>
+					<div class="form-group">
+						<label class="control-label"> Message </label>
+
+						<textarea name="editorTextArea" class="form-control form-control"
+							id="editorTextArea">
+						</textarea>
+						<p><span style="color: #e02222;">*</span>
+						Note:Please replace all place-holders displayed in Bold</p>
+					</div>
+					<!-- <div class="form-group uploadDocDiv" style="display: none;">
+						<div class="doc-drop-field-big">
+							<label class="control-label"> Attach Document(s)</label> 
+							<input name="mailDocuments" multiple type="file">
+							<div class="doc-drop-text">
+								<span>Drop files here to attach them</span>
+								</br>
+								<span style="margin-left: 80px;">or</span>
+							</div>
+							<span class="btn doc-attach-btn fileinput-button">
+			                    <i class="glyphicon glyphicon-plus"></i>
+			                    <span>Attach Document(s)</span>
+			                    <input name="mailDocuments" multiple type="file">
+			                    <input name="document" multiple type="file">
+	                		</span>
+						</div>
+						<table class="files table-hover"></table>
+					</div> -->
+					<!-- <div id="files" class="fileInformationDiv"></div>
+					<table role="presentation" class="table table-striped">
+						<tbody class="files">
+						</tbody>
+					</table> -->
+					
+				</div>
+			</form>
+			<div class="modal-footer">
+<!-- 				<button type="button" class="btn default" data-dismiss="modal">
+				    CANCEL</button>
+				<button type="button" class="btn blue saveMessageButton"
+					id="addMessage">SAVE</button> -->
+
+				<button type="button"
+					class="btn blue" id="showEmailPreview" >PREVIEW AND SEND</button>
+				<button type="button" class="btn default" data-dismiss="modal">
+				    CANCEL</button>	
+			</div>
+		</div>
+		<!-- /.modal-content -->
+	</div>
+	<!-- /.modal-dialog -->
+</div>
+
+<!-- ----------------------------------------------- -->
+
+<div class="modal fade" id="formEmailPreview" tabindex="-1"
+	role="basic" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal"
+					aria-hidden="true"></button>
+				<h4 class="modal-title">Preview</h4>
+			</div>
+			<div class="modal-body">
+				<div id="to_div" class="row">
+					<div class="col-md-1"><span><b>To: </b></span></div>
+					<div class="col-md-11" style="margin-bottom:8px;word-wrap: break-word;" id="toRecipients">
+					</div>
+				</div>
+				<!-- <div class="clearfix"></div> -->
+				<div id="cc" class="row" style="display: none;">
+					<div class="col-md-1"><span><b>Cc: </b></span></div>
+					<div class="col-md-11" style="margin-bottom:8px;word-wrap: break-word;" id="ccRecipients">
+					</div>
+				</div>
+				<!-- <div class="clearfix"></div> -->
+				<div id="bcc" class="row" style="display: none;">
+					<div class="col-md-1"><span><b>Bcc: </b></span></div>
+					<div class="col-md-11" style="margin-bottom:8px;word-wrap: break-word;" id="bccRecipients">
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-1"><span  style="margin-left:-15px;"><b>Subject: </b></span></div>
+					<div class="col-md-11" style="margin-bottom:8px;word-wrap: break-word;" id="subject" >
+					</div>
+				</div>
+				<hr>
+				<div id="emailPreview" style="word-wrap: break-word;">
+				</div>
+			</div>
+			<div class="modal-footer">
+				<!-- <button type="button" class="btn blue">Yes</button> -->
+				<button id="sendDocEmail" type="button" class="btn blue" data-dismiss="modal">Send</button>
+				<button type="button" class="btn default" data-dismiss="modal">Cancel</button>
+			</div>
+		</div>
+		<!-- /.modal-content -->
+	</div>
+	<!-- /.modal-dialog -->
+</div>

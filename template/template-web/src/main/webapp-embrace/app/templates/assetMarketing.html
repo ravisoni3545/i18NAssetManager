@@ -1,0 +1,106 @@
+<div class="page-content">
+    <div class="row">
+        <div class="col-md-12">
+            <!-- BEGIN PAGE TITLE & BREADCRUMB-->
+            <h3 class="page-title">
+                <i class="fa fa-signal pull-left font25"></i>Asset Marketing
+            </h3>
+        </div>
+    </div>
+    <div id="marketingFailure" class="alert alert-danger display-hide">
+        <button class="close" data-close="alert"></button>
+        <text>Error fetching asset leasing.</text>
+    </div>
+    <!-- END PAGE TITLE & BREADCRUMB -->
+    
+    <!-- Start Search section -->
+    <div class="member-search margin-top-10">
+        <form id="marketing-search-form" class="form-horizontal">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group clearfix">
+                        <label class="control-label col-md-4">Investor Name</label>
+                        <div class="col-md-6">
+                            <input type="text" name="investorName" id="investorName" value="" class="form-control" placeholder="First / Last name" />
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group clearfix">
+                        <label class="control-label col-md-4">Property Address</label>
+                        <div class="col-md-6">
+                            <input type="text" name="propertyAddress" id="propertyAddress" value="" class="form-control" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="clearfix"></div>
+            
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group clearfix">
+                        <label class="control-label col-md-4">Type </label>
+                        <div class="col-md-6">
+                            <select class="form-control "  id="marketingType">
+                                <option value="">select</option>
+                                <option value="Initial">Initial</option>
+                                <option value="Turnover">Turnover</option>
+                            </select>
+                        </div>                              
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group clearfix">
+                        <label class="control-label col-md-4">Leasing Status </label>
+                        <div class="col-md-6" id="leasingStatus">
+						</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="clearfix"></div>
+            
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group clearfix">
+                        <label class="control-label col-md-4">Leasing Coordinator </label>
+                        <div class="col-md-6" id="leasingCoordinatorsDropdown">
+						</div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group clearfix">
+                        <label class="control-label col-md-4">Leasing Agent </label>
+                        <div class="col-md-6" id="leasingAgentsDropdown">
+						</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="clearfix"></div>
+            
+            <div class="row">
+                <div class="col-md-6 marg_top10">
+                    <div class="form-group clearfix">
+                       <div class=""> 
+                       		<div>
+                       			<span>
+									<input type="checkbox" id="currentLeasings" name="currentLeasings" checked="checked">
+								</span>
+								Show current leasing processes only
+                            </div>
+            			</div>
+            		</div>
+            	</div>
+            </div>
+            
+            <div class="text-center col-md-12 clearfix form-actions2">
+                    <a class="btn blue " value="Search" name="searchMarketingButton" id="searchMarketingButton">Search</a>
+            </div>
+            <div class="clearfix"></div>
+        </form>
+    </div>
+    <div id="assetMarketingData" class="row"></div>
+    <div class="clearfix"></div>
+</div>

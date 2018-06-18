@@ -1,0 +1,208 @@
+<div class="modal fade" id="editTemplateModal" tabindex="-1" role="basic" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                </button>
+                <h4 class="modal-title">
+                  <i class="fa fa-pencil"> </i> Edit Template</h4>
+            </div>
+            <div class="modal-body">
+              <form id="editTemplateForm" novalidate="novalidate" autocomplete="on" class="form-horizontal">
+              <div class="alert alert-danger display-hide" id="editUserFormError">
+              <button class="close" data-close="alert" onclick="$(this).parent().hide();return false;"></button>
+              You have some form errors. Please check below.
+              </div>
+                <div class="row">
+              <div class="form-group" style="margin-left:5px; margin-right:5px">
+                <div class="col-md-6">
+                <label class="control-label" style="text-align: left;">
+                    Name <span class="required">* </span>
+                </label>
+                <input name="templateName" id="editTemplateName" type="text" class="form-control" value="<%-templateInfo.templateInfo.templateName%>">
+              </div>
+               <div class="col-md-6">
+                <label class="control-label" style="text-align: left;">
+                    Subject 
+                </label>
+                <input id="editTemplateSubject" type="text" name="templateSubject" class="form-control" value="<%-templateInfo.templateInfo.subject %>">
+              </div>
+              </div>
+            </div>
+      
+      <div class="row">
+        <div class="form-group" style="margin-left:5px; margin-right:5px">
+
+         <div class="col-md-6">
+          <label class="control-label" style="text-align: left;">
+              Cc Recipients 
+          </label>
+          <input name="ccRecipients" id="editCcRecipients" type="text" class="form-control"  value="<%-templateInfo.templateInfo.ccRecipients%>">
+        </div>
+          <div class="col-md-6">
+            <label class="control-label">
+                Bcc Recipients 
+            </label> 
+            <input name="bccRecipients"  id="editBccRecipients" value="<%-templateInfo.templateInfo.bccRecipients%>" type="text" class="form-control">
+           </div>
+          </div>
+        </div>
+
+         <div class="row">
+        <div class="form-group" style="margin-left:5px; margin-right:5px">
+               <div class="col-md-6">
+                <label class="control-label" style="text-align: left;">
+                    To Role 
+                </label>
+                <input name="templateFromName" id="editTemplateToRole" type="text" class="form-control" value="<%-templateInfo.templateInfo.toRole%>">
+            </div>
+                 <div class="col-md-6">
+                <label class="control-label" style="text-align: left;">
+                    Cc Role 
+                </label>
+                <input name="templateFromEmail" id="editTemplateCcRole" type="text" class="form-control" value="<%-templateInfo.templateInfo.ccRole%>">
+            </div>
+        </div>
+        </div>
+
+
+
+        <div class="row">
+        <div class="form-group" style="margin-left:5px; margin-right:5px">
+
+            <div class="col-md-6">
+                <label class="control-label" style="text-align: left;">
+                    Bcc Role 
+                </label>
+                <input name="templateBccRole" id="editTemplateBccRole" type="text" class="form-control" value="<%-templateInfo.templateInfo.bccRole%>">
+            </div>
+               <div class="col-md-6">
+                <label class="control-label" style="text-align: left;">
+                    From Name 
+                </label>
+                <input name="templateFromName" id="editTemplateFromName" type="text" class="form-control" value="<%-templateInfo.templateInfo.fromName%>">
+            </div>
+               
+        </div>
+        </div>
+
+
+
+        <div class="row">
+        <div class="form-group" style="margin-left:5px; margin-right:5px">
+
+            <div class="col-md-6">
+                <label class="control-label" style="text-align: left;">
+                    From Email 
+                </label>
+                <input name="templateFromEmail" id="editTemplateFromEmail" type="text" class="form-control" value="<%-templateInfo.templateInfo.fromEmail%>">
+            </div>
+            <div class="col-md-6">
+                <label class="control-label" style="text-align: left;">
+                    File Name <span class="required">* </span>
+                </label>
+                <input name="templateFileName" id="editTemplateFileName" type="text" class="form-control" value="<%-templateInfo.templateInfo.templateFileName%>">
+            </div>
+
+       
+        </div>
+      </form>
+      </div>
+      </br>
+        <div class="row">
+          <div class="form-group" style="margin-left:5px; margin-right:5px">
+
+           <div class="col-md-4">
+            <label class="control-label" style="text-align: left;">
+                Display 
+            </label>
+            <% if (templateInfo.templateInfo.isDisplay === 'Y')
+              { %>
+           <select id="editIsDisplayTemplate">
+              <option value="Y">Y</option>
+              <option value="N">N</option>
+           </select>
+           <%} else { %>
+            <select id="editIsDisplayTemplate">
+              <option value="N">N</option>
+              <option value="Y">Y</option>
+           </select>
+           <% } %>
+          </div>
+
+              <div class="col-md-4">
+            <label class="control-label" style="text-align: left;">
+                Active 
+            </label>
+            <% if (templateInfo.templateInfo.isActive === 'Y')
+              { %>
+           <select id="editIsActiveTemplate">
+              <option value="Y">Y</option>
+              <option value="N">N</option>
+           </select>
+           <%} else { %>
+            <select id="editIsActiveTemplate">
+              <option value="N">N</option>
+              <option value="Y">Y</option>
+           </select>
+           <% } %>
+          </div>
+
+            <div class="col-md-4">
+                <label class="control-label" style="text-align: left;">
+                    Object 
+                </label>
+                 <select id="editObject">
+                  <option value="<%-templateInfo.templateInfo.object.id%>"><%-templateInfo.templateInfo.object.codeDisplay%></option>
+                  <% 
+                  $.each(objects, function(k,v){
+                    var flag = false;
+                %>   
+                     <% if(v.codeKey == templateInfo.templateInfo.object.id){ %>
+                        <% flag = true; %>
+                      <%} else { }%>
+                    
+                    <% if(flag == false) { %>
+                      <option value="<%-v.codeKey%>"><%-v.codeDisplay%></option>
+                    <% } else {}%>
+                 <%
+                      flag = true;
+                      });
+                 %>
+                 </select>
+            </div>
+              
+          </div>                                          
+        </div>
+            
+        </br>
+     <div class="row">
+        <div class="form-group">
+           <div class="col-md-12">
+          <label class="control-label">
+                Template Text
+          </label> 
+         
+          <div id="preview" class ="hidden" display="none">
+          <textarea id="templateTextPreview" name="editorOverview1" class="form-control form-control"></textarea >  
+          </div>
+
+              <br>
+           <textarea id="templateText" style="height: 200px" class=" form-control"><%-templateInfo.templateText%></textarea> 
+
+            
+          </div>
+
+        </div>
+      </div>
+            <div class="modal-footer">
+                <button type="button"  class="btn default" data-dismiss="modal">
+                    CANCEL</button>
+                <button type="button" class="btn blue" name="saveTemplateBtn" template-id="<%-templateInfo.templateInfo.templateId%>">
+                    SAVE</button>
+            </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>

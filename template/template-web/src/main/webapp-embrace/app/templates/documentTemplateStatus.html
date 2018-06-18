@@ -1,0 +1,61 @@
+<div class="page-content">
+	 <!-- BEGIN PAGE HEADING-->
+                <div class="row">
+                    <div class="col-md-12">
+                        <h3 class="page-title">
+                            <i class="fa fa-list-alt pull-left font25 marg_top10"></i>
+                             &nbsp;Document Templates &nbsp; 
+                             <div align="right">
+							<button href="#createTemplateModal" data-toggle="modal" class="btn blue" 
+								name="createTemplate"> <i class="fa fa-list-alt"> </i>
+								<i class="fa fa-plus"></i> Create Template </button>
+							<button href="#refreshDocusign" data-toggle="modal" class="btn blue" 
+							name="refreshDocusign"> <i class="fa fa-spinner"> </i>
+							Refresh from Docusign </button>
+							<button href="#buildDocusign" data-toggle="modal" class="btn blue" 
+							name="buildDocusign"> <i class="fa fa-external-link"> </i>
+							Build in Docusign </button>
+							</div>
+                        </h3>
+                        
+                    </div>
+                    
+                </div>
+                <!-- END PAGE HEADING-->
+      
+  	<div class="portlet-body table-responsive">
+
+				<table
+					class="table table-striped table-bordered table-advance table-hover tablegreen"
+					id="docTemplStatusTable">
+					<thead>
+					</thead>
+					<tbody></tbody>
+				</table>
+	</div>
+                
+</div>
+<!-- Document Template View modal start -->
+<div class="modal fade bs-modal-lg" id="documentTemplateView" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true"> </button>
+                <h4>Document Template</h4>
+            </div>
+            <div class="modal-body">
+                <div class="embed-responsive embed-responsive-4by3">
+				    <div class="documentTemplateArea"></div>
+					<div class="documentTemplateErrorMessage"></div>
+				</div>
+            </div>
+            <div class="modal-footer">
+        	</div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+<!-- Document Template View modal end -->
+

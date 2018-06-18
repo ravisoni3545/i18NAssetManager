@@ -1,0 +1,156 @@
+<form id="alertsForm">
+	<div id="alertAddServiceFailure" class="alert alert-danger display-hide">
+		<button class="close" data-close="alert" onclick="$(this).parent().hide();return false;"></button>
+		Error in adding service for the vendor.
+	</div>
+	<div id="alertAddServiceSuccess" class="alert alert-success display-hide">
+		<button class="close" data-close="alert" onclick="$(this).parent().hide();return false;"></button>
+		Successfully added service for the vendor.
+	</div>
+	<div id="alertDeleteServiceFailure" class="alert alert-danger display-hide">
+		<button class="close" data-close="alert" onclick="$(this).parent().hide();return false;"></button>
+		Error in deleting service for the vendor.
+	</div>
+	<div id="alertDeleteServiceSuccess" class="alert alert-success display-hide">
+		<button class="close" data-close="alert" onclick="$(this).parent().hide();return false;"></button>
+		Successfully deleted service for the vendor.
+	</div>
+	<div id="alertAddServiceGeographyFailure" class="alert alert-danger display-hide">
+		<button class="close" data-close="alert" onclick="$(this).parent().hide();return false;"></button>
+		Error in adding geographical coverage for the vendor service.
+	</div>
+	<div id="alertAddServiceGeographySuccess" class="alert alert-success display-hide">
+		<button class="close" data-close="alert" onclick="$(this).parent().hide();return false;"></button>
+		Successfully added geographical coverage for the vendor service.
+	</div>
+	<div id="alertDeleteGeographyFailure" class="alert alert-danger display-hide">
+		<button class="close" data-close="alert" onclick="$(this).parent().hide();return false;"></button>
+		Error in deleting geographical coverage for the vendor service.
+	</div>
+	<div id="alertDeleteGeographySuccess" class="alert alert-success display-hide">
+		<button class="close" data-close="alert" onclick="$(this).parent().hide();return false;"></button>
+		Successfully deleted geographical coverage for the vendor service.
+	</div>
+	<div id="alertAddServiceContractFailure" class="alert alert-danger display-hide">
+		<button class="close" data-close="alert" onclick="$(this).parent().hide();return false;"></button>
+		Error in adding contract for the vendor service.
+	</div>
+	<div id="alertAddServiceContractSuccess" class="alert alert-success display-hide">
+		<button class="close" data-close="alert" onclick="$(this).parent().hide();return false;"></button>
+		Successfully added contract for the vendor service.
+	</div>
+	<div id="alertUpdateServiceContractFailure" class="alert alert-danger display-hide">
+		<button class="close" data-close="alert" onclick="$(this).parent().hide();return false;"></button>
+		Error in updating for the vendor service.
+	</div>
+	<div id="alertUpdateServiceContractSuccess" class="alert alert-success display-hide">
+		<button class="close" data-close="alert" onclick="$(this).parent().hide();return false;"></button>
+		Successfully updated contract for the vendor service.
+	</div>
+	<div id="alertDeleteServiceContractFailure" class="alert alert-danger display-hide">
+		<button class="close" data-close="alert" onclick="$(this).parent().hide();return false;"></button>
+		Error in deleting contract for the vendor service.
+	</div>
+	<div id="alertDeleteServiceContractSuccess" class="alert alert-success display-hide">
+		<button class="close" data-close="alert" onclick="$(this).parent().hide();return false;"></button>
+		Successfully deleted contract for the vendor service.
+	</div>
+	<div id="alertGetServiceContractFailure" class="alert alert-success display-hide">
+		<button class="close" data-close="alert" onclick="$(this).parent().hide();return false;"></button>
+		Error in fetching contract details for the vendor service.
+	</div>
+	
+	<div id="alertAddServiceProductFailure" class="alert alert-danger display-hide">
+		<button class="close" data-close="alert" onclick="$(this).parent().hide();return false;"></button>
+		Error in adding product for the vendor service.
+	</div>
+	<div id="alertAddServiceProductSuccess" class="alert alert-success display-hide">
+		<button class="close" data-close="alert" onclick="$(this).parent().hide();return false;"></button>
+		Successfully added product for the vendor service.
+	</div>
+	<div id="alertUpdateServiceProductFailure" class="alert alert-danger display-hide">
+		<button class="close" data-close="alert" onclick="$(this).parent().hide();return false;"></button>
+		Error in updating for the vendor service.
+	</div>
+	<div id="alertUpdateServiceProductSuccess" class="alert alert-success display-hide">
+		<button class="close" data-close="alert" onclick="$(this).parent().hide();return false;"></button>
+		Successfully updated product for the vendor service.
+	</div>
+	<div id="alertDeleteServiceProductFailure" class="alert alert-danger display-hide">
+		<button class="close" data-close="alert" onclick="$(this).parent().hide();return false;"></button>
+		Error in deleting product for the vendor service.
+	</div>
+	<div id="alertDeleteServiceProductSuccess" class="alert alert-success display-hide">
+		<button class="close" data-close="alert" onclick="$(this).parent().hide();return false;"></button>
+		Successfully deleted product for the vendor service.
+	</div>
+	<div id="alertGetServiceProductFailure" class="alert alert-success display-hide">
+		<button class="close" data-close="alert" onclick="$(this).parent().hide();return false;"></button>
+		Error in fetching product details for the vendor service.
+	</div>
+	<div id="alertGetPaymentTermsFailure" class="alert alert-success display-hide">
+		<button class="close" data-close="alert" onclick="$(this).parent().hide();return false;"></button>
+		Error in fetching payment terms for the contract.
+	</div>
+</form>
+<div class="panel-group accordion" id="accordion5">
+	<div class="col-md-4 margin-bottom-15" style="padding-left: 0px;">
+		<h3 class="page-title font22" style="color: #333333;">
+			<i class="fa fa-coffee pull-left font22 marg_top7"></i>Services Rendered
+		</h3>
+	</div>
+	<div class="col-md-8 margin-bottom-15">
+		<div class="col-md-6 pad_right5" id="servicesList">
+		</div>
+		<a id="addServiceButton" href="#"
+			class="btn btn-xs marg_top5 pull-left"><i
+			class="fa fa-plus-square add_green"></i> Add</a>
+		<a id="deleteServiceButton" href="#optionDeleteService" data-toggle="modal"
+			class="btn btn-xs marg_top5 pull-left"><i
+			class="fa fa-trash-o delete_red"></i> Delete</a>
+	</div>
+	<div class="clearfix"></div>
+	<!-- property management section start -->
+	<div class="row" id="vendorServiceDetailsPanel" style="display: none;">
+		<!-- start first table -->
+		<div class="col-md-6" id="vendorServiceGeographiesPortlet">
+			
+		</div>
+		<!-- end first table -->
+		<!-- start second table -->
+		<div class="col-md-6" id="vendorServiceProductsPortlet">
+			
+		</div>
+		<!-- start second table -->
+		<div class="clearfix"></div>
+		<!-- start third table -->
+		<div class="col-md-12" id="vendorServiceContractsPortlet">
+			
+		</div>
+		<!-- start third table -->
+	</div>
+	<!-- property management section end -->
+	<div class="clearfix"></div>
+</div>
+
+<!-- option delete lightbox start -->
+<div class="modal fade bs-modal-sm" id="optionDeleteService" tabindex="-1" role="dialog" aria-hidden="true">
+	<div class="modal-dialog modal-sm">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+				<h4 class="modal-title">Delete</h4>
+			</div>
+			<div class="modal-body">
+				  Are you sure you want to delete this service from vendor profile?
+			</div>
+			<div class="modal-footer">
+				<button id="deleteServiceConfirmationButton" type="button" class="btn blue">Yes</button>
+				<button type="button" class="btn default" data-dismiss="modal">No</button>
+			</div>
+		</div>
+		<!-- /.modal-content -->
+	</div>
+	<!-- /.modal-dialog -->
+</div>
+<!-- option delete lightbox end -->

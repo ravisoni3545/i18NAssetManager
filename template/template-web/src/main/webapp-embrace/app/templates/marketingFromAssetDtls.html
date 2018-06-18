@@ -1,0 +1,36 @@
+  <!-- Modal Start-->
+  <div class="modal fade" id="initiate-marketing-for-asset-modal" role="dialog">
+    <div class="modal-dialog modal-sm">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h3 class="modal-title">Initiate Marketing</h3>
+        </div>
+        <div class="modal-body">
+			<div class="row">
+				<% if(noOfUnits > 0) { %>
+					<label class="col-sm-4 control-label">Unit Id</label>
+					<div class="col-sm-8">
+				        <select class="form-control" id="asset-unit-id">
+							<% for(i =0; i < noOfUnits; i++) { %>
+				        		<option value="<%- unitsList[i].unitId %>"><%- unitsList[i].unitName %></option>
+							<% } %>
+				        </select>
+				<% } else { %>
+					<p class="col-sm-11">Initiate marketing for this property?</p>
+				<% } %>
+			</div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn blue" id="initiateMarketingBtn">Initiate</button>
+				<button type="button" class="btn default" data-dismiss="modal">
+					Cancel</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Modal End-->
+  
+  

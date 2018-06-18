@@ -1,0 +1,44 @@
+<% if(utilities && utilities.length) { 
+	var rowCount=1;
+	_.each(utilities,function(utility){ %>
+		<tr data-modelid="<%- utility.id%>">
+			<td>
+				<!-- <i style="color:red;" class="fa fa-times"></i> --> 
+				<%- utility.name %>
+			</td>
+
+			<td>
+				<div class="margin-bottom-10">
+
+					<span class="margin-right-6"> <i class="fa fa-briefcase"></i>
+					</span> <span class="desc"><%- utility.companyName %></span>
+
+				</div>
+				<div class="margin-bottom-10">
+
+					<span class="margin-right-6"> <i class="fa fa-map-marker"></i>
+					</span> <span class="desc"> <%- utility.companyAddress %>
+						</span>
+
+				</div>
+
+				<div class="margin-bottom-10">
+					<span class="margin-right-6"> <i class="fa fa-phone"></i>
+					</span><span><%- utility.companyPhone %></span>
+				</div>
+			</td>
+
+			<td class="success"><%- utility.comments %></td>
+
+			<td>
+				<a style="cursor: pointer;" data-toggle="collapse" data-show="true"
+				data-target="<%= '.utilityRow' + rowCount %>" title="Edit"
+				class="edit_blue accordion-toggle addOrEditUtility"><i class="fa fa-edit"></i> </a> 
+				<a title="Delete" class="delete_red deleteUtilityButton" data-toggle="modal" href="#deleteUtilityModal"
+				style="cursor: pointer;"><i class="fa fa-trash-o"> </i></a>
+			</td>
+		</tr>
+	<% rowCount++; });
+} else { %>
+	<tr><td colspan="4" style="text-align:center;">No utilities added.</td></tr>
+<% } %>

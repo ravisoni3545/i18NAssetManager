@@ -1,0 +1,489 @@
+<% if(opportunityData) { %>
+<h5 class="marg_top0 margin-bottom-20">Search Opportunity</h5>
+
+<!--  Opportunity details div start-->
+<div class=" margin-bottom-31">
+	<div class="row">
+		<div class="col-md-4">
+			<div>
+				<strong>Investor</strong><br> 
+				<a href="#investorProfile/<%-opportunityData.opportunityResponse.investorId %>">
+						<%=opportunityData.opportunityResponse.investorName%></a>
+			</div>
+		</div>
+		<div class="col-md-4">
+			<strong>Solution Specialist</strong><br>
+			<%=opportunityData.opportunityResponse.solutionSpecialistName%>
+		</div>
+		<div class="col-md-4">
+			<strong>Status</strong><br>
+			<%=opportunityData.opportunityResponse.status%>
+		</div>
+	</div>
+	<div class="row marg_top20">
+		<div class="col-md-4">
+			<strong>Salesforce Lead Status</strong><br>
+			<%=opportunityData.opportunityResponse.sfLeadStatus%>
+		</div>
+		<div class="col-md-4">
+			<strong>Date Created</strong><br>
+			<%=opportunityData.opportunityResponse.createdDate%>
+		</div>
+		<div class="col-md-4">
+			<strong>Date Closed </strong><br>
+			<%=opportunityData.opportunityResponse.dateClosed%>
+		</div>
+	</div>
+</div>
+<!--   Opportunity details div  end-->
+
+
+<!--  Investment Criteria div start-->
+
+<div class="portlet box white breadbox-section">
+	<div class="portlet-title" style="text-align: center;">
+		<div class="caption" style="float: none;"> <i class="fa fa-reorder"></i>Investment Criteria </div>
+        <div class="tools" style="margin-right:12px;"> 
+		<a class="fa fa-chevron-up pull-right" id="chevronUp" style="font-size: 15px;"></a> </div>
+	</div>
+	<div class="portlet-body well breadbox" id="investmentCriteriaDiv">
+		<div class="clearfix page-title font18">
+			<div class="col-md-11 row">
+				<div data-toggle="buttons" class="btn-group">
+					<a data-toggle="modal" class="font15 btn default btn-sm"
+						style="vertical-align: 5px;cursor: pointer; color:black !important;" id="showAddComments"> <i
+						class="fa  fa-comments" style="margin-right: 5px;"></i> Comments
+					</a>
+				</div>
+			</div>
+			<div class="pull-right font16  marg_top10 margin-right-10">
+				<a id="editOpportunityDetailsBtn" style="cursor: pointer" data-toggle="modal"
+				data-opportunity= "<%=opportunityData.opportunityResponse.opportunityId%>"><i
+					class="fa fa-pencil-square-o" style="font-size: 15px;"></i> Edit</a>
+			</div>
+		</div>
+		<div>
+				<div class="alert alert-danger display-hide" id="failureDiv">
+					<button class="close" data-close="alert"></button>
+					<text></text>
+				</div>
+				<div class="alert alert-success display-hide" id="successDiv">
+					<button class="close" data-close="alert"></button>
+					<text></text>
+				</div>
+		</div>
+		<div id="showOpportunityDetails" class="toggleform">
+			<div class="row">
+				<div class="col-md-4">
+					<div class="summ-view" id="legalNameDiv">
+						<strong>Investor Legal Name</strong><br>
+						<text><%=opportunityData.opportunityResponse.investorLegalName%></text>
+					</div>
+				</div>
+				<div class="col-md-4">
+					<strong>Investor Profile</strong><br>
+					<%=opportunityData.investorBreadboxResponse.clientInvestorProfile%>
+				</div>
+				<div class="col-md-4">
+					<strong>Investor Type </strong><br>
+					<%=opportunityData.investorBreadboxResponse.investorType%>
+				</div>
+			</div>
+			<div class="row marg_top20">
+				<div class="col-md-4">
+					<strong>Real Estate Knowledge</strong><br>
+					<%=opportunityData.investorBreadboxResponse.realEstateKnowledge%>
+				</div>
+				<div class="col-md-4">
+					<strong>HU Experience</strong><br>
+					<%=opportunityData.investorBreadboxResponse.priorExperienceWithHu%>
+				</div>
+				<div class="col-md-4">
+					<strong>Buying time frame</strong><br>
+					<%=opportunityData.investorBreadboxResponse.buyingTimeframe%>
+				</div>
+			</div>
+			<div class="row marg_top20">
+				<div class="col-md-4">
+					<strong>Financing Type</strong><br>
+					<%=opportunityData.investorBreadboxResponse.financingType%>
+				</div>
+				<div class="col-md-4">
+					<strong>Pre-qualified?</strong><br>
+					<%=opportunityData.opportunityResponse.preQualified%>
+					&nbsp;&nbsp;&nbsp;&nbsp; <a
+						class="fa fa-paperclip showDocumentTooltip_2"
+						style="cursor: pointer; font-size: 16px;"
+						data-object="<%=opportunityData.investorBreadboxResponse.object%>"
+						data-objectid="<%=opportunityData.investorBreadboxResponse.opportunityId%>"
+						data-html="true" data-show="true"> </a>
+				</div>
+				<div class="col-md-4">
+					<strong>Lender</strong><br>
+					<%=opportunityData.opportunityResponse.lenderCompanyName%>
+				</div>
+			</div>
+			<!-- start Edit change section 4 -->
+
+			<!-- start Edit change section 5 -->
+			<div class="row marg_top20">
+				<div class="col-md-4">
+					<strong>Investment Goal</strong><br>
+					<%=opportunityData.investorBreadboxResponse.investmentGoal%>
+				</div>
+				<div class="col-md-4">
+					<strong>Expected Return</strong><br> <%
+					if(opportunityData.investorBreadboxResponse.returnsPercentageFrom)
+					{%> <span>
+						<%=opportunityData.investorBreadboxResponse.returnsPercentageFrom%>
+						% </span> <%}%> <%
+					if(opportunityData.investorBreadboxResponse.returnsPercentageTo) {
+					%> - <span>
+						<%=opportunityData.investorBreadboxResponse.returnsPercentageTo%>
+						%</span> <% } %>
+				</div>
+				<div class="col-md-4">
+					<strong>Number of Properties</strong><br>
+					<%=opportunityData.investorBreadboxResponse.propertyCount%>
+				</div>
+			</div>
+			<!-- start Edit change section 5 -->
+
+			<!-- start Edit change section 5 -->
+			<div class="row marg_top20">
+				<div class="col-md-4">
+					<strong>Liquid Investment Amount</strong><br> <%
+					if(opportunityData.investorBreadboxResponse.investmentAmountFrom)
+					{%> <span class="amount">
+						<%=opportunityData.investorBreadboxResponse.investmentAmountFrom%>
+					</span> <%}%> <%
+					if(opportunityData.investorBreadboxResponse.investmentAmountTo) {
+					%> - <span class="amount">
+						<%=opportunityData.investorBreadboxResponse.investmentAmountTo%></span>
+					<% } %>
+				</div>
+				<div class="col-md-4">
+					<strong>Overall Investment Potential</strong><br> <%
+					if(opportunityData.investorBreadboxResponse.totalInvestmentPotentialFrom)
+					{%> <span class="amount">
+						<%=opportunityData.investorBreadboxResponse.totalInvestmentPotentialFrom%>
+					</span> <%}%> <%
+					if(opportunityData.investorBreadboxResponse.totalInvestmentPotentialTo)
+					{ %> - <span class="amount">
+						<%=opportunityData.investorBreadboxResponse.totalInvestmentPotentialTo%></span>
+					<% } %>
+				</div>
+				<div class="col-md-4">
+					<strong>Property Price Range</strong><br> <%
+					if(opportunityData.investorBreadboxResponse.priceRangeFrom) {%> <span
+						class="amount">
+						<%=opportunityData.investorBreadboxResponse.priceRangeFrom%> </span>
+					<%}%> <% if(opportunityData.investorBreadboxResponse.priceRangeTo)
+					{ %> - <span class="amount">
+						<%=opportunityData.investorBreadboxResponse.priceRangeTo%></span> <% } %>
+				</div>
+			</div>
+			<!-- start Edit change section 5 -->
+			<!-- start Edit change section 5 -->
+			<div class="row marg_top20">
+				<div class="col-md-4">
+					<strong>Rehab Preference</strong><br>
+					<%=opportunityData.investorBreadboxResponse.rehabPreference%>
+				</div>
+				<div class="col-md-4" id="investmentZoneDiv">
+					<strong>Locations of interest</strong><br>
+					<text><%=opportunityData.investorBreadboxResponse.interestedLocations%></text>
+				</div>
+				<div class="col-md-4">
+					<strong>Additional Requirements</strong><br>
+					<%=opportunityData.investorBreadboxResponse.saleComments%>
+				</div>
+			</div>
+			<div class="clearfix margin-bottom-20"></div>
+		</div>
+		<div id="editOpportunityDetails"
+			class="offer-page marg_top15 toggleform">
+			<form id="opportunityDetailsForm" method="post"
+				enctype="multipart/form-data">
+				<div>
+					<div id="formAlertFailure" class="alert alert-danger display-hide">
+						<button class="close" data-close="alert"></button>
+						<text>You have some form errors. Please check below.</text>
+					</div>
+					<div class="alert alert-success display-hide">
+						<button class="close" data-close="alert"></button>
+						Your form validation is successful!
+					</div>
+					<input type="hidden" id="opportunityId" name="opportunityId"
+						value="<%=opportunityData.opportunityResponse.opportunityId%>" />
+					<input type="hidden" id="investorBreadboxId" name="investorBreadboxId" 
+						value="<%=opportunityData.investorBreadboxResponse.investorBreadboxId%>"/>
+					<div class="col-md-4">
+						<div class="form-group">
+							<label class="control-label" style="text-align: left;">
+								Investor Legal Name</label> <input class="form-control margin-bottom-15"
+								type="text" name="investorLegalName" id="investorLegalName"
+								value="<%=opportunityData.opportunityResponse.investorLegalName%>" />
+						</div>
+					</div>
+					<div class="col-md-4">
+						<div class="form-group">
+							<label class="control-label" style="text-align: left;">
+								Investor Profile </label>
+							<div id="investorProfileDropdown"></div>
+						</div>
+					</div>
+					<div class="col-md-4">
+						<div class="form-group">
+							<label class="control-label" style="text-align: left;">
+								Investor Type</label>
+							<div id="investorTypeDropdown"></div>
+						</div>
+					</div>
+					<div class="clearfix"></div>
+					<div class="col-md-4 marg_top15">
+						<div class="form-group">
+							<label class="control-label" style="text-align: left;">
+								Real Estate Knowlege </label>
+							<div id="realEstateKnowledgeDropdown"></div>
+						</div>
+					</div>
+					<div class="col-md-4 marg_top15">
+						<div class="form-group">
+							<label class="control-label" style="text-align: left;">
+								HU Experience</label>
+							<div id="huExperienceDropdown"></div>
+						</div>
+					</div>
+					<div class="col-md-4 marg_top15">
+						<div class="form-group">
+							<label class="control-label" style="text-align: left;">
+								Buying time frame </label>
+							<div id="buyingTimeframeDropdown"></div>
+						</div>
+					</div>
+					<div class="clearfix"></div>
+					<div class="col-md-4 marg_top15">
+						<div class="form-group">
+							<label class="control-label" style="text-align: left;">
+								Financing Type </label>
+							<div id="financingTypeDropdown"></div>
+						</div>
+					</div>
+					<div class="col-md-4 marg_top15">
+						<div class="form-group">
+								<label class="control-label" style="text-align: left;">Pre
+									Qualified</label>
+								<div class="radio-list form-control"
+									style="float: left; margin-bottom: 10px; padding-left: 36px;">
+									<label class="radio-inline"> <input name="preQualified"
+										id="preQualifiedYes" value="Yes" type="radio"> Yes
+									</label> <label class="radio-inline"
+										style="padding-left: 23px !important;"> <input
+										name="preQualified" id="preQualifiedNo" value="No" type="radio"> No
+									</label>
+								</div>
+
+							</div> 
+							
+							 <div class="form-group">
+								<div>
+									 <a class="fa fa-paperclip pull-right showDocumentTooltip_2"
+				                     style="cursor: pointer; font-size: 16px;" 
+				                     data-object="<%=opportunityData.investorBreadboxResponse.object%>"
+                 					 data-objectid="<%=opportunityData.investorBreadboxResponse.opportunityId%>"
+				                     data-html="true" data-show="true"> </a>
+								</div>
+								<div id="preQualDocumentDiv" >
+									<label class="control-label"> Upload Pre-Qualification Letter <span
+										id="documentLabel"></span>
+									</label><br> <input name="document" class="form-control"
+										type="file" style="padding-bottom: 40px;" id="document">
+								</div>
+								<div id="preQualDocumentErrDiv" hidden>
+									<span style="color: #e02222">This field is required</span>
+								</div>
+							</div>
+					</div>
+					<div class="col-md-4 marg_top15">
+						<div class="form-group">
+							<label class="control-label">Lender</label>
+							<div id="lendersList"></div>
+						</div>
+						<div class="form-group">
+							<label class="control-label">New Lender</label> <input
+								type="text" id="newlender" name="newlender" disabled
+								class="form-control">
+						</div>
+						<input type="hidden" id="lenderCompanyName"
+							name="lenderCompanyName" class="form-control">
+					</div>
+					<div class="clearfix"></div>
+					<div class="col-md-4 marg_top15">
+						<div class="form-group">
+							<label class="control-label" style="text-align: left;">
+								Investment Goal </label>
+							<div id="investmentGoalDropdown"></div>
+						</div>
+					</div>
+					<div class="col-md-4 marg_top15">
+						<div class="form-group clearfix">
+							<label class="control-label ">Expected Return</label>
+							<div class="">
+								<div class="">
+									<!-- <div class="col-md-1"> -->
+									<label style="text-align: left;"
+										class="control-label pull-left"> from </label>
+									<!-- </div> -->
+									<div class="col-md-5">
+										<input class="form-control" type="text"
+											name="returnsPercentageFrom" id="returnsPercentageFrom" />
+									</div>
+									<!-- <div class="col-md-1"> -->
+									<label style="text-align: left;"
+										class="control-label pull-left"> to </label>
+									<!-- </div> -->
+									<div class="col-md-5">
+										<input class="form-control" type="text"
+											name="returnsPercentageTo" id="returnsPercentageTo" />
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-4 marg_top15">
+						<div class="form-group clearfix">
+							<label class="control-label" style="text-align: left;">
+								Number of Properties </label> <input class="form-control margin-top-15"
+								type="text" name="propertyCount" id="propertyCount" />
+						</div>
+					</div>
+					<div class="clearfix"></div>
+					<div class="col-md-4 marg_top15">
+						<div class="form-group clearfix">
+							<label class="control-label ">Liquid Investment Amount</label>
+							<div class="">
+								<div class="">
+									<!-- <div class="col-md-1"> -->
+									<label style="text-align: left;"
+										class="control-label pull-left"> from </label>
+									<!-- </div> -->
+									<div class="col-md-5">
+										<input class="form-control currency" type="text"
+											name="investmentAmountFrom" id="investmentAmountFrom" />
+									</div>
+									<!-- <div class="col-md-1"> -->
+									<label style="text-align: left;"
+										class="control-label pull-left"> to </label>
+									<!-- </div> -->
+									<div class="col-md-5">
+										<input class="form-control currency" type="text"
+											name="investmentAmountTo" id="investmentAmountTo" />
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-4 marg_top15">
+						<div class="form-group clearfix">
+							<label class="control-label ">Overall Investment
+								Potential</label>
+							<div class="">
+								<div class="">
+									<!-- <div class="col-md-1"> -->
+									<label style="text-align: left;"
+										class="control-label pull-left"> from </label>
+									<!-- 	</div> -->
+									<div class="col-md-5">
+										<input class="form-control currency" type="text"
+											name="totalInvestmentPotentialFrom"
+											id="totalInvestmentPotentialFrom" />
+									</div>
+									<!-- <div class="col-md-1"> -->
+									<label style="text-align: left;"
+										class="control-label pull-left"> to </label>
+									<!-- </div> -->
+									<div class="col-md-5">
+										<input class="form-control currency" type="text"
+											name="totalInvestmentPotentialTo"
+											id="totalInvestmentPotentialTo" />
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-4 marg_top15">
+						<div class="form-group clearfix">
+							<label class="control-label ">Property Price Range</label>
+							<div class="">
+								<div class="">
+									<!-- <div class="col-md-1"> -->
+									<label style="text-align: left;"
+										class="control-label pull-left"> from </label>
+									<!-- </div> -->
+									<div class="col-md-5">
+										<input class="form-control currency" type="text"
+											name="priceRangeFrom" id="priceRangeFrom" />
+									</div>
+									<!-- <div class="col-md-1"> -->
+									<label style="text-align: left;"
+										class="control-label pull-left"> to </label>
+									<!-- </div> -->
+									<div class="col-md-5">
+										<input class="form-control currency" type="text"
+											name="priceRangeTo" id="priceRangeTo" />
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="clearfix"></div>
+					<div class="col-md-4 marg_top15">
+						<div class="form-group clearfix">
+							<label class="control-label" style="text-align: left;">
+								Rehab Preference</label>
+							<div id="rehabPreferenceDropdown"></div>
+						</div>
+					</div>
+					<div class="col-md-4 marg_top15">
+						<div class="form-group">
+							<label class="control-label" style="text-align: left;">
+								Locations of interest </label><br>
+							<div>
+								<select name="interestedLocations" id="interestedLocations"
+									multiple="multiple" style="width: 100%; height: 140px;"
+									size="11"></select>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-4 marg_top15">
+						<div class="form-group clearfix">
+							<label class="control-label"> Additional Requirements </label><br>
+
+							<textarea class="form-control" style="height: 140px;"
+								placeholder="" name="saleComments" id="saleComments"></textarea>
+						</div>
+					</div>
+				</div>
+				<div class="form-actions">
+					<button type="button" class="btn blue" id="saveOpportunityDetails">
+						SAVE</button>
+					<button type="button" class="btn default" id="cancelOpportunityDetails">
+						CANCEL</button>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
+
+
+<!--  Investment Criteria div end-->
+
+
+<!--  Comments div end-->
+<div id="commentsDiv"></div>
+<!--  Comments div end-->
+
+
+
+<%}%>

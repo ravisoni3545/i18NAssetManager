@@ -1,0 +1,27 @@
+<% if(appointmentItems && appointmentItems.length) {  
+ var rowCount=1;
+_.each(appointmentItems,function(appointmentItem){ %>
+    <tr data-modelid="<%- appointmentItem.appointmentId %>">
+        <td><%- appointmentItem.appointmentDate%></td>
+        <td><%- appointmentItem.signingLocation%></td>
+        <td><%- appointmentItem.phoneNumber%></td>
+        <td><%- appointmentItem.appointmentStatus%></td>
+        <td>
+             <a style="cursor:pointer;" data-toggle="collapse"  data-show=true data-target="<%= '.appointmentRow' + appointmentItem.type + rowCount %>" 
+             data-type="<%- appointmentItem.type %>" data-appointmentid="<%- appointmentItem.appointmentId %>" title="Edit" 
+             class="edit_blue accordion-toggle addOrEditAppointment"><i class="fa fa-edit"></i>
+             </a>
+
+             <a title="Delete" class="delete_red deleteAppointment"  data-type="<%- appointmentItem.type %>"
+              data-appointmentid="<%- appointmentItem.appointmentId %>" data-toggle="modal" style="cursor:pointer;"><i class="fa fa-trash-o">
+             </i></a>
+             
+        </td>
+    </tr>
+<% rowCount++;}) 
+}else{ %>
+<tr>
+    <td colspan="5" style="text-align:center;">No appointment available.</td>
+</tr>
+<%}%>
+

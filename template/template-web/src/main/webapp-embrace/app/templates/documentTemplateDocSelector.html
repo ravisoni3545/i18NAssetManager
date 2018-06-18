@@ -1,0 +1,18 @@
+<div class="row">
+  <div class="col-lg-12">
+    <% _.each(docusigntemplateData,function(singleDocTemplate) { %>
+      <div class="checkbox">
+        <label>
+          <input type="checkbox" data-id="<%- singleDocTemplate.attributes.documentTemplateId %>" 
+          data-docusign="<%- singleDocTemplate.attributes.docusignTemplatePath %>" 
+          name="template_<%- singleDocTemplate.attributes.docusignTemplatePath %>" >
+          <%- singleDocTemplate.attributes.templateTitle %>
+          		 <span style="color:blue;"> (<%- singleDocTemplate.attributes.docusignTemplatePath %>)</span>
+        </label>
+      </div>
+    <% }); %>
+    <% if (docusigntemplateData.length == 0) { %>
+      <div>No Document templates available.</div>
+    <% } %> 
+  </div><!-- /.col-lg-12 -->
+</div><!-- /.row -->

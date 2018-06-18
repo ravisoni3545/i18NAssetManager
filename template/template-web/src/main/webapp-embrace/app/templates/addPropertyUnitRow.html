@@ -1,0 +1,95 @@
+<tr>
+ <td colspan="8" class="hiddenRow">
+    <div class="accordian-body collapse <%= row%>">
+    <!-- <div> -->
+        <form>
+         <div style="margin-bottom: 0;" class="clearfix well">
+             <div class="form-group col-md-6">
+                 <label class="control-label">
+                     Unit Name  <span class="required">* </span>
+                 </label>
+                 <div class=""><input class="form-control" name="unitName" type="text" placeholder="" value="<%= singleData.unitName %>"></div>
+             </div>
+             <div class="form-group col-md-6">
+                 <label class="control-label">Unit Status</label>
+                 <div class="unitStatus"></div>
+             </div>
+             <div class="col-md-12" style="background-color:rgba(231, 230, 230, 0.117647);  padding-top:9px;">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label class="col-md-2 control-label pad_leftright0">Address</label>
+                            <div class="col-md-10 pad_right0 margin-bottom-10" style="padding-left:11px;">
+                                <input type="text" name="address" class="form-control" value="<%= singleData.address%>">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                          <div class="form-group">
+                             <label class="col-md-4 control-label pad_leftright0">City</label>
+                               <div class="col-md-8 pad_right0 margin-bottom-10">
+                                 <input type="text" id="city" name="city" class="form-control" value="<%= singleData.city%>">
+                               </div>
+                         </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="col-md-4 control-label pad_leftright0">State</label>
+                               <div class="col-md-8 pad_right0 margin-bottom-10">                
+                                     <div class="state"></div>
+                              </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="col-md-4 control-label pad_leftright0">Postal Code</label>
+                                <div class="col-md-8 pad_right0 margin-bottom-10">
+                                    <input type="text" name="zip" placeholder="" class="form-control" value="<%= singleData.zip%>">
+                                </div>
+                            </div>
+                        </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                          <div class="form-group">
+                             <label class="col-md-4 control-label pad_leftright0">Bed Rooms</label>
+                               <div class="col-md-8 pad_right0 margin-bottom-10">
+                                 <input type="text" name="bedrooms" class="form-control" value="<%= singleData.bedrooms%>">
+                               </div>
+                         </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="col-md-4 control-label pad_leftright0">Bath Rooms</label>
+                               <div class="col-md-8 pad_right0 margin-bottom-10">                
+                                    <input type="text" name="bathrooms" class="form-control" value="<%= singleData.bathrooms%>">
+                              </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="col-md-4 control-label pad_leftright0">Area</label>
+                                <div class="col-md-8 pad_right0 margin-bottom-10">
+                                    <input type="text" name="totalSqft" class="form-control currency" value="<%= singleData.totalSqft%>">
+                                </div>
+                            </div>
+                        </div>
+                </div>
+            </div>
+
+             <div class="clearfix"></div>
+             <div class="form-group col-md-8" style="margin-top:12px;"> 
+              <button type="button" class="btn blue savePropertyUnit">Save</button>
+              <button type="button" class="btn default cancelPropertyUnit">Cancel</button>
+             </div>
+         </div>
+        </form>
+    </div>
+ </td>
+</tr>

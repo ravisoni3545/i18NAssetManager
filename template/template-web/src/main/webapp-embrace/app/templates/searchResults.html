@@ -1,0 +1,40 @@
+
+<div class="portlet-body">
+	<table
+		class="table  table-striped table-bordered table-hover tablegreen"
+		id="sample_2">
+		
+			<% if (searchResult.length>0) { %>
+			<thead>
+			<tr>
+				<th>Company Name</th>
+				<th>TIN #</th>
+				<th>Services Provided</th>
+				<th>Products</th>
+				<th>Coverage Area</th>
+				<th>Status</th>
+				<th>Current Assignments</th>
+			</tr>
+			</thead>
+			<% } %>
+		
+		<tbody>
+			<% _.each(searchResult, function( model ){ %>
+			<tr class="odd gradeX">
+				<td><a href="#vendor/<%- model.organizationId %>"><%-
+						model.organizationName %></a></td>
+				<td><%- model.taxId %></td>
+				<td><%- model.serviceProvided %></td>
+				<td><%- model.products %></td>
+				<td><%- model.coverageAreas %></td>
+				<td><%- model.status %></td>
+				<td><a style="cursor:pointer;"><%- model.currentAssignments %></a></td>
+			</tr>
+			<% }); %>
+		</tbody>
+	</table>
+	<% if (searchResult.length==0) { %>
+		<div style="font-weight:bold;padding-left:15px;">No Results</div>
+  				
+	<% } %>
+</div>

@@ -1,0 +1,152 @@
+<div class="modal fade with-popover" id="HOME_WARRANTY_POPUP_1" tabindex="-1"
+	role="basic" aria-hidden="true">
+	<div class="modal-dialog modal-md">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal"
+					aria-hidden="true"></button>
+				<h4 class="modal-title" id="modalTitle"></h4>
+			</div>
+			<div class="modal-body">
+				<form class="homeWarrantyForm" method="post"
+					enctype="multipart/form-data" id="homeWarrantyForm">
+					<input type="hidden" id="object" name="object"> <input
+						type="hidden" id="objectId" name="objectId"> <input
+						type="hidden" id="taskKey" name="taskKey">
+
+					<div class="col-md-12">
+						<div class="form-group  col-md-6">
+							<div>
+								<label style="text-align: left;" class="control-label">Home
+									Warranty Included</label>
+							</div>
+							<div class="radio-list form-control"
+								style="padding-left: 40px; float: left; margin-bottom: 10px;">
+								<label class="radio-inline"> <span><input
+										type="radio" id="optionsRadiosY" name="warrantyRequired"
+										value="Y" checked=""></span> Yes
+								</label> <label class="radio-inline active"
+									style="padding-left: 15px !important;"> <span><input
+										type="radio" id="optionsRadiosN" name="warrantyRequired"
+										value="N" checked=""></span> No
+								</label>
+							</div>
+						</div>
+					</div>
+					<div class="warrantyDetails">
+						<div class="col-md-12">
+							<div class="col-md-6">
+								<div class="form-group">
+									<label class="control-label">Company Name  <span class="required">* </span></label>
+									<div class="input-group">
+										<input class="form-control text-left" placeholder=""
+											type="text" name="companyName" style="width: 240px;">
+									</div>
+								</div>
+							</div>
+
+							<div class="col-md-6">
+								<div class="form-group">
+									<label class="control-label">Policy Number <span class="required">* </span></label>
+									<div class="input-group">
+										<input class="form-control text-left" placeholder=""
+											type="text" name="policyNumber" style="width: 240px;">
+									</div>
+								</div>
+							</div>
+						</div>
+
+
+						<div class="col-md-12">
+							<div class="form-group col-md-6">
+								<label class="control-label" style="text-align: left;">
+									Valid From <span class="required">* </span> </label>
+								<div class="input-group input-medium date date-picker"
+									data-date="" data-date-format="mm-dd-yyyy"
+									data-date-viewmode="years">
+									<input class="form-control" readonly="" placeholder=""
+										type="text" id="validFromDate" name="validFromDate"> <span
+										class="input-group-btn">
+										<button class="btn default" type="button">
+											<i class="fa fa-calendar"></i>
+										</button>
+									</span>
+								</div>
+							</div>
+							<div class="form-group col-md-6">
+								<label class="control-label" style="text-align: left;">
+									Valid To  <span class="required">* </span></label>
+								<div class="input-group input-medium date date-picker unrestricted"
+									data-date="" data-date-format="mm-dd-yyyy"
+									data-date-viewmode="years">
+									<input class="form-control" readonly="" placeholder=""
+										type="text" id="validToDate" name="validToDate"> <span
+										class="input-group-btn">
+										<button class="btn default" type="button">
+											<i class="fa fa-calendar"></i>
+										</button>
+									</span>
+								</div>
+							</div>
+						</div>
+
+					</div>
+					<div class="col-md-12">
+
+						<div class="form-group col-md-6">
+							<label class="control-label" style="text-align: left;">
+								Completion Date <span class="required">* </span>
+							</label>
+							<div class="input-group input-medium date date-picker"
+								data-date="" data-date-format="mm-dd-yyyy"
+								data-date-viewmode="years">
+								<input class="form-control" readonly="" placeholder=""
+									type="text" id="endDate" name="endDate"> <span
+									class="input-group-btn">
+									<button class="btn default" type="button">
+										<i class="fa fa-calendar"></i>
+									</button>
+								</span>
+							</div>
+						</div>
+
+
+						<div class="form-group col-md-6">
+							<label class="control-label"> Upload Document
+								<span id="documentLabel"></span>
+								<a class="fa fa-paperclip pull-right showDocumentTooltip" style="cursor: pointer; font-size: 16px;" data-html="true" data-show="true"> </a>
+							</label><br> 
+							<input name="document" class="form-control" type="file"
+								style="padding-bottom: 40px;" id="document">
+						</div>
+					</div>
+
+					<div class="form-group col-md-12"
+						style="margin-left: 14px; margin-right: 14px;">
+						<label class="control-label" style="text-align: left;">
+							Comments <a
+							class="fa fa-comments-o pull-right showMessageTooltip"
+							style="cursor: pointer; font-size: 14px;" data-html="true"
+							data-show="true"> <i>Show past comments</i>
+						</a>
+						</label><br>
+
+						<textarea class="form-control" style="height: 80px;"
+							placeholder="" name="comments" id="comments"></textarea>
+					</div>
+
+					<div class="clearfix"></div>
+				</form>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn blue"
+					id="milestonePopupSubmitButton">SAVE</button>
+				<button type="button" id="cancelButton" class="btn default"
+					data-dismiss="modal">CANCEL</button>
+			</div>
+		</div>
+		<!-- /.modal-content -->
+	</div>
+	<!-- /.modal-dialog -->
+</div>
+<!-- end terms rate lightbox -->

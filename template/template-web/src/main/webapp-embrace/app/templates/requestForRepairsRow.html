@@ -1,0 +1,34 @@
+<% if(issues!="") {  
+     _.each(issues,function(issue){ %>
+       <tr data-modelid="<%- issue.inspectionItemId%>">
+       	   <td><%- issue.issueSource%></td>
+           <td><%- _.find(categories,function(item){
+                   console.log(item.categoryId);
+                   return issue.category == item.categoryId;
+               }).categoryName%>
+           </td>
+           
+           <td><%- issue.description%></td>
+           
+           <td class="amount text-right"><%- issue.estimate%></td>
+           
+         
+           
+           <td>
+           <textarea class="form-control" style="height: 54px;" name="investorComments"><%- issue.investorComments%></textarea>
+         </td>
+           
+           <td><p style="text-align:center;"><%- issue.referenceNo%></p></td>
+           <td>
+               
+          
+           <a title="Delete" class="delete_red deleteInspectionCategory" data-toggle="modal" style="cursor:pointer;"><i class="fa fa-trash-o">
+           </i></a>
+           </td>
+       </tr>
+   <%  }) 
+}else{ %>
+	<tr class="dummy-row">
+	<td colspan="5" style="text-align:center;">No inspection item found.</td>
+	</tr>
+<%}%>

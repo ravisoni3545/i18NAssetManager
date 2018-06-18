@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+	<meta charset="utf-8"/>
+	<title>Embrace</title>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta content="width=device-width, initial-scale=1" name="viewport"/>
+	<meta content="" name="description"/>
+	<meta content="" name="author"/>
+	<!-- BEGIN GLOBAL MANDATORY STYLES -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700&subset=all"
+        rel="stylesheet" type="text/css" />
+    <link href="../assets/css/font-awesome/css/font-awesome.min.css" rel="stylesheet"
+        type="text/css" />
+    <link href="../assets/css/bootstrap/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="../assets/css/bootstrap/uniform.default.css" rel="stylesheet" type="text/css" />
+    <!-- END GLOBAL MANDATORY STYLES -->
+    <link rel="stylesheet" type="text/css" href="../assets/css/fullcalendar/fullcalendar.css"/>
+    <link rel="stylesheet" type="text/css" href="../assets/css/datepicker/datepicker.css" />
+    <link rel="stylesheet" type="text/css" href="../assets/css/datetimepicker/datetimepicker.css" />
+	<link rel="stylesheet" type="text/css" href="../assets/css/bootstrap/bootstrap-select.min.css"/>
+    <link rel="stylesheet" type="text/css" href="../assets/css/select2/select2.css" />
+    <link rel="stylesheet" type="text/css" href="../assets/css/select2/select2-metronic.css" />
+    <link rel="stylesheet" type="text/css" href="../assets/css/select2/multi-select.css" />
+<!--     <link rel="stylesheet" type="text/css" href="../assets/css/featherlight.min.css" /> -->
+	<link rel="stylesheet" type="text/css" href="../assets/css/colorbox.css" />
+	
+ 
+<link rel="stylesheet" href="../assets/css/DT_bootstrap.css"/>
+	
+	<link href="../assets/css/jquery-file-upload/blueimp-gallery.min.css" rel="stylesheet"/>
+<link href="../assets/css/jquery-file-upload/jquery.fileupload.css" rel="stylesheet"/>
+<link href="../assets/css/jquery-file-upload/jquery.fileupload-ui.css" rel="stylesheet"/>
+	
+	
+    <!-- BEGIN THEME STYLES -->
+    <link href="../assets/css/style-metronic.css" rel="stylesheet" type="text/css" />
+    <link href="../assets/css/style.css" rel="stylesheet" type="text/css" />
+    <link href="../assets/css/style-responsive.css" rel="stylesheet" type="text/css" />
+    <link href="../assets/css/plugins.css" rel="stylesheet" type="text/css" />
+    <link href="../assets/css/pages/tasks.css" rel="stylesheet" type="text/css" />
+    <link href="../assets/css/themes/default.css" rel="stylesheet" type="text/css" id="style_color" />
+    <link href="../assets/css/print.css" rel="stylesheet" type="text/css" media="print" />
+    <link href="../assets/css/custom.css" rel="stylesheet" type="text/css" />
+    <link href="../assets/css/mls.css" rel="stylesheet" type="text/css"/>
+    <link href="../assets/css/jcarousel.connected-carousels.css" rel="stylesheet" type="text/css"/>
+    <!-- END THEME STYLES -->
+    <link rel="shortcut icon" href="favicon.ico" />
+</head>
+<body class="page-header-fixed">
+	<!-- BEGIN HEADER -->
+	<div class="header navbar navbar-fixed-top" id="header">
+		<div class="header-inner">
+	<!-- BEGIN LOGO -->
+	<a class="navbar-brand" href="http://www.homeunion.com"> <img
+		src="../assets/img/logo.png" alt="logo" class="img-responsive"/>
+	</a>
+	<!-- END LOGO -->
+	<!-- BEGIN RESPONSIVE MENU TOGGLER -->
+	<a href="javascript:;" class="navbar-toggle" data-toggle="collapse"
+		data-target=".navbar-collapse"> <img
+		src="../assets/img/menu-toggler.png" alt="" />
+	</a>
+	<!-- END TOP NAVIGATION MENU -->
+</div>
+<!-- END TOP NAVIGATION BAR -->
+	</div>
+	<!-- END HEADER -->
+	<div class="clearfix">
+    </div>
+	<!-- BEGIN CONTAINER -->
+	<div class="page-container" id="main-wrapper">
+		<!-- BEGIN CONTENT -->
+		<div id="maincontainer" class="page-content-wrapper">
+			<div class="page-content" style="margin-left: 0px;margin-bottom: 30px;min-height: 750px;">
+				<h2 id="pageMessage"></h2>
+            </div>
+        </div>
+	</div>
+	<!-- END CONTAINER -->
+	<!-- BEGIN FOOTER -->
+    <div class="footer">
+        <div class="footer-inner">
+            2016 &copy; HomeUnion
+        </div>
+        <div class="footer-tools">
+            <span class="go-top"><i class="fa fa-angle-up"></i></span>
+        </div>
+    </div>
+    <!-- END FOOTER -->
+	<!--END FOOTER-->
+</body>
+<script src="../assets/js/lib/jquery-1.10.2.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-url-parser/2.3.1/purl.min.js"></script>
+<script>
+	$(document).ready(function(){
+		var event = $.url().param('event');
+		console.log(event);
+		var message = 'Thank You. You can close the window.';
+		if(event=='ttl_expired') {
+			message = 'The link is expired. Please contact HomeUnion to get the new link.';	
+		} else if(event=='api_error') {
+			message = 'Error while getting signature link. Please try after some time. Contact HomeUnion if error persists.';	
+		} else if(event=='not_found') {
+			message = 'The signature request does not exist or is expired. Please contact HomeUnion to get the new link.';	
+		}else if(event=='envelope_voided') {
+			message = 'The envelope is voided. Please contact HomeUnion.';
+		}
+		$('#pageMessage').html(message);
+	});
+</script>
+<!-- END BODY -->
+</html>

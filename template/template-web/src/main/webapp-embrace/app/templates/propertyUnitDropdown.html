@@ -1,0 +1,6 @@
+<select name="<%= fieldName %>" class="form-control">
+	<option value="">Select</option> 
+	<% _(units).each(function(unit) { %>
+		<option value="<%= unit.unitId %>"> <%= unit.unitName %></option> 
+	<% }); %>
+</select>

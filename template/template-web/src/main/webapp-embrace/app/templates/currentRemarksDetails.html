@@ -1,0 +1,73 @@
+
+	<div id="currentRmksDetails">
+		<div class="fa fa-times pull-right popover-close" data-item="msg"
+		style="position: relative;opacity: 0.3;font-size: 12px;padding-bottom: 2px;padding-right: 2px;cursor: pointer;"> 
+		</div>
+		<div>
+		     <%if (msgDatas.length==1 && msgDatas[0].messageTextPart2=="No current remarks."){%>
+		     <p class="lightfontcolor">Add new remarks</p>
+		     <form class="remarkstext-form control-label">
+		     <div class="form-group">
+		     <h6><span class="control-label">Current Remarks</span><span class="required">* </span></h6>
+		     	<textarea class="form-control" id="remarksText" name="remarks"></textarea>
+		     </form>
+		     </div>
+			<%}else{%>
+			 <p class="lightfontcolor"><%-'Last updated by '+msgDatas[0].createdBy +' on '+ msgDatas[0].createdDate %></p>
+			 <form class="remarkstext-form control-label">
+			    <div class="form-group">
+			 <h6><span class="control-label">Current Remarks</span><span class="required">* </span></h6>
+			 	<textarea class="form-control remarkstext-form" id="remarksText" name="remarks"><%=msgDatas[0].messageTextPart2.trim()%></textarea>
+			 </form>
+			 </div>
+			<%}%>
+			<button type="button" id="remarksCancelButton" class="btn btn-default btn-xs pull-right" style="margin-top:5px;"
+			data-dismiss="modal">CANCEL</button>
+			<button type="button" class="btn btn-default blue btn-xs pull-right" style="margin-top:5px;margin-right:2px;margin-bottom:5px;" id="remarksSubmitButton">SAVE</button>
+		</div>
+		<h6>History</h6>
+		<div>
+			
+			<table class="table-bordered table-advance table-hover" style="width:400px;">
+						<!--thead>
+							<th>
+								<td><h6>History</h6></td>
+							</th>
+						</thead-->
+						<tbody>
+						
+					     <%if (msgDatas.length==1){%>
+					     
+					     <tr>
+							<td style="word-wrap: break-word;word-break: break-all;font-size: 12px; padding: 5px 15px 5px 5px;">
+								<div>
+									<i>No past remarks</i>
+								</div>
+							</td>
+						</tr>
+					     
+					     
+					     <%}else{%>
+						
+							<% for(var i=1;i<msgDatas.length;i++){ %>
+							<tr>
+								<td style="font-size: 12px; padding: 5px 15px 5px 5px;">
+									<div>
+										<i><%- msgDatas[i].createdBy +' added a remark ' + msgDatas[i].createdDate%></i>
+									</div>
+									<div style="text-indent: 20px;">
+									<% if(msgDatas[i].messageTextPart2){ %> 
+									<div style="word-wrap: break-word;word-break: break-all;font-size: 13px;"><%= msgDatas[i].messageTextPart2 %></div>
+										<% }%>
+									</div>
+								</td>
+							</tr>
+							<% } %> 
+							
+							<%}%>
+							
+							
+						</tbody>
+			</table>
+		</div>
+	</div>

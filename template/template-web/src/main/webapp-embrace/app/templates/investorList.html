@@ -1,0 +1,10 @@
+<select class="form-control investorNameDropDown" name="memberId">
+	<% _(codes).each(function(code) { %>
+		<option value="<%= code.id%>" 
+			<% if(code.isDefault == 'Y'){ %>
+				selected="selected"
+			<%}%>
+			><%= code.name%>
+		</option>
+	<% }); %>
+</select>

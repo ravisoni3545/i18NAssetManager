@@ -1,0 +1,112 @@
+<!-- start select tenanat lightbox -->
+<div class="modal fade with-popover" id="SELECT_TENANT_POPUP_1" tabindex="-1" role="basic"
+	aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal"
+					aria-hidden="true"></button>
+				<h4 class="modal-title" id="modalTitle"></h4>
+			</div>
+	  <form class="form-horizontal" method="post" id="tenantForm">
+				<div class="modal-body">
+					<input type="hidden" id="object" name="object"/>
+					<input type="hidden" id="objectId" name="objectId"/>
+					<input type="hidden" id="taskKey" name="taskKey"/>				
+					<div class="col-md-6">
+						<div class="form-group">
+							<label class="control-label" style="text-align: left;">
+								Start Date </label>
+							<div class="input-group input-medium date date-picker"
+								 data-date-format="mm-dd-yyyy"
+								data-date-viewmode="years" >
+								<input class="form-control" readonly="" 
+									type="text"  name="startDate"> <span class="input-group-btn">
+									<button class="btn default" type="button">
+										<i class="fa fa-calendar"></i>
+									</button>
+								</span>
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="control-label" style="text-align: left;">
+								Completion Date </label>
+							<div class="input-group input-medium date date-picker"
+								 data-date-format="mm-dd-yyyy"
+								data-date-viewmode="years">
+								<input class="form-control" readonly="" 
+									type="text" name="endDate"> <span class="input-group-btn">
+									<button class="btn default" type="button">
+										<i class="fa fa-calendar"></i>
+									</button>
+								</span>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="form-group">
+							<label class="control-label" style="text-align: left;">
+								Name </label> <input class="form-control" type="text" name="name">
+								
+						</div>
+						<div class="form-group">
+							<label class="control-label" style="text-align: left;">
+								Address </label> <input class="form-control" type="text" name="address">
+						</div>
+						<div class="form-group">
+							
+								<label class="control-label" style="text-align: left;">
+									City </label> <input class="form-control" type="text" name="city">
+									
+							
+						</div>
+						<div class="form-group">
+							<label class="control-label" style="text-align: left;">
+								State </label> <select name="state" data-required="4"
+								class="form-control">
+								<option value="">Select</option>
+								<% _(states).each(function(state) { %>
+												<option value="<%= state.name %>">
+													<%= state.name %>
+												</option>
+											<% }); %>
+							</select>
+					</div>
+						<div class="form-group">
+							<label class="control-label" style="text-align: left;">
+								Postal Code </label> <input class="form-control" type="text" name="postalCode">
+						</div>
+						<div class="form-group">
+							<label class="control-label" style="text-align: left;">
+								Phone </label> <input class="form-control" type="text" name="phone">
+							
+						</div>
+						<div class="form-group">
+							<label class="control-label" style="text-align: left;">
+								E-mail </label> <input class="form-control" type="text" name="email">
+						</div>
+					</div>
+					<div class="clearfix"></div>
+					<div class="form-group col-md-12">
+						<label class="control-label"> Comments 
+							<a
+							class="fa fa-comments-o pull-right showMessageTooltip" style="cursor: pointer; font-size:14px;" data-html="true" data-show="true">
+							<i>Show past comments</i>
+							</a>
+						</label><br>
+						<textarea class="form-control" style="height:200px;" name="comments"></textarea>
+					</div>
+				</div>
+			</form>
+			<div class="modal-footer">
+				<button type="button" class="btn blue" id="tenantFormPopupSubmitButton">
+					SAVE</button>
+				<button type="button" class="btn default" data-dismiss="modal">
+					CANCEL</button>
+			</div>
+		</div>
+		<!-- /.modal-content -->
+	</div>
+	<!-- /.modal-dialog -->
+</div>
+<!-- end select tenanat lightbox -->

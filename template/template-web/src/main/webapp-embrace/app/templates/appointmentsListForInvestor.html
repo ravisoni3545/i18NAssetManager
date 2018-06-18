@@ -1,0 +1,31 @@
+<% if(appointmentDatas) { %> 
+<div style="margin-bottom: 0; width: 400px;">
+<div class="table-responsive">
+<table class="table table-striped table-bordered table-advance table-hover" style="width:400px;">
+			<thead>
+				<div class="fa fa-times pull-right popover-close" 
+				style="position: relative;opacity: 0.3;font-size: 12px;
+					padding-bottom: 2px;padding-right: 2px;cursor: pointer;"></div>
+				<tr>
+					<th>Date/Time</th>
+					<th>Signing Location</th>
+				</tr>
+			</thead>
+			<tbody>
+				<% _.each(appointmentDatas,
+				function(appointmentData){ %>
+				<tr>
+					<td style="word-wrap: break-word;word-break: break-all;font-size: 12px; padding: 5px 15px 5px 5px;">
+						<%-appointmentData.appointmentDate%>
+					</td>
+					<td style="word-wrap: break-word;word-break: break-all;font-size: 12px; padding: 5px 15px 5px 5px;">
+						<%-appointmentData.signingLocation%>
+					</td>
+
+				</tr>
+				<% }); %> 
+		    </tbody>
+</table>
+</div>
+</div>
+<% } %>

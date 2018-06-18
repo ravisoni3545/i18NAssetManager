@@ -1,0 +1,116 @@
+<!-- BEGIN CONTENT -->
+<div class="page-content-wrapper">
+	<div class="page-content">
+
+		<!-- BEGIN PAGE HEADING-->
+		<div class="dash-header">
+			<div class="">
+				<!-- BEGIN PAGE TITLE & BREADCRUMB-->
+
+				<div class="clearfix xtra-buttons">
+					<h3 class="page-title pull-left">
+						<i class="fa fa-user pull-left"></i> Investor Statement - Monthly
+						Report Search
+					</h3>
+
+				</div>
+				<!-- END PAGE TITLE & BREADCRUMB-->
+			</div>
+		</div>
+		<div class="member-search">
+			<div class="">
+				<!-- BEGIN EXAMPLE TABLE PORTLET-->
+				<div class="row">
+					<div class="">
+						<!-- BEGIN ERROR MESSAGE-->
+						<div class="error-msg"></div>
+						<!--END ERROR MESSAGE-->
+						<div class=" clearfix">
+							<form id="investorReportSearchForm">
+
+								<div id="errMsgDiv" class="alert alert-danger display-hide">
+									<button class="close" data-close="alert"
+										onclick="$(this).parent().hide();return false;"></button>
+									Error in searching reports.
+								</div>
+
+								<div class="row">
+									<div class="col-md-7">
+										<div class="form-group" style="margin-top: 16px;">
+											<label class="control-label col-md-3">Investor</label>
+											<div class="col-md-7">
+												<div id="investorsDropdown"></div>
+											</div>
+										</div>
+									</div>
+								</div>
+
+								<div class="row">
+									<div class="col-md-7">
+										<div class="form-group" style="margin-top: 16px;">
+											<label class="control-label col-md-3">Month<span class="required">*</span></label>
+											<div class="col-md-7">
+
+												<div style="margin-left: -3px;">
+													<select class="form-control" name="month">
+														<option value="">Select</option>
+														<option value="1">January</option>
+														<option value="2">February</option>
+														<option value="3">March</option>
+														<option value="4">April</option>
+														<option value="5">May</option>
+														<option value="6">June</option>
+														<option value="7">July</option>
+														<option value="8">August</option>
+														<option value="9">September</option>
+														<option value="10">October</option>
+														<option value="11">November</option>
+														<option value="12">December</option>
+													</select>
+												</div>
+
+											</div>
+										</div>
+									</div>
+								</div>
+
+								<div class="row">
+									<div class="col-md-7">
+										<div class="form-group" style="margin-top: 16px;">
+											<label class="control-label col-md-3">Year<span class="required">*</span></label>
+											<div class="col-md-7">
+
+												<div style="margin-left: -3px;">
+													<select class="form-control" name="year">
+														<option value="">Select</option>
+														<option value="2014">2014</option>
+														<option value="2015">2015</option>
+														<option value="2016">2016</option>
+													</select>
+												</div>
+
+											</div>
+										</div>
+									</div>
+								</div>
+
+								<div class="clearfix"></div>
+
+								<div class="col-md-4 margin-top-10 marg_left30">
+									<a href="javascript:;" class="btn blue pull-right"
+										id="searchInvestorReports">Search</a>
+								</div>
+							</form>
+						</div>
+
+					</div>
+				</div>
+				<!--  -->
+			</div>
+		</div>
+
+		<div id="reportSearchResultDiv"></div>
+
+	</div>
+</div>
+<!-- END CONTENT -->

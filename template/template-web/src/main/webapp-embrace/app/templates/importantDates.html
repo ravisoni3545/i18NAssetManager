@@ -1,0 +1,130 @@
+<div>
+<!-- imp date view start -->
+<h4 class="margin-bottom-15 borb">
+     <i class="fa fa-th pull-left marg_top5"></i>Important Dates <a style="cursor: pointer"  id="impdate-edit"><i class="fa fa-edit"></i></a>
+ </h4>
+<div id="impDatesSuccessMsg" class="alert alert-success display-hide">
+	<button class="close" data-close="alert" onclick="$(this).parent().hide();return false;"></button>
+	<text></text>
+</div>
+<div id="impDatesFailureMsg" class="alert alert-danger display-hide">
+	<button class="close" data-close="alert" onclick="$(this).parent().hide();return false;"></button>
+	<text></text>
+</div>
+<div id="imp-date-view" class="impdatetoggle margin-bottom-25">
+	<div class="row margin-bottom-10">
+	     <div class="col-md-3"> <strong>PA Date</strong><br>
+	         <%=investmentResponse.paDate%> </div>
+		 <div class="col-md-3"> <strong>Adjusted Booking Date</strong><br>
+		      <%=investmentResponse.adjustedBookingDate%> </div>
+	     <div class="col-md-3"> <strong>PA Close of Escrow Date</strong><br>
+	         <%=investmentResponse.paCloseOfEscrowDate%> </div>
+	     <div class="col-md-3"> <strong>Estimated Closing Date</strong><br>
+	         <%=investmentResponse.estimatedClosingDate%> </div>
+	 </div>
+	 <div class="row margin-bottom-10">
+	   <div class="col-md-3"> <strong>Last Investor Contact Date</strong><br>
+              <%=investmentResponse.lastInvestorContactDate%> </div>
+	     <div class="col-md-3"> <strong>Closing Start Date</strong><br>
+	         <%=investmentResponse.closingStartDate%> </div>
+	     <div class="col-md-3"> <strong>Closing End Date</strong><br>
+	         <%=investmentResponse.closingEndDate%> </div>
+	    <div class="col-md-3"> <strong>Option Period Expires</strong><br>
+	        <%=investmentResponse.optionPeriodExpires%> </div>
+	 </div>
+</div>
+<!-- imp date view end -->
+<!-- imp date edit start -->
+ <div id="imp-date-edit" class="impdatetoggle margin-bottom-20">
+ <form id="impDatesForm" method="post">
+ <div class="row margin-bottom-10">
+     <div class="form-group col-md-3"><label class="control-label"> <strong>PA Date</strong><span class="required">* </span></label><br>
+         <div class="input-group  date date-picker unrestricted" data-date="" data-date-format="mm-dd-yyyy" data-date-viewmode="years">
+                    <input class="form-control" readonly="" placeholder="" type="text" name="paDate">
+                    <span class="input-group-btn">
+                        <button class="btn default" type="button">
+                            <i class="fa fa-calendar"></i>
+                        </button>
+                    </span>
+          </div> 
+     </div>
+     
+	     <div class="form-group col-md-3"> <label class="control-label"><strong>Adjusted Booking Date</strong></label><br>
+	     <div class="input-group  date date-picker unrestricted" data-date-clear-btn="true" data-date="" data-date-format="mm-dd-yyyy" data-date-viewmode="years">
+	                <input class="form-control" readonly="" placeholder="" type="text" name="adjustedBookingDate">
+	                <span class="input-group-btn">
+	                    <button class="btn default" type="button">
+	                        <i class="fa fa-calendar"></i>
+	                    </button>
+	                </span>
+	      </div>
+	  </div>
+     
+     <div class="form-group col-md-3"> <label class="control-label"><strong>PA Close of Escrow Date</strong><span class="required">* </span></label><br>
+         <div class="input-group  date date-picker unrestricted" data-date="" data-date-format="mm-dd-yyyy" data-date-viewmode="years">
+                    <input class="form-control" readonly="" placeholder="" type="text" name="paCloseOfEscrowDate">
+                    <span class="input-group-btn">
+                        <button class="btn default" type="button">
+                            <i class="fa fa-calendar"></i>
+                        </button>
+                    </span>
+          </div>
+      </div>
+     <div class="form-group col-md-3"> <label class="control-label"><strong>Estimated Closing Date</strong><span class="required">* </span></label><br>
+         <div class="input-group  date date-picker unrestricted" data-date="" data-date-format="mm-dd-yyyy" data-date-viewmode="years">
+                    <input class="form-control" readonly="" placeholder="" type="text" name="estimatedClosingDate">
+                    <span class="input-group-btn">
+                        <button class="btn default" type="button">
+                            <i class="fa fa-calendar"></i>
+                        </button>
+                    </span>
+          </div> 
+     </div>
+  </div>
+  <div class="row margin-bottom-10">
+  
+	  <div class="form-group col-md-3"><label class="control-label"><strong>Last Investor Contact Date</strong></label><br>
+		  <div class="input-group  date date-picker unrestricted" data-date="" data-date-format="mm-dd-yyyy" data-date-viewmode="years">
+		              <input class="form-control" readonly="" placeholder="" type="text" name="lastInvestorContactDate">
+		              <span class="input-group-btn">
+		                  <button class="btn default" type="button">
+		                      <i class="fa fa-calendar"></i>
+		                  </button>
+		              </span>
+		  </div>
+	</div>
+	  
+     <div class="form-group col-md-3"> <label class="control-label"><strong>Closing Start Date</strong><span class="required">* </span></label><br>
+         <div class="input-group  date date-picker unrestricted" data-date="" data-date-format="mm-dd-yyyy" data-date-viewmode="years">
+                    <input class="form-control" readonly="" placeholder="" type="text" name="closingStartDate">
+                    <span class="input-group-btn">
+                        <button class="btn default" type="button">
+                            <i class="fa fa-calendar"></i>
+                        </button>
+                    </span>
+         </div>
+     </div>
+     <div class="form-group col-md-3"> <label class="control-label"><strong>Closing End Date</strong></label><br>
+         <div>
+               <input class="form-control" readonly type="text" name="closingEndDate">
+          </div>
+     </div>
+     <div class="form-group col-md-3"><label class="control-label"><strong>Option Period Expires</strong></label><br>
+         <div class="input-group  date date-picker unrestricted" data-date="" data-date-format="mm-dd-yyyy" data-date-viewmode="years">
+                    <input class="form-control" readonly="" placeholder="" type="text" name="optionPeriodExpires">
+                    <span class="input-group-btn">
+                        <button class="btn default" type="button">
+                            <i class="fa fa-calendar"></i>
+                        </button>
+                    </span>
+         </div>
+      </div>
+ </div>
+ 	<button type="button" id="save-impdate" class="btn blue" data-dismiss="modal">
+	    Save</button>
+	<button type="button" id="cancel-impdate" class="btn default" data-dismiss="modal">
+	    Cancel</button>
+ </form>
+ </div>
+<!-- imp date edit end -->
+</div>

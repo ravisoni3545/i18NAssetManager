@@ -1,0 +1,11 @@
+<select class="form-control payDropDown" name="payId">
+	<option value=""></option>
+	<% _(codes).each(function(code) { %>
+		<option value="<%= code.id%>,<%= code.type%>" 
+			<% if(code.isDefault == 'Y'){ %>
+				selected="selected"
+			<%}%>
+			><%= code.name%>
+		</option>
+	<% }); %>
+</select>

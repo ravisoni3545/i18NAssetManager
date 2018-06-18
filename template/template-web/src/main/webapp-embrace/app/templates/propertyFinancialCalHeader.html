@@ -1,0 +1,54 @@
+<div class="page-content-wrapper">
+<div class="page-content">
+<div class="row" style="padding: 6px;">
+    <div class="col-md-12 optionbgrev" style="z-index: 2500;">
+        FINANCIAL CALCULATOR
+    </div>
+</div>
+<div class="row">
+    <p style="margin: 15px;font-size:15px">This calculator allows you to change certain values in the Financials so that you can see how returns change with different assumptions.</p>
+</div>
+<div id="financial-header">
+</div>               
+                <!-- BEGIN PAGE HEADING-->
+                <div class="row">
+                    <div class="col-md-12">
+                        <h3 class="page-title">
+                            <i class="fa fa-home pull-left font25 marg_top10"></i>Property Details 
+                        </h3>
+                    </div>
+                </div>
+        <!-- END PAGE HEADING-->
+        <% if(theData) { %> 
+              <div class="row">
+                    <div class="col-md-7" style="border-right: 1px solid #CCCCCC;">
+                        <img src="<%- theData.thumbnailLink %>" height="86" width="110" class="pull-left marg_right35">
+                        <br>
+                        <ul>
+                            <li style="list-style-type: circle;" class="font18"><%- theData.propertyFullAddress %></li>
+                            <li style="list-style-type: circle;"><%- theData.otherInfo %></li>
+                        </ul>
+                    </div>
+                    <div class="col-md-5 pad_top30">
+                        
+                        <strong>Status: </strong><%- theData.propertyStatus %>
+                    </div>
+              </div><br>
+<br>
+    
+              <div class="clearfix"></div>
+
+              <div class="row">
+                <div class="col-md-12 marg_top8">
+                       <!-- Tab Start -->
+                          <div id="financialCal">
+
+                        </div>  
+                </div>
+              </div>
+
+        <%} else {%>
+              <div id="propertySearchDetailErrorMessage" style="text-align: center; font-size: large;"></div>
+        <%} %>
+</div>
+</div>

@@ -1,0 +1,96 @@
+<div class="modal fade" id="editExpenseModal" tabindex="-1"
+	role="basic" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<form id="editExpenseForm" > 
+		
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal"
+						aria-hidden="true"></button>
+					<h4 class="modal-title">Expenses Details</h4>
+				</div>
+				<div class="modal-body">
+	
+					<div class="col-md-6">
+						<div class="form-group">
+							<label class="control-label" style="text-align: left;">
+								Fee Type <span class="required">* </span>
+							</label>
+							
+							<div id="editFeeTypeDD"></div>
+						</div>
+	
+	
+						<div class="form-group">
+							<label class="control-label" style="text-align: left;">
+								Frequency <span class="required">* </span>
+							</label>
+							
+							<div id="editFreqTypeDD"></div>
+						</div>
+						
+						<div class="form-group">
+							<label class="control-label" style="text-align: left;">
+								Amount <span class="required">* </span>
+							</label>
+							<div class="input-group col-md-12" style="padding-right:35px;">
+								<span class="input-group-addon"><i class="fa fa-dollar"></i></span>
+								<input type="text"  class="form-control currency" name="expAmount" value="">
+							</div>
+						</div>
+						
+					</div>
+	
+	
+					<div class="col-md-6">
+						
+						<div class="form-group">
+							<label class="control-label" style="text-align: left;">
+								Last Payment
+							</label>
+							<div class="input-group input-medium date date-picker"
+								data-date-format="mm-dd-yyyy" data-date-clear-btn="true"
+								data-date-viewmode="years">
+								<input class="form-control" readonly=""
+									type="text" name="lastPaymentDate" value=""> <span class="input-group-btn">
+									<button class="btn default" type="button">
+										<i class="fa fa-calendar"></i>
+									</button>
+								</span>
+							</div>
+						</div>
+						
+						<div class="form-group">
+							<label class="control-label" style="text-align: left;">
+								Next Due Date <span class="required">* </span>
+							</label>
+							<div class="input-group input-medium date date-picker"
+								data-date-format="mm-dd-yyyy"
+								data-date-viewmode="years">
+								<input class="form-control" readonly=""
+									type="text" name="nextDueDate" value=""> <span class="input-group-btn">
+									<button class="btn default" type="button">
+										<i class="fa fa-calendar"></i>
+									</button>
+								</span>
+							</div>
+						</div>
+	
+					</div>
+	
+					<div class="clearfix"></div>
+
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn default" data-dismiss="modal">
+						CANCEL</button>
+					<button type="button" class="btn blue" id="editExpense">
+						SAVE</button>
+				</div>
+			</form>
+		</div>
+		<!-- /.modal-content -->
+	</div>
+	<!-- /.modal-dialog -->
+</div>
+<!--ends edit expenses dialog box-->

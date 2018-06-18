@@ -1,0 +1,337 @@
+<div id="lastEditModalDiv"></div>
+<div class="panel-group accordion" id="accordion1">
+<!-- START GENERAL INFORMATION -->
+<div id="generalInfoDiv">
+	<div class="portlet box grey">
+	    <div class="portlet-title">
+	        <div class="caption">
+	            <i class="fa fa-cogs"></i>General Information
+	        </div>
+	        <div class="actions" style="float:right">
+	        	<% if(viewpermissions.propertyDetailEdit && theData.editable){ %>
+	        	<button type="button" id="generalInfoEditButton" class="btn blue btn-sm">
+	        	<i class="fa fa-pencil"></i>Edit
+	        	</button>
+	        	<% } %>
+	        </div>
+	    </div>
+	    <div class="portlet-body table-responsive">
+	    	<% if(theData.propertyLastModifiedBy == "" && theData.propertyLastModifiedDate == ""){ %>
+	        <p></p>
+	        <% }else{ %>
+	        <p align="right">Last Edited by: <%=theData.propertyLastModifiedBy%> on <a href="lastEditModal" data-toggle="modal" ><%=theData.propertyLastModifiedDate%></a></p>
+	        <% } %>
+	        <table name="property" class="table table-hover table-striped table-bordered table-advance margin-top-20">
+	            <tbody>
+	                <tr>
+	                    <td>Property:</td>
+	                    <td id="address" class="idata"><%- theData.propertyDetails.address%></td>
+	                    <td>NIR</td>
+	                    <td id="nir" class="idata"><%- theData.propertyDetails.nir %></td>
+	                </tr>
+	                                  
+	                <tr>
+	                    <td>Bed Rooms:</td>
+	                    <td id="bedRooms" class="idata"><%- theData.propertyDetails.bedRooms%></td>
+	                    <td>Bath Rooms:</td>
+	                    <td id="bathRooms" class="idata"><%- theData.propertyDetails.bathRooms%></td>
+	                </tr>
+	                                  
+	                <tr>
+	                	<td>Year Built:</td>
+	                    <td id="yearBuilt" class="idata"><%- theData.propertyDetails.yearBuilt%></td>
+	                    <td>House Size(Sqft):</td>
+	                    <td id="totalSqft" class="idata"><%- theData.propertyDetails.totalSqft%></td>
+	                </tr>
+	                                  
+	                <tr>
+	                	<td>Lot Size:</td>
+	                    <td id="lotSize" class="idata"><%- theData.propertyDetails.lotSize%></td>
+	                	<td>Lot Measure:</td>
+	                    <td id="lotMeasure" class="idata"><%- theData.propertyDetails.lotMeasure%></td>
+	                </tr>
+	                                  
+	                <tr>
+	                    <td>Type:</td>
+	                    <td id="propertyType" class="idata"><%- theData.propertyType%></td>
+	                    <td>Garage:</td>
+	                    <td id="parkingSpaces" class="idata"><%- theData.propertyDetails.parkingSpaces%> </td>
+	                </tr>
+	                                  
+	                <tr>
+	                	<td>School District:</td>
+	                    <td id="schoolDistrict" class="idata"><%- theData.propertyDetails.schoolDistrict%></td>
+	                    <td>Appreciation Rate(%):</td>
+	                    <td id="appreciationRate" class="idata"><%- accounting.formatNumber(theData.propertyDetails.appreciationRate,2)%> </td>
+	                </tr>
+	                                  
+	                <tr>
+	                    <td>Asking Price($):</td>
+	                    <td id="askingPrice" class="idata price"><%- accounting.formatMoney(theData.propertyDetails.purchasePrice,"$",2)%></td>
+	                    <td>Price Per Sqft($):</td>
+	                    <td id="pricePersqft" class="idata price"><%- accounting.formatMoney(theData.propertyDetails.pricePersqft,"$",2)%></td>
+	                </tr>
+	                          
+	                 <tr>
+	                    <td>Bid Range($):</td>
+	                    <td id="bidrange" class="idata"><%- accounting.formatMoney(theData.propertyDetails.minBid,"$",2)+"-"+accounting.formatMoney(theData.propertyDetails.maxBid,"$",2) %></td>
+	                    <td>Down Payment(%):</td>
+	                    <td id="downpaymentpercentage" class="idata"><%- accounting.formatNumber(theData.propertyDetails.downPaymentPercentage,2)%>%</td>
+	                </tr>
+	                <tr>
+	                	<td>Listed Rent Monthly($):</td>
+	                    <td id="leasedRent" class="idata price"><%- accounting.formatMoney(theData.propertyDetails.listedRent,"$",2)%></td>
+	                    <td>Rent Per Sqft($):</td>
+	                    <td id="rentPersqft" class="idata price"><%- accounting.formatMoney(theData.propertyDetails.rentPersqft,"$",2)%></td>
+	                </tr>
+	                                  
+	                <tr>
+	                    <td>Property Taxes Annual($):</td>
+	                    <td id="propertyTaxesAnnual" class="idata price"><%- accounting.formatMoney(theData.propertyDetails.propertyTaxesAnnual,"$",2)%></td>
+	                    <td>Property Taxes Monthly($):</td>
+	                    <td id="propertyTaxesMonthly" class="idata price"><%- accounting.formatMoney(theData.propertyDetails.propertyTaxesMonthly,"$",2)%></td>
+	                </tr>
+	                                  
+	                <tr>
+	                    <td>Property Insurance Annual($):</td>
+	                    <td id="propertyInsuranceAnnual" class="idata price"><%- accounting.formatMoney(theData.propertyDetails.propertyInsuranceAnnual,"$",2)%></td>
+	                    <td>Property Insurance Monthly($):</td>
+	                    <td id="propertyInsuranceMonthly" class="idata price"><%- accounting.formatMoney(theData.propertyDetails.propertyInsuranceMonthly,"$",2)%></td>
+	                </tr>
+	                                  
+	                <tr>
+	                    <td>HOA Fee Annual($):</td>
+	                    <td id="hoaFeeAnnual" class="idata price"><%- accounting.formatMoney(theData.propertyDetails.hoaFeeAnnual,"$",2)%></td>
+	                    <td>HOA Fee Monthly($):</td>
+	                    <td id="hoaFeeMonthly" class="idata price"><%- accounting.formatMoney(theData.propertyDetails.hoaFeeMonthly,"$",2)%></td>
+	                </tr>
+	                
+	                <tr>
+	                    <td>Rehab Estimate($):</td>
+	                    <td id="rehabEstimate" class="idata price"><%- accounting.formatMoney(theData.propertyDetails.rehabEstimate,"$",2)%></td>
+	                    <td>Rehab Bucket:</td>
+	                    <td id="rehabBucket" class="idata"><%- theData.propertyDetails.rehabBucket %></td>
+	                </tr>
+	                                  
+	                <tr>
+	               		<td>Original Rehab:</td>
+	                    <td id="originalRehab" class="price" style="cursor:pointer;"><%- accounting.formatMoney(theData.propertyDetails.originalRehab,"$",2)%>			
+	                    	<span class="fa fa-edit pull-right" style="font-size: 18px;" data-html="true" data-show="true"></span>
+	                    	<input type="hidden" id="originalRehabValue" name="originalRehabValue" value=<%=theData.propertyDetails.originalRehab%>>	
+	                    	
+                    	</td>
+	                    <td>Show on web:</td>
+	                    <td id="showOnweb" class="idata"><%- (theData.propertyDetails.showOnweb)?"Yes":"No"%></td>
+	                </tr>
+	                                  
+	                <tr>
+	                    <td>Tenanted:</td>
+	                    <td id="tenantedProperty" class="idata"><%- (theData.propertyDetails.tenantedProperty)?"Yes":"No"%></td>
+	                    <td></td>
+	                    <td></td>
+	                </tr>
+	                
+	                
+	            </tbody>
+	        </table>
+	        <div id="orgRehbEdit"></div>
+	    </div>
+	</div>
+</div>
+<div id="amenitiesInfoDiv">
+<div class="portlet box grey">
+    <div class="portlet-title">
+        <div class="caption">
+            <i class="fa fa-cogs"></i>Amenities
+        </div>
+        <div class="actions" style="float:right">
+        	<% if(viewpermissions.propertyDetailEdit && theData.editable){ %>
+        	<button type="button" id="amenitiesEditButton" class="btn blue btn-sm">
+        	<i class="fa fa-pencil"></i>Edit
+        	</button>
+        	<% } %>
+        </div>
+    </div>
+    <div class="portlet-body table-responsive">
+    	<% if(theData.propertyLastModifiedBy == "" && theData.propertyLastModifiedDate == ""){ %>
+        <p></p>
+        <% }else{ %>
+        <p align="right">Last Edited by: <%=theData.propertyLastModifiedBy%> on <a href="lastEditModal" data-toggle="modal" ><%=theData.propertyLastModifiedDate%></a></p>
+        <% } %>
+        <table name="property" class="table table-hover table-striped table-bordered table-advance margin-top-20">
+            <tbody>
+                <tr>
+                	<td>Cooling:</td>
+                    <td id="airCondition" class="idata"><%- theData.propertyDetails.airCondition%></td>
+                    <td>Central Air Wall Unit:</td>
+                    <td id="centralairWallunit" class="idata"><%- theData.propertyDetails.centralairWallunit%></td>
+                </tr>
+                <tr>
+                	<td>Heating:</td>
+                    <td id="heating" class="idata"><%- theData.propertyDetails.heating%></td>
+                    <td>Roof:</td>
+                    <td id="roof" class="idata"><%- theData.propertyDetails.roof%></td>
+                </tr>
+                <tr>
+                    <td>Pool:</td>
+                    <td id="pool" class="idata"><%- theData.propertyDetails.pool%></td>
+                    <td>Exterior:</td>
+                    <td id="exterior" class="idata"><%- theData.propertyDetails.exterior%></td>
+                </tr>
+                <tr>
+                    <td>Parking Spaces:</td>
+                    <td id="parkingSpaces" class="idata"><%- theData.propertyDetails.parkingSpaces%></td>
+                    <td>Flooring:</td>
+                    <td id="flooring" class="idata"><%- theData.propertyDetails.flooring%></td>
+                </tr>
+                <tr>
+                    <td>Parking Spaces Type:</td>
+                    <td id="parkingSpacestype" class="idata"><%- theData.propertyDetails.parkingSpacestype%></td>
+                    <td>Amenities:</td>
+                    <td id="amenities" class="idata"><%- theData.propertyDetails.amenities%></td>
+                </tr>
+                <tr>
+                    <td>View:</td>
+                    <td id="view" class="idata"><%- theData.propertyDetails.view%></td>
+                    <td></td>
+                	<td></td>
+                </tr>                                                    
+            </tbody>
+        </table>
+    </div>
+</div>
+</div>
+<!-- END AMENITIES -->
+                       
+<!-- START LISTING INFORMATION -->
+<div id="listingInfoDiv">
+<div class="portlet box grey">
+    <div class="portlet-title">
+        <div class="caption">
+            <i class="fa fa-cogs"></i>Listing Information
+        </div>
+        <div class="actions" style="float:right">
+        	<% if(viewpermissions.propertyDetailEdit && theData.editable){ %>
+        	<button type="button" id="listingInfoEditButton" class="btn blue btn-sm">
+        	<i class="fa fa-pencil"></i>Edit
+        	</button>
+        	<% } %>
+        </div>
+    </div>
+    <div class="portlet-body table-responsive">
+    	<% if(theData.listingLastModifiedBy == "" && theData.listingLastModifiedDate == ""){ %>
+        <p></p>
+        <% }else{ %>
+        <p align="right">Last Edited by: <%=theData.listingLastModifiedBy%> on <a href="lastEditModal" data-toggle="modal" ><%=theData.listingLastModifiedDate%></a></p>
+        <% } %>
+        <table name="listing" class="table table-hover table-striped table-bordered table-advance margin-top-20">
+            <tbody>
+                <tr>
+               		<td>MLS Number:</td>
+                    <td id="mlsNumber" class="idata"><%- theData.listingDetails.mlsNumber%> </td>
+                    <td>Listing Agent Name: </td>
+                    <td id="listingAgentname" class="idata"><%- theData.listingDetails.listingAgentname%> </td>
+                </tr>
+                <tr>
+                    <td>Listing Agent Phone:</td>
+                    <td id="listingAgentphone" class="idata"><%- theData.listingDetails.listingAgentphone%></td>
+                    <td>Listing Agent Mail:</td>
+                    <td id="listingAgentemail" class="idata"><%- theData.listingDetails.listingAgentemail%> </td>
+                </tr>
+                <tr>
+	                <td>Realtor Company Name:</td>
+                    <td id="realtorCompanyname" class="idata"><%- theData.listingDetails.realtorCompanyname%></td>
+                    <td>Realtor Company Phone:</td>
+                    <td id="realtorCompanyphone" class="idata"><%- theData.listingDetails.realtorCompanyphone%> </td>
+                </tr>
+                <tr>
+                    <td>Listed On:</td>
+                    <td id="listedOn" class="idata"><%- theData.listingDetails.listedOn%></td>
+                    <td>Listing URL:</td>
+                    <td id="listingUrl" class="idata"><%- theData.listingDetails.listingUrl%> </td>
+                </tr>
+                <tr>
+                    <td>Appraised Value($):</td>
+                    <td id="appraisedValue" class="idata price"><%- accounting.formatMoney(theData.listingDetails.appraisedValue,"$",2)%></td>
+                    <td>Appraisal Doc:</td>
+                    <td id="appraisalDoc" class="idata"><%- theData.listingDetails.appraisalDoc%></td>
+                </tr>
+                <tr>
+                    <td>Agent Remarks:</td>
+                    <td id="agentRemarks" class="idata"><%- theData.listingDetails.agentRemarks%></td>
+                	<td></td>
+                    <td></td>
+                </tr>  
+                <tr>
+                    <td>ILM Notes:</td>
+                    <td id="notes" class="idata"><%- theData.listingDetails.notes%></td>
+                    <td></td>
+                    <td></td>
+                </tr>                                                   
+            </tbody>
+        </table>
+    </div>
+</div>
+</div>
+<!-- END LISTING INFORMATION -->
+</div>
+
+
+<div class="modal fade bs-modal-sm" id="saveGeneralInfoModal" tabindex="-1" role="dialog" aria-hidden="true">
+	<div class="modal-dialog modal-sm">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+				<h4 class="modal-title">Save</h4>
+			</div>
+			<div class="modal-body">
+				  Are you sure you want to make these changes?
+			</div>
+			<div class="modal-footer">
+				<button id="saveGeneralInfoButton" type="button" class="btn blue">Yes</button>
+				<button type="button" class="btn default" name="cancelBtn" data-dismiss="modal">No</button>
+			</div>
+		</div>
+		<!-- /.modal-content -->
+	</div>
+	<!-- /.modal-dialog -->
+</div>
+<div class="modal fade bs-modal-sm" id="saveAmenitiesModal" tabindex="-1" role="dialog" aria-hidden="true">
+	<div class="modal-dialog modal-sm">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+				<h4 class="modal-title">Save</h4>
+			</div>
+			<div class="modal-body">
+				  Are you sure you want to make these changes?
+			</div>
+			<div class="modal-footer">
+				<button id="saveAmenitiesButton" type="button" class="btn blue">Yes</button>
+				<button type="button" class="btn default" name="cancelBtn" data-dismiss="modal">No</button>
+			</div>
+		</div>
+		<!-- /.modal-content -->
+	</div>
+	<!-- /.modal-dialog -->
+</div>
+<div class="modal fade bs-modal-sm" id="saveListingInfoModal" tabindex="-1" role="dialog" aria-hidden="true">
+	<div class="modal-dialog modal-sm">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+				<h4 class="modal-title">Save</h4>
+			</div>
+			<div class="modal-body">
+				  Are you sure you want to make these changes?
+			</div>
+			<div class="modal-footer">
+				<button id="saveListingInfoButton" type="button" class="btn blue">Yes</button>
+				<button type="button" class="btn default" name="cancelBtn" data-dismiss="modal">No</button>
+			</div>
+		</div>
+		<!-- /.modal-content -->
+	</div>
+	<!-- /.modal-dialog -->
+</div>
+

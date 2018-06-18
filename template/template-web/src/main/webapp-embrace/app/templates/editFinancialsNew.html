@@ -1,0 +1,190 @@
+<div class="modal fade bs-modal-lg" id="editFinancialForm" tabindex="-1"
+	role="basic" aria-hidden="true">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal"
+					aria-hidden="true"></button>
+				<h4 class="modal-title">Financial Transaction Details</h4>
+			</div>
+			<div class="modal-body table-responsive">
+				<div class="alert alert-danger" id="errorMsgEdit" style="display:none">
+					<button class="close" data-close="alert"></button>
+					Credit and debit total is not equal. Please correct your entries and submit
+					the form again.
+				</div>
+				<div id="operationErrorPopupEdit" class="alert alert-danger display-hide">
+					<button class="close" data-close="alert"></button>
+					<text>Error in performing operation.</text>
+				</div>
+		
+
+				<div class="form-group col-md-3" style="padding-left: 0px;">
+					<label class="control-label"> Transaction Type </label>
+
+					<div id="editTransactionTypeDD"></div>
+				</div>
+				<div style="display: none">
+					<input type="text" class="form-control termianl1"
+						name="journalHeaderId" value="<%- financialData.headerId %>">
+				</div>
+
+				<div class="form-group col-md-3">
+					<label class="control-label"> Transaction Date </label>
+
+					<div class="input-group input-medium date date-picker" data-date=""
+						data-date-format="mm-dd-yyyy" data-date-viewmode="years">
+						<input class="form-control" placeholder="" type="text"
+							style="width: 140px;" id="editTransactionDate" name="editTransactionDate"
+							value="<%- financialData.transactionDate %>"> <span
+							class="input-group-btn" style="float: left;">
+							<button class="btn default" type="button">
+								<i class="fa fa-calendar"></i>
+							</button>
+						</span>
+					</div>
+				</div>
+				<div class="form-group col-md-3" style="padding-left: 0px;">
+					<label class="control-label"> Property Unit </label>
+					<div id="unitDropdown"></div>
+				</div>
+				<div class="clearfix"></div>
+
+				<div class="form-group col-md-9 row" style="padding-right: 0px;">
+					<label class="control-label" style="text-align: left;">
+						Description </label> <input type="text" class="form-control"
+						id="editDescription" name="editDescription"
+						value="<%- financialData.description %>">
+
+				</div>
+				<div class="clearfix"></div>
+
+				<div class="form-group col-md-3" style="padding-left: 0px;">
+					<label class="control-label"> &nbsp;</label><br>
+
+
+					<div class="radio-list  col-md-12" style="margin-left: 6px">
+						<label class="radio-inline"> <input name="payType"
+							id="editPayerRadio" value="" type="radio"> Payer
+						</label> <label class="radio-inline" style=""> <input
+							name="payType" id="editPayeeRadio" value="" type="radio">
+							Payee
+						</label>
+					</div>
+
+				</div>
+
+				<div class="form-group col-md-3">
+					<label class="control-label payershow">
+						Payer </label> <label class="control-label payeeshow"
+						style="display: none"> Payee </label>
+
+					<div id="editPayerDD"></div>
+				</div>
+
+				<div class="form-group col-md-3">
+					<label class="control-label"> Payment Method </label>
+
+					<div id="editPaymentMethodDD"></div>
+				</div>
+
+
+
+
+
+
+				<div class="form-group col-md-3 ref1" id="editReferenceNumber"
+					style="padding-right: 0px;">
+					<label class="control-label"> Ref# </label> <input type="text"
+						class="form-control" name="editReference"
+						value="<%- financialData.reference %>">
+				</div>
+
+				<div class="table-responsive">
+					<table
+						class="table table-striped table-bordered table-advance table-hover tablegreen">
+						<thead>
+							<tr>
+								<th width="17%">Type</th>
+								<th width="17%">Account</th>
+								<th width="16%">Description</th>
+								<th width="18%">Transaction Date</th>
+								<th width="16%">Debit</th>
+								<th width="16%">Credit</th>
+							</tr>
+						</thead>
+						<tbody id="edit-form-financial">
+							<% _.each(financialData.entries, function( detail ){ %>
+
+							<tr>
+								<td>
+
+									<div class="accountTypeDD"></div>
+								</td>
+								<td>
+									<div class="accountDD"></div>
+								</td>
+								<td><input type="text" class="form-control"
+									name="description" value="<%- detail.description %>"></td>
+								<td>
+									<div class="input-group input-medium date date-picker"
+										data-date-format="mm-dd-yyyy" data-date-viewmode="years"
+										style="width: 160px !important;">
+										<input class="form-control" readonly="" type="text"
+											style="width: 120px;" name="transactionDate"
+											value="<%- detail.transactionDate %>"> <span
+											class="input-group-btn" style="float: left; width: 20px;">
+											<button class="btn default" type="button">
+												<i class="fa fa-calendar"></i>
+											</button>
+										</span>
+									</div>
+								</td>
+								<td><span class="left121"> <input
+										type="text" class="form-control termianl1 currencyTable" name='debitAmt'
+										value="<%- detail.debitAmt %>" /></span></td>
+								<td class="text-right"><span class="right121"> <input type="text"
+										class="form-control termianl1 currencyTable" name='creditAmt'
+										value="<%- detail.creditAmt %>" /></span></td>
+								<td style="display: none"><input type="text"
+									class="form-control termianl1" name="journalEntryId"
+									value="<%- detail.entryId %>"></td>
+								<td style="display: none"><input type="text"
+									class="form-control termianl1" name="hiddenAccountTypeId"
+									value="<%- detail.accountTypeId %>"></td>
+								<td style="display: none"><input type="text"
+									class="form-control termianl1" name="hiddenAccountId"
+									value="<%- detail.accountId %>"></td>	
+
+							</tr>
+							<% }); %>
+						</tbody>
+						<tr>
+							<td class="text-right">Total</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td class="text-right"><span> <input type="text"
+									name='result' readonly="readonly" value='' id="totalDebitAmt"
+									class="form-control amount"></span></td>
+							<td class="text-right"><span> <input type="text"
+									class="form-control amount" readonly="readonly" id="totalCreditAmt"></span>
+							</td>
+
+						</tr>
+					</table>
+				</div>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn blue" id="addEditFinancialRow">ADD
+					NEW</button>
+				<button type="button" class="btn blue" id="updateFinancialData">SAVE</button>
+				<button type="button" class="btn default" data-dismiss="modal">
+					CANCEL</button>
+
+			</div>
+		</div>
+		<!-- /.modal-content -->
+	</div>
+	<!-- /.modal-dialog -->
+</div>

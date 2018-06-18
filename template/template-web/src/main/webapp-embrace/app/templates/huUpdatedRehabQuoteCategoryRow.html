@@ -1,0 +1,47 @@
+<tr data-modelid="<%- issue.inspectionItemId%>">
+
+<td><%- issue.issueSource%></td>
+
+    <td><%- _.find(categories,function(item){
+            console.log(item.categoryId);
+            return issue.category == item.categoryId;
+        }).categoryName%>
+    </td>
+    <td><%- issue.description%></td>
+    <td >
+        <textarea class="form-control" style="height: 58px;resize: none;" name="sellerComments" disabled ><%- issue.sellerComments%></textarea>
+    </td>
+  
+    
+ 
+    
+    <td ><%- issue.sellerResponseText%></td>
+    
+    <td>
+        <div class="input-group date date-picker" disabled data-date-format="mm-dd-yyyy" data-date-viewmode="years">
+                <input class="form-control" readonly disabled type="text" style="cursor: pointer; padding: 2px;" name="repairDate" value="<%- issue.repairDate%>">
+                <span class="input-group-btn hide">
+                    <button class="btn default" type="button">
+                        <i class="fa fa-calendar"></i>
+                    </button>
+                </span>
+        </div>
+    </td>
+    
+    
+    
+
+    <td >
+        <input type="text"  disabled  value="<%- issue.creditAmount%>" name="creditAmount" class="form-control  currencyTable <%(issue.repairedBy=='Seller')? print('lightfontcolor'): '' %>" style="padding: 2px;">
+    </td>
+    
+
+   
+   
+   <td>
+   <input type="text"  value="<%- issue.estimate%>" name="estimate" class="form-control currencyTable  <%(issue.repairedBy=='Seller')? print('lightfontcolor'): '' %>" style="padding: 2px;">
+  </td>
+ 
+   
+   <td ><%-  issue.investorResponse%></td>
+   

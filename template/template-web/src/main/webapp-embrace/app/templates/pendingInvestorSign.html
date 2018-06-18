@@ -1,0 +1,45 @@
+<!-- pending investor sign lightbox -->
+<div class="modal fade bs-modal-sm with-popover" id="PENDING_INVESTOR_SIGNATURE_POPUP_1"
+	tabindex="-1" role="basic" aria-hidden="true">
+	<div class="modal-dialog modal-md">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal"
+					aria-hidden="true"></button>
+				<h4 class="modal-title" id="modalTitle"></h4>
+			</div>
+			<div class="modal-body"
+				style="margin-left: 10px; margin-right: 10px;">
+				<form class="milestone-form" method="post" id="pendingInvestorSignForm">
+					<input type="hidden" id="object" name="object"> <input
+						type="hidden" id="objectId" name="objectId"> <input
+						type="hidden" id="taskKey" name="taskKey">
+
+					<div class="form-group">
+						<label class="control-label" style="text-align: left;">
+							Completion Date <span class="required">* </span>
+						</label>
+						<div class="input-group input-medium date date-picker"
+							data-date="" data-date-format="mm-dd-yyyy" data-date-clear-btn="true"
+							data-date-viewmode="years">
+							<input class="form-control" readonly="readonly" placeholder=""
+								type="text" id="endDate" name="endDate"> <span
+								class="input-group-btn">
+								<button class="btn default" type="button">
+									<i class="fa fa-calendar"></i>
+								</button>
+							</span>
+						</div>
+					</div>
+
+				</form>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn blue"	id="PopupClosingCancellationSubmitButton">SAVE</button>
+				<button type="button" id="cancelButton" class="btn default"	data-dismiss="modal">CANCEL</button>
+			</div>
+		</div>
+		<!-- /.modal-content -->
+	</div>
+	<!-- /.modal-dialog -->
+</div>

@@ -1,0 +1,196 @@
+<!-- BEGIN CONTENT -->
+<div class="page-content-wrapper">
+	<div class="page-content">
+		
+		<!-- BEGIN PAGE HEADING-->
+		<div class="">
+			<div class="dash-header">
+				<!-- BEGIN PAGE TITLE & BREADCRUMB-->
+
+				<div class="clearfix xtra-buttons">
+					<h3 class="page-title pull-left">
+						<i class="fa fa-user pull-left font25"></i> 
+						Investor Profile
+					</h3>
+
+				</div>
+				<div id="alertFailure" class="alert alert-danger display-hide">
+					<button class="close" data-close="alert"></button>
+					Error in fetching details.
+				</div>
+	<!-- 			<div id="formSuccess" class="alert alert-success display-hide">
+					<button class="close" data-close="alert"></button>
+					Your form validation is successful!
+				</div> -->
+				<div id="formFailure" class="alert alert-danger display-hide">
+					<button class="close" data-close="alert"></button>
+					<text>You have some form errors. Please check below.</text>
+				</div>
+				<div id="formSuccess" class="alert alert-success display-hide">
+					<button class="close" data-close="alert"></button>
+					Your form validation is successful!
+				</div>
+				<div id="resetPasswordSuccess"	class="alert alert-success display-hide">
+					<button class="close" data-close="alert"></button>
+					<text>Email with new password has been sent.</text>
+				</div>
+				<div id="resetPasswordError" class="alert alert-danger display-hide">
+					<button class="close" data-close="alert"></button>
+					<text>Error in sending password reset email.</text>
+				</div>
+				<!-- END PAGE TITLE & BREADCRUMB-->
+			</div>
+		</div>
+ 		<% if(profileData) { %> 
+		<div class="member-search clearfix">
+			<div class="col-md-4 text-center" style="border-right: 1px solid #CCCCCC;">
+				<div class="">
+					<!-- <img src="assets/img/user1.png" class="pull-left marg_right35"
+						height="86" width="110"> -->
+						<img src="<%= imglink %>" width="145">
+						<div class="font18 bold marg_top15 margin-bottom-5"><%- profileData.investorName %></div>
+						<p class="font-grey-color3" id = "CreateDate">Create Date: 	05-09-2014</p>
+				</div>
+			
+				<div class="">
+				
+					<div class="text-center marg_top10">
+					<% if(profileData.hasAsset && profileData.performanceView) { %> 
+							<a class="btn btn-sm bg-blue margin-bottom-10 ipperformancepage" style="cursor: pointer; left:0px;" target="blank" data-toggle="tooltip" title="InvestorPortal Performance Detail Page">Performance View</a>
+					<% } %>
+					<% if(profileData.docVaultView) { %> 
+							<a class="btn btn-sm bg-blue margin-bottom-10 ipdocvaultpage" style="cursor: pointer; left:0px; margin-left : 2px;padding :5px 20px 4px 20px;" target="blank" data-toggle="tooltip" title="InvestorPortal Document Vault Page">Doc Vault View</a>
+					<% } %>
+					</div>
+				</div>
+					
+				
+			</div>
+			<div class="col-md-8">
+			<div class="col-md-6 portlet box text-center marg_right30"  id = "investorDepoDiv">
+				<div class="portlet-title"><div class="caption bold font-dark-grey-color3">Investor Deposit</div></div>
+				<div class="portlet-body">
+		  				<div class="col-md-16" id="investorDepositDiv" style = "border: solid 2px #ddd;padding-top : 4px; padding-bottom:2px;">
+						</div>
+				</div>
+
+			
+			</div>
+			<div class="col-md-5">
+			<div class="portlet box">
+			<div class="portlet-title"><div class="caption bold font-dark-grey-color3">Solution Specialist</div></div>
+			<div class="portlet-body">
+
+  			<div class="media">
+                                    <div class="pull-left">
+                                       <a href="#"> <img width="45" src="assets/img/avatar_comments_small.jpg" class="message-thumb img-responsive" style = "border-radius : 50% !important;border: 2px solid #ddd;"></a>
+                                        </div>
+                                    <div class="media-body ">
+                                    <% if(profileData.solutionSpecialist) { %> 
+                                        <p class="font17 bold margin-bottom-5 marg_top10">
+                                           <%- profileData.solutionSpecialist %>
+                                        </p>                                      
+									<%}
+									else {%>
+										<p class="font17 bold margin-bottom-5 marg_top10 font-red-haze">
+                                           Not Available
+                                        </p>  
+                                    <%} %>    
+                                    </div>
+
+                                </div>
+			</div>
+	
+			
+			</div>
+			</div>
+			<div class="portlet-body">
+
+			</div>
+		<div id="investorTagsDiv" class="col-md-12">
+					
+		</div>
+			
+			
+		<!-- 		<div class="col-md-4">
+					<strong>Solution Specialist</strong><br> 
+						<%- profileData.solutionSpecialist %>
+				</div> -->
+	
+		</div>
+</div>
+
+<div class="clearfix"></div>
+
+<div class="panel">
+			<div class="panel-body">
+			 <!-- Tab Start -->
+		         <div class="tabbable">
+						<ul class="nav nav-tabs1">
+							<li class="active" name="investorInfoNav" ><a style="cursor: pointer;" id="investorDetails" data-toggle="tab"><i
+									class="fa fa-user pull-left font14 marg_top4"> </i>Investor
+									Details </a></li>
+							<li class="active" name="investorInfoNav" >
+								<a style="cursor: pointer;" id="investorPreferences" data-toggle="tab">
+									<i class="fa fa-star pull-left font14 marg_top4"></i>
+									Preferences
+								</a>
+							</li>
+							<li class="" name="investorInfoNav" ><a style="cursor: pointer;" id="offerDetails"  data-toggle="tab"><i
+									class="fa fa-search pull-left font14 marg_top4"> </i>Offers 
+									<span id="investorOffersCount" class="badge" style="margin-right: -10px;margin-top: -15px; background-color: #00A5EA;"></span>
+									</a></li>
+							<li class="" name="investorInfoNav" ><a style="cursor: pointer;" id="closingDetails"  data-toggle="tab"><i
+									class="fa fa-shopping-cart pull-left font14 marg_top4"> </i>Closings 
+									<span id="investorClosingsCount" class="badge" style="margin-right: -10px;margin-top: -15px; background-color: #00A5EA;"></span>
+									</a></li>
+							<li class="" name="investorInfoNav" ><a style="cursor: pointer;" id="assetDetails"  data-toggle="tab"><i
+									class="fa fa-building-o pull-left font14 marg_top4"> </i>Assets 
+									<span id="investorAssetsCount" class="badge" style="margin-right: -10px;margin-top: -15px; background-color: #00A5EA;"></span>
+									</a></li>
+							<li class="" name="investorInfoNav"><a style="cursor: pointer;" id="wishlistDetails"  data-toggle="tab"><i
+									class="fa fa-bars pull-left font14 marg_top4"> </i>Wishlist </a></li>
+							<li  class="" name="investorInfoNav"><a style="cursor: pointer;" id="financialDetails" data-toggle="tab"><i
+								class="fa fa-building-o pull-left font14 marg_top4"> </i>Financials </a></li>
+							<li  class="" name="investorInfoNav"><a style="cursor: pointer;" id="investorDocuments" data-toggle="tab"><i
+								class="fa fa-file-text pull-left font14 marg_top4"> </i>Documents </a></li>		
+							<li class="" name="investorInfoNav" ><a style="cursor: pointer;" id="investorContacts" data-toggle="tab"><i
+									class="fa fa-phone pull-left font14 marg_top4"> </i>Contacts </a></li>
+							  <li class="" name="investorInfoNav"><a style="cursor: pointer;" data-toggle="tab" id="investorMessages"><i class="fa fa-envelope pull-left font14 marg_top4">
+	                                </i>Messages </a></li>
+						</ul>
+		
+						<div class="tab-content" style="width: 100%; margin-top: 20px;">
+		                     <div class="tab-pane active" id="investorDetailsTab" name="investorInfoTab">
+							 </div> 
+							 <div class="tab-pane active" id="investorPreferencesTab" name="investorInfoTab">
+							 </div>
+							 <div class="tab-pane" id="investorOfferDetailsTab" name="investorInfoTab">
+							 </div>
+							 <div class="tab-pane" id="investorClosingDetailsTab" name="investorInfoTab">
+							 </div>
+							 <div class="tab-pane" id="investorAssetDetailsTab" name="investorInfoTab">
+							 </div>
+							 <div class="tab-pane" id="investorWishlistDetailsTab" name="investorInfoTab">
+							 </div>
+							 <div class="tab-pane" id="investorFinancialTab" name="investorInfoTab">
+							 </div>
+							 <div class="tab-pane" id="investorDocumentTab" name="investorInfoTab">
+							 </div>
+							 <div class="tab-pane" id="contactsTab" name="investorInfoTab">
+							 </div>
+							 <div class="tab-pane" id="investorMessagesTab" name="investorInfoTab">
+							 </div>
+		                </div>
+				</div>	
+		    </div>
+		
+	    </div>	
+
+	<%} else {%>
+		<div id="investorProfileErrorMessage" style="text-align: center; font-size: large;"></div>
+	<%} %> 
+
+	</div>
+</div>
+<!-- END CONTENT -->

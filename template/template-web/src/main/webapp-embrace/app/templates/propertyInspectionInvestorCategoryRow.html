@@ -1,0 +1,22 @@
+<tr data-modelid="<%- issue.inspectionItemId%>">
+	<td><%- issue.issueSource%></td>
+	<td><%- _.find(categories,function(item){
+		console.log(item.categoryId); return issue.category ==
+		item.categoryId; }).categoryName%></td>
+	<td style="word-wrap: break-word;"><%- issue.description%></td>
+	<td style="word-wrap: break-word;"><%- issue.huComments%></td>
+	<td><select name="repairedBy" class="form-control">
+			<option value="Seller"<% if("Seller" == issue.repairedBy){
+				print('selected'); } %>>Seller</option>
+			<option value="Investor"<% if("Investor" ==
+				issue.repairedBy){ print('selected'); } %>>Investor</option>
+	</select></td>
+	<td
+		class="amount <%(issue.repairedBy=='Seller')? print('lightfontcolor'): '' %>"><%-
+		issue.estimate%></td>
+	<td><p style="text-align: center;"><%- issue.referenceNo%></p></td>
+	<td class="investorResponseDD"></td>
+	<td>
+           <textarea class="form-control" style="height: 54px;" name="investorComments"><%- issue.investorComments%></textarea>
+    </td>
+</tr>

@@ -1,0 +1,35 @@
+<div>
+	 	 <div class="clearfix">
+	         <div class="connected-carousels-closing">
+	             <div class="stage">
+	                 <div class="carousel carousel-stage">
+	                     <ul>
+	                     	<% _.each(images, function(photo){%>
+	                     		<li><img src="<%- loading_img_medium%>" class="img propImage" data-src="<%- photo%>" data-size="medium" width="327" height="234" alt=""></li>
+	            			<% });  %>
+	            			<%if(!images || images.length==0){%>
+	            			<li><img src="assets/img/not-found.jpg" width="327" height="234" alt=""></li>
+	            			<%}%>
+	                     </ul>
+	                 </div>
+	                 <p class="photo-credits">
+	                     HOMEUNION
+	                 </p>
+	                  <a href="#" class="prev prev-stage"><span>&lsaquo;</span></a>
+                      <a href="#" class="next next-stage"><span>&rsaquo;</span></a>
+	             </div>
+	
+	             <div class="navigation">
+	                 <a href="#" class="prev prev-navigation">&lsaquo;</a>
+	                 <a href="#" class="next next-navigation">&rsaquo;</a>
+	                 <div class="carousel carousel-navigation">
+	                     <ul>
+	                     	<% _.each(images, function(photo){%>
+	                     		<li><img src="<%- loading_img_thumbnail%>" class="img propImage" data-src="<%- photo%>" data-size="thumbnail" width="50" height="50" alt=""></li>
+	            			<% });  %>
+	                     </ul>
+	                 </div>
+	             </div>
+	         </div>
+	     </div>
+	</div>

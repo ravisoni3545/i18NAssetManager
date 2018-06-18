@@ -1,0 +1,228 @@
+<div class="panel-body">
+    <div class="col-md-4 col-lg-4">
+		<img src="<%- singleData.propertyInfo.photoLink %>" height="86" width="300" class="pull-left marg_right35 img-responsive">
+	</div>
+	<div class="col-md-4 col-lg-4 font14 pull-left">
+			<h4 class="marg_top0 margin-bottom-5">
+				<a href="#property/<%= singleData.propertyInfo.propertyId%>"><%- singleData.propertyInfo.address %></a></h4>
+			<strong>PropertyType: </strong><%if(singleData.propertyInfo.propertyType) {%> <%-singleData.propertyInfo.propertyType %>, <%}%> <%- singleData.propertyInfo.otherDetails %><br>
+			<strong>Property ID: </strong><%- singleData.propertyInfo.propertyDisplayId %> <br>
+			<strong>Date Acquired : </strong><i><%- singleData.closingDate %></i>
+			&nbsp;&nbsp;
+			<% if(singleData.investmentID) { %>
+				<a href="#closing/<%= singleData.investmentID %>"><strong>Closing Details</strong></a><br>
+			<% } %>
+			<strong>Purchase Price: </strong><i><span class=amount><%- singleData.purchasePrice %></span></i><br>
+			<strong>Financing Type : </strong><%- singleData.financingType %>
+			<% if(singleData.isMortgageImpound){ %> ,Impound : <% print(singleData.isMortgageImpound) } %>
+			<br>
+			<strong>Home Union Impounds: </strong><br>
+			&nbsp;&nbsp;Property Tax: <%- singleData.isPropTax %><br>
+			&nbsp;&nbsp;Insurance: <%- singleData.isInsurance %><br>
+			&nbsp;&nbsp;HOA: <%- singleData.isHoa %>
+			
+	</div>
+	<div class="col-md-4 col-lg-4 font14 pull-left with-popover">
+		<a href="editAssetHeader" class="pull-right btn bg-blue" data-toggle="modal">Edit</a>
+		<div class="with-popover popover-width-630">
+			<strong>Investor:</strong> <a href="#investorProfile/<%- singleData.investorId %>"><%- singleData.investorName %></a> <br>
+			<a class="investment-popover-asset label label-sm label-warning" data-toggle="popover" data-investorId='<%=singleData.investorId%>'
+									data-investmentid='<%=singleData.investmentID%>'
+									style="font-size: smaller;cursor: pointer;" data-placement="bottom" 
+									data-html="true" data-show="true">Other Investments</a> 
+		</div>
+		<strong>Asset Manager:</strong> <%- singleData.assetManagerName %>
+		<br> <strong>Property Manager:</strong> <a href="#vendor/<%- singleData.propertyManagerId%>"><%- singleData.propertyManagerName %></a> <br>
+		
+		<strong>Status :</strong> <%- singleData.propertyStatus %>
+		&nbsp;
+		<% if(rehabStatusLink) { %>
+		<a href="<%-rehabStatusLink %>">Rehab Details</a>
+		<% } %>
+		&nbsp;
+		<% if(marketingStatusLink) { %> <% _.each(marketingStatusLink, function(link){
+			%>
+		<a href="<%= link %>">Marketing Details</a>
+		<% }); %> <% } %>
+		<br>
+		<strong>Asset Type :</strong> <%- singleData.assetType %> <br>
+		<strong>Asset Acquisition Fee :</strong> <% if(singleData.assetAcuisitionFee){
+						if(singleData.isAssetAcquisitionFeePercent=='N') {
+							if(singleData.discountedAAFee==null){
+								print('<span class=amount>' + singleData.assetAcuisitionFee + '</span>');
+							}
+							else{
+								print('<span class=amount>' + singleData.discountedAAFee + '</span>')
+							}
+					} else if(singleData.isAssetAcquisitionFeePercent=='Y') {
+							if(singleData.discountedAAFee!=null){
+								print(singleData.assetAcuisitionFee + '% (<span class="amount lightfontcolor-blue">' + singleData.discountedAAFee + '</span>)');
+							}
+							else{
+								print(singleData.assetAcuisitionFee + '% (<span class=amount>' + (singleData.assetAcuisitionFee*singleData.purchasePrice)/100 + '</span>)');
+							}
+						
+					}} %><br>
+		<strong>Asset Management Fee :</strong> <% if(singleData.isAssetManagementFeePercent=='N' && singleData.isAMFeePercentOfRent=='N') {
+							if(singleData.discountedAMFee==null){
+								print('<span class=amount>' + singleData.assetManagementFee + '</span>');
+							}
+							else{
+								print('<span class=amount>' + singleData.discountedAMFee + '</span>')
+							}
+					} else if(singleData.isAssetManagementFeePercent=='Y'){
+							if(singleData.discountedAMFee!=null){
+								print(singleData.assetManagementFee + '% (<span class="amount lightfontcolor-blue">' + singleData.discountedAMFee + '</span>)');
+							}
+							else{
+								if(((singleData.assetManagementFee*singleData.purchasePrice)/100)>1200){
+									print(singleData.assetManagementFee + '% (<span class=amount>' + (singleData.assetManagementFee*singleData.purchasePrice)/100 + '</span>)');
+								}else{
+									print(singleData.assetManagementFee + '% (<span class=amount>1200</span>)');
+								}
+							}
+					} else if(singleData.isAMFeePercentOfRent=='Y'){
+							if(singleData.discountedAMFee!=null){
+								print(singleData.assetManagementFee + '% (<span class="amount lightfontcolor-blue">' + singleData.discountedAMFee + '</span>)');
+							}
+							else{
+								if(((singleData.assetManagementFee*singleData.rent)/100)>100){
+									print(singleData.assetManagementFee + '% (<span class=amount>' + (singleData.assetManagementFee*singleData.rent)/100 + '</span>)');
+								}else{
+									print(singleData.assetManagementFee + '% (<span class=amount>100</span>)');
+								}
+							}
+					}%> <br>
+		<strong>Home Warranty : </strong><% if(singleData.homeWarrantyCompanyName){
+												print(singleData.homeWarrantyCompanyName);
+												print('<span><i id="editHomeWarranty" style="margin-left:10px; cursor:pointer;"class ="fa fa-edit"></i></span>');
+											}else if(singleData.isWarrantyRequired=='N'){ %> No 
+											<% }else { %> N/A <% } %>
+		<span><i id="editHomeWarranty" style="margin-left:10px; cursor:pointer;"class ="fa fa-edit"></i></span>
+		<br>
+		<% if(singleData.validToDate) { %>
+			&nbsp;&nbsp;&nbsp;
+			<span class="<% (singleData.isWarrantyExpired=='Y')?print('textcolorred'):'' %>"> (Exp. <%- singleData.validToDate %>) </span>
+			<a class="margin-right-10 fa fa-paperclip font14 showDocumentTooltip_2 assetHeaderToolTip" style="cursor: pointer;"
+				data-object="49" data-objectid="<%=singleData.investmentID%>" data-taskkey_1="HOME_WARRANTY" data-html="true" data-show="true">
+			</a>
+
+		<% } %>
+		<div id="homeWarrantLoadDiv"></div>
+		<div style="margin-top:7px" id="assetTagsDiv"></div>
+	</div>
+</div>
+
+<!-- start add Assets Details lightbox -->
+<div class="modal fade" id="editAssetHeaderModal" tabindex="-1"
+	role="basic" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal"
+					aria-hidden="true"></button>
+				<h4 class="modal-title">Asset Details</h4>
+			</div>
+			<div class="modal-body">
+				<div class="col-md-12">
+					<div class="col-md-6">
+						<div class="form-group">
+							<label class="control-label" style="text-align: left;">
+								Asset Manager </label> 
+							<div id="assetManagerDropdown"></div>
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="form-group">
+							<label class="control-label" style="text-align: left;">
+								Property Manager </label> 
+							<div id="propertyManagerDropdown"></div>
+						</div>
+					</div>
+				</div>
+				<div class="clearfix"></div>
+				<div class="col-md-12">
+					<div class="col-md-6">
+						<div class="form-group">
+							<label class="control-label" style="text-align: left;">
+								Status </label> 
+							<div id="assetStatusDropdown"></div>
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="form-group">
+							<label class="control-label" style="text-align: left;">
+								Asset Type </label> 
+							<div id="assetTypeDropdown"></div>
+						</div>
+					</div>
+				</div>	
+				<div class="clearfix"></div>	
+				<div class="row">
+					<div class="col-md-6">
+						<div class="form-group">
+							<label class="control-label" style="text-align: left; padding-left: 30px">
+								Impounds: </label>
+								
+							<div class="row">	
+							<label class="col-md-6 control-label" style="text-align: left; padding-left:55px; ">
+								Property Tax: </label> 
+							<div id="propTaxDiv">
+								<label class="radio-inline" style="padding-left:0px"> 
+									<input name="propTax"  value="Y" type="radio"<%if(singleData.isPropTax=="Yes"){%>checked="true"<%}%>>
+									Yes
+								</label> 
+								<label class="radio-inline" style="padding-left:0px">
+									<input name="propTax"  value="N" type="radio"<%if(singleData.isPropTax=="No"){%>checked="true"<%}%>> 
+									No
+								</label>
+							</div>
+							</div>
+							
+							<div class="row">
+							<label class="col-md-6 control-label" style="text-align: left; padding-left:55px;">
+								Insurance: </label> 
+							<div id="insuranceDiv">
+								<label class="radio-inline" style="padding-left:0px"> 
+									<input name="insurance"  value="Y" type="radio"<%if(singleData.isInsurance=="Yes"){%>checked="true"<%}%>> 
+									Yes
+								</label> 
+								<label class="radio-inline" style="padding-left:0px">
+									<input	name="insurance"  value="N" type="radio"<%if(singleData.isInsurance=="No"){%>checked="true"<%}%>>
+									No
+								</label>
+							</div>
+							</div>
+							
+							<div class="row">
+							<label class="col-md-6 control-label" style="text-align: left; padding-left:55px;">
+								HOA: </label> 
+							<div id="hoaDiv">
+								<label class="radio-inline" style="padding-left:0px"> 
+									<input name="hoa"  value="Y" type="radio"<%if(singleData.isHoa=="Yes"){%>checked="true"<%}%>>
+									Yes
+								</label>
+								<label class="radio-inline" style="padding-left:0px">
+								<input name="hoa"  value="N" type="radio"<%if(singleData.isHoa=="No"){%>checked="true"<%}%>>
+								No
+								</label>
+							</div>
+						</div>	
+						</div>
+					</div>
+					<div class="col-md-6"></div>
+				</div>
+				<div class="clearfix"></div>	
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn blue" id="updateAssetHeaderButton">
+					SAVE</button>
+				<button type="button" class="btn default" data-dismiss="modal">
+					CANCEL</button>
+			</div>
+		</div>
+		<!-- /.modal-content -->
+	</div>
+	<!-- /.modal-dialog -->
+</div>
+<!-- end add Assets Details lightbox -->

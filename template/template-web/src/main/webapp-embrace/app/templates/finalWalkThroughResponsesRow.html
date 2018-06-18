@@ -1,0 +1,36 @@
+<% if(responseItems && responseItems.length) {  
+     _.each(responseItems,function(responseItem){ %>
+       <tr>
+           <td><p style="text-align:left;" id="categoryName"><%- responseItem.categoryName%></p></td>
+           <td><p style="text-align:left;" id="responseText"><%- responseItem.responseText%></p></td>
+           <td>
+            <form>
+	            <div class="radio-list">
+      					<label class="radio-inline">
+      							<input type="radio" value="Yes" name="isCompleted" 
+      							<% if(responseItem.isCompleted == 'Y'){ %>	checked	<%}%>>
+      						 Yes
+      					</label> 
+      					<label style="padding-left: 0px !important;" class="radio-inline">
+      							<input type="radio" value="No"  name="isCompleted"
+      								<% if(responseItem.isCompleted != 'Y'){ %>	checked	<%}%>>
+      						No
+      					</label>
+    				</div>
+          </form>
+  		   </td>
+           <td>
+           		<form method="post" enctype="multipart/form-data" class="finalWalkThroughResponseForm">
+           			<input type="hidden" id="issueId" name="issueId" value="<%- responseItem.issueId %>">
+           			<input type="hidden" id="responseId" name="responseId" value="<%- responseItem.responseId %>">
+           			<input type="file" multiple name="repairPictures">
+           		</form>
+           </td>	
+           <td>
+              <button type="button" class="btn blue saveInspectionResponseData">Save</button> 
+           </td>
+       </tr>
+<%  }) 
+} else { %>
+    <tr><td colspan="5" style="text-align: center;"></td></tr>
+<% } %>

@@ -1,0 +1,701 @@
+<div class="modal fade" id="calendarModalDiv" tabindex="-1" role="dialog"
+        aria-hidden="true">
+<div class="modal-dialog modal-lg" >
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                    </button>
+                    <h4 class="modal-title">
+                        <i class="fa fa-calendar"></i> Tasks</h4>
+                </div>
+                <div id="calendarModalBody" class="modal-body">
+                    
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn default" data-dismiss="modal">
+                        Exit</button>
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+<div class="activeFiltersList clearfix" style="display: block;">
+  <%_.each(hilGroupData,function(singleData){ %>
+    <a style="cursor:pointer;" class='activeFilter_1 BP hilGroupBtn' data-hilgroupid="<%= singleData%>" data-selected=false>
+      <span class='label label-sm label-warning'><%=singleData%></span><span class='hilGroupRemoveBtn close'>X</span>
+    </a>
+  <%  }) ; %> 
+  <% if(hilGroupData && hilGroupData.length){ %>
+  	 <a style="cursor:pointer;" class='activeFilter_1 BP hilGroupBtn' data-hilgroupid="All" data-selected=false>
+      <span class='label label-sm label-warning'>Show All</span>
+    </a>
+  <% } %> 
+</div>
+
+<div id="hilGroupMessage"	class="alert alert-success display-hide">
+	<button class="close" data-close="alert"></button>
+	<text></text>
+</div>
+
+<div class="clearfix"></div>
+
+<div class="panel-group table-responsive offer-mngmt-table">
+  <table id="hilOppPropertyTable" class="table table-bordered table-hover table-advance tablegreen" style="table-layout: fixed; width: 100%">
+    <thead>
+      <tr>
+        <th> PROPERTY </th>
+        <th> LPOA </th>
+        <th> ILM/TKP </th>
+        <th> LIST PRICE </th>
+        <th> REVIEWED </th>
+        <th> STATUS </th>
+        <th> ACTIONS </th>
+        <th> &nbsp; </th>
+        <!-- <th> <a style="cursor:pointer;" data-toggle="modal" > </a> </th> -->
+      </tr>
+    </thead>
+    <tbody class="with-popover">
+      <% _.each(propertiesData,function(singleData){ %>
+        <tr data-object="<%= singleData.attributes.hilOppPropertyObject%>" data-objectid="<%= singleData.attributes.hilOppPropertyId%>">
+          <td style="border-left: none;">
+            <div class="pull-left preselectOverlay" data-statusid="<%= singleData.attributes.propertyStatusId%>" data-hilgroupid="<%= singleData.attributes.hil%>"> 
+              <a href="#property/<%= singleData.attributes.propertyId%>">
+                <img border="0" class="img1class" src="<%= singleData.attributes.photoLink%>">
+              </a>
+              <% if(singleData.attributes.isHuPreSelected) { %>
+                <div class="preselect-ico"> 
+                  <img src="assets/img/been.png">
+                </div>
+              <% } %>
+            </div>
+            <div class="col-md-8" style="padding-left:5px;"> 
+              <a href="#property/<%= singleData.attributes.propertyId%>" class="darkcolor dottext hopNameTooltip" data-toggle="tooltip" title="<%= singleData.attributes.address %>, <%= singleData.attributes.city %>, <%= singleData.attributes.state %>, <%= singleData.attributes.zip %>">
+                <%- singleData.attributes.address %>
+                <%- singleData.attributes.city %>
+                <%- singleData.attributes.state %>
+                <%- singleData.attributes.zip %>
+              </a> 
+              <span class="lightfontcolor2">
+                <%- singleData.attributes.bedrooms %> Beds, 
+                <%- singleData.attributes.bathrooms %> Baths, 
+                <%- accounting.formatMoney(singleData.attributes.totalSqft,"",0) %> Sqft.
+              </span><br>
+              <div class="groupicon"> 
+                <a class="margin-right-10 fa fa-comments font14 showMessageTooltip_2" style="cursor: pointer;" data-object="<%=essentials.parentObj%>" data-objectid="<%=essentials.parentObjId%>" data-subobject="<%=singleData.attributes.hilOppPropertyObject%>" data-subobjectid="<%= singleData.attributes.hilOppPropertyId%>" data-html="true" data-show="true">
+                </a>
+                <a class="margin-right-10 fa fa-paperclip font14 showDocumentTooltip_2" style="cursor: pointer;" data-object="<%=essentials.parentObj%>" data-objectid="<%=essentials.parentObjId%>" data-subobject="<%=singleData.attributes.hilOppPropertyObject%>" data-subobjectid="<%=singleData.attributes.hilOppPropertyId%>" data-html="true" data-show="true">
+                </a>
+                 <a class="margin-right-10 fa fa-eye ippropertypage" style="cursor: pointer;"  data-objectid="<%=singleData.attributes.investorPortalPropertyAddress%>" data-toggle="tooltip" title="Investor Portal Property Detail">
+              </a>
+                <a class="margin-right-10 fa fa-table" style="cursor: pointer;" title="Offer History">
+              </a>
+              <a data-toggle="modal" href="#calendarModalDiv" class="margin-right-10 fa fa-calendar" style="cursor: pointer;" title="Calendar" object-id="<%=singleData.attributes.hilOppPropertyId%>">
+              </a>
+                
+              </div>
+              <div class="groupicon hide"> 
+                <a href="#" class="margin-right-10"><i class="fa  fa-comments font14"></i></a> 
+                <span class="dropdown">
+                <a href="#" class="margin-right-10 dropdown-toggle" data-toggle="dropdown"><i class="fa fa-paperclip font14"></i></a>
+                <ul role="menu" class="dropdown-menu">
+                  <li> <a href="#"> Pre-Inspection Report </a> </li>
+                  <li> <a href="#"> Rehab Report </a> </li>
+                  <li> <a href="#"> ILM Comments </a> </li>
+                </ul>
+                </span> 
+              </div>
+              
+            </div>
+          </td>
+          <td>
+          <% if(!singleData.attributes.lpoaOpportunityId && singleData.attributes.propertyStatus != "Not Available" && singleData.attributes.propertyStatus != "Purchase Agreement Executed" && 
+          		singleData.attributes.propertyStatus != "Removed" && singleData.attributes.propertyStatus != "Rejected By Investor"
+          		&& singleData.attributes.propertyStatus != "Offer Withdrawn" && singleData.attributes.propertyStatus != "Property Not Recommended"
+          		&& singleData.attributes.propertyStatus != "No Response from Seller") { %>
+          	<div class="lpoaCheckDiv"><input type='checkbox' class='checkbox lpoaCheck' data-objectid="<%= singleData.attributes.hilOppPropertyId%>"></div>
+          <% } %>
+          </td>
+          <td> <%- singleData.attributes.ilmTkpName %></td>
+          <td>
+            <div><%- accounting.formatMoney(singleData.attributes.listPrice,"$",2) %></div>
+              <% if(singleData.attributes.bidMin && singleData.attributes.bidMax) { %>
+              <div class="lightfontcolor"> Bid Range:<br>
+                <span class="successtext"> <%= accounting.formatMoney(singleData.attributes.bidMin,"$",2) %> -  <%= accounting.formatMoney(singleData.attributes.bidMax,"$",2) %></span> 
+              </div>
+              <% } %>
+          </td>
+          <td> <%- singleData.attributes.reviewDate %> </td>
+          <!-- For Status Column-->
+          <td>
+            <% if(singleData.attributes.propertyStatus == "Manual Recommendation") { %>
+              <div><%- singleData.attributes.propertyStatus %>
+                <div class="lightfontcolor"> by 
+                  <a> <%- singleData.attributes.statusAddedBy %></a> 
+                </div>
+              </div>
+            <% } else if(singleData.attributes.propertyStatus == "Offer Submitted") { %>
+                <div><%- singleData.attributes.propertyStatus %> <% if(singleData.attributes.propertyTypeId == "386"){%> <i class="fa fa-gavel"></i> <% } %></div>
+                <div class="lightfontcolor"> Offer Amount:<br>
+                  <% _.each(singleData.attributes.offers,function(offer){
+                     if(offer.offerStatus == "Submitted"){ %>
+                        <span class="successtext"><%= accounting.formatMoney(offer.offerAmount,"$",2) %></span>
+                  <%  }
+                    }); %>
+                </div>
+            <% } else if(singleData.attributes.propertyStatus == "Offer Accepted") { %>
+                <div><%- singleData.attributes.propertyStatus %><% if(singleData.attributes.propertyTypeId == "386"){%> <i class="fa fa-gavel"></i> <% } %></div>
+                <div class="offerdet-style">
+                  <i class="fa fa-check-circle"></i> Offer Amount:<br>
+                  <% _.each(singleData.attributes.offers,function(offer){
+                     if(offer.offerStatus == "Accepted"){ %>
+                        <span class="successtext"><%= accounting.formatMoney(offer.offerAmount,"$",2) %></span>
+                  <%  }
+                    }); %>
+                </div>
+            <% } else if(singleData.attributes.propertyStatus == "Offer Created") { %>
+                <div><%- singleData.attributes.propertyStatus %> <% if(singleData.attributes.propertyTypeId == "386"){%> <i class="fa fa-gavel"></i> <% } %></div>
+                <div class="lightfontcolor"> Offer Amount :<br>
+                  <% _.each(singleData.attributes.offers,function(offer){
+                     if(offer.offerStatus == "Created"){ %>
+                        <span class="successtext"><%= accounting.formatMoney(offer.offerAmount,"$",2) %></span>
+                  <%  }
+                    }); %>
+                </div>
+            <% } else if(singleData.attributes.propertyStatus == "Purchase Agreement Executed") { %>
+                <div><%- singleData.attributes.propertyStatus %> <% if(singleData.attributes.propertyTypeId == "386"){%> <i class="fa fa-gavel"></i> <% } %></div>
+                  <div class="lightfontcolor"> Purchase Price :<br>
+                   <% _.each(singleData.attributes.offers,function(offer){
+                     if(offer.offerStatus == "Accepted"){ %>
+                        <span class="successtext"><%= accounting.formatMoney(offer.offerAmount,"$",2) %></span>
+                     <%  }
+                    }); %>
+                  </div>
+            <% } else if(singleData.attributes.propertyStatus == "Ready to Invest") { %>
+                <div><%- singleData.attributes.propertyStatus %> <% if(singleData.attributes.propertyTypeId == "386"){%> <i class="fa fa-gavel"></i> <% } %> </div>
+                  <% var offers = singleData.attributes.offers;
+                     if(offers && offers.length) { %>
+                      <div class="lightfontcolor"> Offer Amount :<br>
+                            <span class="successtext"><%= accounting.formatMoney(offers[0].offerAmount,"$",2) %></span>
+                      </div>
+                  <% } %>
+            <% } else if(singleData.attributes.propertyStatus == "Seller Counter Received" || singleData.attributes.propertyStatus == "Investor Counter Submitted") { %>
+                <div><%- singleData.attributes.propertyStatus %></div>
+                    <div class="lightfontcolor"> Offer Amount :<br>
+                      <% _.each(singleData.attributes.offers,function(offer){
+                         if(offer.offerStatus == "Submitted"){ %>
+                            <span class="successtext"><%= accounting.formatMoney(offer.offerAmount,"$",2) %></span>
+                         <%  }
+                        }); %>
+                    </div>
+            <% } else if(singleData.attributes.propertyStatus == "Offer Rejected") { %>
+                <div><%- singleData.attributes.propertyStatus %> <% if(singleData.attributes.propertyTypeId == "386"){%> <i class="fa fa-gavel"></i> <% } %></div>
+                    <div class="lightfontcolor"> Offer Amount :<br>
+                      <% _.each(singleData.attributes.offers,function(offer){
+                         if(offer.offerStatus == "Rejected"){ %>
+                            <span class="successtext"><%= accounting.formatMoney(offer.offerAmount,"$",2) %></span>
+                         <%  }
+                        }); %>
+                    </div>
+            <% } else if(singleData.attributes.propertyStatus == "Rejected By Investor") { %>
+                <div><%- singleData.attributes.propertyStatus %> <% if(singleData.attributes.propertyTypeId == "386"){%> <i class="fa fa-gavel"></i> <% } %></div>
+                  <div class="lightfontcolor"> Reason :<br>
+                      <span class="successtext"><%- singleData.attributes.rejectionReason %></span>
+                  </div>
+            <% } else { %>
+                <%- singleData.attributes.propertyStatus %>
+            <% } %>
+          </td>
+          <td class="actions-td">
+          	<%
+
+          		if(singleData.attributes.actions) { 
+          			if(singleData.attributes.propertyStatus != "Not Available" && singleData.attributes.propertyStatus != "Property Not Recommended" 
+          				&& singleData.attributes.propertyStatus != "Rejected By Investor" && singleData.attributes.propertyStatus != "Offer Withdrawn" 
+          				&& singleData.attributes.propertyStatus != "No Response from Seller" ){  
+	          			_.each(singleData.attributes.actions,function(action){
+<!-- 	          						if(action == 'CREATE_OFFER' && singleData.attributes.propertyStatus == "Ready to Invest" && singleData.attributes.isAutomated=='Y') { -->
+<!-- 	          							action = 'APPROVE_OFFER'; -->
+<!-- 	          						} else -->
+	          						if(action == 'CREATE_OFFER' && singleData.attributes.propertyStatus == "Pending Investor Signature") {
+	          							action = 'REVIEW_OFFER';
+	          						} else if(action == 'OFFER_RESPONSE' && singleData.attributes.propertyStatus == "Pending Investor Signature") {
+		          						action += '_REVIEW_OFFER';
+		          					} else if(singleData.attributes.propertyStatus == "Seller Counter Received") {
+		          						action += '_SELLER';
+		          					} else if(action == 'OFFER_RESPONSE' && singleData.attributes.propertyStatus == "Signed by Investor") {
+		          						action = 'SUBMIT_OFFER';
+		          					}%>
+		          					
+	          			
+		          				<%=opportunityPropertyActionsView.getButtonsView(action)%>
+		          			<%
+	          			 });
+	          			  if(singleData.attributes.closingStatus){
+		          			switch(singleData.attributes.closingStatus){
+		          				case "Closing Completed":
+		          				case "Completed":	print('<br>Completed on ');
+		          									if(singleData.attributes.closingEndDate){
+		          										print(singleData.attributes.closingEndDate);
+		          									}
+		          									break;
+		          				case "Closing Cancelled":
+		          				case "Pending Cancellation":
+		          				case "Cancelled":	print('<br>Cancelled on ');
+		          									if(singleData.attributes.closingEndDate){
+		          										print(singleData.attributes.closingEndDate);
+		          									}
+		          									print('<br>Cancellation reason: ');
+		          									if(singleData.attributes.cancellatoinReason){
+		          										print(singleData.attributes.cancellatoinReason);
+		          									}
+		          									break;
+		          				default :	 		print('<br>In Progress, Estimated to close on ');
+		          									if(singleData.attributes.estimatedClosingDate){
+		          										print(singleData.attributes.estimatedClosingDate);
+		          									}
+		          									break;
+		          			}
+          				}
+          			 }
+          		} 
+          		if(singleData.attributes.isCancelledLost=='Y'){
+          			print('<br><div class="lightfontcolor">Cancelled lost</div>');
+          		}
+          		%>
+          </td>
+          <td>
+            <% if(oppMgmtPermission) { %>
+            	<% if(singleData.attributes.propertyStatus != "Manual Recommendation") { %>
+	            	<div class="btn-group" style="text-align: left !important;">
+						<button data-toggle="dropdown"
+							class="btn dropdown-toggle gear1button" type="button" style="padding-left: 0px;">
+							<i class="fa fa-gear"></i>
+						</button>
+						<ul role="menu" class="dropdown-menu"
+							style="margin-left: -160px !important; margin-top: -20px !important; padding: 5px;">
+							<li>
+								<a data-toggle="modal" name="rollbackProperty" class="btn btn-xs rollbackProperty" style="padding-left: 7%; text-align: left !important;"
+									href="#form-rollback-property" data-object="<%= singleData.attributes.hilOppPropertyObject%>"  data-objectid="<%= singleData.attributes.hilOppPropertyId%>">
+									<i class="fa fa-undo"></i> Roll Back
+								</a>
+							</li>
+			            <% if(singleData.attributes.propertyStatus == "Ready to Invest"
+			          		|| singleData.attributes.propertyStatus == "Pending Investor Signature"
+			          		|| singleData.attributes.propertyStatus == "Signed by Investor"
+			          		|| singleData.attributes.propertyStatus == "Offer Submitted"
+			          		|| singleData.attributes.propertyStatus == "Seller Counter Received"
+			          		|| singleData.attributes.propertyStatus == "Investor Counter Submitted") { %>
+					          		<li>
+										<a data-toggle="modal" name="cancelProperty" class="btn btn-xs cancelProperty" style="padding-left: 7%; text-align: left !important;"
+											href="#form-cancel-property" data-object="<%= singleData.attributes.hilOppPropertyObject%>"  data-objectid="<%= singleData.attributes.hilOppPropertyId%>">
+											<i class="fa fa-trash-o"></i> Cancel Property
+										</a>
+									</li>
+						<% } if((singleData.attributes.closingStatus=='Cancelled' || singleData.attributes.closingStatus=='Pending Cancellation')){
+								if(singleData.attributes.isCancelledLost!='Y'){%>
+									<li><a style="cursor:pointer; padding-left: 7%; text-align: left !important;" data-toggle="modal" class="cancelledLost btn btn-xs"><i class="fa fa-times"></i>Cancelled Lost</a></li>
+								<% } else{%>
+									<li><a style="cursor:pointer; padding-left: 7%; text-align: left !important;" data-toggle="modal" class="undoCancelledLost btn btn-xs" style="padding-left: 7%; text-align: left !important;"><i class="fa fa-check"></i>Undo cancelled Lost</a></li>
+								<% } } %>
+						</ul>
+					</div>
+				<% } %>
+			<% } %>
+          </td>
+          <!-- <td>
+            <% if(statusActionsMap.hasOwnProperty(singleData.attributes.propertyStatus)) {
+              var requiredbuttons = statusActionsMap[singleData.attributes.propertyStatus].split(",");
+              _.each(requiredbuttons,function(btn){
+                switch(btn){
+                  case "Ready for Investor Review": %>
+                    <button class="btn btn-primary btn-xs accordion-toggle margin-bottom-5">Ready for Investor Review</button>
+                    <%  break;
+                  case "Remove Property": %>
+                    <button class="btn red btn-xs accordion-toggle margin-bottom-5 removeProperty">Remove Property</button>
+                    <%  break;
+                  case "Investor Review": %>
+                    <button class="btn btn-primary btn-xs accordion-toggle investorReviewBtn" data-toggle="collapse" data-target="#investorreview" data-showpopup=true>Investor Review</button>
+                    <%  break;
+                  case "Ready to Invest": %>
+                    <button class="btn btn-primary btn-xs accordion-toggle margin-bottom-5" data-toggle="collapse" data-target="#readytoinvest">Ready to Invest</button>
+                    <%  break;
+                  case "Rejected by Investor": %>
+                    <button class="btn red btn-xs accordion-toggle" data-toggle="collapse" data-target="#rejectedbyinvestor">Rejected by Investor</button>
+                    <%  break;
+                  case "Upload RightBid Agreement": %>
+                    <button data-target="#purchaseagg_1" data-toggle="collapse" class="btn purple btn-xs accordion-toggle">Upload RightBid Agreement</button>
+                    <%  break;
+                  case "Accept": %>
+                    <button class="btn green btn-xs accordion-toggle" data-toggle="collapse" data-target="#accept">Accept</button>
+                    <%  break;
+                  case "Counter": %>
+                    <button class="btn btn-xs yellow accordion-toggle" data-toggle="collapse" data-target="#counter">Counter</button>
+                    <%  break;
+                  case "Reject": %>
+                    <button class="btn btn-xs red accordion-toggle" data-toggle="collapse" data-target="#reject">Reject</button>
+                    <%  break;
+                  case "Upload Purchase Agreement": %>
+                    <button data-target="#rightbidagg_1" data-toggle="collapse" class="btn purple btn-xs accordion-toggle">Upload Purchase Agreement</button>
+                    <%  break;
+                  case "Closing Details": %>
+                    <button class="btn btn-xs red accordion-toggle" data-toggle="collapse" data-target="#closing">Closing Details</button>
+                    <%  break;
+                  default:
+                }
+              });
+            } %>
+          </td> -->
+          <!--<td>
+            <div class="btn-group">
+            <% if(oppPropertyStatusGearActionsMap[singleData.attributes.propertyStatus]) { %>
+              <button data-toggle="dropdown" class="btn dropdown-toggle gear2button" type="button"><i class="fa fa-gear"></i>
+              </button>
+              <ul role="menu" class="dropdown-menu" style="margin-left:-175px!important;padding:5px; ">
+                <% var requiredbuttons = oppPropertyStatusGearActionsMap[singleData.attributes.propertyStatus];
+              _.each(requiredbuttons,function(btn){
+                console.log(btn);
+                switch(btn){
+                  case "Initiate RightBid Process": %>
+                    <li><a class="btn btn-xs textalignleft initiateRightBid"><i class="fa fa-dot-circle-o"></i> Initiate RightBid Process</a></li>
+                    <%  break;
+                  case "Upload RightBid Agreement": %>
+                    <li><a class="btn btn-xs textalignleft uploadRightBidAgreement" data-target="#rightbidagg_1" data-toggle="collapse" data-showpopup=true ><i class="fa fa-file-text"></i> Upload Right Bid Agreement</a></li>
+                    <%  break;
+                  case "Upload Purchase Agreement": %>
+                    <li><a class="btn btn-xs textalignleft uploadPurchaseAgreement" data-target="#uploadpurchaseagg_1" data-toggle="collapse" data-showpopup=true ><i class="fa fa-file-text"></i>  Upload Purchase Agreement</a></li>
+                    <%  break;
+                  default:
+                }
+              }); %>
+
+                <!-- <li><a href="properties_detail.html" class="btn btn-xs textalignleft"><i class="fa fa-eye"></i> Investor Portal Property Detail</a></li>
+                <li><a href="javascript:;" class="btn btn-xs textalignleft"><i class="fa fa-trash-o"></i> Remove Property</a></li>
+                <li><a href="javascript:;" class="btn btn-xs textalignleft"><i class="fa fa-home"></i> Property Not Available</a></li>
+                <li><a class="btn btn-xs textalignleft initiateRightBid"><i class="fa fa-dot-circle-o"></i> Initiate RightBid Process</a></li>
+                <li><a class="btn btn-xs textalignleft uploadRightBidAgreement" data-target="#rightbidagg_1" data-toggle="collapse" data-showpopup=true ><i class="fa fa-file-text"></i> Upload Right Bid Agreement</a></li>
+                <li><a href="javascript:;" class="btn btn-xs textalignleft"><i class="fa fa-dollar"></i> Ready to Invest</a></li>
+                <li><a href="javascript:;" class="btn btn-xs textalignleft"><i class="fa fa-dollar"></i> Create Offer</a></li>
+                <li><a href="javascript:;" class="btn btn-xs textalignleft"><i class="fa fa-dollar"></i> Submit Offer</a></li>
+                <li><a class="btn btn-xs textalignleft uploadPurchaseAgreement" data-target="#uploadpurchaseagg_1" data-toggle="collapse" data-showpopup=true ><i class="fa fa-file-text"></i>  Upload Purchase Agreement</a></li>
+                 --!>
+              </ul>
+              <% } else {%>
+                <button data-toggle="dropdown" class="btn dropdown-toggle gear2button" disabled="disabled" type="button"><i class="fa fa-gear"></i> </button>
+              <% } %>
+            </div>
+          </td> -->
+        </tr>
+      <%  })  %>  
+    </tbody>
+  </table>
+</div>
+
+<div class="modal fade bs-modal-sm" id="optionCancelledLost" tabindex="-1" role="dialog" aria-hidden="true">
+	<div class="modal-dialog modal-sm">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+				<h4 class="modal-title">Cancelled Lost</h4>
+			</div>
+			<div class="modal-body form-group">
+				<form id="cancelledLostForm">
+				  <label class="control-label">Comments<span class="required">*</span></label><br>
+				  <textarea class="form-control" style="height: 100px;" id="cancelledLostComments" name="cancelledLostComments"></textarea>
+				</form>
+			</div>
+			<div class="modal-footer">
+				<button id="cancelledLostConfirmationButton" type="button" class="btn blue">Save</button>
+				<button type="button" class="btn default" data-dismiss="modal">Cancel</button>
+			</div>
+		</div>
+		<!-- /.modal-content -->
+	</div>
+	<!-- /.modal-dialog -->
+</div>
+
+<div class="modal fade bs-modal-sm" id="optionUndoCancelledLost" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                <h4 class="modal-title">Cancelled Lost</h4>
+            </div>
+            <div class="modal-body">Are you sure want to undo cancelled lost?</div>
+            <div class="modal-footer">
+                <button type="button" class="btn blue" id="undoCancelledLostConfirmationButton">Yes</button>
+                <button type="button" class="btn default" data-dismiss="modal">No</button>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+
+<div class="modal fade bs-modal-sm" id="oppPropertyYesNoModal" tabindex="-1"
+    role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"
+                    aria-hidden="true"></button>
+                <h4 class="modal-title">Delete</h4>
+            </div>
+            <div class="modal-body">Are you sure want to delete this?</div>
+            <div class="modal-footer">
+                <button type="button" class="btn blue" id="oppPropertyYesNoConfirmBtn">Yes</button>
+                <button type="button" class="btn default" id="oppPropertyNoConfirmBtn" data-dismiss="modal">No</button>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+
+
+<!-- Start Comments Popup Box -->
+<div class="modal fade" id="ilm-email" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true"> </button>
+                <h4 class="modal-title"> <i class="fa fa-comments marg_right10" style="font-size: 20px;"></i>Send E-mail To Listing Agent</h4>
+            </div>
+            <div class="modal-body">
+                <div class="post-comment">
+					<div id="emailformAlertFailure" class="alert alert-danger display-hide">
+										<button class="close" data-close="alert"></button>
+										Error occured while sending the email.
+									</div>
+									<div id="paAttachFailure" class="alert alert-danger display-hide">
+										<button class="close" data-close="alert"></button>
+										Couldn't send the offer email. Please wait for availability of Signed PA to send email.
+									</div>
+									<div class="alert alert-success display-hide" id="emailformAlertSuccess">
+										<button class="close" data-close="alert"></button>
+										Successfully sent the email!
+									</div>
+
+                    <form role="form" method="post" enctype="multipart/form-data" id="sendOfferEmailForm">
+                    <input type="hidden" id="object" name="object"> <input
+						type="hidden" id="objectId" name="objectId"> <input
+						type="hidden" id="offerId" name="offerId"> <input
+						type="hidden" id="opportunityId" name="opportunityId">
+						
+						
+						<input
+						type="hidden" id="doctype" name="doctype" value="Signed PA">
+												
+                        <div class="form-group">
+                            <label class="control-label">Email
+										<span class="required">
+											 *
+										</span>
+                            </label>
+                            <input type="text" class="form-control" name="listingAgentEmailAddress">
+                        </div>
+                        
+                         <div class="form-group">
+                            <label class="control-label">Subject
+
+                            </label>
+                            <input type="text" class="form-control" name="subject">
+                        </div>
+                        
+                        <div class="form-group">
+                        	<p style="font-weight: bold;">* The Purchase Agreement and Proof of Fund or Pre-Qualification letter will automatically added to the email.</p>
+                            <label class="control-label" style="text-align: left;"> Upload Additional Documentation </label>
+                            <input type="file" style="padding-bottom:40px;" multiple="" class="form-control" name="paAgreementDocs">
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label">Message
+										<span class="required">
+											 *
+										</span>
+                            </label>
+                            <textarea class="col-md-10 form-control" rows="8" name="messageText"></textarea>
+                        </div>
+                        <button class="margin-top-20 btn blue" type="button" id="sendOfferEmailButton" >Send</button>
+                        <button class="btn default margin-top-20" data-dismiss="modal" type="button">Cancel</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+<!-- End Comments Popup Box -->
+
+<!-- Offer history modal start -->
+<div class="modal fade bs-modal-lg" id="offer-history" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true"> </button>
+                <h4 class="modal-title"> <i class="fa fa-th-list marg_right10" style="font-size: 20px;"></i>Offer History</h4>
+            </div>
+            <div class="modal-body">
+                <div class="renderOfferTable">
+					
+                </div>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+<!-- Offer history modal end -->
+
+<!-- Start cancel from property modal -->
+<div class="modal fade bs-modal-md" id="form-cancel-property" tabindex="-1"
+	role="dialog" aria-hidden="true">
+	<div class="modal-dialog modal-md">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal"
+					aria-hidden="true"></button>
+				<h4 class="modal-title">Cancel Property</h4>
+			</div>
+			<div class="modal-body">
+				<div class="modal-body">
+					<div id="cancelPropertyError" class="alert alert-danger display-hide">Error occurred during cancellation</div>
+					<input id="cancelHilOppPropId" style="display: none;"/>
+	  				<div class="row">
+						<div class="col-md-12">
+	                        <div class="form-group">
+	                            <label class="col-md-3 control-label pad_leftright0" style="padding-left: 25px;">
+	                            	Reason <span style="color: red;">*</span>
+	                            </label>
+	                            <div class="col-md-9 pad_right0 margin-bottom-10" style="padding-left: 0px;">                
+	                                <div class="reason">
+	                                 	<select class="form-control cancelReason" name="reason">
+											<option value="">Select</option>
+									    	<option value="407">Property Not Available</option>
+									    	<option value="551">Property Not Recommended</option>
+									    	<option value="357">Rejected By Investor</option>
+									    	<option value="369">Offer Withdrawn</option>
+									    	<option value="553">No Response from Seller</option>
+										</select>
+									</div>
+	                           </div>
+	                        </div>
+	                    </div>
+					</div>
+					<div class="row" id="cancelReasonError" style=" display: none; margin-bottom: 20px;">
+						<div class="col-md-3"></div>
+						<div class="col-md-9" style="color: red;">Please select a reason for cancellation.</div>
+					</div>
+					<div class="row">
+						<div class="col-md-12">
+	                        <div class="form-group">
+	                            <label class="col-md-3 control-label pad_leftright0" style="padding-left: 25px;">
+	                            	Comment <span style="color: red;">*</span>
+	                            </label>
+	                            <div class="col-md-9 pad_right0 margin-bottom-10" style="padding-left: 0px;">                
+	                                <div class="comment">
+	                                  <textarea class="form-control cancelComment" name="comment"></textarea>
+									</div>
+	                           </div>
+	                        </div>
+	                    </div>
+					</div>
+					<div class="row" id="cancelCommentError" style=" display: none; margin-bottom: 20px;">
+						<div class="col-md-3"></div>
+						<div class="col-md-9" style="color: red;">Comment is mandatory.</div>
+					</div>
+					<div class="row col-md-offset-3">
+						<label id="propertyAvailableLabel"><input id="makePropertyAvailable" class="form-control" type="checkbox" value="Y">Make property available</label>
+					</div>
+				</div>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn blue" id="confirmCancelProperty">SAVE</button>
+				<button type="button" class="btn default" data-dismiss="modal">CANCEL</button>
+			</div>
+		</div>
+		<!-- /.modal-content -->
+	</div>
+	<!-- /.modal-dialog -->
+</div>
+<!-- End cancel from property modal -->
+
+<!-- Start rollback from property modal -->
+<div class="modal fade bs-modal-md" id="form-rollback-property" tabindex="-1"
+	role="dialog" aria-hidden="true">
+	<div class="modal-dialog modal-md">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal"
+					aria-hidden="true"></button>
+				<h4 class="modal-title">Roll back Property</h4>
+			</div>
+			<div class="modal-body">
+				<div class="modal-body">
+					<div id="rollbackPropertyError" class="alert alert-danger display-hide">Error occurred during rollback</div>
+					<div id="rollbackPropertyClosingError" class="alert alert-danger display-hide">A closing was initiated for this property. Please delete the closing before rolling back</div>
+					<input id="rollbackHilOppPropId" style="display: none;"/>
+					<div class="row">
+						<div class="col-md-12">
+	                        <div class="form-group">
+	                            <label class="col-md-3 control-label pad_leftright0" style="padding-left: 25px;">
+	                            	Select status to roll back to <span style="color: red;">*</span>
+	                            </label>
+	                            <div class="col-md-9 pad_right0 margin-bottom-10" style="padding-left: 0px;">                
+	                                <div class="rollback">
+	                                 	<select class="form-control rollbackStep" name="rollbackStep">
+										</select>
+									</div>
+	                           </div>
+	                        </div>
+	                    </div>
+					</div>
+					<div class="row" id="rollbackStepError" style=" display: none; margin-bottom: 20px;">
+						<div class="col-md-3"></div>
+						<div class="col-md-9" style="color: red;">Please select a status to roll back.</div>
+					</div>
+					<div class="row">
+						<div class="col-md-12">
+	                        <div class="form-group">
+	                            <label class="col-md-3 control-label pad_leftright0" style="padding-left: 25px;">
+ 		                            	Comment <!-- <span style="color: red;">*</span> -->
+	                            </label>
+	                            <div class="col-md-9 pad_right0 margin-bottom-10" style="padding-left: 0px;">                
+	                                <div class="comment">
+	                                  <textarea class="form-control rollbackComment" name="comment"></textarea>
+									</div>
+	                           </div>
+	                        </div>
+	                    </div>
+					</div>
+					<div class="row">
+						<div class="col-md-12">
+	                        <div class="form-group" style="padding-left: 25px;">
+	                            <p>Roll back can result in below changes: 
+	                            <p>- Any offer data saved in current step will be deleted.
+	                            <p>- Any DocuSign envelopes created as part of current step will be voided and deleted.
+	                            <p>- HU status of property may get changed to Available depending on the step to be rolled back to. 
+	                        </div>
+	                    </div>
+					</div>
+<!-- 					<div class="row" id="rollbackCommentError" style=" display: none; margin-bottom: 20px;"> -->
+<!-- 						<div class="col-md-3"></div> -->
+<!-- 						<div class="col-md-9" style="color: red;">Comment is mandatory.</div> -->
+<!-- 					</div> -->
+<!-- 					<div class="row col-md-offset-3"> -->
+<!-- 						<label id="propertyAvailableLabel"><input id="makePropertyAvailable" class="form-control" type="checkbox" value="Y">Make property available</label> -->
+<!-- 					</div> -->
+				</div>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn blue" id="confirmRollbackProperty">SAVE</button>
+				<button type="button" class="btn default" data-dismiss="modal">CANCEL</button>
+			</div>
+		</div>
+		<!-- /.modal-content -->
+	</div>
+	<!-- /.modal-dialog -->
+</div>
+<!-- End rollback from property modal -->

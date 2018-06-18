@@ -1,0 +1,47 @@
+<%
+                    if(typeof theData.listingPhotos === 'undefined'){
+                    %>
+                    <img src="assets/img/no-image.jpg" class="propImage img-responsive" width="600" height="400" alt="" border="0">
+                    <% }else if(theData.listingPhotos.length == 1){ %>
+                    <img src="<%=theData.listingPhotos[0]%>" class="propImage img-responsive" width="600" height="400" alt="" border="0">    
+                    <% }else{%>
+                    <div class="connected-carousels">
+                        <div class="stage col-md-9">
+                            <div class="carousel carousel-stage">
+                                <ul>
+                                    <% _.each(theData.listingPhotos, function(photo){%>
+                                    <li style="width: 510px;"><img src="<%=photo%>" class="propImage img-responsive" width="" height="" alt="" border="0"></li>
+                                    <% });  %>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="navigation col-md-3">
+                            <div class="carousel carousel-navigation jcarousel-vertical">
+                                <ul>
+                                    <% _.each(theData.listingPhotos, function(photo){%>
+                                    <li><img src="<%=photo%>" class="propImage img-responsive" width="210" height="144" alt="" border="0"></li>
+                                    <% });  %>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <% } %>
+                    <div class="clearfix"></div>
+                    <div class="col-md-9 margin-top-20 margin-bottom-10">
+                        <% 
+                        var mls_str = '';
+                        if(theData.listingInfo.mlsNumber != ''){ 
+                        mls_str += '<b>MLS#: </b>' + theData.listingInfo.mlsNumber;
+
+                        if(theData.listingInfo.listingAgentname != '') {     
+                        mls_str += '&nbsp <strong>PROPERTY LISTED BY: </strong>' + theData.listingInfo.listingAgentname;
+
+                        if(theData.listingInfo.realtorCompanyname != '')
+                        mls_str += ',&nbsp <strong>HomeUnion Agent:: </strong>' + theData.listingInfo.realtorCompanyname;
+
+                        }
+
+                        }
+                        print(mls_str);
+                        %>    
+                    </div>

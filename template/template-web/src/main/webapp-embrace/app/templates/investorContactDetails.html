@@ -1,0 +1,389 @@
+
+<div class="panel-group accordion" id="accordion3">
+
+	<table
+		class="table table-striped table-bordered table-advance table-hover margin-top-20 viewaddressdetailsform1">
+		<thead>
+			<tr>
+				<th colspan="4" class="font18"><i class="fa fa-cogs"></i> Home
+					Address</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td><strong>Address 1</strong><br> <%-
+					contactDetails.address1Home %></td>
+				<td><strong>Address 2</strong><br> <%-
+					contactDetails.address2Home %></td>
+				<td><strong>City</strong><br> <%-
+					contactDetails.cityHome %></td>
+				<td><strong>State</strong><br> <%-
+					contactDetails.stateHome %></td>
+			</tr>
+			<tr>
+				<td><strong>Postal Code</strong><br> <%-
+					contactDetails.postalcodeHome %></td>
+				<td><strong>Country</strong><br> <%-
+					contactDetails.countryHome %></td>
+				<td><strong>Home Phone </strong><br> <%-
+					contactDetails.homePhone %></td>
+				<td><strong>Home E-mail</strong><br> <%-
+					contactDetails.homeEmail %></td>
+
+			</tr>
+			<tr>
+				<td><strong>Mobile Phone</strong><br> <%-
+					contactDetails.mobilePhone %></td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+
+			</tr>
+		</tbody>
+
+	</table>
+	<table
+		class="table table-striped table-bordered table-advance table-hover margin-top-20 viewaddressdetailsform1">
+		<thead>
+			<tr>
+				<th colspan="4" class="font18"><i class="fa fa-cogs"></i> Work
+					Address</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td><strong>Address 1</strong><br> <%-
+					contactDetails.address1Work %></td>
+				<td><strong>Address 2</strong><br> <%-
+					contactDetails.address2Work %></td>
+				<td><strong>City</strong><br> <%-
+					contactDetails.cityWork %></td>
+				<td><strong>State</strong><br> <%-
+					contactDetails.stateWork %></td>
+			</tr>
+			<tr>
+				<td><strong>Postal Code</strong><br> <%-
+					contactDetails.postalcodeWork %></td>
+				<td><strong>Country</strong><br> <%-
+					contactDetails.countryWork %></td>
+				<td><strong>Work Phone </strong><br> <%-
+					contactDetails.workPhone %></td>
+				<td><strong>Work E-mail</strong><br> <%-
+					contactDetails.workEmail %></td>
+
+			</tr>
+			<tr>
+				<td><strong>Preferred Mail Communication</strong><br> <%-
+					contactDetails.preferredMailCommunication %></td>
+				<td><strong>Preferred Email Address</strong><br> <%-
+					contactDetails.preferredEmailAddress %></td>
+				<td><strong>Preferred Contact Phone</strong><br> <%-
+					contactDetails.preferredContactPhone %></td>
+				<td>&nbsp;</td>
+			</tr>
+		</tbody>
+	</table>
+	<a href="javascript:void(0);" id="showEditContactDetails"
+		class="btn blue btn-xs pull-right viewaddressdetailsform1">Edit</a>
+
+	<div>
+		<form novalidate="novalidate" action="#" id="investorContactDetailsForm"
+			class="form-horizontal addressdetailsform1" style="display: none;">
+
+			<!-- BEGIN CONTACT FORM-->
+			<div class="portlet box green">
+				<div class="portlet-title">
+					<div class="caption">
+						<i class="fa fa-cogs"></i>Home Address
+					</div>
+				</div>
+				<div class="portlet-body">
+					<!-- form start -->
+					<div class="form-body">
+						<!-- start left form -->
+						<div class="col-md-4 form-group">
+							<label class="control-label">Address 1</label> <input
+								class="form-control" type="text" name="address1Home"
+								value="<%- contactDetails.address1Home %>">
+						</div>
+						<!-- end left form -->
+
+						<div class="col-md-2"></div>
+
+						<!-- start right form -->
+						<div class="col-md-4 form-group">
+							<label class="control-label">Address 2</label> <input
+								class="form-control" type="text" name="address2Home"
+								value="<%- contactDetails.address2Home %>">
+						</div>
+						<!-- start right form -->
+
+						<div class="clearfix"></div>
+
+
+						<!-- start left form -->
+						<div class="col-md-4 form-group">
+							<label class="control-label">City</label> <input
+								class="form-control" type="text" name="cityHome"
+								value="<%- contactDetails.cityHome %>">
+						</div>
+						<!-- end left form -->
+
+						<div class="col-md-2"></div>
+
+						<!-- start right form -->
+						<div class="col-md-4 form-group">
+							<label class="control-label">State</label> 
+							<div id="stateHome"></div>
+						</div>
+						<!-- start right form -->
+
+						<div class="clearfix"></div>
+
+
+						<!-- start left form -->
+						<div class="col-md-4 form-group">
+							<label class="control-label">Postal Code</label> <input
+								class="form-control" type="text" name="postalcodeHome"
+								value="<%- contactDetails.postalcodeHome %>">
+						</div>
+						<!-- end left form -->
+
+						<div class="col-md-2"></div>
+
+						<!-- start right form -->
+						<div class="col-md-4 form-group">
+							<label class="control-label">Country</label> <input
+								class="form-control" type="text" name="countryHome"
+								value="<%- contactDetails.countryHome %>">
+						</div>
+						<!-- start right form -->
+
+						<div class="clearfix"></div>
+
+
+						<!-- start left form -->
+						<div class="col-md-4 form-group">
+							<label class="control-label">Home Phone </label> <input
+								class="form-control" type="text" name="homePhone"
+								value="<%- contactDetails.homePhone %>">
+						</div>
+						<!-- end left form -->
+
+						<div class="col-md-2"></div>
+
+						<!-- start right form -->
+						<div class="col-md-4 form-group">
+							<label class="control-label">Home E-mail</label> <input
+								class="form-control" type="text" name="homeEmail"
+								value="<%- contactDetails.homeEmail %>">
+						</div>
+						<!-- start right form -->
+
+						<div class="clearfix"></div>
+
+						<!-- start right form -->
+						<div class="col-md-4 form-group">
+							<label class="control-label">Mobile Phone</label> <input
+								class="form-control" type="text" name="mobilePhone"
+								value="<%- contactDetails.mobilePhone %>">
+						</div>
+						<!-- start right form -->
+
+
+
+					</div>
+					<div class="clearfix"></div>
+
+
+					<!-- form end -->
+
+				</div>
+			</div>
+			<!-- END  CONTACT FORM-->
+
+			<!-- BEGIN WORK ADDRESS FORM-->
+			<div class="portlet box green">
+				<div class="portlet-title">
+					<div class="caption">
+						<i class="fa fa-cogs"></i>Work Address
+					</div>
+
+				</div>
+
+
+				<div class="portlet-body">
+					<!-- form start -->
+
+					<div class="form-body">
+
+						<!-- start left form -->
+						<div class="col-md-4 form-group">
+							<label class="control-label">Address 1</label> <input
+								class="form-control" type="text" name="address1Work"
+								value="<%- contactDetails.address1Work %>">
+						</div>
+						<!-- end left form -->
+
+						<div class="col-md-2"></div>
+
+						<!-- start right form -->
+						<div class="col-md-4 form-group">
+							<label class="control-label">Address 2</label> <input
+								class="form-control" type="text" name="address2Work"
+								value="<%- contactDetails.address2Work %>">
+						</div>
+						<!-- start right form -->
+
+						<div class="clearfix"></div>
+
+
+						<!-- start left form -->
+						<div class="col-md-4 form-group">
+							<label class="control-label">City</label> <input
+								class="form-control" type="text" name="cityWork"
+								value="<%- contactDetails.cityWork %>">
+						</div>
+						<!-- end left form -->
+
+						<div class="col-md-2"></div>
+
+						<!-- start right form -->
+						<div class="col-md-4 form-group">
+							<label class="control-label">State</label> 
+							<div id="stateWork"></div>
+						</div>
+						<!-- start right form -->
+
+						<div class="clearfix"></div>
+
+
+						<!-- start left form -->
+						<div class="col-md-4 form-group">
+							<label class="control-label">Postal Code</label> <input
+								class="form-control" type="text" name="postalcodeWork"
+								value="<%- contactDetails.postalcodeWork %>">
+						</div>
+						<!-- end left form -->
+
+						<div class="col-md-2"></div>
+
+						<!-- start right form -->
+						<div class="col-md-4 form-group">
+							<label class="control-label">Country</label> <input
+								class="form-control" type="text" name="countryWork"
+								value="<%- contactDetails.countryWork %>">
+						</div>
+						<!-- start right form -->
+
+						<div class="clearfix"></div>
+
+
+						<!-- start left form -->
+						<div class="col-md-4 form-group">
+							<label class="control-label">Work Phone </label> <input
+								class="form-control" type="text" name="workPhone"
+								value="<%- contactDetails.workPhone %>">
+						</div>
+						<!-- end left form -->
+
+						<div class="col-md-2"></div>
+
+						<!-- start right form -->
+						<div class="col-md-4 form-group">
+							<label class="control-label">Work E-mail</label> <input
+								class="form-control" type="text" name="workEmail"
+								value="<%- contactDetails.workEmail %>">
+						</div>
+						<!-- start right form -->
+
+						<div class="clearfix"></div>
+
+
+						<!-- start left form -->
+						<div class="col-md-4 form-group">
+							<label class="control-label">Preferred Mail Communication
+							</label>
+							<div class="radio-list">
+								<label class="radio-inline"> <input 
+									name="preferredMailCommunication" value="Yes"  type="radio"
+									<%if(contactDetails.preferredMailCommunication=="Yes"){%>checked="true"<%}%> >
+									Yes
+								</label> <label class="radio-inline"
+									style="padding-left: 0px !important;"> <input
+									name="preferredMailCommunication"  value="No" type="radio"
+									<%if(contactDetails.preferredMailCommunication=="No"){%>checked="true"<%}%> > 
+									No
+								</label>
+							</div>
+						</div>
+						<!-- end left form -->
+
+						<div class="col-md-2"></div>
+
+						<!-- start right form -->
+						<div class="col-md-4 form-group">
+							<label class="control-label">Preferred E-mail Address</label>
+							<div class="radio-list">
+								<label class="radio-inline"> <input 
+									name="preferredEmailAddress"  value="Yes" type="radio"
+									<%if(contactDetails.preferredEmailAddress=="Yes"){%>checked="true"<%}%> >
+									Yes
+								</label> <label class="radio-inline"
+									style="padding-left: 0px !important;"> <input
+									name="preferredEmailAddress" value="No" type="radio"
+									<%if(contactDetails.preferredEmailAddress=="No"){%>checked="true"<%}%> > 
+									No
+								</label>
+							</div>
+						</div>
+						<!-- start right form -->
+
+						<div class="clearfix"></div>
+
+						<!-- start right form -->
+						<div class="col-md-4 form-group">
+							<label class="control-label">Preferred Contact Phone</label>
+							<div class="radio-list">
+								<label class="radio-inline"> <input 
+									name="preferredContactPhone" value="Yes" type="radio"
+									<%if(contactDetails.preferredContactPhone=="Yes"){%>checked="true"<%}%> >
+									Yes
+								</label> <label class="radio-inline"
+									style="padding-left: 0px !important;"> <input
+									name="preferredContactPhone" value="No" type="radio"
+									<%if(contactDetails.preferredContactPhone=="No"){%>checked="true"<%}%> > 
+									No
+								</label>
+							</div>
+						</div>
+						<!-- start right form -->
+
+
+					</div>
+					<div class="clearfix"></div>
+
+
+					<!-- form end -->
+
+				</div>
+			</div>
+			<!-- END WORK ADDRESS FORM -->
+
+			<div class="form-actions fluid">
+				<div align="center">
+					<a href="javascript:void(0);" id="editContactDetails" type="button"
+						class="btn green"> Save</a> <a href="javascript:void(0);"
+						id="cancelEditContactDetails" type="button" class="btn default">
+						Cancel</a>
+				</div>
+			</div>
+
+
+
+		</form>
+	</div>
+	<!--  end vendor information -->
+
+
+</div>

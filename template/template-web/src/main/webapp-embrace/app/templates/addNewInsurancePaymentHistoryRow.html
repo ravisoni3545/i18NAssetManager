@@ -1,0 +1,58 @@
+<tr>
+    <input type="hidden" name="paymentId" value="<%-singleData.paymentId%>" />
+    <td style="width:13%;">
+        <div data-date-viewmode="years" data-date-format="mm-dd-yyyy" class="input-group input-medium-2 date date-picker margin-bottom-10" >
+        <input type="text" name="coverageStartDate" readonly="" class="form-control" style="cursor: pointer;" value="<%-singleData.coverageStartDate%>">
+            <span class="input-group-btn hide">
+                <button type="button" class="btn default">
+                    <i class="fa fa-calendar"></i>
+                </button>
+            </span>
+        </div>
+    </td>
+    <td style="width:13%;">
+        <div data-date-viewmode="years" data-date-format="mm-dd-yyyy" class="input-group input-medium-2 date date-picker margin-bottom-10" >
+        <input type="text" name="coverageEndDate" readonly="" class="form-control" style="cursor: pointer;" value="<%-singleData.coverageEndDate%>">
+            <span class="input-group-btn hide">
+                <button type="button" class="btn default">
+                    <i class="fa fa-calendar"></i>
+                </button>
+            </span>
+        </div>
+    </td>
+    <td style="width:13%;">
+        <div data-date-viewmode="years" data-date-format="mm-dd-yyyy" class="input-group input-medium-2 date date-picker margin-bottom-10" >
+        <input type="text" name="paymentDueDate" readonly="" class="form-control" style="cursor: pointer;" value="<%-singleData.paymentDueDate%>">
+            <span class="input-group-btn hide">
+                <button type="button" class="btn default">
+                    <i class="fa fa-calendar"></i>
+                </button>
+            </span>
+        </div>
+    </td>
+    <td style="width:13%;">
+        <div data-date-viewmode="years" data-date-format="mm-dd-yyyy" class="input-group input-medium-2 date date-picker margin-bottom-10" >
+        <input type="text" name="paymentDate" readonly="" class="form-control" style="cursor: pointer;" value="<%-singleData.paymentDate%>">
+            <span class="input-group-btn hide">
+                <button type="button" class="btn default">
+                    <i class="fa fa-calendar"></i>
+                </button>
+            </span>
+        </div>
+    </td>
+    <td>
+        <input type="text" name="paymentAmount" class="form-control text-right currencyInsuranceTable" value="<%-singleData.paymentAmount%>" >
+    </td>
+    <td>
+        <div class="InsurancePayStatusDD" ></div>
+    </td>
+    <td>
+        <div class="InsurancePayByDD" ></div>
+    </td>
+    <td>
+        <input type="text" name="referenceNo" class="form-control text-right" value="<%-singleData.referenceNo%>" >
+    </td>
+    <td>
+        <a type="button" value="Delete"><i class="fa fa-trash-o deleteInsPaymentBtn"></i></a>
+    </td>
+</tr>

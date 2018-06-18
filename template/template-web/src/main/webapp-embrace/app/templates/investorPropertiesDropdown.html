@@ -1,0 +1,10 @@
+<select  class="form-control" name="<%=name%>">
+		<%if(addBlankFirstOption){%>
+			<option value="">Select</option>
+		<%}%>
+		<%_(investorProperties).each(function(investorProperty) { %>
+			<option value="<%= investorProperty.investmentId %>">
+				<%= investorProperty.propertyFullAddress%>
+			</option>
+		<% }); %>
+</select>

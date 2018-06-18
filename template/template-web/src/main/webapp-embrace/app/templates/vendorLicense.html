@@ -1,0 +1,244 @@
+<div class="panel-group accordion" id="accordioncont22">
+
+	<div class="row">
+		<div class="col-md-12">
+			<!-- Existing contract table start -->
+			<div class="portlet box light-grey">
+				<div class="portlet-title">
+					<div class="caption">
+						<i class="fa fa-cogs"></i>Licenses
+					</div>
+					<div class="tools" id="addLicenseDiv">
+						<a href="#licenses-form1" data-toggle="modal" class="config"
+							title="Add Licenses"> </a><a href="javascript:;" class="reload"
+							title="Refresh"></a>
+					</div>
+				</div>
+				<div class="portlet-body">
+					<table class="table table-hover">
+						<thead>
+							<tr>
+								<th>License Type</th>
+								<th>Name of License</th>
+								<th>Terms</th>
+								<th>License #</th>
+								<th>States Covered</th>
+								<th>License Expiration Date</th>
+								<th>Broker #</th>
+								<th></th>
+							</tr>
+						</thead>
+						<tbody>
+							<% _.each(licenseModel, function( model ){ %>
+ 
+				 			<tr>
+				                <td>
+				                     <%- model.attributes.licenseType.codeDisplay %>
+				 
+				                </td>
+				                <td>
+				                	<a href="vendorLicense/downloadLicense/<%- model.attributes.documentId %>">
+				                		<% if(model.attributes.licenseName){ %>
+													<%- model.attributes.licenseName %>
+										
+										<%}else{%>
+												NOT AVAILABLE
+				                		<% } %>
+				                	</a>
+				                </td>
+				                
+				                <td>
+				                	<%- model.attributes.terms %>
+				                </td>
+				                
+				                <td>
+				                	<%- model.attributes.licenseNumber %>
+				                </td>
+				                <td>
+				                	<% _.each(model.attributes.statesCovered, function(state){ %>
+				                		<%- state.state %>,
+				                	<% }); %>
+				                </td>
+				                <td>
+				                	<%- model.attributes.dateString %>
+				                </td>
+				                <td>
+				                	<%- model.attributes.brokerNumber %>
+				                </td>
+				                <td>
+					                <a class="edit_blue editLicense" style="cursor:pointer"
+														title="Edit" data-licenseid="<%- model.attributes.licenseId %>" name="showEditLicenseForm">
+										<i class="fa fa-edit" data-licenseid="<%- model.attributes.objId.licenseId %>"></i> 
+									</a> 
+									<a  href="#optionDeleteLicense" data-toggle="modal" class="delete_red"
+														title="Delete" name="DeleteLicense" data-licenseid="<%- model.attributes.objId.licenseId %>">
+										<i class="fa fa-trash-o" data-licenseid="<%- model.attributes.objId.licenseId %>"> </i>
+									</a>
+								</td>
+				 			</tr>
+ 
+            			<% }); %>
+						</tbody>
+					</table>
+				</div>
+			</div>
+			<!-- Existing contract table end -->
+		</div>
+	</div>
+
+</div>
+ <!-- license  lightbox start -->
+    <div class="modal fade" id="licenses-form1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+			 <form class="form-horizontal" method="post" id="licenseForm"  
+                                                         enctype="multipart/form-data">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                    </button>
+                    <h4 class="modal-title">
+                        Add New License</h4>
+                </div>
+                <div class="modal-body">
+                   <!-- start form -->
+				   
+                                                        <div class="row">
+                                                            <div class="col-md-12">
+                                                                <div class="form-group col-md-12">
+                                                                    <div class="col-md-5">
+                                                                        <div class="form-group">
+                                                                            <label class="control-label">
+                                                                                License Type <span class="required">* </span>
+                                                                            </label>
+                                                                            <select class="form-control" name="licenseType">
+                                                                            	<% _(codes).each(function(code) { %>
+																			<option value="<%= code.id %>"><%= code.codeDisplay%></option>
+																			<% }); %>
+																			</select>
+                                                                        </div>
+                                                                        <div class="form-group">
+                                                                            <label class="control-label">
+                                                                                Name of License
+                                                                            </label>
+                                                                            <input type="text" class="form-control" name="licenseName">
+                                                                        </div>
+                                                                        <div class="form-group">
+                                                                            <label class="control-label">
+                                                                                License #</label>
+                                                                            <input type="text" class="form-control" name="licenseNumber">
+                                                                        </div>
+                                                                       <!--  <div class="form-group">
+                                                                            <label class="control-label">
+                                                                                License Expiration Date
+                                                                            </label>
+                                                                            <input type="text" class="form-control" name="expirationDate">
+                                                                        </div> -->
+																		<div class="form-group">
+											                                <label class="control-label">
+											                                    License Expiration Date
+											                                </label>
+											                                <div class="input-group input-medium date date-picker" data-date="" data-date-format="mm-dd-yyyy"
+											                                    data-date-viewmode="years">
+											                                    <input class="form-control" readonly="" type="text" name="expirationDate">
+											                                    <span class="input-group-btn">
+											                                        <button class="btn default" type="button">
+											                                            <i class="fa fa-calendar"></i>
+											                                        </button>
+											                                    </span>
+											                                </div>
+                           												 </div>
+																		 <div class="form-group last">
+                                                                            <label class="control-label">
+                                                                                States Covered</label>
+																				
+																				 <select id="selects1_samples112" class="form-control select2" multiple="multiple" name="statesCovered">
+															                        <optgroup label="">
+																					<% _(states).each(function(state) { %>
+																			<option value="<%= state.code %>"><%= state.name %></option>
+																			<% }); %>												
+															
+																					</optgroup>
+                   																</select>
+																				
+																				
+                                                                          
+																			 
+                                                                        </div>
+                                                                       
+                                                                    </div>
+                                                                    <div class="col-md-2">
+                                                                    </div>
+                                                                    <div class="col-md-5">
+                                                                        <div class="form-group">
+                                                                            <label class="control-label">
+                                                                                Terms and Restrictions
+                                                                            </label>
+                                                                            <textarea class="form-control" name="terms" maxlength='250'></textarea>
+                                                                        </div>
+                                                                    
+                                                                        <div class="form-group">
+                                                                            <label class="control-label">
+                                                                                Broker #</label>
+                                                                            <input type="text" class="form-control" name="brokerNumber">
+                                                                        </div>
+																		
+																		  <div class="form-group">
+                                                                    <label class="control-label">
+                                                                        Upload License Document <span class="required" >* </span>
+                                                                    </label>
+                                                                    <input name="insuranceFiles"  type="file" class="form-control" style="padding-top: 15px;
+                                                                        padding-bottom: 50px;" id="insuranceFiles">
+                                                                </div>
+																		
+                                                                    </div>
+                                                                </div>
+                                                                <div class="clearfix">
+                                                                </div>
+                                                              
+                                                            </div>
+                                                        </div>
+                                                       
+				   <!-- end form -->
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn blue"  id="addLicense">
+                        Add</button>
+                    <button type="button" class="btn default" data-dismiss="modal">
+                        Close</button>
+                </div> </form>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+    <!-- /.modal -->
+    <!-- license  lightbox end -->
+     <!-- license  Editlightbox start -->
+    <div class="modal fade" id="editLicense" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+        aria-hidden="true">
+        
+    </div>
+    <!-- option delete lightbox start -->
+<div class="modal fade bs-modal-sm" id="optionDeleteLicense" tabindex="-1" role="dialog" aria-hidden="true">
+	<div class="modal-dialog modal-sm">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+				<h4 class="modal-title">Delete</h4>
+			</div>
+			<div class="modal-body">
+				  Are you sure you want to delete this?
+			</div>
+			<div class="modal-footer">
+				<button id="deleteLicenseConfirmationButton" type="button" class="btn blue">Yes</button>
+				<button type="button" class="btn default" data-dismiss="modal">No</button>
+			</div>
+		</div>
+		<!-- /.modal-content -->
+	</div>
+	<!-- /.modal-dialog -->
+</div>
+<!-- option delete lightbox end -->
+    <!-- /.modal -->
+    <!-- license  Eidtlightbox end -->

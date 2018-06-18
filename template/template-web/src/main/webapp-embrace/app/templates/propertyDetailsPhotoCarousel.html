@@ -1,0 +1,254 @@
+<% if((viewpermissions.propertyManagement || viewpermissions.propertyDetailEdit) && filter==="photo"){ %>
+<div class="modal fade" id="deletePhotoConfirmationModal" tabindex="-1" role="dialog"
+        aria-hidden="true">
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                    </button>
+                    <h4 class="modal-title">
+                        <i class="fa fa-trash-o"></i> Delete Photo</h4>
+                </div>
+                <div class="modal-body">
+                    <p>
+                        Are you sure you want to delete this Photo?</p>
+                </div>
+                <div class="modal-footer">
+                    <button name="deletePhotoConfirm" type="button" class="btn blue" data-dismiss="modal">
+                        Yes</button>
+                    <button type="button" class="btn default" data-dismiss="modal">
+                        No</button>
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+    <div class="modal fade" id="defaultPhotoConfirmationModal" tabindex="-1" role="dialog"
+        aria-hidden="true">
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                    </button>
+                    <h4 class="modal-title">
+                        <i class="fa fa-camera"></i> Make Default Photo</h4>
+                </div>
+                <div class="modal-body">
+                    <p>
+                        Are you sure you want to make this the default Photo?</p>
+                </div>
+                <div class="modal-footer">
+                    <button name="defaultPhotoConfirm" type="button" class="btn blue" data-dismiss="modal">
+                        Yes</button>
+                    <button type="button" class="btn default" data-dismiss="modal">
+                        No</button>
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+<button name="addFilesBtn" class="btn green fileinput-button">
+    <i class="fa fa-plus"></i>
+    <span>
+        Add Photos...
+    </span>
+</button>
+</br>
+</br>
+
+  <div id="fileuploadbox" class="form-group uploadDocDiv" style="display: none">
+    <form method="post" action="<%-apiLink%>"enctype="multipart/form-data"  id="uploadForm" >
+
+            <input style="display: none" name="propertyId" id="propertyId" value="<%-propId%>"></input>
+            <input id="files" name="files" multiple type="file"  accept="image/*">
+        </br>
+             <input name="startUploadBtn" class="btn blue" type="submit" value="Upload">
+        </span>
+
+    </form>
+  </div>
+    <div display="none" id="response"></div>
+
+    
+<!-- The global file processing state -->
+<br>
+<br>
+<% } %>
+
+<div class="connected-carousels">
+  <div class="stage col-md-9" style="width:730px;">
+    <div class="carousel carousel-stage galleryImg" id="carousel2">
+      <ul class="carousel-list">
+        <%
+        var photo_count=0;
+        var video_count=0;
+        var tour_count=0;
+        var nav_width =0; 
+        if(filter === "photo" && typeof(preSelectMedia !== "undefined")){
+              _.each(preSelectMedia, function(photo){console.log("photoLink preselect: " + photo.largeLink);%> 
+
+          <li class="photo_item"  style="width:700px; height:375px;">
+                <div class="hu-watermark"></div>
+                <img src="<%-photo.largeLink%>" data-src="<%-photo.largeLink%>" class="propImage img-responsive img-thumbnail" alt="" border="0"  >
+          </li>
+
+        <%photo_count++; }); nav_width = (photo_count * 73 > 655) ? 655 : (photo_count * 73);
+              console.log("photoCount: "+ photo_count + "navWidth: " + nav_width);
+        }
+
+        if(filter === "photo" && typeof(dataCar !== "undefined")){
+              _.each(dataCar, function(photo){console.log("photoLink listing: " + photo);%> 
+
+          <li class="photo_item"  style="width:700px; height:375px;">
+                <div class="hu-watermark"></div>
+                <img src="<%-photo%>" data-src="<%-photo%>" class="propImage img-responsive img-thumbnail" alt="" border="0"  ></li>
+
+        <%photo_count++; }); nav_width = (photo_count * 73 > 655) ? 655 : (photo_count * 73);
+              console.log("photoCount: "+ photo_count + "navWidth: " + nav_width);
+        }
+
+
+        if(filter === "video" && typeof(preSelectMedia !== "undefined")){
+              _.each(preSelectMedia, function(video){
+                    console.log("videoLink: " + video.videoLink);
+                     var link = video.videoLink.substring(video.videoLink.lastIndexOf('/')+1, video.videoLink.length);
+        %>
+          <li class="video_item" style="width:720px;height:375px;">
+          <iframe class="video_frame" src="//player.vimeo.com/video/<%-link%>" width="700" height="375" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe></li>
+
+        <% video_count++; }); var nav_width = (video_count * 73 > 655) ? 655 : (video_count * 73);
+              console.log("videoCount: "+ video_count + "navWidth: " + nav_width);
+        } %>
+
+        <%
+        if(filter === "tour" && typeof(preSelectMedia != "undefined")){
+              _.each(preSelectMedia, function(tour){
+                    console.log("tourLink: " + tour.tourLink);
+                     var link = tour.tourLink.substring(tour.tourLink.lastIndexOf('/')+1, tour.tourLink.length);
+        %>
+          <li class="tour_item" style="width:720px">
+          <nolayer><iframe name="vieweet-iframe" src="https://vieweet.com/iframe/<%-link%>" width="720" height="375" marginwidth="0" marginheight="0" hspace="0" vspace="0" frameborder="0" scrolling="no"></iframe></nolayer><layer src="https://vieweet.com/iframe/<%-link%>" top="0" left="0" width="720" height="375"></layer></li>
+        <%tour_count++; }); var nav_width = (tour_count * 73 > 655) ? 655 : (tour_count * 73);
+              console.log("tourCount: "+ tour_count + "navWidth: " + nav_width);
+        } %>
+
+        <% if(filter === "map"){
+          %>
+                <li class="map_item" style="width:720px"><div id="plain-map" style="height: 375px; width:700px;"> </div></li>
+        <% }  %>
+
+ 
+    </ul>
+        <%
+        if(filter==="map" || (photo_count <= 1 && filter ==="photo") || (tour_count <= 1 && filter ==="tour") || (filter ==="video" && video_count <=1)){
+        %>
+
+           <a href="#" class="jcarousel-control-prev inactive prev-stage hidden" data-jcarouselcontrol="true"><span>‹</span></a>
+          <a href="#" class="jcarousel-control-next next-stage hidden" data-jcarouselcontrol="true"><span>›</span></a>
+          </div></div>
+          <div class="navigation col-md-3"><div class="thumb-nav hidden" style="background-color: #f2f2f2;">
+          <a id="leftcar" href="#" class="prev prev-navigation"><i class="fa fa-chevron-left"></i></a>
+          <a style="margin-right:20px" href="#" class="next next-navigation"><i class="fa fa-chevron-right"></i></a>
+          <div class="carousel carousel-navigation" width="<%-nav_width%>">
+          <ul class="carousel-list">
+
+        <%} else {%>
+
+           <a href="#" class="jcarousel-control-prev inactive prev-stage" data-jcarouselcontrol="true"><span>‹</span></a>
+          <a href="#" class="jcarousel-control-next next-stage" data-jcarouselcontrol="true"><span>›</span></a>
+          </div></div>
+          <div class="navigation col-md-3"><div class="thumb-nav" style="background-color: #f2f2f2;">
+          <a id="leftcar" href="#" class="prev prev-navigation"><i class="fa fa-chevron-left"></i></a>
+          <a style="margin-right:20px" href="#" class="next next-navigation"><i class="fa fa-chevron-right"></i></a>
+          <div class="carousel carousel-navigation" width="<%-nav_width%>">
+          <ul class="carousel-list">
+        <% } %>
+        <% if(filter === "photo" && typeof(preSelectMedia !== "undefined")){
+        _.each(preSelectMedia, function(photo){
+        %> 
+
+        <li class="photo_item pull-left preselectOverlay">
+        <img src="<%-photo.thumbnailLink%>" data-src="<%-photo.thumbnailLink%>" class="propImage img-responsive" width="210" height="144" alt="" border="0" >
+        <div class="preselect-ico"><img src="/assets/img/been.png"></div>
+        </li>
+        
+        <%}); }%>
+        
+        <% if(filter === "photo" && typeof(dataCar !== "undefined")){
+        _.each(dataCar, function(photo){
+
+        thumbnail_link = photo.replace('/large/', '/thumbnail/');%> 
+
+       <li class="photo_item">
+       <img src="<%-thumbnail_link%>" data-src="<%-thumbnail_link%>" class="propImage img-responsive" width="210" height="144" alt="" border="0" >
+       </li>
+
+
+        <% }); } %>
+
+
+        <% if(filter === "video" && typeof(dataCar !== "undefined")){
+        _.each(dataCar, function(video){ %> 
+          <img src="assets/img/slider/video5.jpg" width="50" height="50" alt=""></li> 
+        <% }); }%>
+
+        <% if(filter === "tour" && typeof(dataCar !== "undefined")){
+        _.each(dataCar, function(tour){ %> 
+          <img src="assets/img/slider/video5.jpg" width="50" height="50" alt=""></li> 
+        <% }); }%>
+
+        <% if(filter === "map"){ %>
+          <li class="map_item"><img src="assets/img/slider/map6.jpg" width="50" height="50" alt=""></li>
+        <% }  %>
+
+      
+    </ul>
+  </div>
+</div>
+<div class="grey-tabs" id="filter_menu_tabs">
+<ul class="nav nav-justified">
+<li data-target-item="photo" class="blue-back tab_active" ><a style="cursor: pointer;" class="pointer" data-target-item="photo" ><i class="fa fa-picture-o"></i>Photos</a></li>
+<li data-target-item="video" class="<%-vidNavClass%>" > <a style="cursor: pointer;" class="pointer" data-target-item="video"><i class="fa fa-film"></i>Video</a></li>
+<li data-target-item="map"><a style="cursor: pointer;" class="pointer" data-target-item="map"><i class="fa fa-map-marker"></i> Map </a></li>
+
+<li data-target-item="tour" class="<%-tourNavClass%>" ><a style="cursor: pointer;" class="pointer" data-target-item="tour"><i class="fa fa-home"></i>Tour</a></li>
+</ul></div></div></div>
+<div class="clearfix"></div>
+<div class="clearfix"></div>
+<div class="clearfix"></div>
+
+<% if(filter==="photo"){%>
+<div style="margin-top: 30px" class="portlet-body table-responsive">
+<table class="table table-striped table-bordered table-advance table-hover tablegreen" id="photoDetailTable">
+  <thead>
+  </thead>
+  <tbody>
+  </tbody>
+<table>
+</div>
+<div style="display:none" id="editNotes" class="panel panel-success">
+<div class="panel-heading">
+<h3 class="panel-title">Notes</h3>
+</div>
+<div class="panel-body">
+<ul>
+    <li>
+        Photos must be toggled to show on web <i>before</i> they can be made the default photo.
+    </li>
+    <li>
+       The default photo can only be deleted when <i>all</i> other photos are already deleted.
+    </li>
+    <li>
+       Pre-select photos can only be modified from Pre-select page.
+    </li>
+</ul>
+</div>
+</div>
+<%} %>
+
+<div class="clearfix"></div>
+
+
+<div class="clearfix"></div>

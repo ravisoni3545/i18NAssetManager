@@ -1,0 +1,256 @@
+<div aria-hidden="true" role="basic" tabindex="-1" id="CLOSING_APPOINTMENT_POPUP_1" class="modal fade bs-modal-lg with-popover">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal"
+					aria-hidden="true"></button>
+				<h4 class="modal-title">Closing Appointment</h3>
+			</div>
+			
+			<div class="modal-body clearfix">
+				<div class="col-md-12">
+					<div class="tab-content form">
+						<!--  investor accordion start -->
+						<div class="portlet light-grey box">
+							<div class="portlet-title">
+								<div class="caption">
+									<i class="fa fa-cogs"></i>
+									<span style="font-style: italic;">Investor</span> : <%-investorsDetails.investorName%>
+								</div>
+								<div class="tools">
+									<a class="collapse" style="cursor:pointer;"> </a>
+								</div>
+							</div>
+
+							<div class="portlet-body clearfix">
+									<!-- <div class="form-section clearfix">
+										<div class="col-md-4">
+											<h3 class="pull-left marg_top0"><%-investorsDetails.investorName%></h3>
+										</div> 
+										<div>  
+				                            <a class="fa fa-clock-o appointmentHisTooltip" style="cursor: pointer;font-size: 14px;" 
+				                            data-object="<%-object%>" data-objectid="<%-objectId%>" data-investorid="<%-investorsDetails.investorId%>"
+				                            data-toggle="tooltip" data-html="true" data-show="true" data-original-title="" title="">
+				                                 <i>Appointment History</i>
+				                            </a>
+					                     </div>
+									</div>
+-->
+									<div class="clearfix">
+										<div class="portlet">
+											<div class="portlet-title">
+												<div class="caption">
+													<i class="fa fa-bell-o"></i>Availability
+												</div>
+												<!-- <div class="tools">
+													<a class="collapse" href="javascript:;"> </a>
+
+												</div> -->
+											</div>
+											<div class="portlet-body clearfix">
+													<div class="table-responsive investorAppointmentDiv">
+														<table
+															class="table table-striped table-bordered table-advance">
+															<thead>
+																<tr>
+																	<th width="30%">Date/Time</th>
+																	<th width="30%">Signing Location</th>
+																	<th width="18%">Phone No:</th>
+																	<th width="12%">Status</th>
+																	<th width="10%"> 
+																		<a class="textcolordark fa fa-wrench addOrEditAppointment" data-show=true 
+																		data-toggle="collapse" data-target=".appointmentRowInvestor0" 
+																		data-investorid="<%- investorsDetails.investorId %>" data-type="Investor"
+																		title="Add New Item" style="cursor:pointer;"> </a>
+																	</th>
+																</tr>
+															</thead>
+															<tbody>
+
+															</tbody>
+
+														</table>
+													</div>
+											</div>
+										</div>
+									</div>
+							</div>
+						</div>
+						<!-- investor accordion end -->
+						<% if(investorsDetails.coBuyerId){%>
+						<!--  coBuyer accordion start -->
+						<div class="portlet light-grey box">
+							<div class="portlet-title">
+								<div class="caption">
+									<i class="fa fa-cogs"></i>
+									<span style="font-style: italic;">CoBuyer</span> : <%-investorsDetails.coBuyerName%>
+								</div>
+								<div class="tools">
+									<a class="collapse" style="cursor:pointer;"> </a>
+								</div>
+							</div>
+							<div class="portlet-body clearfix">
+									<div class="clearfix">
+										<div class="portlet">
+											<div class="portlet-title">
+												<div class="caption">
+													<i class="fa fa-bell-o"></i>Availability
+												</div>
+											</div>
+											<div class="portlet-body clearfix">
+													<div class="table-responsive coBuyerAppointmentDiv">
+														<table
+															class="table table-striped table-bordered table-advance">
+															<thead>
+																<tr>
+																	<th width="40%">Date/Time</th>
+																	<th width="30%">Signing Location</th>
+																	<th width="20%">Phone No:</th>
+																	<th width="10%"><a class="textcolordark fa fa-wrench addOrEditAppointment" data-show=true 
+																		data-toggle="collapse" data-target=".appointmentRowCoBuyer0" 
+																		data-investorid="<%- investorsDetails.coBuyerId %>" data-type="CoBuyer"
+																		title="Add New Item" style="cursor:pointer;"> </a>
+																	</th>
+																</tr>
+															</thead>
+															<tbody>
+
+															</tbody>
+
+														</table>
+													</div>
+											</div>
+										</div>
+									</div>
+							</div>
+						</div>
+						<!--  coBuyer accordion end -->
+						<%}%>
+					</div>
+
+					<div class="margin-bottom-10 marg_top20">
+						<form class="milestone-form" method="post">
+							<input type="hidden" id="object" name="object"> <input
+								type="hidden" id="objectId" name="objectId"> <input
+								type="hidden" id="taskKey" name="taskKey"> <input
+								type="hidden" id="notaryContactId" name="notaryContactId">
+
+							<div class="portlet light-grey box">
+								<div class="portlet-title">
+									<div class="caption">
+										<i class="fa fa-cogs"></i>Notary Information
+									</div>
+									<div class="tools">
+										<a class="collapse" style="cursor:pointer;"> </a>
+									</div>
+								</div>
+								<div class="portlet-body clearfix">
+									<div class="col-md-12">
+										<div class="portlet-body">
+											<div class="clearfix">
+												<div class="form-body">
+													<div class=" form-group row">
+														<div class="col-md-6">
+															<div class="form-group">
+																<label>First Name</label> <input type="text"
+																	class="form-control" name="firstName">
+															</div>
+														</div>
+														<div class="col-md-6">
+															<div class="form-group">
+																<label>Last Name</label> <input type="text"
+																	class="form-control" name="lastName">
+															</div>
+														</div>
+													</div>
+													<div class="row">
+														<div class="col-md-6">
+															<div class="form-group">
+																<label>Contact Number</label> <input type="text"
+																	class="form-control" name="phone">
+															</div>
+														</div>
+														<div class="col-md-6">
+															<div class="form-group">
+																<label>Email Adress</label> <input type="text"
+																	class="form-control" name="email">
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<div class="form-group col-md-4">
+								<label class="pad_leftright0 control-label">
+									Completion Date<span class="required">*</span>
+								</label>
+								<div class="margin-bottom-10">
+									<div class="input-group input-medium date date-picker"
+										data-date="" data-date-format="mm-dd-yyyy"
+										data-date-viewmode="years">
+										<input class="form-control" readonly="" placeholder=""
+											type="text" id="endDate" name="endDate"> <span
+											class="input-group-btn">
+											<button class="btn default" type="button">
+												<i class="fa fa-calendar"></i>
+											</button>
+										</span>
+									</div>
+								</div>
+							</div>
+							<div class="form-group col-md-8">
+								<label class="control-label"> Comments <a
+									class="fa fa-comments-o pull-right showMessageTooltip"
+									style="cursor: pointer; font-size: 14px;" data-html="true"
+									data-show="true"> <i>Show past comments</i>
+								</a>
+								</label><br>
+
+								<textarea class="form-control" 
+									placeholder="" name="comments" id="comments"></textarea>
+							</div>
+						</form>
+					</div>
+
+				</div>
+
+				<div class="clearfix"></div>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn blue"
+					id="closingAppointmentPopupSubmitButton">Save</button>
+				<button type="button" class="btn default" data-dismiss="modal">
+					Cancel</button>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="modal fade bs-modal-sm" id="appointmentDeleteModal" tabindex="-1"
+  role="dialog" aria-hidden="true">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"
+          aria-hidden="true"></button>
+        <h4 class="modal-title">
+          <i class="fa fa-times"></i> Delete Appointment
+        </h4>
+      </div>
+      <div class="modal-body">
+        <p>Are you sure you want to delete this item?</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn blue" id="appointmentDeleteYesBtn">
+          Yes</button>
+        <button type="button" class="btn default" data-dismiss="modal">
+          No</button>
+      </div>
+    </div>
+    <!-- /.modal-content -->
+  </div>
+  <!-- /.modal-dialog -->
+</div>

@@ -1,0 +1,75 @@
+<div class="page-content">
+	<div id="alertRehabSearchFailure" class="alert alert-danger display-hide">
+			<button class="close" data-close="alert" onclick="$(this).parent().hide();return false;"></button>
+			<text>Error in fetching rehabs.</text>
+	</div>
+	<!-- BEGIN PAGE HEADING-->
+	<div class="row">
+		<div class="col-md-12">
+			<h3 class="page-title">
+				<i class="fa fa-legal pull-left font25 marg_top10"></i>Search/View Rehabs
+			</h3>
+		</div>
+	</div>
+	<!-- END PAGE HEADING-->
+	<!-- Start Search section -->
+	<div class="member-search margin-top-10">
+		<form action="#" id="rehabSearchForm">
+			<div class="row">
+				<div class="col-md-6">
+					<div class="form-group clearfix">
+						<label class="control-label col-md-3">Investor Name</label>
+						<div class="col-md-9">
+							<input type="text" name="name" id="name" value=""
+								class="form-control srch" placeholder="First / Last name" />
+						</div>
+					</div>
+				</div>
+				<div class="col-md-6">
+					<div class="form-group clearfix">
+						<label class="control-label col-md-3">Address</label>
+						<div class="col-md-9">
+							<input type="text" name="address" id="address" value=""
+								class="form-control srch" />
+						</div>
+					</div>
+				</div>
+				<div class="clearfix"></div>
+				<div class="col-md-6">
+					<div class="form-group clearfix">
+						<label class="control-label col-md-3">Rehab Coordinator</label>
+						<div class="col-md-9" id="rehabCoordinatorsDropdown">
+						</div>
+					</div>
+				</div>
+				<div class="col-md-6">
+					<div class="form-group clearfix">
+						<label class="control-label col-md-3">Rehab Status </label>
+						<div class="col-md-9" id="rehabStatus">
+						</div>
+					</div>
+				</div>
+				<div class="clearfix"></div>
+				<div class="col-md-6">
+					<div class="form-group clearfix">
+						<label class="control-label col-md-12">Rehabs in progress only
+							<span style="padding-left: 2%;">
+								<input type="checkbox" id="currentRehabs" name="currentRehabs">
+							</span> 
+						</label>
+					</div>
+				</div>
+				<div class="col-md-6">
+					<button type="button" id="rehabSearchSubmit" name="submit" value="Search"
+						class="btn blue btn-sm marg_left30">Search</button>
+				</div>
+			</div>
+			<!-- .row -->
+			<div class="clearfix"></div>
+			<!-- .row -->
+		</form>
+	</div>
+	<div class="row" id="searchResults">
+		
+	</div>
+</div>

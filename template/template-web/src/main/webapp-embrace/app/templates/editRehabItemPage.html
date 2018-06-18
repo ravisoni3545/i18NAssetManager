@@ -1,0 +1,304 @@
+<!--start rehab details lightbox -->
+<div class="modal fade" id="editRehabItemModal" tabindex="-1" role="basic" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                </button>
+                <h4 class="modal-title">
+                    Rehab Item Detail
+                </h4>
+            </div>
+            <div class="modal-body">
+            <form>
+                <div class="col-md-4">
+                    <div class="form-group" style="margin-bottom: 0;">
+                        <label class="control-label">Category <span class="required">*</span></label>
+                        <div class="margin-bottom-10">
+                            <select name="rehabCategoryId" class="form-control">
+                                <option value="">Select</option>
+                                <% _.each(categoryList,function(category){ %>
+                                    <option value="<%- category.categoryId%>" <% (rehabItemData.rehabCategoryId==category.categoryId)? print('selected=selected'): ''%>>
+                                        <%- category.categoryName%>
+                                    </option>
+                                <% }) %>
+                                <option value="addNewCategory">Add New Category</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label class="control-label">Add New Category</label>
+                        <div class="margin-bottom-10">
+                            <input disabled type="text" class="form-control input-disabled-category" name="newCategoryName">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label class="control-label">
+                            Repair/Rehab Paid By<span class="required">*</span>
+                        </label>
+                        <div id="PaidTypeDD" class="margin-bottom-10"> </div>
+                    </div>
+                </div>
+
+                <div class="form-group col-md-12">
+                    <label class="control-label">
+                        Work Description<span class="required">*</span>
+                    </label><br>
+                    <textarea class="form-control" name="workDescription"><%- rehabItemData.workDescription%></textarea>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="control-label">Inspection page</label>
+                        <div class="margin-bottom-10">
+                            <input type="text" name="inspectionPage" class="form-control" value="<%- rehabItemData.inspectionPage%>">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="control-label">Section</label>
+                        <div class="margin-bottom-10">
+                            <input type="text" name="inspectionSection" class="form-control" value="<%- rehabItemData.inspectionSection%>">
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group col-md-12">
+                    <label class="control-label">
+                        HU Comments
+                    </label><br>
+                    <textarea class="form-control" name="huComments"><%- rehabItemData.huComments%></textarea>
+                </div>
+                <div class="clearfix"></div>
+                <hr style="margin: 9px 0 10px;">
+
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label class="control-label" style="text-align: left;">
+                            Estimated Start Date
+                        </label>
+                        <div class="input-group input-medium date date-picker" data-date="" data-date-format="mm-dd-yyyy" data-date-viewmode="years" style="width: 248px;">
+                            <input class="form-control" readonly type="text" name="estimatedStartDate" value="<%- rehabItemData.estimatedStartDate%>">
+                            <span class="input-group-btn">
+                                <button class="btn default" type="button">
+                                    <i class="fa fa-calendar"></i>
+                                </button>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label class="control-label" style="text-align: left;">
+                            Estimated Completion Date
+                        </label>
+                        <div class="input-group input-medium date date-picker" data-date="" data-date-format="mm-dd-yyyy" data-date-viewmode="years" style="width: 248px;">
+                            <input class="form-control" readonly type="text" name="estimatedCompletionDate" value="<%- rehabItemData.estimatedCompletionDate%>">
+                            <span class="input-group-btn">
+                                <button class="btn default" type="button">
+                                    <i class="fa fa-calendar"></i>
+                                </button>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label class="control-label">Estimated Cost</label>
+                        <div class="margin-bottom-10">
+                            <input type="text" name="estimatedCost" class="form-control currency" value="<%- rehabItemData.estimatedCost%>">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label class="control-label" style="text-align: left;">
+                            Actual Start Date
+                        </label>
+                        <div class="input-group input-medium date date-picker" data-date="" data-date-format="mm-dd-yyyy" data-date-viewmode="years" style="width: 248px;">
+                            <input class="form-control" readonly type="text" name="actualStartDate" value="<%- rehabItemData.actualStartDate%>">
+                            <span class="input-group-btn">
+                                <button class="btn default" type="button">
+                                    <i class="fa fa-calendar"></i>
+                                </button>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label class="control-label" style="text-align: left;">
+                            Actual Completion Date
+                        </label>
+                        <div class="input-group input-medium date date-picker" data-date="" data-date-format="mm-dd-yyyy" data-date-viewmode="years" style="width: 248px;">
+                            <input class="form-control" readonly type="text" name="actualCompletionDate" value="<%- rehabItemData.actualCompletionDate%>">
+                            <span class="input-group-btn">
+                                <button class="btn default" type="button">
+                                    <i class="fa fa-calendar"></i>
+                                </button>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label class="control-label">Actual Cost</label>
+                        <div class="margin-bottom-10">
+                            <input type="text" name="actualCost" class="form-control currency" value="<%- rehabItemData.actualCost%>">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group" style="margin-bottom: 0;">
+                        <label class="control-label">Vendor</label>
+                        <div class="margin-bottom-10">
+                            <select name="vendorId" class="form-control">
+                                <option value="">Select</option>
+                                <% _.each(rehabVendors,function(vendor){ %>
+                                    <option value="<%- vendor.orgId%>"<% (rehabItemData.vendorId==vendor.orgId)? print('selected=selected'): ''%>>
+                                        <%- vendor.orgName%>
+                                    </option>
+                                <% })%>
+                                <option value="addNewVendor">Add New Vendor</option>
+                            </select>
+                                <span class="text-danger" id="vendorLicense"></span>
+                        </div>
+                    </div>
+                </div>
+                <!-- <div class="col-md-4">
+                    <div class="form-group">
+                        <label class="control-label">Add New Vendor</label>
+                        <div class="margin-bottom-10">
+
+                            <input type="text" placeholder="Category Name" name="" class="form-control" disabled="">
+
+
+                        </div>
+                    </div>
+                </div> -->
+                <div class="clearfix"></div>
+               <!--  <hr style="margin: 9px 0 10px;"> -->
+                <!-- Add New Vendor Div Start -->
+				<div id="addNewVendorDiv" hidden>
+		                <div class="col-md-4">
+		                    <div class="form-group">
+		                        <label class="control-label">Vendor Name<span class="required">*</span></label>
+		                        <div class="margin-bottom-10">
+		                            <input type="text" disabled="" class="form-control input-disabled-vendor" name="vendorName">
+		                        </div>
+		                    </div>
+		                </div>
+		                <div class="col-md-4">
+		                    <div class="form-group">
+		                        <label class="control-label">Address</label>
+		                        <div class="margin-bottom-10">
+		                            <textarea type="text" disabled="" style="height: 33px;" class="form-control input-disabled-vendor" name="vendorAddress" ></textarea>
+		                        </div>
+		                    </div>
+		                </div>
+		                <div class="col-md-4">
+		                    <div class="form-group">
+		                        <label class="control-label">Phone<span class="required">*</span></label>
+		                        <div class="margin-bottom-10">
+		                            <input type="text" disabled="" class="form-control input-disabled-vendor" name="vendorPhone">
+		                        </div>
+		                    </div>
+		                </div>
+                        <div class="clearfix"></div>
+		                <div class="col-md-4">
+		                    <div class="form-group">
+		                        <label class="control-label">Vendor Type <span class="required">*</span></label>
+		                        <div class="margin-bottom-10">
+		                            <select class="form-control input-disabled-vendor" disabled="" name="vendorService">
+		                                <option value="">Select</option>
+		                                <% _.each(rehabServices,function(service){ %>
+		                                    <option value="<%- service.serviceId%>">
+		                                        <%- service.serviceName%>
+		                                    </option>
+		                                <% })%>
+		                            </select>
+		                        </div>
+		                    </div>
+		                </div>
+		                <div class="col-md-4">
+		                    <div class="form-group">
+		                        <label class="control-label">City</label>
+		                        <div class="margin-bottom-10">
+		                            <input type="text" disabled="" class="form-control input-disabled-vendor" name="vendorCity">
+		                        </div>
+		                    </div>
+		                </div>
+		                <div class="col-md-4">
+		                    <div class="form-group">
+		                        <label class="control-label">Fax</label>
+		                        <div class="margin-bottom-10">
+		                            <input type="text" disabled="" class="form-control input-disabled-vendor" name="vendorFax">
+		                        </div>
+		                    </div>
+		                </div>
+                        <div class="clearfix"></div>
+		                <div class="col-md-4">
+		                    <div class="form-group">
+		                        <label class="control-label"></label>
+		                        <div class="margin-bottom-10">
+		                        </div>
+		                    </div>
+		                </div>
+		                <div class="col-md-4">
+		                    <div class="form-group">
+		                        <label class="control-label">State</label>
+		                        <div class="margin-bottom-10">
+		                            <input type="text" disabled="" class="form-control input-disabled-vendor" name="vendorState">
+		                        </div>
+		                    </div>
+		                </div>
+		                <div class="col-md-4">
+		                    <div class="form-group">
+		                        <label class="control-label">Email <span class="required">*</span></label>
+		                        <div class="margin-bottom-10">
+		                            <input type="text" disabled="" class="form-control input-disabled-vendor" name="vendorEmail">
+		                        </div>
+		                    </div>
+		                </div>
+                        <div class="clearfix"></div>
+		                <div class="col-md-4">
+		                    <div class="form-group">
+		                        <label class="control-label"></label>
+		                        <div class="margin-bottom-10"></div>
+		                    </div>
+		                </div>
+		                <div class="col-md-4">
+		                    <div class="form-group">
+		                        <label class="control-label">Zip</label>
+		                        <div class="margin-bottom-10">
+		                            <input type="text" disabled="" class="form-control input-disabled-vendor" name="vendorZip">
+		                        </div>
+		                    </div>
+		                </div>
+                        <div class="clearfix"></div>
+           		</div> 
+           		<!-- Add New Vendor Div End -->
+               
+            </form>
+            </div>
+            <div class="clearfix"></div>
+            <div class="modal-footer">
+                <button type="button"  class="btn default" data-dismiss="modal">
+                    CANCEL</button>
+                <button type="button" class="btn blue" id="saveRepairItemDetails">
+                    SAVE</button>
+            </div>
+        </div>
+    <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+    <!-- end rehab details lightbox

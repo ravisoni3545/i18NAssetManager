@@ -1,0 +1,128 @@
+ <div class="page-content">
+                 
+                <!-- BEGIN PAGE HEADING-->
+                <div class="dash-header">
+                    <div class="">
+                        <h3 class="page-title">
+                            <i class="fa fa-building-o pull-left"></i>Search/View Assets </h3>
+                    </div>
+                </div>
+                <!-- END PAGE HEADING-->
+				
+				
+				  <div class="member-search">
+
+                <form action="#" id="search_form" class="form-horizontal">
+                  <div class="row">
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label class="control-label col-md-4">Investor Name</label>
+                        <div class="col-md-6">
+                          <input type="text" name="investorName" id="investorName" value="" class="form-control srch" placeholder="First / Last name" />
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label class="control-label col-md-4">Address </label>
+                        <div class="col-md-6">
+                          <input type="text" name="address" id="address" value="" class="form-control srch" />
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label class="control-label col-md-4">Asset Manager</label>
+                        <div class="col-md-6">
+                          <div id="assetManagerDropdown"></div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label class="control-label col-md-4">Hil</label>
+                        <div class="col-md-6">
+                        	<div id="hilDropdown"></div>
+                        </div>
+                      </div>
+                    </div>
+
+					 <div class="col-md-6">
+                      <div class="form-group">
+                        <label class="control-label col-md-4">Property Manager </label>
+                        <div class="col-md-6" >
+                          <input type="text"  id="propertyManagerName" name="propertyManagerName" class="form-control " />
+                        </div>
+                      </div>
+                    </div>
+					
+					 <div class="col-md-6">
+                      <div class="form-group">
+                        <label class="control-label col-md-4">Status  </label>
+                        <div class="col-md-6" >
+                         <!--  <select class="form-control" name="propertyStatus">
+						  <option selected="selected">Select</option>
+						  <option>Vacant</option>
+						  <option>Leased</option>
+						  <option>Rehab</option>
+						  <option>Tenant Agreement Signed</option>
+						  <option>Tenant Eviction</option>
+						  </select> -->
+						  <div id="status"></div>
+                        </div>
+
+                      </div>
+                    </div>
+
+                          <div class="col-md-6">
+                      <div class="form-group">
+                        <label class="control-label col-md-4">Tag</label>
+                        <div class="col-md-6">
+                          <div id="assetTag">
+                            
+                        </div>
+                        </div>
+                      </div>
+                    </div>
+                    <!--  -->
+
+
+                      <div class="col-md-6">
+                          <div class="form-group">
+                              <label class="control-label col-md-4"></label> <div class="col-md-6" ><input id="isManaged" type="checkbox" checked="checked" name="isManaged" class="margin-right-6"> Show managed properties only</div>
+
+                          </div>
+                      </div>
+                      <div class="col-md-6">
+                          <div class="form-group">
+                              <label class="control-label col-md-4"> </label>  <div class="col-md-6" ><input id="expiringLeases" type="checkbox" name="expiringLeases" class="margin-right-6"> Show Expiring Leases only</div>
+
+                          </div>
+                      </div>
+
+
+                      <div class="text-center col-md-12 clearfix form-actions2">
+                          <button type="button" id="searchAssets" name="Submit" value="Search" class="btn blue">Search</button>
+                      </div>
+			<!--	<div class="col-md-2">    <button type="button" id="searchAssets" name="Submit" value="Search" class="btn blue marg_top15">Search</button></div>-->
+				 <!--  -->
+				   <!-- <div class="col-md-0 marg_top15">
+									<div>
+										<label class="control-label col-md-5">
+										<input id="isManaged" type="checkbox" checked="checked" name="isManaged">
+										 <span>Show managed properties only</span></label>
+							    	</div>
+								</div> -->
+
+                    <!--  -->
+				 <!--  --> 
+                  </div>
+                 
+                </form>
+              </div>
+                <!-- Start Search section -->
+
+
+                <div id="renderAssetResult"></div>
+            </div>

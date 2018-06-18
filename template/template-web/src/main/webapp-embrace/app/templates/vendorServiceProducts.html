@@ -1,0 +1,233 @@
+<!-- BEGIN SAMPLE TABLE PORTLET-->
+<div class="portlet box light-grey" id="productPortlet">
+	<div class="portlet-title">
+		<div class="caption">
+			<i class="fa fa-cogs"></i>Fees
+		</div>
+		<div class="tools">
+			<a href="#add-product-form1" data-toggle="modal" class="config"
+				title="Add Product" id="addProductLink"> 
+			</a>
+			<a href="javascript:;" id="reloadProductLink"
+				class="reload" title="Refresh">
+			</a>
+		</div>
+	</div>
+	<div class="portlet-body" id="productPortletBody">
+		<% if(_(vendorServiceProducts).size() > 0) { %>
+		<table class="table table-hover">
+			<thead>
+				<tr>
+					<th>Product</th>
+					<th>Fees</th>
+					<th>Effective</th>
+					<th>Expirtation</th>
+					<th></th>
+				</tr>
+			</thead>
+			<tbody>
+				<% _(vendorServiceProducts).each(function(product) { %>
+					<tr>
+						<td><%=product.productName%></td>
+						<td class="amount"><%=product.feeAmountUsd%></td>
+						<td><%=product.effectiveDate%></td>
+						<td><%=product.expirationDate%></td>
+						<td><a href="#update-product-form1" class="edit_blue"
+							title="Edit" id="editProductLink"><i class="fa fa-edit" data-recordid="<%=product.vendorServiceProductId%>"></i> </a> 
+							<a href="#optionDeleteProduct" data-toggle="modal" class="delete_red"
+							title="Delete" id="deleteProductLink"><i class="fa fa-trash-o" data-recordid="<%=product.vendorServiceProductId%>"></i></a>
+					</tr>
+				<%});%>
+			</tbody>
+		</table>
+		<% } else { %>
+			<div style="text-align: center;">No records found.</div>
+		<% } %>
+	</div>
+</div>
+<!-- END SAMPLE TABLE PORTLET-->
+
+<!-- product lightbox start -->
+<div class="modal fade" id="add-product-form1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog">
+    	<div class="modal-content">
+    		<form class="form-horizontal" method="post" id="addProductForm">
+    		<div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                </button>
+                <h4 class="modal-title">
+                    Add Fees</h4>
+            </div>
+            <div class="modal-body" style="padding:35px;">
+                <div class="row">
+                    <!-- start left 1 -->
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="control-label">
+                                Product<span class="required">* </span>
+                            </label>
+                            <div id="productsList" style="padding-right:35px;">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label">
+                                Fees<span class="required">* </span>
+                            </label>
+                            <div class="input-group col-md-12" style="padding-right:35px;">
+                                <span class="input-group-addon"><i class="fa fa-dollar"></i></span>
+                                <input name="feeAmountUsd" data-required="2" class="form-control currency" type="text">
+                            </div>
+                        </div>
+                    </div>
+                    <!-- end left 1 -->
+                    <!-- start right 1 -->
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="control-label">
+                                Effective Date
+                            </label>
+                            <div class="input-group input-medium date effectiveDate" data-date="" data-date-format="mm-dd-yyyy"
+                                data-date-viewmode="years">
+                                <input class="form-control" readonly="" type="text" name="effectiveDate">
+                                <span class="input-group-btn">
+                                    <button class="btn default" type="button">
+                                        <i class="fa fa-calendar"></i>
+                                    </button>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label">
+                                Expiration Date
+                            </label>
+                            <div class="input-group input-medium date expirationDate" data-date="" data-date-format="mm-dd-yyyy"
+                                data-date-viewmode="years">
+                                <input class="form-control" readonly="" type="text" name="expirationDate">
+                                <span class="input-group-btn">
+                                    <button class="btn default" type="button">
+                                        <i class="fa fa-calendar"></i>
+                                    </button>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- end right 1 -->
+                </div>
+            </div>
+           <div class="modal-footer">
+			<button type="button" class="btn blue" id="addProductButton">Save</button>
+			<button type="button" class="btn default" data-dismiss="modal">Close</button>
+			</div>
+		</form>  
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+<!-- /.modal -->
+<!-- product lightbox end -->
+
+<!-- product lightbox start -->
+<div class="modal fade" id="update-product-form1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog">
+    	<div class="modal-content">
+    		<form class="form-horizontal" method="post" id="updateProductForm">
+    		<div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                </button>
+                <h4 class="modal-title">
+                    Edit Product</h4>
+            </div>
+            <div class="modal-body" style="padding:35px;">
+                <div class="row">
+                    <!-- start left 1 -->
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="control-label">
+                                Product<span class="required">* </span>
+                            </label>
+                            <div id="productsList" style="padding-right:35px;">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label">
+                                Fees<span class="required">* </span>
+                            </label>
+                            <div class="input-group col-md-12" style="padding-right:35px;">
+                                <span class="input-group-addon"><i class="fa fa-dollar"></i></span>
+                                <input name="feeAmountUsd" data-required="2" class="form-control currency" type="text">
+                            </div>
+                        </div>
+                    </div>
+                    <!-- end left 1 -->
+                    <!-- start right 1 -->
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="control-label">
+                                Effective Date
+                            </label>
+                            <div class="input-group input-medium date effectiveDate" data-date="" data-date-format="mm-dd-yyyy"
+                                data-date-viewmode="years">
+                                <input class="form-control" readonly="" type="text" name="effectiveDate">
+                                <span class="input-group-btn">
+                                    <button class="btn default" type="button">
+                                        <i class="fa fa-calendar"></i>
+                                    </button>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label">
+                                Expiration Date
+                            </label>
+                            <div class="input-group input-medium date expirationDate" data-date="" data-date-format="mm-dd-yyyy"
+                                data-date-viewmode="years">
+                                <input class="form-control" readonly="" type="text" name="expirationDate">
+                                <span class="input-group-btn">
+                                    <button class="btn default" type="button">
+                                        <i class="fa fa-calendar"></i>
+                                    </button>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- end right 1 -->
+                </div>
+            </div>
+           <div class="modal-footer">
+			<button type="button" class="btn blue" id="updateProductButton">Save</button>
+			<button type="button" class="btn default" data-dismiss="modal">Close</button>
+		   </div>
+		</form>  
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+<!-- /.modal -->
+<!-- product lightbox end -->
+
+
+<!-- option delete lightbox start -->
+<div class="modal fade bs-modal-sm" id="optionDeleteProduct" tabindex="-1" role="dialog" aria-hidden="true">
+	<div class="modal-dialog modal-sm">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+				<h4 class="modal-title">Delete</h4>
+			</div>
+			<div class="modal-body">
+				  Are you sure you want to delete this?
+			</div>
+			<div class="modal-footer">
+				<button id="deleteProductConfirmationButton" type="button" class="btn blue">Yes</button>
+				<button type="button" class="btn default" data-dismiss="modal">No</button>
+			</div>
+		</div>
+		<!-- /.modal-content -->
+	</div>
+	<!-- /.modal-dialog -->
+</div>
+<!-- option delete lightbox end -->

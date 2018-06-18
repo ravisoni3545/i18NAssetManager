@@ -1,0 +1,12 @@
+<select id="genericCompanyDropdown" class="form-control select2"
+	name="genericCompanyDropdown">
+	<option value="">select</option>
+	<!-- <optgroup label="New Company">
+		<option value="addNewCompany">Add New</option>
+	</optgroup> -->
+	<!-- <optgroup label="Existing Companies"> -->
+		<% _(orgList).each(function(org) { %>
+		<option value="<%= org.orgId%>"><%=org.orgName %></option>
+		<% }); %>
+	<!-- </optgroup> -->
+</select>

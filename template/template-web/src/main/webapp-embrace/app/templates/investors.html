@@ -1,0 +1,215 @@
+
+<div class="page-content">
+
+	<!-- BEGIN PAGE HEADING-->
+	<div class="dash-header">
+		<div class="">
+			<!-- BEGIN PAGE TITLE & BREADCRUMB-->
+
+			<div class="clearfix xtra-buttons">
+				<h3 class="page-title pull-left">
+					<i class="fa fa-user pull-left"></i> Search/View
+					Investors
+				</h3>
+				<!--<div class="pull-right">
+					<a href="#" style="color: #FFFFFF">
+						<button class="btn red">
+							<i class="fa fa-plus"></i> Add New Member
+						</button>
+					</a>
+				</div>  -->
+			</div>
+			<div id="deleteInvestorError" class="alert alert-danger display-hide">
+				<button class="close" data-close="alert"></button>
+				<text>Error in deleting investor.</text>
+			</div>
+			<div id="deleteActiveInvestorError"
+				class="alert alert-danger display-hide">
+				<button class="close" data-close="alert"></button>
+				<text>Cannot delete investor with investments/wishlist.</text>
+			</div>
+			<div id="resetPasswordSuccess"
+				class="alert alert-success display-hide">
+				<button class="close" data-close="alert"></button>
+				<text>Email with new password has been sent.</text>
+			</div>
+			<div id="resetPasswordError" class="alert alert-danger display-hide">
+				<button class="close" data-close="alert"></button>
+				<text>Error in sending password reset email.</text>
+			</div>
+			<div id="generalError" class="alert alert-danger display-hide">
+				<button class="close" data-close="alert"></button>
+				<text>Error in performing the operation.</text>
+			</div>
+			<!-- END PAGE TITLE & BREADCRUMB-->
+		</div>
+	</div>
+	<div class="">
+		<div class="">
+			<!-- BEGIN EXAMPLE TABLE PORTLET-->
+			<div class="">
+				<div class="member-search">
+					<!-- BEGIN ERROR MESSAGE-->
+					<div class="error-msg"></div>
+					<!--END ERROR MESSAGE-->
+					<div class="">
+
+						<form id="search_investor_form" method="post" class="form-horizontal">
+							<div class="row">
+
+								<div class="col-md-6">
+                      <div class="form-group clearfix">
+                        <label class="control-label col-md-4"> Name</label>
+                        <div class="col-md-6">
+                          <input type="text" name="fname" id="fname" 
+												class="form-control srch" placeholder="First / Last name" />
+                        </div>
+                      </div>
+                    </div>
+
+								<div class="col-md-6">
+									<div class="form-group clearfix">
+										<label class="control-label col-md-4 ">Email ID</label>
+										<div class="col-md-6">
+											<input type="text" name="email" id="email" 
+												class="form-control srch" />
+										</div>
+									</div>
+								</div>
+							
+						 
+								<div class="col-md-6">
+									<div class="form-group clearfix">
+										<label class="control-label col-md-4">Tag</label>
+										<div id="investorSearchTagDropdown" class="col-md-6">
+											
+										</div>
+									</div>
+								</div>
+										<div class="col-md-6">
+									<div class="form-group clearfix">
+										<label class="control-label col-md-4">Solution Specialist</label>
+										<div class="col-md-6" id="ssDropdown">
+										</div>
+									</div>
+								</div>
+								<div class="col-md-6">
+                                    <div class="form-group clearfix">
+                                        <label class="control-label col-md-4"></label>
+                                        <div class=" marg_top15 col-md-6">	<input id="currentInvestor" type="checkbox" name="currentInvestor" value="true" style="height:13px;">
+										 <span>Current Investor</span></div>
+							    	</div>
+								</div>
+
+
+                                <div class="col-md-8 col-md-offset-2 marg_top10 margin-bottom-15">
+
+                                    <div class="alphabet-search clearfix">
+                                        <a href="#" class="all-alphabets single-alphabet" data-value="">All</a>
+                                        <a href="javascript:;" class="single-alphabet" data-value="A">A</a>
+                                        <a href="javascript:;" class="single-alphabet" data-value="B">B</a>
+                                        <a href="javascript:;" class="single-alphabet" data-value="C">C</a>
+                                        <a href="javascript:;" class="single-alphabet" data-value="D">D</a>
+                                        <a href="javascript:;" class="single-alphabet" data-value="E">E</a>
+                                        <a href="javascript:;" class="single-alphabet" data-value="F">F</a>
+                                        <a href="javascript:;" class="single-alphabet" data-value="G">G</a>
+                                        <a href="javascript:;" class="single-alphabet" data-value="H">H</a>
+                                        <a href="javascript:;" class="single-alphabet" data-value="I">I</a>
+                                        <a href="javascript:;" class="single-alphabet" data-value="J">J</a>
+                                        <a href="javascript:;" class="single-alphabet" data-value="K">K</a>
+                                        <a href="javascript:;" class="single-alphabet" data-value="L">L</a>
+                                        <a href="javascript:;" class="single-alphabet" data-value="M">M</a>
+                                        <a href="javascript:;" class="single-alphabet" data-value="N">N</a>
+                                        <a href="javascript:;" class="single-alphabet" data-value="O">O</a>
+                                        <a href="javascript:;" class="single-alphabet" data-value="P">P</a>
+                                        <a href="javascript:;" class="single-alphabet" data-value="Q">Q</a>
+                                        <a href="javascript:;" class="single-alphabet" data-value="R">R</a>
+                                        <a href="javascript:;" class="single-alphabet" data-value="S">S</a>
+                                        <a href="javascript:;" class="single-alphabet" data-value="T">T</a>
+                                        <a href="javascript:;" class="single-alphabet" data-value="U">U</a>
+                                        <a href="javascript:;" class="single-alphabet" data-value="V">V</a>
+                                        <a href="javascript:;" class="single-alphabet" data-value="W">W</a>
+                                        <a href="javascript:;" class="single-alphabet" data-value="X">X</a>
+                                        <a href="javascript:;" class="single-alphabet" data-value="Y">Y</a>
+                                        <a href="javascript:;" class="single-alphabet" data-value="Z">Z</a>
+                                    </div>
+                                </div>
+								
+							</div>
+							<!-- .row -->
+
+							<div class="row">
+
+								<div class="col-md-12 text-center">
+									<div class=" form-actions2">
+
+										<!-- button type="submit" id="Submit" name="Submit" value="Search" class="btn blue btn-sm marg_left30"-->
+										<button type="button" id="searchInvestor" name="Submit" value="true" class="btn blue marg_left30">
+											Search
+										</button>
+									</div>
+								</div>
+
+
+							</div>
+							
+							<!-- .row -->
+						</form>
+					</div>
+				</div>
+				<!-- div class="row">
+				<div class="col-md-4">
+				<!-- div class="form-container">
+	                <div class="input-box">
+	                    <label>
+		                    Search:
+		                    <input type="text" id="internalSearch" name="internalSearch" value=""/>
+	                    </label> 
+	                </div>
+                 <!-- /div>
+                 </div>
+                 </div-->
+			</div>
+
+			<!-- Search table start -->
+			<div id="investorSearchResults"></div>
+			<!-- Search table end -->
+			
+
+			<!-- END EXAMPLE TABLE PORTLET-->
+			<!-- BEGIN EXAMPLE TABLE PORTLET-->
+			<!-- END EXAMPLE TABLE PORTLET-->
+		</div>
+	</div>
+	<!-- END PAGE HEADING-->
+
+</div>
+
+<!-- START Investor Delete lightbox -->
+<div class="modal fade bs-modal-sm" id="formInvestordelete" tabindex="-1"
+	role="dialog" aria-hidden="true">
+	<div class="modal-dialog modal-sm">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal"
+					aria-hidden="true"></button>
+				<h4 class="modal-title">
+					<i class="fa fa-times"></i> Delete Member
+				</h4>
+			</div>
+			<div class="modal-body">
+				<p>Are you sure you want to delete this member?</p>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn blue" id="deleteInvestorConfirmationButton">
+					Yes</button>
+				<button type="button" class="btn default" data-dismiss="modal">
+					No</button>
+			</div>
+		</div>
+		<!-- /.modal-content -->
+	</div>
+	<!-- /.modal-dialog -->
+</div>
+<!-- /.modal -->
+<!-- END Investor Delete lightbox -->
